@@ -1,0 +1,9 @@
+# CollectFundsError
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ach`                                                                                                                | [T.nilable(Models::Components::CollectFundsAchError)](../../models/shared/collectfundsacherror.md)                   | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
+| `card_payments`                                                                                                      | [T.nilable(Models::Components::CollectFundsCardPaymentsError)](../../models/shared/collectfundscardpaymentserror.md) | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |

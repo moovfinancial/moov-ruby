@@ -1,0 +1,9 @@
+# UpdateRepresentativeGovernmentID
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ssn`                                                                                                      | [T.nilable(Models::Components::UpdateRepresentativeSsn)](../../models/shared/updaterepresentativessn.md)   | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `itin`                                                                                                     | [T.nilable(Models::Components::UpdateRepresentativeItin)](../../models/shared/updaterepresentativeitin.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |

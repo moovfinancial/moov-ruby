@@ -1,0 +1,9 @@
+# ColorsValidationError
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `light`                                                                                                      | [T.nilable(Models::Components::BrandColorValidationError)](../../models/shared/brandcolorvalidationerror.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `dark`                                                                                                       | [T.nilable(Models::Components::BrandColorValidationError)](../../models/shared/brandcolorvalidationerror.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

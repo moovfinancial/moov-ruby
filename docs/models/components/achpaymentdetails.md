@@ -1,0 +1,11 @@
+# ACHPaymentDetails
+
+Options for payment links used to collect an ACH payment.
+
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `company_entry_description`                                                         | *T.nilable(::String)*                                                               | :heavy_minus_sign:                                                                  | An optional override of the default NACHA company entry description for a transfer. | Gym dues                                                                            |
+| `originating_company_name`                                                          | *T.nilable(::String)*                                                               | :heavy_minus_sign:                                                                  | An optional override of the default NACHA company name for a transfer.              | Whole Body Fit                                                                      |

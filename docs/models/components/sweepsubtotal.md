@@ -1,0 +1,10 @@
+# SweepSubtotal
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `type`                                                                                    | [Models::Components::WalletTransactionType](../../models/shared/wallettransactiontype.md) | :heavy_check_mark:                                                                        | The type of wallet transaction the subtotal is for.                                       |
+| `count`                                                                                   | *::Integer*                                                                               | :heavy_check_mark:                                                                        | The number of transactions of this type accrued in the sweep.                             |
+| `amount`                                                                                  | [Models::Components::AmountDecimal](../../models/shared/amountdecimal.md)                 | :heavy_check_mark:                                                                        | The value of transactions of this type accrued in the sweep.                              |

@@ -1,0 +1,10 @@
+# WireServices
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `funds_transfer_status`                                                   | *T::Boolean*                                                              | :heavy_check_mark:                                                        | The institution's capability to process standard Fedwire funds transfers. | true                                                                      |
+| `funds_settlement_only_status`                                            | *T::Boolean*                                                              | :heavy_check_mark:                                                        | The institution's capability for settlement-only transfers.               | false                                                                     |
+| `book_entry_securities_transfer_status`                                   | *T::Boolean*                                                              | :heavy_check_mark:                                                        | The institution's capability to handle transfers of securities.           | false                                                                     |

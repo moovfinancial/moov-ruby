@@ -1,0 +1,10 @@
+# SendFunds
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ach`                                                                                            | [T.nilable(Models::Components::SendFundsAch)](../../models/shared/sendfundsach.md)               | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `push_to_card`                                                                                   | [T.nilable(Models::Components::SendFundsPushToCard)](../../models/shared/sendfundspushtocard.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `rtp`                                                                                            | [T.nilable(Models::Components::SendFundsRtp)](../../models/shared/sendfundsrtp.md)               | :heavy_minus_sign:                                                                               | N/A                                                                                              |

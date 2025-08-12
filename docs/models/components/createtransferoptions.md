@@ -1,0 +1,10 @@
+# CreateTransferOptions
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `source`                                                                                        | [Models::Components::SourceDestinationOptions](../../models/shared/sourcedestinationoptions.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `destination`                                                                                   | [Models::Components::SourceDestinationOptions](../../models/shared/sourcedestinationoptions.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `amount`                                                                                        | [Models::Components::Amount](../../models/shared/amount.md)                                     | :heavy_check_mark:                                                                              | N/A                                                                                             |

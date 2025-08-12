@@ -1,0 +1,10 @@
+# WebhookDataCardAutoUpdated
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `card_id`                                                                       | *::String*                                                                      | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |
+| `account_id`                                                                    | *::String*                                                                      | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |
+| `update_type`                                                                   | [Models::Components::CardUpdateReason](../../models/shared/cardupdatereason.md) | :heavy_check_mark:                                                              | The results of the card update request.                                         | number-update                                                                   |

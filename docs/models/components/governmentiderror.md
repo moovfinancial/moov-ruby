@@ -1,0 +1,9 @@
+# GovernmentIDError
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ssn`                                                                                                | [T.nilable(Models::Components::GovernmentIDErrorSsn)](../../models/shared/governmentiderrorssn.md)   | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `itin`                                                                                               | [T.nilable(Models::Components::GovernmentIDErrorItin)](../../models/shared/governmentiderroritin.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

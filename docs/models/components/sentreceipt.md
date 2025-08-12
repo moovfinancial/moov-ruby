@@ -1,0 +1,10 @@
+# SentReceipt
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `receipt_id`                                                         | *::String*                                                           | :heavy_check_mark:                                                   | Unique identifier for the receipt.                                   |                                                                      |
+| `idempotency_key`                                                    | *::String*                                                           | :heavy_check_mark:                                                   | The idempotency key used when creating the receipt.                  |                                                                      |
+| `sent_on`                                                            | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html) | :heavy_check_mark:                                                   | When the receipt was sent.                                           | 2025-11-10T23:00:000Z                                                |

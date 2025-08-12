@@ -1,0 +1,9 @@
+# CreateProfile
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `individual`                                                                                             | [T.nilable(Models::Components::CreateIndividualProfile)](../../models/shared/createindividualprofile.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `business`                                                                                               | [T.nilable(Models::Components::CreateBusinessProfile)](../../models/shared/createbusinessprofile.md)     | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
