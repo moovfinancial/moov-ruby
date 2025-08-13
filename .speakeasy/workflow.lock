@@ -1,4 +1,4 @@
-speakeasyVersion: 1.603.1
+speakeasyVersion: 1.603.2
 sources:
     latest:
         sourceNamespace: api-latest
@@ -13,7 +13,7 @@ targets:
         sourceRevisionDigest: sha256:8e93df496a6843df84435813281e374c737fc27cb9dba9f8a970da7d94b21446
         sourceBlobDigest: sha256:251e78d2b9122ba252e40f4b7c498d478d0a5345fdb2f7c52f99b0a465c4f307
         codeSamplesNamespace: latest-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:7865576e22c4fb465bbff4e53fd9263364a90b830ea1a58625625968bf90a29a
+        codeSamplesRevisionDigest: sha256:2ab17ed2014cb3e122adfcbd4aff0bca64fd17c11319bc9f9e62a1fde3c02a42
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

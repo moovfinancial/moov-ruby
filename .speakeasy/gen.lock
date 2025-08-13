@@ -1,10 +1,10 @@
 lockVersion: 2.0.0
-id: f4b8f242-6f04-4620-b1f0-c7ca0f81f3b8
+id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
   docChecksum: 1e8d979e777b083c248ff9a2dbf03e28
   docVersion: latest
-  speakeasyVersion: 1.603.1
-  generationVersion: 2.681.1
+  speakeasyVersion: 1.603.2
+  generationVersion: 2.681.8
   releaseVersion: 0.1.2
   configChecksum: b6da5b08fbf8fe6009deddcd2a8f1ea1
 features:
@@ -2738,30 +2738,6 @@ examples:
       responses:
         "200":
           application/json: {"token": "kgT1uxoMAk7QKuyJcmQE8nqW_HjpyuXBabiXPi6T83fUQoxsyWYPcYzuHQTqrt7YRp4gCwyDQvb6U5REM9Pgl2EloCe35t-eiMAbUWGo3Kerxme6aqNcKrP_6-v0MTXViOEJ96IBxPFTvMV7EROI2dq3u4e-x4BbGSCedAX-ViAQND6hcreCDXwrO6sHuzh5Xi2IzSqZHxaovnWEboaxuZKRJkA3dsFID6fzitMpm2qrOh4"}
-  retrieveFees:
-    speakeasy-default-retrieve-fees:
-      parameters:
-        path:
-          accountID: "89daf02d-b6b3-4fbf-b20d-5bf967324682"
-        query:
-          skip: 60
-          count: 20
-        header:
-          x-moov-version: "v2024.01.00"
-      responses:
-        "200":
-          application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
-  getFileDetails:
-    speakeasy-default-get-file-details:
-      parameters:
-        path:
-          accountID: "7f888113-d35a-4536-b9bc-c55076736ab6"
-          fileID: "af170db9-0d17-4a9f-ade6-5dd2f1b3412d"
-        header:
-          x-moov-version: "v2024.01.00"
-      responses:
-        "200":
-          application/json: {"fileID": "a48b433f-6b24-4450-9caa-bd9b97056f1b", "fileName": "logo.png", "accountID": "c7128f97-89cd-4ce3-becf-5ca5b57dcf53", "filePurpose": "representative_verification", "fileStatus": "pending", "metadata": "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"", "decisionReason": "not correct file", "fileSizeBytes": 325288, "createdOn": "2025-10-12T07:50:10.235Z", "updatedOn": "2023-02-06T18:16:27.730Z"}
   listAdjustments:
     speakeasy-default-list-adjustments:
       parameters:
@@ -3324,6 +3300,19 @@ examples:
       responses:
         "200":
           application/json: [{"planID": "ffa23421-a92b-4f06-ac02-da8a985f1ce1", "name": "Fixed Rate Merchant Plan", "cardAcquiringModel": "cost-plus", "billableFees": [{"billableFeeID": "9d957d33-1a9a-47aa-9460-fe1a90f003dd", "billableEvent": "card-auth-volume", "feeName": "Card decline fee", "feeModel": "fixed", "feeCategory": "card-acquiring", "feeProperties": {"fixedAmount": {"currency": "USD", "valueDecimal": "0.1"}}, "feeConditions": {"transactionType": ["decline"]}}], "minimumCommitment": {"currency": "USD", "valueDecimal": "12.987654321"}, "monthlyPlatformFee": {"currency": "USD", "valueDecimal": "12.987654321"}, "createdAt": "2025-10-16T21:42:55.178Z"}]
+  retrieveFees:
+    speakeasy-default-retrieve-fees:
+      parameters:
+        path:
+          accountID: "89daf02d-b6b3-4fbf-b20d-5bf967324682"
+        query:
+          skip: 60
+          count: 20
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
   listFeesFetch:
     speakeasy-default-list-fees-fetch:
       parameters:
@@ -3383,6 +3372,17 @@ examples:
       responses:
         "200":
           application/json: [{"fileID": "7b13078e-82fe-4b7a-ab8f-2d1e24c736de", "fileName": "logo.png", "accountID": "14d8ea8d-76aa-4582-9c6f-e8800f1c74d9", "filePurpose": "representative_verification", "fileStatus": "pending", "metadata": "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"", "decisionReason": "not correct file", "fileSizeBytes": 396391, "createdOn": "2023-10-09T21:59:12.323Z", "updatedOn": "2025-03-31T14:09:52.046Z"}]
+  getFileDetails:
+    speakeasy-default-get-file-details:
+      parameters:
+        path:
+          accountID: "7f888113-d35a-4536-b9bc-c55076736ab6"
+          fileID: "af170db9-0d17-4a9f-ade6-5dd2f1b3412d"
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: {"fileID": "a48b433f-6b24-4450-9caa-bd9b97056f1b", "fileName": "logo.png", "accountID": "c7128f97-89cd-4ce3-becf-5ca5b57dcf53", "filePurpose": "representative_verification", "fileStatus": "pending", "metadata": "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"", "decisionReason": "not correct file", "fileSizeBytes": 325288, "createdOn": "2025-10-12T07:50:10.235Z", "updatedOn": "2023-02-06T18:16:27.730Z"}
   createPaymentLink:
     speakeasy-default-create-payment-link:
       parameters:
@@ -3598,6 +3598,17 @@ examples:
       responses:
         "200":
           application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": [{"mode": "production", "runOn": "2024-08-31T23:34:03.135Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "humble other hence athwart with"}}], "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "humble other hence athwart with"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2025-04-04T13:05:20.032Z", "updatedOn": "2023-06-15T04:44:25.119Z"}
+  cancelSchedule:
+    speakeasy-default-cancel-schedule:
+      parameters:
+        path:
+          accountID: "e89edcfc-19ca-40eb-802b-a35100dea24d"
+          scheduleID: "5ca67de0-63f6-4cb7-b94a-6c84616ffe03"
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "400":
+          application/json: {"error": "<value>"}
   getScheduledOccurrence:
     speakeasy-default-get-scheduled-occurrence:
       parameters:
@@ -3610,17 +3621,6 @@ examples:
       responses:
         "200":
           application/json: {"mode": "production", "runOn": "2024-08-28T12:44:49.769Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "and always opposite helplessly quaff"}}
-  cancelSchedule:
-    speakeasy-default-cancel-schedule:
-      parameters:
-        path:
-          accountID: "e89edcfc-19ca-40eb-802b-a35100dea24d"
-          scheduleID: "5ca67de0-63f6-4cb7-b94a-6c84616ffe03"
-        header:
-          x-moov-version: "v2024.01.00"
-      responses:
-        "400":
-          application/json: {"error": "<value>"}
   createSweepConfig:
     speakeasy-default-create-sweep-config:
       parameters:
@@ -4246,6 +4246,19 @@ examples:
           application/json: {"error": "<value>"}
         "422":
           application/json: {"controls": {"velocityLimits": {"0": {"amount": "must be no less than 1", "interval": "must be a valid value"}}}}
+  listIssuedCards:
+    speakeasy-default-list-issued-cards:
+      parameters:
+        path:
+          accountID: "17c958e0-3abe-46e5-8afb-98742f1fb8ac"
+        query:
+          skip: 60
+          count: 20
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: [{"issuedCardID": "6a42db9e-a0ef-4034-bf4e-1e6241dd054e", "brand": "Visa", "lastFourCardNumber": "<value>", "expiration": {"month": "01", "year": "21"}, "authorizedUser": {"firstName": "Beth", "lastName": "Kuphal"}, "fundingWalletID": "<id>", "state": "pending-verification", "formFactor": "virtual", "controls": {"velocityLimits": [{"amount": 10000, "interval": "per-transaction"}]}, "createdOn": "2024-03-16T01:35:52.156Z"}]
   getIssuedCard:
     speakeasy-default-get-issued-card:
       parameters:
@@ -4283,19 +4296,6 @@ examples:
       responses:
         "200":
           application/json: {"issuedCardID": "c24cee70-26ae-4086-8585-5adbb8893a49", "brand": "Visa", "lastFourCardNumber": "<value>", "expiration": {"month": "01", "year": "21"}, "authorizedUser": {"firstName": "Elyse", "lastName": "Reinger"}, "fundingWalletID": "<id>", "state": "closed", "formFactor": "virtual", "controls": {"velocityLimits": [{"amount": 10000, "interval": "per-transaction"}]}, "createdOn": "2023-07-24T21:36:09.652Z", "pan": "<value>", "cvv": "109"}
-  listIssuedCards:
-    speakeasy-default-list-issued-cards:
-      parameters:
-        path:
-          accountID: "17c958e0-3abe-46e5-8afb-98742f1fb8ac"
-        query:
-          skip: 60
-          count: 20
-        header:
-          x-moov-version: "v2024.01.00"
-      responses:
-        "200":
-          application/json: [{"issuedCardID": "6a42db9e-a0ef-4034-bf4e-1e6241dd054e", "brand": "Visa", "lastFourCardNumber": "<value>", "expiration": {"month": "01", "year": "21"}, "authorizedUser": {"firstName": "Beth", "lastName": "Kuphal"}, "fundingWalletID": "<id>", "state": "pending-verification", "formFactor": "virtual", "controls": {"velocityLimits": [{"amount": 10000, "interval": "per-transaction"}]}, "createdOn": "2024-03-16T01:35:52.156Z"}]
   revokeAccessToken:
     speakeasy-default-revoke-access-token:
       parameters:
