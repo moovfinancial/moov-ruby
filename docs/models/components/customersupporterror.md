@@ -1,0 +1,11 @@
+# CustomerSupportError
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `phone`                                                                                    | [T.nilable(Models::Components::PhoneNumberError)](../../models/shared/phonenumbererror.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `email`                                                                                    | *T.nilable(::String)*                                                                      | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `address`                                                                                  | [T.nilable(Models::Components::AddressError)](../../models/shared/addresserror.md)         | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `website`                                                                                  | *T.nilable(::String)*                                                                      | :heavy_minus_sign:                                                                         | N/A                                                                                        |

@@ -1,0 +1,9 @@
+# BankAccountVerificationCreated
+
+
+## Fields
+
+| Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `verification_method`                                                                                     | [Models::Components::BankAccountVerificationMethod](../../models/shared/bankaccountverificationmethod.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
+| `status`                                                                                                  | [Models::Components::BankAccountVerificationStatus](../../models/shared/bankaccountverificationstatus.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |

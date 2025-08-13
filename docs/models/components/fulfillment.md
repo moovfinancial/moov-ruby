@@ -1,0 +1,9 @@
+# Fulfillment
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `method`                                                                                           | [T.nilable(Models::Components::FulfillmentMethod)](../../models/shared/fulfillmentmethod.md)       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `timeframe`                                                                                        | [T.nilable(Models::Components::FulfillmentTimeframe)](../../models/shared/fulfillmenttimeframe.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

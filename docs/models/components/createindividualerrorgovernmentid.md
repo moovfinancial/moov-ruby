@@ -1,0 +1,9 @@
+# CreateIndividualErrorGovernmentID
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `ssn`                                                                                                        | [T.nilable(Models::Components::CreateIndividualErrorSsn)](../../models/shared/createindividualerrorssn.md)   | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `itin`                                                                                                       | [T.nilable(Models::Components::CreateIndividualErrorItin)](../../models/shared/createindividualerroritin.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

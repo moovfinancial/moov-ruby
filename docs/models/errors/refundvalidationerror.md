@@ -1,0 +1,10 @@
+# RefundValidationError
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `amount`                                                                                      | *T.nilable(::String)*                                                                         | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `error`                                                                                       | *T.nilable(::String)*                                                                         | :heavy_minus_sign:                                                                            | Used for generic errors when invalid request data isn't attributed to a single request field. |
+| `raw_response`                                                                                | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response)                   | :heavy_minus_sign:                                                                            | Raw HTTP response; suitable for custom response parsing                                       |

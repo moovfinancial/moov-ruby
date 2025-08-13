@@ -1,0 +1,14 @@
+# CreateSweepConfigError
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `wallet_id`                                                                 | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `status`                                                                    | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `push_payment_method_id`                                                    | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `pull_payment_method_id`                                                    | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `statement_descriptor`                                                      | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `minimum_balance`                                                           | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `raw_response`                                                              | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response) | :heavy_minus_sign:                                                          | Raw HTTP response; suitable for custom response parsing                     |

@@ -1,0 +1,13 @@
+# TerminalApplicationError
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `platform`                                                                  | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `app_bundle_id`                                                             | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `package_name`                                                              | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `sha256_digest`                                                             | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `version_code`                                                              | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `raw_response`                                                              | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response) | :heavy_minus_sign:                                                          | Raw HTTP response; suitable for custom response parsing                     |

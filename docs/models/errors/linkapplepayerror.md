@@ -1,0 +1,12 @@
+# LinkApplePayError
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `error`                                                                     | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Describes an error that wasn't attributable to a single request field.      |
+| `payment_data`                                                              | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Describes an error within the `token.paymentData` request field.            |
+| `payment_method`                                                            | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Describes an error within the `token.paymentMethod` request field.          |
+| `transaction_identifier`                                                    | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Describes an error within the `token.transactionIdentifier` request field.  |
+| `raw_response`                                                              | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response) | :heavy_minus_sign:                                                          | Raw HTTP response; suitable for custom response parsing                     |

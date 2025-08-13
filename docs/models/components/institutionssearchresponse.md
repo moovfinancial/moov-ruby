@@ -1,0 +1,10 @@
+# InstitutionsSearchResponse
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ach`                                                                                   | T::Array<[Models::Components::ACHInstitution](../../models/shared/achinstitution.md)>   | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `rtp`                                                                                   | T::Array<[Models::Components::RTPInstitution](../../models/shared/rtpinstitution.md)>   | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `wire`                                                                                  | T::Array<[Models::Components::WireInstitution](../../models/shared/wireinstitution.md)> | :heavy_check_mark:                                                                      | N/A                                                                                     |

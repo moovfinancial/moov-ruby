@@ -1,0 +1,9 @@
+# MoneyTransfer
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `pull_from_card`                                                                                             | [T.nilable(Models::Components::MoneyTransferPullFromCard)](../../models/shared/moneytransferpullfromcard.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `push_to_card`                                                                                               | [T.nilable(Models::Components::MoneyTransferPushToCard)](../../models/shared/moneytransferpushtocard.md)     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

@@ -1,0 +1,12 @@
+# PaymentLinkPaymentDetails
+
+Options for payment links used to collect payment.
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `allowed_methods`                                                                                               | T::Array<[Models::Components::CollectionPaymentMethodType](../../models/shared/collectionpaymentmethodtype.md)> | :heavy_check_mark:                                                                                              | A list of payment methods that should be supported for this payment link.                                       |
+| `card_details`                                                                                                  | [T.nilable(Models::Components::CardPaymentDetails)](../../models/shared/cardpaymentdetails.md)                  | :heavy_minus_sign:                                                                                              | Options for payment links used to collect a card payment.                                                       |
+| `ach_details`                                                                                                   | [T.nilable(Models::Components::ACHPaymentDetails)](../../models/shared/achpaymentdetails.md)                    | :heavy_minus_sign:                                                                                              | Options for payment links used to collect an ACH payment.                                                       |

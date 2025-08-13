@@ -1,0 +1,12 @@
+# CreateTransferDestination
+
+The final stage of a transfer and the ultimate recipient of the funds.
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `payment_method_id`                                                                                                  | *::String*                                                                                                           | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `card_details`                                                                                                       | [T.nilable(Models::Components::CreateTransferDestinationCard)](../../models/shared/createtransferdestinationcard.md) | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
+| `ach_details`                                                                                                        | [T.nilable(Models::Components::CreateTransferDestinationACH)](../../models/shared/createtransferdestinationach.md)   | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |

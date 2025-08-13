@@ -1,0 +1,13 @@
+# BankAccountValidationError
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `account`                                                                   | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `plaid`                                                                     | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `plaid_link`                                                                | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `mx`                                                                        | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `error`                                                                     | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `raw_response`                                                              | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response) | :heavy_minus_sign:                                                          | Raw HTTP response; suitable for custom response parsing                     |

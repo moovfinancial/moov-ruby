@@ -1,0 +1,15 @@
+# CardAcquiringRefund
+
+Details of a card refund.
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `refund_id`                                                                                  | *::String*                                                                                   | :heavy_check_mark:                                                                           | Identifier for the refund.                                                                   |
+| `created_on`                                                                                 | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                         | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `updated_on`                                                                                 | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                         | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `status`                                                                                     | [Models::Components::RefundStatus](../../models/shared/refundstatus.md)                      | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `amount`                                                                                     | [Models::Components::Amount](../../models/shared/amount.md)                                  | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `card_details`                                                                               | [T.nilable(Models::Components::RefundCardDetails)](../../models/shared/refundcarddetails.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |

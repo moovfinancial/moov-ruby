@@ -1,0 +1,14 @@
+# CustomerSupport
+
+User-provided information that can be displayed on credit card transactions for customers to use when
+contacting a customer support team. This data is only allowed on a business account.
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `phone`                                                                          | [T.nilable(Models::Components::PhoneNumber)](../../models/shared/phonenumber.md) | :heavy_minus_sign:                                                               | N/A                                                                              |                                                                                  |
+| `email`                                                                          | *T.nilable(::String)*                                                            | :heavy_minus_sign:                                                               | N/A                                                                              | jordan.lee@classbooker.dev                                                       |
+| `address`                                                                        | [T.nilable(Models::Components::Address)](../../models/shared/address.md)         | :heavy_minus_sign:                                                               | N/A                                                                              |                                                                                  |
+| `website`                                                                        | *T.nilable(::String)*                                                            | :heavy_minus_sign:                                                               | N/A                                                                              |                                                                                  |

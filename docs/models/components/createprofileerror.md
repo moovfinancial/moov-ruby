@@ -1,0 +1,9 @@
+# CreateProfileError
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `individual`                                                                                         | [T.nilable(Models::Components::CreateIndividualError)](../../models/shared/createindividualerror.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `business`                                                                                           | [T.nilable(Models::Components::CreateBusinessError)](../../models/shared/createbusinesserror.md)     | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

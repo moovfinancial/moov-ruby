@@ -1,0 +1,16 @@
+# RTPTransactionDetails
+
+RTP specific details about the transaction.
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `status`                                                                                | [Models::Components::RTPTransactionStatus](../../models/shared/rtptransactionstatus.md) | :heavy_check_mark:                                                                      | Status of a transaction within the RTP lifecycle.                                       |
+| `network_response_code`                                                                 | *T.nilable(::String)*                                                                   | :heavy_minus_sign:                                                                      | Response code returned by network on failure.                                           |
+| `failure_code`                                                                          | [T.nilable(Models::Components::RTPFailureCode)](../../models/shared/rtpfailurecode.md)  | :heavy_minus_sign:                                                                      | Status codes for RTP failures.                                                          |
+| `initiated_on`                                                                          | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                    | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `completed_on`                                                                          | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                    | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `failed_on`                                                                             | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                    | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `accepted_without_posting_on`                                                           | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)                    | :heavy_minus_sign:                                                                      | N/A                                                                                     |

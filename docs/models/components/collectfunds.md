@@ -1,0 +1,9 @@
+# CollectFunds
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ach`                                                                                                      | [T.nilable(Models::Components::CollectFundsAch)](../../models/shared/collectfundsach.md)                   | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `card_payments`                                                                                            | [T.nilable(Models::Components::CollectFundsCardPayments)](../../models/shared/collectfundscardpayments.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |

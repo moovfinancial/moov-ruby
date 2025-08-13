@@ -1,0 +1,9 @@
+# RequirementError
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `requirement`                                                                                      | [Models::Components::RequirementID](../../models/shared/requirementid.md)                          | :heavy_check_mark:                                                                                 | The unique ID of what the requirement is asking to be filled out.                                  |
+| `error_code`                                                                                       | [T.nilable(Models::Components::RequirementErrorCode)](../../models/shared/requirementerrorcode.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

@@ -1,0 +1,11 @@
+# FulfillmentDetails
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `has_physical_goods`                                                            | *T::Boolean*                                                                    | :heavy_check_mark:                                                              | N/A                                                                             |
+| `is_shipping_product`                                                           | *T::Boolean*                                                                    | :heavy_check_mark:                                                              | N/A                                                                             |
+| `shipment_duration_days`                                                        | *::Integer*                                                                     | :heavy_check_mark:                                                              | N/A                                                                             |
+| `return_policy`                                                                 | [Models::Components::ReturnPolicyType](../../models/shared/returnpolicytype.md) | :heavy_check_mark:                                                              | N/A                                                                             |

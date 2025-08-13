@@ -1,0 +1,10 @@
+# CreateAuthorizedUserError
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `first_name`                                                                           | *T.nilable(::String)*                                                                  | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `last_name`                                                                            | *T.nilable(::String)*                                                                  | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `birth_date`                                                                           | [T.nilable(Models::Components::BirthDateError)](../../models/shared/birthdateerror.md) | :heavy_minus_sign:                                                                     | N/A                                                                                    |
