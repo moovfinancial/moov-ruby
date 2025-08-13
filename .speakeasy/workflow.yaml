@@ -10,6 +10,9 @@ targets:
     moov:
         target: ruby
         source: latest
+        publish:
+            rubygems:
+                token: $rubygems_auth_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/moov/moov/latest-ruby-code-samples
