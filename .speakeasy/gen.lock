@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f4b8f242-6f04-4620-b1f0-c7ca0f81f3b8
 management:
-  docChecksum: f45dac79b04c814a88996d192a81ca01
+  docChecksum: 1e8d979e777b083c248ff9a2dbf03e28
   docVersion: latest
-  speakeasyVersion: 1.603.0
+  speakeasyVersion: 1.603.1
   generationVersion: 2.681.1
-  releaseVersion: 0.1.1
-  configChecksum: 2c6d46a3e2b2d15628cd63ec34834a0f
+  releaseVersion: 0.1.2
+  configChecksum: b6da5b08fbf8fe6009deddcd2a8f1ea1
 features:
   ruby:
     constsAndDefaults: 0.1.1
