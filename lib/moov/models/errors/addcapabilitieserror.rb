@@ -14,13 +14,16 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :error, Crystalline::Nilable.new(Models::Components::CapabilitiesError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
+        field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
+
+        field :capabilities, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(error: T.nilable(Models::Components::CapabilitiesError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(error: nil, raw_response: nil)
+        sig { params(error: T.nilable(::String), capabilities: T.nilable(T::Hash[Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(error: nil, capabilities: nil, raw_response: nil)
           @error = error
+          @capabilities = capabilities
           @raw_response = raw_response
         end
 
@@ -28,6 +31,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @error == other.error
+          return false unless @capabilities == other.capabilities
           return false unless @raw_response == other.raw_response
           true
         end

@@ -14,20 +14,20 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :error, Models::Components::CountriesErrors, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error'), required: true } }
+        field :countries, Crystalline::Hash.new(Symbol, ::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('countries'), required: true } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(error: Models::Components::CountriesErrors, raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(error:, raw_response: nil)
-          @error = error
+        sig { params(countries: T::Hash[Symbol, ::String], raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(countries:, raw_response: nil)
+          @countries = countries
           @raw_response = raw_response
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @error == other.error
+          return false unless @countries == other.countries
           return false unless @raw_response == other.raw_response
           true
         end

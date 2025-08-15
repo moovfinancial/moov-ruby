@@ -45,8 +45,7 @@ works at a high level, read our [concepts](https://docs.moov.io/guides/get-start
 The SDK can be installed using [RubyGems](https://rubygems.org/):
 
 ```bash
-gem install specific_install
-gem specific_install  
+gem install moov-ruby
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -1081,11 +1080,11 @@ begin
       # handle response
     end
 rescue Models::Errors::GenericError => e
-  # handle $e->$container data
-  throw $e;
+  # handle e.container data
+  raise e
 rescue Models::Errors::CreateAccountError => e
-  # handle $e->$container data
-  throw $e;
+  # handle e.container data
+  raise e
 rescue Errors::APIError => e
   # handle default exception
   raise e

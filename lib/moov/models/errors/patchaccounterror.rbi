@@ -20,6 +20,8 @@ class Moov::Models::Errors::PatchAccountError
   def customer_support=(str_); end
   def settings(); end
   def settings=(str_); end
+  def error(); end
+  def error=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    moov-ruby (0.1.2)
+    moov-ruby (0.1.4)
       faraday
       faraday-multipart
       faraday-retry

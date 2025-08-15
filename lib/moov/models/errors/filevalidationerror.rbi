@@ -12,6 +12,8 @@ class Moov::Models::Errors::FileValidationError
   def error=(str_); end
   def file(); end
   def file=(str_); end
+  def file_name(); end
+  def file_name=(str_); end
   def file_purpose(); end
   def file_purpose=(str_); end
   def metadata(); end

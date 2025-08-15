@@ -25,17 +25,20 @@ module Moov
         field :customer_support, Crystalline::Nilable.new(Models::Components::CustomerSupportError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerSupport') } }
 
         field :settings, Crystalline::Nilable.new(Models::Components::CreateAccountSettings), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('settings') } }
+
+        field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(profile: T.nilable(Models::Components::CreateProfileError), metadata: T.nilable(::String), terms_of_service: T.nilable(Models::Components::TermsOfServiceError), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupportError), settings: T.nilable(Models::Components::CreateAccountSettings), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(profile: nil, metadata: nil, terms_of_service: nil, foreign_id: nil, customer_support: nil, settings: nil, raw_response: nil)
+        sig { params(profile: T.nilable(Models::Components::CreateProfileError), metadata: T.nilable(::String), terms_of_service: T.nilable(Models::Components::TermsOfServiceError), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupportError), settings: T.nilable(Models::Components::CreateAccountSettings), error: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(profile: nil, metadata: nil, terms_of_service: nil, foreign_id: nil, customer_support: nil, settings: nil, error: nil, raw_response: nil)
           @profile = profile
           @metadata = metadata
           @terms_of_service = terms_of_service
           @foreign_id = foreign_id
           @customer_support = customer_support
           @settings = settings
+          @error = error
           @raw_response = raw_response
         end
 
@@ -48,6 +51,7 @@ module Moov
           return false unless @foreign_id == other.foreign_id
           return false unless @customer_support == other.customer_support
           return false unless @settings == other.settings
+          return false unless @error == other.error
           return false unless @raw_response == other.raw_response
           true
         end

@@ -18,16 +18,19 @@ module Moov
 
         field :file, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('file') } }
 
+        field :file_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('FileName') } }
+
         field :file_purpose, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('filePurpose') } }
 
         field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(error: T.nilable(::String), file: T.nilable(::String), file_purpose: T.nilable(::String), metadata: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(error: nil, file: nil, file_purpose: nil, metadata: nil, raw_response: nil)
+        sig { params(error: T.nilable(::String), file: T.nilable(::String), file_name: T.nilable(::String), file_purpose: T.nilable(::String), metadata: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(error: nil, file: nil, file_name: nil, file_purpose: nil, metadata: nil, raw_response: nil)
           @error = error
           @file = file
+          @file_name = file_name
           @file_purpose = file_purpose
           @metadata = metadata
           @raw_response = raw_response
@@ -38,6 +41,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @error == other.error
           return false unless @file == other.file
+          return false unless @file_name == other.file_name
           return false unless @file_purpose == other.file_purpose
           return false unless @metadata == other.metadata
           return false unless @raw_response == other.raw_response

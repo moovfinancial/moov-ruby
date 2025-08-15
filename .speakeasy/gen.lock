@@ -1,16 +1,17 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 1e8d979e777b083c248ff9a2dbf03e28
+  docChecksum: ea05a43791ad4269509c8393b48539e9
   docVersion: latest
-  speakeasyVersion: 1.603.2
-  generationVersion: 2.681.8
-  releaseVersion: 0.1.2
-  configChecksum: b6da5b08fbf8fe6009deddcd2a8f1ea1
+  speakeasyVersion: 1.604.1
+  generationVersion: 2.683.1
+  releaseVersion: 0.1.4
+  configChecksum: 201eb8e9d844c34d067dbc7632b0b2da
+  published: true
 features:
   ruby:
     constsAndDefaults: 0.1.1
-    core: 3.10.0
+    core: 3.10.1
     deprecations: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.81.8
@@ -106,7 +107,6 @@ generatedFiles:
   - docs/models/components/calltoaction.md
   - docs/models/components/cancellation.md
   - docs/models/components/cancellationstatus.md
-  - docs/models/components/capabilitieserror.md
   - docs/models/components/capability.md
   - docs/models/components/capabilityid.md
   - docs/models/components/capabilityrequirement.md
@@ -153,7 +153,6 @@ generatedFiles:
   - docs/models/components/completedmicrodeposits.md
   - docs/models/components/completemicrodeposits.md
   - docs/models/components/contact.md
-  - docs/models/components/countrieserrors.md
   - docs/models/components/createaccount.md
   - docs/models/components/createaccountsettings.md
   - docs/models/components/createaccounttermsofservice.md
@@ -1083,8 +1082,6 @@ generatedFiles:
   - lib/moov/models/components/cancellation.rbi
   - lib/moov/models/components/cancellationstatus.rb
   - lib/moov/models/components/cancellationstatus.rbi
-  - lib/moov/models/components/capabilitieserror.rb
-  - lib/moov/models/components/capabilitieserror.rbi
   - lib/moov/models/components/capability.rb
   - lib/moov/models/components/capability.rbi
   - lib/moov/models/components/capabilityid.rb
@@ -1177,8 +1174,6 @@ generatedFiles:
   - lib/moov/models/components/completemicrodeposits.rbi
   - lib/moov/models/components/contact.rb
   - lib/moov/models/components/contact.rbi
-  - lib/moov/models/components/countrieserrors.rb
-  - lib/moov/models/components/countrieserrors.rbi
   - lib/moov/models/components/createaccount.rb
   - lib/moov/models/components/createaccount.rbi
   - lib/moov/models/components/createaccount_termsofservice.rb
@@ -2719,7 +2714,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
         "422":
-          application/json: {"error": {"countries": {"key": "<value>", "key1": "<value>"}}}
+          application/json: {"countries": {"key": "<value>"}}
   getMerchantProcessingAgreement:
     speakeasy-default-get-merchant-processing-agreement:
       parameters:
