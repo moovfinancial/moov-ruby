@@ -45,7 +45,7 @@ works at a high level, read our [concepts](https://docs.moov.io/guides/get-start
 The SDK can be installed using [RubyGems](https://rubygems.org/):
 
 ```bash
-gem install moov-ruby
+gem install moov_ruby
 ```
 <!-- End SDK Installation [installation] -->
 

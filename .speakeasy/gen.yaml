@@ -22,7 +22,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 0.1.4
+  version: 0.1.5
   additionalDependencies:
     development: {}
     runtime: {}
@@ -45,5 +45,5 @@ ruby:
   maxMethodParams: 4
   module: Moov
   outputModelSuffix: output
-  packageName: moov-ruby
+  packageName: moov_ruby
   typingStrategy: sorbet
