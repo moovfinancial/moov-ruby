@@ -3,10 +3,10 @@ id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
   docChecksum: ea05a43791ad4269509c8393b48539e9
   docVersion: latest
-  speakeasyVersion: 1.604.1
-  generationVersion: 2.683.1
-  releaseVersion: 0.1.4
-  configChecksum: 201eb8e9d844c34d067dbc7632b0b2da
+  speakeasyVersion: 1.605.0
+  generationVersion: 2.684.0
+  releaseVersion: 0.1.5
+  configChecksum: c687a8577b2ad41728fbbcad4811f090
   published: true
 features:
   ruby:
@@ -902,7 +902,6 @@ generatedFiles:
   - lib/crystalline/module.rb
   - lib/crystalline/types.rb
   - lib/crystalline/utils.rb
-  - lib/moov-ruby.rb
   - lib/moov/account_terminal_applications.rb
   - lib/moov/accounts.rb
   - lib/moov/adjustments.rb
@@ -2620,7 +2619,8 @@ generatedFiles:
   - lib/moov/utils/utils.rb
   - lib/moov/wallet_transactions.rb
   - lib/moov/wallets.rb
-  - moov-ruby.gemspec
+  - lib/moov_ruby.rb
+  - moov_ruby.gemspec
   - sorbet/config
   - sorbet/rbi/annotations/.gitattributes
   - sorbet/rbi/gems/.gitattributes
