@@ -34,6 +34,9 @@ The type of event that occurred.
 | `SWEEP_UPDATED`                | sweep.updated                  |
 | `TERMINAL_APPLICATION_CREATED` | terminalApplication.created    |
 | `TERMINAL_APPLICATION_UPDATED` | terminalApplication.updated    |
+| `TICKET_CREATED`               | ticket.created                 |
+| `TICKET_UPDATED`               | ticket.updated                 |
+| `TICKET_MESSAGE_ADDED`         | ticket.messageAdded            |
 | `TRANSFER_CREATED`             | transfer.created               |
 | `TRANSFER_UPDATED`             | transfer.updated               |
 | `WALLET_TRANSACTION_UPDATED`   | walletTransaction.updated      |

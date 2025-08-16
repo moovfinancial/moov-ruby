@@ -1,12 +1,14 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: ea05a43791ad4269509c8393b48539e9
+  docChecksum: 9bfcf4de25d41aa9cb40f75c04d70c5f
   docVersion: latest
   speakeasyVersion: 1.605.0
   generationVersion: 2.684.0
-  releaseVersion: 0.1.5
-  configChecksum: c687a8577b2ad41728fbbcad4811f090
+  releaseVersion: 0.1.6
+  configChecksum: 8a7e708917e59c5cb19dcd4ac59e1997
+  repoURL: https://github.com/moovfinancial/moov-ruby.git
+  installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 features:
   ruby:
@@ -527,6 +529,9 @@ generatedFiles:
   - docs/models/components/webhookdatasweepupdated.md
   - docs/models/components/webhookdataterminalapplicationcreated.md
   - docs/models/components/webhookdataterminalapplicationupdated.md
+  - docs/models/components/webhookdataticketcreated.md
+  - docs/models/components/webhookdataticketmessageadded.md
+  - docs/models/components/webhookdataticketupdated.md
   - docs/models/components/webhookdatatransfercreated.md
   - docs/models/components/webhookdatatransferstatus.md
   - docs/models/components/webhookdatatransferupdated.md
@@ -1921,6 +1926,12 @@ generatedFiles:
   - lib/moov/models/components/webhookdataterminalapplicationcreated.rbi
   - lib/moov/models/components/webhookdataterminalapplicationupdated.rb
   - lib/moov/models/components/webhookdataterminalapplicationupdated.rbi
+  - lib/moov/models/components/webhookdataticketcreated.rb
+  - lib/moov/models/components/webhookdataticketcreated.rbi
+  - lib/moov/models/components/webhookdataticketmessageadded.rb
+  - lib/moov/models/components/webhookdataticketmessageadded.rbi
+  - lib/moov/models/components/webhookdataticketupdated.rb
+  - lib/moov/models/components/webhookdataticketupdated.rbi
   - lib/moov/models/components/webhookdatatransfercreated.rb
   - lib/moov/models/components/webhookdatatransfercreated.rbi
   - lib/moov/models/components/webhookdatatransferstatus.rb
