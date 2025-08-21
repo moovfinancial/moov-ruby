@@ -13,7 +13,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Account ID of the account that will run the transfer.
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :upsert_schedule, Models::Components::UpsertSchedule, { 'request': { 'media_type': 'application/json' } }

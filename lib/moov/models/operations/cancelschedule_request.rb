@@ -13,7 +13,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Your Moov account ID as the partner running the transfers.
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :schedule_id, ::String, { 'path_param': { 'field_name': 'scheduleID', 'style': 'simple', 'explode': false } }

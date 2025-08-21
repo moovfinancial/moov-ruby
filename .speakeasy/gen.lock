@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 9bfcf4de25d41aa9cb40f75c04d70c5f
+  docChecksum: 0ccaf86e03f5295757a44925a860e9c1
   docVersion: latest
-  speakeasyVersion: 1.605.0
-  generationVersion: 2.684.0
-  releaseVersion: 0.1.6
-  configChecksum: 8a7e708917e59c5cb19dcd4ac59e1997
+  speakeasyVersion: 1.606.0
+  generationVersion: 2.686.7
+  releaseVersion: 0.1.7
+  configChecksum: 8d8f9156032289e42df7838bcec6ade1
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
