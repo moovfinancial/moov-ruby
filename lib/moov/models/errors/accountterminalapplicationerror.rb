@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class AccountTerminalApplicationError
+      class AccountTerminalApplicationError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

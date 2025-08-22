@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class MicroDepositValidationError
+      class MicroDepositValidationError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

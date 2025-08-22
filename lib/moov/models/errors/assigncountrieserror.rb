@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class AssignCountriesError
+      class AssignCountriesError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

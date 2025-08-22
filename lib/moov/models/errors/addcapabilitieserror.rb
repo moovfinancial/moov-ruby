@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class AddCapabilitiesError
+      class AddCapabilitiesError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class FeePlanAgreementError
+      class FeePlanAgreementError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

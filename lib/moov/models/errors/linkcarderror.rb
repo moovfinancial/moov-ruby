@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class LinkCardError
+      class LinkCardError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

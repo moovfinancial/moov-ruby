@@ -95,9 +95,9 @@ module Moov
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = 'latest'
-      @sdk_version = '0.1.7'
-      @gen_version = '2.686.7'
-      @user_agent = 'speakeasy-sdk/ruby 0.1.7 2.686.7 latest moov_ruby'
+      @sdk_version = '0.1.8'
+      @gen_version = '2.687.1'
+      @user_agent = 'speakeasy-sdk/ruby 0.1.8 2.687.1 latest moov_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

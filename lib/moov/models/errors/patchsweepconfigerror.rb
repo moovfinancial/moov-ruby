@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class PatchSweepConfigError
+      class PatchSweepConfigError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

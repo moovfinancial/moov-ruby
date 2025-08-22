@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class BankAccountValidationError
+      class BankAccountValidationError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

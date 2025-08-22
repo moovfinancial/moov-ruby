@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class FileValidationError
+      class FileValidationError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

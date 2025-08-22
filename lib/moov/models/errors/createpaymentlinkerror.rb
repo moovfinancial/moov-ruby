@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class CreatePaymentLinkError
+      class CreatePaymentLinkError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

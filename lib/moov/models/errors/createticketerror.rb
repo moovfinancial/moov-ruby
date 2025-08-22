@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class CreateTicketError
+      class CreateTicketError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class LinkApplePayError
+      class LinkApplePayError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

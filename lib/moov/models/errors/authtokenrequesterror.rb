@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class AuthTokenRequestError
+      class AuthTokenRequestError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

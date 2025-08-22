@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class OnboardingInviteError
+      class OnboardingInviteError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

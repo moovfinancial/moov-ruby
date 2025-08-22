@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class BrandValidationError
+      class BrandValidationError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

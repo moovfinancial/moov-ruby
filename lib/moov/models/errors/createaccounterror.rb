@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class CreateAccountError
+      class CreateAccountError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

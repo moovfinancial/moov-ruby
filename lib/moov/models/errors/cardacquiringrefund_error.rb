@@ -9,7 +9,7 @@ module Moov
     module Errors
     
       # Details of a card refund.
-      class CardAcquiringRefundError
+      class CardAcquiringRefundError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

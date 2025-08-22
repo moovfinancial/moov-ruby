@@ -9,7 +9,7 @@ module Moov
     module Errors
     
 
-      class RefundValidationError
+      class RefundValidationError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
