@@ -38,6 +38,7 @@ module Moov
           TOP_UP = new('top-up')
           WALLET_TRANSFER = new('wallet-transfer')
           ADJUSTMENT = new('adjustment')
+          FEE_REVENUE = new('fee-revenue')
         end
       end
     end

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 0ccaf86e03f5295757a44925a860e9c1
+  docChecksum: 73f350700c9352a03f163b2bfa0da84c
   docVersion: latest
-  speakeasyVersion: 1.606.2
+  speakeasyVersion: 1.606.5
   generationVersion: 2.687.1
-  releaseVersion: 0.1.8
-  configChecksum: 5eb186a813e378e711a565020e1bcd02
+  releaseVersion: 0.1.9
+  configChecksum: b8ad6e1e24902a84854566ac5ef88f22
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -4455,3 +4455,6 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `client.wallet_transactions.list()`:  `request` **Changed**
