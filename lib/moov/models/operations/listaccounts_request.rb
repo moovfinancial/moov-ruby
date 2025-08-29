@@ -31,11 +31,9 @@ module Moov
         #   If the `type` parameter is used in combination with `name`, only the corresponding type's name fields will
         #   be searched. For example, if `type=business` and `name=moov`, the search will attempt to find matches against
         #   the display name and Business Profile name fields (`legalBusinessName`, and `doingBusinessAs`).
-        field :type, Crystalline::Nilable.new(Models::Components::AccountType), { 'query_param': { 'field_name': 'type', 'style': 'form', 'explode': false } }
-        #   Filter accounts with AccountType guest.
-        #   
-        #   If true, the response will include guest accounts.
-        field :include_guest, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'query_param': { 'field_name': 'includeGuest', 'style': 'form', 'explode': false } }
+        # 
+        #   Filtering by `type=guest` is not currently supported.
+        field :type, Crystalline::Nilable.new(Models::Components::CreateAccountType), { 'query_param': { 'field_name': 'type', 'style': 'form', 'explode': false } }
         #   Serves as an optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'foreignID', 'style': 'form', 'explode': false } }
         # Filter disconnected accounts.
@@ -61,12 +59,11 @@ module Moov
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
 
-        sig { params(name: T.nilable(::String), email: T.nilable(::String), type: T.nilable(Models::Components::AccountType), include_guest: T.nilable(T::Boolean), foreign_id: T.nilable(::String), include_disconnected: T.nilable(T::Boolean), capability: T.nilable(Models::Components::CapabilityID), capability_status: T.nilable(Models::Components::CapabilityStatus), skip: T.nilable(::Integer), count: T.nilable(::Integer), x_moov_version: T.nilable(::String)).void }
-        def initialize(name: nil, email: nil, type: nil, include_guest: nil, foreign_id: nil, include_disconnected: nil, capability: nil, capability_status: nil, skip: nil, count: nil, x_moov_version: 'v2024.01.00')
+        sig { params(name: T.nilable(::String), email: T.nilable(::String), type: T.nilable(Models::Components::CreateAccountType), foreign_id: T.nilable(::String), include_disconnected: T.nilable(T::Boolean), capability: T.nilable(Models::Components::CapabilityID), capability_status: T.nilable(Models::Components::CapabilityStatus), skip: T.nilable(::Integer), count: T.nilable(::Integer), x_moov_version: T.nilable(::String)).void }
+        def initialize(name: nil, email: nil, type: nil, foreign_id: nil, include_disconnected: nil, capability: nil, capability_status: nil, skip: nil, count: nil, x_moov_version: 'v2024.01.00')
           @name = name
           @email = email
           @type = type
-          @include_guest = include_guest
           @foreign_id = foreign_id
           @include_disconnected = include_disconnected
           @capability = capability
@@ -82,7 +79,6 @@ module Moov
           return false unless @name == other.name
           return false unless @email == other.email
           return false unless @type == other.type
-          return false unless @include_guest == other.include_guest
           return false unless @foreign_id == other.foreign_id
           return false unless @include_disconnected == other.include_disconnected
           return false unless @capability == other.capability

@@ -164,7 +164,7 @@ s = ::Moov::Client.new(
     )
 
 req = Models::Operations::ListAccountsRequest.new(
-  type: Models::Components::AccountType::BUSINESS,
+  type: Models::Components::CreateAccountType::BUSINESS,
   skip: 60,
   count: 20,
 )

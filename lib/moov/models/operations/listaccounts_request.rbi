@@ -14,8 +14,6 @@ class Moov::Models::Operations::ListAccountsRequest
   def email=(str_); end
   def type(); end
   def type=(str_); end
-  def include_guest(); end
-  def include_guest=(str_); end
   def foreign_id(); end
   def foreign_id=(str_); end
   def include_disconnected(); end
