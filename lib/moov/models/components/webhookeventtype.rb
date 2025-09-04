@@ -45,6 +45,8 @@ module Moov
           TICKET_MESSAGE_ADDED = new('ticket.messageAdded')
           TRANSFER_CREATED = new('transfer.created')
           TRANSFER_UPDATED = new('transfer.updated')
+          WALLET_CREATED = new('wallet.created')
+          WALLET_UPDATED = new('wallet.updated')
           WALLET_TRANSACTION_UPDATED = new('walletTransaction.updated')
         end
       end

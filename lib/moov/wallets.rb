@@ -39,18 +39,180 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListWalletsResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(create_wallet: Models::Components::CreateWallet, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateWalletResponse) }
+    def create(create_wallet:, account_id:, x_moov_version: nil, timeout_ms: nil)
+      # create - Create a new wallet for an account. You can specify optional attributes such as a display name and description to specify the intended use of the wallet. This will generate a new moov-wallet payment method.
+      # 
+      # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
+      # 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
+      request = Models::Operations::CreateWalletRequest.new(
+        account_id: account_id,
+        create_wallet: create_wallet,
+        x_moov_version: x_moov_version
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Models::Operations::CreateWalletRequest,
+        base_url,
+        '/accounts/{accountID}/wallets',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = T.cast(headers, T::Hash[String, String])
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_wallet, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+      else
+        body = data
+      end
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'createWallet',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).post(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
+        end
+      end
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['200'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Wallet)
+          response = Models::Operations::CreateWalletResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            headers: http_response.headers,
+            wallet: T.unsafe(obj)
+          )
+
+          return response
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['400', '409'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['422'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::CreateWalletError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['401', '403', '404', '429'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['500', '504'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
+    end
+
+
+    sig { params(request: Models::Operations::ListWalletsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListWalletsResponse) }
+    def list(request:, timeout_ms: nil)
       # list - List the wallets associated with a Moov account. 
       # 
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
       # 
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
-      request = Models::Operations::ListWalletsRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
@@ -62,6 +224,7 @@ module Moov
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
       headers = T.cast(headers, T::Hash[String, String])
+      query_params = Utils.get_query_params(Models::Operations::ListWalletsRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -89,6 +252,7 @@ module Moov
         http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
           Utils.configure_request_security(req, security)
 
           @sdk_configuration.hooks.before_request(
@@ -268,6 +432,173 @@ module Moov
           )
 
           return response
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['401', '403', '404', '429'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['500', '504'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
+    end
+
+
+    sig { params(patch_wallet: Models::Components::PatchWallet, wallet_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateWalletResponse) }
+    def update(patch_wallet:, wallet_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
+      # update - Update properties of an existing wallet such as name, description, status, or metadata.
+      # 
+      # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
+      # 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
+      request = Models::Operations::UpdateWalletRequest.new(
+        wallet_id: wallet_id,
+        account_id: account_id,
+        patch_wallet: patch_wallet,
+        x_moov_version: x_moov_version
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Models::Operations::UpdateWalletRequest,
+        base_url,
+        '/accounts/{accountID}/wallets/{walletID}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = T.cast(headers, T::Hash[String, String])
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :patch_wallet, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+
+      if form
+        body = Utils.encode_form(form)
+      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+      else
+        body = data
+      end
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'updateWallet',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).patch(url) do |req|
+          req.body = body
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
+        end
+      end
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['200'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Wallet)
+          response = Models::Operations::UpdateWalletResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            headers: http_response.headers,
+            wallet: T.unsafe(obj)
+          )
+
+          return response
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['400', '409'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['422'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::PatchWalletError)
+          obj.raw_response = http_response
+          raise obj
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end

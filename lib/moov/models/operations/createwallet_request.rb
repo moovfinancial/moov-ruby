@@ -9,20 +9,14 @@ module Moov
     module Operations
     
 
-      class ListWalletsRequest
+      class CreateWalletRequest
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # The Moov account ID the wallet belongs to.
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
-        # Optional parameter for filtering wallets by status.
-        field :status, Crystalline::Nilable.new(Models::Components::WalletStatus), { 'query_param': { 'field_name': 'status', 'style': 'form', 'explode': false } }
-        # Optional parameter for filtering wallets by type.
-        field :wallet_type, Crystalline::Nilable.new(Models::Components::WalletType), { 'query_param': { 'field_name': 'walletType', 'style': 'form', 'explode': false } }
 
-        field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
-        field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
+        field :create_wallet, Models::Components::CreateWallet, { 'request': { 'media_type': 'application/json' } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -34,13 +28,10 @@ module Moov
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, status: T.nilable(Models::Components::WalletStatus), wallet_type: T.nilable(Models::Components::WalletType), skip: T.nilable(::Integer), count: T.nilable(::Integer), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, status: nil, wallet_type: nil, skip: nil, count: nil, x_moov_version: 'v2024.01.00')
+        sig { params(account_id: ::String, create_wallet: Models::Components::CreateWallet, x_moov_version: T.nilable(::String)).void }
+        def initialize(account_id:, create_wallet:, x_moov_version: 'v2024.01.00')
           @account_id = account_id
-          @status = status
-          @wallet_type = wallet_type
-          @skip = skip
-          @count = count
+          @create_wallet = create_wallet
           @x_moov_version = x_moov_version
         end
 
@@ -48,10 +39,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
-          return false unless @status == other.status
-          return false unless @wallet_type == other.wallet_type
-          return false unless @skip == other.skip
-          return false unless @count == other.count
+          return false unless @create_wallet == other.create_wallet
           return false unless @x_moov_version == other.x_moov_version
           true
         end

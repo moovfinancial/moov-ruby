@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: e43952837cc56c9a1881f5a4817b3eb7
+  docChecksum: 5a72644e08f436a5d8fbf67d8eb7e6ba
   docVersion: latest
-  speakeasyVersion: 1.606.8
-  generationVersion: 2.687.13
-  releaseVersion: 0.1.10
-  configChecksum: f0704e51370da175582b22b7a233cb7c
+  speakeasyVersion: 1.609.0
+  generationVersion: 2.692.0
+  releaseVersion: 0.1.11
+  configChecksum: 7dd04814c87cba56e690ef25b8f8c436
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -197,6 +197,7 @@ generatedFiles:
   - docs/models/components/createtransfersource.md
   - docs/models/components/createtransfersourceach.md
   - docs/models/components/createtransfersourcecard.md
+  - docs/models/components/createwallet.md
   - docs/models/components/customersupport.md
   - docs/models/components/customersupporterror.md
   - docs/models/components/debitholdperiod.md
@@ -338,6 +339,7 @@ generatedFiles:
   - docs/models/components/patchprofile.md
   - docs/models/components/patchsweepconfig.md
   - docs/models/components/patchtransfer.md
+  - docs/models/components/patchwallet.md
   - docs/models/components/paymentdetailserror.md
   - docs/models/components/paymentlink.md
   - docs/models/components/paymentlinkcustomeroptions.md
@@ -498,10 +500,12 @@ generatedFiles:
   - docs/models/components/volumesharebycustomertypeerror.md
   - docs/models/components/wallet.md
   - docs/models/components/walletavailablebalance.md
+  - docs/models/components/walletstatus.md
   - docs/models/components/wallettransaction.md
   - docs/models/components/wallettransactionsourcetype.md
   - docs/models/components/wallettransactionstatus.md
   - docs/models/components/wallettransactiontype.md
+  - docs/models/components/wallettype.md
   - docs/models/components/webhookdata.md
   - docs/models/components/webhookdataaccountcreated.md
   - docs/models/components/webhookdataaccountdisconnected.md
@@ -535,7 +539,9 @@ generatedFiles:
   - docs/models/components/webhookdatatransfercreated.md
   - docs/models/components/webhookdatatransferstatus.md
   - docs/models/components/webhookdatatransferupdated.md
+  - docs/models/components/webhookdatawalletcreated.md
   - docs/models/components/webhookdatawallettransactionupdated.md
+  - docs/models/components/webhookdatawalletupdated.md
   - docs/models/components/webhookevent.md
   - docs/models/components/webhookeventtype.md
   - docs/models/components/webhooktransferpaymentmethoddetails.md
@@ -552,6 +558,7 @@ generatedFiles:
   - docs/models/errors/createpaymentlinkerror.md
   - docs/models/errors/createsweepconfigerror.md
   - docs/models/errors/createticketerror.md
+  - docs/models/errors/createwalleterror.md
   - docs/models/errors/feeplanagreementerror.md
   - docs/models/errors/fileuploadvalidationerror.md
   - docs/models/errors/filevalidationerror.md
@@ -562,6 +569,7 @@ generatedFiles:
   - docs/models/errors/onboardinginviteerror.md
   - docs/models/errors/patchaccounterror.md
   - docs/models/errors/patchsweepconfigerror.md
+  - docs/models/errors/patchwalleterror.md
   - docs/models/errors/refundvalidationerror.md
   - docs/models/errors/representativevalidationerror.md
   - docs/models/errors/requestcarderror.md
@@ -624,6 +632,8 @@ generatedFiles:
   - docs/models/operations/createtransferoptionsresponse.md
   - docs/models/operations/createtransferrequest.md
   - docs/models/operations/createtransferresponse.md
+  - docs/models/operations/createwalletrequest.md
+  - docs/models/operations/createwalletresponse.md
   - docs/models/operations/deletedisputeevidencefilerequest.md
   - docs/models/operations/deletedisputeevidencefileresponse.md
   - docs/models/operations/deleterepresentativerequest.md
@@ -856,6 +866,8 @@ generatedFiles:
   - docs/models/operations/updateticketresponse.md
   - docs/models/operations/updatetransferrequest.md
   - docs/models/operations/updatetransferresponse.md
+  - docs/models/operations/updatewalletrequest.md
+  - docs/models/operations/updatewalletresponse.md
   - docs/models/operations/uploaddisputeevidencefilerequest.md
   - docs/models/operations/uploaddisputeevidencefileresponse.md
   - docs/models/operations/uploaddisputeevidencetextrequest.md
@@ -1262,6 +1274,8 @@ generatedFiles:
   - lib/moov/models/components/createtransfersourceach.rbi
   - lib/moov/models/components/createtransfersourcecard.rb
   - lib/moov/models/components/createtransfersourcecard.rbi
+  - lib/moov/models/components/createwallet.rb
+  - lib/moov/models/components/createwallet.rbi
   - lib/moov/models/components/customersupport.rb
   - lib/moov/models/components/customersupport.rbi
   - lib/moov/models/components/customersupporterror.rb
@@ -1544,6 +1558,8 @@ generatedFiles:
   - lib/moov/models/components/patchsweepconfig.rbi
   - lib/moov/models/components/patchtransfer.rb
   - lib/moov/models/components/patchtransfer.rbi
+  - lib/moov/models/components/patchwallet.rb
+  - lib/moov/models/components/patchwallet.rbi
   - lib/moov/models/components/paymentdetailserror.rb
   - lib/moov/models/components/paymentdetailserror.rbi
   - lib/moov/models/components/paymentlink.rb
@@ -1864,6 +1880,8 @@ generatedFiles:
   - lib/moov/models/components/wallet.rbi
   - lib/moov/models/components/walletavailablebalance.rb
   - lib/moov/models/components/walletavailablebalance.rbi
+  - lib/moov/models/components/walletstatus.rb
+  - lib/moov/models/components/walletstatus.rbi
   - lib/moov/models/components/wallettransaction.rb
   - lib/moov/models/components/wallettransaction.rbi
   - lib/moov/models/components/wallettransactionsourcetype.rb
@@ -1872,6 +1890,8 @@ generatedFiles:
   - lib/moov/models/components/wallettransactionstatus.rbi
   - lib/moov/models/components/wallettransactiontype.rb
   - lib/moov/models/components/wallettransactiontype.rbi
+  - lib/moov/models/components/wallettype.rb
+  - lib/moov/models/components/wallettype.rbi
   - lib/moov/models/components/webhookdata.rb
   - lib/moov/models/components/webhookdata.rbi
   - lib/moov/models/components/webhookdataaccountcreated.rb
@@ -1938,8 +1958,12 @@ generatedFiles:
   - lib/moov/models/components/webhookdatatransferstatus.rbi
   - lib/moov/models/components/webhookdatatransferupdated.rb
   - lib/moov/models/components/webhookdatatransferupdated.rbi
+  - lib/moov/models/components/webhookdatawalletcreated.rb
+  - lib/moov/models/components/webhookdatawalletcreated.rbi
   - lib/moov/models/components/webhookdatawallettransactionupdated.rb
   - lib/moov/models/components/webhookdatawallettransactionupdated.rbi
+  - lib/moov/models/components/webhookdatawalletupdated.rb
+  - lib/moov/models/components/webhookdatawalletupdated.rbi
   - lib/moov/models/components/webhookevent.rb
   - lib/moov/models/components/webhookevent.rbi
   - lib/moov/models/components/webhookeventtype.rb
@@ -1975,6 +1999,8 @@ generatedFiles:
   - lib/moov/models/errors/createsweepconfigerror.rbi
   - lib/moov/models/errors/createticketerror.rb
   - lib/moov/models/errors/createticketerror.rbi
+  - lib/moov/models/errors/createwalleterror.rb
+  - lib/moov/models/errors/createwalleterror.rbi
   - lib/moov/models/errors/feeplanagreementerror.rb
   - lib/moov/models/errors/feeplanagreementerror.rbi
   - lib/moov/models/errors/fileuploadvalidationerror.rb
@@ -1995,6 +2021,8 @@ generatedFiles:
   - lib/moov/models/errors/patchaccounterror.rbi
   - lib/moov/models/errors/patchsweepconfigerror.rb
   - lib/moov/models/errors/patchsweepconfigerror.rbi
+  - lib/moov/models/errors/patchwalleterror.rb
+  - lib/moov/models/errors/patchwalleterror.rbi
   - lib/moov/models/errors/refundvalidationerror.rb
   - lib/moov/models/errors/refundvalidationerror.rbi
   - lib/moov/models/errors/representativevalidationerror.rb
@@ -2120,6 +2148,10 @@ generatedFiles:
   - lib/moov/models/operations/createtransferoptions_request.rbi
   - lib/moov/models/operations/createtransferoptions_response.rb
   - lib/moov/models/operations/createtransferoptions_response.rbi
+  - lib/moov/models/operations/createwallet_request.rb
+  - lib/moov/models/operations/createwallet_request.rbi
+  - lib/moov/models/operations/createwallet_response.rb
+  - lib/moov/models/operations/createwallet_response.rbi
   - lib/moov/models/operations/deletedisputeevidencefile_request.rb
   - lib/moov/models/operations/deletedisputeevidencefile_request.rbi
   - lib/moov/models/operations/deletedisputeevidencefile_response.rb
@@ -2584,6 +2616,10 @@ generatedFiles:
   - lib/moov/models/operations/updatetransfer_request.rbi
   - lib/moov/models/operations/updatetransfer_response.rb
   - lib/moov/models/operations/updatetransfer_response.rbi
+  - lib/moov/models/operations/updatewallet_request.rb
+  - lib/moov/models/operations/updatewallet_request.rbi
+  - lib/moov/models/operations/updatewallet_response.rb
+  - lib/moov/models/operations/updatewallet_response.rbi
   - lib/moov/models/operations/uploaddisputeevidencefile_request.rb
   - lib/moov/models/operations/uploaddisputeevidencefile_request.rbi
   - lib/moov/models/operations/uploaddisputeevidencefile_response.rb
@@ -4058,11 +4094,14 @@ examples:
       parameters:
         path:
           accountID: "25221c3c-8e3f-40db-8570-66d17b51014d"
+        query:
+          skip: 60
+          count: 20
         header:
           x-moov-version: "v2024.01.00"
       responses:
         "200":
-          application/json: [{"walletID": "4db4c1c0-d682-4bf9-9b5c-952207d1d15d", "availableBalance": {"currency": "USD", "value": 1204, "valueDecimal": "<value>"}}]
+          application/json: [{"walletID": "4db4c1c0-d682-4bf9-9b5c-952207d1d15d", "availableBalance": {"currency": "USD", "value": 1204, "valueDecimal": "<value>"}, "partnerAccountID": "25221c3c-8e3f-40db-8570-66d17b51014d", "name": "<value>", "status": "active", "walletType": "general", "description": "likewise beyond hydrant drat that jeopardise whose disadvantage", "createdOn": "2024-01-20T06:32:10.729Z"}]
   getWallet:
     speakeasy-default-get-wallet:
       parameters:
@@ -4073,7 +4112,7 @@ examples:
           x-moov-version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"walletID": "15598b8b-1d91-4c43-ab38-0c32a9725a71", "availableBalance": {"currency": "USD", "value": 1204, "valueDecimal": "<value>"}}
+          application/json: {"walletID": "15598b8b-1d91-4c43-ab38-0c32a9725a71", "availableBalance": {"currency": "USD", "value": 1204, "valueDecimal": "<value>"}, "partnerAccountID": "d04dfd44-8194-422f-a666-08d30c183f9a", "name": "<value>", "status": "active", "walletType": "default", "description": "underneath besides questioningly than misreport ew fooey over", "metadata": {"optional": "metadata"}, "createdOn": "2024-06-02T05:23:07.110Z"}
   listWalletTransactions:
     speakeasy-default-list-wallet-transactions:
       parameters:
@@ -4454,7 +4493,38 @@ examples:
           application/json: {"error": "<value>"}
         "422":
           application/json: {}
+  createWallet:
+    speakeasy-default-create-wallet:
+      parameters:
+        path:
+          accountID: "b4b3f37c-b73e-4271-b8ec-108a8593c9b9"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        application/json: {"name": "My wallet", "description": "A general wallet used for my payments", "metadata": {"optional": "metadata"}}
+      responses:
+        "200":
+          application/json: {"walletID": "8e7812bc-9001-4db2-a813-7d49ac539d80", "availableBalance": {"currency": "USD", "value": 1204, "valueDecimal": "<value>"}, "partnerAccountID": "e99f00ad-84a0-4edc-bf6e-89cf20a2a941", "name": "<value>", "status": "active", "walletType": "general", "description": "entrench deceivingly marketplace gee from about whose fedora bookend", "metadata": {"optional": "metadata"}, "createdOn": "2023-10-20T10:51:45.704Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  updateWallet:
+    speakeasy-default-update-wallet:
+      parameters:
+        path:
+          walletID: "9f1c6e07-aae8-40e6-b290-502bb1bc486e"
+          accountID: "e4aad2fb-201d-4390-b4d3-6de7716152e1"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        application/json: {"name": "My second wallet", "description": "My new description", "metadata": {"optional": "metadata"}}
+      responses:
+        "200":
+          application/json: {"walletID": "87eeefeb-1e32-4720-aa2a-c8bb6c52010b", "availableBalance": {"currency": "USD", "value": 1204, "valueDecimal": "<value>"}, "partnerAccountID": "5c6a2a05-6027-4f50-9e77-6786f662fda5", "name": "<value>", "status": "active", "walletType": "general", "description": "smug instead hmph snuggle yahoo supposing culminate", "metadata": {"optional": "metadata"}, "createdOn": "2025-01-12T01:09:15.232Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `client.accounts.list()`:  `request` **Changed** **Breaking** :warning:
+releaseNotes: "## Ruby SDK Changes Detected:\n* `client.wallets.list()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response.[]` **Changed**\n* `client.wallets.create()`: **Added**\n* `client.wallets.update()`: **Added**\n* `client.wallets.get()`:  `response` **Changed**\n"

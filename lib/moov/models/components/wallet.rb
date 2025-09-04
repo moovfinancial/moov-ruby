@@ -18,10 +18,38 @@ module Moov
 
         field :available_balance, Models::Components::WalletAvailableBalance, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('availableBalance'), required: true } }
 
-        sig { params(wallet_id: ::String, available_balance: Models::Components::WalletAvailableBalance).void }
-        def initialize(wallet_id:, available_balance:)
+        field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
+        # Name of the wallet
+        field :name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name'), required: true } }
+        # Status of a wallet.
+        #   - `active`: The wallet is available for use and has an enabled payment method.
+        #   - `closed`: The wallet is no longer active and the corresponding payment method has been disabled.
+        field :status, Models::Components::WalletStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletStatus, false) } }
+        # Type of a wallet.
+        #   - `default`: The primary system-generated wallet automatically created by Moov when an account is granted the wallet capability. This generates a moov-wallet payment method that is available for use immediately. Only one default wallet exists per account.
+        #   - `general`: A user-defined wallet created via the API to segment funds for specific use cases. Users can create multiple general wallets per account to support internal business models or financial reporting needs.
+        field :wallet_type, Models::Components::WalletType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletType, false) } }
+        # Description of the wallet
+        field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
+
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+
+        field :closed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('closedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+
+        sig { params(wallet_id: ::String, available_balance: Models::Components::WalletAvailableBalance, partner_account_id: ::String, name: ::String, status: Models::Components::WalletStatus, wallet_type: Models::Components::WalletType, description: ::String, created_on: ::DateTime, metadata: T.nilable(T::Hash[Symbol, ::String]), closed_on: T.nilable(::DateTime)).void }
+        def initialize(wallet_id:, available_balance:, partner_account_id:, name:, status:, wallet_type:, description:, created_on:, metadata: nil, closed_on: nil)
           @wallet_id = wallet_id
           @available_balance = available_balance
+          @partner_account_id = partner_account_id
+          @name = name
+          @status = status
+          @wallet_type = wallet_type
+          @description = description
+          @created_on = created_on
+          @metadata = metadata
+          @closed_on = closed_on
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -29,6 +57,14 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @wallet_id == other.wallet_id
           return false unless @available_balance == other.available_balance
+          return false unless @partner_account_id == other.partner_account_id
+          return false unless @name == other.name
+          return false unless @status == other.status
+          return false unless @wallet_type == other.wallet_type
+          return false unless @description == other.description
+          return false unless @created_on == other.created_on
+          return false unless @metadata == other.metadata
+          return false unless @closed_on == other.closed_on
           true
         end
       end
