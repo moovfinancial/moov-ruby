@@ -16,15 +16,19 @@ module Moov
 
         field :email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('email') } }
 
-        sig { params(email: T.nilable(::String)).void }
-        def initialize(email: nil)
+        field :phone, Crystalline::Nilable.new(Models::Components::PhoneNumberError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phone') } }
+
+        sig { params(email: T.nilable(::String), phone: T.nilable(Models::Components::PhoneNumberError)).void }
+        def initialize(email: nil, phone: nil)
           @email = email
+          @phone = phone
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @email == other.email
+          return false unless @phone == other.phone
           true
         end
       end

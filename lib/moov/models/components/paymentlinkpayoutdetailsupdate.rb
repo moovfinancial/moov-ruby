@@ -16,11 +16,12 @@ module Moov
         # A list of payment methods that should be supported for this payment link.
         field :allowed_methods, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::DisbursementPaymentMethodType)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowedMethods') } }
         # Specify the intended recipient of the payout.
+        # Either `email` or `phone` must be specified, but not both.
         # 
         # This information will be used to authenticate the end user when they follow the payment link.
-        field :recipient, Crystalline::Nilable.new(Models::Components::PayoutRecipientUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient') } }
+        field :recipient, Crystalline::Nilable.new(Models::Components::PayoutRecipient), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient') } }
 
-        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipientUpdate)).void }
+        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipient)).void }
         def initialize(allowed_methods: nil, recipient: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient

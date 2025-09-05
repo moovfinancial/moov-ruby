@@ -324,7 +324,6 @@ module Moov
       autoload :PayoutDetailsError, 'moov/models/components/payoutdetailserror.rb'
       autoload :PayoutRecipient, 'moov/models/components/payoutrecipient.rb'
       autoload :PayoutRecipientError, 'moov/models/components/payoutrecipienterror.rb'
-      autoload :PayoutRecipientUpdate, 'moov/models/components/payoutrecipientupdate.rb'
       autoload :PendingLitigation, 'moov/models/components/pendinglitigation.rb'
       autoload :PhoneNumber, 'moov/models/components/phonenumber.rb'
       autoload :PhoneNumberError, 'moov/models/components/phonenumbererror.rb'

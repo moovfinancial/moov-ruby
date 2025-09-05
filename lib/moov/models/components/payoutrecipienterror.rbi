@@ -10,4 +10,6 @@ end
 class Moov::Models::Components::PayoutRecipientError
   def email(); end
   def email=(str_); end
+  def phone(); end
+  def phone=(str_); end
 end

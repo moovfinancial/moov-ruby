@@ -9,6 +9,7 @@ module Moov
     module Components
     
       # Specify the intended recipient of the payout.
+      # Either `email` or `phone` must be specified, but not both.
       # 
       # This information will be used to authenticate the end user when they follow the payment link.
       class PayoutRecipient
@@ -16,17 +17,21 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :email, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('email'), required: true } }
+        field :email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('email') } }
 
-        sig { params(email: ::String).void }
-        def initialize(email:)
+        field :phone, Crystalline::Nilable.new(Models::Components::PhoneNumber), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phone') } }
+
+        sig { params(email: T.nilable(::String), phone: T.nilable(Models::Components::PhoneNumber)).void }
+        def initialize(email: nil, phone: nil)
           @email = email
+          @phone = phone
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @email == other.email
+          return false unless @phone == other.phone
           true
         end
       end
