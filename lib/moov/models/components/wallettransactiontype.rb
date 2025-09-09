@@ -39,6 +39,7 @@ module Moov
           WALLET_TRANSFER = new('wallet-transfer')
           ADJUSTMENT = new('adjustment')
           FEE_REVENUE = new('fee-revenue')
+          RESIDUAL = new('residual')
         end
       end
     end

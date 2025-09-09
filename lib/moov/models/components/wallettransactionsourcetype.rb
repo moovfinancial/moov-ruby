@@ -20,6 +20,7 @@ module Moov
           SWEEP = new('sweep')
           ADJUSTMENT = new('adjustment')
           FEE = new('fee')
+          RESIDUAL = new('residual')
         end
       end
     end

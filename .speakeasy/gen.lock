@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 3a6d10543306fd1e4273cd818e371997
+  docChecksum: 3ccc3cdd02f56987d2561611c54e6308
   docVersion: latest
-  speakeasyVersion: 1.609.0
-  generationVersion: 2.692.0
-  releaseVersion: 0.1.12
-  configChecksum: 1c5c6c329d638cbffdd06046123cd7e2
+  speakeasyVersion: 1.613.0
+  generationVersion: 2.696.0
+  releaseVersion: 0.1.13
+  configChecksum: f6ee8cffcb4a8ef11952db6c4c3318d5
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -4524,4 +4524,6 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.payout.recipient` **Changed**\n  *  `response.payout.recipient` **Changed**\n  *  `error.payout.recipient.phone` **Added**\n* `client.payment_links.list()`:  `response.[].payout.recipient` **Changed**\n* `client.payment_links.get()`:  `response.payout.recipient` **Changed**\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.payout.recipient.phone` **Added**\n  *  `response.payout.recipient` **Changed**\n  *  `error.payout.recipient.phone` **Added**\n"
+releaseNotes: |
+  ## Ruby SDK Changes Detected:
+  * `client.wallet_transactions.list()`:  `request` **Changed**
