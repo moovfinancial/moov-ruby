@@ -17,9 +17,9 @@ module Moov
         enums do
           APPROVED = new('approved')
           REJECTED = new('rejected')
-          PENDING_REVIEW = new('pending_review')
+          PENDING_REVIEW = new('pendingReview')
           PENDING = new('pending')
-          NOT_REQUESTED = new('not_requested')
+          NOT_REQUESTED = new('notRequested')
         end
       end
     end
