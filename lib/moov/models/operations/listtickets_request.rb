@@ -21,6 +21,8 @@ module Moov
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
         field :status, Crystalline::Nilable.new(Models::Components::TicketStatus), { 'query_param': { 'field_name': 'status', 'style': 'form', 'explode': false } }
+
+        field :foreign_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'foreignID', 'style': 'form', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -32,12 +34,13 @@ module Moov
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, cursor: T.nilable(::String), count: T.nilable(::Integer), status: T.nilable(Models::Components::TicketStatus), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, cursor: nil, count: nil, status: nil, x_moov_version: 'v2024.01.00')
+        sig { params(account_id: ::String, cursor: T.nilable(::String), count: T.nilable(::Integer), status: T.nilable(Models::Components::TicketStatus), foreign_id: T.nilable(::String), x_moov_version: T.nilable(::String)).void }
+        def initialize(account_id:, cursor: nil, count: nil, status: nil, foreign_id: nil, x_moov_version: 'v2024.01.00')
           @account_id = account_id
           @cursor = cursor
           @count = count
           @status = status
+          @foreign_id = foreign_id
           @x_moov_version = x_moov_version
         end
 
@@ -48,6 +51,7 @@ module Moov
           return false unless @cursor == other.cursor
           return false unless @count == other.count
           return false unless @status == other.status
+          return false unless @foreign_id == other.foreign_id
           return false unless @x_moov_version == other.x_moov_version
           true
         end

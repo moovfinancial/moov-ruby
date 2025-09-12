@@ -18,10 +18,13 @@ module Moov
 
         field :ticket_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('ticketID'), required: true } }
 
-        sig { params(account_id: ::String, ticket_id: ::String).void }
-        def initialize(account_id:, ticket_id:)
+        field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
+
+        sig { params(account_id: ::String, ticket_id: ::String, foreign_id: T.nilable(::String)).void }
+        def initialize(account_id:, ticket_id:, foreign_id: nil)
           @account_id = account_id
           @ticket_id = ticket_id
+          @foreign_id = foreign_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -29,6 +32,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @ticket_id == other.ticket_id
+          return false unless @foreign_id == other.foreign_id
           true
         end
       end

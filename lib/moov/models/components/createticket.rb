@@ -20,11 +20,17 @@ module Moov
 
         field :contact, Models::Components::TicketContact, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('contact'), required: true } }
 
-        sig { params(title: ::String, body: ::String, contact: Models::Components::TicketContact).void }
-        def initialize(title:, body:, contact:)
+        field :author, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('author') } }
+
+        field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
+
+        sig { params(title: ::String, body: ::String, contact: Models::Components::TicketContact, author: T.nilable(::String), foreign_id: T.nilable(::String)).void }
+        def initialize(title:, body:, contact:, author: nil, foreign_id: nil)
           @title = title
           @body = body
           @contact = contact
+          @author = author
+          @foreign_id = foreign_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -33,6 +39,8 @@ module Moov
           return false unless @title == other.title
           return false unless @body == other.body
           return false unless @contact == other.contact
+          return false unless @author == other.author
+          return false unless @foreign_id == other.foreign_id
           true
         end
       end

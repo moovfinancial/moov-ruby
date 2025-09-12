@@ -32,8 +32,10 @@ module Moov
 
         field :closed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('closedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(ticket_id: ::String, number: ::Integer, title: ::String, contact: Models::Components::TicketContact, status: Models::Components::TicketStatus, created_on: ::DateTime, updated_on: ::DateTime, latest_message_on: T.nilable(::DateTime), closed_on: T.nilable(::DateTime)).void }
-        def initialize(ticket_id:, number:, title:, contact:, status:, created_on:, updated_on:, latest_message_on: nil, closed_on: nil)
+        field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
+
+        sig { params(ticket_id: ::String, number: ::Integer, title: ::String, contact: Models::Components::TicketContact, status: Models::Components::TicketStatus, created_on: ::DateTime, updated_on: ::DateTime, latest_message_on: T.nilable(::DateTime), closed_on: T.nilable(::DateTime), foreign_id: T.nilable(::String)).void }
+        def initialize(ticket_id:, number:, title:, contact:, status:, created_on:, updated_on:, latest_message_on: nil, closed_on: nil, foreign_id: nil)
           @ticket_id = ticket_id
           @number = number
           @title = title
@@ -43,6 +45,7 @@ module Moov
           @updated_on = updated_on
           @latest_message_on = latest_message_on
           @closed_on = closed_on
+          @foreign_id = foreign_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -57,6 +60,7 @@ module Moov
           return false unless @updated_on == other.updated_on
           return false unless @latest_message_on == other.latest_message_on
           return false unless @closed_on == other.closed_on
+          return false unless @foreign_id == other.foreign_id
           true
         end
       end

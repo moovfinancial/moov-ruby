@@ -12,4 +12,6 @@ class Moov::Models::Components::WebhookDataTicketMessageAdded
   def account_id=(str_); end
   def ticket_id(); end
   def ticket_id=(str_); end
+  def foreign_id(); end
+  def foreign_id=(str_); end
 end

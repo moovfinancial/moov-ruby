@@ -14,4 +14,6 @@ class Moov::Models::Components::WebhookDataTicketUpdated
   def ticket_id=(str_); end
   def status(); end
   def status=(str_); end
+  def foreign_id(); end
+  def foreign_id=(str_); end
 end

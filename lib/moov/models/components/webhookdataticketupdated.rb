@@ -20,11 +20,14 @@ module Moov
 
         field :status, Models::Components::TicketStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TicketStatus, false) } }
 
-        sig { params(account_id: ::String, ticket_id: ::String, status: Models::Components::TicketStatus).void }
-        def initialize(account_id:, ticket_id:, status:)
+        field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
+
+        sig { params(account_id: ::String, ticket_id: ::String, status: Models::Components::TicketStatus, foreign_id: T.nilable(::String)).void }
+        def initialize(account_id:, ticket_id:, status:, foreign_id: nil)
           @account_id = account_id
           @ticket_id = ticket_id
           @status = status
+          @foreign_id = foreign_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -33,6 +36,7 @@ module Moov
           return false unless @account_id == other.account_id
           return false unless @ticket_id == other.ticket_id
           return false unless @status == other.status
+          return false unless @foreign_id == other.foreign_id
           true
         end
       end

@@ -26,4 +26,6 @@ class Moov::Models::Components::Ticket
   def latest_message_on=(str_); end
   def closed_on(); end
   def closed_on=(str_); end
+  def foreign_id(); end
+  def foreign_id=(str_); end
 end
