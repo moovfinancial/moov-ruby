@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 9c8f4048149f57afc572f0a9eea04fe5
+  docChecksum: b38c95dc3134c77696632858228f53b6
   docVersion: latest
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 0.1.15
-  configChecksum: 5e29ac2a990c0b512e7d653e297c55b9
+  releaseVersion: 0.1.16
+  configChecksum: b6d4d94b94ffc7a113cd1ba9581a1e0c
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -4524,4 +4524,3 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.support.create_ticket()`: \n  *  `request.create_ticket` **Changed**\n  *  `response.foreign_id` **Added**\n  *  `error` **Changed**\n* `client.support.list_tickets()`: \n  *  `request.foreign_id` **Added**\n  *  `response.items.[].foreign_id` **Added**\n* `client.support.get_ticket()`:  `response.foreign_id` **Added**\n* `client.support.update_ticket()`:  `response.foreign_id` **Added**\n"
