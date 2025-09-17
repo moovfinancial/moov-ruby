@@ -21,6 +21,8 @@ module Moov
         #   <li>Individual Profile `firstName`, `middleName`, and `lastName`</li>
         #   <li>Business Profile `legalBusinessName`</li>
         # </ul>
+        # 
+        # Filtering by Guest Profile `name` is not currently supported.
         field :name, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'name', 'style': 'form', 'explode': false } }
         #   Filter connected accounts by email address.
         # 

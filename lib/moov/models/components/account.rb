@@ -21,7 +21,7 @@ module Moov
         field :account_type, Models::Components::AccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::AccountType, false) } }
 
         field :display_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('displayName'), required: true } }
-        # Describes a Moov account profile. A profile will have a business or an individual, depending on the account's type.
+        # Describes a Moov account profile. A profile will have a business, individual, or guest depending on the account's type.
         field :profile, Models::Components::Profile, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('profile'), required: true } }
         # Describes identity verification status and relevant identity verification documents.
         field :verification, Models::Components::Verification, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('verification'), required: true } }
