@@ -1,0 +1,14 @@
+# OtherCardFees
+
+A detailed breakdown of other card-related fees.
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `disputes`                                                                                | [Models::Components::BillingCountAndAmount](../../models/shared/billingcountandamount.md) | :heavy_check_mark:                                                                        | Fees for disputes.                                                                        |
+| `card_account_updater`                                                                    | [Models::Components::BillingCountAndAmount](../../models/shared/billingcountandamount.md) | :heavy_check_mark:                                                                        | Fees for card account updater services.                                                   |
+| `card_verification`                                                                       | [Models::Components::BillingCountAndAmount](../../models/shared/billingcountandamount.md) | :heavy_check_mark:                                                                        | Fees for card verification.                                                               |
+| `name_verification`                                                                       | [Models::Components::BillingCountAndAmount](../../models/shared/billingcountandamount.md) | :heavy_check_mark:                                                                        | Fees for name verification.                                                               |
+| `total`                                                                                   | [Models::Components::BillingCountAndAmount](../../models/shared/billingcountandamount.md) | :heavy_check_mark:                                                                        | Total other card fees.                                                                    |

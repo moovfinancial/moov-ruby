@@ -48,6 +48,7 @@ module Moov
           WALLET_CREATED = new('wallet.created')
           WALLET_UPDATED = new('wallet.updated')
           WALLET_TRANSACTION_UPDATED = new('walletTransaction.updated')
+          BILLING_STATEMENT_CREATED = new('billingStatement.created')
         end
       end
     end

@@ -19,6 +19,7 @@ module Moov
   autoload :PaymentMethods, 'moov/payment_methods'
   autoload :Representatives, 'moov/representatives'
   autoload :Scheduling, 'moov/scheduling'
+  autoload :Statements, 'moov/statements'
   autoload :Sweeps, 'moov/sweeps'
   autoload :AccountTerminalApplications, 'moov/account_terminal_applications'
   autoload :Support, 'moov/support'

@@ -817,6 +817,19 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
+### [statements](docs/sdks/statements/README.md)
+
+* [list](docs/sdks/statements/README.md#list) - Retrieve all statements associated with an account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+* [get](docs/sdks/statements/README.md#get) - Retrieve a statement by its ID.
+
+Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `application/pdf`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/profile.read` scope.
+
 ### [support](docs/sdks/support/README.md)
 
 * [create_ticket](docs/sdks/support/README.md#create_ticket) - Create a support ticket for a Moov account.

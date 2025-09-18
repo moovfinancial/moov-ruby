@@ -1,0 +1,13 @@
+# CardAcquiring
+
+A summary of card acquiring volume and fees.
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `volume_amount`                                                                                              | [T.nilable(Models::Components::AmountDecimal)](../../models/shared/amountdecimal.md)                         | :heavy_minus_sign:                                                                                           | The total transaction volume amount.                                                                         |
+| `volume_count`                                                                                               | *T.nilable(::Integer)*                                                                                       | :heavy_minus_sign:                                                                                           | The total number of transactions.                                                                            |
+| `fee_amount`                                                                                                 | [T.nilable(Models::Components::AmountDecimal)](../../models/shared/amountdecimal.md)                         | :heavy_minus_sign:                                                                                           | The total fee amount.                                                                                        |
+| `interchange_fees`                                                                                           | [T.nilable(Models::Components::BillingSummaryInterchange)](../../models/shared/billingsummaryinterchange.md) | :heavy_minus_sign:                                                                                           | A summary of interchange fees by card brand.                                                                 |

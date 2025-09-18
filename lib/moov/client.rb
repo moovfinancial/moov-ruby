@@ -16,7 +16,7 @@ module Moov
   class Client
     extend T::Sig
 
-    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :payment_links, :payment_methods, :representatives, :scheduling, :sweeps, :account_terminal_applications, :support, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
+    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :payment_links, :payment_methods, :representatives, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
 
     sig do
       params(
@@ -106,6 +106,7 @@ module Moov
       @payment_methods = PaymentMethods.new(@sdk_configuration)
       @representatives = Representatives.new(@sdk_configuration)
       @scheduling = Scheduling.new(@sdk_configuration)
+      @statements = Statements.new(@sdk_configuration)
       @sweeps = Sweeps.new(@sdk_configuration)
       @account_terminal_applications = AccountTerminalApplications.new(@sdk_configuration)
       @support = Support.new(@sdk_configuration)
