@@ -1,4 +1,4 @@
-speakeasyVersion: 1.620.0
+speakeasyVersion: 1.622.1
 sources:
     latest:
         sourceNamespace: api-latest
@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:adbd4bf0cab278ea65fd755594593ee7d351558413ea4b651630fd5cb4eae991
         tags:
             - latest
-            - speakeasy-sdk-regen-1758219332
+            - speakeasy-sdk-regen-1758570422
 targets:
     moov:
         source: latest
@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:323c48007440d7ee3f5aa085be8e9ab36ede8d600219a5636a6228ea1318357a
         sourceBlobDigest: sha256:adbd4bf0cab278ea65fd755594593ee7d351558413ea4b651630fd5cb4eae991
         codeSamplesNamespace: latest-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:c7f8af1943703c419c51d9c784b9a630972d58fc3f5852ea0f3051f8824ad4fd
+        codeSamplesRevisionDigest: sha256:976e6731f20a989d3f53ae83c3da65553aaf7e840a1849fd87cef61b94bdd84c
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
