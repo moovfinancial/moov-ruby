@@ -263,9 +263,10 @@ end
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| Errors::APIError | 4XX, 5XX         | \*/\*            |
+| Error Type                                   | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| Models::Errors::ListTransfersValidationError | 422                                          | application/json                             |
+| Errors::APIError                             | 4XX, 5XX                                     | \*/\*                                        |
 
 ## get
 
@@ -369,9 +370,10 @@ end
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| Errors::APIError | 4XX, 5XX         | \*/\*            |
+| Error Type                                   | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| Models::Errors::PatchTransferValidationError | 422                                          | application/json                             |
+| Errors::APIError                             | 4XX, 5XX                                     | \*/\*                                        |
 
 ## create_cancellation
 

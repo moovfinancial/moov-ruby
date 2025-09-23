@@ -14,8 +14,6 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :transfer, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('Transfer') } }
-
         field :amount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
         field :source, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('source') } }
@@ -31,14 +29,15 @@ module Moov
         field :facilitator_fee_markup_decimal, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('FacilitatorFee.MarkupDecimal') } }
 
         field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
-        # Used for generic errors when invalid request data isn't attributed to a single request field.
-        field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
+
+        field :sales_tax_amount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
+
+        field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(transfer: T.nilable(::String), amount: T.nilable(::String), source: T.nilable(::String), source_payment_method_id: T.nilable(::String), destination_payment_method_id: T.nilable(::String), description: T.nilable(::String), facilitator_fee_total_decimal: T.nilable(::String), facilitator_fee_markup_decimal: T.nilable(::String), metadata: T.nilable(::String), error: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(transfer: nil, amount: nil, source: nil, source_payment_method_id: nil, destination_payment_method_id: nil, description: nil, facilitator_fee_total_decimal: nil, facilitator_fee_markup_decimal: nil, metadata: nil, error: nil, raw_response: nil)
-          @transfer = transfer
+        sig { params(amount: T.nilable(::String), source: T.nilable(::String), source_payment_method_id: T.nilable(::String), destination_payment_method_id: T.nilable(::String), description: T.nilable(::String), facilitator_fee_total_decimal: T.nilable(::String), facilitator_fee_markup_decimal: T.nilable(::String), metadata: T.nilable(::String), sales_tax_amount: T.nilable(::String), foreign_id: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(amount: nil, source: nil, source_payment_method_id: nil, destination_payment_method_id: nil, description: nil, facilitator_fee_total_decimal: nil, facilitator_fee_markup_decimal: nil, metadata: nil, sales_tax_amount: nil, foreign_id: nil, raw_response: nil)
           @amount = amount
           @source = source
           @source_payment_method_id = source_payment_method_id
@@ -47,14 +46,14 @@ module Moov
           @facilitator_fee_total_decimal = facilitator_fee_total_decimal
           @facilitator_fee_markup_decimal = facilitator_fee_markup_decimal
           @metadata = metadata
-          @error = error
+          @sales_tax_amount = sales_tax_amount
+          @foreign_id = foreign_id
           @raw_response = raw_response
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @transfer == other.transfer
           return false unless @amount == other.amount
           return false unless @source == other.source
           return false unless @source_payment_method_id == other.source_payment_method_id
@@ -63,7 +62,8 @@ module Moov
           return false unless @facilitator_fee_total_decimal == other.facilitator_fee_total_decimal
           return false unless @facilitator_fee_markup_decimal == other.facilitator_fee_markup_decimal
           return false unless @metadata == other.metadata
-          return false unless @error == other.error
+          return false unless @sales_tax_amount == other.sales_tax_amount
+          return false unless @foreign_id == other.foreign_id
           return false unless @raw_response == other.raw_response
           true
         end

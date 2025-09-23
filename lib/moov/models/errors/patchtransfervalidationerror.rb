@@ -9,33 +9,29 @@ module Moov
     module Errors
     
 
-      class CreateWalletError < StandardError
+      class PatchTransferValidationError < StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
 
-        field :name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name') } }
-
-        field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
-
         field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+
+        field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(name: T.nilable(::String), description: T.nilable(::String), metadata: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(name: nil, description: nil, metadata: nil, raw_response: nil)
-          @name = name
-          @description = description
+        sig { params(metadata: T.nilable(::String), foreign_id: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(metadata: nil, foreign_id: nil, raw_response: nil)
           @metadata = metadata
+          @foreign_id = foreign_id
           @raw_response = raw_response
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @name == other.name
-          return false unless @description == other.description
           return false unless @metadata == other.metadata
+          return false unless @foreign_id == other.foreign_id
           return false unless @raw_response == other.raw_response
           true
         end

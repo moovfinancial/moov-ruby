@@ -82,11 +82,11 @@ end
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| Models::Errors::GenericError      | 400, 409                          | application/json                  |
-| Models::Errors::CreateWalletError | 422                               | application/json                  |
-| Errors::APIError                  | 4XX, 5XX                          | \*/\*                             |
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| Models::Errors::GenericError                | 400, 409                                    | application/json                            |
+| Models::Errors::CreateWalletValidationError | 422                                         | application/json                            |
+| Errors::APIError                            | 4XX, 5XX                                    | \*/\*                                       |
 
 ## list
 
@@ -138,9 +138,10 @@ end
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| Errors::APIError | 4XX, 5XX         | \*/\*            |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| Models::Errors::ListWalletsValidationError | 422                                        | application/json                           |
+| Errors::APIError                           | 4XX, 5XX                                   | \*/\*                                      |
 
 ## get
 
@@ -245,8 +246,8 @@ end
 
 ### Errors
 
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| Models::Errors::GenericError     | 400, 409                         | application/json                 |
-| Models::Errors::PatchWalletError | 422                              | application/json                 |
-| Errors::APIError                 | 4XX, 5XX                         | \*/\*                            |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| Models::Errors::GenericError               | 400, 409                                   | application/json                           |
+| Models::Errors::PatchWalletValidationError | 422                                        | application/json                           |
+| Errors::APIError                           | 4XX, 5XX                                   | \*/\*                                      |

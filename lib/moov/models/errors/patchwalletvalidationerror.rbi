@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Errors::PatchWalletError
+class Moov::Models::Errors::PatchWalletValidationError
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Errors::PatchWalletError
+class Moov::Models::Errors::PatchWalletValidationError
   def name(); end
   def name=(str_); end
   def status(); end

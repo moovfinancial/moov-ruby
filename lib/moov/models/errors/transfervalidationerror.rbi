@@ -8,8 +8,6 @@ end
 
 
 class Moov::Models::Errors::TransferValidationError
-  def transfer(); end
-  def transfer=(str_); end
   def amount(); end
   def amount=(str_); end
   def source(); end
@@ -26,8 +24,10 @@ class Moov::Models::Errors::TransferValidationError
   def facilitator_fee_markup_decimal=(str_); end
   def metadata(); end
   def metadata=(str_); end
-  def error(); end
-  def error=(str_); end
+  def sales_tax_amount(); end
+  def sales_tax_amount=(str_); end
+  def foreign_id(); end
+  def foreign_id=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
 end
