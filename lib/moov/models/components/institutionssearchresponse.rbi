@@ -14,4 +14,6 @@ class Moov::Models::Components::InstitutionsSearchResponse
   def rtp=(str_); end
   def wire(); end
   def wire=(str_); end
+  def fednow(); end
+  def fednow=(str_); end
 end

@@ -5,13 +5,13 @@ The low value in each range is included. The high value in each range is exclude
 
 ## Values
 
-| Name                            | Value                           |
-| ------------------------------- | ------------------------------- |
-| `UNDER_10K`                     | under-10k                       |
-| `TEN_K_50_K`                    | 10K-50K                         |
-| `FIFTY_K_100_K`                 | 50K-100K                        |
-| `ONE_HUNDRED_K_250_K`           | 100K-250K                       |
-| `TWO_HUNDRED_AND_FIFTY_K_500_K` | 250K-500K                       |
-| `FIVE_HUNDRED_K_1_M`            | 500K-1M                         |
-| `ONE_M_5_M`                     | 1M-5M                           |
-| `OVER_5M`                       | over-5m                         |
+| Name                          | Value                         |
+| ----------------------------- | ----------------------------- |
+| `UNDER_10K`                   | under-10k                     |
+| `TENK_50K`                    | 10k-50k                       |
+| `FIFTYK_100K`                 | 50k-100k                      |
+| `ONE_HUNDREDK_250K`           | 100k-250k                     |
+| `TWO_HUNDRED_AND_FIFTYK_500K` | 250k-500k                     |
+| `FIVE_HUNDREDK_1M`            | 500k-1m                       |
+| `ONEM_5M`                     | 1m-5m                         |
+| `OVER_5M`                     | over-5m                       |

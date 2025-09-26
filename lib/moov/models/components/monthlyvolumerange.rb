@@ -14,12 +14,12 @@ module Moov
 
         enums do
           UNDER_10K = new('under-10k')
-          TEN_K_50_K = new('10K-50K')
-          FIFTY_K_100_K = new('50K-100K')
-          ONE_HUNDRED_K_250_K = new('100K-250K')
-          TWO_HUNDRED_AND_FIFTY_K_500_K = new('250K-500K')
-          FIVE_HUNDRED_K_1_M = new('500K-1M')
-          ONE_M_5_M = new('1M-5M')
+          TENK_50K = new('10k-50k')
+          FIFTYK_100K = new('50k-100k')
+          ONE_HUNDREDK_250K = new('100k-250k')
+          TWO_HUNDRED_AND_FIFTYK_500K = new('250k-500k')
+          FIVE_HUNDREDK_1M = new('500k-1m')
+          ONEM_5M = new('1m-5m')
           OVER_5M = new('over-5m')
         end
       end

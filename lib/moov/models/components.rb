@@ -206,6 +206,8 @@ module Moov
       autoload :EvidenceType, 'moov/models/components/evidencetype.rb'
       autoload :EvidenceUploadResponse, 'moov/models/components/evidenceuploadresponse.rb'
       autoload :FacilitatorFee, 'moov/models/components/facilitatorfee.rb'
+      autoload :FedNowInstitution, 'moov/models/components/fednowinstitution.rb'
+      autoload :FedNowServices, 'moov/models/components/fednowservices.rb'
       autoload :FeeCategory, 'moov/models/components/feecategory.rb'
       autoload :FeeModel, 'moov/models/components/feemodel.rb'
       autoload :FeePlan, 'moov/models/components/feeplan.rb'

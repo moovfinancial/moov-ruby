@@ -20,11 +20,14 @@ module Moov
 
         field :wire, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::WireInstitution)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('wire'), required: true } }
 
-        sig { params(ach: T.nilable(T::Array[Models::Components::ACHInstitution]), rtp: T.nilable(T::Array[Models::Components::RTPInstitution]), wire: T.nilable(T::Array[Models::Components::WireInstitution])).void }
-        def initialize(ach: nil, rtp: nil, wire: nil)
+        field :fednow, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::FedNowInstitution)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fednow'), required: true } }
+
+        sig { params(ach: T.nilable(T::Array[Models::Components::ACHInstitution]), rtp: T.nilable(T::Array[Models::Components::RTPInstitution]), wire: T.nilable(T::Array[Models::Components::WireInstitution]), fednow: T.nilable(T::Array[Models::Components::FedNowInstitution])).void }
+        def initialize(ach: nil, rtp: nil, wire: nil, fednow: nil)
           @ach = ach
           @rtp = rtp
           @wire = wire
+          @fednow = fednow
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -33,6 +36,7 @@ module Moov
           return false unless @ach == other.ach
           return false unless @rtp == other.rtp
           return false unless @wire == other.wire
+          return false unless @fednow == other.fednow
           true
         end
       end

@@ -1,0 +1,10 @@
+# FedNowInstitution
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `name`                                                                      | *::String*                                                                  | :heavy_check_mark:                                                          | Name of the financial institution.                                          | First Citizens                                                              |
+| `routing_number`                                                            | *::String*                                                                  | :heavy_check_mark:                                                          | N/A                                                                         | 123456789                                                                   |
+| `services`                                                                  | [Models::Components::FedNowServices](../../models/shared/fednowservices.md) | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |
