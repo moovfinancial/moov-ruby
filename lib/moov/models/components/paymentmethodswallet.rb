@@ -16,15 +16,25 @@ module Moov
 
         field :wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID'), required: true } }
 
-        sig { params(wallet_id: ::String).void }
-        def initialize(wallet_id:)
+        field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
+        # Type of a wallet.
+        #   - `default`: The primary system-generated wallet automatically created by Moov when an account is granted the wallet capability. This generates a moov-wallet payment method that is available for use immediately. Only one default wallet exists per account.
+        #   - `general`: A user-defined wallet created via the API to segment funds for specific use cases. Users can create multiple general wallets per account to support internal business models or financial reporting needs.
+        field :wallet_type, Models::Components::WalletType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletType, false) } }
+
+        sig { params(wallet_id: ::String, partner_account_id: ::String, wallet_type: Models::Components::WalletType).void }
+        def initialize(wallet_id:, partner_account_id:, wallet_type:)
           @wallet_id = wallet_id
+          @partner_account_id = partner_account_id
+          @wallet_type = wallet_type
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @wallet_id == other.wallet_id
+          return false unless @partner_account_id == other.partner_account_id
+          return false unless @wallet_type == other.wallet_type
           true
         end
       end
