@@ -27,10 +27,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.end_to_end_encryption.test_encrypted_token(e2_ee_token: Models::Components::E2EEToken.new(
@@ -74,10 +70,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.end_to_end_encryption.generate_key()

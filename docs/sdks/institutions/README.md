@@ -38,10 +38,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.institutions.search_institutions()
@@ -87,10 +83,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListInstitutionsRequest.new()

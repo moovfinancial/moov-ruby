@@ -93,10 +93,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListDisputesRequest.new(
@@ -148,10 +144,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.get(account_id: '44d3e9dd-7128-4b00-8cd9-09d3242e5bcf', dispute_id: '4be10af9-ddeb-428b-8333-7430afce142f')
@@ -198,10 +190,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.accept(account_id: 'ef028cdd-49e0-4cd8-9c89-6673e28e226e', dispute_id: 'b7cf0931-5fbb-4e79-94cb-96291b634f63')
@@ -249,10 +237,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.list_evidence(account_id: 'efc12040-97af-4720-91c5-14cd1a83877b', dispute_id: 'f1c23432-4110-4981-9b72-b98df94bb61c')
@@ -299,10 +283,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.upload_evidence_file(account_id: 'c09fd2f8-75fb-4ed9-be03-f8565d3ddc67', dispute_id: 'ad27f84d-00b1-4db0-8cf5-be001d71251d', create_evidence_file_multi_part: Models::Components::CreateEvidenceFileMultiPart.new(
@@ -358,10 +338,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.upload_evidence_text(account_id: 'ed2ca924-e2c4-4f3a-b077-866bb07b0671', dispute_id: '14832e8d-3613-45ce-942e-3116b9e0d194', create_evidence_text: Models::Components::CreateEvidenceText.new(
@@ -416,10 +392,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.submit_evidence(account_id: '01f79d04-f2de-42de-9e37-23c751edecb4', dispute_id: '8c5d6d6e-420a-49c8-b7c3-d4b5d1bbd415')
@@ -467,10 +439,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.get_evidence(account_id: 'ab59cc9a-6480-40fe-8a06-8c41883e3c79', dispute_id: '4fc54609-7e6b-4a75-b8b3-7ffbeb138e22', evidence_id: '08c4d04c-1296-4bfd-bafb-bee195f85785')
@@ -518,10 +486,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::UpdateDisputeEvidenceRequest.new(
@@ -574,10 +538,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.delete_evidence(account_id: 'b21731c6-3497-46a3-859a-3761a6b8e096', dispute_id: '1759456d-80e3-4428-a08d-302c8877b418', evidence_id: 'ea10cba6-166f-464d-b57b-30d995d44b98')
@@ -626,10 +586,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.disputes.get_evidence_data(account_id: '83e6bc61-f894-4cd8-b847-d617383323fb', dispute_id: 'b7e45862-1e55-4ba0-842f-9fce30c0228b', evidence_id: '3d195b92-798e-4ea4-9347-1c86efacbf38')

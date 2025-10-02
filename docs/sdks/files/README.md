@@ -40,10 +40,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.files.upload(account_id: '221c30bd-2551-4ae4-9a14-07bf6599b728', file_upload_request_multi_part: Models::Components::FileUploadRequestMultiPart.new(
@@ -97,10 +93,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.files.list(account_id: 'd1133bf2-4853-4436-9a03-23739895ab98')
@@ -144,10 +136,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.files.get(account_id: '7f888113-d35a-4536-b9bc-c55076736ab6', file_id: 'af170db9-0d17-4a9f-ade6-5dd2f1b3412d')

@@ -30,10 +30,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.receipts.create(request_body: [])
@@ -78,10 +74,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.receipts.list(id: '8508cf6c-9ce4-4e35-84c1-4b77320a620b')

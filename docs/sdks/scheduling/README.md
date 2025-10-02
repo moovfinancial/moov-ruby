@@ -46,10 +46,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.scheduling.create(account_id: '8b64fef5-c389-40d5-838f-d6ae10e70162', upsert_schedule: Models::Components::UpsertSchedule.new(
@@ -163,10 +159,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListSchedulesRequest.new(
@@ -215,10 +207,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.scheduling.update(account_id: '7becca38-ec01-4fcf-8cf7-c187c7cf6a7a', schedule_id: '11b29a8a-d60e-4ec9-900e-7fda62cd2415', upsert_schedule: Models::Components::UpsertSchedule.new(
@@ -333,10 +321,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.scheduling.get(account_id: '31afd98b-eb55-41b3-8a4f-0ee8ea69e4e0', schedule_id: '55487e07-f3b7-44e8-b6f3-64fc85701c34')
@@ -381,10 +365,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.scheduling.cancel(account_id: 'e89edcfc-19ca-40eb-802b-a35100dea24d', schedule_id: '5ca67de0-63f6-4cb7-b94a-6c84616ffe03')
@@ -430,10 +410,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.scheduling.get_occurrance(account_id: 'ea12b5d5-6249-4af2-ae48-6141a5251090', schedule_id: '289e94cd-66f1-4df5-999f-46d0f40b4ce9', occurrence_filter: '<value>')

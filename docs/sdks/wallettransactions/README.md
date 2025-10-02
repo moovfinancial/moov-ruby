@@ -36,10 +36,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListWalletTransactionsRequest.new(
@@ -92,10 +88,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.wallet_transactions.get(account_id: 'f0b02d73-10dc-42e6-8030-fd78fcbc114f', wallet_id: '03db97f6-c308-4595-8f43-fd247f1bd3f2', transaction_id: 'e0a32cf5-5758-49ba-83da-75bf02c9c6d7')

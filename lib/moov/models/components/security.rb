@@ -14,12 +14,12 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :username, ::String, { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'basic', 'field_name': 'username' } }
+        field :username, Crystalline::Nilable.new(::String), { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'basic', 'field_name': 'username' } }
 
-        field :password, ::String, { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'basic', 'field_name': 'password' } }
+        field :password, Crystalline::Nilable.new(::String), { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'basic', 'field_name': 'password' } }
 
-        sig { params(username: ::String, password: ::String).void }
-        def initialize(username:, password:)
+        sig { params(username: T.nilable(::String), password: T.nilable(::String)).void }
+        def initialize(username: nil, password: nil)
           @username = username
           @password = password
         end

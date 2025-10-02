@@ -51,10 +51,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListFeePlanAgreementsRequest.new(
@@ -103,10 +99,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.fee_plans.create_fee_plan_agreements(account_id: '409c6b4b-e622-40c2-9dc4-fb494e555723', create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement.new(
@@ -156,10 +148,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.fee_plans.list_fee_plans(account_id: 'b3d59179-f74e-4ee8-b123-33220b3c7d4b')
@@ -204,10 +192,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::RetrieveFeesRequest.new(
@@ -256,10 +240,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.fee_plans.list_fees_fetch(account_id: '55c34e26-269d-4872-8e42-0fa83e3f4b10')
@@ -304,10 +284,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.fee_plans.list_partner_pricing(account_id: '600637f9-c38a-473f-b909-0d5ac537b8a5')
@@ -352,10 +328,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListPartnerPricingAgreementsRequest.new(

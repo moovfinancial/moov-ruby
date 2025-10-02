@@ -114,10 +114,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.link(account_id: 'b326319d-6118-4921-8d82-d5810d562eef', link_bank_account: Models::Components::PlaidLinkPayload.new(
@@ -171,10 +167,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.list(account_id: '85539920-22dd-4900-a07e-7a88268456d9')
@@ -220,10 +212,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.get(account_id: '32ac681d-3244-4673-8541-362e40b7677a', bank_account_id: 'dd241177-be83-4aad-80f8-31aded5f3616')
@@ -268,10 +256,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.disable(account_id: '6b6ade5f-0b20-493c-b483-cf1f670a1055', bank_account_id: 'b9295fc2-f5fd-4767-894f-5ca45abfd3fc')
@@ -328,10 +312,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.initiate_micro_deposits(account_id: 'ced90412-ebb4-43d4-a171-0a929ed5fb37', bank_account_id: 'f2b630cc-a8ae-44be-970b-7bed47b2d952')
@@ -377,10 +357,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.complete_micro_deposits(account_id: 'af0efd2b-a1fa-40fd-998b-2007b8df0766', bank_account_id: 'b468e916-699b-4590-becf-ede76d1413cb', complete_micro_deposits: Models::Components::CompleteMicroDeposits.new(
@@ -442,10 +418,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.get_verification(account_id: 'c87bc077-580a-4c2a-b312-2afbd21fc1cd', bank_account_id: 'aaceed83-ef83-4d48-8136-096f834280cc')
@@ -505,10 +477,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.initiate_verification(account_id: '9d6d433b-c13a-48d7-849a-1897fa71375b', bank_account_id: 'bd092468-393d-4ee0-85a8-48238fee70d2')
@@ -562,10 +530,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.bank_accounts.complete_verification(account_id: '2116e60b-0ea7-447e-a7af-5d647f92f06a', bank_account_id: '96606c15-fd37-49fe-9af2-4e42dcf44fe3', complete_bank_account_verification: Models::Components::CompleteBankAccountVerification.new(

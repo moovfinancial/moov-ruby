@@ -95,10 +95,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.transfers.generate_options(account_id: 'deafe3cf-31d4-4dcc-8176-3d6bf8bb4f04', create_transfer_options: Models::Components::CreateTransferOptions.new(
@@ -154,10 +150,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::CreateTransferRequest.new(
@@ -231,10 +223,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListTransfersRequest.new(
@@ -287,10 +275,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.transfers.get(transfer_id: '960cf5a2-50a3-4914-ad86-d54c022bf5df', account_id: '31113f7b-9f68-44e9-9338-6d8e655c7c96')
@@ -337,10 +321,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.transfers.update(transfer_id: 'de30c075-4245-4d62-bfb3-f76d4d7d3b9c', account_id: '18a7907d-2f89-493a-b15a-3aad91c24496', patch_transfer: Models::Components::PatchTransfer.new(
@@ -391,10 +371,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.transfers.create_cancellation(account_id: '10ae862c-6658-4f87-967d-46e995737204', transfer_id: '36c80a6c-ceb2-4e5d-a437-8a39afdfdc58')
@@ -440,10 +416,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.transfers.get_cancellation(account_id: '55cb62c2-22e4-4a36-bd53-3b9adc77ee81', transfer_id: 'bc13b680-bac3-432e-bf44-e9aa6426cbb2', cancellation_id: '770cb4b5-d5b0-4e8b-995b-86b790296ba5')
@@ -492,10 +464,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::InitiateRefundRequest.new(
@@ -550,10 +518,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.transfers.list_refunds(account_id: '03f5baaa-f5d8-44bd-90db-868745fe66e8', transfer_id: '6b1aa1a1-bff1-43b9-9126-2806fdc9c732')
@@ -598,10 +562,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.transfers.get_refund(transfer_id: 'e90d3386-c5b2-4e2b-b841-efc590eba6c0', account_id: 'bbb69538-edaa-4a0b-b107-f46f2da89864', refund_id: '8e12687e-a4e8-46c9-9e11-a57bbd781e44')
@@ -649,10 +609,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::CreateReversalRequest.new(

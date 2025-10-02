@@ -46,10 +46,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.sweeps.create_config(account_id: '02c3d1d1-d847-4eb3-bef3-8caa32a5610b', create_sweep_config: Models::Components::CreateSweepConfig.new(
@@ -101,10 +97,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.sweeps.list_configs(account_id: 'ed67e4c8-03d3-4d88-ba38-fcd87de45a92')
@@ -148,10 +140,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.sweeps.get_config(account_id: 'ae1c2e76-3195-4fc8-b922-b7af6dcf1aad', sweep_config_id: 'bfddff28-5291-4d9b-a0f8-22a0895e8486')
@@ -196,10 +184,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.sweeps.update_config(account_id: 'c16d0264-3e93-4d13-b8d8-6e8e98122631', sweep_config_id: 'f7943244-882b-4a3a-837a-a58418358399', patch_sweep_config: Models::Components::PatchSweepConfig.new(
@@ -249,10 +233,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListSweepsRequest.new(
@@ -302,10 +282,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.sweeps.get(account_id: '481bc941-34a2-4c2a-a4f8-feaa9a25d630', wallet_id: 'e63a4638-ad67-44fb-9b59-ed7311023602', sweep_id: 'c88c9731-06c2-4b4a-a7d2-34c8b936d9ae')

@@ -60,10 +60,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.support.create_ticket(account_id: '4af4784a-c777-48f6-8211-063d5341f84b', create_ticket: Models::Components::CreateTicket.new(
@@ -119,10 +115,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListTicketsRequest.new(
@@ -173,10 +165,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.support.get_ticket(account_id: '873ccb78-88b3-4520-85f2-7cc2aef5704b', ticket_id: '91fea9bf-b373-40f7-86e0-2c80690126e4')
@@ -224,10 +212,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.support.update_ticket(account_id: '7cce2b85-37c2-4c76-954c-03dcec2b12f0', ticket_id: '1d621d17-8e7d-4ac0-9f7d-6e9fcebe8eef', update_ticket: Models::Components::UpdateTicket.new())
@@ -278,10 +262,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.support.list_ticket_messages(account_id: '72444918-8529-4986-b10c-41817e45d09e', ticket_id: 'edeaab65-c54c-45b8-881b-19138f125fb1')

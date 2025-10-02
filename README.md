@@ -60,10 +60,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
@@ -626,6 +622,13 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
+### [images](docs/sdks/images/README.md)
+
+* [list](docs/sdks/images/README.md#list) - List metadata for all images in the specified account.
+* [get_metadata](docs/sdks/images/README.md#get_metadata) - Retrieve metadata for a specific image by its ID.
+* [delete](docs/sdks/images/README.md#delete) - Permanently delete an image by its ID.
+* [get_public](docs/sdks/images/README.md#get_public) - Get an image by its public ID.
+
 ### [industries](docs/sdks/industries/README.md)
 
 * [list](docs/sdks/industries/README.md#list) - Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
@@ -1085,10 +1088,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 begin
@@ -1131,10 +1130,6 @@ Models = ::Moov::Models
 s = ::Moov::Client.new(
       server_url: 'https://api.moov.io',
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(

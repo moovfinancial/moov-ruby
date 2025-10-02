@@ -25,10 +25,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.authentication.revoke_access_token(revoke_token_request: Models::Components::RevokeTokenRequest.new(
@@ -75,10 +71,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.authentication.create_access_token(auth_token_request: Models::Components::AuthTokenRequest.new(

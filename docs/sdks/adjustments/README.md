@@ -30,10 +30,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.adjustments.list(account_id: 'c054f3a6-d542-4310-a955-830739f800f0')
@@ -78,10 +74,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.adjustments.get(account_id: '3ef4e658-8aaa-449f-a7a4-95a6839172a1', adjustment_id: 'cbe4a8e7-605f-4667-a308-1afde85cd7a5')

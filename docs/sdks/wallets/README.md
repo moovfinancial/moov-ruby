@@ -48,10 +48,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.wallets.create(account_id: 'b4b3f37c-b73e-4271-b8ec-108a8593c9b9', create_wallet: Models::Components::CreateWallet.new(
@@ -106,10 +102,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListWalletsRequest.new(
@@ -161,10 +153,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.wallets.get(account_id: 'd04dfd44-8194-422f-a666-08d30c183f9a', wallet_id: '10a6bc37-8eeb-41c8-bf5f-77b40955542a')
@@ -211,10 +199,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.wallets.update(wallet_id: '9f1c6e07-aae8-40e6-b290-502bb1bc486e', account_id: 'e4aad2fb-201d-4390-b4d3-6de7716152e1', patch_wallet: Models::Components::PatchWallet.new(

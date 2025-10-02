@@ -32,10 +32,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.payment_methods.list(account_id: 'f5503781-dfe4-4bcd-9487-5b5fe2b4d53b')
@@ -81,10 +77,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.payment_methods.get(account_id: '56878537-30b0-48ee-9c54-07ab3a8b243d', payment_method_id: 'aa740bf3-4c5f-459b-9370-4f7d4bea382b')

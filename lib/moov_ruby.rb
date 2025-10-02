@@ -15,6 +15,7 @@ module Moov
   autoload :Disputes, 'moov/disputes'
   autoload :FeePlans, 'moov/fee_plans'
   autoload :Files, 'moov/files'
+  autoload :Images, 'moov/images'
   autoload :PaymentLinks, 'moov/payment_links'
   autoload :PaymentMethods, 'moov/payment_methods'
   autoload :Representatives, 'moov/representatives'

@@ -62,10 +62,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.representatives.create(account_id: '5abfe3a5-7cd3-4f92-a8bd-19b64e3ccc10', create_representative: Models::Components::CreateRepresentative.new(
@@ -144,10 +140,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.representatives.list(account_id: 'aa071158-7ed6-4c18-af34-4fa37b755e53')
@@ -191,10 +183,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.representatives.delete(account_id: '23b950c7-3ccf-4edc-9566-07f765d57c73', representative_id: '74d0f56b-b81b-467a-bc86-47a55fe5e503')
@@ -240,10 +228,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.representatives.get(account_id: '071b8a57-e691-4e4b-9143-75f1a828ce9b', representative_id: '00d87070-b167-48e6-be2f-198b5e1556c4')
@@ -301,10 +285,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.representatives.update(account_id: '76647e2b-97ea-4551-8275-7153219f3317', representative_id: 'e89d3d0d-fbe3-4df6-8b18-d7cbcb761161', update_representative: Models::Components::UpdateRepresentative.new(

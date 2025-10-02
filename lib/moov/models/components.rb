@@ -243,6 +243,7 @@ module Moov
       autoload :GovernmentIDSsn, 'moov/models/components/governmentid_ssn.rb'
       autoload :GrantType, 'moov/models/components/granttype.rb'
       autoload :GuestProfile, 'moov/models/components/guestprofile.rb'
+      autoload :ImageMetadata, 'moov/models/components/imagemetadata.rb'
       autoload :IncurredFee, 'moov/models/components/incurredfee.rb'
       autoload :IndividualName, 'moov/models/components/individualname.rb'
       autoload :IndividualNameError, 'moov/models/components/individualnameerror.rb'

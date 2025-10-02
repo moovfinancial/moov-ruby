@@ -42,10 +42,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.underwriting.get(account_id: 'efe07546-f697-4da5-bf73-d9987efd4cdd')
@@ -91,10 +87,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.underwriting.save(account_id: 'ffe3ca1b-de3f-4305-8d8c-cfd28f279cad', upsert_underwriting: Models::Components::UpsertUnderwriting.new())
@@ -143,10 +135,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.underwriting.upsert(account_id: '371bf394-45df-4ba8-a615-ad5483b1f963', update_underwriting: Models::Components::UpdateUnderwriting.new(

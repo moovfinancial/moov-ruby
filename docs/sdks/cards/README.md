@@ -83,10 +83,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.cards.link(account_id: '5593e46f-7936-474b-a52b-96f1da46867b', link_card: Models::Components::LinkCard.new(
@@ -147,10 +143,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.cards.list(account_id: 'b902712f-8ab9-47ba-b39f-5ccfbcac528c')
@@ -196,10 +188,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.cards.get(account_id: '1f590cf9-4db9-4241-8818-30f9c26362e8', card_id: '01234567-89ab-cdef-0123-456789abcdef')
@@ -253,10 +241,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.cards.update(account_id: '7104688e-8434-482e-9556-4784be3ad3fe', card_id: '01234567-89ab-cdef-0123-456789abcdef', update_card: Models::Components::UpdateCard.new(
@@ -306,10 +290,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.cards.disable(account_id: 'bbd12cb2-58f4-46e5-861d-1e6c4617c0c2', card_id: '01234567-89ab-cdef-0123-456789abcdef')

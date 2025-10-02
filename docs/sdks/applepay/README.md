@@ -59,10 +59,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.apple_pay.register_merchant_domains(account_id: '60825531-8c7e-421c-8014-019c6603250c', register_apple_pay_merchant_domains: Models::Components::RegisterApplePayMerchantDomains.new(
@@ -115,10 +111,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.apple_pay.update_merchant_domains(account_id: '34b1c132-91d4-4676-9864-87e1d961d56d', update_apple_pay_merchant_domains: Models::Components::UpdateApplePayMerchantDomains.new(
@@ -173,10 +165,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.apple_pay.get_merchant_domains(account_id: '28704d00-d07b-47db-9e54-016a9713d697')
@@ -223,10 +211,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.apple_pay.create_session(account_id: '32ab62ca-7afd-4f49-89cb-0bb237258f23', create_apple_pay_session: Models::Components::CreateApplePaySession.new(
@@ -278,10 +262,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.apple_pay.link_token(account_id: 'bf498c07-3852-4060-b561-bf992e26a851', link_apple_pay: Models::Components::LinkApplePay.new(

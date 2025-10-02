@@ -42,10 +42,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListIssuedCardAuthorizationsRequest.new(
@@ -94,10 +90,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.issuing_transactions.get_authorization(account_id: '0ccac2cc-6692-44a9-b0d1-35a1892c2db2', authorization_id: 'd9ee8dde-b1eb-492f-bea1-d8e09bccbc52')
@@ -142,10 +134,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListIssuedCardAuthorizationEventsRequest.new(
@@ -195,10 +183,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 req = Models::Operations::ListIssuedCardTransactionsRequest.new(
@@ -247,10 +231,6 @@ require 'moov_ruby'
 Models = ::Moov::Models
 s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
     )
 
 res = s.issuing_transactions.get(account_id: 'b2b6e23c-a5aa-46a9-adb7-d12876e47288', card_transaction_id: 'd5a1aab9-eb96-409a-ab95-88ac99cf00a5')
