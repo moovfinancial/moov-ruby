@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 1f371581f1584d31aeee30db4ee8e497
+  docChecksum: e8d4c50c0b49dd161728d4f2e40c9892
   docVersion: latest
-  speakeasyVersion: 1.633.1
-  generationVersion: 2.720.1
-  releaseVersion: 0.1.25
-  configChecksum: 93cdcb3b0820df343acc6fc0ed9a4a27
+  speakeasyVersion: 1.634.2
+  generationVersion: 2.721.3
+  releaseVersion: 0.1.26
+  configChecksum: e33858be07f7ce77183ebb140c216062
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -4706,9 +4706,3 @@ examples:
           image/png: "0x84fb6c521A"
           image/jpeg: "0xcEe99Dc82c"
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Ruby SDK Changes Detected:
-  * `client.images.list()`: **Added**
-  * `client.images.get_metadata()`: **Added**
-  * `client.images.delete()`: **Added**
-  * `client.images.get_public()`: **Added**
