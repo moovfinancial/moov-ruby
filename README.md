@@ -477,7 +477,6 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
-
 ### [disputes](docs/sdks/disputes/README.md)
 
 * [list](docs/sdks/disputes/README.md#list) - Returns the list of disputes. 

@@ -3,10 +3,10 @@ id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
   docChecksum: e8d4c50c0b49dd161728d4f2e40c9892
   docVersion: latest
-  speakeasyVersion: 1.634.2
-  generationVersion: 2.721.3
-  releaseVersion: 0.1.26
-  configChecksum: e33858be07f7ce77183ebb140c216062
+  speakeasyVersion: 1.635.2
+  generationVersion: 2.722.5
+  releaseVersion: 0.1.27
+  configChecksum: f2bca167437cdca076fe104d31219ea6
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -921,7 +921,6 @@ generatedFiles:
   - docs/sdks/capabilities/README.md
   - docs/sdks/cardissuing/README.md
   - docs/sdks/cards/README.md
-  - docs/sdks/client/README.md
   - docs/sdks/disputes/README.md
   - docs/sdks/endtoendencryption/README.md
   - docs/sdks/enrichedaddress/README.md
