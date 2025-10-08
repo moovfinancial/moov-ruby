@@ -90,7 +90,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'createAccount',
         security_source: @sdk_configuration.security_source
       )
@@ -237,7 +237,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'listAccounts',
         security_source: @sdk_configuration.security_source
       )
@@ -359,7 +359,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getAccount',
         security_source: @sdk_configuration.security_source
       )
@@ -500,7 +500,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'updateAccount',
         security_source: @sdk_configuration.security_source
       )
@@ -654,7 +654,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'disconnectAccount',
         security_source: @sdk_configuration.security_source
       )
@@ -781,7 +781,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getAccountCountries',
         security_source: @sdk_configuration.security_source
       )
@@ -916,7 +916,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'assignAccountCountries',
         security_source: @sdk_configuration.security_source
       )
@@ -1068,7 +1068,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getMerchantProcessingAgreement',
         security_source: @sdk_configuration.security_source
       )
@@ -1183,7 +1183,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getTermsOfServiceToken',
         security_source: @sdk_configuration.security_source
       )

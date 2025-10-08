@@ -101,7 +101,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'linkCard',
         security_source: @sdk_configuration.security_source
       )
@@ -255,7 +255,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'listCards',
         security_source: @sdk_configuration.security_source
       )
@@ -379,7 +379,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getCard',
         security_source: @sdk_configuration.security_source
       )
@@ -522,7 +522,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'updateCard',
         security_source: @sdk_configuration.security_source
       )
@@ -675,7 +675,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'disableCard',
         security_source: @sdk_configuration.security_source
       )

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: e8d4c50c0b49dd161728d4f2e40c9892
+  docChecksum: e12b3c5ec4648286eacc58b1fd45f8d7
   docVersion: latest
-  speakeasyVersion: 1.635.2
-  generationVersion: 2.722.5
-  releaseVersion: 0.1.27
-  configChecksum: f2bca167437cdca076fe104d31219ea6
+  speakeasyVersion: 1.636.0
+  generationVersion: 2.723.2
+  releaseVersion: 0.1.28
+  configChecksum: 96aec884ecaaf447695f4bf0a158fb57
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.1.0
-    unions: 0.1.0
+    unions: 0.1.1
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
@@ -433,6 +433,8 @@ generatedFiles:
   - docs/models/components/sendfundsach.md
   - docs/models/components/sendfundsacherror.md
   - docs/models/components/sendfundserror.md
+  - docs/models/components/sendfundsinstantbank.md
+  - docs/models/components/sendfundsinstantbankerror.md
   - docs/models/components/sendfundspushtocard.md
   - docs/models/components/sendfundspushtocarderror.md
   - docs/models/components/sendfundsrtp.md
@@ -1780,6 +1782,10 @@ generatedFiles:
   - lib/moov/models/components/sendfundsacherror.rbi
   - lib/moov/models/components/sendfundserror.rb
   - lib/moov/models/components/sendfundserror.rbi
+  - lib/moov/models/components/sendfundsinstantbank.rb
+  - lib/moov/models/components/sendfundsinstantbank.rbi
+  - lib/moov/models/components/sendfundsinstantbankerror.rb
+  - lib/moov/models/components/sendfundsinstantbankerror.rbi
   - lib/moov/models/components/sendfundspushtocard.rb
   - lib/moov/models/components/sendfundspushtocard.rbi
   - lib/moov/models/components/sendfundspushtocarderror.rb
@@ -4705,3 +4711,4 @@ examples:
           image/png: "0x84fb6c521A"
           image/jpeg: "0xcEe99Dc82c"
 examplesVersion: 1.0.2
+releaseNotes: "## Ruby SDK Changes Detected:\n* `client.accounts.list()`: \n  *  `request.capability` **Changed**\n* `client.capabilities.get()`:  `request.capability_id` **Changed**\n* `client.capabilities.disable()`:  `request.capability_id` **Changed**\n* `client.underwriting.get()`:  `response.send_funds.instant_bank` **Added**\n* `client.underwriting.save()`: \n  *  `request.upsert_underwriting.send_funds.instant_bank` **Added**\n  *  `response.send_funds.instant_bank` **Added**\n  *  `error.send_funds.instant_bank` **Added**\n* `client.underwriting.upsert()`:  `response.send_funds.instant_bank` **Added**\n"

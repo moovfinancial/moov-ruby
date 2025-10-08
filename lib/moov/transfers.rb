@@ -91,7 +91,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'createTransferOptions',
         security_source: @sdk_configuration.security_source
       )
@@ -252,7 +252,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'createTransfer',
         security_source: @sdk_configuration.security_source
       )
@@ -467,7 +467,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'listTransfers',
         security_source: @sdk_configuration.security_source
       )
@@ -608,7 +608,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getTransfer',
         security_source: @sdk_configuration.security_source
       )
@@ -744,7 +744,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'updateTransfer',
         security_source: @sdk_configuration.security_source
       )
@@ -882,7 +882,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'createCancellation',
         security_source: @sdk_configuration.security_source
       )
@@ -1020,7 +1020,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getCancellation',
         security_source: @sdk_configuration.security_source
       )
@@ -1150,7 +1150,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'initiateRefund',
         security_source: @sdk_configuration.security_source
       )
@@ -1340,7 +1340,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'listRefunds',
         security_source: @sdk_configuration.security_source
       )
@@ -1463,7 +1463,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getRefund',
         security_source: @sdk_configuration.security_source
       )
@@ -1592,7 +1592,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'createReversal',
         security_source: @sdk_configuration.security_source
       )

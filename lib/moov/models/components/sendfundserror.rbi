@@ -14,4 +14,6 @@ class Moov::Models::Components::SendFundsError
   def push_to_card=(str_); end
   def rtp(); end
   def rtp=(str_); end
+  def instant_bank(); end
+  def instant_bank=(str_); end
 end

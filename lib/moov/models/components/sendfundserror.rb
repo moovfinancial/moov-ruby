@@ -20,11 +20,14 @@ module Moov
 
         field :rtp, Crystalline::Nilable.new(Models::Components::SendFundsRtpError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtp') } }
 
-        sig { params(ach: T.nilable(Models::Components::SendFundsAchError), push_to_card: T.nilable(Models::Components::SendFundsPushToCardError), rtp: T.nilable(Models::Components::SendFundsRtpError)).void }
-        def initialize(ach: nil, push_to_card: nil, rtp: nil)
+        field :instant_bank, Crystalline::Nilable.new(Models::Components::SendFundsInstantBankError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('instantBank') } }
+
+        sig { params(ach: T.nilable(Models::Components::SendFundsAchError), push_to_card: T.nilable(Models::Components::SendFundsPushToCardError), rtp: T.nilable(Models::Components::SendFundsRtpError), instant_bank: T.nilable(Models::Components::SendFundsInstantBankError)).void }
+        def initialize(ach: nil, push_to_card: nil, rtp: nil, instant_bank: nil)
           @ach = ach
           @push_to_card = push_to_card
           @rtp = rtp
+          @instant_bank = instant_bank
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -33,6 +36,7 @@ module Moov
           return false unless @ach == other.ach
           return false unless @push_to_card == other.push_to_card
           return false unless @rtp == other.rtp
+          return false unless @instant_bank == other.instant_bank
           true
         end
       end

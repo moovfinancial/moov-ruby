@@ -73,7 +73,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'listDisputes',
         security_source: @sdk_configuration.security_source
       )
@@ -213,7 +213,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getDispute',
         security_source: @sdk_configuration.security_source
       )
@@ -337,7 +337,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'acceptDispute',
         security_source: @sdk_configuration.security_source
       )
@@ -476,7 +476,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'listDisputeEvidence',
         security_source: @sdk_configuration.security_source
       )
@@ -612,7 +612,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'uploadDisputeEvidenceFile',
         security_source: @sdk_configuration.security_source
       )
@@ -779,7 +779,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'uploadDisputeEvidenceText',
         security_source: @sdk_configuration.security_source
       )
@@ -922,7 +922,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'submitDisputeEvidence',
         security_source: @sdk_configuration.security_source
       )
@@ -1062,7 +1062,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getDisputeEvidence',
         security_source: @sdk_configuration.security_source
       )
@@ -1192,7 +1192,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'updateDisputeEvidence',
         security_source: @sdk_configuration.security_source
       )
@@ -1333,7 +1333,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'deleteDisputeEvidenceFile',
         security_source: @sdk_configuration.security_source
       )
@@ -1464,7 +1464,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getDisputeEvidenceData',
         security_source: @sdk_configuration.security_source
       )

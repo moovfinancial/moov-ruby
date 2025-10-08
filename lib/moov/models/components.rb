@@ -392,6 +392,8 @@ module Moov
       autoload :SendFundsAch, 'moov/models/components/sendfundsach.rb'
       autoload :SendFundsAchError, 'moov/models/components/sendfundsacherror.rb'
       autoload :SendFundsError, 'moov/models/components/sendfundserror.rb'
+      autoload :SendFundsInstantBank, 'moov/models/components/sendfundsinstantbank.rb'
+      autoload :SendFundsInstantBankError, 'moov/models/components/sendfundsinstantbankerror.rb'
       autoload :SendFundsPushToCard, 'moov/models/components/sendfundspushtocard.rb'
       autoload :SendFundsPushToCardError, 'moov/models/components/sendfundspushtocarderror.rb'
       autoload :SendFundsRtp, 'moov/models/components/sendfundsrtp.rb'

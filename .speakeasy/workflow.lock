@@ -1,20 +1,20 @@
-speakeasyVersion: 1.635.2
+speakeasyVersion: 1.636.0
 sources:
     latest:
         sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:6c3f0d67cc78da045285a46df5acc61637b42d1a2e873300ff96342185b655e9
-        sourceBlobDigest: sha256:bfdbc3cbf779276ca78df52c98ed273103342002e657a011e5b943dfe95ffe3a
+        sourceRevisionDigest: sha256:e4e59e0eb58cb6bd260fab6178c0e5f0fbf76f7313f922aa5159c05707a442a0
+        sourceBlobDigest: sha256:892ebc2680d616c01e00abdb6930cd5fa3b7fa9a8f38e0ab56974b91c5c4a722
         tags:
             - latest
-            - speakeasy-sdk-regen-1759846786
+            - speakeasy-sdk-regen-1759882525
 targets:
     moov:
         source: latest
         sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:6c3f0d67cc78da045285a46df5acc61637b42d1a2e873300ff96342185b655e9
-        sourceBlobDigest: sha256:bfdbc3cbf779276ca78df52c98ed273103342002e657a011e5b943dfe95ffe3a
+        sourceRevisionDigest: sha256:e4e59e0eb58cb6bd260fab6178c0e5f0fbf76f7313f922aa5159c05707a442a0
+        sourceBlobDigest: sha256:892ebc2680d616c01e00abdb6930cd5fa3b7fa9a8f38e0ab56974b91c5c4a722
         codeSamplesNamespace: latest-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:d701bcc2679d4dcf7285dfbd5922b9a212fb8af9bc0a99de6371d63deab14e58
+        codeSamplesRevisionDigest: sha256:bf15c9205f416cb398daeef41021e99e7981c3de7c18dbaa8c91dd9f95296a0a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

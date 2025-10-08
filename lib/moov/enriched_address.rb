@@ -65,7 +65,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getEnrichmentAddress',
         security_source: @sdk_configuration.security_source
       )

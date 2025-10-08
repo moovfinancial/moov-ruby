@@ -86,7 +86,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'linkAccountTerminalApplication',
         security_source: @sdk_configuration.security_source
       )
@@ -238,7 +238,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'listAccountTerminalApplications',
         security_source: @sdk_configuration.security_source
       )
@@ -360,7 +360,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getAccountTerminalApplication',
         security_source: @sdk_configuration.security_source
       )
@@ -482,7 +482,7 @@ module Moov
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'getTerminalConfiguration',
         security_source: @sdk_configuration.security_source
       )
