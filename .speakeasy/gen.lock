@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: e12b3c5ec4648286eacc58b1fd45f8d7
+  docChecksum: e45218d1b27d88ac724dc53d0b68c87e
   docVersion: latest
-  speakeasyVersion: 1.636.0
-  generationVersion: 2.723.2
-  releaseVersion: 0.1.28
-  configChecksum: 96aec884ecaaf447695f4bf0a158fb57
+  speakeasyVersion: 1.636.3
+  generationVersion: 2.723.11
+  releaseVersion: 0.1.29
+  configChecksum: b22d69c7e1202e4a28bae41ca6612243
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -4711,4 +4711,3 @@ examples:
           image/png: "0x84fb6c521A"
           image/jpeg: "0xcEe99Dc82c"
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.accounts.list()`: \n  *  `request.capability` **Changed**\n* `client.capabilities.get()`:  `request.capability_id` **Changed**\n* `client.capabilities.disable()`:  `request.capability_id` **Changed**\n* `client.underwriting.get()`:  `response.send_funds.instant_bank` **Added**\n* `client.underwriting.save()`: \n  *  `request.upsert_underwriting.send_funds.instant_bank` **Added**\n  *  `response.send_funds.instant_bank` **Added**\n  *  `error.send_funds.instant_bank` **Added**\n* `client.underwriting.upsert()`:  `response.send_funds.instant_bank` **Added**\n"
