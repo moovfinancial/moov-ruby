@@ -467,6 +467,7 @@ module Moov
       autoload :VerificationStatusDetail, 'moov/models/components/verificationstatusdetail.rb'
       autoload :VolumeByCustomerType, 'moov/models/components/volumebycustomertype.rb'
       autoload :VolumeByCustomerTypeError, 'moov/models/components/volumebycustomertypeerror.rb'
+      autoload :VolumeRange, 'moov/models/components/volumerange.rb'
       autoload :VolumeShareByCustomerType, 'moov/models/components/volumesharebycustomertype.rb'
       autoload :VolumeShareByCustomerTypeError, 'moov/models/components/volumesharebycustomertypeerror.rb'
       autoload :Wallet, 'moov/models/components/wallet.rb'

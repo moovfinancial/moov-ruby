@@ -13,6 +13,8 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # Defines the volume ranges for tiered pricing models.
+        field :volume_ranges, Crystalline::Array.new(Models::Components::VolumeRange), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeRanges'), required: true } }
         # A fixed fee that is applied to the amount of each transaction in the `fixed` and `blended` fee models.
         field :fixed_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fixedAmount') } }
         # A percentage fee that is applied to the amount of each transaction in the `blended` fee model, expressed as a decimal. 
@@ -24,8 +26,9 @@ module Moov
         # Specifies the maximum allowable spending for a single transaction, working as a transaction ceiling.
         field :max_per_transaction, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxPerTransaction') } }
 
-        sig { params(fixed_amount: T.nilable(Models::Components::AmountDecimal), variable_rate: T.nilable(::String), min_per_transaction: T.nilable(Models::Components::AmountDecimal), max_per_transaction: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(fixed_amount: nil, variable_rate: nil, min_per_transaction: nil, max_per_transaction: nil)
+        sig { params(volume_ranges: T::Array[Models::Components::VolumeRange], fixed_amount: T.nilable(Models::Components::AmountDecimal), variable_rate: T.nilable(::String), min_per_transaction: T.nilable(Models::Components::AmountDecimal), max_per_transaction: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(volume_ranges:, fixed_amount: nil, variable_rate: nil, min_per_transaction: nil, max_per_transaction: nil)
+          @volume_ranges = volume_ranges
           @fixed_amount = fixed_amount
           @variable_rate = variable_rate
           @min_per_transaction = min_per_transaction
@@ -35,6 +38,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @volume_ranges == other.volume_ranges
           return false unless @fixed_amount == other.fixed_amount
           return false unless @variable_rate == other.variable_rate
           return false unless @min_per_transaction == other.min_per_transaction

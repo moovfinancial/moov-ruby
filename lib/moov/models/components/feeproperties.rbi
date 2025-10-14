@@ -8,6 +8,8 @@ end
 
 
 class Moov::Models::Components::FeeProperties
+  def volume_ranges(); end
+  def volume_ranges=(str_); end
   def fixed_amount(); end
   def fixed_amount=(str_); end
   def variable_rate(); end

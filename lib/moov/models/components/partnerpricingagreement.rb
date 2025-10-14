@@ -31,14 +31,16 @@ module Moov
         field :minimum_commitment, Models::Components::MinimumCommitment, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumCommitment'), required: true } }
         # Fixed recurring amount paid in the billing period regardless of usage.
         field :monthly_platform_fee, Models::Components::MonthlyPlatformFee, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('monthlyPlatformFee'), required: true } }
-        # The integer percentage value of the revenue split for partner.
-        field :revenue_share, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('revenueShare'), required: true } }
+        #   The decimal-formatted numerical string of the revenue split for partner.
+        #   
+        #   For example, 2.25% is '2.25'.
+        field :revenue_share, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('revenueShare'), required: true } }
 
         field :account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID') } }
         # The description of the agreement.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
-        sig { params(agreement_id: ::String, plan_id: ::String, name: ::String, accepted_on: ::DateTime, status: Models::Components::FeePlanAgreementStatus, card_acquiring_model: Models::Components::CardAcquiringModel, billable_fees: T::Array[Models::Components::BillableFee], minimum_commitment: Models::Components::MinimumCommitment, monthly_platform_fee: Models::Components::MonthlyPlatformFee, revenue_share: ::Integer, account_id: T.nilable(::String), description: T.nilable(::String)).void }
+        sig { params(agreement_id: ::String, plan_id: ::String, name: ::String, accepted_on: ::DateTime, status: Models::Components::FeePlanAgreementStatus, card_acquiring_model: Models::Components::CardAcquiringModel, billable_fees: T::Array[Models::Components::BillableFee], minimum_commitment: Models::Components::MinimumCommitment, monthly_platform_fee: Models::Components::MonthlyPlatformFee, revenue_share: ::String, account_id: T.nilable(::String), description: T.nilable(::String)).void }
         def initialize(agreement_id:, plan_id:, name:, accepted_on:, status:, card_acquiring_model:, billable_fees:, minimum_commitment:, monthly_platform_fee:, revenue_share:, account_id: nil, description: nil)
           @agreement_id = agreement_id
           @plan_id = plan_id
