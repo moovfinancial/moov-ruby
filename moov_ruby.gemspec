@@ -4,7 +4,7 @@ $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 Gem::Specification.new do |s|
   s.name        = 'moov_ruby'
-  s.version     = '0.1.30'
+  s.version     = '0.1.31'
   s.platform    = Gem::Platform::RUBY
   s.licenses    = ['Apache-2.0']
   s.summary     = ''

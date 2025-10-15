@@ -34,6 +34,7 @@ module Moov
       autoload :PatchSweepConfigError, 'moov/models/errors/patchsweepconfigerror.rb'
       autoload :PatchTransferValidationError, 'moov/models/errors/patchtransfervalidationerror.rb'
       autoload :PatchWalletValidationError, 'moov/models/errors/patchwalletvalidationerror.rb'
+      autoload :ProductRequestValidationError, 'moov/models/errors/productrequestvalidationerror.rb'
       autoload :RefundValidationError, 'moov/models/errors/refundvalidationerror.rb'
       autoload :RepresentativeValidationError, 'moov/models/errors/representativevalidationerror.rb'
       autoload :RequestCardError, 'moov/models/errors/requestcarderror.rb'

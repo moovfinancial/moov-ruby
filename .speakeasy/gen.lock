@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 6503b7b7d6dfebd7246fb56141fb4061
+  docChecksum: a9fda11f6edaf028012401e174f3bd79
   docVersion: latest
   speakeasyVersion: 1.636.3
   generationVersion: 2.723.11
-  releaseVersion: 0.1.30
-  configChecksum: 2e01ea1f46bc980231e56c5a072ca94d
+  releaseVersion: 0.1.31
+  configChecksum: d2fd5ad3351d78c94f1540baa1af0b93
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -67,6 +67,7 @@ generatedFiles:
   - docs/models/components/adjustment.md
   - docs/models/components/amount.md
   - docs/models/components/amountdecimal.md
+  - docs/models/components/amountdecimalvalidationerror.md
   - docs/models/components/amountupdate.md
   - docs/models/components/amountvalidationerror.md
   - docs/models/components/applebillingcontact.md
@@ -76,6 +77,8 @@ generatedFiles:
   - docs/models/components/applepaypaymentmethodpaymentmethodtype.md
   - docs/models/components/applepayresponse.md
   - docs/models/components/applicationscope.md
+  - docs/models/components/assignproductimage.md
+  - docs/models/components/assignproductimagevalidationerror.md
   - docs/models/components/asynccreatedrefund.md
   - docs/models/components/asynctransfer.md
   - docs/models/components/authorizeduser.md
@@ -188,6 +191,8 @@ generatedFiles:
   - docs/models/components/createindividualerrorssn.md
   - docs/models/components/createindividualprofile.md
   - docs/models/components/createpaymentlink.md
+  - docs/models/components/createproductoption.md
+  - docs/models/components/createproductoptiongroup.md
   - docs/models/components/createprofile.md
   - docs/models/components/createprofileerror.md
   - docs/models/components/createrefund.md
@@ -382,6 +387,13 @@ generatedFiles:
   - docs/models/components/plaidpayload.md
   - docs/models/components/platformfees.md
   - docs/models/components/primaryregulator.md
+  - docs/models/components/product.md
+  - docs/models/components/productimagemetadata.md
+  - docs/models/components/productoption.md
+  - docs/models/components/productoptiongroup.md
+  - docs/models/components/productoptiongroupvalidationerror.md
+  - docs/models/components/productoptionvalidationerror.md
+  - docs/models/components/productrequest.md
   - docs/models/components/profile.md
   - docs/models/components/pullfromcardpaymentmethod.md
   - docs/models/components/pullfromcardpaymentmethodpaymentmethodtype.md
@@ -593,6 +605,7 @@ generatedFiles:
   - docs/models/errors/patchsweepconfigerror.md
   - docs/models/errors/patchtransfervalidationerror.md
   - docs/models/errors/patchwalletvalidationerror.md
+  - docs/models/errors/productrequestvalidationerror.md
   - docs/models/errors/refundvalidationerror.md
   - docs/models/errors/representativevalidationerror.md
   - docs/models/errors/requestcarderror.md
@@ -635,6 +648,8 @@ generatedFiles:
   - docs/models/operations/createonboardinginviteresponse.md
   - docs/models/operations/createpaymentlinkrequest.md
   - docs/models/operations/createpaymentlinkresponse.md
+  - docs/models/operations/createproductrequest.md
+  - docs/models/operations/createproductresponse.md
   - docs/models/operations/createreceiptsrequest.md
   - docs/models/operations/createreceiptsresponse.md
   - docs/models/operations/createrepresentativerequest.md
@@ -673,6 +688,8 @@ generatedFiles:
   - docs/models/operations/disablecardresponse.md
   - docs/models/operations/disablepaymentlinkrequest.md
   - docs/models/operations/disablepaymentlinkresponse.md
+  - docs/models/operations/disableproductrequest.md
+  - docs/models/operations/disableproductresponse.md
   - docs/models/operations/disconnectaccountrequest.md
   - docs/models/operations/disconnectaccountresponse.md
   - docs/models/operations/generateendtoendkeyrequest.md
@@ -733,6 +750,8 @@ generatedFiles:
   - docs/models/operations/getpaymentlinkresponse.md
   - docs/models/operations/getpaymentmethodrequest.md
   - docs/models/operations/getpaymentmethodresponse.md
+  - docs/models/operations/getproductrequest.md
+  - docs/models/operations/getproductresponse.md
   - docs/models/operations/getpublicimagerequest.md
   - docs/models/operations/getpublicimageresponse.md
   - docs/models/operations/getrefundrequest.md
@@ -828,6 +847,8 @@ generatedFiles:
   - docs/models/operations/listpaymentlinksresponse.md
   - docs/models/operations/listpaymentmethodsrequest.md
   - docs/models/operations/listpaymentmethodsresponse.md
+  - docs/models/operations/listproductsrequest.md
+  - docs/models/operations/listproductsresponse.md
   - docs/models/operations/listreceiptsrequest.md
   - docs/models/operations/listreceiptsresponse.md
   - docs/models/operations/listrefundsrequest.md
@@ -891,6 +912,8 @@ generatedFiles:
   - docs/models/operations/updateissuedcardresponse.md
   - docs/models/operations/updatepaymentlinkrequest.md
   - docs/models/operations/updatepaymentlinkresponse.md
+  - docs/models/operations/updateproductrequest.md
+  - docs/models/operations/updateproductresponse.md
   - docs/models/operations/updaterepresentativerequest.md
   - docs/models/operations/updaterepresentativeresponse.md
   - docs/models/operations/updateschedulerequest.md
@@ -938,6 +961,7 @@ generatedFiles:
   - docs/sdks/paymentlinks/README.md
   - docs/sdks/paymentmethods/README.md
   - docs/sdks/ping/README.md
+  - docs/sdks/products/README.md
   - docs/sdks/receipts/README.md
   - docs/sdks/representatives/README.md
   - docs/sdks/scheduling/README.md
@@ -1051,6 +1075,8 @@ generatedFiles:
   - lib/moov/models/components/amount.rbi
   - lib/moov/models/components/amountdecimal.rb
   - lib/moov/models/components/amountdecimal.rbi
+  - lib/moov/models/components/amountdecimalvalidationerror.rb
+  - lib/moov/models/components/amountdecimalvalidationerror.rbi
   - lib/moov/models/components/amountupdate.rb
   - lib/moov/models/components/amountupdate.rbi
   - lib/moov/models/components/amountvalidationerror.rb
@@ -1069,6 +1095,10 @@ generatedFiles:
   - lib/moov/models/components/applepayresponse.rbi
   - lib/moov/models/components/applicationscope.rb
   - lib/moov/models/components/applicationscope.rbi
+  - lib/moov/models/components/assignproductimage.rb
+  - lib/moov/models/components/assignproductimage.rbi
+  - lib/moov/models/components/assignproductimagevalidationerror.rb
+  - lib/moov/models/components/assignproductimagevalidationerror.rbi
   - lib/moov/models/components/asynccreatedrefund.rb
   - lib/moov/models/components/asynccreatedrefund.rbi
   - lib/moov/models/components/asynctransfer.rb
@@ -1293,6 +1323,10 @@ generatedFiles:
   - lib/moov/models/components/createindividualprofile.rbi
   - lib/moov/models/components/createpaymentlink.rb
   - lib/moov/models/components/createpaymentlink.rbi
+  - lib/moov/models/components/createproductoption.rb
+  - lib/moov/models/components/createproductoption.rbi
+  - lib/moov/models/components/createproductoptiongroup.rb
+  - lib/moov/models/components/createproductoptiongroup.rbi
   - lib/moov/models/components/createprofile.rb
   - lib/moov/models/components/createprofile.rbi
   - lib/moov/models/components/createprofileerror.rb
@@ -1681,6 +1715,20 @@ generatedFiles:
   - lib/moov/models/components/platformfees.rbi
   - lib/moov/models/components/primaryregulator.rb
   - lib/moov/models/components/primaryregulator.rbi
+  - lib/moov/models/components/product.rb
+  - lib/moov/models/components/product.rbi
+  - lib/moov/models/components/productimagemetadata.rb
+  - lib/moov/models/components/productimagemetadata.rbi
+  - lib/moov/models/components/productoption.rb
+  - lib/moov/models/components/productoption.rbi
+  - lib/moov/models/components/productoptiongroup.rb
+  - lib/moov/models/components/productoptiongroup.rbi
+  - lib/moov/models/components/productoptiongroupvalidationerror.rb
+  - lib/moov/models/components/productoptiongroupvalidationerror.rbi
+  - lib/moov/models/components/productoptionvalidationerror.rb
+  - lib/moov/models/components/productoptionvalidationerror.rbi
+  - lib/moov/models/components/productrequest.rb
+  - lib/moov/models/components/productrequest.rbi
   - lib/moov/models/components/profile.rb
   - lib/moov/models/components/profile.rbi
   - lib/moov/models/components/pullfromcardpaymentmethod.rb
@@ -2106,6 +2154,8 @@ generatedFiles:
   - lib/moov/models/errors/patchtransfervalidationerror.rbi
   - lib/moov/models/errors/patchwalletvalidationerror.rb
   - lib/moov/models/errors/patchwalletvalidationerror.rbi
+  - lib/moov/models/errors/productrequestvalidationerror.rb
+  - lib/moov/models/errors/productrequestvalidationerror.rbi
   - lib/moov/models/errors/refundvalidationerror.rb
   - lib/moov/models/errors/refundvalidationerror.rbi
   - lib/moov/models/errors/representativevalidationerror.rb
@@ -2191,6 +2241,10 @@ generatedFiles:
   - lib/moov/models/operations/createpaymentlink_request.rbi
   - lib/moov/models/operations/createpaymentlink_response.rb
   - lib/moov/models/operations/createpaymentlink_response.rbi
+  - lib/moov/models/operations/createproduct_request.rb
+  - lib/moov/models/operations/createproduct_request.rbi
+  - lib/moov/models/operations/createproduct_response.rb
+  - lib/moov/models/operations/createproduct_response.rbi
   - lib/moov/models/operations/createreceipts_request.rb
   - lib/moov/models/operations/createreceipts_request.rbi
   - lib/moov/models/operations/createreceipts_response.rb
@@ -2267,6 +2321,10 @@ generatedFiles:
   - lib/moov/models/operations/disablepaymentlink_request.rbi
   - lib/moov/models/operations/disablepaymentlink_response.rb
   - lib/moov/models/operations/disablepaymentlink_response.rbi
+  - lib/moov/models/operations/disableproduct_request.rb
+  - lib/moov/models/operations/disableproduct_request.rbi
+  - lib/moov/models/operations/disableproduct_response.rb
+  - lib/moov/models/operations/disableproduct_response.rbi
   - lib/moov/models/operations/disconnectaccount_request.rb
   - lib/moov/models/operations/disconnectaccount_request.rbi
   - lib/moov/models/operations/disconnectaccount_response.rb
@@ -2387,6 +2445,10 @@ generatedFiles:
   - lib/moov/models/operations/getpaymentmethod_request.rbi
   - lib/moov/models/operations/getpaymentmethod_response.rb
   - lib/moov/models/operations/getpaymentmethod_response.rbi
+  - lib/moov/models/operations/getproduct_request.rb
+  - lib/moov/models/operations/getproduct_request.rbi
+  - lib/moov/models/operations/getproduct_response.rb
+  - lib/moov/models/operations/getproduct_response.rbi
   - lib/moov/models/operations/getpublicimage_request.rb
   - lib/moov/models/operations/getpublicimage_request.rbi
   - lib/moov/models/operations/getpublicimage_response.rb
@@ -2577,6 +2639,10 @@ generatedFiles:
   - lib/moov/models/operations/listpaymentmethods_request.rbi
   - lib/moov/models/operations/listpaymentmethods_response.rb
   - lib/moov/models/operations/listpaymentmethods_response.rbi
+  - lib/moov/models/operations/listproducts_request.rb
+  - lib/moov/models/operations/listproducts_request.rbi
+  - lib/moov/models/operations/listproducts_response.rb
+  - lib/moov/models/operations/listproducts_response.rbi
   - lib/moov/models/operations/listreceipts_request.rb
   - lib/moov/models/operations/listreceipts_request.rbi
   - lib/moov/models/operations/listreceipts_response.rb
@@ -2703,6 +2769,10 @@ generatedFiles:
   - lib/moov/models/operations/updatepaymentlink_request.rbi
   - lib/moov/models/operations/updatepaymentlink_response.rb
   - lib/moov/models/operations/updatepaymentlink_response.rbi
+  - lib/moov/models/operations/updateproduct_request.rb
+  - lib/moov/models/operations/updateproduct_request.rbi
+  - lib/moov/models/operations/updateproduct_response.rb
+  - lib/moov/models/operations/updateproduct_response.rbi
   - lib/moov/models/operations/updaterepresentative_request.rb
   - lib/moov/models/operations/updaterepresentative_request.rbi
   - lib/moov/models/operations/updaterepresentative_response.rb
@@ -2751,6 +2821,7 @@ generatedFiles:
   - lib/moov/payment_links.rb
   - lib/moov/payment_methods.rb
   - lib/moov/ping.rb
+  - lib/moov/products.rb
   - lib/moov/receipts.rb
   - lib/moov/representatives.rb
   - lib/moov/scheduling.rb
@@ -4713,11 +4784,79 @@ examples:
           image/webp: "0x97ceA7bd6F"
           image/png: "0x84fb6c521A"
           image/jpeg: "0xcEe99Dc82c"
+  listProducts:
+    speakeasy-default-list-products:
+      parameters:
+        path:
+          accountID: "cd696219-4308-446c-b0d8-1759254995c2"
+        query:
+          skip: 60
+          count: 20
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: [{"productID": "1e229a22-6396-4efa-beac-d18ff5c58ab7", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 29985, "maxSelect": 247517, "options": [{"name": "<value>", "priceModifier": "-14.89", "images": [{"imageID": "47269bb9-c8c6-4c76-8933-0d6ce87d2946", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "47269bb9-c8c6-4c76-8933-0d6ce87d2946", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g"}], "createdOn": "2023-01-22T10:49:40.225Z", "updatedOn": "2023-11-19T10:02:46.267Z"}]
+  createProduct:
+    speakeasy-default-create-product:
+      parameters:
+        path:
+          accountID: "27cd3181-7c1c-4d81-b020-e7d55c33941f"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        application/json: {"title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 798807, "maxSelect": 321505, "options": [{"name": "<value>", "priceModifier": "-14.89"}]}]}
+      responses:
+        "201":
+          application/json: {"productID": "c7657b6a-06b3-4972-805a-6c4111175af2", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 659263, "maxSelect": 854821, "options": [{"name": "<value>", "priceModifier": "-14.89", "images": [{"imageID": "ee6b4549-0292-47f9-a2bc-ea0a521ac908", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "ee6b4549-0292-47f9-a2bc-ea0a521ac908", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g"}], "createdOn": "2023-01-19T08:35:48.193Z", "updatedOn": "2024-02-14T05:19:14.970Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  getProduct:
+    speakeasy-default-get-product:
+      parameters:
+        path:
+          accountID: "a749d848-5ebc-42a4-9ae6-555804317835"
+          productID: "dd0b4873-5cf5-4aa8-aa86-e31d86f7e38a"
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "200":
+          application/json: {"productID": "3c2445e7-f0c4-45d5-bd2a-88bcdc056c20", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 197351, "maxSelect": 515143, "options": []}], "images": [{"imageID": "33c05564-9e61-48d6-b69e-269a48a62a9e", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g"}], "createdOn": "2024-11-12T09:31:50.113Z", "updatedOn": "2025-11-08T13:39:00.825Z"}
+  updateProduct:
+    speakeasy-default-update-product:
+      parameters:
+        path:
+          accountID: "7a7b55ed-d90d-4e83-a8f6-f146eaebd0cc"
+          productID: "fa407877-3b46-4484-814e-65b147d76a9e"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        application/json: {"title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 328576, "maxSelect": 430951, "options": []}]}
+      responses:
+        "200":
+          application/json: {"productID": "c0c48b06-a2e8-4b60-8ff4-13050279bce9", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 918880, "maxSelect": 680367, "options": [{"name": "<value>", "priceModifier": "-14.89", "images": [{"imageID": "b76b32e6-bc87-46f5-bdcb-e1737416539d", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "b76b32e6-bc87-46f5-bdcb-e1737416539d", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g"}], "createdOn": "2025-06-13T16:49:57.138Z", "updatedOn": "2023-11-04T10:58:23.378Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  disableProduct:
+    speakeasy-default-disable-product:
+      parameters:
+        path:
+          accountID: "9fbe72c0-abba-4bb7-b1d0-d15ee702fe62"
+          productID: "1e11a7dc-4e86-41ed-b256-55c22f3bfd38"
+        header:
+          x-moov-version: "v2024.01.00"
+      responses:
+        "400":
+          application/json: {"error": "<value>"}
 examplesVersion: 1.0.2
 releaseNotes: |
   ## Ruby SDK Changes Detected:
-  * `client.fee_plans.list_partner_pricing()`:  `response.[]` **Changed** **Breaking** :warning:
-  * `client.fee_plans.list_partner_pricing_agreements()`:  `response.[]` **Changed** **Breaking** :warning:
-  * `client.fee_plans.list_fee_plan_agreements()`:  `response.[].billable_fees.[].fee_properties.volume_ranges` **Added**
-  * `client.fee_plans.create_fee_plan_agreements()`:  `response.billable_fees.[].fee_properties.volume_ranges` **Added**
-  * `client.fee_plans.list_fee_plans()`:  `response.[].billable_fees.[].fee_properties.volume_ranges` **Added**
+  * `client.products.list()`: **Added**
+  * `client.products.create()`: **Added**
+  * `client.products.get()`: **Added**
+  * `client.products.update()`: **Added**
+  * `client.products.disable()`: **Added**
