@@ -22,11 +22,11 @@ module Moov
         # - HTML is not permitted and will be rejected
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # The adjustment applied to a product's base price by this option. Can be negative, positive, or zero.
-        field :price_modifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priceModifier') } }
+        field :price_modifier, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priceModifier') } }
         # Assign previously uploaded images to a product or option.
         field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AssignProductImage)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
 
-        sig { params(name: ::String, description: T.nilable(::String), price_modifier: T.nilable(::String), images: T.nilable(T::Array[Models::Components::AssignProductImage])).void }
+        sig { params(name: ::String, description: T.nilable(::String), price_modifier: T.nilable(Models::Components::AmountDecimal), images: T.nilable(T::Array[Models::Components::AssignProductImage])).void }
         def initialize(name:, description: nil, price_modifier: nil, images: nil)
           @name = name
           @description = description

@@ -18,11 +18,11 @@ module Moov
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
-        field :price_modifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priceModifier') } }
+        field :price_modifier, Crystalline::Nilable.new(Models::Components::AmountDecimalValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priceModifier') } }
 
         field :images, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::AssignProductImageValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
 
-        sig { params(name: T.nilable(::String), description: T.nilable(::String), price_modifier: T.nilable(::String), images: T.nilable(T::Hash[Symbol, Models::Components::AssignProductImageValidationError])).void }
+        sig { params(name: T.nilable(::String), description: T.nilable(::String), price_modifier: T.nilable(Models::Components::AmountDecimalValidationError), images: T.nilable(T::Hash[Symbol, Models::Components::AssignProductImageValidationError])).void }
         def initialize(name: nil, description: nil, price_modifier: nil, images: nil)
           @name = name
           @description = description

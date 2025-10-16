@@ -95,7 +95,10 @@ res = s.products.create(account_id: '27cd3181-7c1c-4d81-b020-e7d55c33941f', prod
         Models::Components::CreateProductOption.new(
           name: 'Strawberry puree',
           description: 'Fresh and fruity.',
-          price_modifier: '0.99',
+          price_modifier: Models::Components::AmountDecimal.new(
+            currency: 'USD',
+            value_decimal: '0.99',
+          ),
           images: [
             Models::Components::AssignProductImage.new(
               image_id: 'd359808d-9896-4414-8d17-dac43f35842d',
@@ -104,11 +107,17 @@ res = s.products.create(account_id: '27cd3181-7c1c-4d81-b020-e7d55c33941f', prod
         ),
         Models::Components::CreateProductOption.new(
           name: 'Passionfruit syrup',
-          price_modifier: '0.49',
+          price_modifier: Models::Components::AmountDecimal.new(
+            currency: 'USD',
+            value_decimal: '0.49',
+          ),
         ),
         Models::Components::CreateProductOption.new(
           name: 'Cherry syrup',
-          price_modifier: '0.49',
+          price_modifier: Models::Components::AmountDecimal.new(
+            currency: 'USD',
+            value_decimal: '0.49',
+          ),
         ),
       ],
     ),
@@ -123,7 +132,10 @@ res = s.products.create(account_id: '27cd3181-7c1c-4d81-b020-e7d55c33941f', prod
         ),
         Models::Components::CreateProductOption.new(
           name: 'Honey',
-          price_modifier: '0.99',
+          price_modifier: Models::Components::AmountDecimal.new(
+            currency: 'USD',
+            value_decimal: '0.99',
+          ),
         ),
         Models::Components::CreateProductOption.new(
           name: 'Stevia',
