@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: e6cd524e55b1972bf8717ee2de4f9b92
+  docChecksum: 518adb2711be85935478344536fce985
   docVersion: latest
-  speakeasyVersion: 1.636.3
-  generationVersion: 2.723.11
-  releaseVersion: 0.1.32
-  configChecksum: 36d7950d5418ece2440e24c45a86b3a5
+  speakeasyVersion: 1.637.0
+  generationVersion: 2.727.4
+  releaseVersion: 0.2.0
+  configChecksum: ed48041c01f6fc321c11a617b720d536
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 features:
   ruby:
     constsAndDefaults: 0.1.1
-    core: 3.10.3
+    core: 3.11.0
     deprecations: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.81.9
@@ -281,6 +281,12 @@ generatedFiles:
   - docs/models/components/granttype.md
   - docs/models/components/guestprofile.md
   - docs/models/components/imagemetadata.md
+  - docs/models/components/imagemetadatarequest.md
+  - docs/models/components/imagemetadatavalidationerror.md
+  - docs/models/components/imageupdaterequestmultipart.md
+  - docs/models/components/imageupdaterequestmultipartimage.md
+  - docs/models/components/imageuploadrequestmultipart.md
+  - docs/models/components/imageuploadrequestmultipartimage.md
   - docs/models/components/incurredfee.md
   - docs/models/components/individualname.md
   - docs/models/components/individualnameerror.md
@@ -322,6 +328,7 @@ generatedFiles:
   - docs/models/components/manual.md
   - docs/models/components/manualtermsofservice.md
   - docs/models/components/manualtermsofserviceupdate.md
+  - docs/models/components/metadata.md
   - docs/models/components/microdepositstatus.md
   - docs/models/components/minimumcommitment.md
   - docs/models/components/mode.md
@@ -594,6 +601,7 @@ generatedFiles:
   - docs/models/errors/fileuploadvalidationerror.md
   - docs/models/errors/filevalidationerror.md
   - docs/models/errors/genericerror.md
+  - docs/models/errors/imagerequestvalidationerror.md
   - docs/models/errors/linkapplepayerror.md
   - docs/models/errors/linkcarderror.md
   - docs/models/errors/listtransfersvalidationerror.md
@@ -908,6 +916,8 @@ generatedFiles:
   - docs/models/operations/updatecardresponse.md
   - docs/models/operations/updatedisputeevidencerequest.md
   - docs/models/operations/updatedisputeevidenceresponse.md
+  - docs/models/operations/updateimagerequest.md
+  - docs/models/operations/updateimageresponse.md
   - docs/models/operations/updateissuedcardrequest.md
   - docs/models/operations/updateissuedcardresponse.md
   - docs/models/operations/updatepaymentlinkrequest.md
@@ -932,6 +942,8 @@ generatedFiles:
   - docs/models/operations/uploaddisputeevidencetextresponse.md
   - docs/models/operations/uploadfilerequest.md
   - docs/models/operations/uploadfileresponse.md
+  - docs/models/operations/uploadimagerequest.md
+  - docs/models/operations/uploadimageresponse.md
   - docs/models/operations/upsertbrandrequest.md
   - docs/models/operations/upsertbrandresponse.md
   - docs/models/operations/upsertunderwritingrequest.md
@@ -1503,6 +1515,18 @@ generatedFiles:
   - lib/moov/models/components/guestprofile.rbi
   - lib/moov/models/components/imagemetadata.rb
   - lib/moov/models/components/imagemetadata.rbi
+  - lib/moov/models/components/imagemetadatarequest.rb
+  - lib/moov/models/components/imagemetadatarequest.rbi
+  - lib/moov/models/components/imagemetadatavalidationerror.rb
+  - lib/moov/models/components/imagemetadatavalidationerror.rbi
+  - lib/moov/models/components/imageupdaterequestmultipart.rb
+  - lib/moov/models/components/imageupdaterequestmultipart.rbi
+  - lib/moov/models/components/imageupdaterequestmultipart_image.rb
+  - lib/moov/models/components/imageupdaterequestmultipart_image.rbi
+  - lib/moov/models/components/imageuploadrequestmultipart.rb
+  - lib/moov/models/components/imageuploadrequestmultipart.rbi
+  - lib/moov/models/components/imageuploadrequestmultipart_image.rb
+  - lib/moov/models/components/imageuploadrequestmultipart_image.rbi
   - lib/moov/models/components/incurredfee.rb
   - lib/moov/models/components/incurredfee.rbi
   - lib/moov/models/components/individualname.rb
@@ -1585,6 +1609,8 @@ generatedFiles:
   - lib/moov/models/components/manualtermsofservice.rbi
   - lib/moov/models/components/manualtermsofserviceupdate.rb
   - lib/moov/models/components/manualtermsofserviceupdate.rbi
+  - lib/moov/models/components/metadata.rb
+  - lib/moov/models/components/metadata.rbi
   - lib/moov/models/components/microdepositstatus.rb
   - lib/moov/models/components/microdepositstatus.rbi
   - lib/moov/models/components/minimumcommitment.rb
@@ -2132,6 +2158,8 @@ generatedFiles:
   - lib/moov/models/errors/filevalidationerror.rbi
   - lib/moov/models/errors/genericerror.rb
   - lib/moov/models/errors/genericerror.rbi
+  - lib/moov/models/errors/imagerequestvalidationerror.rb
+  - lib/moov/models/errors/imagerequestvalidationerror.rbi
   - lib/moov/models/errors/linkapplepayerror.rb
   - lib/moov/models/errors/linkapplepayerror.rbi
   - lib/moov/models/errors/linkcarderror.rb
@@ -2761,6 +2789,10 @@ generatedFiles:
   - lib/moov/models/operations/updatedisputeevidence_request.rbi
   - lib/moov/models/operations/updatedisputeevidence_response.rb
   - lib/moov/models/operations/updatedisputeevidence_response.rbi
+  - lib/moov/models/operations/updateimage_request.rb
+  - lib/moov/models/operations/updateimage_request.rbi
+  - lib/moov/models/operations/updateimage_response.rb
+  - lib/moov/models/operations/updateimage_response.rbi
   - lib/moov/models/operations/updateissuedcard_request.rb
   - lib/moov/models/operations/updateissuedcard_request.rbi
   - lib/moov/models/operations/updateissuedcard_response.rb
@@ -2809,6 +2841,10 @@ generatedFiles:
   - lib/moov/models/operations/uploadfile_request.rbi
   - lib/moov/models/operations/uploadfile_response.rb
   - lib/moov/models/operations/uploadfile_response.rbi
+  - lib/moov/models/operations/uploadimage_request.rb
+  - lib/moov/models/operations/uploadimage_request.rbi
+  - lib/moov/models/operations/uploadimage_response.rb
+  - lib/moov/models/operations/uploadimage_response.rbi
   - lib/moov/models/operations/upsertbrand_request.rb
   - lib/moov/models/operations/upsertbrand_request.rbi
   - lib/moov/models/operations/upsertbrand_response.rb
@@ -4852,5 +4888,41 @@ examples:
       responses:
         "400":
           application/json: {"error": "<value>"}
+  uploadImage:
+    speakeasy-default-upload-image:
+      parameters:
+        path:
+          accountID: "c0971a52-1f1c-4511-876a-f45c4cfd6154"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        multipart/form-data: {"image": "x-file: example.file"}
+      responses:
+        "201":
+          application/json: {"imageID": "533aadc1-0389-4da9-9c87-92bd49469db5", "link": "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb", "createdOn": "2023-03-14T15:49:36.140Z", "updatedOn": "2024-08-18T16:45:51.667Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  updateImage:
+    speakeasy-default-update-image:
+      parameters:
+        path:
+          accountID: "310f4f19-45cf-4429-9aae-8e93827ecb0d"
+          imageID: "8ef109f8-5a61-4355-b2e4-b8ac2f6f6f47"
+        header:
+          x-moov-version: "v2024.01.00"
+      requestBody:
+        multipart/form-data: {}
+      responses:
+        "200":
+          application/json: {"imageID": "37d44505-cb7b-46de-8995-9c6633aaa305", "link": "https://api.moov.io/images/qJRAaAwwF5hmfeAFdHjIb", "createdOn": "2023-07-27T04:09:13.260Z", "updatedOn": "2025-11-20T16:38:12.638Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.products.list()`:  `response.[].option_groups.[].options.[].price_modifier` **Changed** **Breaking** :warning:\n* `client.products.create()`: \n  *  `request.product_request.option_groups.[].options.[].price_modifier` **Changed** **Breaking** :warning:\n  *  `response.option_groups.[].options.[].price_modifier` **Changed** **Breaking** :warning:\n  *  `error.option_groups.{}.options.{}.price_modifier` **Changed** **Breaking** :warning:\n* `client.products.get()`:  `response.option_groups.[].options.[].price_modifier` **Changed** **Breaking** :warning:\n* `client.products.update()`: \n  *  `request.product_request.option_groups.[].options.[].price_modifier` **Changed** **Breaking** :warning:\n  *  `response.option_groups.[].options.[].price_modifier` **Changed** **Breaking** :warning:\n  *  `error.option_groups.{}.options.{}.price_modifier` **Changed** **Breaking** :warning:\n"
+releaseNotes: |
+  ## Ruby SDK Changes Detected:
+  * `client.images.upload()`: **Added**
+  * `client.images.update()`: **Added**
