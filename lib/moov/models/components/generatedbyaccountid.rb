@@ -14,7 +14,7 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('AccountID') } }
+        field :account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID') } }
 
         sig { params(account_id: T.nilable(::String)).void }
         def initialize(account_id: nil)

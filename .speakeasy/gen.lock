@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 518adb2711be85935478344536fce985
+  docChecksum: 1cd81fb54a409cc009e4e584e28384bb
   docVersion: latest
-  speakeasyVersion: 1.637.0
-  generationVersion: 2.727.4
-  releaseVersion: 0.2.0
-  configChecksum: ed48041c01f6fc321c11a617b720d536
+  speakeasyVersion: 1.637.3
+  generationVersion: 2.727.9
+  releaseVersion: 0.2.1
+  configChecksum: 4e489f2c0c056f567ba1d24d87c6b475
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -4924,5 +4924,5 @@ examples:
 examplesVersion: 1.0.2
 releaseNotes: |
   ## Ruby SDK Changes Detected:
-  * `client.images.upload()`: **Added**
-  * `client.images.update()`: **Added**
+  * `client.fee_plans.retrieve_fees()`:  `response.[].generated_by` **Changed** **Breaking** :warning:
+  * `client.fee_plans.list_fees_fetch()`:  `response.[].generated_by` **Changed** **Breaking** :warning:
