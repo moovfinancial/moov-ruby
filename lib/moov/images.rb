@@ -39,12 +39,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListImageMetadataResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListImageMetadataResponse) }
+    def list(account_id:, x_moov_version: nil, skip: nil, count: nil, timeout_ms: nil)
       # list - List metadata for all images in the specified account.
       request = Models::Operations::ListImageMetadataRequest.new(
         account_id: account_id,
-        x_moov_version: x_moov_version
+        x_moov_version: x_moov_version,
+        skip: skip,
+        count: count
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -57,6 +59,7 @@ module Moov
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
       headers = T.cast(headers, T::Hash[String, String])
+      query_params = Utils.get_query_params(Models::Operations::ListImageMetadataRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -84,6 +87,7 @@ module Moov
         http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
           Utils.configure_request_security(req, security)
 
           @sdk_configuration.hooks.before_request(
@@ -880,7 +884,7 @@ module Moov
         )
       elsif Utils.match_status_code(http_response.status, ['404', '429'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      elsif Utils.match_status_code(http_response.status, ['500', '502', '504'])
+      elsif Utils.match_status_code(http_response.status, ['500', '502', '503', '504'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
       elsif Utils.match_status_code(http_response.status, ['4XX'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'

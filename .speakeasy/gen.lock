@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 1cd81fb54a409cc009e4e584e28384bb
+  docChecksum: 7497b3d05e074981ecf2630b27875677
   docVersion: latest
-  speakeasyVersion: 1.637.3
-  generationVersion: 2.727.9
-  releaseVersion: 0.2.1
-  configChecksum: 4e489f2c0c056f567ba1d24d87c6b475
+  speakeasyVersion: 1.638.0
+  generationVersion: 2.728.0
+  releaseVersion: 0.2.2
+  configChecksum: 005299f1fda49914a3dce21a447f4cb8
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -4781,6 +4781,9 @@ examples:
       parameters:
         path:
           accountID: "3a4ed2d9-03e1-4b0e-b45f-2a9ca72f8adb"
+        query:
+          skip: 60
+          count: 20
         header:
           x-moov-version: "v2024.01.00"
       responses:
@@ -4924,5 +4927,5 @@ examples:
 examplesVersion: 1.0.2
 releaseNotes: |
   ## Ruby SDK Changes Detected:
-  * `client.fee_plans.retrieve_fees()`:  `response.[].generated_by` **Changed** **Breaking** :warning:
-  * `client.fee_plans.list_fees_fetch()`:  `response.[].generated_by` **Changed** **Breaking** :warning:
+  * `client.images.list()`:  `request` **Changed**
+  * `client.images.get_public()`:  `error.status[503]` **Added**

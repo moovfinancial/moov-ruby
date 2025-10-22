@@ -15,6 +15,10 @@ module Moov
 
 
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
+
+        field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
+
+        field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -26,9 +30,11 @@ module Moov
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, x_moov_version: 'v2024.01.00')
+        sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), x_moov_version: T.nilable(::String)).void }
+        def initialize(account_id:, skip: nil, count: nil, x_moov_version: 'v2024.01.00')
           @account_id = account_id
+          @skip = skip
+          @count = count
           @x_moov_version = x_moov_version
         end
 
@@ -36,6 +42,8 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
+          return false unless @skip == other.skip
+          return false unless @count == other.count
           return false unless @x_moov_version == other.x_moov_version
           true
         end
