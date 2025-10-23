@@ -48,7 +48,7 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
+        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
         sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), respond_start_date_time: T.nilable(::DateTime), respond_end_date_time: T.nilable(::DateTime), status: T.nilable(Models::Components::DisputeStatus), merchant_account_id: T.nilable(::String), cardholder_account_id: T.nilable(::String), dispute_i_ds: T.nilable(T::Array[::String]), transfer_i_ds: T.nilable(T::Array[::String]), order_by: T.nilable(::String), x_moov_version: T.nilable(::String)).void }
         def initialize(account_id:, skip: nil, count: nil, start_date_time: nil, end_date_time: nil, respond_start_date_time: nil, respond_end_date_time: nil, status: nil, merchant_account_id: nil, cardholder_account_id: nil, dispute_i_ds: nil, transfer_i_ds: nil, order_by: nil, x_moov_version: 'v2024.01.00')

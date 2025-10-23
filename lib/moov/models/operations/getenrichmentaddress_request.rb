@@ -50,7 +50,7 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
+        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
         sig { params(search: ::String, max_results: T.nilable(::Integer), include_cities: T.nilable(::String), include_states: T.nilable(::String), include_zipcodes: T.nilable(::String), exclude_states: T.nilable(::String), prefer_cities: T.nilable(::String), prefer_states: T.nilable(::String), prefer_zipcodes: T.nilable(::String), prefer_ratio: T.nilable(::Integer), prefer_geolocation: T.nilable(::String), selected: T.nilable(::String), source: T.nilable(::String), x_moov_version: T.nilable(::String)).void }
         def initialize(search:, max_results: nil, include_cities: nil, include_states: nil, include_zipcodes: nil, exclude_states: nil, prefer_cities: nil, prefer_states: nil, prefer_zipcodes: nil, prefer_ratio: nil, prefer_geolocation: nil, selected: nil, source: nil, x_moov_version: 'v2024.01.00')

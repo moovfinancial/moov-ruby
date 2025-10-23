@@ -292,6 +292,8 @@ module Moov
       autoload :UpdateCardResponse, 'moov/models/operations/updatecard_response.rb'
       autoload :UpdateDisputeEvidenceRequest, 'moov/models/operations/updatedisputeevidence_request.rb'
       autoload :UpdateDisputeEvidenceResponse, 'moov/models/operations/updatedisputeevidence_response.rb'
+      autoload :UpdateImageMetadataRequest, 'moov/models/operations/updateimagemetadata_request.rb'
+      autoload :UpdateImageMetadataResponse, 'moov/models/operations/updateimagemetadata_response.rb'
       autoload :UpdateImageRequest, 'moov/models/operations/updateimage_request.rb'
       autoload :UpdateImageResponse, 'moov/models/operations/updateimage_response.rb'
       autoload :UpdateIssuedCardRequest, 'moov/models/operations/updateissuedcard_request.rb'

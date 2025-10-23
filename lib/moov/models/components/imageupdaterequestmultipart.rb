@@ -14,14 +14,14 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :image, Crystalline::Nilable.new(Models::Components::ImageUpdateRequestMultiPartImage), { 'multipart_form': { 'file': true, 'field_name': 'image' } }
+        field :image, Models::Components::ImageUpdateRequestMultiPartImage, { 'multipart_form': { 'file': true, 'field_name': 'image' } }
         # JSON-encoded metadata to update for the image.
         # 
         # Omit this field if not updating metadata, or send `null` to clear existing metadata.
         field :metadata, Crystalline::Nilable.new(Models::Components::Metadata), { 'multipart_form': { 'field_name': 'metadata', 'json': true } }
 
-        sig { params(image: T.nilable(Models::Components::ImageUpdateRequestMultiPartImage), metadata: T.nilable(Models::Components::Metadata)).void }
-        def initialize(image: nil, metadata: nil)
+        sig { params(image: Models::Components::ImageUpdateRequestMultiPartImage, metadata: T.nilable(Models::Components::Metadata)).void }
+        def initialize(image:, metadata: nil)
           @image = image
           @metadata = metadata
         end

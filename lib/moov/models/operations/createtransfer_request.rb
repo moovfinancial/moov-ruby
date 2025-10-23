@@ -31,7 +31,7 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
+        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
         sig { params(x_idempotency_key: ::String, account_id: ::String, create_transfer: Models::Components::CreateTransfer, x_wait_for: T.nilable(Models::Components::TransferWaitFor), x_moov_version: T.nilable(::String)).void }
         def initialize(x_idempotency_key:, account_id:, create_transfer:, x_wait_for: nil, x_moov_version: 'v2024.01.00')

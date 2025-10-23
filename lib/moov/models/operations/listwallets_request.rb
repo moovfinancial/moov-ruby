@@ -32,7 +32,7 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
+        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
         sig { params(account_id: ::String, status: T.nilable(Models::Components::WalletStatus), wallet_type: T.nilable(Models::Components::WalletType), skip: T.nilable(::Integer), count: T.nilable(::Integer), x_moov_version: T.nilable(::String)).void }
         def initialize(account_id:, status: nil, wallet_type: nil, skip: nil, count: nil, x_moov_version: 'v2024.01.00')

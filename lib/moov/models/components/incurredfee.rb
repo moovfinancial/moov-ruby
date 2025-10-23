@@ -26,9 +26,9 @@ module Moov
 
         field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
         # The entity that generated the fee.
-        field :generated_by, Crystalline::Nilable.new(Crystalline::Union.new(Models::Components::GeneratedByTransferID, Models::Components::GeneratedByCardID, Models::Components::GeneratedByDisputeID, Models::Components::GeneratedByAccountID, Models::Components::GeneratedByBankAccountID)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('generatedBy') } }
+        field :generated_by, Crystalline::Nilable.new(Models::Components::GeneratedBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('generatedBy') } }
 
-        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(T.any(Models::Components::GeneratedByTransferID, Models::Components::GeneratedByCardID, Models::Components::GeneratedByDisputeID, Models::Components::GeneratedByAccountID, Models::Components::GeneratedByBankAccountID))).void }
+        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy)).void }
         def initialize(fee_id: nil, account_id: nil, wallet_id: nil, created_on: nil, fee_name: nil, amount: nil, generated_by: nil)
           @fee_id = fee_id
           @account_id = account_id

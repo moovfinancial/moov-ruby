@@ -14,12 +14,33 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        
-        def initialize; end
+        field :transfer_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID') } }
+
+        field :card_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardID') } }
+
+        field :dispute_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputeID') } }
+
+        field :account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID') } }
+
+        field :bank_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountID') } }
+
+        sig { params(transfer_id: T.nilable(::String), card_id: T.nilable(::String), dispute_id: T.nilable(::String), account_id: T.nilable(::String), bank_account_id: T.nilable(::String)).void }
+        def initialize(transfer_id: nil, card_id: nil, dispute_id: nil, account_id: nil, bank_account_id: nil)
+          @transfer_id = transfer_id
+          @card_id = card_id
+          @dispute_id = dispute_id
+          @account_id = account_id
+          @bank_account_id = bank_account_id
+        end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @transfer_id == other.transfer_id
+          return false unless @card_id == other.card_id
+          return false unless @dispute_id == other.dispute_id
+          return false unless @account_id == other.account_id
+          return false unless @bank_account_id == other.bank_account_id
           true
         end
       end

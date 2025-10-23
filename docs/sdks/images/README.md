@@ -9,12 +9,13 @@
 * [upload](#upload) -   Upload a new PNG, JPEG, or WebP image with optional metadata. 
   Duplicate images, and requests larger than 16MB will be rejected.
 * [get_metadata](#get_metadata) - Retrieve metadata for a specific image by its ID.
-* [update](#update) - Update an existing image and/or its metadata.
+* [update](#update) - Replace an existing image and, optionally, its metadata.
 
-Duplicate images, and requests larger than 16MB will be rejected. Omit any
-form parts you do not wish to update. Existing metadata can be cleared by
-sending `null` for the `metadata` form part.
+This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
+the metadata form section to keep existing metadata, or send `null` to clear it. 
+Duplicate images, and requests larger than 16MB will be rejected.
 * [delete](#delete) - Permanently delete an image by its ID.
+* [update_metadata](#update_metadata) - Replace the metadata for an existing image.
 * [get_public](#get_public) - Get an image by its public ID.
 
 ## list
@@ -151,15 +152,15 @@ end
 
 ## update
 
-Update an existing image and/or its metadata.
+Replace an existing image and, optionally, its metadata.
 
-Duplicate images, and requests larger than 16MB will be rejected. Omit any
-form parts you do not wish to update. Existing metadata can be cleared by
-sending `null` for the `metadata` form part.
+This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
+the metadata form section to keep existing metadata, or send `null` to clear it. 
+Duplicate images, and requests larger than 16MB will be rejected.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="updateImage" method="patch" path="/accounts/{accountID}/images/{imageID}" -->
+<!-- UsageSnippet language="ruby" operationID="updateImage" method="put" path="/accounts/{accountID}/images/{imageID}" -->
 ```ruby
 require 'moov_ruby'
 
@@ -168,7 +169,12 @@ s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
     )
 
-res = s.images.update(account_id: '310f4f19-45cf-4429-9aae-8e93827ecb0d', image_id: '8ef109f8-5a61-4355-b2e4-b8ac2f6f6f47', image_update_request_multi_part: Models::Components::ImageUpdateRequestMultiPart.new())
+res = s.images.update(account_id: '310f4f19-45cf-4429-9aae-8e93827ecb0d', image_id: '8ef109f8-5a61-4355-b2e4-b8ac2f6f6f47', image_update_request_multi_part: Models::Components::ImageUpdateRequestMultiPart.new(
+  image: Models::Components::ImageUpdateRequestMultiPartImage.new(
+    file_name: 'example.file',
+    content: File.binread("example.file"),
+  ),
+))
 
 unless res.image_metadata.nil?
   # handle response
@@ -238,6 +244,50 @@ end
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | Models::Errors::GenericError | 400, 409                     | application/json             |
 | Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
+
+## update_metadata
+
+Replace the metadata for an existing image.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="updateImageMetadata" method="put" path="/accounts/{accountID}/images/{imageID}/metadata" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+      x_moov_version: 'v2024.01.00',
+    )
+
+res = s.images.update_metadata(account_id: '58c3c937-e648-49c5-88be-6225cca35af1', image_id: 'd957e703-ecd4-48ac-9c14-c0ecf1b496f0', image_metadata_request: Models::Components::ImageMetadataRequest.new())
+
+unless res.image_metadata.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | *::String*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `image_id`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | *::String*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `image_metadata_request`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | [Models::Components::ImageMetadataRequest](../../models/shared/imagemetadatarequest.md)                                                                                                                                                                                                                                                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `x_moov_version`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | *T.nilable(::String)*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Specify an API version.<br/><br/>API versioning follows the format `vYYYY.QQ.BB`, where <br/>  - `YYYY` is the year<br/>  - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)<br/>  - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. <br/>    - For example, `v2024.01.00` is the initial release of the first quarter of 2024.<br/><br/>The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release. |
+
+### Response
+
+**[T.nilable(Models::Operations::UpdateImageMetadataResponse)](../../models/operations/updateimagemetadataresponse.md)**
+
+### Errors
+
+| Error Type                                   | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| Models::Errors::GenericError                 | 400, 409                                     | application/json                             |
+| Models::Errors::ImageMetadataValidationError | 422                                          | application/json                             |
+| Errors::APIError                             | 4XX, 5XX                                     | \*/\*                                        |
 
 ## get_public
 

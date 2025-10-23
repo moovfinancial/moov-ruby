@@ -23,6 +23,7 @@ module Moov
       autoload :FileUploadValidationError, 'moov/models/errors/fileuploadvalidationerror.rb'
       autoload :FileValidationError, 'moov/models/errors/filevalidationerror.rb'
       autoload :GenericError, 'moov/models/errors/genericerror.rb'
+      autoload :ImageMetadataValidationError, 'moov/models/errors/imagemetadatavalidationerror.rb'
       autoload :ImageRequestValidationError, 'moov/models/errors/imagerequestvalidationerror.rb'
       autoload :LinkApplePayError, 'moov/models/errors/linkapplepayerror.rb'
       autoload :LinkCardError, 'moov/models/errors/linkcarderror.rb'

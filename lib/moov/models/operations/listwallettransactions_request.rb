@@ -50,7 +50,7 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-moov-version', 'style': 'simple', 'explode': false } }
+        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
         sig { params(account_id: ::String, wallet_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), transaction_type: T.nilable(Models::Components::WalletTransactionType), transaction_types: T.nilable(T::Array[Models::Components::WalletTransactionType]), source_type: T.nilable(Models::Components::WalletTransactionSourceType), source_id: T.nilable(::String), status: T.nilable(Models::Components::WalletTransactionStatus), created_start_date_time: T.nilable(::DateTime), created_end_date_time: T.nilable(::DateTime), completed_start_date_time: T.nilable(::DateTime), completed_end_date_time: T.nilable(::DateTime), sweep_id: T.nilable(::String), x_moov_version: T.nilable(::String)).void }
         def initialize(account_id:, wallet_id:, skip: nil, count: nil, transaction_type: nil, transaction_types: nil, source_type: nil, source_id: nil, status: nil, created_start_date_time: nil, created_end_date_time: nil, completed_start_date_time: nil, completed_end_date_time: nil, sweep_id: nil, x_moov_version: 'v2024.01.00')
