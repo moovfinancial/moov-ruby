@@ -13,7 +13,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # URL-safe identifier for the industry
+        # Classification identifier for the industry.
         field :industry, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('industry'), required: true } }
         # Display name of the industry
         field :display_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('displayName'), required: true } }

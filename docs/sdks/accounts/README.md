@@ -307,6 +307,7 @@ res = s.accounts.update(account_id: '433cb9d1-5943-4fd5-91b4-2aef5b30e2e7', patc
         sic: '7991',
         mcc: '7997',
       ),
+      industry: 'electronics-appliances',
     ),
   ),
   metadata: {

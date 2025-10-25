@@ -33,11 +33,13 @@ module Moov
         field :tax_id, Crystalline::Nilable.new(Models::Components::CreateBusinessErrorTaxID), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxID') } }
 
         field :industry_codes, Crystalline::Nilable.new(Models::Components::CreateBusinessErrorIndustryCodes), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('industryCodes') } }
+        # Classification identifier for the industry. Use the [GET industries](https://docs.moov.io/api/enrichment/form-shortening/industries/get/) endpoint to retrieve an array of valid industry details for a merchant, inducing all industry field values.
+        field :industry, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('industry') } }
 
         field :primary_regulator, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('primaryRegulator') } }
 
-        sig { params(legal_business_name: T.nilable(::String), doing_business_as: T.nilable(::String), business_type: T.nilable(::String), address: T.nilable(Models::Components::AddressError), phone: T.nilable(Models::Components::PhoneNumberError), email: T.nilable(::String), website: T.nilable(::String), description: T.nilable(::String), tax_id: T.nilable(Models::Components::CreateBusinessErrorTaxID), industry_codes: T.nilable(Models::Components::CreateBusinessErrorIndustryCodes), primary_regulator: T.nilable(::String)).void }
-        def initialize(legal_business_name: nil, doing_business_as: nil, business_type: nil, address: nil, phone: nil, email: nil, website: nil, description: nil, tax_id: nil, industry_codes: nil, primary_regulator: nil)
+        sig { params(legal_business_name: T.nilable(::String), doing_business_as: T.nilable(::String), business_type: T.nilable(::String), address: T.nilable(Models::Components::AddressError), phone: T.nilable(Models::Components::PhoneNumberError), email: T.nilable(::String), website: T.nilable(::String), description: T.nilable(::String), tax_id: T.nilable(Models::Components::CreateBusinessErrorTaxID), industry_codes: T.nilable(Models::Components::CreateBusinessErrorIndustryCodes), industry: T.nilable(::String), primary_regulator: T.nilable(::String)).void }
+        def initialize(legal_business_name: nil, doing_business_as: nil, business_type: nil, address: nil, phone: nil, email: nil, website: nil, description: nil, tax_id: nil, industry_codes: nil, industry: nil, primary_regulator: nil)
           @legal_business_name = legal_business_name
           @doing_business_as = doing_business_as
           @business_type = business_type
@@ -48,6 +50,7 @@ module Moov
           @description = description
           @tax_id = tax_id
           @industry_codes = industry_codes
+          @industry = industry
           @primary_regulator = primary_regulator
         end
 
@@ -64,6 +67,7 @@ module Moov
           return false unless @description == other.description
           return false unless @tax_id == other.tax_id
           return false unless @industry_codes == other.industry_codes
+          return false unless @industry == other.industry
           return false unless @primary_regulator == other.primary_regulator
           true
         end

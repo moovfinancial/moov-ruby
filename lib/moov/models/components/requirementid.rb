@@ -36,6 +36,7 @@ module Moov
           BUSINESS_OWNERS = new('business.owners')
           BUSINESS_CLASSIFICATION = new('business.classification')
           BUSINESS_INDUSTRY_CODE_MCC = new('business.industry-code-mcc')
+          BUSINESS_INDUSTRY = new('business.industry')
           BUSINESS_INDICATE_OWNERS_PROVIDED = new('business.indicate-owners-provided')
           BUSINESS_AVERAGE_TRANSACTION_SIZE = new('business.average-transaction-size')
           BUSINESS_MAX_TRANSACTION_SIZE = new('business.max-transaction-size')

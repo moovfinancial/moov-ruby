@@ -28,6 +28,8 @@ class Moov::Models::Components::CreateBusinessError
   def tax_id=(str_); end
   def industry_codes(); end
   def industry_codes=(str_); end
+  def industry(); end
+  def industry=(str_); end
   def primary_regulator(); end
   def primary_regulator=(str_); end
 end
