@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: c744ed8ad01a50c30ae656f1467f0d16
+  docChecksum: 16e74a23655421653a8a77a79bf725e5
   docVersion: latest
-  speakeasyVersion: 1.639.3
+  speakeasyVersion: 1.640.0
   generationVersion: 2.730.5
-  releaseVersion: 0.2.4
-  configChecksum: 308264534ca99305517964c0b16f3ecb
+  releaseVersion: 0.2.5
+  configChecksum: 0d0c95e905ceacae61cf08cda050bd33
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -5097,4 +5097,3 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.accounts.create()`: \n  *  `request.create_account.profile.business.industry` **Added**\n  *  `response.profile.business.industry` **Added**\n  *  `error.profile.business.industry` **Added**\n* `client.accounts.list()`:  `response.[].profile.business.industry` **Added**\n* `client.accounts.get()`:  `response.profile.business.industry` **Added**\n* `client.accounts.update()`: \n  *  `request.patch_account.profile.business.industry` **Added**\n  *  `response.profile.business.industry` **Added**\n  *  `error.profile.business.industry` **Added**\n* `client.onboarding.create_invite()`: \n  *  `request.onboarding_invite_request.prefill.profile.business.industry` **Added**\n  *  `response.prefill.profile.business.industry` **Added**\n* `client.onboarding.list_invites()`:  `response.[].prefill.profile.business.industry` **Added**\n* `client.onboarding.get_invite()`:  `response.prefill.profile.business.industry` **Added**\n"

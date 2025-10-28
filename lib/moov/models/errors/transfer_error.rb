@@ -55,7 +55,7 @@ module Moov
         field :disputed_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputedAmount') } }
 
         field :disputes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CardAcquiringDispute)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputes') } }
-
+        # ID of the sweep that created this transfer.
         field :sweep_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sweepID') } }
 
         field :schedule_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scheduleID') } }

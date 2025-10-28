@@ -51,7 +51,7 @@ module Moov
         field :available_balance, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('availableBalance') } }
         # The wallet's total available balance after recording a completed transaction. Same as `availableBalance`, but a decimal-formatted numerical string that represents up to 9 decimal place precision. In USD for example, 12.987654321 is $12.987654321 and 0.9987634521 is $0.9987634521.
         field :available_balance_decimal, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('availableBalanceDecimal') } }
-
+        # ID of the sweep this transaction accrued in.
         field :sweep_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sweepID') } }
 
         sig { params(wallet_id: ::String, transaction_id: ::String, transaction_type: Models::Components::WalletTransactionType, source_type: Models::Components::WalletTransactionSourceType, source_id: ::String, status: Models::Components::WalletTransactionStatus, memo: ::String, created_on: ::DateTime, currency: ::String, gross_amount: ::Integer, gross_amount_decimal: ::String, fee: ::Integer, fee_decimal: ::String, net_amount: ::Integer, net_amount_decimal: ::String, completed_on: T.nilable(::DateTime), fee_i_ds: T.nilable(T::Array[::String]), available_balance: T.nilable(::Integer), available_balance_decimal: T.nilable(::String), sweep_id: T.nilable(::String)).void }
