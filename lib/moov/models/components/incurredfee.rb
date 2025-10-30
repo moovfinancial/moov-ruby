@@ -28,8 +28,10 @@ module Moov
         # The entity that generated the fee.
         field :generated_by, Crystalline::Nilable.new(Models::Components::GeneratedBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('generatedBy') } }
 
-        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy)).void }
-        def initialize(fee_id: nil, account_id: nil, wallet_id: nil, created_on: nil, fee_name: nil, amount: nil, generated_by: nil)
+        field :fee_group, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeGroup') } }
+
+        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy), fee_group: T.nilable(::String)).void }
+        def initialize(fee_id: nil, account_id: nil, wallet_id: nil, created_on: nil, fee_name: nil, amount: nil, generated_by: nil, fee_group: nil)
           @fee_id = fee_id
           @account_id = account_id
           @wallet_id = wallet_id
@@ -37,6 +39,7 @@ module Moov
           @fee_name = fee_name
           @amount = amount
           @generated_by = generated_by
+          @fee_group = fee_group
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -49,6 +52,7 @@ module Moov
           return false unless @fee_name == other.fee_name
           return false unless @amount == other.amount
           return false unless @generated_by == other.generated_by
+          return false unless @fee_group == other.fee_group
           true
         end
       end

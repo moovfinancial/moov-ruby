@@ -15,6 +15,8 @@ module Moov
 
 
         field :image_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageID'), required: true } }
+        # The ID used to get an image with the public endpoint.
+        field :public_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('publicID'), required: true } }
         # A public URL to access the image. An optional `size={width}x{height}` 
         # query parameter can be provided to resize the image.
         field :link, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('link'), required: true } }
@@ -25,9 +27,10 @@ module Moov
         # Alternative text for the image.
         field :alt_text, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('altText') } }
 
-        sig { params(image_id: ::String, link: ::String, created_on: ::DateTime, updated_on: ::DateTime, alt_text: T.nilable(::String)).void }
-        def initialize(image_id:, link:, created_on:, updated_on:, alt_text: nil)
+        sig { params(image_id: ::String, public_id: ::String, link: ::String, created_on: ::DateTime, updated_on: ::DateTime, alt_text: T.nilable(::String)).void }
+        def initialize(image_id:, public_id:, link:, created_on:, updated_on:, alt_text: nil)
           @image_id = image_id
+          @public_id = public_id
           @link = link
           @created_on = created_on
           @updated_on = updated_on
@@ -38,6 +41,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @image_id == other.image_id
+          return false unless @public_id == other.public_id
           return false unless @link == other.link
           return false unless @created_on == other.created_on
           return false unless @updated_on == other.updated_on

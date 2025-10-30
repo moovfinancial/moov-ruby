@@ -22,4 +22,6 @@ class Moov::Models::Components::IncurredFee
   def amount=(str_); end
   def generated_by(); end
   def generated_by=(str_); end
+  def fee_group(); end
+  def fee_group=(str_); end
 end

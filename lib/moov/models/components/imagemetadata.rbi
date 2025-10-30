@@ -10,6 +10,8 @@ end
 class Moov::Models::Components::ImageMetadata
   def image_id(); end
   def image_id=(str_); end
+  def public_id(); end
+  def public_id=(str_); end
   def link(); end
   def link=(str_); end
   def created_on(); end
