@@ -388,6 +388,7 @@ module Moov
       autoload :RequirementError, 'moov/models/components/requirementerror.rb'
       autoload :RequirementErrorCode, 'moov/models/components/requirementerrorcode.rb'
       autoload :RequirementID, 'moov/models/components/requirementid.rb'
+      autoload :Residual, 'moov/models/components/residual.rb'
       autoload :ReturnPolicyType, 'moov/models/components/returnpolicytype.rb'
       autoload :Reversal, 'moov/models/components/reversal.rb'
       autoload :ReversedWithCancellation, 'moov/models/components/reversedwithcancellation.rb'
