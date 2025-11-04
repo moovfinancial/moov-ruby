@@ -12,6 +12,8 @@ class Moov::Models::Components::ProductImageMetadata
   def image_id=(str_); end
   def link(); end
   def link=(str_); end
+  def public_id(); end
+  def public_id=(str_); end
   def alt_text(); end
   def alt_text=(str_); end
 end
