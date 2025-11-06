@@ -9,6 +9,7 @@
 #
 
 require_relative './types'
+require_relative './moov_version'
 
 
 module Moov
@@ -22,12 +23,8 @@ module Moov
         ).void
       end
       def self.init_hooks(hooks)
-        # example_hook = ExampleHook.new
-
-        # hooks.register_sdk_init_hook example_hook
-        # hooks.register_before_request_hook example_hook
-        # hooks.register_after_error_hook example_hook
-        # hooks.register_after_success_hook example_hook
+        version_hook = MoovVersionHook.new
+        hooks.register_sdk_init_hook version_hook
       end
     end
   end
