@@ -4,8 +4,8 @@ Developer-friendly & type-safe Ruby SDK specifically catered to leverage *moov-r
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=moov-ruby&utm_campaign=ruby"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
+    <a href="https://opensource.org/licenses/Apache-2.0">
+        <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" />
     </a>
 </div>
 
