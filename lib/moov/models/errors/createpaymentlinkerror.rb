@@ -29,11 +29,13 @@ module Moov
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentDetailsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :payout, Crystalline::Nilable.new(Models::Components::PayoutDetailsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
+
+        field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(partner_account_id: T.nilable(::String), merchant_payment_method_id: T.nilable(::String), amount: T.nilable(Models::Components::AmountValidationError), max_uses: T.nilable(::String), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(partner_account_id: nil, merchant_payment_method_id: nil, amount: nil, max_uses: nil, expires_on: nil, display: nil, payment: nil, payout: nil, raw_response: nil)
+        sig { params(partner_account_id: T.nilable(::String), merchant_payment_method_id: T.nilable(::String), amount: T.nilable(Models::Components::AmountValidationError), max_uses: T.nilable(::String), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::PaymentLinkLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(partner_account_id: nil, merchant_payment_method_id: nil, amount: nil, max_uses: nil, expires_on: nil, display: nil, payment: nil, payout: nil, line_items: nil, raw_response: nil)
           @partner_account_id = partner_account_id
           @merchant_payment_method_id = merchant_payment_method_id
           @amount = amount
@@ -42,6 +44,7 @@ module Moov
           @display = display
           @payment = payment
           @payout = payout
+          @line_items = line_items
           @raw_response = raw_response
         end
 
@@ -56,6 +59,7 @@ module Moov
           return false unless @display == other.display
           return false unless @payment == other.payment
           return false unless @payout == other.payout
+          return false unless @line_items == other.line_items
           return false unless @raw_response == other.raw_response
           true
         end

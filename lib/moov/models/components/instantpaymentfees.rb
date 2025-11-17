@@ -19,6 +19,8 @@ module Moov
         field :push_to_card_transaction, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushToCardTransaction'), required: true } }
         # Fees for pull-from-card transactions.
         field :pull_from_card_transaction, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pullFromCardTransaction'), required: true } }
+        # Fees for instant payment verifications.
+        field :instant_verification, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('instantVerification'), required: true } }
         # Total instant payment fees.
         field :total, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('total'), required: true } }
         # Fees for RTP declines.
@@ -30,11 +32,12 @@ module Moov
         # Fees for pull-from-card refunds.
         field :pull_from_card_refund, Crystalline::Nilable.new(Models::Components::BillingCountAndAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pullFromCardRefund') } }
 
-        sig { params(rtp_credit_transaction: Models::Components::BillingCountAndAmount, push_to_card_transaction: Models::Components::BillingCountAndAmount, pull_from_card_transaction: Models::Components::BillingCountAndAmount, total: Models::Components::BillingCountAndAmount, rtp_decline: T.nilable(Models::Components::BillingCountAndAmount), push_to_card_decline: T.nilable(Models::Components::BillingCountAndAmount), pull_from_card_decline: T.nilable(Models::Components::BillingCountAndAmount), pull_from_card_refund: T.nilable(Models::Components::BillingCountAndAmount)).void }
-        def initialize(rtp_credit_transaction:, push_to_card_transaction:, pull_from_card_transaction:, total:, rtp_decline: nil, push_to_card_decline: nil, pull_from_card_decline: nil, pull_from_card_refund: nil)
+        sig { params(rtp_credit_transaction: Models::Components::BillingCountAndAmount, push_to_card_transaction: Models::Components::BillingCountAndAmount, pull_from_card_transaction: Models::Components::BillingCountAndAmount, instant_verification: Models::Components::BillingCountAndAmount, total: Models::Components::BillingCountAndAmount, rtp_decline: T.nilable(Models::Components::BillingCountAndAmount), push_to_card_decline: T.nilable(Models::Components::BillingCountAndAmount), pull_from_card_decline: T.nilable(Models::Components::BillingCountAndAmount), pull_from_card_refund: T.nilable(Models::Components::BillingCountAndAmount)).void }
+        def initialize(rtp_credit_transaction:, push_to_card_transaction:, pull_from_card_transaction:, instant_verification:, total:, rtp_decline: nil, push_to_card_decline: nil, pull_from_card_decline: nil, pull_from_card_refund: nil)
           @rtp_credit_transaction = rtp_credit_transaction
           @push_to_card_transaction = push_to_card_transaction
           @pull_from_card_transaction = pull_from_card_transaction
+          @instant_verification = instant_verification
           @total = total
           @rtp_decline = rtp_decline
           @push_to_card_decline = push_to_card_decline
@@ -48,6 +51,7 @@ module Moov
           return false unless @rtp_credit_transaction == other.rtp_credit_transaction
           return false unless @push_to_card_transaction == other.push_to_card_transaction
           return false unless @pull_from_card_transaction == other.pull_from_card_transaction
+          return false unless @instant_verification == other.instant_verification
           return false unless @total == other.total
           return false unless @rtp_decline == other.rtp_decline
           return false unless @push_to_card_decline == other.push_to_card_decline

@@ -18,6 +18,8 @@ class Moov::Models::Errors::UpdatePaymentLinkError
   def payment=(str_); end
   def payout(); end
   def payout=(str_); end
+  def line_items(); end
+  def line_items=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
 end

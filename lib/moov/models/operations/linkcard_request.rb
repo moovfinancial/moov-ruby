@@ -17,11 +17,6 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :link_card, Models::Components::LinkCard, { 'request': { 'media_type': 'application/json' } }
-        # Optional header to wait for certain events, such as the creation of a payment method, to occur before returning a response.
-        # 
-        # When this header is set to `payment-method`, the response will include any payment methods that were created for the newly 
-        # linked card in the `paymentMethods` field. Otherwise, the `paymentMethods` field will be omitted from the response.
-        field :x_wait_for, Crystalline::Nilable.new(Models::Components::LinkCardWaitFor), { 'header': { 'field_name': 'x-wait-for', 'style': 'simple', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -31,14 +26,20 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
+        # Optional header to wait for certain events, such as the creation of a payment method, to occur before returning a response.
+        # 
+        # When this header is set to `payment-method`, the response will include any payment methods that were created for the newly 
+        # linked card in the `paymentMethods` field. Otherwise, the `paymentMethods` field will be omitted from the response.
+        field :x_wait_for, Crystalline::Nilable.new(Models::Components::LinkCardWaitFor), { 'header': { 'field_name': 'x-wait-for', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, link_card: Models::Components::LinkCard, x_wait_for: T.nilable(Models::Components::LinkCardWaitFor), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, link_card:, x_wait_for: nil, x_moov_version: 'v2024.01.00')
+        sig { params(account_id: ::String, link_card: Models::Components::LinkCard, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::LinkCardWaitFor)).void }
+        def initialize(account_id:, link_card:, x_moov_version: nil, x_wait_for: nil)
           @account_id = account_id
           @link_card = link_card
-          @x_wait_for = x_wait_for
           @x_moov_version = x_moov_version
+          @x_wait_for = x_wait_for
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -46,8 +47,8 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @link_card == other.link_card
-          return false unless @x_wait_for == other.x_wait_for
           return false unless @x_moov_version == other.x_moov_version
+          return false unless @x_wait_for == other.x_wait_for
           true
         end
       end

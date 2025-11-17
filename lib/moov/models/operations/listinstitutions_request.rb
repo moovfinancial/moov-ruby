@@ -13,14 +13,6 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Name of the financial institution. Either `name` or `routingNumber` is required.
-        field :name, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'name', 'style': 'form', 'explode': false } }
-        # Routing number for a financial institution. Either `routingNumber` or `name` is required.
-        field :routing_number, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'routingNumber', 'style': 'form', 'explode': false } }
-        # The state where a financial institution is based.
-        field :state, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'state', 'style': 'form', 'explode': false } }
-        # Maximum results returned by a search.
-        field :limit, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -30,25 +22,34 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
+        # Name of the financial institution. Either `name` or `routingNumber` is required.
+        field :name, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'name', 'style': 'form', 'explode': false } }
+        # Routing number for a financial institution. Either `routingNumber` or `name` is required.
+        field :routing_number, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'routingNumber', 'style': 'form', 'explode': false } }
+        # The state where a financial institution is based.
+        field :state, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'state', 'style': 'form', 'explode': false } }
+        # Maximum results returned by a search.
+        field :limit, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': false } }
 
-        sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), state: T.nilable(::String), limit: T.nilable(::Integer), x_moov_version: T.nilable(::String)).void }
-        def initialize(name: nil, routing_number: nil, state: nil, limit: nil, x_moov_version: 'v2024.01.00')
+        sig { params(x_moov_version: T.nilable(::String), name: T.nilable(::String), routing_number: T.nilable(::String), state: T.nilable(::String), limit: T.nilable(::Integer)).void }
+        def initialize(x_moov_version: nil, name: nil, routing_number: nil, state: nil, limit: nil)
+          @x_moov_version = x_moov_version
           @name = name
           @routing_number = routing_number
           @state = state
           @limit = limit
-          @x_moov_version = x_moov_version
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @x_moov_version == other.x_moov_version
           return false unless @name == other.name
           return false unless @routing_number == other.routing_number
           return false unless @state == other.state
           return false unless @limit == other.limit
-          return false unless @x_moov_version == other.x_moov_version
           true
         end
       end

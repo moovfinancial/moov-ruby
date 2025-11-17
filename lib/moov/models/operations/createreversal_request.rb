@@ -19,8 +19,6 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
         # The transfer ID to reverse.
         field :transfer_id, ::String, { 'path_param': { 'field_name': 'transferID', 'style': 'simple', 'explode': false } }
-
-        field :create_reversal, Crystalline::Nilable.new(Models::Components::CreateReversal), { 'request': { 'media_type': 'application/json' } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -30,15 +28,18 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, create_reversal: T.nilable(Models::Components::CreateReversal), x_moov_version: T.nilable(::String)).void }
-        def initialize(x_idempotency_key:, account_id:, transfer_id:, create_reversal: nil, x_moov_version: 'v2024.01.00')
+        field :create_reversal, Crystalline::Nilable.new(Models::Components::CreateReversal), { 'request': { 'media_type': 'application/json' } }
+
+        sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, x_moov_version: T.nilable(::String), create_reversal: T.nilable(Models::Components::CreateReversal)).void }
+        def initialize(x_idempotency_key:, account_id:, transfer_id:, x_moov_version: nil, create_reversal: nil)
           @x_idempotency_key = x_idempotency_key
           @account_id = account_id
           @transfer_id = transfer_id
-          @create_reversal = create_reversal
           @x_moov_version = x_moov_version
+          @create_reversal = create_reversal
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -47,8 +48,8 @@ module Moov
           return false unless @x_idempotency_key == other.x_idempotency_key
           return false unless @account_id == other.account_id
           return false unless @transfer_id == other.transfer_id
-          return false unless @create_reversal == other.create_reversal
           return false unless @x_moov_version == other.x_moov_version
+          return false unless @create_reversal == other.create_reversal
           true
         end
       end

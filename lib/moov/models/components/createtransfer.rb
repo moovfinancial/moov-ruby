@@ -29,9 +29,12 @@ module Moov
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
+        # An optional collection of line items for a transfer.
+        # When line items are provided, their total plus sales tax must equal the transfer amount.
+        field :line_items, Crystalline::Nilable.new(Models::Components::TransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
-        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String)).void }
-        def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, sales_tax_amount: nil, foreign_id: nil)
+        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems)).void }
+        def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, sales_tax_amount: nil, foreign_id: nil, line_items: nil)
           @source = source
           @destination = destination
           @amount = amount
@@ -40,6 +43,7 @@ module Moov
           @metadata = metadata
           @sales_tax_amount = sales_tax_amount
           @foreign_id = foreign_id
+          @line_items = line_items
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -53,6 +57,7 @@ module Moov
           return false unless @metadata == other.metadata
           return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @foreign_id == other.foreign_id
+          return false unless @line_items == other.line_items
           true
         end
       end

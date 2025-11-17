@@ -12,4 +12,12 @@ class Moov::Models::Operations::ListPaymentLinksRequest
   def account_id=(str_); end
   def x_moov_version(); end
   def x_moov_version=(str_); end
+  def skip(); end
+  def skip=(str_); end
+  def count(); end
+  def count=(str_); end
+  def type(); end
+  def type=(str_); end
+  def status(); end
+  def status=(str_); end
 end

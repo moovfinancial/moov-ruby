@@ -10,6 +10,8 @@ end
 class Moov::Models::Components::PaymentLink
   def code(); end
   def code=(str_); end
+  def payment_link_type(); end
+  def payment_link_type=(str_); end
   def mode(); end
   def mode=(str_); end
   def status(); end
@@ -44,6 +46,8 @@ class Moov::Models::Components::PaymentLink
   def payment=(str_); end
   def payout(); end
   def payout=(str_); end
+  def line_items(); end
+  def line_items=(str_); end
   def disabled_on(); end
   def disabled_on=(str_); end
 end

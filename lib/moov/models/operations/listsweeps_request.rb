@@ -17,14 +17,6 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :wallet_id, ::String, { 'path_param': { 'field_name': 'walletID', 'style': 'simple', 'explode': false } }
-
-        field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
-        field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
-        # Optional parameter to filter by sweep status.
-        field :status, Crystalline::Nilable.new(Models::Components::SweepStatus), { 'query_param': { 'field_name': 'status', 'style': 'form', 'explode': false } }
-        # Optional string to filter by statement descriptor.
-        field :statement_descriptor, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'statementDescriptor', 'style': 'form', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -34,17 +26,26 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, wallet_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), status: T.nilable(Models::Components::SweepStatus), statement_descriptor: T.nilable(::String), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, wallet_id:, skip: nil, count: nil, status: nil, statement_descriptor: nil, x_moov_version: 'v2024.01.00')
+        field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
+
+        field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
+        # Optional parameter to filter by sweep status.
+        field :status, Crystalline::Nilable.new(Models::Components::SweepStatus), { 'query_param': { 'field_name': 'status', 'style': 'form', 'explode': false } }
+        # Optional string to filter by statement descriptor.
+        field :statement_descriptor, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'statementDescriptor', 'style': 'form', 'explode': false } }
+
+        sig { params(account_id: ::String, wallet_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), status: T.nilable(Models::Components::SweepStatus), statement_descriptor: T.nilable(::String)).void }
+        def initialize(account_id:, wallet_id:, x_moov_version: nil, skip: nil, count: nil, status: nil, statement_descriptor: nil)
           @account_id = account_id
           @wallet_id = wallet_id
+          @x_moov_version = x_moov_version
           @skip = skip
           @count = count
           @status = status
           @statement_descriptor = statement_descriptor
-          @x_moov_version = x_moov_version
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -52,11 +53,11 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @wallet_id == other.wallet_id
+          return false unless @x_moov_version == other.x_moov_version
           return false unless @skip == other.skip
           return false unless @count == other.count
           return false unless @status == other.status
           return false unless @statement_descriptor == other.statement_descriptor
-          return false unless @x_moov_version == other.x_moov_version
           true
         end
       end

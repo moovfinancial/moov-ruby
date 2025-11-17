@@ -17,10 +17,6 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :bank_account_id, ::String, { 'path_param': { 'field_name': 'bankAccountID', 'style': 'simple', 'explode': false } }
-        # Optional header to wait for certain events, such as the rail response, to occur before returning a response.
-        # 
-        # When this header is set to `rail-response`, the endpoint will wait for a sent-credit or failed status from the payment rail.
-        field :x_wait_for, Crystalline::Nilable.new(Models::Components::BankAccountWaitFor), { 'header': { 'field_name': 'x-wait-for', 'style': 'simple', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -30,14 +26,19 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
+        # Optional header to wait for certain events, such as the rail response, to occur before returning a response.
+        # 
+        # When this header is set to `rail-response`, the endpoint will wait for a sent-credit or failed status from the payment rail.
+        field :x_wait_for, Crystalline::Nilable.new(Models::Components::BankAccountWaitFor), { 'header': { 'field_name': 'x-wait-for', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, bank_account_id: ::String, x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, bank_account_id:, x_wait_for: nil, x_moov_version: 'v2024.01.00')
+        sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::BankAccountWaitFor)).void }
+        def initialize(account_id:, bank_account_id:, x_moov_version: nil, x_wait_for: nil)
           @account_id = account_id
           @bank_account_id = bank_account_id
-          @x_wait_for = x_wait_for
           @x_moov_version = x_moov_version
+          @x_wait_for = x_wait_for
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -45,8 +46,8 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @bank_account_id == other.bank_account_id
-          return false unless @x_wait_for == other.x_wait_for
           return false unless @x_moov_version == other.x_moov_version
+          return false unless @x_wait_for == other.x_wait_for
           true
         end
       end

@@ -24,4 +24,6 @@ class Moov::Models::Components::CreateTransfer
   def sales_tax_amount=(str_); end
   def foreign_id(); end
   def foreign_id=(str_); end
+  def line_items(); end
+  def line_items=(str_); end
 end

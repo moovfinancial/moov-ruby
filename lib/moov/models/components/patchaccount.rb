@@ -17,7 +17,7 @@ module Moov
         # Each object can be patched independent of patching the other fields.
         field :profile, Crystalline::Nilable.new(Models::Components::PatchProfile), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('profile') } }
 
-        field :terms_of_service, Crystalline::Nilable.new(Crystalline::Union.new(Models::Components::TermsOfServiceTokenUpdate, Models::Components::ManualTermsOfServiceUpdate)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfService') } }
+        field :terms_of_service, Crystalline::Nilable.new(Models::Components::TermsOfServicePayloadUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfService') } }
 
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
@@ -27,7 +27,7 @@ module Moov
 
         field :customer_support, Crystalline::Nilable.new(Models::Components::PatchAccountCustomerSupport), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerSupport') } }
 
-        sig { params(profile: T.nilable(Models::Components::PatchProfile), terms_of_service: T.nilable(T.any(Models::Components::TermsOfServiceTokenUpdate, Models::Components::ManualTermsOfServiceUpdate)), foreign_id: T.nilable(::String), settings: T.nilable(Models::Components::CreateAccountSettings), metadata: T.nilable(T::Hash[Symbol, ::String]), customer_support: T.nilable(Models::Components::PatchAccountCustomerSupport)).void }
+        sig { params(profile: T.nilable(Models::Components::PatchProfile), terms_of_service: T.nilable(Models::Components::TermsOfServicePayloadUpdate), foreign_id: T.nilable(::String), settings: T.nilable(Models::Components::CreateAccountSettings), metadata: T.nilable(T::Hash[Symbol, ::String]), customer_support: T.nilable(Models::Components::PatchAccountCustomerSupport)).void }
         def initialize(profile: nil, terms_of_service: nil, foreign_id: nil, settings: nil, metadata: nil, customer_support: nil)
           @profile = profile
           @terms_of_service = terms_of_service

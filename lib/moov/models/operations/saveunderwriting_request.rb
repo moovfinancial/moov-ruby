@@ -26,10 +26,11 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
         sig { params(account_id: ::String, upsert_underwriting: Models::Components::UpsertUnderwriting, x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, upsert_underwriting:, x_moov_version: 'v2024.01.00')
+        def initialize(account_id:, upsert_underwriting:, x_moov_version: nil)
           @account_id = account_id
           @upsert_underwriting = upsert_underwriting
           @x_moov_version = x_moov_version

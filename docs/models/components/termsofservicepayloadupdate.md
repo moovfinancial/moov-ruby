@@ -1,0 +1,9 @@
+# TermsOfServicePayloadUpdate
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `token`                                                                                                        | *T.nilable(::String)*                                                                                          | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `manual`                                                                                                       | [T.nilable(Models::Components::ManualTermsOfServiceUpdate)](../../models/shared/manualtermsofserviceupdate.md) | :heavy_minus_sign:                                                                                             | Describes the acceptance of the Terms of Service. All data is required, and must be from the user.             |

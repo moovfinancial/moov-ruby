@@ -15,6 +15,17 @@ module Moov
 
         # Partial or complete address to search.
         field :search, ::String, { 'query_param': { 'field_name': 'search', 'style': 'form', 'explode': false } }
+        # Specify an API version.
+        # 
+        # API versioning follows the format `vYYYY.QQ.BB`, where 
+        #   - `YYYY` is the year
+        #   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
+        #   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. 
+        #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
+        # 
+        # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
+        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
         # Maximum number of results to return.
         field :max_results, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'maxResults', 'style': 'form', 'explode': false } }
         # Limits results to a list of given cities.
@@ -41,20 +52,11 @@ module Moov
         field :selected, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'selected', 'style': 'form', 'explode': false } }
         # Include results from alternate data sources. Allowed values are `all` (non-postal addresses), or `postal` (postal addresses only).
         field :source, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'source', 'style': 'form', 'explode': false } }
-        # Specify an API version.
-        # 
-        # API versioning follows the format `vYYYY.QQ.BB`, where 
-        #   - `YYYY` is the year
-        #   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-        #   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. 
-        #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-        # 
-        # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(search: ::String, max_results: T.nilable(::Integer), include_cities: T.nilable(::String), include_states: T.nilable(::String), include_zipcodes: T.nilable(::String), exclude_states: T.nilable(::String), prefer_cities: T.nilable(::String), prefer_states: T.nilable(::String), prefer_zipcodes: T.nilable(::String), prefer_ratio: T.nilable(::Integer), prefer_geolocation: T.nilable(::String), selected: T.nilable(::String), source: T.nilable(::String), x_moov_version: T.nilable(::String)).void }
-        def initialize(search:, max_results: nil, include_cities: nil, include_states: nil, include_zipcodes: nil, exclude_states: nil, prefer_cities: nil, prefer_states: nil, prefer_zipcodes: nil, prefer_ratio: nil, prefer_geolocation: nil, selected: nil, source: nil, x_moov_version: 'v2024.01.00')
+        sig { params(search: ::String, x_moov_version: T.nilable(::String), max_results: T.nilable(::Integer), include_cities: T.nilable(::String), include_states: T.nilable(::String), include_zipcodes: T.nilable(::String), exclude_states: T.nilable(::String), prefer_cities: T.nilable(::String), prefer_states: T.nilable(::String), prefer_zipcodes: T.nilable(::String), prefer_ratio: T.nilable(::Integer), prefer_geolocation: T.nilable(::String), selected: T.nilable(::String), source: T.nilable(::String)).void }
+        def initialize(search:, x_moov_version: nil, max_results: nil, include_cities: nil, include_states: nil, include_zipcodes: nil, exclude_states: nil, prefer_cities: nil, prefer_states: nil, prefer_zipcodes: nil, prefer_ratio: nil, prefer_geolocation: nil, selected: nil, source: nil)
           @search = search
+          @x_moov_version = x_moov_version
           @max_results = max_results
           @include_cities = include_cities
           @include_states = include_states
@@ -67,13 +69,13 @@ module Moov
           @prefer_geolocation = prefer_geolocation
           @selected = selected
           @source = source
-          @x_moov_version = x_moov_version
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @search == other.search
+          return false unless @x_moov_version == other.x_moov_version
           return false unless @max_results == other.max_results
           return false unless @include_cities == other.include_cities
           return false unless @include_states == other.include_states
@@ -86,7 +88,6 @@ module Moov
           return false unless @prefer_geolocation == other.prefer_geolocation
           return false unless @selected == other.selected
           return false unless @source == other.source
-          return false unless @x_moov_version == other.x_moov_version
           true
         end
       end

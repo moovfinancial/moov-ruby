@@ -10,6 +10,8 @@ end
 class Moov::Models::Operations::ListTransfersRequest
   def account_id(); end
   def account_id=(str_); end
+  def x_moov_version(); end
+  def x_moov_version=(str_); end
   def account_i_ds(); end
   def account_i_ds=(str_); end
   def status(); end
@@ -34,6 +36,4 @@ class Moov::Models::Operations::ListTransfersRequest
   def skip=(str_); end
   def count(); end
   def count=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

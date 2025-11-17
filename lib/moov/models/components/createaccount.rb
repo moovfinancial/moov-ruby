@@ -20,7 +20,7 @@ module Moov
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        field :terms_of_service, Crystalline::Nilable.new(Crystalline::Union.new(Models::Components::TermsOfServiceToken, Models::Components::ManualTermsOfService)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfService') } }
+        field :terms_of_service, Crystalline::Nilable.new(Models::Components::TermsOfServicePayload), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfService') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # User-provided information that can be displayed on credit card transactions for customers to use when
@@ -33,7 +33,7 @@ module Moov
         # The operating mode for an account.
         field :mode, Crystalline::Nilable.new(Models::Components::Mode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), 'decoder': Utils.enum_from_string(Models::Components::Mode, true) } }
 
-        sig { params(account_type: Models::Components::CreateAccountType, profile: Models::Components::CreateProfile, metadata: T.nilable(T::Hash[Symbol, ::String]), terms_of_service: T.nilable(T.any(Models::Components::TermsOfServiceToken, Models::Components::ManualTermsOfService)), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupport), settings: T.nilable(Models::Components::Settings), capabilities: T.nilable(T::Array[Models::Components::CapabilityID]), mode: T.nilable(Models::Components::Mode)).void }
+        sig { params(account_type: Models::Components::CreateAccountType, profile: Models::Components::CreateProfile, metadata: T.nilable(T::Hash[Symbol, ::String]), terms_of_service: T.nilable(Models::Components::TermsOfServicePayload), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupport), settings: T.nilable(Models::Components::Settings), capabilities: T.nilable(T::Array[Models::Components::CapabilityID]), mode: T.nilable(Models::Components::Mode)).void }
         def initialize(account_type:, profile:, metadata: nil, terms_of_service: nil, foreign_id: nil, customer_support: nil, settings: nil, capabilities: nil, mode: nil)
           @account_type = account_type
           @profile = profile

@@ -10,8 +10,8 @@ end
 class Moov::Models::Operations::ListFeesFetchRequest
   def account_id(); end
   def account_id=(str_); end
-  def list_fees_fetch_request(); end
-  def list_fees_fetch_request=(str_); end
   def x_moov_version(); end
   def x_moov_version=(str_); end
+  def list_fees_fetch_request(); end
+  def list_fees_fetch_request=(str_); end
 end

@@ -15,6 +15,8 @@ module Moov
 
         # Unique code identifying this payment link.
         field :code, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('code'), required: true } }
+
+        field :payment_link_type, Models::Components::PaymentLinkType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::PaymentLinkType, false) } }
         # The operating mode for an account.
         field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': Utils.enum_from_string(Models::Components::Mode, false) } }
 
@@ -51,12 +53,16 @@ module Moov
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
+        # An optional collection of line items for a payment link.
+        # When line items are provided, their total plus sales tax must equal the payment link amount.
+        field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(code: ::String, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, amount: Models::Components::Amount, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), disabled_on: T.nilable(::DateTime)).void }
-        def initialize(code:, mode:, status:, partner_account_id:, merchant_account_id:, merchant_payment_method_id:, link:, amount:, uses:, display:, customer:, created_on:, updated_on:, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, disabled_on: nil)
+        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, amount: Models::Components::Amount, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime)).void }
+        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, merchant_payment_method_id:, link:, amount:, uses:, display:, customer:, created_on:, updated_on:, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil)
           @code = code
+          @payment_link_type = payment_link_type
           @mode = mode
           @status = status
           @partner_account_id = partner_account_id
@@ -74,6 +80,7 @@ module Moov
           @expires_on = expires_on
           @payment = payment
           @payout = payout
+          @line_items = line_items
           @disabled_on = disabled_on
         end
 
@@ -81,6 +88,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @code == other.code
+          return false unless @payment_link_type == other.payment_link_type
           return false unless @mode == other.mode
           return false unless @status == other.status
           return false unless @partner_account_id == other.partner_account_id
@@ -98,6 +106,7 @@ module Moov
           return false unless @expires_on == other.expires_on
           return false unless @payment == other.payment
           return false unless @payout == other.payout
+          return false unless @line_items == other.line_items
           return false unless @disabled_on == other.disabled_on
           true
         end

@@ -23,16 +23,20 @@ module Moov
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetailsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetailsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
+        # An optional collection of line items for a payment link.
+        # When line items are provided, their total plus sales tax must equal the payment link amount.
+        field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountUpdate), display: T.nilable(Models::Components::PaymentLinkDisplayOptionsUpdate), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetailsUpdate), payout: T.nilable(Models::Components::PaymentLinkPayoutDetailsUpdate), expires_on: T.nilable(::DateTime)).void }
-        def initialize(amount: nil, display: nil, customer: nil, payment: nil, payout: nil, expires_on: nil)
+        sig { params(amount: T.nilable(Models::Components::AmountUpdate), display: T.nilable(Models::Components::PaymentLinkDisplayOptionsUpdate), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetailsUpdate), payout: T.nilable(Models::Components::PaymentLinkPayoutDetailsUpdate), line_items: T.nilable(Models::Components::PaymentLinkLineItemsUpdate), expires_on: T.nilable(::DateTime)).void }
+        def initialize(amount: nil, display: nil, customer: nil, payment: nil, payout: nil, line_items: nil, expires_on: nil)
           @amount = amount
           @display = display
           @customer = customer
           @payment = payment
           @payout = payout
+          @line_items = line_items
           @expires_on = expires_on
         end
 
@@ -44,6 +48,7 @@ module Moov
           return false unless @customer == other.customer
           return false unless @payment == other.payment
           return false unless @payout == other.payout
+          return false unless @line_items == other.line_items
           return false unless @expires_on == other.expires_on
           true
         end

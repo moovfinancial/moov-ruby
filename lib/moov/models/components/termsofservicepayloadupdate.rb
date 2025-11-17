@@ -8,23 +8,27 @@ module Moov
   module Models
     module Components
     
-      # An encrypted value used to record acceptance of Moov's Terms of Service.
-      class TermsOfServiceTokenUpdate
+
+      class TermsOfServicePayloadUpdate
         extend T::Sig
         include Crystalline::MetadataFields
 
 
         field :token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token') } }
+        # Describes the acceptance of the Terms of Service. All data is required, and must be from the user.
+        field :manual, Crystalline::Nilable.new(Models::Components::ManualTermsOfServiceUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('manual') } }
 
-        sig { params(token: T.nilable(::String)).void }
-        def initialize(token: nil)
+        sig { params(token: T.nilable(::String), manual: T.nilable(Models::Components::ManualTermsOfServiceUpdate)).void }
+        def initialize(token: nil, manual: nil)
           @token = token
+          @manual = manual
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @token == other.token
+          return false unless @manual == other.manual
           true
         end
       end

@@ -20,11 +20,14 @@ module Moov
 
         field :ach_details, Crystalline::Nilable.new(Models::Components::ACHPaymentDetailsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
 
-        sig { params(allowed_methods: T.nilable(::String), card_details: T.nilable(Models::Components::CardPaymentDetailsError), ach_details: T.nilable(Models::Components::ACHPaymentDetailsError)).void }
-        def initialize(allowed_methods: nil, card_details: nil, ach_details: nil)
+        field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+
+        sig { params(allowed_methods: T.nilable(::String), card_details: T.nilable(Models::Components::CardPaymentDetailsError), ach_details: T.nilable(Models::Components::ACHPaymentDetailsError), metadata: T.nilable(::String)).void }
+        def initialize(allowed_methods: nil, card_details: nil, ach_details: nil, metadata: nil)
           @allowed_methods = allowed_methods
           @card_details = card_details
           @ach_details = ach_details
+          @metadata = metadata
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -33,6 +36,7 @@ module Moov
           return false unless @allowed_methods == other.allowed_methods
           return false unless @card_details == other.card_details
           return false unless @ach_details == other.ach_details
+          return false unless @metadata == other.metadata
           true
         end
       end

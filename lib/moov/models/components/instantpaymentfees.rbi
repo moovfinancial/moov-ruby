@@ -14,6 +14,8 @@ class Moov::Models::Components::InstantPaymentFees
   def push_to_card_transaction=(str_); end
   def pull_from_card_transaction(); end
   def pull_from_card_transaction=(str_); end
+  def instant_verification(); end
+  def instant_verification=(str_); end
   def total(); end
   def total=(str_); end
   def rtp_decline(); end

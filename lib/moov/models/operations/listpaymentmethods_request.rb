@@ -15,13 +15,6 @@ module Moov
 
 
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
-        # Optional parameter to filter the account's payment methods by source ID. 
-        # 
-        # A source ID can be a [walletID](https://docs.moov.io/api/sources/wallets/list/), [cardID](https://docs.moov.io/api/sources/cards/list/), 
-        # or [bankAccountID](https://docs.moov.io/api/sources/bank-accounts/list/).
-        field :source_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'sourceID', 'style': 'form', 'explode': false } }
-        # Optional parameter to filter the account's payment methods by payment method type.
-        field :payment_method_type, Crystalline::Nilable.new(Models::Components::PaymentMethodType), { 'query_param': { 'field_name': 'paymentMethodType', 'style': 'form', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -31,23 +24,31 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
+        # Optional parameter to filter the account's payment methods by source ID. 
+        # 
+        # A source ID can be a [walletID](https://docs.moov.io/api/sources/wallets/list/), [cardID](https://docs.moov.io/api/sources/cards/list/), 
+        # or [bankAccountID](https://docs.moov.io/api/sources/bank-accounts/list/).
+        field :source_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'sourceID', 'style': 'form', 'explode': false } }
+        # Optional parameter to filter the account's payment methods by payment method type.
+        field :payment_method_type, Crystalline::Nilable.new(Models::Components::PaymentMethodType), { 'query_param': { 'field_name': 'paymentMethodType', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, source_id: nil, payment_method_type: nil, x_moov_version: 'v2024.01.00')
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType)).void }
+        def initialize(account_id:, x_moov_version: nil, source_id: nil, payment_method_type: nil)
           @account_id = account_id
+          @x_moov_version = x_moov_version
           @source_id = source_id
           @payment_method_type = payment_method_type
-          @x_moov_version = x_moov_version
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
+          return false unless @x_moov_version == other.x_moov_version
           return false unless @source_id == other.source_id
           return false unless @payment_method_type == other.payment_method_type
-          return false unless @x_moov_version == other.x_moov_version
           true
         end
       end

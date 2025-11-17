@@ -30,10 +30,11 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
         sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, update_evidence: Models::Components::UpdateEvidence, x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, dispute_id:, evidence_id:, update_evidence:, x_moov_version: 'v2024.01.00')
+        def initialize(account_id:, dispute_id:, evidence_id:, update_evidence:, x_moov_version: nil)
           @account_id = account_id
           @dispute_id = dispute_id
           @evidence_id = evidence_id

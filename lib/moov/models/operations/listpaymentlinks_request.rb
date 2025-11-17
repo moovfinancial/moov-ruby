@@ -24,12 +24,25 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, x_moov_version: 'v2024.01.00')
+        field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
+
+        field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
+
+        field :type, Crystalline::Nilable.new(Models::Components::PaymentLinkType), { 'query_param': { 'field_name': 'type', 'style': 'form', 'explode': false } }
+
+        field :status, Crystalline::Nilable.new(Models::Components::PaymentLinkStatus), { 'query_param': { 'field_name': 'status', 'style': 'form', 'explode': false } }
+
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), type: T.nilable(Models::Components::PaymentLinkType), status: T.nilable(Models::Components::PaymentLinkStatus)).void }
+        def initialize(account_id:, x_moov_version: nil, skip: nil, count: nil, type: nil, status: nil)
           @account_id = account_id
           @x_moov_version = x_moov_version
+          @skip = skip
+          @count = count
+          @type = type
+          @status = status
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -37,6 +50,10 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @x_moov_version == other.x_moov_version
+          return false unless @skip == other.skip
+          return false unless @count == other.count
+          return false unless @type == other.type
+          return false unless @status == other.status
           true
         end
       end

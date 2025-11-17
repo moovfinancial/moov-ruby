@@ -14,4 +14,6 @@ class Moov::Models::Components::PaymentLinkPaymentDetails
   def card_details=(str_); end
   def ach_details(); end
   def ach_details=(str_); end
+  def metadata(); end
+  def metadata=(str_); end
 end

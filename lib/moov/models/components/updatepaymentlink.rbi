@@ -18,6 +18,8 @@ class Moov::Models::Components::UpdatePaymentLink
   def payment=(str_); end
   def payout(); end
   def payout=(str_); end
+  def line_items(); end
+  def line_items=(str_); end
   def expires_on(); end
   def expires_on=(str_); end
 end

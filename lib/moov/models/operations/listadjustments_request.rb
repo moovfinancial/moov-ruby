@@ -15,8 +15,6 @@ module Moov
 
 
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
-        # A wallet ID to filter adjustments by.
-        field :wallet_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'walletID', 'style': 'form', 'explode': false } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -26,21 +24,24 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
+        # A wallet ID to filter adjustments by.
+        field :wallet_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'walletID', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, wallet_id: T.nilable(::String), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, wallet_id: nil, x_moov_version: 'v2024.01.00')
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), wallet_id: T.nilable(::String)).void }
+        def initialize(account_id:, x_moov_version: nil, wallet_id: nil)
           @account_id = account_id
-          @wallet_id = wallet_id
           @x_moov_version = x_moov_version
+          @wallet_id = wallet_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
-          return false unless @wallet_id == other.wallet_id
           return false unless @x_moov_version == other.x_moov_version
+          return false unless @wallet_id == other.wallet_id
           true
         end
       end

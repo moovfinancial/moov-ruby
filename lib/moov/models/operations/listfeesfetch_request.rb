@@ -15,8 +15,6 @@ module Moov
 
 
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
-
-        field :list_fees_fetch_request, Crystalline::Nilable.new(Models::Components::ListFeesFetchRequest), { 'request': { 'media_type': 'application/json' } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -26,21 +24,24 @@ module Moov
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
         # 
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, list_fees_fetch_request: nil, x_moov_version: 'v2024.01.00')
+        field :list_fees_fetch_request, Crystalline::Nilable.new(Models::Components::ListFeesFetchRequest), { 'request': { 'media_type': 'application/json' } }
+
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest)).void }
+        def initialize(account_id:, x_moov_version: nil, list_fees_fetch_request: nil)
           @account_id = account_id
-          @list_fees_fetch_request = list_fees_fetch_request
           @x_moov_version = x_moov_version
+          @list_fees_fetch_request = list_fees_fetch_request
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
-          return false unless @list_fees_fetch_request == other.list_fees_fetch_request
           return false unless @x_moov_version == other.x_moov_version
+          return false unless @list_fees_fetch_request == other.list_fees_fetch_request
           true
         end
       end

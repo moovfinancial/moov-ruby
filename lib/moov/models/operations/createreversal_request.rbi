@@ -14,8 +14,8 @@ class Moov::Models::Operations::CreateReversalRequest
   def account_id=(str_); end
   def transfer_id(); end
   def transfer_id=(str_); end
-  def create_reversal(); end
-  def create_reversal=(str_); end
   def x_moov_version(); end
   def x_moov_version=(str_); end
+  def create_reversal(); end
+  def create_reversal=(str_); end
 end

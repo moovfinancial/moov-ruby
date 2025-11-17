@@ -20,11 +20,14 @@ module Moov
         # 
         # This information will be used to authenticate the end user when they follow the payment link.
         field :recipient, Crystalline::Nilable.new(Models::Components::PayoutRecipient), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient') } }
+        # Optional free-form metadata for the transfer.
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipient)).void }
-        def initialize(allowed_methods: nil, recipient: nil)
+        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipient), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
+        def initialize(allowed_methods: nil, recipient: nil, metadata: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient
+          @metadata = metadata
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -32,6 +35,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @allowed_methods == other.allowed_methods
           return false unless @recipient == other.recipient
+          return false unless @metadata == other.metadata
           true
         end
       end

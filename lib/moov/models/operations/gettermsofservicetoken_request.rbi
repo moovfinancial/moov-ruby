@@ -8,10 +8,10 @@ end
 
 
 class Moov::Models::Operations::GetTermsOfServiceTokenRequest
+  def x_moov_version(); end
+  def x_moov_version=(str_); end
   def origin(); end
   def origin=(str_); end
   def referer(); end
   def referer=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

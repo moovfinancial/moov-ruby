@@ -26,4 +26,6 @@ class Moov::Models::Components::CreatePaymentLink
   def payment=(str_); end
   def payout(); end
   def payout=(str_); end
+  def line_items(); end
+  def line_items=(str_); end
 end
