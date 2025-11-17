@@ -15,9 +15,9 @@ module Moov
         ).returns(SDKConfiguration)
       end
       def sdk_init(config:)
-        config.globals[:parameters] ||= {}
-        config.globals[:parameters][:header] ||= {}
-        config.globals[:parameters][:header][:x_moov_version] = config.openapi_doc_version
+        parameters = (config.globals[:parameters] ||= {})
+        header = (parameters[:header] ||= {})
+        header[:x_moov_version] = config.openapi_doc_version
         config
       end
 
