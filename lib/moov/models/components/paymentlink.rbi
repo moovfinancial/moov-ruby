@@ -20,6 +20,8 @@ class Moov::Models::Components::PaymentLink
   def partner_account_id=(str_); end
   def merchant_account_id(); end
   def merchant_account_id=(str_); end
+  def owner_account_id(); end
+  def owner_account_id=(str_); end
   def merchant_payment_method_id(); end
   def merchant_payment_method_id=(str_); end
   def link(); end

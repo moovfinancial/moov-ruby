@@ -25,6 +25,8 @@ module Moov
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
         # The merchant's Moov account ID.
         field :merchant_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantAccountID'), required: true } }
+        # The payment link's owner's Moov account ID.
+        field :owner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('ownerAccountID'), required: true } }
         # The merchant's preferred payment method ID. Must be a wallet payment method.
         field :merchant_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantPaymentMethodID'), required: true } }
         # Link to the payment landing page for this payment link.
@@ -59,14 +61,15 @@ module Moov
 
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, amount: Models::Components::Amount, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime)).void }
-        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, merchant_payment_method_id:, link:, amount:, uses:, display:, customer:, created_on:, updated_on:, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil)
+        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, amount: Models::Components::Amount, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime)).void }
+        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, amount:, uses:, display:, customer:, created_on:, updated_on:, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil)
           @code = code
           @payment_link_type = payment_link_type
           @mode = mode
           @status = status
           @partner_account_id = partner_account_id
           @merchant_account_id = merchant_account_id
+          @owner_account_id = owner_account_id
           @merchant_payment_method_id = merchant_payment_method_id
           @link = link
           @amount = amount
@@ -93,6 +96,7 @@ module Moov
           return false unless @status == other.status
           return false unless @partner_account_id == other.partner_account_id
           return false unless @merchant_account_id == other.merchant_account_id
+          return false unless @owner_account_id == other.owner_account_id
           return false unless @merchant_payment_method_id == other.merchant_payment_method_id
           return false unless @link == other.link
           return false unless @amount == other.amount
