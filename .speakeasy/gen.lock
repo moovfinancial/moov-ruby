@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 4f3b278bf62da40ab5294f0fcc939518
+  docChecksum: 7e819af1320c3ccb843bdabe1ddf255c
   docVersion: latest
   speakeasyVersion: 1.658.2
   generationVersion: 2.755.9
-  releaseVersion: 0.3.4
-  configChecksum: 7dfde37bc451ddfd0d10919b12064ff6
+  releaseVersion: 0.3.5
+  configChecksum: 32d65f585b3d85d2d4eeacae0989e238
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -288,6 +288,8 @@ generatedFiles:
   - docs/models/components/individualprofile.md
   - docs/models/components/industrycodes.md
   - docs/models/components/industrytaxonomy.md
+  - docs/models/components/instantbankcreditpaymentmethod.md
+  - docs/models/components/instantbankcreditpaymentmethodpaymentmethodtype.md
   - docs/models/components/instantpaymentfees.md
   - docs/models/components/institutionssearchresponse.md
   - docs/models/components/issuedcard.md
@@ -839,6 +841,8 @@ generatedFiles:
   - docs/models/operations/listfeeplanagreementsresponse.md
   - docs/models/operations/listfeeplansrequest.md
   - docs/models/operations/listfeeplansresponse.md
+  - docs/models/operations/listfeerevenuerequest.md
+  - docs/models/operations/listfeerevenueresponse.md
   - docs/models/operations/listfeesfetchrequest.md
   - docs/models/operations/listfeesfetchresponse.md
   - docs/models/operations/listfilesrequest.md
@@ -1547,6 +1551,10 @@ generatedFiles:
   - lib/moov/models/components/industrycodes.rbi
   - lib/moov/models/components/industrytaxonomy.rb
   - lib/moov/models/components/industrytaxonomy.rbi
+  - lib/moov/models/components/instantbankcreditpaymentmethod.rb
+  - lib/moov/models/components/instantbankcreditpaymentmethod.rbi
+  - lib/moov/models/components/instantbankcreditpaymentmethod_paymentmethodtype.rb
+  - lib/moov/models/components/instantbankcreditpaymentmethod_paymentmethodtype.rbi
   - lib/moov/models/components/instantpaymentfees.rb
   - lib/moov/models/components/instantpaymentfees.rbi
   - lib/moov/models/components/institutionssearchresponse.rb
@@ -2653,6 +2661,10 @@ generatedFiles:
   - lib/moov/models/operations/listfeeplans_request.rbi
   - lib/moov/models/operations/listfeeplans_response.rb
   - lib/moov/models/operations/listfeeplans_response.rbi
+  - lib/moov/models/operations/listfeerevenue_request.rb
+  - lib/moov/models/operations/listfeerevenue_request.rbi
+  - lib/moov/models/operations/listfeerevenue_response.rb
+  - lib/moov/models/operations/listfeerevenue_response.rbi
   - lib/moov/models/operations/listfeesfetch_request.rb
   - lib/moov/models/operations/listfeesfetch_request.rbi
   - lib/moov/models/operations/listfeesfetch_response.rb
@@ -5197,10 +5209,16 @@ examples:
       responses:
         "200":
           application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
+  listFeeRevenue:
+    speakeasy-default-list-fee-revenue:
+      parameters:
+        path:
+          accountID: "795465fb-f955-40e7-9d48-4a6d6fbdbdf2"
+        query:
+          skip: 60
+          count: 20
+      responses:
+        "200":
+          application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Ruby SDK Changes Detected:
-  * `client.payment_links.create()`:  `response.owner_account_id` **Added**
-  * `client.payment_links.list()`:  `response.[].owner_account_id` **Added**
-  * `client.payment_links.get()`:  `response.owner_account_id` **Added**
-  * `client.payment_links.update()`:  `response.owner_account_id` **Added**
+releaseNotes: "## Ruby SDK Changes Detected:\n* `client.fee_plans.list_fee_revenue()`: **Added**\n* `client.payment_methods.list()`: \n  *  `request.payment_method_type` **Changed**\n  *  `response.[].[instant-bank-credit]` **Added**\n* `client.payment_methods.get()`:  `response.[instant-bank-credit]` **Added**\n* `client.transfers.generate_options()`:  `response.source_options.[].[instant-bank-credit]` **Added**\n"

@@ -256,6 +256,8 @@ module Moov
       autoload :IndividualProfile, 'moov/models/components/individualprofile.rb'
       autoload :IndustryCodes, 'moov/models/components/industrycodes.rb'
       autoload :IndustryTaxonomy, 'moov/models/components/industrytaxonomy.rb'
+      autoload :InstantBankCreditPaymentMethod, 'moov/models/components/instantbankcreditpaymentmethod.rb'
+      autoload :InstantBankCreditPaymentMethodPaymentMethodType, 'moov/models/components/instantbankcreditpaymentmethod_paymentmethodtype.rb'
       autoload :InstantPaymentFees, 'moov/models/components/instantpaymentfees.rb'
       autoload :InstitutionsSearchResponse, 'moov/models/components/institutionssearchresponse.rb'
       autoload :IssuedCard, 'moov/models/components/issuedcard.rb'

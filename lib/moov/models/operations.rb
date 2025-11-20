@@ -205,6 +205,8 @@ module Moov
       autoload :ListFeePlanAgreementsResponse, 'moov/models/operations/listfeeplanagreements_response.rb'
       autoload :ListFeePlansRequest, 'moov/models/operations/listfeeplans_request.rb'
       autoload :ListFeePlansResponse, 'moov/models/operations/listfeeplans_response.rb'
+      autoload :ListFeeRevenueRequest, 'moov/models/operations/listfeerevenue_request.rb'
+      autoload :ListFeeRevenueResponse, 'moov/models/operations/listfeerevenue_response.rb'
       autoload :ListFeesFetchRequest, 'moov/models/operations/listfeesfetch_request.rb'
       autoload :ListFeesFetchResponse, 'moov/models/operations/listfeesfetch_response.rb'
       autoload :ListFilesRequest, 'moov/models/operations/listfiles_request.rb'
