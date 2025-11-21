@@ -28,6 +28,8 @@ module Moov
           CAPABILITY_UPDATED = new('capability.updated')
           DISPUTE_CREATED = new('dispute.created')
           DISPUTE_UPDATED = new('dispute.updated')
+          INVOICE_CREATED = new('invoice.created')
+          INVOICE_UPDATED = new('invoice.updated')
           NETWORK_ID_UPDATED = new('networkID.updated')
           PAYMENT_METHOD_ENABLED = new('paymentMethod.enabled')
           PAYMENT_METHOD_DISABLED = new('paymentMethod.disabled')

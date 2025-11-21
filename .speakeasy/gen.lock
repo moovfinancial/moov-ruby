@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 7e819af1320c3ccb843bdabe1ddf255c
+  docChecksum: 9debdf4d029f2d45c8703da3770d5954
   docVersion: latest
-  speakeasyVersion: 1.658.2
+  speakeasyVersion: 1.659.0
   generationVersion: 2.755.9
-  releaseVersion: 0.3.5
-  configChecksum: 32d65f585b3d85d2d4eeacae0989e238
+  releaseVersion: 0.3.6
+  configChecksum: d09c95dc11cd6cd4c58e8b4bd05dd461
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -67,6 +67,7 @@ generatedFiles:
   - docs/models/components/adjustment.md
   - docs/models/components/amount.md
   - docs/models/components/amountdecimal.md
+  - docs/models/components/amountdecimalupdate.md
   - docs/models/components/amountdecimalvalidationerror.md
   - docs/models/components/amountupdate.md
   - docs/models/components/amountvalidationerror.md
@@ -189,6 +190,7 @@ generatedFiles:
   - docs/models/components/createindividualerroritin.md
   - docs/models/components/createindividualerrorssn.md
   - docs/models/components/createindividualprofile.md
+  - docs/models/components/createinvoice.md
   - docs/models/components/createpaymentlink.md
   - docs/models/components/createproductoption.md
   - docs/models/components/createproductoptiongroup.md
@@ -292,6 +294,20 @@ generatedFiles:
   - docs/models/components/instantbankcreditpaymentmethodpaymentmethodtype.md
   - docs/models/components/instantpaymentfees.md
   - docs/models/components/institutionssearchresponse.md
+  - docs/models/components/invoice.md
+  - docs/models/components/invoiceexternalpayment.md
+  - docs/models/components/invoiceexternalpaymentpaymenttype.md
+  - docs/models/components/invoicelineitem.md
+  - docs/models/components/invoicelineitemoption.md
+  - docs/models/components/invoicelineitemoptionvalidationerror.md
+  - docs/models/components/invoicelineitems.md
+  - docs/models/components/invoicelineitemsupdate.md
+  - docs/models/components/invoicelineitemsvalidationerror.md
+  - docs/models/components/invoicelineitemvalidationerror.md
+  - docs/models/components/invoicepayment.md
+  - docs/models/components/invoicestatus.md
+  - docs/models/components/invoicetransferpayment.md
+  - docs/models/components/invoicetransferpaymentpaymenttype.md
   - docs/models/components/issuedcard.md
   - docs/models/components/issuedcardauthorization.md
   - docs/models/components/issuedcardauthorizationevent.md
@@ -324,6 +340,7 @@ generatedFiles:
   - docs/models/components/manual.md
   - docs/models/components/manualtermsofservice.md
   - docs/models/components/manualtermsofserviceupdate.md
+  - docs/models/components/markinvoicepaid.md
   - docs/models/components/metadata.md
   - docs/models/components/microdepositstatus.md
   - docs/models/components/minimumcommitment.md
@@ -523,6 +540,7 @@ generatedFiles:
   - docs/models/components/updatecolor.md
   - docs/models/components/updatecolors.md
   - docs/models/components/updateevidence.md
+  - docs/models/components/updateinvoice.md
   - docs/models/components/updateissuedcard.md
   - docs/models/components/updatepaymentlink.md
   - docs/models/components/updaterepresentative.md
@@ -570,6 +588,8 @@ generatedFiles:
   - docs/models/components/webhookdatacardautoupdated.md
   - docs/models/components/webhookdatadisputecreated.md
   - docs/models/components/webhookdatadisputeupdated.md
+  - docs/models/components/webhookdatainvoicecreated.md
+  - docs/models/components/webhookdatainvoiceupdated.md
   - docs/models/components/webhookdatanetworkidupdated.md
   - docs/models/components/webhookdatapaymentmethoddisabled.md
   - docs/models/components/webhookdatapaymentmethodenabled.md
@@ -604,6 +624,7 @@ generatedFiles:
   - docs/models/errors/brandvalidationerror.md
   - docs/models/errors/cardacquiringrefunderror.md
   - docs/models/errors/createaccounterror.md
+  - docs/models/errors/createinvoiceerror.md
   - docs/models/errors/createpaymentlinkerror.md
   - docs/models/errors/createsweepconfigerror.md
   - docs/models/errors/createticketerror.md
@@ -616,9 +637,11 @@ generatedFiles:
   - docs/models/errors/imagerequestvalidationerror.md
   - docs/models/errors/linkapplepayerror.md
   - docs/models/errors/linkcarderror.md
+  - docs/models/errors/listinvoicesvalidationerror.md
   - docs/models/errors/listtransfersvalidationerror.md
   - docs/models/errors/listwalletsvalidationerror.md
   - docs/models/errors/listwallettransactionsvalidationerror.md
+  - docs/models/errors/markinvoicepaiderror.md
   - docs/models/errors/microdepositvalidationerror.md
   - docs/models/errors/onboardinginviteerror.md
   - docs/models/errors/patchaccounterror.md
@@ -637,6 +660,7 @@ generatedFiles:
   - docs/models/errors/transferoptionsvalidationerror.md
   - docs/models/errors/transfervalidationerror.md
   - docs/models/errors/updatecarderror.md
+  - docs/models/errors/updateinvoiceerror.md
   - docs/models/errors/updateissuedcarderror.md
   - docs/models/errors/updatepaymentlinkerror.md
   - docs/models/errors/updateticketerror.md
@@ -664,6 +688,8 @@ generatedFiles:
   - docs/models/operations/createcancellationresponse.md
   - docs/models/operations/createfeeplanagreementsrequest.md
   - docs/models/operations/createfeeplanagreementsresponse.md
+  - docs/models/operations/createinvoicerequest.md
+  - docs/models/operations/createinvoiceresponse.md
   - docs/models/operations/createonboardinginviterequest.md
   - docs/models/operations/createonboardinginviteresponse.md
   - docs/models/operations/createpaymentlinkrequest.md
@@ -754,6 +780,8 @@ generatedFiles:
   - docs/models/operations/getfullissuedcardresponse.md
   - docs/models/operations/getimagemetadatarequest.md
   - docs/models/operations/getimagemetadataresponse.md
+  - docs/models/operations/getinvoicerequest.md
+  - docs/models/operations/getinvoiceresponse.md
   - docs/models/operations/getissuedcardauthorizationrequest.md
   - docs/models/operations/getissuedcardauthorizationresponse.md
   - docs/models/operations/getissuedcardrequest.md
@@ -853,6 +881,8 @@ generatedFiles:
   - docs/models/operations/listindustriesresponse.md
   - docs/models/operations/listinstitutionsrequest.md
   - docs/models/operations/listinstitutionsresponse.md
+  - docs/models/operations/listinvoicesrequest.md
+  - docs/models/operations/listinvoicesresponse.md
   - docs/models/operations/listissuedcardauthorizationeventsrequest.md
   - docs/models/operations/listissuedcardauthorizationeventsresponse.md
   - docs/models/operations/listissuedcardauthorizationsrequest.md
@@ -904,6 +934,8 @@ generatedFiles:
   - docs/models/operations/listwalletsresponse.md
   - docs/models/operations/listwallettransactionsrequest.md
   - docs/models/operations/listwallettransactionsresponse.md
+  - docs/models/operations/markpaidinvoicerequest.md
+  - docs/models/operations/markpaidinvoiceresponse.md
   - docs/models/operations/pingrequest.md
   - docs/models/operations/pingresponse.md
   - docs/models/operations/registerapplepaymerchantdomainsrequest.md
@@ -940,6 +972,8 @@ generatedFiles:
   - docs/models/operations/updateimagemetadataresponse.md
   - docs/models/operations/updateimagerequest.md
   - docs/models/operations/updateimageresponse.md
+  - docs/models/operations/updateinvoicerequest.md
+  - docs/models/operations/updateinvoiceresponse.md
   - docs/models/operations/updateissuedcardrequest.md
   - docs/models/operations/updateissuedcardresponse.md
   - docs/models/operations/updatepaymentlinkrequest.md
@@ -990,6 +1024,7 @@ generatedFiles:
   - docs/sdks/images/README.md
   - docs/sdks/industries/README.md
   - docs/sdks/institutions/README.md
+  - docs/sdks/invoices/README.md
   - docs/sdks/issuingtransactions/README.md
   - docs/sdks/onboarding/README.md
   - docs/sdks/paymentlinks/README.md
@@ -1034,6 +1069,7 @@ generatedFiles:
   - lib/moov/images.rb
   - lib/moov/industries.rb
   - lib/moov/institutions.rb
+  - lib/moov/invoices.rb
   - lib/moov/issuing_transactions.rb
   - lib/moov/models/callbacks.rb
   - lib/moov/models/components.rb
@@ -1109,6 +1145,8 @@ generatedFiles:
   - lib/moov/models/components/amount.rbi
   - lib/moov/models/components/amountdecimal.rb
   - lib/moov/models/components/amountdecimal.rbi
+  - lib/moov/models/components/amountdecimalupdate.rb
+  - lib/moov/models/components/amountdecimalupdate.rbi
   - lib/moov/models/components/amountdecimalvalidationerror.rb
   - lib/moov/models/components/amountdecimalvalidationerror.rbi
   - lib/moov/models/components/amountupdate.rb
@@ -1353,6 +1391,8 @@ generatedFiles:
   - lib/moov/models/components/createindividualerror_ssn.rbi
   - lib/moov/models/components/createindividualprofile.rb
   - lib/moov/models/components/createindividualprofile.rbi
+  - lib/moov/models/components/createinvoice.rb
+  - lib/moov/models/components/createinvoice.rbi
   - lib/moov/models/components/createpaymentlink.rb
   - lib/moov/models/components/createpaymentlink.rbi
   - lib/moov/models/components/createproductoption.rb
@@ -1559,6 +1599,34 @@ generatedFiles:
   - lib/moov/models/components/instantpaymentfees.rbi
   - lib/moov/models/components/institutionssearchresponse.rb
   - lib/moov/models/components/institutionssearchresponse.rbi
+  - lib/moov/models/components/invoice.rb
+  - lib/moov/models/components/invoice.rbi
+  - lib/moov/models/components/invoiceexternalpayment.rb
+  - lib/moov/models/components/invoiceexternalpayment.rbi
+  - lib/moov/models/components/invoiceexternalpayment_paymenttype.rb
+  - lib/moov/models/components/invoiceexternalpayment_paymenttype.rbi
+  - lib/moov/models/components/invoicelineitem.rb
+  - lib/moov/models/components/invoicelineitem.rbi
+  - lib/moov/models/components/invoicelineitemoption.rb
+  - lib/moov/models/components/invoicelineitemoption.rbi
+  - lib/moov/models/components/invoicelineitemoptionvalidationerror.rb
+  - lib/moov/models/components/invoicelineitemoptionvalidationerror.rbi
+  - lib/moov/models/components/invoicelineitems.rb
+  - lib/moov/models/components/invoicelineitems.rbi
+  - lib/moov/models/components/invoicelineitemsupdate.rb
+  - lib/moov/models/components/invoicelineitemsupdate.rbi
+  - lib/moov/models/components/invoicelineitemsvalidationerror.rb
+  - lib/moov/models/components/invoicelineitemsvalidationerror.rbi
+  - lib/moov/models/components/invoicelineitemvalidationerror.rb
+  - lib/moov/models/components/invoicelineitemvalidationerror.rbi
+  - lib/moov/models/components/invoicepayment.rb
+  - lib/moov/models/components/invoicepayment.rbi
+  - lib/moov/models/components/invoicestatus.rb
+  - lib/moov/models/components/invoicestatus.rbi
+  - lib/moov/models/components/invoicetransferpayment.rb
+  - lib/moov/models/components/invoicetransferpayment.rbi
+  - lib/moov/models/components/invoicetransferpayment_paymenttype.rb
+  - lib/moov/models/components/invoicetransferpayment_paymenttype.rbi
   - lib/moov/models/components/issuedcard.rb
   - lib/moov/models/components/issuedcard.rbi
   - lib/moov/models/components/issuedcardauthorization.rb
@@ -1623,6 +1691,8 @@ generatedFiles:
   - lib/moov/models/components/manualtermsofservice.rbi
   - lib/moov/models/components/manualtermsofserviceupdate.rb
   - lib/moov/models/components/manualtermsofserviceupdate.rbi
+  - lib/moov/models/components/markinvoicepaid.rb
+  - lib/moov/models/components/markinvoicepaid.rbi
   - lib/moov/models/components/metadata.rb
   - lib/moov/models/components/metadata.rbi
   - lib/moov/models/components/microdepositstatus.rb
@@ -2021,6 +2091,8 @@ generatedFiles:
   - lib/moov/models/components/updatecolors.rbi
   - lib/moov/models/components/updateevidence.rb
   - lib/moov/models/components/updateevidence.rbi
+  - lib/moov/models/components/updateinvoice.rb
+  - lib/moov/models/components/updateinvoice.rbi
   - lib/moov/models/components/updateissuedcard.rb
   - lib/moov/models/components/updateissuedcard.rbi
   - lib/moov/models/components/updatepaymentlink.rb
@@ -2115,6 +2187,10 @@ generatedFiles:
   - lib/moov/models/components/webhookdatadisputecreated.rbi
   - lib/moov/models/components/webhookdatadisputeupdated.rb
   - lib/moov/models/components/webhookdatadisputeupdated.rbi
+  - lib/moov/models/components/webhookdatainvoicecreated.rb
+  - lib/moov/models/components/webhookdatainvoicecreated.rbi
+  - lib/moov/models/components/webhookdatainvoiceupdated.rb
+  - lib/moov/models/components/webhookdatainvoiceupdated.rbi
   - lib/moov/models/components/webhookdatanetworkidupdated.rb
   - lib/moov/models/components/webhookdatanetworkidupdated.rbi
   - lib/moov/models/components/webhookdatapaymentmethoddisabled.rb
@@ -2186,6 +2262,8 @@ generatedFiles:
   - lib/moov/models/errors/cardacquiringrefund_error.rbi
   - lib/moov/models/errors/createaccounterror.rb
   - lib/moov/models/errors/createaccounterror.rbi
+  - lib/moov/models/errors/createinvoiceerror.rb
+  - lib/moov/models/errors/createinvoiceerror.rbi
   - lib/moov/models/errors/createpaymentlinkerror.rb
   - lib/moov/models/errors/createpaymentlinkerror.rbi
   - lib/moov/models/errors/createsweepconfigerror.rb
@@ -2210,12 +2288,16 @@ generatedFiles:
   - lib/moov/models/errors/linkapplepayerror.rbi
   - lib/moov/models/errors/linkcarderror.rb
   - lib/moov/models/errors/linkcarderror.rbi
+  - lib/moov/models/errors/listinvoicesvalidationerror.rb
+  - lib/moov/models/errors/listinvoicesvalidationerror.rbi
   - lib/moov/models/errors/listtransfersvalidationerror.rb
   - lib/moov/models/errors/listtransfersvalidationerror.rbi
   - lib/moov/models/errors/listwalletsvalidationerror.rb
   - lib/moov/models/errors/listwalletsvalidationerror.rbi
   - lib/moov/models/errors/listwallettransactionsvalidationerror.rb
   - lib/moov/models/errors/listwallettransactionsvalidationerror.rbi
+  - lib/moov/models/errors/markinvoicepaiderror.rb
+  - lib/moov/models/errors/markinvoicepaiderror.rbi
   - lib/moov/models/errors/microdepositvalidationerror.rb
   - lib/moov/models/errors/microdepositvalidationerror.rbi
   - lib/moov/models/errors/onboardinginviteerror.rb
@@ -2252,6 +2334,8 @@ generatedFiles:
   - lib/moov/models/errors/transfervalidationerror.rbi
   - lib/moov/models/errors/updatecarderror.rb
   - lib/moov/models/errors/updatecarderror.rbi
+  - lib/moov/models/errors/updateinvoiceerror.rb
+  - lib/moov/models/errors/updateinvoiceerror.rbi
   - lib/moov/models/errors/updateissuedcarderror.rb
   - lib/moov/models/errors/updateissuedcarderror.rbi
   - lib/moov/models/errors/updatepaymentlinkerror.rb
@@ -2307,6 +2391,10 @@ generatedFiles:
   - lib/moov/models/operations/createfeeplanagreements_request.rbi
   - lib/moov/models/operations/createfeeplanagreements_response.rb
   - lib/moov/models/operations/createfeeplanagreements_response.rbi
+  - lib/moov/models/operations/createinvoice_request.rb
+  - lib/moov/models/operations/createinvoice_request.rbi
+  - lib/moov/models/operations/createinvoice_response.rb
+  - lib/moov/models/operations/createinvoice_response.rbi
   - lib/moov/models/operations/createonboardinginvite_request.rb
   - lib/moov/models/operations/createonboardinginvite_request.rbi
   - lib/moov/models/operations/createonboardinginvite_response.rb
@@ -2487,6 +2575,10 @@ generatedFiles:
   - lib/moov/models/operations/getimagemetadata_request.rbi
   - lib/moov/models/operations/getimagemetadata_response.rb
   - lib/moov/models/operations/getimagemetadata_response.rbi
+  - lib/moov/models/operations/getinvoice_request.rb
+  - lib/moov/models/operations/getinvoice_request.rbi
+  - lib/moov/models/operations/getinvoice_response.rb
+  - lib/moov/models/operations/getinvoice_response.rbi
   - lib/moov/models/operations/getissuedcard_request.rb
   - lib/moov/models/operations/getissuedcard_request.rbi
   - lib/moov/models/operations/getissuedcard_response.rb
@@ -2685,6 +2777,10 @@ generatedFiles:
   - lib/moov/models/operations/listinstitutions_request.rbi
   - lib/moov/models/operations/listinstitutions_response.rb
   - lib/moov/models/operations/listinstitutions_response.rbi
+  - lib/moov/models/operations/listinvoices_request.rb
+  - lib/moov/models/operations/listinvoices_request.rbi
+  - lib/moov/models/operations/listinvoices_response.rb
+  - lib/moov/models/operations/listinvoices_response.rbi
   - lib/moov/models/operations/listissuedcardauthorizationevents_request.rb
   - lib/moov/models/operations/listissuedcardauthorizationevents_request.rbi
   - lib/moov/models/operations/listissuedcardauthorizationevents_response.rb
@@ -2787,6 +2883,10 @@ generatedFiles:
   - lib/moov/models/operations/listwallettransactions_request.rbi
   - lib/moov/models/operations/listwallettransactions_response.rb
   - lib/moov/models/operations/listwallettransactions_response.rbi
+  - lib/moov/models/operations/markpaidinvoice_request.rb
+  - lib/moov/models/operations/markpaidinvoice_request.rbi
+  - lib/moov/models/operations/markpaidinvoice_response.rb
+  - lib/moov/models/operations/markpaidinvoice_response.rbi
   - lib/moov/models/operations/ping_request.rb
   - lib/moov/models/operations/ping_request.rbi
   - lib/moov/models/operations/ping_response.rb
@@ -2859,6 +2959,10 @@ generatedFiles:
   - lib/moov/models/operations/updateimagemetadata_request.rbi
   - lib/moov/models/operations/updateimagemetadata_response.rb
   - lib/moov/models/operations/updateimagemetadata_response.rbi
+  - lib/moov/models/operations/updateinvoice_request.rb
+  - lib/moov/models/operations/updateinvoice_request.rbi
+  - lib/moov/models/operations/updateinvoice_response.rb
+  - lib/moov/models/operations/updateinvoice_response.rbi
   - lib/moov/models/operations/updateissuedcard_request.rb
   - lib/moov/models/operations/updateissuedcard_request.rbi
   - lib/moov/models/operations/updateissuedcard_response.rb
@@ -5220,5 +5324,77 @@ examples:
       responses:
         "200":
           application/json: [{"amount": {"currency": "USD", "valueDecimal": "12.987654321"}}]
+  createInvoice:
+    speakeasy-default-create-invoice:
+      parameters:
+        path:
+          accountID: "241bf524-e777-4941-a5e4-d7f3f34d7a00"
+      requestBody:
+        application/json: {"customerAccountID": "<id>", "description": "austere gah under ew failing provided repeatedly pick onto", "lineItems": {"items": []}, "taxAmount": {"currency": "USD", "valueDecimal": "12.987654321"}}
+      responses:
+        "201":
+          application/json: {"invoiceID": "8e7c319b-fa73-40ae-9f04-17e4465fccc2", "invoiceNumber": "INV-1001", "description": "accelerator meh abnormally ick", "customerAccountID": "a26bf1ea-761f-4cd3-8c65-05f167bba51c", "partnerAccountID": "a22cf011-2aa1-4b05-8b4e-458806d2e1e2", "status": "draft", "lineItems": {"items": []}, "subtotalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "taxAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "totalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "pendingAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "paidAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "refundedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "disputedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "payments": [{"paymentType": "transfer", "transferID": "3265f602-f2e9-4708-9152-2486cef62add"}], "createdOn": "2023-07-17T20:51:09.811Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  listInvoices:
+    speakeasy-default-list-invoices:
+      parameters:
+        path:
+          accountID: "114b02db-e4ca-47de-acc9-5624f4afccb5"
+        query:
+          skip: 60
+          count: 20
+      responses:
+        "200":
+          application/json: [{"invoiceID": "4ea1aef6-c3b1-4b1b-a992-2daf3b2f232a", "invoiceNumber": "INV-1001", "description": "pave hunt bouncy whereas briefly", "customerAccountID": "9cee1f88-2b2a-4265-9d7d-3192ed44f4f8", "partnerAccountID": "78c0d2bb-ff83-409d-8f3e-e52b7a2a05a2", "status": "payment-pending", "lineItems": {"items": []}, "subtotalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "taxAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "totalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "pendingAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "paidAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "refundedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "disputedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "payments": [{"paymentType": "transfer", "transferID": "a9fc2011-ea2b-475d-b7ac-86ab90640a29"}], "createdOn": "2023-02-27T11:12:32.243Z"}]
+        "422":
+          application/json: {}
+  getInvoice:
+    speakeasy-default-get-invoice:
+      parameters:
+        path:
+          accountID: "3ecce96f-a052-4c96-b389-98e880af1ab4"
+          invoiceID: "fc90d016-39ea-4110-b77a-2e1c95827f46"
+      responses:
+        "200":
+          application/json: {"invoiceID": "5fcf112b-06b3-4f44-8394-a461504011f7", "invoiceNumber": "INV-1001", "description": "shaft ha proselytise whether how confide aged unto wasabi icy", "customerAccountID": "4e393a28-a21b-4f47-b394-1fd5db5066a0", "partnerAccountID": "7e715f6d-8253-42ee-b960-d0681d232b1a", "status": "payment-pending", "lineItems": {"items": [{"name": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "quantity": 786047, "options": [{"name": "<value>", "quantity": 272007, "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}}]}]}, "subtotalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "taxAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "totalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "pendingAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "paidAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "refundedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "disputedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "payments": [{"paymentType": "transfer", "transferID": "f7c8f786-bf4b-42b1-8eea-98f774af7b0a"}], "createdOn": "2023-09-25T12:40:16.566Z"}
+  updateInvoice:
+    speakeasy-default-update-invoice:
+      parameters:
+        path:
+          accountID: "ce46d65a-8504-4afa-b3f7-303401bd08b3"
+          invoiceID: "ef510999-370a-4350-87d5-bc81fc02a2ea"
+      requestBody:
+        application/json: {"lineItems": {"items": [{"name": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "quantity": 984515, "options": [{"name": "<value>", "quantity": 761923, "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}}]}]}, "taxAmount": {"currency": "USD", "valueDecimal": "12.987654321"}}
+      responses:
+        "200":
+          application/json: {"invoiceID": "d07096dd-d765-4147-b39c-0a7b054e55da", "invoiceNumber": "INV-1001", "description": "near shakily um drat", "customerAccountID": "809dcb21-0671-43ee-8331-058d95d72d45", "partnerAccountID": "fe8f1be6-8486-498c-9748-1fa172596b35", "status": "overdue", "lineItems": {"items": [{"name": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "quantity": 984515, "options": [{"name": "<value>", "quantity": 761923, "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}}]}]}, "subtotalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "taxAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "totalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "pendingAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "paidAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "refundedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "disputedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "payments": [{"paymentType": "transfer", "transferID": "72547143-8c7d-45dc-b9e0-406067afe10e"}], "createdOn": "2024-05-24T01:01:13.656Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
+  markPaidInvoice:
+    speakeasy-default-mark-paid-invoice:
+      parameters:
+        path:
+          accountID: "e270fffe-637f-4828-ace1-3813031d3274"
+          invoiceID: "9a08a44d-da9a-4385-8870-bb488c363e91"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"invoiceID": "f95d315a-9d47-41ac-a346-c4db88f8b415", "invoiceNumber": "INV-1001", "description": "sandy without atop milky tame forenenst via", "customerAccountID": "7b6946f3-21d8-404f-995f-5307e3776e5c", "partnerAccountID": "cd718ebe-5d23-44f6-9be9-2f5f4eb82789", "status": "draft", "lineItems": {"items": [{"name": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "quantity": 491045, "options": [{"name": "<value>", "quantity": 500070, "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}}]}]}, "subtotalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "taxAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "totalAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "pendingAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "paidAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "refundedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "disputedAmount": {"currency": "USD", "valueDecimal": "12.987654321"}, "payments": [{"paymentType": "external", "description": "which concerning investigate", "amount": {"currency": "USD", "valueDecimal": "12.987654321"}}], "createdOn": "2023-05-24T17:08:07.949Z"}
+        "400":
+          application/json: {"error": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.fee_plans.list_fee_revenue()`: **Added**\n* `client.payment_methods.list()`: \n  *  `request.payment_method_type` **Changed**\n  *  `response.[].[instant-bank-credit]` **Added**\n* `client.payment_methods.get()`:  `response.[instant-bank-credit]` **Added**\n* `client.transfers.generate_options()`:  `response.source_options.[].[instant-bank-credit]` **Added**\n"
+releaseNotes: |
+  ## Ruby SDK Changes Detected:
+  * `client.invoices.create_invoice()`: **Added**
+  * `client.invoices.list_invoices()`: **Added**
+  * `client.invoices.get_invoice()`: **Added**
+  * `client.invoices.update_invoice()`: **Added**
+  * `client.invoices.mark_paid_invoice()`: **Added**
