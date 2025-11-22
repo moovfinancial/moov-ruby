@@ -41,9 +41,9 @@ module Moov
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
         # An optional collection of line items for a payment link.
         # When line items are provided, their total plus sales tax must equal the payment link amount.
-        field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
+        field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
-        sig { params(partner_account_id: ::String, merchant_payment_method_id: ::String, amount: Models::Components::Amount, display: Models::Components::PaymentLinkDisplayOptions, max_uses: T.nilable(::Integer), expires_on: T.nilable(::DateTime), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems)).void }
+        sig { params(partner_account_id: ::String, merchant_payment_method_id: ::String, amount: Models::Components::Amount, display: Models::Components::PaymentLinkDisplayOptions, max_uses: T.nilable(::Integer), expires_on: T.nilable(::DateTime), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItems)).void }
         def initialize(partner_account_id:, merchant_payment_method_id:, amount:, display:, max_uses: nil, expires_on: nil, customer: nil, payment: nil, payout: nil, line_items: nil)
           @partner_account_id = partner_account_id
           @merchant_payment_method_id = merchant_payment_method_id

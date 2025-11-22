@@ -9,7 +9,7 @@ module Moov
     module Components
     
 
-      class PaymentLinkLineItemOptionValidationError
+      class CreatePaymentLinkLineItemOptionValidationError
         extend T::Sig
         include Crystalline::MetadataFields
 

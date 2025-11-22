@@ -8,15 +8,16 @@ module Moov
   module Models
     module Components
     
-
-      class PaymentLinkLineItemsValidationError
+      # An optional collection of line items for a payment link.
+      # When line items are provided, their total plus sales tax must equal the payment link amount.
+      class CreatePaymentLinkLineItemsUpdate
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # The list of line items.
+        field :items, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreatePaymentLinkLineItem)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items') } }
 
-        field :items, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::PaymentLinkLineItemValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items') } }
-
-        sig { params(items: T.nilable(T::Hash[Symbol, Models::Components::PaymentLinkLineItemValidationError])).void }
+        sig { params(items: T.nilable(T::Array[Models::Components::CreatePaymentLinkLineItem])).void }
         def initialize(items: nil)
           @items = items
         end

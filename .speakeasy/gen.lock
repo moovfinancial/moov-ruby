@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 9debdf4d029f2d45c8703da3770d5954
+  docChecksum: 4118d9fa14f2cb49d8d7a649bffbb371
   docVersion: latest
-  speakeasyVersion: 1.659.0
-  generationVersion: 2.755.9
-  releaseVersion: 0.3.6
-  configChecksum: d09c95dc11cd6cd4c58e8b4bd05dd461
+  speakeasyVersion: 1.660.0
+  generationVersion: 2.760.2
+  releaseVersion: 0.3.7
+  configChecksum: bc2cc93484f86f5b293da902db21ae71
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -192,6 +192,13 @@ generatedFiles:
   - docs/models/components/createindividualprofile.md
   - docs/models/components/createinvoice.md
   - docs/models/components/createpaymentlink.md
+  - docs/models/components/createpaymentlinklineitem.md
+  - docs/models/components/createpaymentlinklineitemoption.md
+  - docs/models/components/createpaymentlinklineitemoptionvalidationerror.md
+  - docs/models/components/createpaymentlinklineitems.md
+  - docs/models/components/createpaymentlinklineitemsupdate.md
+  - docs/models/components/createpaymentlinklineitemsvalidationerror.md
+  - docs/models/components/createpaymentlinklineitemvalidationerror.md
   - docs/models/components/createproductoption.md
   - docs/models/components/createproductoptiongroup.md
   - docs/models/components/createprofile.md
@@ -384,12 +391,9 @@ generatedFiles:
   - docs/models/components/paymentlinkdisplayoptions.md
   - docs/models/components/paymentlinkdisplayoptionsupdate.md
   - docs/models/components/paymentlinklineitem.md
+  - docs/models/components/paymentlinklineitemimagemetadata.md
   - docs/models/components/paymentlinklineitemoption.md
-  - docs/models/components/paymentlinklineitemoptionvalidationerror.md
   - docs/models/components/paymentlinklineitems.md
-  - docs/models/components/paymentlinklineitemsupdate.md
-  - docs/models/components/paymentlinklineitemsvalidationerror.md
-  - docs/models/components/paymentlinklineitemvalidationerror.md
   - docs/models/components/paymentlinkpaymentdetails.md
   - docs/models/components/paymentlinkpaymentdetailsupdate.md
   - docs/models/components/paymentlinkpayoutdetails.md
@@ -1395,6 +1399,20 @@ generatedFiles:
   - lib/moov/models/components/createinvoice.rbi
   - lib/moov/models/components/createpaymentlink.rb
   - lib/moov/models/components/createpaymentlink.rbi
+  - lib/moov/models/components/createpaymentlinklineitem.rb
+  - lib/moov/models/components/createpaymentlinklineitem.rbi
+  - lib/moov/models/components/createpaymentlinklineitemoption.rb
+  - lib/moov/models/components/createpaymentlinklineitemoption.rbi
+  - lib/moov/models/components/createpaymentlinklineitemoptionvalidationerror.rb
+  - lib/moov/models/components/createpaymentlinklineitemoptionvalidationerror.rbi
+  - lib/moov/models/components/createpaymentlinklineitems.rb
+  - lib/moov/models/components/createpaymentlinklineitems.rbi
+  - lib/moov/models/components/createpaymentlinklineitemsupdate.rb
+  - lib/moov/models/components/createpaymentlinklineitemsupdate.rbi
+  - lib/moov/models/components/createpaymentlinklineitemsvalidationerror.rb
+  - lib/moov/models/components/createpaymentlinklineitemsvalidationerror.rbi
+  - lib/moov/models/components/createpaymentlinklineitemvalidationerror.rb
+  - lib/moov/models/components/createpaymentlinklineitemvalidationerror.rbi
   - lib/moov/models/components/createproductoption.rb
   - lib/moov/models/components/createproductoption.rbi
   - lib/moov/models/components/createproductoptiongroup.rb
@@ -1779,18 +1797,12 @@ generatedFiles:
   - lib/moov/models/components/paymentlinkdisplayoptionsupdate.rbi
   - lib/moov/models/components/paymentlinklineitem.rb
   - lib/moov/models/components/paymentlinklineitem.rbi
+  - lib/moov/models/components/paymentlinklineitemimagemetadata.rb
+  - lib/moov/models/components/paymentlinklineitemimagemetadata.rbi
   - lib/moov/models/components/paymentlinklineitemoption.rb
   - lib/moov/models/components/paymentlinklineitemoption.rbi
-  - lib/moov/models/components/paymentlinklineitemoptionvalidationerror.rb
-  - lib/moov/models/components/paymentlinklineitemoptionvalidationerror.rbi
   - lib/moov/models/components/paymentlinklineitems.rb
   - lib/moov/models/components/paymentlinklineitems.rbi
-  - lib/moov/models/components/paymentlinklineitemsupdate.rb
-  - lib/moov/models/components/paymentlinklineitemsupdate.rbi
-  - lib/moov/models/components/paymentlinklineitemsvalidationerror.rb
-  - lib/moov/models/components/paymentlinklineitemsvalidationerror.rbi
-  - lib/moov/models/components/paymentlinklineitemvalidationerror.rb
-  - lib/moov/models/components/paymentlinklineitemvalidationerror.rbi
   - lib/moov/models/components/paymentlinkpaymentdetails.rb
   - lib/moov/models/components/paymentlinkpaymentdetails.rbi
   - lib/moov/models/components/paymentlinkpaymentdetailsupdate.rb
@@ -5391,10 +5403,4 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Ruby SDK Changes Detected:
-  * `client.invoices.create_invoice()`: **Added**
-  * `client.invoices.list_invoices()`: **Added**
-  * `client.invoices.get_invoice()`: **Added**
-  * `client.invoices.update_invoice()`: **Added**
-  * `client.invoices.mark_paid_invoice()`: **Added**
+releaseNotes: "## Ruby SDK Changes Detected:\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.line_items.items.[]` **Changed**\n  *  `response.line_items.items.[]` **Changed**\n* `client.payment_links.list()`:  `response.[].line_items.items.[]` **Changed**\n* `client.payment_links.get()`:  `response.line_items.items.[]` **Changed**\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.line_items.items.[]` **Changed**\n  *  `response.line_items.items.[]` **Changed**\n"

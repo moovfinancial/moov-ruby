@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Components::PaymentLinkLineItemValidationError
+class Moov::Models::Components::CreatePaymentLinkLineItemValidationError
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Components::PaymentLinkLineItemValidationError
+class Moov::Models::Components::CreatePaymentLinkLineItemValidationError
   def product_id(); end
   def product_id=(str_); end
   def name(); end

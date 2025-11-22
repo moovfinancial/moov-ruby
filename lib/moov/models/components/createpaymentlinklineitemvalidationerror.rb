@@ -9,7 +9,7 @@ module Moov
     module Components
     
 
-      class PaymentLinkLineItemValidationError
+      class CreatePaymentLinkLineItemValidationError
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -20,11 +20,11 @@ module Moov
 
         field :base_price, Crystalline::Nilable.new(Models::Components::AmountDecimalValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('basePrice') } }
 
-        field :options, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::PaymentLinkLineItemOptionValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
+        field :options, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::CreatePaymentLinkLineItemOptionValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
 
         field :quantity, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('quantity') } }
 
-        sig { params(product_id: T.nilable(::String), name: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), options: T.nilable(T::Hash[Symbol, Models::Components::PaymentLinkLineItemOptionValidationError]), quantity: T.nilable(::String)).void }
+        sig { params(product_id: T.nilable(::String), name: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), options: T.nilable(T::Hash[Symbol, Models::Components::CreatePaymentLinkLineItemOptionValidationError]), quantity: T.nilable(::String)).void }
         def initialize(product_id: nil, name: nil, base_price: nil, options: nil, quantity: nil)
           @product_id = product_id
           @name = name

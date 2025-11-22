@@ -24,11 +24,11 @@ module Moov
 
         field :payout, Crystalline::Nilable.new(Models::Components::PayoutDetailsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
 
-        field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
+        field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountValidationError), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::PaymentLinkLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(amount: T.nilable(Models::Components::AmountValidationError), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(amount: nil, expires_on: nil, display: nil, payment: nil, payout: nil, line_items: nil, raw_response: nil)
           @amount = amount
           @expires_on = expires_on
