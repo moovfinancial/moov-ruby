@@ -48,7 +48,6 @@ res = s.files.upload(account_id: '221c30bd-2551-4ae4-9a14-07bf6599b728', file_up
     content: File.binread("example.file"),
   ),
   file_purpose: Models::Components::FilePurpose::REPRESENTATIVE_VERIFICATION,
-  metadata: '{"requirement_id": "document.individual.verification"}',
 ))
 
 unless res.file_details.nil?

@@ -467,18 +467,18 @@ module Moov
 
     sig { params(update_card: Models::Components::UpdateCard, account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateCardResponse) }
     def update(update_card:, account_id:, card_id:, x_moov_version: nil, timeout_ms: nil)
-      # update - Update a linked card and/or resubmit it for verification. 
+      # update - Update a linked card and/or resubmit it for verification.
       # 
-      # If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration 
-      # date or 
+      # If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration
+      # date or
       # address will update the information stored on file for the card but will not be verified.
       # 
-      # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#reverify-a-card) to learn 
+      # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#reverify-a-card) to learn
       # more.
       # 
-      # Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance. 
+      # Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::UpdateCardRequest.new(
         account_id: account_id,

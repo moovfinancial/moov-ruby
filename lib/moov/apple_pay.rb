@@ -193,12 +193,12 @@ module Moov
 
     sig { params(update_apple_pay_merchant_domains: Models::Components::UpdateApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateApplePayMerchantDomainsResponse) }
     def update_merchant_domains(update_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil)
-      # update_merchant_domains - Add or remove domains to be registered with Apple Pay. 
+      # update_merchant_domains - Add or remove domains to be registered with Apple Pay.
       # 
-      # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) 
+      # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains)
       # with Apple.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
       request = Models::Operations::UpdateApplePayMerchantDomainsRequest.new(
         account_id: account_id,

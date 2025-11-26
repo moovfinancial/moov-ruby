@@ -581,7 +581,7 @@ module Moov
 
     sig { params(update_representative: Models::Components::UpdateRepresentative, account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateRepresentativeResponse) }
     def update(update_representative:, account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil)
-      # update - If a representative's information has changed you can patch the information associated with a specific representative ID. 
+      # update - If a representative's information has changed you can patch the information associated with a specific representative ID.
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
       # 
       # When **can** profile data be updated:
@@ -596,7 +596,7 @@ module Moov
       # 
       # If you need to update information in a locked state, please contact Moov support.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
       request = Models::Operations::UpdateRepresentativeRequest.new(
         account_id: account_id,

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 4118d9fa14f2cb49d8d7a649bffbb371
+  docChecksum: 3e0f6c361e1dcd63e8d7ecd80166ec5a
   docVersion: latest
-  speakeasyVersion: 1.660.0
-  generationVersion: 2.760.2
-  releaseVersion: 0.3.7
-  configChecksum: bc2cc93484f86f5b293da902db21ae71
+  speakeasyVersion: 1.661.2
+  generationVersion: 2.763.3
+  releaseVersion: 0.3.8
+  configChecksum: afd2270fc2134f7792253cdbc8226432
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 features:
   ruby:
     constsAndDefaults: 0.1.1
-    core: 3.11.3
+    core: 3.11.4
     deprecations: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.81.9
@@ -236,8 +236,6 @@ generatedFiles:
   - docs/models/components/domesticpushtocard.md
   - docs/models/components/e2eetoken.md
   - docs/models/components/e2eetokenupdate.md
-  - docs/models/components/email.md
-  - docs/models/components/emailunion.md
   - docs/models/components/end2endencryptionerror.md
   - docs/models/components/enrichedaddressresponse.md
   - docs/models/components/enrichedbusinessprofile.md
@@ -283,13 +281,11 @@ generatedFiles:
   - docs/models/components/governmentidssn.md
   - docs/models/components/granttype.md
   - docs/models/components/guestprofile.md
+  - docs/models/components/image.md
   - docs/models/components/imagemetadata.md
   - docs/models/components/imagemetadatarequest.md
   - docs/models/components/imagemetadatavalidationerror.md
-  - docs/models/components/imageupdaterequestmultipart.md
-  - docs/models/components/imageupdaterequestmultipartimage.md
   - docs/models/components/imageuploadrequestmultipart.md
-  - docs/models/components/imageuploadrequestmultipartimage.md
   - docs/models/components/incurredfee.md
   - docs/models/components/individualname.md
   - docs/models/components/individualnameerror.md
@@ -348,7 +344,6 @@ generatedFiles:
   - docs/models/components/manualtermsofservice.md
   - docs/models/components/manualtermsofserviceupdate.md
   - docs/models/components/markinvoicepaid.md
-  - docs/models/components/metadata.md
   - docs/models/components/microdepositstatus.md
   - docs/models/components/minimumcommitment.md
   - docs/models/components/mode.md
@@ -428,10 +423,6 @@ generatedFiles:
   - docs/models/components/profile.md
   - docs/models/components/pullfromcardpaymentmethod.md
   - docs/models/components/pullfromcardpaymentmethodpaymentmethodtype.md
-  - docs/models/components/pullpaymentmethodid.md
-  - docs/models/components/pullpaymentmethodidunion.md
-  - docs/models/components/pushpaymentmethodid.md
-  - docs/models/components/pushpaymentmethodidunion.md
   - docs/models/components/pushtocardpaymentmethod.md
   - docs/models/components/pushtocardpaymentmethodpaymentmethodtype.md
   - docs/models/components/qrcode.md
@@ -487,8 +478,6 @@ generatedFiles:
   - docs/models/components/settings.md
   - docs/models/components/sourcedestinationoptions.md
   - docs/models/components/statement.md
-  - docs/models/components/statementdescriptor.md
-  - docs/models/components/statementdescriptorunion.md
   - docs/models/components/status.md
   - docs/models/components/submissionintent.md
   - docs/models/components/sweep.md
@@ -1487,10 +1476,6 @@ generatedFiles:
   - lib/moov/models/components/e2eetoken.rbi
   - lib/moov/models/components/e2eetokenupdate.rb
   - lib/moov/models/components/e2eetokenupdate.rbi
-  - lib/moov/models/components/email.rb
-  - lib/moov/models/components/email.rbi
-  - lib/moov/models/components/email_union.rb
-  - lib/moov/models/components/email_union.rbi
   - lib/moov/models/components/end2endencryptionerror.rb
   - lib/moov/models/components/end2endencryptionerror.rbi
   - lib/moov/models/components/enrichedaddressresponse.rb
@@ -1581,20 +1566,16 @@ generatedFiles:
   - lib/moov/models/components/granttype.rbi
   - lib/moov/models/components/guestprofile.rb
   - lib/moov/models/components/guestprofile.rbi
+  - lib/moov/models/components/image.rb
+  - lib/moov/models/components/image.rbi
   - lib/moov/models/components/imagemetadata.rb
   - lib/moov/models/components/imagemetadata.rbi
   - lib/moov/models/components/imagemetadatarequest.rb
   - lib/moov/models/components/imagemetadatarequest.rbi
   - lib/moov/models/components/imagemetadatavalidationerror.rb
   - lib/moov/models/components/imagemetadatavalidationerror.rbi
-  - lib/moov/models/components/imageupdaterequestmultipart.rb
-  - lib/moov/models/components/imageupdaterequestmultipart.rbi
-  - lib/moov/models/components/imageupdaterequestmultipart_image.rb
-  - lib/moov/models/components/imageupdaterequestmultipart_image.rbi
   - lib/moov/models/components/imageuploadrequestmultipart.rb
   - lib/moov/models/components/imageuploadrequestmultipart.rbi
-  - lib/moov/models/components/imageuploadrequestmultipart_image.rb
-  - lib/moov/models/components/imageuploadrequestmultipart_image.rbi
   - lib/moov/models/components/incurredfee.rb
   - lib/moov/models/components/incurredfee.rbi
   - lib/moov/models/components/individualname.rb
@@ -1711,8 +1692,6 @@ generatedFiles:
   - lib/moov/models/components/manualtermsofserviceupdate.rbi
   - lib/moov/models/components/markinvoicepaid.rb
   - lib/moov/models/components/markinvoicepaid.rbi
-  - lib/moov/models/components/metadata.rb
-  - lib/moov/models/components/metadata.rbi
   - lib/moov/models/components/microdepositstatus.rb
   - lib/moov/models/components/microdepositstatus.rbi
   - lib/moov/models/components/minimumcommitment.rb
@@ -1871,14 +1850,6 @@ generatedFiles:
   - lib/moov/models/components/pullfromcardpaymentmethod.rbi
   - lib/moov/models/components/pullfromcardpaymentmethod_paymentmethodtype.rb
   - lib/moov/models/components/pullfromcardpaymentmethod_paymentmethodtype.rbi
-  - lib/moov/models/components/pullpaymentmethodid.rb
-  - lib/moov/models/components/pullpaymentmethodid.rbi
-  - lib/moov/models/components/pullpaymentmethodid_union.rb
-  - lib/moov/models/components/pullpaymentmethodid_union.rbi
-  - lib/moov/models/components/pushpaymentmethodid.rb
-  - lib/moov/models/components/pushpaymentmethodid.rbi
-  - lib/moov/models/components/pushpaymentmethodid_union.rb
-  - lib/moov/models/components/pushpaymentmethodid_union.rbi
   - lib/moov/models/components/pushtocardpaymentmethod.rb
   - lib/moov/models/components/pushtocardpaymentmethod.rbi
   - lib/moov/models/components/pushtocardpaymentmethod_paymentmethodtype.rb
@@ -1989,10 +1960,6 @@ generatedFiles:
   - lib/moov/models/components/sourcedestinationoptions.rbi
   - lib/moov/models/components/statement.rb
   - lib/moov/models/components/statement.rbi
-  - lib/moov/models/components/statementdescriptor.rb
-  - lib/moov/models/components/statementdescriptor.rbi
-  - lib/moov/models/components/statementdescriptor_union.rb
-  - lib/moov/models/components/statementdescriptor_union.rbi
   - lib/moov/models/components/status.rb
   - lib/moov/models/components/status.rbi
   - lib/moov/models/components/submissionintent.rb
@@ -3850,7 +3817,7 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        multipart/form-data: {"file": "x-file: example.file", "filePurpose": "representative_verification", "metadata": "{\"requirement_id\": \"document.individual.verification\"}"}
+        multipart/form-data: {"file": "x-file: example.file", "filePurpose": "representative_verification"}
       responses:
         "200":
           application/json: {"fileID": "439b7a22-ec06-4993-9b21-f4f92a2aa577", "fileName": "logo.png", "accountID": "33e8f6ef-7edf-4b9a-8905-6b0649ccb34c", "filePurpose": "representative_verification", "fileStatus": "pending", "metadata": "{\"error_code\": \"document-name-mismatch\", \"requirement_id\": \"document.individual.verification\", \"representative_id\": \"c63ab175-251d-497e-a267-7346d087e180\", \"comment\": \"testing comment\"", "decisionReason": "not correct file", "fileSizeBytes": 777701, "createdOn": "2024-11-19T16:40:47.855Z", "updatedOn": "2024-06-23T05:31:09.268Z"}
@@ -4049,7 +4016,7 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        application/json: {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": null, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}}
+        application/json: {"name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "birthDate": null, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}}
       responses:
         "200":
           application/json: {"representativeID": "d7cd54cf-a231-46bb-b1ac-c6cdafa8219e", "name": {"firstName": "Jordan", "middleName": "Reese", "lastName": "Lee", "suffix": "Jr"}, "phone": {"number": "8185551212", "countryCode": "1"}, "email": "jordan.lee@classbooker.dev", "address": {"addressLine1": "123 Main Street", "addressLine2": "Apt 302", "city": "Boulder", "stateOrProvince": "CO", "postalCode": "80301", "country": "US"}, "responsibilities": {"ownershipPercentage": 38, "jobTitle": "CEO"}, "createdOn": "2025-06-02T03:39:27.129Z", "updatedOn": "2024-06-29T17:50:33.922Z"}
@@ -5403,4 +5370,4 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.line_items.items.[]` **Changed**\n  *  `response.line_items.items.[]` **Changed**\n* `client.payment_links.list()`:  `response.[].line_items.items.[]` **Changed**\n* `client.payment_links.get()`:  `response.line_items.items.[]` **Changed**\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.line_items.items.[]` **Changed**\n  *  `response.line_items.items.[]` **Changed**\n"
+releaseNotes: "## Ruby SDK Changes Detected:\n* `client.images.update()`:  `request` **Changed** **Breaking** :warning:\n* `client.representatives.update()`: \n  *  `request.update_representative.email` **Changed** **Breaking** :warning:\n* `client.sweeps.update_config()`:  `request.patch_sweep_config` **Changed** **Breaking** :warning:\n"

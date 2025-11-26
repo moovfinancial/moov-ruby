@@ -9,7 +9,7 @@ module Moov
     module Components
     
 
-      class ImageUpdateRequestMultiPartImage
+      class Image
         extend T::Sig
         include Crystalline::MetadataFields
 

@@ -13,7 +13,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # The merchant account ID.
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :create_payment_link, Models::Components::CreatePaymentLink, { 'request': { 'media_type': 'application/json' } }

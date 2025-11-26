@@ -8,17 +8,17 @@ module Moov
   module Models
     module Components
     
-      # Multipart request body for uploading an image with optional metadata.
+
       class ImageUploadRequestMultiPart
         extend T::Sig
         include Crystalline::MetadataFields
 
-
-        field :image, Models::Components::ImageUploadRequestMultiPartImage, { 'multipart_form': { 'file': true, 'field_name': 'image' } }
+        # A PNG, JPEG, or WebP image file to upload.
+        field :image, Models::Components::Image, { 'multipart_form': { 'file': true, 'field_name': 'image' } }
         # Optional, json-encoded metadata to associate with the uploaded image.
         field :metadata, Crystalline::Nilable.new(Models::Components::ImageMetadataRequest), { 'multipart_form': { 'field_name': 'metadata', 'json': true } }
 
-        sig { params(image: Models::Components::ImageUploadRequestMultiPartImage, metadata: T.nilable(Models::Components::ImageMetadataRequest)).void }
+        sig { params(image: Models::Components::Image, metadata: T.nilable(Models::Components::ImageMetadataRequest)).void }
         def initialize(image:, metadata: nil)
           @image = image
           @metadata = metadata

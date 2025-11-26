@@ -12,8 +12,8 @@ class Moov::Models::Operations::UpdateImageRequest
   def account_id=(str_); end
   def image_id(); end
   def image_id=(str_); end
-  def image_update_request_multi_part(); end
-  def image_update_request_multi_part=(str_); end
+  def image_upload_request_multi_part(); end
+  def image_upload_request_multi_part=(str_); end
   def x_moov_version(); end
   def x_moov_version=(str_); end
 end

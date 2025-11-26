@@ -184,7 +184,7 @@ to specify the `/accounts/{accountID}/profile.read` scope.
 
 If you need to update information in a locked state, please contact Moov support.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
 to specify the `/accounts/{accountID}/profile.write` scope.
 * [disconnect](docs/sdks/accounts/README.md#disconnect) - This will sever the connection between you and the account specified and it will no longer be listed as 
 active in the list of accounts. This also means you'll only have read-only access to the account going 
@@ -232,12 +232,12 @@ with Apple.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
-* [update_merchant_domains](docs/sdks/applepay/README.md#update_merchant_domains) - Add or remove domains to be registered with Apple Pay. 
+* [update_merchant_domains](docs/sdks/applepay/README.md#update_merchant_domains) - Add or remove domains to be registered with Apple Pay.
 
-Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) 
+Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains)
 with Apple.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
 * [get_merchant_domains](docs/sdks/applepay/README.md#get_merchant_domains) - Get domains registered with Apple Pay. 
 
@@ -380,7 +380,7 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/accounts/{accountID}/branding.read` scope.
 * [update](docs/sdks/branding/README.md#update) - Updates the brand properties for the specified account.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/branding.write` scope.
 
 ### [capabilities](docs/sdks/capabilities/README.md)
@@ -420,7 +420,7 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 * [update](docs/sdks/cardissuing/README.md#update) - Update a Moov issued card.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 * [get_full](docs/sdks/cardissuing/README.md#get_full) - Get issued card with PAN, CVV, and expiration. 
 
@@ -461,18 +461,18 @@ Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/cards.read` scope.
-* [update](docs/sdks/cards/README.md#update) - Update a linked card and/or resubmit it for verification. 
+* [update](docs/sdks/cards/README.md#update) - Update a linked card and/or resubmit it for verification.
 
-If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration 
-date or 
+If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration
+date or
 address will update the information stored on file for the card but will not be verified.
 
-Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#reverify-a-card) to learn 
+Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#reverify-a-card) to learn
 more.
 
-Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance. 
+Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 * [disable](docs/sdks/cards/README.md#disable) - Disables a card associated with a Moov account.
 
@@ -648,8 +648,7 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 * [update](docs/sdks/images/README.md#update) - Replace an existing image and, optionally, its metadata.
 
 This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
-the metadata form section to keep existing metadata, or send `null` to clear it. 
-Duplicate images, and requests larger than 16MB will be rejected.
+the metadata form section to keep existing metadata. Duplicate images, and requests larger than 16MB will be rejected.
 * [delete](docs/sdks/images/README.md#delete) - Permanently delete an image by its ID.
 * [update_metadata](docs/sdks/images/README.md#update_metadata) - Replace the metadata for an existing image.
 * [get_public](docs/sdks/images/README.md#get_public) - Get an image by its public ID.
@@ -758,7 +757,7 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 * [update](docs/sdks/paymentlinks/README.md#update) - Update a payment link.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 * [disable](docs/sdks/paymentlinks/README.md#disable) - Disable a payment link.
 
@@ -834,7 +833,7 @@ you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
-* [update](docs/sdks/representatives/README.md#update) - If a representative's information has changed you can patch the information associated with a specific representative ID. 
+* [update](docs/sdks/representatives/README.md#update) - If a representative's information has changed you can patch the information associated with a specific representative ID.
 Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
 
 When **can** profile data be updated:
@@ -849,7 +848,7 @@ When **can't** profile data be updated:
 
 If you need to update information in a locked state, please contact Moov support.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
 
 ### [scheduling](docs/sdks/scheduling/README.md)
@@ -917,7 +916,7 @@ If you're retrieving another account's ticket, then you'll need to
 specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
 * [update_ticket](docs/sdks/support/README.md#update_ticket) - Updates a support ticket.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
 
 If you're updating the ticket on behalf of another account, then you'll need to
@@ -946,7 +945,7 @@ To access this endpoint using an [access token](https://docs.moov.io/api/authent
 you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 * [update_config](docs/sdks/sweeps/README.md#update_config) - Update settings on a sweep config.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 * [list](docs/sdks/sweeps/README.md#list) - List sweeps associated with a wallet.
 
@@ -1015,11 +1014,11 @@ to learn more.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
-* [update](docs/sdks/transfers/README.md#update) - Update the metadata contained on a transfer. 
+* [update](docs/sdks/transfers/README.md#update) - Update the metadata contained on a transfer.
 
-Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
+Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 * [create_cancellation](docs/sdks/transfers/README.md#create_cancellation) -   Initiate a cancellation for a card, ACH, or queued transfer.
   
@@ -1111,7 +1110,7 @@ you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
 
 Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
 
 </details>

@@ -442,17 +442,16 @@ module Moov
     end
 
 
-    sig { params(image_update_request_multi_part: Models::Components::ImageUpdateRequestMultiPart, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateImageResponse) }
-    def update(image_update_request_multi_part:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateImageResponse) }
+    def update(image_upload_request_multi_part:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Replace an existing image and, optionally, its metadata.
       # 
       # This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
-      # the metadata form section to keep existing metadata, or send `null` to clear it. 
-      # Duplicate images, and requests larger than 16MB will be rejected.
+      # the metadata form section to keep existing metadata. Duplicate images, and requests larger than 16MB will be rejected.
       request = Models::Operations::UpdateImageRequest.new(
         account_id: account_id,
         image_id: image_id,
-        image_update_request_multi_part: image_update_request_multi_part,
+        image_upload_request_multi_part: image_upload_request_multi_part,
         x_moov_version: x_moov_version
       )
       url, params = @sdk_configuration.get_server_details
@@ -466,7 +465,7 @@ module Moov
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :image_update_request_multi_part, :multipart)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :image_upload_request_multi_part, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 

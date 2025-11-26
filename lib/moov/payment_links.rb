@@ -448,7 +448,7 @@ module Moov
     def update(update_payment_link:, account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil)
       # update - Update a payment link.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::UpdatePaymentLinkRequest.new(
         account_id: account_id,

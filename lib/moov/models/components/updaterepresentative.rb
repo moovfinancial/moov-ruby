@@ -18,7 +18,7 @@ module Moov
 
         field :phone, Crystalline::Nilable.new(Models::Components::Phone), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phone') } }
 
-        field :email, Crystalline::Nilable.new(Crystalline::Union.new(::String, Models::Components::Email)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('email') } }
+        field :email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('email') } }
 
         field :address, Crystalline::Nilable.new(Models::Components::UpdateRepresentativeAddress), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('address') } }
 
@@ -28,7 +28,7 @@ module Moov
 
         field :responsibilities, Crystalline::Nilable.new(Models::Components::Responsibilities), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('responsibilities') } }
 
-        sig { params(name: T.nilable(Models::Components::IndividualNameUpdate), phone: T.nilable(Models::Components::Phone), email: T.nilable(T.any(::String, Models::Components::Email)), address: T.nilable(Models::Components::UpdateRepresentativeAddress), birth_date: T.nilable(Models::Components::UpdateRepresentativeBirthDate), government_id: T.nilable(Models::Components::UpdateRepresentativeGovernmentID), responsibilities: T.nilable(Models::Components::Responsibilities)).void }
+        sig { params(name: T.nilable(Models::Components::IndividualNameUpdate), phone: T.nilable(Models::Components::Phone), email: T.nilable(::String), address: T.nilable(Models::Components::UpdateRepresentativeAddress), birth_date: T.nilable(Models::Components::UpdateRepresentativeBirthDate), government_id: T.nilable(Models::Components::UpdateRepresentativeGovernmentID), responsibilities: T.nilable(Models::Components::Responsibilities)).void }
         def initialize(name: nil, phone: nil, email: nil, address: nil, birth_date: nil, government_id: nil, responsibilities: nil)
           @name = name
           @phone = phone

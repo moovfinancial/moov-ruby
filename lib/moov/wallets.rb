@@ -471,7 +471,7 @@ module Moov
       # 
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
       request = Models::Operations::UpdateWalletRequest.new(
         wallet_id: wallet_id,

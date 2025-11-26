@@ -21,7 +21,7 @@ module Moov
         field :raw_response, ::Faraday::Response
 
         field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
-        # The request completed successfully.
+        # The request has succeeded.
         field :apple_pay_session, Crystalline::Nilable.new(::String)
 
         sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], apple_pay_session: T.nilable(::String)).void }

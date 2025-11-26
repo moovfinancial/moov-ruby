@@ -38,11 +38,11 @@ to learn more.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
-* [update](#update) - Update the metadata contained on a transfer. 
+* [update](#update) - Update the metadata contained on a transfer.
 
-Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
+Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 * [create_cancellation](#create_cancellation) -   Initiate a cancellation for a card, ACH, or queued transfer.
   
@@ -305,11 +305,11 @@ end
 
 ## update
 
-Update the metadata contained on a transfer. 
+Update the metadata contained on a transfer.
 
-Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
+Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
 ### Example Usage

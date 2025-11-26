@@ -18,7 +18,7 @@ module Moov
 
         field :image_id, ::String, { 'path_param': { 'field_name': 'imageID', 'style': 'simple', 'explode': false } }
 
-        field :image_update_request_multi_part, Models::Components::ImageUpdateRequestMultiPart, { 'request': { 'media_type': 'multipart/form-data' } }
+        field :image_upload_request_multi_part, Models::Components::ImageUploadRequestMultiPart, { 'request': { 'media_type': 'multipart/form-data' } }
         # Specify an API version.
         # 
         # API versioning follows the format `vYYYY.QQ.BB`, where 
@@ -31,11 +31,11 @@ module Moov
         # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, image_id: ::String, image_update_request_multi_part: Models::Components::ImageUpdateRequestMultiPart, x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, image_id:, image_update_request_multi_part:, x_moov_version: nil)
+        sig { params(account_id: ::String, image_id: ::String, image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, x_moov_version: T.nilable(::String)).void }
+        def initialize(account_id:, image_id:, image_upload_request_multi_part:, x_moov_version: nil)
           @account_id = account_id
           @image_id = image_id
-          @image_update_request_multi_part = image_update_request_multi_part
+          @image_upload_request_multi_part = image_upload_request_multi_part
           @x_moov_version = x_moov_version
         end
 
@@ -44,7 +44,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @image_id == other.image_id
-          return false unless @image_update_request_multi_part == other.image_update_request_multi_part
+          return false unless @image_upload_request_multi_part == other.image_upload_request_multi_part
           return false unless @x_moov_version == other.x_moov_version
           true
         end

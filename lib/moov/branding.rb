@@ -492,7 +492,7 @@ module Moov
     def update(update_brand:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Updates the brand properties for the specified account.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/branding.write` scope.
       request = Models::Operations::UpdateBrandRequest.new(
         account_id: account_id,

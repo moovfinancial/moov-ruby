@@ -16,15 +16,15 @@ module Moov
 
         field :status, Crystalline::Nilable.new(Models::Components::Status), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::Status, true) } }
 
-        field :push_payment_method_id, Crystalline::Nilable.new(Crystalline::Union.new(::String, Models::Components::PushPaymentMethodID)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushPaymentMethodID') } }
+        field :push_payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushPaymentMethodID') } }
 
-        field :pull_payment_method_id, Crystalline::Nilable.new(Crystalline::Union.new(::String, Models::Components::PullPaymentMethodID)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pullPaymentMethodID') } }
+        field :pull_payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pullPaymentMethodID') } }
 
-        field :statement_descriptor, Crystalline::Nilable.new(Crystalline::Union.new(::String, Models::Components::StatementDescriptor)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statementDescriptor') } }
+        field :statement_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statementDescriptor') } }
 
         field :minimum_balance, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumBalance') } }
 
-        sig { params(status: T.nilable(Models::Components::Status), push_payment_method_id: T.nilable(T.any(::String, Models::Components::PushPaymentMethodID)), pull_payment_method_id: T.nilable(T.any(::String, Models::Components::PullPaymentMethodID)), statement_descriptor: T.nilable(T.any(::String, Models::Components::StatementDescriptor)), minimum_balance: T.nilable(::String)).void }
+        sig { params(status: T.nilable(Models::Components::Status), push_payment_method_id: T.nilable(::String), pull_payment_method_id: T.nilable(::String), statement_descriptor: T.nilable(::String), minimum_balance: T.nilable(::String)).void }
         def initialize(status: nil, push_payment_method_id: nil, pull_payment_method_id: nil, statement_descriptor: nil, minimum_balance: nil)
           @status = status
           @push_payment_method_id = push_payment_method_id

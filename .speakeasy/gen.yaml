@@ -26,7 +26,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 0.3.7
+  version: 0.3.8
   additionalDependencies:
     development: {}
     runtime: {}
@@ -45,6 +45,7 @@ ruby:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: false
   inputModelSuffix: input
   maxMethodParams: 4
   module: Moov

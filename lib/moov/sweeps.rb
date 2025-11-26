@@ -450,7 +450,7 @@ module Moov
     def update_config(patch_sweep_config:, account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil)
       # update_config - Update settings on a sweep config.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
       request = Models::Operations::UpdateSweepConfigRequest.new(
         account_id: account_id,

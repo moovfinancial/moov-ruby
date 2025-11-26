@@ -696,11 +696,11 @@ module Moov
 
     sig { params(patch_transfer: Models::Components::PatchTransfer, transfer_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateTransferResponse) }
     def update(patch_transfer:, transfer_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
-      # update - Update the metadata contained on a transfer. 
+      # update - Update the metadata contained on a transfer.
       # 
-      # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
+      # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::UpdateTransferRequest.new(
         transfer_id: transfer_id,

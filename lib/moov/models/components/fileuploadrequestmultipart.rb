@@ -8,14 +8,14 @@ module Moov
   module Models
     module Components
     
-      # Request to upload a file for an account.
+
       class FileUploadRequestMultiPart
         extend T::Sig
         include Crystalline::MetadataFields
 
         # The file to be added. Valid types are `csv`, `png`, `jpeg`, `pdf`.
         field :file, Models::Components::FileUploadRequestMultiPartFile, { 'multipart_form': { 'file': true, 'field_name': 'file' } }
-        # The file's purpose.
+        # The purpose of the file being uploaded.
         field :file_purpose, Models::Components::FilePurpose, { 'multipart_form': { 'field_name': 'filePurpose' } }
         # Additional metadata to be stored with the file, formatted as a JSON string.
         # 

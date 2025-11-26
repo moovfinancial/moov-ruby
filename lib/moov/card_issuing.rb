@@ -448,7 +448,7 @@ module Moov
     def update(update_issued_card:, account_id:, issued_card_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Update a Moov issued card.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
       request = Models::Operations::UpdateIssuedCardRequest.new(
         account_id: account_id,
