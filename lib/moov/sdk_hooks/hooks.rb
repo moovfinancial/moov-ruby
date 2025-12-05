@@ -6,7 +6,6 @@
 require_relative './registration'
 require_relative './types'
 
-
 module Moov
   module SDKHooks
     class Hooks

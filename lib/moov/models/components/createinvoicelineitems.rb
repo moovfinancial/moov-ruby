@@ -9,15 +9,15 @@ module Moov
     module Components
     
       # A collection of line items for an invoice.
-      class InvoiceLineItemsUpdate
+      class CreateInvoiceLineItems
         extend T::Sig
         include Crystalline::MetadataFields
 
         # The list of line items.
-        field :items, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoiceLineItem)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items') } }
+        field :items, Crystalline::Array.new(Models::Components::CreateInvoiceLineItem), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items'), required: true } }
 
-        sig { params(items: T.nilable(T::Array[Models::Components::InvoiceLineItem])).void }
-        def initialize(items: nil)
+        sig { params(items: T::Array[Models::Components::CreateInvoiceLineItem]).void }
+        def initialize(items:)
           @items = items
         end
 

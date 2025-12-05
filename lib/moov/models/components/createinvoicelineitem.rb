@@ -9,7 +9,7 @@ module Moov
     module Components
     
       # Represents a single item in an invoice, including optional modifiers and quantity.
-      class InvoiceLineItem
+      class CreateInvoiceLineItem
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -22,18 +22,18 @@ module Moov
         # Optional unique identifier associating the line item with a product.
         field :product_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('productID') } }
         # Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
-        field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoiceLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
+        field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateInvoiceLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
         # Optional list of images associated with this line item.
-        field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoiceLineItemImageMetadata)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
+        field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
 
-        sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, product_id: T.nilable(::String), options: T.nilable(T::Array[Models::Components::InvoiceLineItemOption]), images: T.nilable(T::Array[Models::Components::InvoiceLineItemImageMetadata])).void }
-        def initialize(name:, base_price:, quantity:, product_id: nil, options: nil, images: nil)
+        sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, product_id: T.nilable(::String), options: T.nilable(T::Array[Models::Components::CreateInvoiceLineItemOption]), image_i_ds: T.nilable(T::Array[::String])).void }
+        def initialize(name:, base_price:, quantity:, product_id: nil, options: nil, image_i_ds: nil)
           @name = name
           @base_price = base_price
           @quantity = quantity
           @product_id = product_id
           @options = options
-          @images = images
+          @image_i_ds = image_i_ds
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -44,7 +44,7 @@ module Moov
           return false unless @quantity == other.quantity
           return false unless @product_id == other.product_id
           return false unless @options == other.options
-          return false unless @images == other.images
+          return false unless @image_i_ds == other.image_i_ds
           true
         end
       end

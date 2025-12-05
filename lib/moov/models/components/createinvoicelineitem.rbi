@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Components::InvoiceLineItem
+class Moov::Models::Components::CreateInvoiceLineItem
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Components::InvoiceLineItem
+class Moov::Models::Components::CreateInvoiceLineItem
   def name(); end
   def name=(str_); end
   def base_price(); end
@@ -18,6 +18,6 @@ class Moov::Models::Components::InvoiceLineItem
   def product_id=(str_); end
   def options(); end
   def options=(str_); end
-  def images(); end
-  def images=(str_); end
+  def image_i_ds(); end
+  def image_i_ds=(str_); end
 end

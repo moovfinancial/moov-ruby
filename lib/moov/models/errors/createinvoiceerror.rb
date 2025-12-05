@@ -18,7 +18,7 @@ module Moov
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
-        field :line_items, Crystalline::Nilable.new(Models::Components::InvoiceLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
+        field :line_items, Crystalline::Nilable.new(Models::Components::CreateInvoiceLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :invoice_date, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate') } }
 
@@ -28,7 +28,7 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(customer_account_id: T.nilable(::String), description: T.nilable(::String), line_items: T.nilable(Models::Components::InvoiceLineItemsValidationError), invoice_date: T.nilable(::String), due_date: T.nilable(::String), tax_amount: T.nilable(Models::Components::AmountDecimalValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(customer_account_id: T.nilable(::String), description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsValidationError), invoice_date: T.nilable(::String), due_date: T.nilable(::String), tax_amount: T.nilable(Models::Components::AmountDecimalValidationError), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(customer_account_id: nil, description: nil, line_items: nil, invoice_date: nil, due_date: nil, tax_amount: nil, raw_response: nil)
           @customer_account_id = customer_account_id
           @description = description

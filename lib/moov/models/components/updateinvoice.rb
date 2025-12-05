@@ -16,7 +16,7 @@ module Moov
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # A collection of line items for an invoice.
-        field :line_items, Crystalline::Nilable.new(Models::Components::InvoiceLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
+        field :line_items, Crystalline::Nilable.new(Models::Components::CreateInvoiceLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
         # Status can only be updated to `canceled` when the status is either `draft`, `unpaid`,  or `overdue`.
         field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::InvoiceStatus, true) } }
 
@@ -26,7 +26,7 @@ module Moov
 
         field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::InvoiceLineItemsUpdate), status: T.nilable(Models::Components::InvoiceStatus), tax_amount: T.nilable(Models::Components::AmountDecimalUpdate), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime)).void }
+        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsUpdate), status: T.nilable(Models::Components::InvoiceStatus), tax_amount: T.nilable(Models::Components::AmountDecimalUpdate), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime)).void }
         def initialize(description: nil, line_items: nil, status: nil, tax_amount: nil, invoice_date: nil, due_date: nil)
           @description = description
           @line_items = line_items

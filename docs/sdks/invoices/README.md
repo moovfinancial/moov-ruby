@@ -48,7 +48,7 @@ s = ::Moov::Client.new(
 res = s.invoices.create_invoice(account_id: '241bf524-e777-4941-a5e4-d7f3f34d7a00', create_invoice: Models::Components::CreateInvoice.new(
   customer_account_id: '<id>',
   description: 'austere gah under ew failing provided repeatedly pick onto',
-  line_items: Models::Components::InvoiceLineItems.new(
+  line_items: Models::Components::CreateInvoiceLineItems.new(
     items: [],
   ),
   tax_amount: Models::Components::AmountDecimal.new(
@@ -195,9 +195,9 @@ s = ::Moov::Client.new(
     )
 
 res = s.invoices.update_invoice(account_id: 'ce46d65a-8504-4afa-b3f7-303401bd08b3', invoice_id: 'ef510999-370a-4350-87d5-bc81fc02a2ea', update_invoice: Models::Components::UpdateInvoice.new(
-  line_items: Models::Components::InvoiceLineItemsUpdate.new(
+  line_items: Models::Components::CreateInvoiceLineItemsUpdate.new(
     items: [
-      Models::Components::InvoiceLineItem.new(
+      Models::Components::CreateInvoiceLineItem.new(
         name: '<value>',
         base_price: Models::Components::AmountDecimal.new(
           currency: 'USD',
@@ -205,7 +205,7 @@ res = s.invoices.update_invoice(account_id: 'ce46d65a-8504-4afa-b3f7-303401bd08b
         ),
         quantity: 984_515,
         options: [
-          Models::Components::InvoiceLineItemOption.new(
+          Models::Components::CreateInvoiceLineItemOption.new(
             name: '<value>',
             quantity: 761_923,
             price_modifier: Models::Components::AmountDecimal.new(

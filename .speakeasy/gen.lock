@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 3e0f6c361e1dcd63e8d7ecd80166ec5a
+  docChecksum: dc987cf87d17146ae09fbcdeecc27ceb
   docVersion: latest
-  speakeasyVersion: 1.661.2
-  generationVersion: 2.763.3
-  releaseVersion: 0.3.8
-  configChecksum: afd2270fc2134f7792253cdbc8226432
+  speakeasyVersion: 1.668.0
+  generationVersion: 2.770.0
+  releaseVersion: 0.3.9
+  configChecksum: 730c72cdd5d093ea7c61344e97fa0ce2
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.1.0
-    unions: 0.1.1
+    unions: 0.1.2
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
@@ -191,6 +191,13 @@ generatedFiles:
   - docs/models/components/createindividualerrorssn.md
   - docs/models/components/createindividualprofile.md
   - docs/models/components/createinvoice.md
+  - docs/models/components/createinvoicelineitem.md
+  - docs/models/components/createinvoicelineitemoption.md
+  - docs/models/components/createinvoicelineitemoptionvalidationerror.md
+  - docs/models/components/createinvoicelineitems.md
+  - docs/models/components/createinvoicelineitemsupdate.md
+  - docs/models/components/createinvoicelineitemsvalidationerror.md
+  - docs/models/components/createinvoicelineitemvalidationerror.md
   - docs/models/components/createpaymentlink.md
   - docs/models/components/createpaymentlinklineitem.md
   - docs/models/components/createpaymentlinklineitemoption.md
@@ -301,10 +308,10 @@ generatedFiles:
   - docs/models/components/invoiceexternalpayment.md
   - docs/models/components/invoiceexternalpaymentpaymenttype.md
   - docs/models/components/invoicelineitem.md
+  - docs/models/components/invoicelineitemimagemetadata.md
   - docs/models/components/invoicelineitemoption.md
   - docs/models/components/invoicelineitemoptionvalidationerror.md
   - docs/models/components/invoicelineitems.md
-  - docs/models/components/invoicelineitemsupdate.md
   - docs/models/components/invoicelineitemsvalidationerror.md
   - docs/models/components/invoicelineitemvalidationerror.md
   - docs/models/components/invoicepayment.md
@@ -1386,6 +1393,20 @@ generatedFiles:
   - lib/moov/models/components/createindividualprofile.rbi
   - lib/moov/models/components/createinvoice.rb
   - lib/moov/models/components/createinvoice.rbi
+  - lib/moov/models/components/createinvoicelineitem.rb
+  - lib/moov/models/components/createinvoicelineitem.rbi
+  - lib/moov/models/components/createinvoicelineitemoption.rb
+  - lib/moov/models/components/createinvoicelineitemoption.rbi
+  - lib/moov/models/components/createinvoicelineitemoptionvalidationerror.rb
+  - lib/moov/models/components/createinvoicelineitemoptionvalidationerror.rbi
+  - lib/moov/models/components/createinvoicelineitems.rb
+  - lib/moov/models/components/createinvoicelineitems.rbi
+  - lib/moov/models/components/createinvoicelineitemsupdate.rb
+  - lib/moov/models/components/createinvoicelineitemsupdate.rbi
+  - lib/moov/models/components/createinvoicelineitemsvalidationerror.rb
+  - lib/moov/models/components/createinvoicelineitemsvalidationerror.rbi
+  - lib/moov/models/components/createinvoicelineitemvalidationerror.rb
+  - lib/moov/models/components/createinvoicelineitemvalidationerror.rbi
   - lib/moov/models/components/createpaymentlink.rb
   - lib/moov/models/components/createpaymentlink.rbi
   - lib/moov/models/components/createpaymentlinklineitem.rb
@@ -1606,14 +1627,14 @@ generatedFiles:
   - lib/moov/models/components/invoiceexternalpayment_paymenttype.rbi
   - lib/moov/models/components/invoicelineitem.rb
   - lib/moov/models/components/invoicelineitem.rbi
+  - lib/moov/models/components/invoicelineitemimagemetadata.rb
+  - lib/moov/models/components/invoicelineitemimagemetadata.rbi
   - lib/moov/models/components/invoicelineitemoption.rb
   - lib/moov/models/components/invoicelineitemoption.rbi
   - lib/moov/models/components/invoicelineitemoptionvalidationerror.rb
   - lib/moov/models/components/invoicelineitemoptionvalidationerror.rbi
   - lib/moov/models/components/invoicelineitems.rb
   - lib/moov/models/components/invoicelineitems.rbi
-  - lib/moov/models/components/invoicelineitemsupdate.rb
-  - lib/moov/models/components/invoicelineitemsupdate.rbi
   - lib/moov/models/components/invoicelineitemsvalidationerror.rb
   - lib/moov/models/components/invoicelineitemsvalidationerror.rbi
   - lib/moov/models/components/invoicelineitemvalidationerror.rb
@@ -5370,4 +5391,4 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes Detected:\n* `client.images.update()`:  `request` **Changed** **Breaking** :warning:\n* `client.representatives.update()`: \n  *  `request.update_representative.email` **Changed** **Breaking** :warning:\n* `client.sweeps.update_config()`:  `request.patch_sweep_config` **Changed** **Breaking** :warning:\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.invoices.create_invoice()`: \n  *  `request.create_invoice.line_items.items.[]` **Changed**\n  *  `response.line_items.items.[].images` **Added**\n* `client.invoices.list_invoices()`:  `response.[].line_items.items.[].images` **Added**\n* `client.invoices.get_invoice()`:  `response.line_items.items.[].images` **Added**\n* `client.invoices.update_invoice()`: \n  *  `request.update_invoice.line_items.items.[]` **Changed**\n  *  `response.line_items.items.[].images` **Added**\n* `client.invoices.mark_paid_invoice()`:  `response.line_items.items.[].images` **Added**\n"

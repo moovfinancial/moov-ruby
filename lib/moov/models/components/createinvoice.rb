@@ -18,7 +18,7 @@ module Moov
 
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
         # A collection of line items for an invoice.
-        field :line_items, Models::Components::InvoiceLineItems, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems'), required: true } }
+        field :line_items, Models::Components::CreateInvoiceLineItems, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems'), required: true } }
 
         field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
@@ -26,7 +26,7 @@ module Moov
 
         field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
 
-        sig { params(customer_account_id: ::String, description: ::String, line_items: Models::Components::InvoiceLineItems, invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), tax_amount: T.nilable(Models::Components::AmountDecimal)).void }
+        sig { params(customer_account_id: ::String, description: ::String, line_items: Models::Components::CreateInvoiceLineItems, invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), tax_amount: T.nilable(Models::Components::AmountDecimal)).void }
         def initialize(customer_account_id:, description:, line_items:, invoice_date: nil, due_date: nil, tax_amount: nil)
           @customer_account_id = customer_account_id
           @description = description
