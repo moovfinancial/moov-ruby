@@ -1,5 +1,4 @@
 # EnrichedProfile
-(*enriched_profile*)
 
 ## Overview
 

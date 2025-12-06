@@ -21,12 +21,13 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  persistentEdits: {}
   tests:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 0.3.9
+  version: 0.3.10
   additionalDependencies:
     development: {}
     runtime: {}

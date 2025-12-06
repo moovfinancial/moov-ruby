@@ -1,5 +1,4 @@
 # EndToEndEncryption
-(*end_to_end_encryption*)
 
 ## Overview
 

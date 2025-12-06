@@ -1,5 +1,4 @@
 # IssuingTransactions
-(*issuing_transactions*)
 
 ## Overview
 

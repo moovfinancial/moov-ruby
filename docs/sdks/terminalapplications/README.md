@@ -1,5 +1,4 @@
 # TerminalApplications
-(*terminal_applications*)
 
 ## Overview
 
