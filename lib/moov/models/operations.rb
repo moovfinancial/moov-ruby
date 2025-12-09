@@ -302,8 +302,6 @@ module Moov
       autoload :UpdateAccountResponse, 'moov/models/operations/updateaccount_response.rb'
       autoload :UpdateApplePayMerchantDomainsRequest, 'moov/models/operations/updateapplepaymerchantdomains_request.rb'
       autoload :UpdateApplePayMerchantDomainsResponse, 'moov/models/operations/updateapplepaymerchantdomains_response.rb'
-      autoload :UpdateBrandRequest, 'moov/models/operations/updatebrand_request.rb'
-      autoload :UpdateBrandResponse, 'moov/models/operations/updatebrand_response.rb'
       autoload :UpdateCardRequest, 'moov/models/operations/updatecard_request.rb'
       autoload :UpdateCardResponse, 'moov/models/operations/updatecard_response.rb'
       autoload :UpdateDisputeEvidenceRequest, 'moov/models/operations/updatedisputeevidence_request.rb'
