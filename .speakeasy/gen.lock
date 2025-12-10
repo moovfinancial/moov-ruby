@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 159b1e80d1b91eabe65e71617d701325
+  docChecksum: 075d18b1ce171c9822f71758b885950b
   docVersion: latest
-  speakeasyVersion: 1.672.0
-  generationVersion: 2.774.0
-  releaseVersion: 0.3.11
-  configChecksum: 825d1296c6d8edc5729f6e4202ed5654
+  speakeasyVersion: 1.674.0
+  generationVersion: 2.778.0
+  releaseVersion: 0.3.12
+  configChecksum: 0a6fe9beb911f1115e3922e13cbd2e1c
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: f614e5f4-d3a8-42d0-92d9-97ee745f1894
-  pristine_commit_hash: f757ee8199e66db043f6a4e255d6df838e3b0e0f
-  pristine_tree_hash: a63b11e23b99482320803e382f8b67d27f77033f
+  generation_id: 98ffdbe0-d04c-4507-8908-6248201b6e75
+  pristine_commit_hash: 698d2075f0df3f53056c863faff9d43505bffe67
+  pristine_tree_hash: 9a02aceef50dab30a88365777cfc5ee0c50b736b
 features:
   ruby:
     constsAndDefaults: 0.1.1
-    core: 3.11.4
+    core: 3.11.6
     deprecations: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.81.9
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:8d736f81ff6532f0dba24c0755f614ed7c6c5185
-    pristine_git_object: ebd450ecedd9eeb624ce8376a90ba890571d2a90
+    last_write_checksum: sha1:28b8f0dab16782a7f0233bf083345114b9b844aa
+    pristine_git_object: 9f3b2a2f0ba8b1cffea86a63b41430d8727e115c
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -2061,9 +2061,6 @@ trackedFiles:
     id: 0fa327e8e6a5
     last_write_checksum: sha1:03b9cc4964b8508bedf375fbd80c37ef26653cbb
     pristine_git_object: b940a15160b2033de251e1cf8504ee8802bbd4d6
-  docs/models/components/updatebrand.md:
-    id: 05ff58b84231
-    pristine_git_object: a94ae1c852d08578cbcbf28e4bfa76ec04515c36
   docs/models/components/updatecard.md:
     id: df9a81aa0f65
     last_write_checksum: sha1:aaea6820c01581872c341726a378958ee042fcec
@@ -2076,12 +2073,6 @@ trackedFiles:
     id: d12e007e8292
     last_write_checksum: sha1:85a7870ce7e2907f09d472a81cd0a8a4e526343c
     pristine_git_object: c6ba08a85b607f38c4536f539cdd67e70b1c08c3
-  docs/models/components/updatecolor.md:
-    id: 2936281e3c63
-    pristine_git_object: 408a0f17f810be6f439e78e60081b64b2def5f61
-  docs/models/components/updatecolors.md:
-    id: e327703f094b
-    pristine_git_object: 3655ca1dda4e4b06217c01cc2cf1d86f2dd0ea48
   docs/models/components/updateevidence.md:
     id: 1b840d735a46
     last_write_checksum: sha1:9cebc4d41cc441266ab2df81ef2427e23703275e
@@ -3774,12 +3765,6 @@ trackedFiles:
     id: a377795b522e
     last_write_checksum: sha1:0337da1ff62726d2100066c5013b0aa76861e1d6
     pristine_git_object: 775c908cada96e6437dfd4d0230d5a5e85963ac7
-  docs/models/operations/updatebrandrequest.md:
-    id: 1570601ec6bd
-    pristine_git_object: ae55020a3442747b49d7ffc1155b3cf89d8f4a50
-  docs/models/operations/updatebrandresponse.md:
-    id: 84a78b7c5265
-    pristine_git_object: 2754b25413badfe9edf56f7f7e8bfcf74ab57b77
   docs/models/operations/updatecardrequest.md:
     id: cd4cb3891314
     last_write_checksum: sha1:dec581d385ce5a793a1e1bf611f80dad6d243530
@@ -4018,8 +4003,8 @@ trackedFiles:
     pristine_git_object: b6c9e7ec76a3b052591102440d4c1b7de4d78f27
   docs/sdks/institutions/README.md:
     id: 9eeb0b2b49a2
-    last_write_checksum: sha1:783654632ff3ce519181c0d2340e6e4fecc5031d
-    pristine_git_object: c9fa0f9839d855958e0d762887d2b3e1282861ad
+    last_write_checksum: sha1:6faeca000848c26b216508f5b7466a8961e37123
+    pristine_git_object: 84ab0730034bf6480612a3dbfb76c2cbda0e1455
   docs/sdks/invoices/README.md:
     id: a3f76a06eded
     last_write_checksum: sha1:6e27b8fe6936bbd51c7a494ca63b957d3e06b0e2
@@ -4162,8 +4147,8 @@ trackedFiles:
     pristine_git_object: 224b13fa5d2d200bc0b4559dd09124f463469950
   lib/moov/client.rb:
     id: 396370d98ab5
-    last_write_checksum: sha1:e8668de6ad4753382cbb23baad46114fc6edcaaa
-    pristine_git_object: 730d6f75f25747dc64097a6a4f405b832cbd9597
+    last_write_checksum: sha1:8af784f992ab5dd01182b7cc5a6dbc924a31caf1
+    pristine_git_object: 5d3b7dbc3414054bd8fd6e49f2820a13a2f914df
   lib/moov/disputes.rb:
     id: 96a15fd25be9
     last_write_checksum: sha1:40c72576bb66e51010790e9344c8b8b363249f87
@@ -4198,8 +4183,8 @@ trackedFiles:
     pristine_git_object: 01a85825abc6a4b0b7beb0d842c1204004baaf2b
   lib/moov/institutions.rb:
     id: 3fa0b1a30dce
-    last_write_checksum: sha1:b45f53e53e14b64147a26934d5595420e8b666a4
-    pristine_git_object: ec116caeee11c27cd3f3a3551ce7caa06cd2984a
+    last_write_checksum: sha1:a0f9c56cf6d47e255884b04cb5e2c8222e2f30f9
+    pristine_git_object: b74de9561f1547ec7af2d09011bb63577e38a6b5
   lib/moov/invoices.rb:
     id: aa21cd57df11
     last_write_checksum: sha1:a32f433a993b57812603c3454987f932e5b447f8
@@ -8232,12 +8217,6 @@ trackedFiles:
     id: 51e87d8c10b0
     last_write_checksum: sha1:a9ac513e16cf277c92991991b7cfe3f6557130b8
     pristine_git_object: 442b4eb43e5f1a29913158aaecd190d89328ca46
-  lib/moov/models/components/updatebrand.rb:
-    id: d613473f06f6
-    pristine_git_object: b2f5bedaf33ab317818d1efbff381d514398c7c5
-  lib/moov/models/components/updatebrand.rbi:
-    id: dca901ce37d3
-    pristine_git_object: cdcde45c5ac74601a8c17ae2c54c700026b9cf40
   lib/moov/models/components/updatecard.rb:
     id: fb56e48f1660
     last_write_checksum: sha1:dc590160b55014329dcd11bb0040df62d37c883b
@@ -8262,18 +8241,6 @@ trackedFiles:
     id: 44850154f102
     last_write_checksum: sha1:ab64fe48d5a69474d6554db013e1d08f1cb3f786
     pristine_git_object: 5a09172a93eb379a5aefb1aa7d8f8a07ad7d0a3a
-  lib/moov/models/components/updatecolor.rb:
-    id: 4e1b813926d2
-    pristine_git_object: f87fbe321a613cda35f9c0349497947b6bb1ee20
-  lib/moov/models/components/updatecolor.rbi:
-    id: 89c0c7584885
-    pristine_git_object: 9eaaf692bb3d9802428b2bc0641464ca95c6b1f3
-  lib/moov/models/components/updatecolors.rb:
-    id: dbe54806ac04
-    pristine_git_object: 4b24bb98fc21104310b674ab1ee15f888cb3df9e
-  lib/moov/models/components/updatecolors.rbi:
-    id: fdb22a22e48f
-    pristine_git_object: 5166322d20fdaa13951ca0ab615210f59548c11a
   lib/moov/models/components/updateevidence.rb:
     id: d6ae9f5efada
     last_write_checksum: sha1:a4fe7658bc97c3845dab782903358e006b94c55e
@@ -11674,18 +11641,6 @@ trackedFiles:
     id: e6aec851dae2
     last_write_checksum: sha1:54b5249eafb283d57946b91e6da6c37b17d73265
     pristine_git_object: e748de4b1a298eb5d1ac5b51eea94c0de9b15b74
-  lib/moov/models/operations/updatebrand_request.rb:
-    id: 166b0323b28f
-    pristine_git_object: f3cf81fa0df9066e1cf8d002873f001cea5fb5e1
-  lib/moov/models/operations/updatebrand_request.rbi:
-    id: e70296318393
-    pristine_git_object: 34efe6dcff06b17d70f799d658da667b0a2ed6f6
-  lib/moov/models/operations/updatebrand_response.rb:
-    id: d86856749e19
-    pristine_git_object: e9fec9c21508bf55a9c50b110e85ce1151e01b0a
-  lib/moov/models/operations/updatebrand_response.rbi:
-    id: fd0df0448b1a
-    pristine_git_object: 61074e08b1dd882c36e4224759863ace26d17200
   lib/moov/models/operations/updatecard_request.rb:
     id: 823a9cc8166b
     last_write_checksum: sha1:9f982ca22320fda903eddb3c333a4b413d6a23d4
@@ -12048,8 +12003,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:7bed74cf895858b0248eb86f7df37626dd8c83fe
-    pristine_git_object: 660828c40a44107702091f61668ee429790060f0
+    last_write_checksum: sha1:85281beadd7db69b745b3847ee3d798cf3b0fafc
+    pristine_git_object: c153e8d49b8da48f2b92955da335faa47083d14e
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -12124,8 +12079,8 @@ trackedFiles:
     pristine_git_object: d2e04d1d29092712adddb10f7b517d91b554146c
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:040ece83e093f3ee7677dae2b9ef4fab5afd871d
-    pristine_git_object: be65fac87edd7c9b662aca5a342378abfe174895
+    last_write_checksum: sha1:ea53c36dd90ad02b2de64f12f24b3a876b2ade46
+    pristine_git_object: 0a4b72ab09102779146146fcb8dbf77092f14cfd
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:16e6180c757fb5c6db2d3aabadc4fd83aab8a74e
@@ -14481,7 +14436,7 @@ examples:
 examplesVersion: 1.0.2
 releaseNotes: |
   ## Ruby SDK Changes:
-  * `client.branding.update()`: **Deleted** **Breaking** :warning:
+  * `client.institutions.search()`: **Deprecated**
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
