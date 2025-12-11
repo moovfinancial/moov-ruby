@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 075d18b1ce171c9822f71758b885950b
+  docChecksum: 78baddc893e843c31e5471a2b91cd911
   docVersion: latest
-  speakeasyVersion: 1.674.0
-  generationVersion: 2.778.0
-  releaseVersion: 0.3.12
-  configChecksum: 0a6fe9beb911f1115e3922e13cbd2e1c
+  speakeasyVersion: 1.675.4
+  generationVersion: 2.779.2
+  releaseVersion: 0.3.13
+  configChecksum: 475a9d10f4cf88327eb1dee55ce16933
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 98ffdbe0-d04c-4507-8908-6248201b6e75
-  pristine_commit_hash: 698d2075f0df3f53056c863faff9d43505bffe67
-  pristine_tree_hash: 9a02aceef50dab30a88365777cfc5ee0c50b736b
+  generation_id: b29401e9-4d81-4c23-9493-156948fb4ce6
+  pristine_commit_hash: f92c5c16970616f200a707516b623f0f89f49eab
+  pristine_tree_hash: 18db93c939572886ea0305f8157a58c5bf09070b
 features:
   ruby:
     constsAndDefaults: 0.1.1
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:28b8f0dab16782a7f0233bf083345114b9b844aa
-    pristine_git_object: 9f3b2a2f0ba8b1cffea86a63b41430d8727e115c
+    last_write_checksum: sha1:cde6f577cf1ff716da07e59a3226d02c93883532
+    pristine_git_object: 9da0f5fa8c62a61ebe4b1cc7015dada1c2e9d185
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -1791,8 +1791,8 @@ trackedFiles:
     pristine_git_object: 597d12aa24aac774ac1b65c54a14d80f6971c87d
   docs/models/components/runtransfer.md:
     id: b8b858d8b6cb
-    last_write_checksum: sha1:8b005db86042bd461f4ca91141d7f274adcd39f4
-    pristine_git_object: 12a6e94a0678515ea309074f70b5605d6189db83
+    last_write_checksum: sha1:775425f7b034e2db69022fd4cc4b7e0b72852281
+    pristine_git_object: 0f5cfacaf05691b8a9f2a222ae1bbfe3de2cded2
   docs/models/components/schedulelistresponse.md:
     id: 9d41791ae0b6
     last_write_checksum: sha1:6d67c8eacb2bb1d13c4bc6c2729c371cb57552f0
@@ -4043,8 +4043,8 @@ trackedFiles:
     pristine_git_object: 3fc33e809cb29af8b9dd8707615cd17fee4e3321
   docs/sdks/scheduling/README.md:
     id: 0508024015b4
-    last_write_checksum: sha1:e40dd623dbc10b32be3b9bcb04dfff345a202361
-    pristine_git_object: 39f0631d8e7aa9030d87c96c2c090cc46f8a33a0
+    last_write_checksum: sha1:dfc481fb9c592092295284ff57458061ac700383
+    pristine_git_object: c2aa722a93cda37ca895a31a95c1372c84bb296f
   docs/sdks/statements/README.md:
     id: 077d45e19c3c
     last_write_checksum: sha1:77570f364f47a7591ca5027e971627664adb682b
@@ -7675,12 +7675,12 @@ trackedFiles:
     pristine_git_object: 9595dd03887fd5cbd698c122f2e2aa71c86eec40
   lib/moov/models/components/runtransfer.rb:
     id: 7b3f0a927a37
-    last_write_checksum: sha1:7fc4bd00f8c458284c52f7972bd2b6b1d6463dd7
-    pristine_git_object: 55fabd229295ad98f88ba474c2d0a5b43547d043
+    last_write_checksum: sha1:fb0c0a43905c062d9ddf441c66541bdccd2785a7
+    pristine_git_object: ed9ff9a6392dcdbbc69e6fedf8c264f2c9a23b5d
   lib/moov/models/components/runtransfer.rbi:
     id: 687ea56c5205
-    last_write_checksum: sha1:c8a2cdcf1fee2381c3b06eee6faed6a69e193fab
-    pristine_git_object: b5d885ac88f6274de007bd107827c3d87570a84f
+    last_write_checksum: sha1:e8bb70f16b2d28cff66846a5a371ea71bf135760
+    pristine_git_object: fdd58e3dc0abebd118c1c0dc50d471fc0ad090e0
   lib/moov/models/components/schedulelistresponse.rb:
     id: 382bf657a4af
     last_write_checksum: sha1:42605c8d3cc762bad90e809ccf1ef8f75445a925
@@ -12003,8 +12003,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:85281beadd7db69b745b3847ee3d798cf3b0fafc
-    pristine_git_object: c153e8d49b8da48f2b92955da335faa47083d14e
+    last_write_checksum: sha1:59ff7bcc6a8d551428f66887564fc44705228095
+    pristine_git_object: dfd7181c66946d658394fa03b540283c5dfe4b5f
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -12079,8 +12079,8 @@ trackedFiles:
     pristine_git_object: d2e04d1d29092712adddb10f7b517d91b554146c
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:ea53c36dd90ad02b2de64f12f24b3a876b2ade46
-    pristine_git_object: 0a4b72ab09102779146146fcb8dbf77092f14cfd
+    last_write_checksum: sha1:b07c57fddf7400ed83ba7e2cf40433032d0fd6ad
+    pristine_git_object: c3bf9fb054044c43796e881e7eef7b9d12383dd2
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:16e6180c757fb5c6db2d3aabadc4fd83aab8a74e
@@ -13095,10 +13095,10 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        application/json: {"occurrences": [{"occurrenceID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "runOn": "2009-11-10T23:00:00Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}}], "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}, "start": "2009-11-10T23:00:00Z"}}
+        application/json: {"occurrences": [{"occurrenceID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "runOn": "2009-11-10T23:00:00Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}}], "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "salesTaxAmount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}, "start": "2009-11-10T23:00:00Z"}}
       responses:
         "200":
-          application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": [{"mode": "production", "runOn": "2024-01-03T21:01:39.963Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}}], "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2024-09-23T02:27:15.692Z", "updatedOn": "2025-07-31T23:48:50.303Z"}
+          application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": [{"mode": "production", "runOn": "2024-01-03T21:01:39.963Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}}], "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "salesTaxAmount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "er mob marathon lest optimistically responsible"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2024-09-23T02:27:15.692Z", "updatedOn": "2025-07-31T23:48:50.303Z"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -13127,10 +13127,10 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        application/json: {"occurrences": [{"occurrenceID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "runOn": "2009-11-10T23:00:00Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}}], "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}, "start": "2009-11-10T23:00:00Z"}}
+        application/json: {"occurrences": [{"occurrenceID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "runOn": "2009-11-10T23:00:00Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}}], "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "salesTaxAmount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}, "start": "2009-11-10T23:00:00Z"}}
       responses:
         "200":
-          application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": [{"mode": "production", "runOn": "2024-06-01T22:11:41.709Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}}], "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2023-03-20T19:38:40.647Z", "updatedOn": "2023-09-25T05:07:21.063Z"}
+          application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": [{"mode": "production", "runOn": "2024-06-01T22:11:41.709Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}}], "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "salesTaxAmount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "yum who queasily bemuse ick dull almighty incidentally er despite"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2023-03-20T19:38:40.647Z", "updatedOn": "2023-09-25T05:07:21.063Z"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -13146,7 +13146,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": [{"mode": "production", "runOn": "2024-08-31T23:34:03.135Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "humble other hence athwart with"}}], "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "humble other hence athwart with"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2025-04-04T13:05:20.032Z", "updatedOn": "2023-06-15T04:44:25.119Z"}
+          application/json: {"destinationAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "mode": "production", "occurrences": [{"mode": "production", "runOn": "2024-08-31T23:34:03.135Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "humble other hence athwart with"}}], "ownerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "recur": {"recurrenceRule": "<value>", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "salesTaxAmount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "humble other hence athwart with"}, "start": "2009-11-10T23:00:00Z"}, "scheduleID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "sourceAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "createdOn": "2025-04-04T13:05:20.032Z", "updatedOn": "2023-06-15T04:44:25.119Z"}
   cancelSchedule:
     speakeasy-default-cancel-schedule:
       parameters:
@@ -13171,7 +13171,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"mode": "production", "runOn": "2024-08-28T12:44:49.769Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "and always opposite helplessly quaff"}}
+          application/json: {"mode": "production", "runOn": "2024-08-28T12:44:49.769Z", "runTransfer": {"amount": {"currency": "USD", "value": 1204}, "salesTaxAmount": {"currency": "USD", "value": 1204}, "destination": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "partnerAccountID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "source": {"paymentMethodID": "c520f1b9-0ba7-42f5-b977-248cdbe41c69", "achDetails": {"companyEntryDescription": "Gym dues", "originatingCompanyName": "Whole Body Fit"}, "cardDetails": {"dynamicDescriptor": "WhlBdy *Yoga 11-12"}}, "description": "and always opposite helplessly quaff"}}
   createSweepConfig:
     speakeasy-default-create-sweep-config:
       parameters:
@@ -14434,9 +14434,7 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Ruby SDK Changes:
-  * `client.institutions.search()`: **Deprecated**
+releaseNotes: "## Ruby SDK Changes:\n* `client.scheduling.create()`: \n  *  `request.upsert_schedule.occurrences.[].run_transfer.sales_tax_amount` **Added**\n  *  `response.occurrences.[].run_transfer.sales_tax_amount` **Added**\n* `client.scheduling.list()`:  `response.[].occurrences.[].run_transfer.sales_tax_amount` **Added**\n* `client.scheduling.update()`: \n  *  `request.upsert_schedule.occurrences.[].run_transfer.sales_tax_amount` **Added**\n  *  `response.occurrences.[].run_transfer.sales_tax_amount` **Added**\n* `client.scheduling.get()`:  `response.occurrences.[].run_transfer.sales_tax_amount` **Added**\n* `client.scheduling.get_occurrance()`:  `response.run_transfer.sales_tax_amount` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

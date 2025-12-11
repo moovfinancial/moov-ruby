@@ -89,6 +89,10 @@ res = s.scheduling.create(account_id: '8b64fef5-c389-40d5-838f-d6ae10e70162', up
         currency: 'USD',
         value: 1204,
       ),
+      sales_tax_amount: Models::Components::Amount.new(
+        currency: 'USD',
+        value: 1204,
+      ),
       destination: Models::Components::SchedulePaymentMethod.new(
         payment_method_id: 'c520f1b9-0ba7-42f5-b977-248cdbe41c69',
         ach_details: Models::Components::AchDetails.new(
@@ -247,6 +251,10 @@ res = s.scheduling.update(account_id: '7becca38-ec01-4fcf-8cf7-c187c7cf6a7a', sc
     recurrence_rule: '<value>',
     run_transfer: Models::Components::RunTransfer.new(
       amount: Models::Components::Amount.new(
+        currency: 'USD',
+        value: 1204,
+      ),
+      sales_tax_amount: Models::Components::Amount.new(
         currency: 'USD',
         value: 1204,
       ),

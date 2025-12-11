@@ -18,4 +18,6 @@ class Moov::Models::Components::RunTransfer
   def source=(str_); end
   def description(); end
   def description=(str_); end
+  def sales_tax_amount(); end
+  def sales_tax_amount=(str_); end
 end

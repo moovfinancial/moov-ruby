@@ -23,14 +23,17 @@ module Moov
         field :source, Models::Components::SchedulePaymentMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('source'), required: true } }
         # Simple description to place on the transfer.
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
+        # Optional sales tax amount. This amount is included in the total transfer amount.
+        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
 
-        sig { params(amount: Models::Components::Amount, destination: Models::Components::SchedulePaymentMethod, partner_account_id: ::String, source: Models::Components::SchedulePaymentMethod, description: ::String).void }
-        def initialize(amount:, destination:, partner_account_id:, source:, description:)
+        sig { params(amount: Models::Components::Amount, destination: Models::Components::SchedulePaymentMethod, partner_account_id: ::String, source: Models::Components::SchedulePaymentMethod, description: ::String, sales_tax_amount: T.nilable(Models::Components::Amount)).void }
+        def initialize(amount:, destination:, partner_account_id:, source:, description:, sales_tax_amount: nil)
           @amount = amount
           @destination = destination
           @partner_account_id = partner_account_id
           @source = source
           @description = description
+          @sales_tax_amount = sales_tax_amount
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -41,6 +44,7 @@ module Moov
           return false unless @partner_account_id == other.partner_account_id
           return false unless @source == other.source
           return false unless @description == other.description
+          return false unless @sales_tax_amount == other.sales_tax_amount
           true
         end
       end
