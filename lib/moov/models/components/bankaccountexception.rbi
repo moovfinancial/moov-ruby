@@ -14,4 +14,6 @@ class Moov::Models::Components::BankAccountException
   def ach_return_code=(str_); end
   def rtp_rejection_code(); end
   def rtp_rejection_code=(str_); end
+  def fednow_rejection_code(); end
+  def fednow_rejection_code=(str_); end
 end

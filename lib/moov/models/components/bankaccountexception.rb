@@ -48,12 +48,34 @@ module Moov
         # - AG03: Transaction Type Not Supported
         # - MD07: Customer Deceased
         field :rtp_rejection_code, Crystalline::Nilable.new(Models::Components::RTPRejectionCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtpRejectionCode'), 'decoder': Utils.enum_from_string(Models::Components::RTPRejectionCode, true) } }
+        # The rejection code of a FedNow transaction that caused the bank account status to change.
+        # 
+        # - AC02: Debtor account is invalid
+        # - AC03: Creditor account is invalid
+        # - AC04: Account closed
+        # - AC06: Account is blocked
+        # - AC07: Creditor account closed
+        # - AC10: Debtor account currency is invalid or missing
+        # - AC11: Creditor account currency is invalid or missing
+        # - AC13: Debtor account type missing or invalid
+        # - AC14: Creditor account type missing or invalid
+        # - AG01: Transaction is forbidden on this type of account
+        # - AG03: Transaction type is not supported/authorized on this account
+        # - BE06: End customer specified is not known at associated Sort/National Bank Code or no longer exists in the books
+        # - DUPL: Payment is a duplicate of another payment
+        # - MD07: End customer is deceased
+        # - NOAT: Receiving customer account does not support/accept this message type
+        # - RC02: Bank identifier is invalid or missing
+        # - RC03: Debtor FI identifier is invalid or missing
+        # - RC04: Creditor FI identifier is invalid or missing
+        field :fednow_rejection_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fednowRejectionCode') } }
 
-        sig { params(description: ::String, ach_return_code: T.nilable(Models::Components::ACHReturnCode), rtp_rejection_code: T.nilable(Models::Components::RTPRejectionCode)).void }
-        def initialize(description:, ach_return_code: nil, rtp_rejection_code: nil)
+        sig { params(description: ::String, ach_return_code: T.nilable(Models::Components::ACHReturnCode), rtp_rejection_code: T.nilable(Models::Components::RTPRejectionCode), fednow_rejection_code: T.nilable(::String)).void }
+        def initialize(description:, ach_return_code: nil, rtp_rejection_code: nil, fednow_rejection_code: nil)
           @description = description
           @ach_return_code = ach_return_code
           @rtp_rejection_code = rtp_rejection_code
+          @fednow_rejection_code = fednow_rejection_code
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -62,6 +84,7 @@ module Moov
           return false unless @description == other.description
           return false unless @ach_return_code == other.ach_return_code
           return false unless @rtp_rejection_code == other.rtp_rejection_code
+          return false unless @fednow_rejection_code == other.fednow_rejection_code
           true
         end
       end

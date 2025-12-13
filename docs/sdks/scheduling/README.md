@@ -115,6 +115,9 @@ res = s.scheduling.create(account_id: '8b64fef5-c389-40d5-838f-d6ae10e70162', up
         ),
       ),
       description: 'er mob marathon lest optimistically responsible',
+      line_items: Models::Components::ScheduledTransferLineItems.new(
+        items: [],
+      ),
     ),
     start: DateTime.iso8601('2009-11-10T23:00:00Z'),
   ),
@@ -280,6 +283,28 @@ res = s.scheduling.update(account_id: '7becca38-ec01-4fcf-8cf7-c187c7cf6a7a', sc
         ),
       ),
       description: 'yum who queasily bemuse ick dull almighty incidentally er despite',
+      line_items: Models::Components::ScheduledTransferLineItems.new(
+        items: [
+          Models::Components::ScheduledTransferLineItem.new(
+            name: '<value>',
+            base_price: Models::Components::AmountDecimal.new(
+              currency: 'USD',
+              value_decimal: '12.987654321',
+            ),
+            quantity: 973_458,
+            options: [
+              Models::Components::ScheduledTransferLineItemOption.new(
+                name: '<value>',
+                quantity: 221_042,
+                price_modifier: Models::Components::AmountDecimal.new(
+                  currency: 'USD',
+                  value_decimal: '12.987654321',
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     ),
     start: DateTime.iso8601('2009-11-10T23:00:00Z'),
   ),

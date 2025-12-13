@@ -890,7 +890,7 @@ module Moov
 
     sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetBankAccountVerificationResponse) }
     def get_verification(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil)
-      # get_verification - Retrieve the current status and details of an instant verification, including whether the verification method was instant or same-day 
+      # get_verification - Retrieve the current status and details of an instant verification, including whether the verification method was instant (RTP or FedNow) or same-day
       # ACH. This helps track the verification process in real-time and provides details in case of exceptions.
       # 
       # The status will indicate the following:
@@ -1023,14 +1023,14 @@ module Moov
     def initiate_verification(account_id:, bank_account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil)
       # initiate_verification - Instant micro-deposit verification offers a quick and efficient way to verify bank account ownership. 
       # 
-      # Send a $0.01 credit with a unique verification code via RTP or same-day ACH, depending on the receiving bank's capabilities. This
+      # Send a $0.01 credit with a unique verification code via RTP, FedNow, or same-day ACH, depending on the receiving bank's capabilities. This
       # feature provides a faster alternative to traditional methods, allowing verification in a single session.
       # 
       # It is recommended to use the `X-Wait-For: rail-response` header to synchronously receive the outcome of the instant credit in the
       #   response payload.
       # 
       # Possible verification methods:
-      #   - `instant`: Real-time verification credit sent via RTP
+      #   - `instant`: Real-time verification credit sent via RTP or FedNow
       #   - `ach`: Verification credit sent via same-day ACH
       # 
       # Possible statuses:

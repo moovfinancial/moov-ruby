@@ -36,6 +36,10 @@ class Moov::Models::Components::Statement
   def instant_payment_fees=(str_); end
   def platform_fees(); end
   def platform_fees=(str_); end
+  def account_fees(); end
+  def account_fees=(str_); end
   def other_card_fees(); end
   def other_card_fees=(str_); end
+  def partner_fees(); end
+  def partner_fees=(str_); end
 end

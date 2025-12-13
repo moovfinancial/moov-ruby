@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
     
-      # Represents a count of items and their total amount.
+
       class BillingCountAndAmount
         extend T::Sig
         include Crystalline::MetadataFields

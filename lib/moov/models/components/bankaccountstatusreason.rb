@@ -24,6 +24,7 @@ module Moov
           ACH_DEBIT_RETURN = new('ach-debit-return')
           ACH_CREDIT_RETURN = new('ach-credit-return')
           RTP_CREDIT_FAILURE = new('rtp-credit-failure')
+          FEDNOW_CREDIT_FAILURE = new('fednow-credit-failure')
           MICRO_DEPOSIT_RETURN = new('micro-deposit-return')
           ADMIN_ACTION = new('admin-action')
           OTHER = new('other')

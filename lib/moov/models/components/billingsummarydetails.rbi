@@ -14,4 +14,10 @@ class Moov::Models::Components::BillingSummaryDetails
   def volume_count=(str_); end
   def fee_amount(); end
   def fee_amount=(str_); end
+  def merchant_fees_collected(); end
+  def merchant_fees_collected=(str_); end
+  def partner_fees_assessed(); end
+  def partner_fees_assessed=(str_); end
+  def net_income(); end
+  def net_income=(str_); end
 end

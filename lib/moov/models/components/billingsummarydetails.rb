@@ -8,23 +8,36 @@ module Moov
   module Models
     module Components
     
-      # Details of volume and fees for a specific payment method.
+
       class BillingSummaryDetails
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The total transaction volume amount.
-        field :volume_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeAmount') } }
-        # The total number of transactions.
+        # The total transaction volume amount. This field is deprecated and will be removed in a future release.
+        # 
+        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :volume_amount, Crystalline::Nilable.new(Models::Components::BillingSummaryDetailsVolumeAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeAmount') } }
+        # The total number of transactions. This field is deprecated and will be removed in a future release.
+        # 
+        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :volume_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeCount') } }
         # The total fee amount.
         field :fee_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeAmount') } }
+        # Total fee revenue collected from merchants.
+        field :merchant_fees_collected, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantFeesCollected') } }
+        # Total fee costs incurred by the partner.
+        field :partner_fees_assessed, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerFeesAssessed') } }
+        # Net revenue after deducting partner fee costs.
+        field :net_income, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('netIncome') } }
 
-        sig { params(volume_amount: T.nilable(Models::Components::AmountDecimal), volume_count: T.nilable(::Integer), fee_amount: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(volume_amount: nil, volume_count: nil, fee_amount: nil)
+        sig { params(volume_amount: T.nilable(Models::Components::BillingSummaryDetailsVolumeAmount), volume_count: T.nilable(::Integer), fee_amount: T.nilable(Models::Components::AmountDecimal), merchant_fees_collected: T.nilable(Models::Components::AmountDecimal), partner_fees_assessed: T.nilable(Models::Components::AmountDecimal), net_income: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(volume_amount: nil, volume_count: nil, fee_amount: nil, merchant_fees_collected: nil, partner_fees_assessed: nil, net_income: nil)
           @volume_amount = volume_amount
           @volume_count = volume_count
           @fee_amount = fee_amount
+          @merchant_fees_collected = merchant_fees_collected
+          @partner_fees_assessed = partner_fees_assessed
+          @net_income = net_income
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -33,6 +46,9 @@ module Moov
           return false unless @volume_amount == other.volume_amount
           return false unless @volume_count == other.volume_count
           return false unless @fee_amount == other.fee_amount
+          return false unless @merchant_fees_collected == other.merchant_fees_collected
+          return false unless @partner_fees_assessed == other.partner_fees_assessed
+          return false unless @net_income == other.net_income
           true
         end
       end

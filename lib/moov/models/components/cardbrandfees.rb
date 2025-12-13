@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
     
-      # A detailed breakdown of fees for a specific card brand.
+
       class CardBrandFees
         extend T::Sig
         include Crystalline::MetadataFields
