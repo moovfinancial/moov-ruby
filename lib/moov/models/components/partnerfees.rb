@@ -13,26 +13,26 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Total partner fees.
-        field :total, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('total'), required: true } }
         # The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
-        field :minimum_commitment, Crystalline::Nilable.new(Models::Components::BillingCountAndAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumCommitment') } }
+        field :minimum_commitment, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumCommitment'), required: true } }
         # Fixed recurring fee for the billing period regardless of usage.
-        field :monthly_platform, Crystalline::Nilable.new(Models::Components::BillingCountAndAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('monthlyPlatform') } }
+        field :monthly_platform, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('monthlyPlatform'), required: true } }
+        # Total partner fees.
+        field :total, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('total'), required: true } }
 
-        sig { params(total: Models::Components::BillingCountAndAmount, minimum_commitment: T.nilable(Models::Components::BillingCountAndAmount), monthly_platform: T.nilable(Models::Components::BillingCountAndAmount)).void }
-        def initialize(total:, minimum_commitment: nil, monthly_platform: nil)
-          @total = total
+        sig { params(minimum_commitment: Models::Components::AmountDecimal, monthly_platform: Models::Components::AmountDecimal, total: Models::Components::AmountDecimal).void }
+        def initialize(minimum_commitment:, monthly_platform:, total:)
           @minimum_commitment = minimum_commitment
           @monthly_platform = monthly_platform
+          @total = total
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @total == other.total
           return false unless @minimum_commitment == other.minimum_commitment
           return false unless @monthly_platform == other.monthly_platform
+          return false unless @total == other.total
           true
         end
       end

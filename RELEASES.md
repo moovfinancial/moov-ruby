@@ -489,3 +489,13 @@ Based on:
 - [ruby v0.3.14] .
 ### Releases
 - [Ruby Gems v0.3.14] https://rubygems.org/gems/moov_ruby/versions/0.3.14 - .
+
+## 2025-12-16 00:17:39
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.676.1 (2.781.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v0.3.15] .
+### Releases
+- [Ruby Gems v0.3.15] https://rubygems.org/gems/moov_ruby/versions/0.3.15 - .
