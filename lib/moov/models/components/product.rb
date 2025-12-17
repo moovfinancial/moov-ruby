@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
     
-      # A product available for purchase, which may have optional configuration options.
+      # A good or service offered by a merchant.
       class Product
         extend T::Sig
         include Crystalline::MetadataFields

@@ -10,6 +10,8 @@ end
 class Moov::Models::Errors::UpdatePaymentLinkError
   def amount(); end
   def amount=(str_); end
+  def sales_tax_amount(); end
+  def sales_tax_amount=(str_); end
   def expires_on(); end
   def expires_on=(str_); end
   def display(); end

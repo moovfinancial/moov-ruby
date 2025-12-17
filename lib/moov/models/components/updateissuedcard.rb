@@ -13,19 +13,15 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
-        # 
-        # - `active`: The card is operational and approves authorizations. Generally becomes active shortly after card creation.
-        # - `inactive`: The card cannot approve authorizations. This is currently a temporary state assigned post-creation during the activation process.
+        # Updates the state of a Moov issued card.
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
-        # - `pending-verification`: Awaiting additional authorized user verification before the card can be activated.
-        field :state, Crystalline::Nilable.new(Models::Components::IssuedCardState), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), 'decoder': Utils.enum_from_string(Models::Components::IssuedCardState, true) } }
+        field :state, Crystalline::Nilable.new(Models::Components::UpdateIssuedCardState), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), 'decoder': Utils.enum_from_string(Models::Components::UpdateIssuedCardState, true) } }
 
         field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
         # Fields for identifying an authorized individual.
         field :authorized_user, Crystalline::Nilable.new(Models::Components::CreateAuthorizedUserUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUser') } }
 
-        sig { params(state: T.nilable(Models::Components::IssuedCardState), memo: T.nilable(::String), authorized_user: T.nilable(Models::Components::CreateAuthorizedUserUpdate)).void }
+        sig { params(state: T.nilable(Models::Components::UpdateIssuedCardState), memo: T.nilable(::String), authorized_user: T.nilable(Models::Components::CreateAuthorizedUserUpdate)).void }
         def initialize(state: nil, memo: nil, authorized_user: nil)
           @state = state
           @memo = memo

@@ -16,6 +16,8 @@ module Moov
 
         field :amount, Crystalline::Nilable.new(Models::Components::AmountValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
+        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::AmountValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
+
         field :expires_on, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn') } }
 
         field :display, Crystalline::Nilable.new(Models::Components::DisplayOptionsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('display') } }
@@ -28,9 +30,10 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountValidationError), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(amount: nil, expires_on: nil, display: nil, payment: nil, payout: nil, line_items: nil, raw_response: nil)
+        sig { params(amount: T.nilable(Models::Components::AmountValidationError), sales_tax_amount: T.nilable(Models::Components::AmountValidationError), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(amount: nil, sales_tax_amount: nil, expires_on: nil, display: nil, payment: nil, payout: nil, line_items: nil, raw_response: nil)
           @amount = amount
+          @sales_tax_amount = sales_tax_amount
           @expires_on = expires_on
           @display = display
           @payment = payment
@@ -43,6 +46,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @amount == other.amount
+          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @expires_on == other.expires_on
           return false unless @display == other.display
           return false unless @payment == other.payment

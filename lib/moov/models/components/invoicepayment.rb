@@ -8,18 +8,31 @@ module Moov
   module Models
     module Components
     
-
+      # Payment made towards an invoice, will be either a transfer or an external payment.
       class InvoicePayment
         extend T::Sig
         include Crystalline::MetadataFields
 
 
-        
-        def initialize; end
+        field :payment_type, Models::Components::InvoicePaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoicePaymentType, false) } }
+
+        field :transfer, Crystalline::Nilable.new(Models::Components::InvoiceTransferPayment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transfer') } }
+
+        field :external, Crystalline::Nilable.new(Models::Components::InvoiceExternalPayment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('external') } }
+
+        sig { params(payment_type: Models::Components::InvoicePaymentType, transfer: T.nilable(Models::Components::InvoiceTransferPayment), external: T.nilable(Models::Components::InvoiceExternalPayment)).void }
+        def initialize(payment_type:, transfer: nil, external: nil)
+          @payment_type = payment_type
+          @transfer = transfer
+          @external = external
+        end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @payment_type == other.payment_type
+          return false unless @transfer == other.transfer
+          return false unless @external == other.external
           true
         end
       end

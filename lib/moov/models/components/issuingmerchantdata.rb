@@ -14,41 +14,41 @@ module Moov
         include Crystalline::MetadataFields
 
         # External identifier used to identify the merchant with the card brand.
-        field :network_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkID') } }
+        field :network_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkID'), required: true } }
+        # Two-letter country code.
+        field :country, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('country'), required: true } }
+        # The Merchant Category Code.
+        field :mcc, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mcc'), required: true } }
         # Name of the merchant.
         field :name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name') } }
         # The merchant's location.
         field :city, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('city') } }
-        # Two-letter country code.
-        field :country, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('country') } }
         # The merchant's five-digit postal code.
         field :postal_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('postalCode') } }
         # The merchant's two-letter state abbreviation.
         field :state, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state') } }
-        # The Merchant Category Code.
-        field :mcc, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mcc') } }
 
-        sig { params(network_id: T.nilable(::String), name: T.nilable(::String), city: T.nilable(::String), country: T.nilable(::String), postal_code: T.nilable(::String), state: T.nilable(::String), mcc: T.nilable(::String)).void }
-        def initialize(network_id: nil, name: nil, city: nil, country: nil, postal_code: nil, state: nil, mcc: nil)
+        sig { params(network_id: ::String, country: ::String, mcc: ::String, name: T.nilable(::String), city: T.nilable(::String), postal_code: T.nilable(::String), state: T.nilable(::String)).void }
+        def initialize(network_id:, country:, mcc:, name: nil, city: nil, postal_code: nil, state: nil)
           @network_id = network_id
+          @country = country
+          @mcc = mcc
           @name = name
           @city = city
-          @country = country
           @postal_code = postal_code
           @state = state
-          @mcc = mcc
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @network_id == other.network_id
+          return false unless @country == other.country
+          return false unless @mcc == other.mcc
           return false unless @name == other.name
           return false unless @city == other.city
-          return false unless @country == other.country
           return false unless @postal_code == other.postal_code
           return false unless @state == other.state
-          return false unless @mcc == other.mcc
           true
         end
       end

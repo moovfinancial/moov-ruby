@@ -20,6 +20,8 @@ module Moov
 
         field :amount, Crystalline::Nilable.new(Models::Components::AmountValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
+        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::AmountValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
+
         field :max_uses, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxUses') } }
 
         field :expires_on, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn') } }
@@ -34,11 +36,12 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(partner_account_id: T.nilable(::String), merchant_payment_method_id: T.nilable(::String), amount: T.nilable(Models::Components::AmountValidationError), max_uses: T.nilable(::String), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(partner_account_id: nil, merchant_payment_method_id: nil, amount: nil, max_uses: nil, expires_on: nil, display: nil, payment: nil, payout: nil, line_items: nil, raw_response: nil)
+        sig { params(partner_account_id: T.nilable(::String), merchant_payment_method_id: T.nilable(::String), amount: T.nilable(Models::Components::AmountValidationError), sales_tax_amount: T.nilable(Models::Components::AmountValidationError), max_uses: T.nilable(::String), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(partner_account_id: nil, merchant_payment_method_id: nil, amount: nil, sales_tax_amount: nil, max_uses: nil, expires_on: nil, display: nil, payment: nil, payout: nil, line_items: nil, raw_response: nil)
           @partner_account_id = partner_account_id
           @merchant_payment_method_id = merchant_payment_method_id
           @amount = amount
+          @sales_tax_amount = sales_tax_amount
           @max_uses = max_uses
           @expires_on = expires_on
           @display = display
@@ -54,6 +57,7 @@ module Moov
           return false unless @partner_account_id == other.partner_account_id
           return false unless @merchant_payment_method_id == other.merchant_payment_method_id
           return false unless @amount == other.amount
+          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @max_uses == other.max_uses
           return false unless @expires_on == other.expires_on
           return false unless @display == other.display

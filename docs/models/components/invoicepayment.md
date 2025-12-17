@@ -1,2 +1,12 @@
 # InvoicePayment
 
+Payment made towards an invoice, will be either a transfer or an external payment.
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `payment_type`                                                                                         | [Models::Components::InvoicePaymentType](../../models/shared/invoicepaymenttype.md)                    | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `transfer`                                                                                             | [T.nilable(Models::Components::InvoiceTransferPayment)](../../models/shared/invoicetransferpayment.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `external`                                                                                             | [T.nilable(Models::Components::InvoiceExternalPayment)](../../models/shared/invoiceexternalpayment.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

@@ -26,6 +26,8 @@ module Moov
         field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
         # Customizable display options for a payment link.
         field :display, Models::Components::PaymentLinkDisplayOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('display'), required: true } }
+
+        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # An optional limit on the number of times this payment link can be used. 
         # 
         # **For payouts, `maxUses` is always 1.**
@@ -42,12 +44,13 @@ module Moov
         # When line items are provided, their total plus sales tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
-        sig { params(partner_account_id: ::String, merchant_payment_method_id: ::String, amount: Models::Components::Amount, display: Models::Components::PaymentLinkDisplayOptions, max_uses: T.nilable(::Integer), expires_on: T.nilable(::DateTime), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItems)).void }
-        def initialize(partner_account_id:, merchant_payment_method_id:, amount:, display:, max_uses: nil, expires_on: nil, customer: nil, payment: nil, payout: nil, line_items: nil)
+        sig { params(partner_account_id: ::String, merchant_payment_method_id: ::String, amount: Models::Components::Amount, display: Models::Components::PaymentLinkDisplayOptions, sales_tax_amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), expires_on: T.nilable(::DateTime), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItems)).void }
+        def initialize(partner_account_id:, merchant_payment_method_id:, amount:, display:, sales_tax_amount: nil, max_uses: nil, expires_on: nil, customer: nil, payment: nil, payout: nil, line_items: nil)
           @partner_account_id = partner_account_id
           @merchant_payment_method_id = merchant_payment_method_id
           @amount = amount
           @display = display
+          @sales_tax_amount = sales_tax_amount
           @max_uses = max_uses
           @expires_on = expires_on
           @customer = customer
@@ -63,6 +66,7 @@ module Moov
           return false unless @merchant_payment_method_id == other.merchant_payment_method_id
           return false unless @amount == other.amount
           return false unless @display == other.display
+          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @max_uses == other.max_uses
           return false unless @expires_on == other.expires_on
           return false unless @customer == other.customer

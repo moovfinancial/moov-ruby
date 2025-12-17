@@ -14,6 +14,8 @@ class Moov::Models::Errors::CreatePaymentLinkError
   def merchant_payment_method_id=(str_); end
   def amount(); end
   def amount=(str_); end
+  def sales_tax_amount(); end
+  def sales_tax_amount=(str_); end
   def max_uses(); end
   def max_uses=(str_); end
   def expires_on(); end

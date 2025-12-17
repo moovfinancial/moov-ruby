@@ -15,6 +15,8 @@ module Moov
 
 
         field :amount, Crystalline::Nilable.new(Models::Components::AmountUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+
+        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::AmountUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # Customizable display options for a payment link.
         field :display, Crystalline::Nilable.new(Models::Components::PaymentLinkDisplayOptionsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('display') } }
 
@@ -29,9 +31,10 @@ module Moov
 
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountUpdate), display: T.nilable(Models::Components::PaymentLinkDisplayOptionsUpdate), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetailsUpdate), payout: T.nilable(Models::Components::PaymentLinkPayoutDetailsUpdate), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsUpdate), expires_on: T.nilable(::DateTime)).void }
-        def initialize(amount: nil, display: nil, customer: nil, payment: nil, payout: nil, line_items: nil, expires_on: nil)
+        sig { params(amount: T.nilable(Models::Components::AmountUpdate), sales_tax_amount: T.nilable(Models::Components::AmountUpdate), display: T.nilable(Models::Components::PaymentLinkDisplayOptionsUpdate), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetailsUpdate), payout: T.nilable(Models::Components::PaymentLinkPayoutDetailsUpdate), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsUpdate), expires_on: T.nilable(::DateTime)).void }
+        def initialize(amount: nil, sales_tax_amount: nil, display: nil, customer: nil, payment: nil, payout: nil, line_items: nil, expires_on: nil)
           @amount = amount
+          @sales_tax_amount = sales_tax_amount
           @display = display
           @customer = customer
           @payment = payment
@@ -44,6 +47,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @amount == other.amount
+          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @display == other.display
           return false unless @customer == other.customer
           return false unless @payment == other.payment

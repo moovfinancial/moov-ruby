@@ -16,6 +16,8 @@ class Moov::Models::Components::CreatePaymentLink
   def amount=(str_); end
   def display(); end
   def display=(str_); end
+  def sales_tax_amount(); end
+  def sales_tax_amount=(str_); end
   def max_uses(); end
   def max_uses=(str_); end
   def expires_on(); end

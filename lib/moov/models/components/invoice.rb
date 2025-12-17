@@ -46,7 +46,7 @@ module Moov
 
         field :payment_link_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkCode') } }
 
-        field :payments, Crystalline::Nilable.new(Crystalline::Array.new(Crystalline::Union.new(Models::Components::InvoiceTransferPayment, Models::Components::InvoiceExternalPayment))), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payments') } }
+        field :payments, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoicePayment)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payments') } }
 
         field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
@@ -58,7 +58,7 @@ module Moov
 
         field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(invoice_id: ::String, invoice_number: ::String, description: ::String, customer_account_id: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, tax_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, payment_link_code: T.nilable(::String), payments: T.nilable(T::Array[T.any(Models::Components::InvoiceTransferPayment, Models::Components::InvoiceExternalPayment)]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime)).void }
+        sig { params(invoice_id: ::String, invoice_number: ::String, description: ::String, customer_account_id: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, tax_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, payment_link_code: T.nilable(::String), payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime)).void }
         def initialize(invoice_id:, invoice_number:, description:, customer_account_id:, partner_account_id:, status:, line_items:, subtotal_amount:, tax_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, payment_link_code: nil, payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil)
           @invoice_id = invoice_id
           @invoice_number = invoice_number
