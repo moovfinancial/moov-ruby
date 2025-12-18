@@ -13,7 +13,8 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Prevents duplicate transfers from being created.
+        # Identifies a unique request to create a transfer.
+        # In order to avoid creating duplicate transfers, the same idempotency key should be reused when retrying a request.
         field :x_idempotency_key, ::String, { 'header': { 'field_name': 'x-idempotency-key', 'style': 'simple', 'explode': false } }
         # Your Moov account ID.
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }

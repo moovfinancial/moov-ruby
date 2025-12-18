@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 75826d6540480eac820f98e729dcf628
+  docChecksum: 0627d0a453baf885498eba2ccb8c6659
   docVersion: latest
-  speakeasyVersion: 1.678.0
-  generationVersion: 2.787.2
-  releaseVersion: 0.3.16
-  configChecksum: e9f662d27856a8604fec83f9707e41d2
+  speakeasyVersion: 1.680.0
+  generationVersion: 2.788.4
+  releaseVersion: 0.3.17
+  configChecksum: 18f8a4778a1e94cd02958287d490f82d
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: e4365293-59fa-427f-a845-a99bdf1c0c62
-  pristine_commit_hash: 5f697b872e4ff4f2570b1720cc938bac1b1ae550
-  pristine_tree_hash: 40fea110b4574e62fbc9db2f076e6112fda5b924
+  generation_id: 8d5c6e3b-c3b4-40e3-a9de-59858ebe8017
+  pristine_commit_hash: ebbcaa1f8e58128b9782dd48c8fd7abf94c30b77
+  pristine_tree_hash: 88251b4addb3878ff1b44afc682325dbfa262e56
 features:
   ruby:
     constsAndDefaults: 0.1.1
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:604b3cccc635a02b2cb110171d827996c7e0f7b1
-    pristine_git_object: d7bdd66dda5866e69de61a36ba1a5236c57fb698
+    last_write_checksum: sha1:c8dc64d444d65486d55f2c6259f14f6d464b586f
+    pristine_git_object: c6480b00d673461e5685dd18a6ebfe4f10d2c01e
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -2823,8 +2823,8 @@ trackedFiles:
     pristine_git_object: b972e5b17c16c0db95ef895207d048bd04128706
   docs/models/operations/createtransferrequest.md:
     id: 479572132ed9
-    last_write_checksum: sha1:b334019a065360278a0691c574edf13c2ae79d15
-    pristine_git_object: bcc0b2cbd0572c2acb1bfe4a935d7d5a9b4365f0
+    last_write_checksum: sha1:8845cbe652ad202808607a74fc83ace9e55b01f2
+    pristine_git_object: 8ad89abf8f70009952d97e44c641e2b8859fd03b
   docs/models/operations/createtransferresponse.md:
     id: 1fdce9316bfb
     last_write_checksum: sha1:d6deea8e2fd6fdbf4aef3b5e4ae2b03d26ba2837
@@ -9787,8 +9787,8 @@ trackedFiles:
     pristine_git_object: 61b67c5cb068bdd05f4ca25d68b2242c413db92f
   lib/moov/models/operations/createtransfer_request.rb:
     id: e1e9d075d76b
-    last_write_checksum: sha1:49599577dd1cd90bb9d4b39a3243a82e0f154af7
-    pristine_git_object: 047ce1c1cba283425edd83709d1c4f26309df701
+    last_write_checksum: sha1:5c334cd7d913ca281a6718ac54fa97f853cc0bf1
+    pristine_git_object: 7a7b95d4befd971d2a7bc9d8615b06a925c3ffe3
   lib/moov/models/operations/createtransfer_request.rbi:
     id: c788e2f4aa10
     last_write_checksum: sha1:0edfe5d640934a96e98cbb0203ca9d59d1aacd4f
@@ -12147,8 +12147,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:3a641579092f9c69706f329ab25cb7e466104ca7
-    pristine_git_object: cad9c37fc964bb31523a00d4cba6c2831b740cbb
+    last_write_checksum: sha1:777a9aa4a0a25f2c85bbe4fabc782d0f5545fd53
+    pristine_git_object: c3ff7a8528fc38e706417deb5a20c1f34fcc99fc
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -12223,8 +12223,8 @@ trackedFiles:
     pristine_git_object: d2e04d1d29092712adddb10f7b517d91b554146c
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:71b202b3961f1fcf4a637a3769fea08eb4eba917
-    pristine_git_object: b2590842abcc8b9009a7264b0f70ab6d0751e89b
+    last_write_checksum: sha1:d4c26507d61a5541f63c95b96821203ecc38f924
+    pristine_git_object: 54ebd295958bfbcbecc61c44c6ffe363008bb038
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:16e6180c757fb5c6db2d3aabadc4fd83aab8a74e
@@ -14578,7 +14578,6 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.invoices.create_invoice()`:  `response.payments.[]` **Changed** **Breaking** :warning:\n* `client.invoices.list_invoices()`:  `response.[].payments.[]` **Changed** **Breaking** :warning:\n* `client.invoices.get_invoice()`:  `response.payments.[]` **Changed** **Breaking** :warning:\n* `client.invoices.update_invoice()`:  `response.payments.[]` **Changed** **Breaking** :warning:\n* `client.invoices.mark_paid_invoice()`:  `response.payments.[]` **Changed** **Breaking** :warning:\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.sales_tax_amount` **Added**\n  *  `response.sales_tax_amount` **Added**\n  *  `error.sales_tax_amount` **Added**\n* `client.payment_links.list()`:  `response.[].sales_tax_amount` **Added**\n* `client.payment_links.get()`:  `response.sales_tax_amount` **Added**\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.sales_tax_amount` **Added**\n  *  `response.sales_tax_amount` **Added**\n  *  `error.sales_tax_amount` **Added**\n* `client.issuing_transactions.list_authorizations()`:  `response.[].merchant_data` **Changed**\n* `client.issuing_transactions.get_authorization()`:  `response.merchant_data` **Changed**\n* `client.issuing_transactions.list()`:  `response.[].merchant_data` **Changed**\n* `client.issuing_transactions.get()`:  `response.merchant_data` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
