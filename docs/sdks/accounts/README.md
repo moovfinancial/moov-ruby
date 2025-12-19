@@ -49,6 +49,16 @@ forward for reporting purposes.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/profile.disconnect` scope.
+* [list_connected](#list_connected) - List or search accounts to which the caller is connected.
+
+All supported query parameters are optional. If none are provided the response will include all connected accounts.
+Pagination is supported via the `skip` and `count` query parameters. Searching by name and email will overlap and 
+return results based on relevance. Accounts with AccountType `guest` will not be included in the response.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+to specify the `/accounts.read` scope.
+* [connect](#connect) - Shares access scopes from the account specified to the caller, establishing a connection 
+between the two accounts with the specified permissions.
 * [get_countries](#get_countries) - Retrieve the specified countries of operation for an account. 
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -406,6 +416,108 @@ end
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | Models::Errors::GenericError | 400, 409                     | application/json             |
 | Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
+
+## list_connected
+
+List or search accounts to which the caller is connected.
+
+All supported query parameters are optional. If none are provided the response will include all connected accounts.
+Pagination is supported via the `skip` and `count` query parameters. Searching by name and email will overlap and 
+return results based on relevance. Accounts with AccountType `guest` will not be included in the response.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+to specify the `/accounts.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="listConnectedAccountsForAccount" method="get" path="/accounts/{accountID}/connected-accounts" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+      x_moov_version: '<value>',
+    )
+
+req = Models::Operations::ListConnectedAccountsForAccountRequest.new(
+  account_id: '7e09ffc8-e508-4fd4-a54e-21cff90a1824',
+  skip: 60,
+  count: 20,
+)
+
+res = s.accounts.list_connected(request: req)
+
+unless res.accounts.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                       | [Models::Operations::ListConnectedAccountsForAccountRequest](../../models/operations/listconnectedaccountsforaccountrequest.md) | :heavy_check_mark:                                                                                                              | The request object to use for the request.                                                                                      |
+
+### Response
+
+**[T.nilable(Models::Operations::ListConnectedAccountsForAccountResponse)](../../models/operations/listconnectedaccountsforaccountresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## connect
+
+Shares access scopes from the account specified to the caller, establishing a connection 
+between the two accounts with the specified permissions.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="connectAccount" method="post" path="/accounts/{accountID}/connections" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+      x_moov_version: '<value>',
+    )
+
+res = s.accounts.connect(account_id: '456cb5b6-20dc-4585-97b4-745d013adb1f', share_scopes: Models::Components::ShareScopes.new(
+  principal_account_id: 'c520f1b9-0ba7-42f5-b977-248cdbe41c69',
+  allow_scopes: [
+    Models::Components::ApplicationScope::TRANSFERS_WRITE,
+    Models::Components::ApplicationScope::PAYMENT_METHODS_READ,
+  ],
+))
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Required                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | *::String*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `share_scopes`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | [Models::Components::ShareScopes](../../models/shared/sharescopes.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `x_moov_version`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | *T.nilable(::String)*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Specify an API version.<br/><br/>API versioning follows the format `vYYYY.QQ.BB`, where <br/>  - `YYYY` is the year<br/>  - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)<br/>  - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. <br/>    - For example, `v2024.01.00` is the initial release of the first quarter of 2024.<br/><br/>The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.<br/>When no version is specified, the API defaults to `v2024.01.00`. |
+
+### Response
+
+**[T.nilable(Models::Operations::ConnectAccountResponse)](../../models/operations/connectaccountresponse.md)**
+
+### Errors
+
+| Error Type                                           | Status Code                                          | Content Type                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| Models::Errors::GenericError                         | 400, 409                                             | application/json                                     |
+| Models::Errors::ConnectAccountRequestValidationError | 422                                                  | application/json                                     |
+| Errors::APIError                                     | 4XX, 5XX                                             | \*/\*                                                |
 
 ## get_countries
 

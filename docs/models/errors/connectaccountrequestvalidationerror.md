@@ -1,0 +1,10 @@
+# ConnectAccountRequestValidationError
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `principal_account_id`                                                      | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | N/A                                                                         |                                                                             |
+| `allow_scopes`                                                              | T::Hash[Symbol, *::String*]                                                 | :heavy_minus_sign:                                                          | N/A                                                                         | {<br/>"0": "first element failed validation..."<br/>}                       |
+| `raw_response`                                                              | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response) | :heavy_minus_sign:                                                          | Raw HTTP response; suitable for custom response parsing                     |                                                                             |

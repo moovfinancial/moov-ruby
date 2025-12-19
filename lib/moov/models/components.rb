@@ -456,6 +456,7 @@ module Moov
       autoload :SendFundsRtpError, 'moov/models/components/sendfundsrtperror.rb'
       autoload :SentReceipt, 'moov/models/components/sentreceipt.rb'
       autoload :Settings, 'moov/models/components/settings.rb'
+      autoload :ShareScopes, 'moov/models/components/sharescopes.rb'
       autoload :SourceDestinationOptions, 'moov/models/components/sourcedestinationoptions.rb'
       autoload :Statement, 'moov/models/components/statement.rb'
       autoload :SubmissionIntent, 'moov/models/components/submissionintent.rb'
