@@ -34,11 +34,11 @@ module Moov
 
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
-        field :line_items, Crystalline::Nilable.new(Models::Components::TransferLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
+        field :line_items, Crystalline::Nilable.new(Models::Components::CreateTransferLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(amount: T.nilable(::String), source: T.nilable(::String), source_payment_method_id: T.nilable(::String), destination_payment_method_id: T.nilable(::String), description: T.nilable(::String), facilitator_fee_total_decimal: T.nilable(::String), facilitator_fee_markup_decimal: T.nilable(::String), metadata: T.nilable(::String), sales_tax_amount: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(amount: T.nilable(::String), source: T.nilable(::String), source_payment_method_id: T.nilable(::String), destination_payment_method_id: T.nilable(::String), description: T.nilable(::String), facilitator_fee_total_decimal: T.nilable(::String), facilitator_fee_markup_decimal: T.nilable(::String), metadata: T.nilable(::String), sales_tax_amount: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItemsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(amount: nil, source: nil, source_payment_method_id: nil, destination_payment_method_id: nil, description: nil, facilitator_fee_total_decimal: nil, facilitator_fee_markup_decimal: nil, metadata: nil, sales_tax_amount: nil, foreign_id: nil, line_items: nil, raw_response: nil)
           @amount = amount
           @source = source

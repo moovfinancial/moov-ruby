@@ -9,7 +9,7 @@ module Moov
     module Components
     
       # Represents a modifier or option applied to a line item.
-      class TransferLineItemOption
+      class CreateTransferLineItemOption
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -20,16 +20,16 @@ module Moov
         # Optional price modification applied by this option. Can be positive, negative, or zero.
         field :price_modifier, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priceModifier') } }
         # Optional list of images associated with this line item option.
-        field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TransferLineItemImageMetadata)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
+        field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
         # Optional group identifier to categorize related options (e.g., 'toppings').
         field :group, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('group') } }
 
-        sig { params(name: ::String, quantity: ::Integer, price_modifier: T.nilable(Models::Components::AmountDecimal), images: T.nilable(T::Array[Models::Components::TransferLineItemImageMetadata]), group: T.nilable(::String)).void }
-        def initialize(name:, quantity:, price_modifier: nil, images: nil, group: nil)
+        sig { params(name: ::String, quantity: ::Integer, price_modifier: T.nilable(Models::Components::AmountDecimal), image_i_ds: T.nilable(T::Array[::String]), group: T.nilable(::String)).void }
+        def initialize(name:, quantity:, price_modifier: nil, image_i_ds: nil, group: nil)
           @name = name
           @quantity = quantity
           @price_modifier = price_modifier
-          @images = images
+          @image_i_ds = image_i_ds
           @group = group
         end
 
@@ -39,7 +39,7 @@ module Moov
           return false unless @name == other.name
           return false unless @quantity == other.quantity
           return false unless @price_modifier == other.price_modifier
-          return false unless @images == other.images
+          return false unless @image_i_ds == other.image_i_ds
           return false unless @group == other.group
           true
         end

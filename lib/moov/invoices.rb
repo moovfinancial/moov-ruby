@@ -683,7 +683,7 @@ module Moov
       
       
       begin
-        http_response = T.must(connection).put(url) do |req|
+        http_response = T.must(connection).post(url) do |req|
           req.body = body
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?

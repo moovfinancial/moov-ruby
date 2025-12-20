@@ -1,4 +1,4 @@
-# TransferLineItemOptionValidationError
+# CreateTransferLineItemOptionValidationError
 
 
 ## Fields
@@ -9,3 +9,4 @@
 | `group`                                                                                                            | *T.nilable(::String)*                                                                                              | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `price_modifier`                                                                                                   | [T.nilable(Models::Components::AmountDecimalValidationError)](../../models/shared/amountdecimalvalidationerror.md) | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `quantity`                                                                                                         | *T.nilable(::String)*                                                                                              | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `image_i_ds`                                                                                                       | *T.nilable(::String)*                                                                                              | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |

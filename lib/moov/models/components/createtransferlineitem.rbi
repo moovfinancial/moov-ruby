@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Components::TransferLineItem
+class Moov::Models::Components::CreateTransferLineItem
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Components::TransferLineItem
+class Moov::Models::Components::CreateTransferLineItem
   def name(); end
   def name=(str_); end
   def base_price(); end
@@ -16,8 +16,8 @@ class Moov::Models::Components::TransferLineItem
   def quantity=(str_); end
   def options(); end
   def options=(str_); end
-  def images(); end
-  def images=(str_); end
+  def image_i_ds(); end
+  def image_i_ds=(str_); end
   def product_id(); end
   def product_id=(str_); end
 end

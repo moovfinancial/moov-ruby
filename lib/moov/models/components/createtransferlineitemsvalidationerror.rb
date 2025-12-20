@@ -9,14 +9,14 @@ module Moov
     module Components
     
 
-      class TransferLineItemsValidationError
+      class CreateTransferLineItemsValidationError
         extend T::Sig
         include Crystalline::MetadataFields
 
 
-        field :items, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::TransferLineItemValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items') } }
+        field :items, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::CreateTransferLineItemValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items') } }
 
-        sig { params(items: T.nilable(T::Hash[Symbol, Models::Components::TransferLineItemValidationError])).void }
+        sig { params(items: T.nilable(T::Hash[Symbol, Models::Components::CreateTransferLineItemValidationError])).void }
         def initialize(items: nil)
           @items = items
         end

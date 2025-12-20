@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Components::TransferLineItemValidationError
+class Moov::Models::Components::CreateTransferLineItemValidationError
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Components::TransferLineItemValidationError
+class Moov::Models::Components::CreateTransferLineItemValidationError
   def product_id(); end
   def product_id=(str_); end
   def name(); end
@@ -18,4 +18,6 @@ class Moov::Models::Components::TransferLineItemValidationError
   def options=(str_); end
   def quantity(); end
   def quantity=(str_); end
+  def image_i_ds(); end
+  def image_i_ds=(str_); end
 end

@@ -9,7 +9,7 @@ module Moov
     module Components
     
       # Represents a single item in a transfer, including optional modifiers and quantity.
-      class TransferLineItem
+      class CreateTransferLineItem
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -20,19 +20,19 @@ module Moov
         # The quantity of this item.
         field :quantity, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('quantity'), required: true } }
         # Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
-        field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TransferLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
+        field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateTransferLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
         # Optional list of images associated with this line item.
-        field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TransferLineItemImageMetadata)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
+        field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
         # Optional unique identifier associating the line item with a product.
         field :product_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('productID') } }
 
-        sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, options: T.nilable(T::Array[Models::Components::TransferLineItemOption]), images: T.nilable(T::Array[Models::Components::TransferLineItemImageMetadata]), product_id: T.nilable(::String)).void }
-        def initialize(name:, base_price:, quantity:, options: nil, images: nil, product_id: nil)
+        sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, options: T.nilable(T::Array[Models::Components::CreateTransferLineItemOption]), image_i_ds: T.nilable(T::Array[::String]), product_id: T.nilable(::String)).void }
+        def initialize(name:, base_price:, quantity:, options: nil, image_i_ds: nil, product_id: nil)
           @name = name
           @base_price = base_price
           @quantity = quantity
           @options = options
-          @images = images
+          @image_i_ds = image_i_ds
           @product_id = product_id
         end
 
@@ -43,7 +43,7 @@ module Moov
           return false unless @base_price == other.base_price
           return false unless @quantity == other.quantity
           return false unless @options == other.options
-          return false unless @images == other.images
+          return false unless @image_i_ds == other.image_i_ds
           return false unless @product_id == other.product_id
           true
         end

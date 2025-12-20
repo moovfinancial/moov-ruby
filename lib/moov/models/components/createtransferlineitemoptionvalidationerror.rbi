@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Components::TransferLineItemOptionValidationError
+class Moov::Models::Components::CreateTransferLineItemOptionValidationError
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Components::TransferLineItemOptionValidationError
+class Moov::Models::Components::CreateTransferLineItemOptionValidationError
   def name(); end
   def name=(str_); end
   def group(); end
@@ -16,4 +16,6 @@ class Moov::Models::Components::TransferLineItemOptionValidationError
   def price_modifier=(str_); end
   def quantity(); end
   def quantity=(str_); end
+  def image_i_ds(); end
+  def image_i_ds=(str_); end
 end
