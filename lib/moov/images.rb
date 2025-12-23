@@ -609,7 +609,10 @@ module Moov
 
     sig { params(account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteImageResponse) }
     def delete(account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
-      # delete - Permanently delete an image by its ID.
+      # delete -   Disable an image by its ID.
+      #   
+      #   Disabled images are still be accessible via their public URL, and cannot be assigned
+      #   to products or line-items.
       request = Models::Operations::DeleteImageRequest.new(
         account_id: account_id,
         image_id: image_id,

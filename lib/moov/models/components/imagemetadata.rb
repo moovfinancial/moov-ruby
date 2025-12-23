@@ -27,14 +27,17 @@ module Moov
         # Alternative text for the image.
         field :alt_text, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('altText') } }
 
-        sig { params(image_id: ::String, public_id: ::String, link: ::String, created_on: ::DateTime, updated_on: ::DateTime, alt_text: T.nilable(::String)).void }
-        def initialize(image_id:, public_id:, link:, created_on:, updated_on:, alt_text: nil)
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+
+        sig { params(image_id: ::String, public_id: ::String, link: ::String, created_on: ::DateTime, updated_on: ::DateTime, alt_text: T.nilable(::String), disabled_on: T.nilable(::DateTime)).void }
+        def initialize(image_id:, public_id:, link:, created_on:, updated_on:, alt_text: nil, disabled_on: nil)
           @image_id = image_id
           @public_id = public_id
           @link = link
           @created_on = created_on
           @updated_on = updated_on
           @alt_text = alt_text
+          @disabled_on = disabled_on
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -46,6 +49,7 @@ module Moov
           return false unless @created_on == other.created_on
           return false unless @updated_on == other.updated_on
           return false unless @alt_text == other.alt_text
+          return false unless @disabled_on == other.disabled_on
           true
         end
       end

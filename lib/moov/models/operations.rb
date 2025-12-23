@@ -278,8 +278,6 @@ module Moov
       autoload :ListWalletTransactionsResponse, 'moov/models/operations/listwallettransactions_response.rb'
       autoload :ListWalletsRequest, 'moov/models/operations/listwallets_request.rb'
       autoload :ListWalletsResponse, 'moov/models/operations/listwallets_response.rb'
-      autoload :MarkPaidInvoiceRequest, 'moov/models/operations/markpaidinvoice_request.rb'
-      autoload :MarkPaidInvoiceResponse, 'moov/models/operations/markpaidinvoice_response.rb'
       autoload :PingRequest, 'moov/models/operations/ping_request.rb'
       autoload :PingResponse, 'moov/models/operations/ping_response.rb'
       autoload :RegisterApplePayMerchantDomainsRequest, 'moov/models/operations/registerapplepaymerchantdomains_request.rb'

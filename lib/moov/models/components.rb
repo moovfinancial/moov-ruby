@@ -328,7 +328,6 @@ module Moov
       autoload :MXAuthorizationCode, 'moov/models/components/mxauthorizationcode.rb'
       autoload :ManualTermsOfService, 'moov/models/components/manualtermsofservice.rb'
       autoload :ManualTermsOfServiceUpdate, 'moov/models/components/manualtermsofserviceupdate.rb'
-      autoload :MarkInvoicePaid, 'moov/models/components/markinvoicepaid.rb'
       autoload :MicroDepositStatus, 'moov/models/components/microdepositstatus.rb'
       autoload :MinimumCommitment, 'moov/models/components/minimumcommitment.rb'
       autoload :Mode, 'moov/models/components/mode.rb'

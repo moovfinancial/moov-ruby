@@ -655,7 +655,10 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
 This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
 the metadata form section to keep existing metadata. Duplicate images, and requests larger than 16MB will be rejected.
-* [delete](docs/sdks/images/README.md#delete) - Permanently delete an image by its ID.
+* [delete](docs/sdks/images/README.md#delete) -   Disable an image by its ID.
+  
+  Disabled images are still be accessible via their public URL, and cannot be assigned
+  to products or line-items.
 * [update_metadata](docs/sdks/images/README.md#update_metadata) - Replace the metadata for an existing image.
 * [get_public](docs/sdks/images/README.md#get_public) - Get an image by its public ID.
 
@@ -698,11 +701,6 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 * [update_invoice](docs/sdks/invoices/README.md#update_invoice) - Updates an invoice.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
-* [mark_paid_invoice](docs/sdks/invoices/README.md#mark_paid_invoice) - Marks an invoice as paid outside of the Moov platform.
-If a payment link was created, the corresponding payment link is canceled, but a receipt is still sent.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.

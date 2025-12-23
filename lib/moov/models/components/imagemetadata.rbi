@@ -20,4 +20,6 @@ class Moov::Models::Components::ImageMetadata
   def updated_on=(str_); end
   def alt_text(); end
   def alt_text=(str_); end
+  def disabled_on(); end
+  def disabled_on=(str_); end
 end

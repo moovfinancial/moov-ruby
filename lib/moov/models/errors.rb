@@ -33,7 +33,6 @@ module Moov
       autoload :ListTransfersValidationError, 'moov/models/errors/listtransfersvalidationerror.rb'
       autoload :ListWalletTransactionsValidationError, 'moov/models/errors/listwallettransactionsvalidationerror.rb'
       autoload :ListWalletsValidationError, 'moov/models/errors/listwalletsvalidationerror.rb'
-      autoload :MarkInvoicePaidError, 'moov/models/errors/markinvoicepaiderror.rb'
       autoload :MicroDepositValidationError, 'moov/models/errors/microdepositvalidationerror.rb'
       autoload :OnboardingInviteError, 'moov/models/errors/onboardinginviteerror.rb'
       autoload :PatchAccountError, 'moov/models/errors/patchaccounterror.rb'
