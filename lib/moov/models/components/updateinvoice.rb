@@ -17,7 +17,9 @@ module Moov
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # A collection of line items for an invoice.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateInvoiceLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
-        # Status can only be updated to `canceled` when the status is either `draft`, `unpaid`,  or `overdue`.
+        # The status can be updated to one of the following values under specific conditions:
+        # - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`.
+        # - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
         field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::InvoiceStatus, true) } }
 
         field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
