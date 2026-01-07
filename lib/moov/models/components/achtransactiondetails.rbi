@@ -38,4 +38,6 @@ class Moov::Models::Components::ACHTransactionDetails
   def completed_on=(str_); end
   def debit_hold_period(); end
   def debit_hold_period=(str_); end
+  def addenda(); end
+  def addenda=(str_); end
 end

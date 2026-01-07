@@ -18,10 +18,13 @@ module Moov
         # An optional override of the default NACHA company name for a transfer.
         field :originating_company_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('originatingCompanyName') } }
 
-        sig { params(company_entry_description: T.nilable(::String), originating_company_name: T.nilable(::String)).void }
-        def initialize(company_entry_description: nil, originating_company_name: nil)
+        field :addenda, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateTransferACHAddendaRecord)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addenda') } }
+
+        sig { params(company_entry_description: T.nilable(::String), originating_company_name: T.nilable(::String), addenda: T.nilable(T::Array[Models::Components::CreateTransferACHAddendaRecord])).void }
+        def initialize(company_entry_description: nil, originating_company_name: nil, addenda: nil)
           @company_entry_description = company_entry_description
           @originating_company_name = originating_company_name
+          @addenda = addenda
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -29,6 +32,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @company_entry_description == other.company_entry_description
           return false unless @originating_company_name == other.originating_company_name
+          return false unless @addenda == other.addenda
           true
         end
       end

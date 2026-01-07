@@ -12,4 +12,6 @@ class Moov::Models::Components::CreateTransferDestinationACH
   def company_entry_description=(str_); end
   def originating_company_name(); end
   def originating_company_name=(str_); end
+  def addenda(); end
+  def addenda=(str_); end
 end

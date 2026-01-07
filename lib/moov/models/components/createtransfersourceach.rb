@@ -22,12 +22,15 @@ module Moov
         # Code used to identify the ACH authorization method.
         field :sec_code, Crystalline::Nilable.new(Models::Components::SECCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('secCode'), 'decoder': Utils.enum_from_string(Models::Components::SECCode, true) } }
 
-        sig { params(company_entry_description: T.nilable(::String), originating_company_name: T.nilable(::String), debit_hold_period: T.nilable(Models::Components::DebitHoldPeriod), sec_code: T.nilable(Models::Components::SECCode)).void }
-        def initialize(company_entry_description: nil, originating_company_name: nil, debit_hold_period: nil, sec_code: nil)
+        field :addenda, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateTransferACHAddendaRecord)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addenda') } }
+
+        sig { params(company_entry_description: T.nilable(::String), originating_company_name: T.nilable(::String), debit_hold_period: T.nilable(Models::Components::DebitHoldPeriod), sec_code: T.nilable(Models::Components::SECCode), addenda: T.nilable(T::Array[Models::Components::CreateTransferACHAddendaRecord])).void }
+        def initialize(company_entry_description: nil, originating_company_name: nil, debit_hold_period: nil, sec_code: nil, addenda: nil)
           @company_entry_description = company_entry_description
           @originating_company_name = originating_company_name
           @debit_hold_period = debit_hold_period
           @sec_code = sec_code
+          @addenda = addenda
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -37,6 +40,7 @@ module Moov
           return false unless @originating_company_name == other.originating_company_name
           return false unless @debit_hold_period == other.debit_hold_period
           return false unless @sec_code == other.sec_code
+          return false unless @addenda == other.addenda
           true
         end
       end

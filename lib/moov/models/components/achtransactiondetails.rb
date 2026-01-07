@@ -44,8 +44,10 @@ module Moov
         # An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
         field :debit_hold_period, Crystalline::Nilable.new(Models::Components::DebitHoldPeriod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('debitHoldPeriod'), 'decoder': Utils.enum_from_string(Models::Components::DebitHoldPeriod, true) } }
 
-        sig { params(status: Models::Components::ACHTransactionStatus, trace_number: ::String, return_: T.nilable(Models::Components::ACHException), correction: T.nilable(Models::Components::ACHException), company_entry_description: T.nilable(::String), originating_company_name: T.nilable(::String), sec_code: T.nilable(Models::Components::SECCode), canceled_on: T.nilable(::DateTime), initiated_on: T.nilable(::DateTime), originated_on: T.nilable(::DateTime), corrected_on: T.nilable(::DateTime), returned_on: T.nilable(::DateTime), failed_on: T.nilable(::DateTime), completed_on: T.nilable(::DateTime), debit_hold_period: T.nilable(Models::Components::DebitHoldPeriod)).void }
-        def initialize(status:, trace_number:, return_: nil, correction: nil, company_entry_description: nil, originating_company_name: nil, sec_code: nil, canceled_on: nil, initiated_on: nil, originated_on: nil, corrected_on: nil, returned_on: nil, failed_on: nil, completed_on: nil, debit_hold_period: nil)
+        field :addenda, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TransferACHAddendaRecord)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addenda') } }
+
+        sig { params(status: Models::Components::ACHTransactionStatus, trace_number: ::String, return_: T.nilable(Models::Components::ACHException), correction: T.nilable(Models::Components::ACHException), company_entry_description: T.nilable(::String), originating_company_name: T.nilable(::String), sec_code: T.nilable(Models::Components::SECCode), canceled_on: T.nilable(::DateTime), initiated_on: T.nilable(::DateTime), originated_on: T.nilable(::DateTime), corrected_on: T.nilable(::DateTime), returned_on: T.nilable(::DateTime), failed_on: T.nilable(::DateTime), completed_on: T.nilable(::DateTime), debit_hold_period: T.nilable(Models::Components::DebitHoldPeriod), addenda: T.nilable(T::Array[Models::Components::TransferACHAddendaRecord])).void }
+        def initialize(status:, trace_number:, return_: nil, correction: nil, company_entry_description: nil, originating_company_name: nil, sec_code: nil, canceled_on: nil, initiated_on: nil, originated_on: nil, corrected_on: nil, returned_on: nil, failed_on: nil, completed_on: nil, debit_hold_period: nil, addenda: nil)
           @status = status
           @trace_number = trace_number
           @return_ = return_
@@ -61,6 +63,7 @@ module Moov
           @failed_on = failed_on
           @completed_on = completed_on
           @debit_hold_period = debit_hold_period
+          @addenda = addenda
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -81,6 +84,7 @@ module Moov
           return false unless @failed_on == other.failed_on
           return false unless @completed_on == other.completed_on
           return false unless @debit_hold_period == other.debit_hold_period
+          return false unless @addenda == other.addenda
           true
         end
       end

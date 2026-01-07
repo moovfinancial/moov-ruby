@@ -16,4 +16,6 @@ class Moov::Models::Components::CreateTransferSourceACH
   def debit_hold_period=(str_); end
   def sec_code(); end
   def sec_code=(str_); end
+  def addenda(); end
+  def addenda=(str_); end
 end
