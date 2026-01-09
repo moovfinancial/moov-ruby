@@ -17,10 +17,12 @@ module Moov
       autoload :ConnectAccountRequestValidationError, 'moov/models/errors/connectaccountrequestvalidationerror.rb'
       autoload :CreateAccountError, 'moov/models/errors/createaccounterror.rb'
       autoload :CreateInvoiceError, 'moov/models/errors/createinvoiceerror.rb'
+      autoload :CreateInvoicePaymentError, 'moov/models/errors/createinvoicepaymenterror.rb'
       autoload :CreatePaymentLinkError, 'moov/models/errors/createpaymentlinkerror.rb'
       autoload :CreateSweepConfigError, 'moov/models/errors/createsweepconfigerror.rb'
       autoload :CreateTicketError, 'moov/models/errors/createticketerror.rb'
       autoload :CreateWalletValidationError, 'moov/models/errors/createwalletvalidationerror.rb'
+      autoload :CreateWebhookValidationError, 'moov/models/errors/createwebhookvalidationerror.rb'
       autoload :FeePlanAgreementError, 'moov/models/errors/feeplanagreementerror.rb'
       autoload :FileUploadValidationError, 'moov/models/errors/fileuploadvalidationerror.rb'
       autoload :FileValidationError, 'moov/models/errors/filevalidationerror.rb'
@@ -56,6 +58,7 @@ module Moov
       autoload :UpdatePaymentLinkError, 'moov/models/errors/updatepaymentlinkerror.rb'
       autoload :UpdateTicketError, 'moov/models/errors/updateticketerror.rb'
       autoload :UpdateUnderwritingError, 'moov/models/errors/updateunderwritingerror.rb'
+      autoload :UpdateWebhookValidationError, 'moov/models/errors/updatewebhookvalidationerror.rb'
       autoload :UpsertUnderwritingError, 'moov/models/errors/upsertunderwritingerror.rb'
     end
   end

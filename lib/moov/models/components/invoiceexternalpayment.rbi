@@ -8,8 +8,6 @@ end
 
 
 class Moov::Models::Components::InvoiceExternalPayment
-  def payment_type(); end
-  def payment_type=(str_); end
   def description(); end
   def description=(str_); end
   def amount(); end

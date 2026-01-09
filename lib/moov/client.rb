@@ -16,7 +16,7 @@ module Moov
   class Client
     extend T::Sig
 
-    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
+    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -122,6 +122,7 @@ module Moov
       @end_to_end_encryption = EndToEndEncryption.new(@sdk_configuration)
       @enriched_address = EnrichedAddress.new(@sdk_configuration)
       @enriched_profile = EnrichedProfile.new(@sdk_configuration)
+      @webhooks = Webhooks.new(@sdk_configuration)
       @industries = Industries.new(@sdk_configuration)
       @institutions = Institutions.new(@sdk_configuration)
       @issuing_transactions = IssuingTransactions.new(@sdk_configuration)

@@ -1,0 +1,12 @@
+# PingResponse
+
+Response from pinging a webhook.
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `webhook`                                                                                                                | [Models::Components::Webhook](../../models/shared/webhook.md)                                                            | :heavy_check_mark:                                                                                                       | The webhook that was pinged.                                                                                             |
+| `request_body_sent`                                                                                                      | T::Hash[Symbol, *::Object*]                                                                                              | :heavy_check_mark:                                                                                                       | The request body sent to the target URL. It will contain an event type of `event.test` and an empty (null) data payload. |
+| `response_status_code`                                                                                                   | *::Integer*                                                                                                              | :heavy_check_mark:                                                                                                       | The response status code after sending a ping event to the URL.                                                          |

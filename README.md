@@ -704,6 +704,15 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+* [create_invoice_payment](docs/sdks/invoices/README.md#create_invoice_payment) - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
+If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+* [list_invoice_payments](docs/sdks/invoices/README.md#list_invoice_payments) - List all the payments made towards an invoice.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### [IssuingTransactions](docs/sdks/issuingtransactions/README.md)
 
@@ -1118,6 +1127,17 @@ Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to l
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
+
+### [Webhooks](docs/sdks/webhooks/README.md)
+
+* [list_event_types](docs/sdks/webhooks/README.md#list_event_types) - List all available event types that can be subscribed to.
+* [list](docs/sdks/webhooks/README.md#list) - List all webhooks configured for the account.
+* [create](docs/sdks/webhooks/README.md#create) - Create a new webhook for the account.
+* [get](docs/sdks/webhooks/README.md#get) - Get details of a specific webhook.
+* [update](docs/sdks/webhooks/README.md#update) - Update an existing webhook.
+* [disable](docs/sdks/webhooks/README.md#disable) - Disable a webhook. Disabled webhooks will no longer receive events.
+* [ping](docs/sdks/webhooks/README.md#ping) - Send a test ping to a webhook to verify it is configured correctly.
+* [get_secret](docs/sdks/webhooks/README.md#get_secret) - Get the secret key for verifying webhook payloads.
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

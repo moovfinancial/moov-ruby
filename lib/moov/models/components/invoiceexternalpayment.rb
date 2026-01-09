@@ -14,8 +14,6 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :payment_type, Models::Components::InvoiceExternalPaymentPaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoiceExternalPaymentPaymentType, false) } }
-
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
 
         field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
@@ -24,9 +22,8 @@ module Moov
 
         field :payment_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(payment_type: Models::Components::InvoiceExternalPaymentPaymentType, description: ::String, amount: Models::Components::AmountDecimal, foreign_id: T.nilable(::String), payment_date: T.nilable(::DateTime)).void }
-        def initialize(payment_type:, description:, amount:, foreign_id: nil, payment_date: nil)
-          @payment_type = payment_type
+        sig { params(description: ::String, amount: Models::Components::AmountDecimal, foreign_id: T.nilable(::String), payment_date: T.nilable(::DateTime)).void }
+        def initialize(description:, amount:, foreign_id: nil, payment_date: nil)
           @description = description
           @amount = amount
           @foreign_id = foreign_id
@@ -36,7 +33,6 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @payment_type == other.payment_type
           return false unless @description == other.description
           return false unless @amount == other.amount
           return false unless @foreign_id == other.foreign_id

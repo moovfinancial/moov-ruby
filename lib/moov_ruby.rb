@@ -34,6 +34,7 @@ module Moov
   autoload :EndToEndEncryption, 'moov/end_to_end_encryption'
   autoload :EnrichedAddress, 'moov/enriched_address'
   autoload :EnrichedProfile, 'moov/enriched_profile'
+  autoload :Webhooks, 'moov/webhooks'
   autoload :Industries, 'moov/industries'
   autoload :Institutions, 'moov/institutions'
   autoload :IssuingTransactions, 'moov/issuing_transactions'

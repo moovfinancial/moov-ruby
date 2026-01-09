@@ -14,20 +14,16 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :payment_type, Models::Components::InvoiceTransferPaymentPaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoiceTransferPaymentPaymentType, false) } }
-
         field :transfer_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID'), required: true } }
 
-        sig { params(payment_type: Models::Components::InvoiceTransferPaymentPaymentType, transfer_id: ::String).void }
-        def initialize(payment_type:, transfer_id:)
-          @payment_type = payment_type
+        sig { params(transfer_id: ::String).void }
+        def initialize(transfer_id:)
           @transfer_id = transfer_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @payment_type == other.payment_type
           return false unless @transfer_id == other.transfer_id
           true
         end

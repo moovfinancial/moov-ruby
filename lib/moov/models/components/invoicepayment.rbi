@@ -8,8 +8,10 @@ end
 
 
 class Moov::Models::Components::InvoicePayment
-  def payment_type(); end
-  def payment_type=(str_); end
+  def invoice_payment_id(); end
+  def invoice_payment_id=(str_); end
+  def invoice_payment_type(); end
+  def invoice_payment_type=(str_); end
   def transfer(); end
   def transfer=(str_); end
   def external(); end

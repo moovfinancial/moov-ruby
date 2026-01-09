@@ -8,12 +8,13 @@ module Moov
   module Models
     module Components
     
-
-      class InvoiceExternalPaymentPaymentType < T::Enum
+      # WebhookStatus - The status of a webhook.
+      class WebhookStatus < T::Enum
 
 
         enums do
-          EXTERNAL = new('external')
+          ENABLED = new('enabled')
+          DISABLED = new('disabled')
         end
       end
     end

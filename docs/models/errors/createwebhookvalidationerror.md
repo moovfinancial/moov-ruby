@@ -1,0 +1,12 @@
+# CreateWebhookValidationError
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `url`                                                                       | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Details about the URL validation error.                                     |
+| `status`                                                                    | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Details about the status validation error.                                  |
+| `event_types`                                                               | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Details about the event types validation error.                             |
+| `description`                                                               | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | Details about the description validation error.                             |
+| `raw_response`                                                              | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response) | :heavy_minus_sign:                                                          | Raw HTTP response; suitable for custom response parsing                     |

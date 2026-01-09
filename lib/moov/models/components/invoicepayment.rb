@@ -14,15 +14,18 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :payment_type, Models::Components::InvoicePaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoicePaymentType, false) } }
+        field :invoice_payment_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePaymentID'), required: true } }
+
+        field :invoice_payment_type, Models::Components::InvoicePaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePaymentType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoicePaymentType, false) } }
 
         field :transfer, Crystalline::Nilable.new(Models::Components::InvoiceTransferPayment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transfer') } }
 
         field :external, Crystalline::Nilable.new(Models::Components::InvoiceExternalPayment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('external') } }
 
-        sig { params(payment_type: Models::Components::InvoicePaymentType, transfer: T.nilable(Models::Components::InvoiceTransferPayment), external: T.nilable(Models::Components::InvoiceExternalPayment)).void }
-        def initialize(payment_type:, transfer: nil, external: nil)
-          @payment_type = payment_type
+        sig { params(invoice_payment_id: ::String, invoice_payment_type: Models::Components::InvoicePaymentType, transfer: T.nilable(Models::Components::InvoiceTransferPayment), external: T.nilable(Models::Components::InvoiceExternalPayment)).void }
+        def initialize(invoice_payment_id:, invoice_payment_type:, transfer: nil, external: nil)
+          @invoice_payment_id = invoice_payment_id
+          @invoice_payment_type = invoice_payment_type
           @transfer = transfer
           @external = external
         end
@@ -30,7 +33,8 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @payment_type == other.payment_type
+          return false unless @invoice_payment_id == other.invoice_payment_id
+          return false unless @invoice_payment_type == other.invoice_payment_type
           return false unless @transfer == other.transfer
           return false unless @external == other.external
           true
