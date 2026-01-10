@@ -18,14 +18,17 @@ module Moov
 
         field :invoice_payment_type, Models::Components::InvoicePaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePaymentType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoicePaymentType, false) } }
 
+        field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+
         field :transfer, Crystalline::Nilable.new(Models::Components::InvoiceTransferPayment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transfer') } }
 
         field :external, Crystalline::Nilable.new(Models::Components::InvoiceExternalPayment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('external') } }
 
-        sig { params(invoice_payment_id: ::String, invoice_payment_type: Models::Components::InvoicePaymentType, transfer: T.nilable(Models::Components::InvoiceTransferPayment), external: T.nilable(Models::Components::InvoiceExternalPayment)).void }
-        def initialize(invoice_payment_id:, invoice_payment_type:, transfer: nil, external: nil)
+        sig { params(invoice_payment_id: ::String, invoice_payment_type: Models::Components::InvoicePaymentType, amount: Models::Components::AmountDecimal, transfer: T.nilable(Models::Components::InvoiceTransferPayment), external: T.nilable(Models::Components::InvoiceExternalPayment)).void }
+        def initialize(invoice_payment_id:, invoice_payment_type:, amount:, transfer: nil, external: nil)
           @invoice_payment_id = invoice_payment_id
           @invoice_payment_type = invoice_payment_type
+          @amount = amount
           @transfer = transfer
           @external = external
         end
@@ -35,6 +38,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @invoice_payment_id == other.invoice_payment_id
           return false unless @invoice_payment_type == other.invoice_payment_type
+          return false unless @amount == other.amount
           return false unless @transfer == other.transfer
           return false unless @external == other.external
           true

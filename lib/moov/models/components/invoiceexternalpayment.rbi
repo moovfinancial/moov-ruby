@@ -10,8 +10,6 @@ end
 class Moov::Models::Components::InvoiceExternalPayment
   def description(); end
   def description=(str_); end
-  def amount(); end
-  def amount=(str_); end
   def foreign_id(); end
   def foreign_id=(str_); end
   def payment_date(); end

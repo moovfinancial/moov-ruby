@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
     
-      # Defines the attributes of a transfer.
+
       class RunTransfer
         extend T::Sig
         include Crystalline::MetadataFields
@@ -25,8 +25,7 @@ module Moov
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
         # Optional sales tax amount. This amount is included in the total transfer amount.
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
-        # An optional collection of line items for a scheduled transfer.
-        # When line items are provided their total must equal `amount` minus `salesTaxAmount`.
+        # Line items for a scheduled transfer.
         field :line_items, Crystalline::Nilable.new(Models::Components::ScheduledTransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         sig { params(amount: Models::Components::Amount, destination: Models::Components::SchedulePaymentMethod, partner_account_id: ::String, source: Models::Components::SchedulePaymentMethod, description: ::String, sales_tax_amount: T.nilable(Models::Components::Amount), line_items: T.nilable(Models::Components::ScheduledTransferLineItems)).void }

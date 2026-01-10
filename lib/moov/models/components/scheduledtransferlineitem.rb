@@ -23,14 +23,17 @@ module Moov
         field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ScheduledTransferLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
         # Optional unique identifier associating the line item with a product.
         field :product_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('productID') } }
+        # Optional list of images associated with this line item.
+        field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ScheduledTransferImageMetadata)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
 
-        sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, options: T.nilable(T::Array[Models::Components::ScheduledTransferLineItemOption]), product_id: T.nilable(::String)).void }
-        def initialize(name:, base_price:, quantity:, options: nil, product_id: nil)
+        sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, options: T.nilable(T::Array[Models::Components::ScheduledTransferLineItemOption]), product_id: T.nilable(::String), images: T.nilable(T::Array[Models::Components::ScheduledTransferImageMetadata])).void }
+        def initialize(name:, base_price:, quantity:, options: nil, product_id: nil, images: nil)
           @name = name
           @base_price = base_price
           @quantity = quantity
           @options = options
           @product_id = product_id
+          @images = images
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -41,6 +44,7 @@ module Moov
           return false unless @quantity == other.quantity
           return false unless @options == other.options
           return false unless @product_id == other.product_id
+          return false unless @images == other.images
           true
         end
       end

@@ -14,14 +14,17 @@ module Moov
         include Crystalline::MetadataFields
 
 
+        field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
         field :payment_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(foreign_id: T.nilable(::String), description: T.nilable(::String), payment_date: T.nilable(::DateTime)).void }
-        def initialize(foreign_id: nil, description: nil, payment_date: nil)
+        sig { params(amount: Models::Components::AmountDecimal, foreign_id: T.nilable(::String), description: T.nilable(::String), payment_date: T.nilable(::DateTime)).void }
+        def initialize(amount:, foreign_id: nil, description: nil, payment_date: nil)
+          @amount = amount
           @foreign_id = foreign_id
           @description = description
           @payment_date = payment_date
@@ -30,6 +33,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @amount == other.amount
           return false unless @foreign_id == other.foreign_id
           return false unless @description == other.description
           return false unless @payment_date == other.payment_date

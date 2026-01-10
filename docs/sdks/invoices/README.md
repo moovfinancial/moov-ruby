@@ -50,7 +50,6 @@ s = ::Moov::Client.new(
 
 res = s.invoices.create_invoice(account_id: '241bf524-e777-4941-a5e4-d7f3f34d7a00', create_invoice: Models::Components::CreateInvoice.new(
   customer_account_id: '<id>',
-  description: 'austere gah under ew failing provided repeatedly pick onto',
   line_items: Models::Components::CreateInvoiceLineItems.new(
     items: [],
   ),
@@ -272,7 +271,12 @@ s = ::Moov::Client.new(
       x_moov_version: '<value>',
     )
 
-res = s.invoices.create_invoice_payment(account_id: 'e02333e4-a835-46d1-8d02-9af7a405e65f', invoice_id: '99e7ebb0-9996-49b2-98f0-304c7332ece6', create_invoice_payment: Models::Components::CreateInvoicePayment.new())
+res = s.invoices.create_invoice_payment(account_id: 'e02333e4-a835-46d1-8d02-9af7a405e65f', invoice_id: '99e7ebb0-9996-49b2-98f0-304c7332ece6', create_invoice_payment: Models::Components::CreateInvoicePayment.new(
+  amount: Models::Components::AmountDecimal.new(
+    currency: 'USD',
+    value_decimal: '12.987654321',
+  ),
+))
 
 unless res.invoice_payment.nil?
   # handle response

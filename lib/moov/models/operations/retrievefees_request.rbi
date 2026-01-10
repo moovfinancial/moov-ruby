@@ -16,6 +16,8 @@ class Moov::Models::Operations::RetrieveFeesRequest
   def transfer_id=(str_); end
   def dispute_id(); end
   def dispute_id=(str_); end
+  def residual_id(); end
+  def residual_id=(str_); end
   def start_date_time(); end
   def start_date_time=(str_); end
   def end_date_time(); end

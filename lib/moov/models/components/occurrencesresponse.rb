@@ -15,7 +15,7 @@ module Moov
 
 
         field :run_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
-        # Defines the attributes of a transfer.
+
         field :run_transfer, Models::Components::RunTransfer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runTransfer'), required: true } }
 
         field :schedule_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scheduleID') } }

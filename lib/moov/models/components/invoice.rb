@@ -18,8 +18,6 @@ module Moov
 
         field :invoice_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceNumber'), required: true } }
 
-        field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
-
         field :customer_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerAccountID'), required: true } }
 
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
@@ -44,9 +42,11 @@ module Moov
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
 
+        field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
+
         field :payment_link_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkCode') } }
 
-        field :payments, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoicePayment)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payments') } }
+        field :invoice_payments, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoicePayment)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePayments') } }
 
         field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
@@ -58,11 +58,10 @@ module Moov
 
         field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(invoice_id: ::String, invoice_number: ::String, description: ::String, customer_account_id: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, tax_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, payment_link_code: T.nilable(::String), payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime)).void }
-        def initialize(invoice_id:, invoice_number:, description:, customer_account_id:, partner_account_id:, status:, line_items:, subtotal_amount:, tax_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, payment_link_code: nil, payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil)
+        sig { params(invoice_id: ::String, invoice_number: ::String, customer_account_id: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, tax_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, description: T.nilable(::String), payment_link_code: T.nilable(::String), invoice_payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime)).void }
+        def initialize(invoice_id:, invoice_number:, customer_account_id:, partner_account_id:, status:, line_items:, subtotal_amount:, tax_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, description: nil, payment_link_code: nil, invoice_payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil)
           @invoice_id = invoice_id
           @invoice_number = invoice_number
-          @description = description
           @customer_account_id = customer_account_id
           @partner_account_id = partner_account_id
           @status = status
@@ -75,8 +74,9 @@ module Moov
           @refunded_amount = refunded_amount
           @disputed_amount = disputed_amount
           @created_on = created_on
+          @description = description
           @payment_link_code = payment_link_code
-          @payments = payments
+          @invoice_payments = invoice_payments
           @invoice_date = invoice_date
           @due_date = due_date
           @sent_on = sent_on
@@ -89,7 +89,6 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @invoice_id == other.invoice_id
           return false unless @invoice_number == other.invoice_number
-          return false unless @description == other.description
           return false unless @customer_account_id == other.customer_account_id
           return false unless @partner_account_id == other.partner_account_id
           return false unless @status == other.status
@@ -102,8 +101,9 @@ module Moov
           return false unless @refunded_amount == other.refunded_amount
           return false unless @disputed_amount == other.disputed_amount
           return false unless @created_on == other.created_on
+          return false unless @description == other.description
           return false unless @payment_link_code == other.payment_link_code
-          return false unless @payments == other.payments
+          return false unless @invoice_payments == other.invoice_payments
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date
           return false unless @sent_on == other.sent_on

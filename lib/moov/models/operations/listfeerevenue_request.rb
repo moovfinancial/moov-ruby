@@ -30,17 +30,26 @@ module Moov
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
 
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
+        # Optional transfer ID to filter the results by.
+        field :transfer_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'transferID', 'style': 'form', 'explode': false } }
+        # Optional dispute ID to filter the results by.
+        field :dispute_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'disputeID', 'style': 'form', 'explode': false } }
+        # Optional residual ID to filter the results by.
+        field :residual_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'residualID', 'style': 'form', 'explode': false } }
         # Optional date-time to inclusively filter all fees created after this date-time.
         field :start_date_time, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'startDateTime', 'style': 'form', 'explode': false } }
         # Optional date-time to exclusively filter all fees created before this date-time.
         field :end_date_time, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'endDateTime', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), start_date_time: T.nilable(::String), end_date_time: T.nilable(::String)).void }
-        def initialize(account_id:, x_moov_version: nil, skip: nil, count: nil, start_date_time: nil, end_date_time: nil)
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), transfer_id: T.nilable(::String), dispute_id: T.nilable(::String), residual_id: T.nilable(::String), start_date_time: T.nilable(::String), end_date_time: T.nilable(::String)).void }
+        def initialize(account_id:, x_moov_version: nil, skip: nil, count: nil, transfer_id: nil, dispute_id: nil, residual_id: nil, start_date_time: nil, end_date_time: nil)
           @account_id = account_id
           @x_moov_version = x_moov_version
           @skip = skip
           @count = count
+          @transfer_id = transfer_id
+          @dispute_id = dispute_id
+          @residual_id = residual_id
           @start_date_time = start_date_time
           @end_date_time = end_date_time
         end
@@ -52,6 +61,9 @@ module Moov
           return false unless @x_moov_version == other.x_moov_version
           return false unless @skip == other.skip
           return false unless @count == other.count
+          return false unless @transfer_id == other.transfer_id
+          return false unless @dispute_id == other.dispute_id
+          return false unless @residual_id == other.residual_id
           return false unless @start_date_time == other.start_date_time
           return false unless @end_date_time == other.end_date_time
           true

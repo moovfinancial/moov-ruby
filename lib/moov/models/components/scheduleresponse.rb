@@ -33,12 +33,12 @@ module Moov
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
         field :occurrences, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::OccurrencesResponse)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('occurrences') } }
-        # Defines configuration for recurring transfers.
-        field :recur, Crystalline::Nilable.new(Models::Components::Recur), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recur') } }
+
+        field :recur, Crystalline::Nilable.new(Models::Components::RecurResponse), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recur') } }
 
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(destination_account_id: ::String, mode: Models::Components::Mode, owner_account_id: ::String, partner_account_id: ::String, schedule_id: ::String, source_account_id: ::String, created_on: ::DateTime, updated_on: ::DateTime, description: T.nilable(::String), occurrences: T.nilable(T::Array[Models::Components::OccurrencesResponse]), recur: T.nilable(Models::Components::Recur), disabled_on: T.nilable(::DateTime)).void }
+        sig { params(destination_account_id: ::String, mode: Models::Components::Mode, owner_account_id: ::String, partner_account_id: ::String, schedule_id: ::String, source_account_id: ::String, created_on: ::DateTime, updated_on: ::DateTime, description: T.nilable(::String), occurrences: T.nilable(T::Array[Models::Components::OccurrencesResponse]), recur: T.nilable(Models::Components::RecurResponse), disabled_on: T.nilable(::DateTime)).void }
         def initialize(destination_account_id:, mode:, owner_account_id:, partner_account_id:, schedule_id:, source_account_id:, created_on:, updated_on:, description: nil, occurrences: nil, recur: nil, disabled_on: nil)
           @destination_account_id = destination_account_id
           @mode = mode

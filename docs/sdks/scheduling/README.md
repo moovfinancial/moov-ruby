@@ -52,7 +52,7 @@ res = s.scheduling.create(account_id: '8b64fef5-c389-40d5-838f-d6ae10e70162', up
     Models::Components::Occurrence.new(
       occurrence_id: 'c520f1b9-0ba7-42f5-b977-248cdbe41c69',
       run_on: DateTime.iso8601('2009-11-10T23:00:00Z'),
-      run_transfer: Models::Components::RunTransfer.new(
+      run_transfer: Models::Components::CreateRunTransfer.new(
         amount: Models::Components::Amount.new(
           currency: 'USD',
           value: 1204,
@@ -84,7 +84,7 @@ res = s.scheduling.create(account_id: '8b64fef5-c389-40d5-838f-d6ae10e70162', up
   ],
   recur: Models::Components::Recur.new(
     recurrence_rule: '<value>',
-    run_transfer: Models::Components::RunTransfer.new(
+    run_transfer: Models::Components::CreateRunTransfer.new(
       amount: Models::Components::Amount.new(
         currency: 'USD',
         value: 1204,
@@ -115,7 +115,7 @@ res = s.scheduling.create(account_id: '8b64fef5-c389-40d5-838f-d6ae10e70162', up
         ),
       ),
       description: 'er mob marathon lest optimistically responsible',
-      line_items: Models::Components::ScheduledTransferLineItems.new(
+      line_items: Models::Components::CreateScheduledTransferLineItems.new(
         items: [],
       ),
     ),
@@ -220,7 +220,7 @@ res = s.scheduling.update(account_id: '7becca38-ec01-4fcf-8cf7-c187c7cf6a7a', sc
     Models::Components::Occurrence.new(
       occurrence_id: 'c520f1b9-0ba7-42f5-b977-248cdbe41c69',
       run_on: DateTime.iso8601('2009-11-10T23:00:00Z'),
-      run_transfer: Models::Components::RunTransfer.new(
+      run_transfer: Models::Components::CreateRunTransfer.new(
         amount: Models::Components::Amount.new(
           currency: 'USD',
           value: 1204,
@@ -252,7 +252,7 @@ res = s.scheduling.update(account_id: '7becca38-ec01-4fcf-8cf7-c187c7cf6a7a', sc
   ],
   recur: Models::Components::Recur.new(
     recurrence_rule: '<value>',
-    run_transfer: Models::Components::RunTransfer.new(
+    run_transfer: Models::Components::CreateRunTransfer.new(
       amount: Models::Components::Amount.new(
         currency: 'USD',
         value: 1204,
@@ -283,9 +283,9 @@ res = s.scheduling.update(account_id: '7becca38-ec01-4fcf-8cf7-c187c7cf6a7a', sc
         ),
       ),
       description: 'yum who queasily bemuse ick dull almighty incidentally er despite',
-      line_items: Models::Components::ScheduledTransferLineItems.new(
+      line_items: Models::Components::CreateScheduledTransferLineItems.new(
         items: [
-          Models::Components::ScheduledTransferLineItem.new(
+          Models::Components::CreateScheduledTransferLineItem.new(
             name: '<value>',
             base_price: Models::Components::AmountDecimal.new(
               currency: 'USD',
@@ -293,7 +293,7 @@ res = s.scheduling.update(account_id: '7becca38-ec01-4fcf-8cf7-c187c7cf6a7a', sc
             ),
             quantity: 973_458,
             options: [
-              Models::Components::ScheduledTransferLineItemOption.new(
+              Models::Components::CreateScheduledTransferLineItemOption.new(
                 name: '<value>',
                 quantity: 221_042,
                 price_modifier: Models::Components::AmountDecimal.new(

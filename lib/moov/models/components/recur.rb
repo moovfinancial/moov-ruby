@@ -17,13 +17,13 @@ module Moov
         #   Generators available online at the following sites - https://freetools.textmagic.com/rrule-generator, https://jkbrzt.github.io/rrule/
         field :recurrence_rule, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recurrenceRule'), required: true } }
         # Defines the attributes of a transfer.
-        field :run_transfer, Models::Components::RunTransfer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runTransfer'), required: true } }
+        field :run_transfer, Models::Components::CreateRunTransfer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runTransfer'), required: true } }
         # True if the RRule set runs indefinitely.
         field :indefinite, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('indefinite') } }
 
         field :start, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('start'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(recurrence_rule: ::String, run_transfer: Models::Components::RunTransfer, indefinite: T.nilable(T::Boolean), start: T.nilable(::DateTime)).void }
+        sig { params(recurrence_rule: ::String, run_transfer: Models::Components::CreateRunTransfer, indefinite: T.nilable(T::Boolean), start: T.nilable(::DateTime)).void }
         def initialize(recurrence_rule:, run_transfer:, indefinite: nil, start: nil)
           @recurrence_rule = recurrence_rule
           @run_transfer = run_transfer

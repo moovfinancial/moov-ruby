@@ -8,6 +8,8 @@ end
 
 
 class Moov::Models::Errors::CreateInvoicePaymentError
+  def amount(); end
+  def amount=(str_); end
   def foreign_id(); end
   def foreign_id=(str_); end
   def description(); end

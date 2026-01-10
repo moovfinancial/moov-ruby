@@ -15,10 +15,10 @@ module Moov
 
 
         field :customer_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerAccountID'), required: true } }
-
-        field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
         # A collection of line items for an invoice.
         field :line_items, Models::Components::CreateInvoiceLineItems, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems'), required: true } }
+
+        field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
         field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
@@ -26,11 +26,11 @@ module Moov
 
         field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
 
-        sig { params(customer_account_id: ::String, description: ::String, line_items: Models::Components::CreateInvoiceLineItems, invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), tax_amount: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(customer_account_id:, description:, line_items:, invoice_date: nil, due_date: nil, tax_amount: nil)
+        sig { params(customer_account_id: ::String, line_items: Models::Components::CreateInvoiceLineItems, description: T.nilable(::String), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), tax_amount: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(customer_account_id:, line_items:, description: nil, invoice_date: nil, due_date: nil, tax_amount: nil)
           @customer_account_id = customer_account_id
-          @description = description
           @line_items = line_items
+          @description = description
           @invoice_date = invoice_date
           @due_date = due_date
           @tax_amount = tax_amount
@@ -40,8 +40,8 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @customer_account_id == other.customer_account_id
-          return false unless @description == other.description
           return false unless @line_items == other.line_items
+          return false unless @description == other.description
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date
           return false unless @tax_amount == other.tax_amount

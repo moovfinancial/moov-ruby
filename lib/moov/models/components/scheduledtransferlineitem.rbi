@@ -18,4 +18,6 @@ class Moov::Models::Components::ScheduledTransferLineItem
   def options=(str_); end
   def product_id(); end
   def product_id=(str_); end
+  def images(); end
+  def images=(str_); end
 end

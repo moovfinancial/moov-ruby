@@ -12,8 +12,6 @@ class Moov::Models::Components::Invoice
   def invoice_id=(str_); end
   def invoice_number(); end
   def invoice_number=(str_); end
-  def description(); end
-  def description=(str_); end
   def customer_account_id(); end
   def customer_account_id=(str_); end
   def partner_account_id(); end
@@ -38,10 +36,12 @@ class Moov::Models::Components::Invoice
   def disputed_amount=(str_); end
   def created_on(); end
   def created_on=(str_); end
+  def description(); end
+  def description=(str_); end
   def payment_link_code(); end
   def payment_link_code=(str_); end
-  def payments(); end
-  def payments=(str_); end
+  def invoice_payments(); end
+  def invoice_payments=(str_); end
   def invoice_date(); end
   def invoice_date=(str_); end
   def due_date(); end

@@ -14,6 +14,8 @@ module Moov
         include Crystalline::MetadataFields
 
 
+        field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimalValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
@@ -22,8 +24,9 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(foreign_id: T.nilable(::String), description: T.nilable(::String), payment_date: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(foreign_id: nil, description: nil, payment_date: nil, raw_response: nil)
+        sig { params(amount: T.nilable(Models::Components::AmountDecimalValidationError), foreign_id: T.nilable(::String), description: T.nilable(::String), payment_date: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(amount: nil, foreign_id: nil, description: nil, payment_date: nil, raw_response: nil)
+          @amount = amount
           @foreign_id = foreign_id
           @description = description
           @payment_date = payment_date
@@ -33,6 +36,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @amount == other.amount
           return false unless @foreign_id == other.foreign_id
           return false unless @description == other.description
           return false unless @payment_date == other.payment_date

@@ -21,9 +21,9 @@ module Moov
         # Timestamp to run the transfer after. Value must be into the future.
         field :run_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
         # Defines the attributes of a transfer.
-        field :run_transfer, Crystalline::Nilable.new(Models::Components::RunTransfer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runTransfer') } }
+        field :run_transfer, Crystalline::Nilable.new(Models::Components::CreateRunTransfer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runTransfer') } }
 
-        sig { params(canceled: T.nilable(T::Boolean), occurrence_id: T.nilable(::String), run_on: T.nilable(::DateTime), run_transfer: T.nilable(Models::Components::RunTransfer)).void }
+        sig { params(canceled: T.nilable(T::Boolean), occurrence_id: T.nilable(::String), run_on: T.nilable(::DateTime), run_transfer: T.nilable(Models::Components::CreateRunTransfer)).void }
         def initialize(canceled: nil, occurrence_id: nil, run_on: nil, run_transfer: nil)
           @canceled = canceled
           @occurrence_id = occurrence_id
