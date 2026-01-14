@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 124c8e996e0529dbe24c3a9a9aaadbca
+  docChecksum: b7b033372765a34ca897596f25beb355
   docVersion: latest
   speakeasyVersion: 1.680.5
   generationVersion: 2.788.7
-  releaseVersion: 0.3.24
-  configChecksum: bec7060139e6ad888b59076b7469b7b1
+  releaseVersion: 0.3.25
+  configChecksum: c0fe7d40c3c6571f10bb895061bbec1f
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: b1d484e0-e2b2-48a4-a51f-6b854f59486c
-  pristine_commit_hash: 17588c9825023310649fcd564f7d998b9200576e
-  pristine_tree_hash: 51691fc89657041e414a5dafaa407d499212a94d
+  generation_id: 0028a401-d8bf-4c23-9305-1906420542fb
+  pristine_commit_hash: af2d6a714a7c2ddc95c3da813d4f98f0ad0441cd
+  pristine_tree_hash: 9d9c66db656c26b459d11861fabb43b66fa4e375
 features:
   ruby:
     constsAndDefaults: 0.1.1
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:90dd4d3853bc0e4595b507c688110013090544d3
-    pristine_git_object: e32257e21c8d4d97017223457c74c2fed2cb6ec9
+    last_write_checksum: sha1:c6d3c6ea429c78af2510ff395d01b601e64ae72b
+    pristine_git_object: df309008a55452487895d97f5d19f5ecc713a110
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -12667,8 +12667,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:3e565ce2635d55a65f00baf37c92b26ab6d18c94
-    pristine_git_object: 42e7c2c02618f43bff9a2134afc22596d5363a94
+    last_write_checksum: sha1:82b2aea3ec7044fbf2a924d2f99d344ddd926b21
+    pristine_git_object: 7b0414ca2ba7276338a29251bc13b4da0d5b4f0f
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -12747,8 +12747,8 @@ trackedFiles:
     pristine_git_object: 9d8c08247f52013a6f69bba3a9530116f8888bd2
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:b46e3deff9b562d8c50124d172e600970729bf34
-    pristine_git_object: 545b4fedabb8d26ac29c5c23d11a721643e65d98
+    last_write_checksum: sha1:b0bbcdf644cc4e776f9d1cb1cdb6e5b410cf86b9
+    pristine_git_object: 5abfac477f9ee2a84deb242f2c36a42390558053
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:16e6180c757fb5c6db2d3aabadc4fd83aab8a74e
@@ -15216,7 +15216,6 @@ examples:
         "200":
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.invoices.list_invoice_payments()`:  `response.[]` **Changed** **Breaking** :warning:\n* `client.invoices.update_invoice()`:  `response` **Changed** **Breaking** :warning:\n* `client.invoices.create_invoice_payment()`: \n  *  `request.create_invoice_payment.amount` **Added** **Breaking** :warning:\n  *  `response` **Changed** **Breaking** :warning:\n  *  `error.amount` **Added**\n* `client.invoices.get_invoice()`:  `response` **Changed** **Breaking** :warning:\n* `client.invoices.create_invoice()`: \n  *  `request.create_invoice.description` **Changed**\n  *  `response` **Changed** **Breaking** :warning:\n* `client.invoices.list_invoices()`:  `response.[]` **Changed** **Breaking** :warning:\n* `client.fee_plans.retrieve_fees()`: \n  *  `request.residual_id` **Added**\n  *  `response.[].residual_id` **Added**\n* `client.scheduling.create()`: \n  *  `request.upsert_schedule.occurrences.[].run_transfer.line_items.items.[]` **Changed**\n  *  `response.occurrences.[].run_transfer.line_items.items.[]` **Changed**\n* `client.fee_plans.list_residual_fees()`:  `response.[].residual_id` **Added**\n* `client.fee_plans.list_fee_revenue()`: \n  *  `request` **Changed**\n  *  `response.[].residual_id` **Added**\n* `client.fee_plans.list_fees_fetch()`:  `response.[].residual_id` **Added**\n* `client.scheduling.list()`:  `response.[].occurrences.[].run_transfer.line_items.items.[]` **Changed**\n* `client.scheduling.update()`: \n  *  `request.upsert_schedule.occurrences.[].run_transfer.line_items.items.[]` **Changed**\n  *  `response.occurrences.[].run_transfer.line_items.items.[]` **Changed**\n* `client.scheduling.get()`:  `response.occurrences.[].run_transfer.line_items.items.[]` **Changed**\n* `client.scheduling.get_occurrance()`:  `response.run_transfer.line_items.items.[]` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
