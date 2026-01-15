@@ -39,15 +39,9 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListProductsResponse) }
-    def list(account_id:, x_moov_version: nil, skip: nil, count: nil, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListProductsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListProductsResponse) }
+    def list(request:, timeout_ms: nil)
       # list - List active (non-disabled) products for an account.
-      request = Models::Operations::ListProductsRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version,
-        skip: skip,
-        count: count
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(

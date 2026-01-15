@@ -14,7 +14,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # Status of a transaction within the RTP lifecycle.
-        field :status, Models::Components::RTPTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::RTPTransactionStatus, false) } }
+        field :status, Crystalline::Nilable.new(Models::Components::RTPTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::RTPTransactionStatus, true) } }
         # Response code returned by network on failure.
         field :network_response_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkResponseCode') } }
         # Status codes for RTP failures.
@@ -28,8 +28,8 @@ module Moov
 
         field :accepted_without_posting_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedWithoutPostingOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(status: Models::Components::RTPTransactionStatus, network_response_code: T.nilable(::String), failure_code: T.nilable(Models::Components::RTPFailureCode), initiated_on: T.nilable(::DateTime), completed_on: T.nilable(::DateTime), failed_on: T.nilable(::DateTime), accepted_without_posting_on: T.nilable(::DateTime)).void }
-        def initialize(status:, network_response_code: nil, failure_code: nil, initiated_on: nil, completed_on: nil, failed_on: nil, accepted_without_posting_on: nil)
+        sig { params(status: T.nilable(Models::Components::RTPTransactionStatus), network_response_code: T.nilable(::String), failure_code: T.nilable(Models::Components::RTPFailureCode), initiated_on: T.nilable(::DateTime), completed_on: T.nilable(::DateTime), failed_on: T.nilable(::DateTime), accepted_without_posting_on: T.nilable(::DateTime)).void }
+        def initialize(status: nil, network_response_code: nil, failure_code: nil, initiated_on: nil, completed_on: nil, failed_on: nil, accepted_without_posting_on: nil)
           @status = status
           @network_response_code = network_response_code
           @failure_code = failure_code

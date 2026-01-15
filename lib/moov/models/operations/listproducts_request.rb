@@ -26,15 +26,18 @@ module Moov
         # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
         # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
+        # Allows filtering products by title. This supports partial matches and is case-insensitive
+        field :title, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'title', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
 
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
-        def initialize(account_id:, x_moov_version: nil, skip: nil, count: nil)
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), title: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
+        def initialize(account_id:, x_moov_version: nil, title: nil, skip: nil, count: nil)
           @account_id = account_id
           @x_moov_version = x_moov_version
+          @title = title
           @skip = skip
           @count = count
         end
@@ -44,6 +47,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @x_moov_version == other.x_moov_version
+          return false unless @title == other.title
           return false unless @skip == other.skip
           return false unless @count == other.count
           true
