@@ -45,7 +45,7 @@ module Moov
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
         field :payment_link_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkCode') } }
-
+        # Payment made towards an invoice, will be either a transfer or an external payment.
         field :invoice_payments, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoicePayment)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePayments') } }
 
         field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': Utils.datetime_from_iso_format(true) } }

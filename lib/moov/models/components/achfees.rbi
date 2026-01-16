@@ -20,6 +20,8 @@ class Moov::Models::Components::ACHFees
   def unauthorized_return=(str_); end
   def notice_of_change(); end
   def notice_of_change=(str_); end
+  def bank_account_verification(); end
+  def bank_account_verification=(str_); end
   def total(); end
   def total=(str_); end
 end
