@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Details of a successfully uploaded evidence file.
       class EvidenceUploadResponse
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
       # Details of a Transfer.
       class TransferError < StandardError
         extend T::Sig

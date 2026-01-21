@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the distribution of card transactions by payment method.
       class CardAcceptanceMethods
         extend T::Sig

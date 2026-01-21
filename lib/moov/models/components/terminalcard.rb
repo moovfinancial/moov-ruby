@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes payment card details captured with tap or in-person payment.
       class TerminalCard
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Card-specific details about the transaction.
       class CardTransactionDetails
         extend T::Sig

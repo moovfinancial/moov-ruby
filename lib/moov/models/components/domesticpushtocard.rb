@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # DomesticPushToCard - Indicates which level of domestic push-to-card transfer is supported by the card, if any.
       class DomesticPushToCard < T::Enum
 

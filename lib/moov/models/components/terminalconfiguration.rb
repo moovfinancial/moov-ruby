@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a terminal configuration.
       class TerminalConfiguration
         extend T::Sig

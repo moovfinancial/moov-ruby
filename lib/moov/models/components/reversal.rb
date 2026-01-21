@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Contains either a cancellation or refund, depending on the method used to reverse the transfer.
       class Reversal
         extend T::Sig

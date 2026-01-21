@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # TransferFailureReason - Reason for a transfer's failure.
       class TransferFailureReason < T::Enum
 

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A receipt request for a specific transfer, schedule, or schedule occurrence.
       class ReceiptRequest
         extend T::Sig

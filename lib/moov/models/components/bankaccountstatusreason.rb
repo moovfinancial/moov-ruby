@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # BankAccountStatusReason - The reason the bank account status changed to the current value.
       class BankAccountStatusReason < T::Enum
 

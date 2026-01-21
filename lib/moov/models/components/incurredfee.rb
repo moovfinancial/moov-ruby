@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A fee incurred by a user.
       class IncurredFee
         extend T::Sig

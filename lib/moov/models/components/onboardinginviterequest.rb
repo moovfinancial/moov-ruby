@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request to create an onboarding invite.
       class OnboardingInviteRequest
         extend T::Sig

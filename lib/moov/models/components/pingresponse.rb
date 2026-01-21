@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Response from pinging a webhook.
       class PingResponse
         extend T::Sig

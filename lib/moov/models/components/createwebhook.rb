@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request body for creating a new webhook.
       class CreateWebhook
         extend T::Sig

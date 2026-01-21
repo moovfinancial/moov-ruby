@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A billing statement for a Moov account.
       class Statement
         extend T::Sig

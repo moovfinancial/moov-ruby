@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # This is used by Moov.js with a Plaid reseller relationship. 
       # 
       # Describes the account to link to the Moov account using a Plaid using a Plaid public token.

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes an available event type that can be subscribed to.
       class EventType
         extend T::Sig

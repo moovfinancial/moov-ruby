@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # An optional collection of line items for a scheduled transfer.
       # When line items are provided their total must equal `amount` minus `salesTaxAmount`.
       class CreateScheduledTransferLineItems

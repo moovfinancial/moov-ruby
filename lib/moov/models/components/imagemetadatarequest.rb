@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request body for creating or updating image metadata.
       class ImageMetadataRequest
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
       class MinimumCommitment
         extend T::Sig

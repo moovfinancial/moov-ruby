@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a business.
       class BusinessProfile
         extend T::Sig

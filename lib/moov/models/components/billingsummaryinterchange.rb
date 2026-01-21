@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A summary of interchange fees by card brand.
       class BillingSummaryInterchange
         extend T::Sig

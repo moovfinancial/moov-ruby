@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The final stage of a transfer and the ultimate recipient of the funds.
       class CreateTransferDestination
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Asynchronous refund response
       class AsyncCreatedRefund
         extend T::Sig

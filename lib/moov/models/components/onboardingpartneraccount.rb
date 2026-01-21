@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The account that created the onboarding invite.
       class OnboardingPartnerAccount
         extend T::Sig

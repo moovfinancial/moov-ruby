@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Fields for identifying an authorized individual.
       class AuthorizedUser
         extend T::Sig

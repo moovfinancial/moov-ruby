@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Represents individual and business data necessary to facilitate the enabling of a capability for an account.
       class CapabilityRequirement
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
 
       class CardPayment
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # DisbursementPaymentMethodType - Payment methods allowed for disbursing funds.
       class DisbursementPaymentMethodType < T::Enum
 

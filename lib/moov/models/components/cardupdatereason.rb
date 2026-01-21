@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # CardUpdateReason - The results of the card update request.
       class CardUpdateReason < T::Enum
 

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # DomesticPullFromCard - Indicates if the card supports domestic pull-from-card transfer.
       class DomesticPullFromCard < T::Enum
 

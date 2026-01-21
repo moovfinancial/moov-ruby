@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # OccurrenceStatus - Status of the completed occurrence.
       class OccurrenceStatus < T::Enum
 

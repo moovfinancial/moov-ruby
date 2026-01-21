@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # BusinessType - The type of entity represented by this business.
       class BusinessType < T::Enum
 

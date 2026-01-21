@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # RTP specific details about the transaction.
       class RTPTransactionDetails
         extend T::Sig

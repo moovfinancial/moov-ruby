@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # IssuedCardState - The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
       # 
       # - `active`: The card is operational and approves authorizations. Generally becomes active shortly after card creation.

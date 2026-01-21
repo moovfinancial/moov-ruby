@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes an individual.
       class IndividualProfile
         extend T::Sig

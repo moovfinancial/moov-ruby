@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the fields available when patching an individual.
       class PatchIndividual
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # User provided settings to manage an account.
       class Settings
         extend T::Sig

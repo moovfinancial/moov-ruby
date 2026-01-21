@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # An adjustment to a wallet.
       class Adjustment
         extend T::Sig

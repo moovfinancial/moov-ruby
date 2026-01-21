@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Processing and pass-through costs that add up to the moovFee.
       class MoovFeeDetails
         extend T::Sig

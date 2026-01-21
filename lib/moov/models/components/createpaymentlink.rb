@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request to create a new payment link.
       # 
       # A payment link must include either `payment` or `payout` details, but not both. For payout payment links,

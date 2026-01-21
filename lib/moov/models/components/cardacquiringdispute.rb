@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Details of a card dispute.
       class CardAcquiringDispute
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A detailed breakdown of card acquiring fees by card brand.
       class CardAcquiringFees
         extend T::Sig

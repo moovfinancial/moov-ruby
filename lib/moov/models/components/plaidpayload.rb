@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the account to link to the Moov account using a Plaid processor token.
       class PlaidPayload
         extend T::Sig

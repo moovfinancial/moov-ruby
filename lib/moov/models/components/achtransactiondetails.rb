@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # ACH specific details about the transaction.
       class ACHTransactionDetails
         extend T::Sig

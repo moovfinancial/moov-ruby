@@ -7,13 +7,12 @@
 module Moov
   module Models
     module Components
-    
 
       class InvoiceLineItemImageMetadata
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Unique identifier for a image resource.
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :image_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageID'), required: true } }
         # The image's public URL.
         field :link, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('link'), required: true } }

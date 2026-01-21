@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # IssuingAuthorizationStatus - Status of a card issuing authorization.
       class IssuingAuthorizationStatus < T::Enum
 

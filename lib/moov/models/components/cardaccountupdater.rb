@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The results of the most recent card update request.
       class CardAccountUpdater
         extend T::Sig

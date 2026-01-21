@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The details of a Plaid processor integration for a linked funding source. 
       # 
       # `sandbox` - When linking a bank account to a `sandbox` account using a Plaid processor token a default bank account

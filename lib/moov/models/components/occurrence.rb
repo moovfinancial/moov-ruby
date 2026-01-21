@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Occurrences to either create or modify.
       class Occurrence
         extend T::Sig

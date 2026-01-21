@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Monthly partner costs that are charged separately and not included in residual subtotal (e.g. platform fees, minimums).
       class PartnerFees
         extend T::Sig

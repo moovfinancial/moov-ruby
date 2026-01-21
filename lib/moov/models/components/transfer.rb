@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Details of a Transfer.
       class Transfer
         extend T::Sig

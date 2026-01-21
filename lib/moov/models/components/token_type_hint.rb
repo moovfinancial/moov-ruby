@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # TokenTypeHint - The type of token being revoked.
       class TokenTypeHint < T::Enum
 

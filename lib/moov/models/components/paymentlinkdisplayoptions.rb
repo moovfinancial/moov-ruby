@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Customizable display options for a payment link.
       class PaymentLinkDisplayOptions
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       #   Contains the encrypted payment data.
       # 
       #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttoken/1916115-paymentdata) 

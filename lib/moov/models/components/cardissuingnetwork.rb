@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # CardIssuingNetwork - The name of the network a card transaction is routed through.
       class CardIssuingNetwork < T::Enum
 

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the scopes being shared from a subject account to a principal account.
       class ShareScopes
         extend T::Sig

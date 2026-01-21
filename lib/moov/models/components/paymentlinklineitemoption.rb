@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Represents a modifier or option applied to a line item.
       class PaymentLinkLineItemOption
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a guest account profile.
       class GuestProfile
         extend T::Sig

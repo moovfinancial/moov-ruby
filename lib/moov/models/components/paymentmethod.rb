@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A method of moving money
       class PaymentMethod
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a business representative to create.
       class CreateRepresentative
         extend T::Sig

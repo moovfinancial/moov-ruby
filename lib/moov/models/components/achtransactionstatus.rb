@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # ACHTransactionStatus - Status of a transaction within the ACH lifecycle.
       class ACHTransactionStatus < T::Enum
 

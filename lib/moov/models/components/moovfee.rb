@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Moov fee charged to an account involved in a transfer.
       class MoovFee
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # IssuedCardEventType - The type of event that occurred on the card.
       class IssuedCardEventType < T::Enum
 

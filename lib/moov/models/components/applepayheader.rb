@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Information needed to decrypt Apple Pay payment data.
       # 
       # Refer to [Apple's documentation](https://developer.apple.com/documentation/passkit/payment-token-format-reference#Header-keys-and-values) 

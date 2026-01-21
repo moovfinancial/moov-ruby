@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # An addenda record which was added to an ACH transfer
       class TransferACHAddendaRecord
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Reason for, and details related to, an `errored` or `verificationFailed` bank account status.
       class BankAccountException
         extend T::Sig

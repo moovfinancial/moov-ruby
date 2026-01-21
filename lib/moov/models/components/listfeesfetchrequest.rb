@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Array of fee IDs to fetch.
       class ListFeesFetchRequest
         extend T::Sig

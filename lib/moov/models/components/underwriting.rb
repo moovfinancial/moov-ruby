@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes underwriting values (in USD) used for card payment acceptance.
       class Underwriting
         extend T::Sig

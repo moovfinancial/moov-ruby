@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes an Apple Pay token on a Moov account.
       class ApplePayResponse
         extend T::Sig

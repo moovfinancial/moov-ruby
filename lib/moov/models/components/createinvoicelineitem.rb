@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Represents a single item in an invoice, including optional modifiers and quantity.
       class CreateInvoiceLineItem
         extend T::Sig

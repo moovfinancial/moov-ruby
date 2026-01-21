@@ -7,13 +7,12 @@
 module Moov
   module Models
     module Components
-    
 
       class InvoiceTransferPayment
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :transfer_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID'), required: true } }
 
         sig { params(transfer_id: ::String).void }

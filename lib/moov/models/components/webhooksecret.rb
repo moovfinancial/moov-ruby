@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The secret used to verify webhook payloads.
       class WebhookSecret
         extend T::Sig

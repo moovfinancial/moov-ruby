@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # CollectionPaymentMethodType - Payment methods allowed for collecting a payment.
       class CollectionPaymentMethodType < T::Enum
 

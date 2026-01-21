@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes an [RFC7517](https://datatracker.ietf.org/doc/html/rfc7517) web key.
       class JSONWebKey
         extend T::Sig

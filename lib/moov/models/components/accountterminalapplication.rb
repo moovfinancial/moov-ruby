@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes link between an account and a terminal application.
       class AccountTerminalApplication
         extend T::Sig

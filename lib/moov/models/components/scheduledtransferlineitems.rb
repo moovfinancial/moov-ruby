@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Line items for a scheduled transfer.
       class ScheduledTransferLineItems
         extend T::Sig

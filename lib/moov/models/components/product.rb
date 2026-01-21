@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A good or service offered by a merchant.
       class Product
         extend T::Sig

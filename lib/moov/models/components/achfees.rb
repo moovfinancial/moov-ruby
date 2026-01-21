@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A detailed breakdown of ACH fees.
       class ACHFees
         extend T::Sig

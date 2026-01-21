@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Metadata about an uploaded image.
       class ImageMetadata
         extend T::Sig

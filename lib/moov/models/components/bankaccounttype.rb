@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # BankAccountType - The bank account type.
       class BankAccountType < T::Enum
 

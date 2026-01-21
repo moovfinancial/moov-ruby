@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # DisputePhase - The phase of a dispute within the dispute lifecycle.
       class DisputePhase < T::Enum
 

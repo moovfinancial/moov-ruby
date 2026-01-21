@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Details of a card refund.
       class CardAcquiringRefund
         extend T::Sig

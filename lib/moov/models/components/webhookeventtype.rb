@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # WebhookEventType - The type of event that occurred.
       class WebhookEventType < T::Enum
 

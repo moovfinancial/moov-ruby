@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a card on a Moov account.
       class Card
         extend T::Sig

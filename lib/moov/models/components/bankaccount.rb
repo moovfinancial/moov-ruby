@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a bank account linked to a Moov account.
       class BankAccount
         extend T::Sig

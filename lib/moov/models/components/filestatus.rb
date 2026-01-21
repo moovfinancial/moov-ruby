@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # FileStatus - The file's status.
       class FileStatus < T::Enum
 

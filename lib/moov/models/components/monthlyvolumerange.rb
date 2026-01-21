@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # MonthlyVolumeRange - The low value in each range is included. The high value in each range is excluded.
       class MonthlyVolumeRange < T::Enum
 

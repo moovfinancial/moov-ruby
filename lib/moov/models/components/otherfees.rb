@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The total amount of other card fees. This field is deprecated and will be removed in a future release. Use summary.otherCardFees.
       # 
       # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.

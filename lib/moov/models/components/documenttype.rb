@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # DocumentType - Types of documents that can be uploaded.
       class DocumentType < T::Enum
 

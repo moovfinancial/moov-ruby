@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The entity that generated the fee.
       class GeneratedBy
         extend T::Sig

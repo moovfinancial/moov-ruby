@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # PaymentMethodType - The payment method type that represents a payment rail and directionality
       class PaymentMethodType < T::Enum
 

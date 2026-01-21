@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # UpdateIssuedCardState - Updates the state of a Moov issued card.
       # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
       class UpdateIssuedCardState < T::Enum

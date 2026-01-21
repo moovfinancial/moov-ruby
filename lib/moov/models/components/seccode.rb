@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # SECCode - Code used to identify the ACH authorization method.
       class SECCode < T::Enum
 

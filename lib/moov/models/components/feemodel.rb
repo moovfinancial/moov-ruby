@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # FeeModel - Specifies the pricing model used for the calculation of the final fee.
       class FeeModel < T::Enum
 

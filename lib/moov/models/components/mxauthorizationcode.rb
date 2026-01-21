@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The authorization code of a MX account which allows a processor to retrieve a linked payment account. 
       # 
       # `sandbox` - When linking a bank account to a `sandbox` account using a MX authorization code it will utilize MX's sandbox environment. 

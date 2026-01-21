@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Details of a specific interchange program fee.
       class BillingInterchangeProgramFee
         extend T::Sig

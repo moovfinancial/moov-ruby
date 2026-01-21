@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       #   Billing contact information as returned from Apple Pay.
       #   
       #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymentcontact) 

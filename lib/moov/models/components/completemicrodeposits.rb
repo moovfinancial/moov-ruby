@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request to complete the micro-deposit verification workflow.
       class CompleteMicroDeposits
         extend T::Sig

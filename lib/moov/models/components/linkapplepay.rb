@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       #   The JSON structure returned from Apple Pay when authorizing a payment session.
       # 
       #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypayment) 

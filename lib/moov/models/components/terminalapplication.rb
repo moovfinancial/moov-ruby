@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a terminal application.
       class TerminalApplication
         extend T::Sig

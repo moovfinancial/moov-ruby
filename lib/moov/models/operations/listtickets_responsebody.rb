@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Operations
-    
       # A paginated list of items. The `nextPage` field is omitted if there are no more pages available.
       class ListTicketsResponseBody
         extend T::Sig

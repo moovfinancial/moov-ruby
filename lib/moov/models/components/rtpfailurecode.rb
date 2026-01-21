@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # RTPFailureCode - Status codes for RTP failures.
       class RTPFailureCode < T::Enum
 

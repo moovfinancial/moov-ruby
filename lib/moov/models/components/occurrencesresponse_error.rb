@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Contains details on why the occurrence errored.
       class OccurrencesResponseError
         extend T::Sig

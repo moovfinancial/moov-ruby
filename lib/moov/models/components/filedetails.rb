@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a file linked to a Moov account.
       class FileDetails
         extend T::Sig

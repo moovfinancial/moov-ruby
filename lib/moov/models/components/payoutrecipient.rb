@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Specify the intended recipient of the payout.
       # Either `email` or `phone` must be specified, but not both.
       # 

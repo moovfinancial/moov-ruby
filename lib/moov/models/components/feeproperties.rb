@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Defines the specific parameters used for fee calculation.
       class FeeProperties
         extend T::Sig

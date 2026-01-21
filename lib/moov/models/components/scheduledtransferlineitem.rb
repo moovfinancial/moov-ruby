@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Represents a single item in a scheduled transfer, including optional modifiers and quantity.
       class ScheduledTransferLineItem
         extend T::Sig

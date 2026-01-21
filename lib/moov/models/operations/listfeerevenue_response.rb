@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Operations
-    
 
       class ListFeeRevenueResponse
         extend T::Sig

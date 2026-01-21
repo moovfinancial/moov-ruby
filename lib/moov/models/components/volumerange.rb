@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Defines the volume ranges for tiered pricing models.
       class VolumeRange
         extend T::Sig

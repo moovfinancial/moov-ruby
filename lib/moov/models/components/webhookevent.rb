@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Webhook events are sent to your webhook URL when certain actions occur in the Moov API. You can subscribe to these events to receive real-time notifications.
       class WebhookEvent
         extend T::Sig

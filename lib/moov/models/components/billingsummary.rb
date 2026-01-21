@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A summary of all fees included in a statement.
       class BillingSummary
         extend T::Sig

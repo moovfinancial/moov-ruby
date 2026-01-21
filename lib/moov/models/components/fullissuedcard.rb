@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The full details of an issued card, including PAN and CVV.
       class FullIssuedCard
         extend T::Sig

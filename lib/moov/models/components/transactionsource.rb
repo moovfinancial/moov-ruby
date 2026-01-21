@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # TransactionSource - Specifies the nature and initiator of a transaction. 
       # 
       # Crucial for recurring and merchant-initiated transactions as per card scheme rules. 

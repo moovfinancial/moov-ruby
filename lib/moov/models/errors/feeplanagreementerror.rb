@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
 
       class FeePlanAgreementError < StandardError
         extend T::Sig

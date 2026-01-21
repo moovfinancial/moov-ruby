@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
 
       class RefundValidationError < StandardError
         extend T::Sig

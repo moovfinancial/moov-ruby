@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # IssuedCardAuthorizationEventResult - The result of an event.
       class IssuedCardAuthorizationEventResult < T::Enum
 

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
 
       class AssignCountriesError < StandardError
         extend T::Sig

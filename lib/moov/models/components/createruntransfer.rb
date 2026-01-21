@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Defines the attributes of a transfer.
       class CreateRunTransfer
         extend T::Sig

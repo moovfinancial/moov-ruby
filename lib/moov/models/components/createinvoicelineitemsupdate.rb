@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A collection of line items for an invoice.
       class CreateInvoiceLineItemsUpdate
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Payment method details for the source or destination of a transfer.
       class WebhookTransferPaymentMethodDetails
         extend T::Sig

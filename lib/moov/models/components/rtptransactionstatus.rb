@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # RTPTransactionStatus - Status of a transaction within the RTP lifecycle.
       class RTPTransactionStatus < T::Enum
 

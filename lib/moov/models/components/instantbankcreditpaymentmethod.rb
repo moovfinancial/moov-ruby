@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Instantly send funds to a bank account.
       class InstantBankCreditPaymentMethod
         extend T::Sig

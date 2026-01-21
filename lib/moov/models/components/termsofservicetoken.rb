@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # An encrypted value used to record acceptance of Moov's Terms of Service.
       class TermsOfServiceToken
         extend T::Sig

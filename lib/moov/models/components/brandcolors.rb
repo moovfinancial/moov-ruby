@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Brand colors for light and dark modes.
       class BrandColors
         extend T::Sig

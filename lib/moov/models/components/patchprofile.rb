@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the fields available when patching a profile.
       # Each object can be patched independent of patching the other fields.
       class PatchProfile

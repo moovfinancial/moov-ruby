@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the account to link to the Moov account using a MX processor token. 
       # 
       # `sandbox` - When linking a bank account to a `sandbox` account using an MX authorization token a default bank account routing number will

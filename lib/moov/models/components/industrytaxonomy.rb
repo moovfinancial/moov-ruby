@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A structured industry taxonomy entry with category and mapped to a default MCC code.
       class IndustryTaxonomy
         extend T::Sig

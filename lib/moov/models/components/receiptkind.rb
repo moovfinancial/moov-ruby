@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # ReceiptKind - The type of receipt being requested.
       class ReceiptKind < T::Enum
 

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A Moov wallet to store funds for transfers.
       class Wallet
         extend T::Sig

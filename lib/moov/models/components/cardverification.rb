@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The results of submitting cardholder data to a card network for verification.
       class CardVerification
         extend T::Sig

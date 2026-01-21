@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The expiration date of the card or token.
       class CardExpiration
         extend T::Sig

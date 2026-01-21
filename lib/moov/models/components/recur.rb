@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Defines configuration for recurring transfers.
       class Recur
         extend T::Sig

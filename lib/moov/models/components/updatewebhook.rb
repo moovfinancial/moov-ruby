@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request body for updating an existing webhook.
       class UpdateWebhook
         extend T::Sig

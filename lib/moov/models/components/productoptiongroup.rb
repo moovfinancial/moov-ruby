@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Represents a group of product configuration options, such as size or color.
       class ProductOptionGroup
         extend T::Sig

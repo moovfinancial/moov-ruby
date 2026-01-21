@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Total or markup fee.
       class FacilitatorFee
         extend T::Sig

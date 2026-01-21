@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # ApplicationScope - A permission that the application requests on another account.
       class ApplicationScope < T::Enum
 

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Represents a single product option within a group.
       class ProductOption
         extend T::Sig

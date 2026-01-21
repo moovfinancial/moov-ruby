@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # CardTransactionStatus - Status of a transaction within the card payment lifecycle.
       class CardTransactionStatus < T::Enum
 

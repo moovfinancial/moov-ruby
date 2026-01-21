@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a Moov account profile. A profile will have a business, individual, or guest depending on the account's type.
       class Profile
         extend T::Sig

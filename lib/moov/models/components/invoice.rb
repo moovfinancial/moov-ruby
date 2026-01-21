@@ -7,19 +7,18 @@
 module Moov
   module Models
     module Components
-    
 
       class Invoice
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :invoice_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceID'), required: true } }
 
         field :invoice_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceNumber'), required: true } }
-
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :customer_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerAccountID'), required: true } }
-
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
 
         field :status, Models::Components::InvoiceStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoiceStatus, false) } }

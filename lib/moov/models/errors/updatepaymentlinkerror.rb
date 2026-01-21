@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
 
       class UpdatePaymentLinkError < StandardError
         extend T::Sig

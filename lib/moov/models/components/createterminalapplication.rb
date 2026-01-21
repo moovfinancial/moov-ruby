@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes a create terminal application request.
       class CreateTerminalApplication
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
       # 
       # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.

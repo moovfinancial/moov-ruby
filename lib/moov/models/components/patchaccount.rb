@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the fields available when patching a Moov account.
       class PatchAccount
         extend T::Sig

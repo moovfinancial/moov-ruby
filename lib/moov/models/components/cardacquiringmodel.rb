@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # CardAcquiringModel - Specifies the card processing pricing model
       class CardAcquiringModel < T::Enum
 

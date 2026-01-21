@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request to create or update a product.
       class ProductRequest
         extend T::Sig

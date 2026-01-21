@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # RequirementID - The unique ID of what the requirement is asking to be filled out.
       class RequirementID < T::Enum
 

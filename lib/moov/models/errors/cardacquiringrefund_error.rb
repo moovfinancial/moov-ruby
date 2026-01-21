@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
       # Details of a card refund.
       class CardAcquiringRefundError < StandardError
         extend T::Sig

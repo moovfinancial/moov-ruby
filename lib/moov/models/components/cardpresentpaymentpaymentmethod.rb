@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A card used at point of sale terminal for a card present transaction as contained within a payment method.
       class CardPresentPaymentPaymentMethod
         extend T::Sig

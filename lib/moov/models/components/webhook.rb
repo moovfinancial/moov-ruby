@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A configured webhook endpoint that receives event notifications.
       class Webhook
         extend T::Sig

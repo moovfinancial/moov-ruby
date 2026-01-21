@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # TerminalApplicationStatus - Status of the terminal application.
       class TerminalApplicationStatus < T::Enum
 

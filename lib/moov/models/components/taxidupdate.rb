@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # An EIN (employer identification number) for the business. For sole proprietors, an SSN can be used as the EIN.
       class TaxIDUpdate
         extend T::Sig

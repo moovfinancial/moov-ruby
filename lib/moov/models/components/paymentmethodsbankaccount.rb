@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A bank account as contained within a payment method.
       class PaymentMethodsBankAccount
         extend T::Sig

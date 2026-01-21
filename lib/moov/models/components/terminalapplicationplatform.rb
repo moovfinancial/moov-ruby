@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # TerminalApplicationPlatform - Platform of the terminal application.
       class TerminalApplicationPlatform < T::Enum
 

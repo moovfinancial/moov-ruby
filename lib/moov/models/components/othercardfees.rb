@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A detailed breakdown of other card-related fees.
       class OtherCardFees
         extend T::Sig

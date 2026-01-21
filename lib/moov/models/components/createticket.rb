@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request to create a new support ticket.
       class CreateTicket
         extend T::Sig

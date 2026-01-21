@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
 
       class CreateInvoiceError < StandardError
         extend T::Sig

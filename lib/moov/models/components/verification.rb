@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes identity verification status and relevant identity verification documents.
       class Verification
         extend T::Sig

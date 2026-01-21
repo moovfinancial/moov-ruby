@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the acceptance of the Terms of Service.
       class TermsOfService
         extend T::Sig

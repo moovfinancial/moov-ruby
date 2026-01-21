@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the job responsibilities of a business representative.
       class RepresentativeResponsibilities
         extend T::Sig

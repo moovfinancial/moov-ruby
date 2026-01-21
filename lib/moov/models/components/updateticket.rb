@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Request to update a support ticket.
       class UpdateTicket
         extend T::Sig

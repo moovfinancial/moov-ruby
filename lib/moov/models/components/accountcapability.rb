@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes an action or set of actions that an account is permitted to perform.
       class AccountCapability
         extend T::Sig

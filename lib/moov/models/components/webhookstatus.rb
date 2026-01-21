@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # WebhookStatus - The status of a webhook.
       class WebhookStatus < T::Enum
 

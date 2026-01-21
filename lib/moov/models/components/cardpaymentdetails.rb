@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Options for payment links used to collect a card payment.
       class CardPaymentDetails
         extend T::Sig

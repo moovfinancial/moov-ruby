@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A transaction that funds or deducts from the wallet.
       class WalletTransaction
         extend T::Sig

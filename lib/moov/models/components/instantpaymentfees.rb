@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A detailed breakdown of instant payment fees.
       class InstantPaymentFees
         extend T::Sig

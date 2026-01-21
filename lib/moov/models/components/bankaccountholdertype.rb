@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # BankAccountHolderType - The type of holder on a funding source.
       class BankAccountHolderType < T::Enum
 

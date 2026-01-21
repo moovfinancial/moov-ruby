@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # This is used by Moov.js with a Plaid reseller relationship. The details of a Plaid link integration for a linked funding source.
       # 
       # You can simulate linking bank accounts with Plaid in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode/#plaid)

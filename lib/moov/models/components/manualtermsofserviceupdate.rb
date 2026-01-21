@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Describes the acceptance of the Terms of Service. All data is required, and must be from the user.
       class ManualTermsOfServiceUpdate
         extend T::Sig

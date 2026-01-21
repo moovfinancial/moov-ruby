@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
 
       class ListTransfersValidationError < StandardError
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # TransferStatus - Status of a transfer.
       class TransferStatus < T::Enum
 

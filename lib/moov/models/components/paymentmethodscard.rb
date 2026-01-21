@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # A card as contained within a payment method.
       class PaymentMethodsCard
         extend T::Sig

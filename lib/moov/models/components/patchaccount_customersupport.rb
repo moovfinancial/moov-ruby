@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # User-provided information that can be displayed on credit card transactions for customers to use when
       # contacting a customer support team. This data is only allowed on a business account.
       class PatchAccountCustomerSupport

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # CardType - The type of the card.
       class CardType < T::Enum
 

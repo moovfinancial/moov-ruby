@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Fixed recurring amount paid in the billing period regardless of usage.
       class MonthlyPlatformFee
         extend T::Sig

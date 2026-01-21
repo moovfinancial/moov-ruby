@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # CapabilityStatus - The status of the capability requested for an account.
       class CapabilityStatus < T::Enum
 

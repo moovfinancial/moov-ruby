@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # User provided settings to manage card payments. This data is only allowed on a business account.
       class CardPaymentSettings
         extend T::Sig

@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Mode - The operating mode for an account.
       class Mode < T::Enum
 

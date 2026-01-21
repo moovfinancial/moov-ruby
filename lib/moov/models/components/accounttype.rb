@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # AccountType - The type of entity represented by this account.
       class AccountType < T::Enum
 

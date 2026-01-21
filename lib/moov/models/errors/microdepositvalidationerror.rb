@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Errors
-    
 
       class MicroDepositValidationError < StandardError
         extend T::Sig

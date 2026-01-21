@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # The countries in which an account operates.
       class AccountCountries
         extend T::Sig

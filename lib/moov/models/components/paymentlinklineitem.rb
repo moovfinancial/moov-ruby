@@ -7,7 +7,6 @@
 module Moov
   module Models
     module Components
-    
       # Represents a single line item in a payment link, including optional modifiers and quantity.
       class PaymentLinkLineItem
         extend T::Sig
