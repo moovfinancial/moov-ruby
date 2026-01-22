@@ -12,6 +12,14 @@ class Moov::Models::Errors::ListInvoicesValidationError
   def status=(str_); end
   def customer_account_id(); end
   def customer_account_id=(str_); end
+  def created_start_date_time(); end
+  def created_start_date_time=(str_); end
+  def created_end_date_time(); end
+  def created_end_date_time=(str_); end
+  def due_start_date_time(); end
+  def due_start_date_time=(str_); end
+  def due_end_date_time(); end
+  def due_end_date_time=(str_); end
   def skip(); end
   def skip=(str_); end
   def count(); end

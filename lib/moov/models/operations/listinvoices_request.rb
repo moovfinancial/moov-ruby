@@ -34,14 +34,26 @@ module Moov
 
         field :customer_account_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'customerAccountID', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), status: T.nilable(Models::Components::InvoiceStatus), customer_account_id: T.nilable(::String)).void }
-        def initialize(account_id:, x_moov_version: nil, skip: nil, count: nil, status: nil, customer_account_id: nil)
+        field :created_start_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'createdStartDateTime', 'style': 'form', 'explode': false } }
+
+        field :created_end_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'createdEndDateTime', 'style': 'form', 'explode': false } }
+
+        field :due_start_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'dueStartDateTime', 'style': 'form', 'explode': false } }
+
+        field :due_end_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'dueEndDateTime', 'style': 'form', 'explode': false } }
+
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), status: T.nilable(Models::Components::InvoiceStatus), customer_account_id: T.nilable(::String), created_start_date_time: T.nilable(::DateTime), created_end_date_time: T.nilable(::DateTime), due_start_date_time: T.nilable(::DateTime), due_end_date_time: T.nilable(::DateTime)).void }
+        def initialize(account_id:, x_moov_version: nil, skip: nil, count: nil, status: nil, customer_account_id: nil, created_start_date_time: nil, created_end_date_time: nil, due_start_date_time: nil, due_end_date_time: nil)
           @account_id = account_id
           @x_moov_version = x_moov_version
           @skip = skip
           @count = count
           @status = status
           @customer_account_id = customer_account_id
+          @created_start_date_time = created_start_date_time
+          @created_end_date_time = created_end_date_time
+          @due_start_date_time = due_start_date_time
+          @due_end_date_time = due_end_date_time
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -53,6 +65,10 @@ module Moov
           return false unless @count == other.count
           return false unless @status == other.status
           return false unless @customer_account_id == other.customer_account_id
+          return false unless @created_start_date_time == other.created_start_date_time
+          return false unless @created_end_date_time == other.created_end_date_time
+          return false unless @due_start_date_time == other.due_start_date_time
+          return false unless @due_end_date_time == other.due_end_date_time
           true
         end
       end

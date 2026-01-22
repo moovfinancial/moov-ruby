@@ -17,16 +17,28 @@ module Moov
 
         field :customer_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerAccountID') } }
 
+        field :created_start_date_time, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdStartDateTime') } }
+
+        field :created_end_date_time, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdEndDateTime') } }
+
+        field :due_start_date_time, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueStartDateTime') } }
+
+        field :due_end_date_time, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueEndDateTime') } }
+
         field :skip, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('skip') } }
 
         field :count, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('count') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(status: T.nilable(::String), customer_account_id: T.nilable(::String), skip: T.nilable(::String), count: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(status: nil, customer_account_id: nil, skip: nil, count: nil, raw_response: nil)
+        sig { params(status: T.nilable(::String), customer_account_id: T.nilable(::String), created_start_date_time: T.nilable(::String), created_end_date_time: T.nilable(::String), due_start_date_time: T.nilable(::String), due_end_date_time: T.nilable(::String), skip: T.nilable(::String), count: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(status: nil, customer_account_id: nil, created_start_date_time: nil, created_end_date_time: nil, due_start_date_time: nil, due_end_date_time: nil, skip: nil, count: nil, raw_response: nil)
           @status = status
           @customer_account_id = customer_account_id
+          @created_start_date_time = created_start_date_time
+          @created_end_date_time = created_end_date_time
+          @due_start_date_time = due_start_date_time
+          @due_end_date_time = due_end_date_time
           @skip = skip
           @count = count
           @raw_response = raw_response
@@ -37,6 +49,10 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @status == other.status
           return false unless @customer_account_id == other.customer_account_id
+          return false unless @created_start_date_time == other.created_start_date_time
+          return false unless @created_end_date_time == other.created_end_date_time
+          return false unless @due_start_date_time == other.due_start_date_time
+          return false unless @due_end_date_time == other.due_end_date_time
           return false unless @skip == other.skip
           return false unless @count == other.count
           return false unless @raw_response == other.raw_response
