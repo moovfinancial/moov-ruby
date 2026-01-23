@@ -43,7 +43,7 @@ module Moov
     def create_invoice(create_invoice:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create_invoice - Create an invoice for a Moov account.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::CreateInvoiceRequest.new(
         account_id: account_id,
@@ -207,7 +207,7 @@ module Moov
     def list_invoices(request:, timeout_ms: nil)
       # list_invoices - List all the invoices created under a Moov account.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -341,7 +341,7 @@ module Moov
     def get_invoice(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
       # get_invoice - Retrieve an invoice by ID.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       request = Models::Operations::GetInvoiceRequest.new(
         account_id: account_id,
@@ -463,7 +463,7 @@ module Moov
     def update_invoice(update_invoice:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
       # update_invoice - Updates an invoice.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::UpdateInvoiceRequest.new(
         account_id: account_id,
@@ -629,7 +629,7 @@ module Moov
       # create_invoice_payment - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
       # If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::CreateInvoicePaymentRequest.new(
         account_id: account_id,
@@ -794,7 +794,7 @@ module Moov
     def list_invoice_payments(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
       # list_invoice_payments - List all the payments made towards an invoice.
       # 
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       request = Models::Operations::ListInvoicePaymentsRequest.new(
         account_id: account_id,
