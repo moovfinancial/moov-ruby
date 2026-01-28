@@ -43,6 +43,9 @@ res = s.onboarding.create_invite(onboarding_invite_request: Models::Components::
   scopes: [
     Models::Components::ApplicationScope::ACCOUNTS_READ,
   ],
+  grant_scopes: [
+    Models::Components::ApplicationScope::TRANSFERS_WRITE,
+  ],
   capabilities: [
     Models::Components::CapabilityID::TRANSFERS,
   ],

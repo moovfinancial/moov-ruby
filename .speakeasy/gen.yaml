@@ -28,7 +28,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 0.3.30
+  version: 0.3.31
   additionalDependencies:
     development: {}
     runtime: {}

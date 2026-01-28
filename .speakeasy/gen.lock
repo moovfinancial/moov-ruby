@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 82a3a468be914fa4df92034f13c8f805
+  docChecksum: 901eedb2cf769175b2418371990af1ed
   docVersion: latest
-  speakeasyVersion: 1.695.0
-  generationVersion: 2.799.0
-  releaseVersion: 0.3.30
-  configChecksum: e8d45a5eec23c47ec586b788ea5e9bd1
+  speakeasyVersion: 1.700.1
+  generationVersion: 2.801.0
+  releaseVersion: 0.3.31
+  configChecksum: 1bbfa46b3a390ee9a5942a179be12c9e
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: e8e66fe9-bb23-4c80-a803-a0bfd2a5be4b
-  pristine_commit_hash: 43be1a5038aeaefb998a43d49bf025c67146bbc9
-  pristine_tree_hash: b825f957dd9645343f4f0dfbac71c9d3f58683a0
+  generation_id: 3729c5d2-5d61-48ab-bacc-0f9658e1d072
+  pristine_commit_hash: 687a155907d9f9150b95a274783deb8f1905a714
+  pristine_tree_hash: 6b331d1e428d8bc6a45103cafe4b66f22e0a4965
 features:
   ruby:
     constsAndDefaults: 0.1.1
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:61231017b05cd8ae38e65a7d5dc603393ef071b6
-    pristine_git_object: 8067b42e95c86da8a16ecb57d74df5b6a842e1e8
+    last_write_checksum: sha1:069311fea51f9815bc2b522fe1cb9b1a3a00436f
+    pristine_git_object: af0f3d7ede66450023a26d26aeef2a6f343344b3
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -1487,12 +1487,12 @@ trackedFiles:
     pristine_git_object: f905829619f6b06befd4b125d585266831b88efc
   docs/models/components/onboardinginvite.md:
     id: 8357af2b90ac
-    last_write_checksum: sha1:764281cc0190d08a7cea3e070c0633ddb2cac6bd
-    pristine_git_object: 10e76ae72c005cf2ac572aa04e87044122a5fe15
+    last_write_checksum: sha1:2992845d47b720733348435e96e3c71104b215be
+    pristine_git_object: dc10f1af4d8fc27cb4df75e36fe4c76a52545258
   docs/models/components/onboardinginviterequest.md:
     id: 8df4c9e0b9c5
-    last_write_checksum: sha1:eb2d73c901f590ca10e2d88dca8119e7d7dade74
-    pristine_git_object: 69b3f02d4366c77c4ecb8d33e583ead2b8c3cc17
+    last_write_checksum: sha1:01426689827b87880dfe67168ad650fb087fc4e8
+    pristine_git_object: 8ca7bb1f566312b09e8fa18144e18972cd76acc9
   docs/models/components/onboardingpartneraccount.md:
     id: 0cd9175b3bb0
     last_write_checksum: sha1:8e345887e0bb96c2c251278d8b95049bb81720e6
@@ -4235,8 +4235,8 @@ trackedFiles:
     pristine_git_object: 15f0a3aea9a67afb7864f13caf3f0d8b8af02a3c
   docs/sdks/onboarding/README.md:
     id: 395b30e93e5f
-    last_write_checksum: sha1:431d16533e24b7c6fc0088787b9aef2f78f17a97
-    pristine_git_object: d46a091227ec26f32592f798b52b4f1f7a7ba90e
+    last_write_checksum: sha1:4ceaa528278fd3d858bedf77e0509c31f0e0a103
+    pristine_git_object: 831155fd21419e48a608672778fb439d945a5bac
   docs/sdks/paymentlinks/README.md:
     id: 35777159619c
     last_write_checksum: sha1:90f1ba418f36658e1b2c1ae6af84145fbbd44ed0
@@ -7291,20 +7291,20 @@ trackedFiles:
     pristine_git_object: 669752dd56a3284ba1b7d41b724f557fde5188de
   lib/moov/models/components/onboardinginvite.rb:
     id: "666352079196"
-    last_write_checksum: sha1:0da9cf3c718f29454920d11ebb4fdebf66e34282
-    pristine_git_object: 3d8ef2eb1e73fd8dfe16a0b3b0a9b165defd3883
+    last_write_checksum: sha1:e3e6dab2bc885a372f575f0b508675b215a9660a
+    pristine_git_object: bcda14065b1f129d2e76e832963295d1abe12448
   lib/moov/models/components/onboardinginvite.rbi:
     id: ff2cc2032eed
-    last_write_checksum: sha1:2b1ef41fe9ea8bde36f381b42e44d2a946728ce1
-    pristine_git_object: 367a22083040da6b285d477ebb3c063dde556a8d
+    last_write_checksum: sha1:c884f9532e4577be7a452339bfc3513c9d122bf0
+    pristine_git_object: 2ba5239a6a073553fbb4d580e8bc6c4cac5a2ba6
   lib/moov/models/components/onboardinginviterequest.rb:
     id: 91bf437417e2
-    last_write_checksum: sha1:9e5d0b6808bbb58e0a474a54b5411a7ab008037e
-    pristine_git_object: ea5af2286f08c8c58fc4c2fae5507018c4a965dc
+    last_write_checksum: sha1:2a354928721c4b1710f87d7998f5394edec85011
+    pristine_git_object: 4327cba46ac41f3210fd50eeaf25b0f3e7c909d5
   lib/moov/models/components/onboardinginviterequest.rbi:
     id: 5a8d10d56f77
-    last_write_checksum: sha1:612dac9af32a77c8b4fe06b4a69ace96e85a8b7c
-    pristine_git_object: 5f6766816b14f82c25c36a6b8f9fd28253a93835
+    last_write_checksum: sha1:220a37571db22ec5f05909628c0a4c27d6b2fb9c
+    pristine_git_object: d56ea5ee0318d291456dc7128b35361c4f4a17a2
   lib/moov/models/components/onboardingpartneraccount.rb:
     id: 24f49a6d3adc
     last_write_checksum: sha1:64a1e0028efd85f8b8f5c6fd2e1ed2b8cbf447cc
@@ -12667,8 +12667,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:d8ee42405dcd93a705187fb2af9cea47f134bf35
-    pristine_git_object: 579de4f113c81c0062d414ccb587c5fe36cce7b3
+    last_write_checksum: sha1:a7cb0bc999793dd90e4dc29bd3e670bd6469b604
+    pristine_git_object: 9c648a1723b1cf4661f9739875b84fef9652afbf
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -12747,8 +12747,8 @@ trackedFiles:
     pristine_git_object: 9d8c08247f52013a6f69bba3a9530116f8888bd2
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:d30c8990b65a90dbe564d4434fb773451bf5eb5b
-    pristine_git_object: 5d48ee92deae03ad41e521075f5bc4f5c8ee3d8d
+    last_write_checksum: sha1:e1795d2806a8014ac7f96822325588bdcdc07f50
+    pristine_git_object: e90b95f5373333571fa4c75c50025ead668af61b
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -14618,10 +14618,10 @@ examples:
           x-moov-version: "v2024.01.00"
           X-Moov-Version: "v2024.01.00"
       requestBody:
-        application/json: {"scopes": ["accounts.read"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}}
+        application/json: {"scopes": ["accounts.read"], "grantScopes": ["transfers.write"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}}
       responses:
         "200":
-          application/json: {"code": "N1IA5eWYNh", "link": "https://failing-wasabi.com", "scopes": ["accounts.read"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "ee73fe4c-8ea3-4469-a841-92278013c9ea", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2024-05-08T22:53:24.634Z"}
+          application/json: {"code": "N1IA5eWYNh", "link": "https://failing-wasabi.com", "scopes": ["accounts.read"], "grantScopes": ["transfers.write"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "ee73fe4c-8ea3-4469-a841-92278013c9ea", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2024-05-08T22:53:24.634Z"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -14645,7 +14645,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"code": "N1IA5eWYNh", "link": "https://austere-cappelletti.com", "scopes": ["accounts.read"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "056b20bf-2d5d-4e89-9317-29958a4e4a82", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2025-08-08T10:05:08.362Z"}
+          application/json: {"code": "N1IA5eWYNh", "link": "https://austere-cappelletti.com", "scopes": ["accounts.read"], "grantScopes": ["transfers.write"], "capabilities": ["transfers"], "feePlanCodes": ["merchant-direct"], "prefill": {"accountType": "business", "profile": {"business": {"legalBusinessName": "Whole Body Fitness LLC"}}}, "partner": {"accountID": "056b20bf-2d5d-4e89-9317-29958a4e4a82", "accountMode": "production", "displayName": "Bob's Widgets"}, "createdOn": "2025-08-08T10:05:08.362Z"}
   revokeOnboardingInvite:
     speakeasy-default-revoke-onboarding-invite:
       parameters:
@@ -15271,6 +15271,7 @@ examples:
         "200":
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
+releaseNotes: "## Ruby SDK Changes:\n* `client.onboarding.create_invite()`: \n  *  `request.onboarding_invite_request.grant_scopes` **Added**\n  *  `response.grant_scopes` **Added**\n* `client.onboarding.list_invites()`:  `response.[].grant_scopes` **Added**\n* `client.onboarding.get_invite()`:  `response.grant_scopes` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

@@ -24,16 +24,20 @@ module Moov
         field :return_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnURL') } }
         # Optional URL to your organization's terms of service.
         field :terms_of_service_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfServiceURL') } }
+        #   List of [scopes](https://docs.moov.io/api/authentication/scopes/) you grant to allow being used 
+        #   by the new account on yourself. These values are used to determine what the account onboarded can do.
+        field :grant_scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ApplicationScope)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('grantScopes') } }
 
         field :prefill, Crystalline::Nilable.new(Models::Components::CreateAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('prefill') } }
 
-        sig { params(scopes: T::Array[Models::Components::ApplicationScope], capabilities: T::Array[Models::Components::CapabilityID], fee_plan_codes: T::Array[::String], return_url: T.nilable(::String), terms_of_service_url: T.nilable(::String), prefill: T.nilable(Models::Components::CreateAccount)).void }
-        def initialize(scopes:, capabilities:, fee_plan_codes:, return_url: nil, terms_of_service_url: nil, prefill: nil)
+        sig { params(scopes: T::Array[Models::Components::ApplicationScope], capabilities: T::Array[Models::Components::CapabilityID], fee_plan_codes: T::Array[::String], return_url: T.nilable(::String), terms_of_service_url: T.nilable(::String), grant_scopes: T.nilable(T::Array[Models::Components::ApplicationScope]), prefill: T.nilable(Models::Components::CreateAccount)).void }
+        def initialize(scopes:, capabilities:, fee_plan_codes:, return_url: nil, terms_of_service_url: nil, grant_scopes: nil, prefill: nil)
           @scopes = scopes
           @capabilities = capabilities
           @fee_plan_codes = fee_plan_codes
           @return_url = return_url
           @terms_of_service_url = terms_of_service_url
+          @grant_scopes = grant_scopes
           @prefill = prefill
         end
 
@@ -45,6 +49,7 @@ module Moov
           return false unless @fee_plan_codes == other.fee_plan_codes
           return false unless @return_url == other.return_url
           return false unless @terms_of_service_url == other.terms_of_service_url
+          return false unless @grant_scopes == other.grant_scopes
           return false unless @prefill == other.prefill
           true
         end

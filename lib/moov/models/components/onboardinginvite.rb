@@ -30,6 +30,9 @@ module Moov
         field :return_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnURL') } }
         # The terms of service URL set by the inviter.
         field :terms_of_service_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfServiceURL') } }
+        #   List of [scopes](https://docs.moov.io/api/authentication/scopes/) you grant to allow being used 
+        #   by the new account on yourself. These values are used to determine what the account onboarded can do.
+        field :grant_scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ApplicationScope)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('grantScopes') } }
         # The account ID of the account that redeemed the invite.
         field :redeemed_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('redeemedAccountID') } }
 
@@ -41,8 +44,8 @@ module Moov
 
         field :redeemed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('redeemedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
 
-        sig { params(code: ::String, link: ::String, scopes: T::Array[Models::Components::ApplicationScope], capabilities: T::Array[Models::Components::CapabilityID], fee_plan_codes: T::Array[::String], created_on: ::DateTime, return_url: T.nilable(::String), terms_of_service_url: T.nilable(::String), redeemed_account_id: T.nilable(::String), prefill: T.nilable(Models::Components::CreateAccount), partner: T.nilable(Models::Components::OnboardingPartnerAccount), revoked_on: T.nilable(::DateTime), redeemed_on: T.nilable(::DateTime)).void }
-        def initialize(code:, link:, scopes:, capabilities:, fee_plan_codes:, created_on:, return_url: nil, terms_of_service_url: nil, redeemed_account_id: nil, prefill: nil, partner: nil, revoked_on: nil, redeemed_on: nil)
+        sig { params(code: ::String, link: ::String, scopes: T::Array[Models::Components::ApplicationScope], capabilities: T::Array[Models::Components::CapabilityID], fee_plan_codes: T::Array[::String], created_on: ::DateTime, return_url: T.nilable(::String), terms_of_service_url: T.nilable(::String), grant_scopes: T.nilable(T::Array[Models::Components::ApplicationScope]), redeemed_account_id: T.nilable(::String), prefill: T.nilable(Models::Components::CreateAccount), partner: T.nilable(Models::Components::OnboardingPartnerAccount), revoked_on: T.nilable(::DateTime), redeemed_on: T.nilable(::DateTime)).void }
+        def initialize(code:, link:, scopes:, capabilities:, fee_plan_codes:, created_on:, return_url: nil, terms_of_service_url: nil, grant_scopes: nil, redeemed_account_id: nil, prefill: nil, partner: nil, revoked_on: nil, redeemed_on: nil)
           @code = code
           @link = link
           @scopes = scopes
@@ -51,6 +54,7 @@ module Moov
           @created_on = created_on
           @return_url = return_url
           @terms_of_service_url = terms_of_service_url
+          @grant_scopes = grant_scopes
           @redeemed_account_id = redeemed_account_id
           @prefill = prefill
           @partner = partner
@@ -69,6 +73,7 @@ module Moov
           return false unless @created_on == other.created_on
           return false unless @return_url == other.return_url
           return false unless @terms_of_service_url == other.terms_of_service_url
+          return false unless @grant_scopes == other.grant_scopes
           return false unless @redeemed_account_id == other.redeemed_account_id
           return false unless @prefill == other.prefill
           return false unless @partner == other.partner

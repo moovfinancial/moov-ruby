@@ -24,6 +24,8 @@ class Moov::Models::Components::OnboardingInvite
   def return_url=(str_); end
   def terms_of_service_url(); end
   def terms_of_service_url=(str_); end
+  def grant_scopes(); end
+  def grant_scopes=(str_); end
   def redeemed_account_id(); end
   def redeemed_account_id=(str_); end
   def prefill(); end

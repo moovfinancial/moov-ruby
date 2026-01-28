@@ -18,6 +18,8 @@ class Moov::Models::Components::OnboardingInviteRequest
   def return_url=(str_); end
   def terms_of_service_url(); end
   def terms_of_service_url=(str_); end
+  def grant_scopes(); end
+  def grant_scopes=(str_); end
   def prefill(); end
   def prefill=(str_); end
 end
