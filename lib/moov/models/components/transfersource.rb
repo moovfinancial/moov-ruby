@@ -28,15 +28,13 @@ module Moov
         field :card, Crystalline::Nilable.new(Models::Components::PaymentMethodsCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('card') } }
         # Describes an Apple Pay token on a Moov account.
         field :apple_pay, Crystalline::Nilable.new(Models::Components::ApplePayResponse), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('applePay') } }
-        # Describes payment card details captured with tap or in-person payment.
-        field :terminal_card, Crystalline::Nilable.new(Models::Components::TerminalCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('terminalCard') } }
         # Card-specific details about the transaction.
         field :card_details, Crystalline::Nilable.new(Models::Components::CardTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails') } }
         # ACH specific details about the transaction.
         field :ach_details, Crystalline::Nilable.new(Models::Components::ACHTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
 
-        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::PaymentMethodType, account: Models::Components::TransferAccount, transfer_id: T.nilable(::String), bank_account: T.nilable(Models::Components::PaymentMethodsBankAccount), wallet: T.nilable(Models::Components::PaymentMethodsWallet), card: T.nilable(Models::Components::PaymentMethodsCard), apple_pay: T.nilable(Models::Components::ApplePayResponse), terminal_card: T.nilable(Models::Components::TerminalCard), card_details: T.nilable(Models::Components::CardTransactionDetails), ach_details: T.nilable(Models::Components::ACHTransactionDetails)).void }
-        def initialize(payment_method_id:, payment_method_type:, account:, transfer_id: nil, bank_account: nil, wallet: nil, card: nil, apple_pay: nil, terminal_card: nil, card_details: nil, ach_details: nil)
+        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::PaymentMethodType, account: Models::Components::TransferAccount, transfer_id: T.nilable(::String), bank_account: T.nilable(Models::Components::PaymentMethodsBankAccount), wallet: T.nilable(Models::Components::PaymentMethodsWallet), card: T.nilable(Models::Components::PaymentMethodsCard), apple_pay: T.nilable(Models::Components::ApplePayResponse), card_details: T.nilable(Models::Components::CardTransactionDetails), ach_details: T.nilable(Models::Components::ACHTransactionDetails)).void }
+        def initialize(payment_method_id:, payment_method_type:, account:, transfer_id: nil, bank_account: nil, wallet: nil, card: nil, apple_pay: nil, card_details: nil, ach_details: nil)
           @payment_method_id = payment_method_id
           @payment_method_type = payment_method_type
           @account = account
@@ -45,7 +43,6 @@ module Moov
           @wallet = wallet
           @card = card
           @apple_pay = apple_pay
-          @terminal_card = terminal_card
           @card_details = card_details
           @ach_details = ach_details
         end
@@ -61,7 +58,6 @@ module Moov
           return false unless @wallet == other.wallet
           return false unless @card == other.card
           return false unless @apple_pay == other.apple_pay
-          return false unless @terminal_card == other.terminal_card
           return false unless @card_details == other.card_details
           return false unless @ach_details == other.ach_details
           true

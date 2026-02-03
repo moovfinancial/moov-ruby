@@ -47,7 +47,7 @@ module Moov
         #   the display name and Business Profile name fields (`legalBusinessName`, and `doingBusinessAs`).
         # 
         #   Filtering by `type=guest` is not currently supported.
-        field :type, Crystalline::Nilable.new(Models::Components::CreateAccountType), { 'query_param': { 'field_name': 'type', 'style': 'form', 'explode': false } }
+        field :type, Crystalline::Nilable.new(Models::Components::AccountType), { 'query_param': { 'field_name': 'type', 'style': 'form', 'explode': false } }
         #   Serves as an optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'foreignID', 'style': 'form', 'explode': false } }
         # Filter disconnected accounts.
@@ -63,7 +63,7 @@ module Moov
 
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), name: T.nilable(::String), email: T.nilable(::String), type: T.nilable(Models::Components::CreateAccountType), foreign_id: T.nilable(::String), include_disconnected: T.nilable(T::Boolean), capability: T.nilable(Models::Components::CapabilityID), capability_status: T.nilable(Models::Components::CapabilityStatus), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
+        sig { params(account_id: ::String, x_moov_version: T.nilable(::String), name: T.nilable(::String), email: T.nilable(::String), type: T.nilable(Models::Components::AccountType), foreign_id: T.nilable(::String), include_disconnected: T.nilable(T::Boolean), capability: T.nilable(Models::Components::CapabilityID), capability_status: T.nilable(Models::Components::CapabilityStatus), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
         def initialize(account_id:, x_moov_version: nil, name: nil, email: nil, type: nil, foreign_id: nil, include_disconnected: nil, capability: nil, capability_status: nil, skip: nil, count: nil)
           @account_id = account_id
           @x_moov_version = x_moov_version

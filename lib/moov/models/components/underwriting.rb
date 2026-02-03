@@ -13,36 +13,22 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :average_transaction_size, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('averageTransactionSize') } }
+        field :average_transaction_size, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('averageTransactionSize'), required: true } }
 
-        field :max_transaction_size, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxTransactionSize') } }
+        field :max_transaction_size, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxTransactionSize'), required: true } }
 
-        field :average_monthly_transaction_volume, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('averageMonthlyTransactionVolume') } }
+        field :average_monthly_transaction_volume, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('averageMonthlyTransactionVolume'), required: true } }
         # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
-        field :status, Crystalline::Nilable.new(Models::Components::UnderwritingStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::UnderwritingStatus, true) } }
+        field :status, Models::Components::UnderwritingStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::UnderwritingStatus, false) } }
 
-        field :volume_by_customer_type, Crystalline::Nilable.new(Models::Components::VolumeByCustomerType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeByCustomerType') } }
+        field :volume_by_customer_type, Models::Components::VolumeByCustomerType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeByCustomerType'), required: true } }
 
-        field :card_volume_distribution, Crystalline::Nilable.new(Models::Components::CardVolumeDistribution), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardVolumeDistribution') } }
+        field :card_volume_distribution, Models::Components::CardVolumeDistribution, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardVolumeDistribution'), required: true } }
 
-        field :fulfillment, Crystalline::Nilable.new(Models::Components::FulfillmentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fulfillment') } }
+        field :fulfillment, Models::Components::FulfillmentDetails, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fulfillment'), required: true } }
 
-        field :geographic_reach, Crystalline::Nilable.new(Models::Components::GeographicReach), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('geographicReach'), 'decoder': Utils.enum_from_string(Models::Components::GeographicReach, true) } }
-
-        field :business_presence, Crystalline::Nilable.new(Models::Components::BusinessPresence), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessPresence'), 'decoder': Utils.enum_from_string(Models::Components::BusinessPresence, true) } }
-
-        field :pending_litigation, Crystalline::Nilable.new(Models::Components::PendingLitigation), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingLitigation'), 'decoder': Utils.enum_from_string(Models::Components::PendingLitigation, true) } }
-
-        field :volume_share_by_customer_type, Crystalline::Nilable.new(Models::Components::VolumeShareByCustomerType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeShareByCustomerType') } }
-
-        field :collect_funds, Crystalline::Nilable.new(Models::Components::CollectFunds), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('collectFunds') } }
-
-        field :money_transfer, Crystalline::Nilable.new(Models::Components::MoneyTransfer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moneyTransfer') } }
-
-        field :send_funds, Crystalline::Nilable.new(Models::Components::SendFunds), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sendFunds') } }
-
-        sig { params(average_transaction_size: T.nilable(::Integer), max_transaction_size: T.nilable(::Integer), average_monthly_transaction_volume: T.nilable(::Integer), status: T.nilable(Models::Components::UnderwritingStatus), volume_by_customer_type: T.nilable(Models::Components::VolumeByCustomerType), card_volume_distribution: T.nilable(Models::Components::CardVolumeDistribution), fulfillment: T.nilable(Models::Components::FulfillmentDetails), geographic_reach: T.nilable(Models::Components::GeographicReach), business_presence: T.nilable(Models::Components::BusinessPresence), pending_litigation: T.nilable(Models::Components::PendingLitigation), volume_share_by_customer_type: T.nilable(Models::Components::VolumeShareByCustomerType), collect_funds: T.nilable(Models::Components::CollectFunds), money_transfer: T.nilable(Models::Components::MoneyTransfer), send_funds: T.nilable(Models::Components::SendFunds)).void }
-        def initialize(average_transaction_size: nil, max_transaction_size: nil, average_monthly_transaction_volume: nil, status: nil, volume_by_customer_type: nil, card_volume_distribution: nil, fulfillment: nil, geographic_reach: nil, business_presence: nil, pending_litigation: nil, volume_share_by_customer_type: nil, collect_funds: nil, money_transfer: nil, send_funds: nil)
+        sig { params(average_transaction_size: ::Integer, max_transaction_size: ::Integer, average_monthly_transaction_volume: ::Integer, status: Models::Components::UnderwritingStatus, volume_by_customer_type: Models::Components::VolumeByCustomerType, card_volume_distribution: Models::Components::CardVolumeDistribution, fulfillment: Models::Components::FulfillmentDetails).void }
+        def initialize(average_transaction_size:, max_transaction_size:, average_monthly_transaction_volume:, status:, volume_by_customer_type:, card_volume_distribution:, fulfillment:)
           @average_transaction_size = average_transaction_size
           @max_transaction_size = max_transaction_size
           @average_monthly_transaction_volume = average_monthly_transaction_volume
@@ -50,13 +36,6 @@ module Moov
           @volume_by_customer_type = volume_by_customer_type
           @card_volume_distribution = card_volume_distribution
           @fulfillment = fulfillment
-          @geographic_reach = geographic_reach
-          @business_presence = business_presence
-          @pending_litigation = pending_litigation
-          @volume_share_by_customer_type = volume_share_by_customer_type
-          @collect_funds = collect_funds
-          @money_transfer = money_transfer
-          @send_funds = send_funds
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -69,13 +48,6 @@ module Moov
           return false unless @volume_by_customer_type == other.volume_by_customer_type
           return false unless @card_volume_distribution == other.card_volume_distribution
           return false unless @fulfillment == other.fulfillment
-          return false unless @geographic_reach == other.geographic_reach
-          return false unless @business_presence == other.business_presence
-          return false unless @pending_litigation == other.pending_litigation
-          return false unless @volume_share_by_customer_type == other.volume_share_by_customer_type
-          return false unless @collect_funds == other.collect_funds
-          return false unless @money_transfer == other.money_transfer
-          return false unless @send_funds == other.send_funds
           true
         end
       end

@@ -16,21 +16,10 @@ module Moov
         enums do
           TRANSFERS = new('transfers')
           SEND_FUNDS = new('send-funds')
-          SEND_FUNDS_PUSH_TO_CARD = new('send-funds.push-to-card')
-          MONEY_TRANSFER_PUSH_TO_CARD = new('money-transfer.push-to-card')
-          SEND_FUNDS_ACH = new('send-funds.ach')
-          SEND_FUNDS_RTP = new('send-funds.rtp')
-          SEND_FUNDS_INSTANT_BANK = new('send-funds.instant-bank')
           COLLECT_FUNDS = new('collect-funds')
-          COLLECT_FUNDS_CARD_PAYMENTS = new('collect-funds.card-payments')
-          MONEY_TRANSFER_PULL_FROM_CARD = new('money-transfer.pull-from-card')
-          COLLECT_FUNDS_ACH = new('collect-funds.ach')
           WALLET = new('wallet')
-          WALLET_BALANCE = new('wallet.balance')
           CARD_ISSUING = new('card-issuing')
           PRODUCTION_APP = new('production-app')
-          PLATFORM_PRODUCTION_APP = new('platform.production-app')
-          PLATFORM_WALLET_TRANSFERS = new('platform.wallet-transfers')
         end
       end
     end

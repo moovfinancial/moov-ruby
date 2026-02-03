@@ -12,6 +12,4 @@ class Moov::Models::Components::Profile
   def individual=(str_); end
   def business(); end
   def business=(str_); end
-  def guest(); end
-  def guest=(str_); end
 end

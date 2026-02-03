@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :industries, Crystalline::Array.new(Models::Components::IndustryTaxonomy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('industries'), required: true } }
+        field :industries, Crystalline::Array.new(Models::Components::EnrichedIndustry), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('industries'), required: true } }
 
-        sig { params(industries: T::Array[Models::Components::IndustryTaxonomy]).void }
+        sig { params(industries: T::Array[Models::Components::EnrichedIndustry]).void }
         def initialize(industries:)
           @industries = industries
         end

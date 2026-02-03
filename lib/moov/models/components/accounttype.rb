@@ -14,7 +14,6 @@ module Moov
         enums do
           INDIVIDUAL = new('individual')
           BUSINESS = new('business')
-          GUEST = new('guest')
         end
       end
     end

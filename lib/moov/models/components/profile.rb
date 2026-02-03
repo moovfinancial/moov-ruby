@@ -16,14 +16,11 @@ module Moov
         field :individual, Crystalline::Nilable.new(Models::Components::IndividualProfile), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('individual') } }
         # Describes a business.
         field :business, Crystalline::Nilable.new(Models::Components::BusinessProfile), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('business') } }
-        # Describes a guest account profile.
-        field :guest, Crystalline::Nilable.new(Models::Components::GuestProfile), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('guest') } }
 
-        sig { params(individual: T.nilable(Models::Components::IndividualProfile), business: T.nilable(Models::Components::BusinessProfile), guest: T.nilable(Models::Components::GuestProfile)).void }
-        def initialize(individual: nil, business: nil, guest: nil)
+        sig { params(individual: T.nilable(Models::Components::IndividualProfile), business: T.nilable(Models::Components::BusinessProfile)).void }
+        def initialize(individual: nil, business: nil)
           @individual = individual
           @business = business
-          @guest = guest
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -31,7 +28,6 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @individual == other.individual
           return false unless @business == other.business
-          return false unless @guest == other.guest
           true
         end
       end
