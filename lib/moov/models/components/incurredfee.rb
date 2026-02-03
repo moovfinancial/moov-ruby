@@ -14,21 +14,21 @@ module Moov
 
 
         field :fee_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeID') } }
-
+        # Account ID the fee belongs to.
         field :account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID') } }
-
+        # Wallet ID associated with the fee.
         field :wallet_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID') } }
-
+        # Timestamp when the fee was created.
         field :created_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
-
+        # Name of the fee.
         field :fee_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeName') } }
-
+        # The fee amount.
         field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
-        # The entity that generated the fee.
+        # Object indicating what generated the fee (TransferID, CardID, DisputeID, AccountID, or BankAccountID).
         field :generated_by, Crystalline::Nilable.new(Models::Components::GeneratedBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('generatedBy') } }
-
+        # Describes the source of the fee, such as a Moov-set processing fee, a network pass-through fee, or an interchange or discount fee.
         field :fee_group, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeGroup') } }
-
+        # Unique identifier for this residual payment calculation.
         field :residual_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('residualID') } }
 
         sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy), fee_group: T.nilable(::String), residual_id: T.nilable(::String)).void }

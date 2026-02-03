@@ -14,7 +14,7 @@ module Moov
 
 
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
-
+        # Unique identifier for this residual payment calculation.
         field :residual_id, ::String, { 'path_param': { 'field_name': 'residualID', 'style': 'simple', 'explode': false } }
         # Specify an API version.
         # 

@@ -12,35 +12,31 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Unique identifier for this residual payment calculation.
         field :residual_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('residualID'), required: true } }
-
+        # The partner account ID this residual belongs to.
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
-
+        # Start date and time of the residual calculation period.
         field :period_start, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('periodStart'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
-
+        # End date and time of the residual calculation period.
         field :period_end, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('periodEnd'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
-
+        # Total amount of merchant fees collected during the period. This represents the partner's revenue from merchant fees.
         field :merchant_fees, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantFees'), required: true } }
-
+        # Partner's total cost (buy rate) during the period.
         field :partner_cost, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerCost'), required: true } }
-
+        # Net income calculated as merchant fee revenue minus partner costs.
         field :net_income, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('netIncome'), required: true } }
-        #   The decimal-formatted numerical string of the revenue split for partner.
-        #   
-        #   For example, 2.25% is '2.25'.
+        # The revenue share percentage the partner receives, expressed as a decimal string (e.g., "25.00" for 25%).
         field :revenue_share, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('revenueShare'), required: true } }
-
+        # The amount the partner receives as their share of the net income (netIncome × revenueShare).
         field :residual_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('residualAmount'), required: true } }
-
-        field :moov_share, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovShare'), required: true } }
-
+        # Timestamp when the residual was created.
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
-
+        # Timestamp when the residual was last updated.
         field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
 
-        sig { params(residual_id: ::String, partner_account_id: ::String, period_start: ::DateTime, period_end: ::DateTime, merchant_fees: Models::Components::AmountDecimal, partner_cost: Models::Components::AmountDecimal, net_income: Models::Components::AmountDecimal, revenue_share: ::String, residual_amount: Models::Components::AmountDecimal, moov_share: Models::Components::AmountDecimal, created_on: ::DateTime, updated_on: ::DateTime).void }
-        def initialize(residual_id:, partner_account_id:, period_start:, period_end:, merchant_fees:, partner_cost:, net_income:, revenue_share:, residual_amount:, moov_share:, created_on:, updated_on:)
+        sig { params(residual_id: ::String, partner_account_id: ::String, period_start: ::DateTime, period_end: ::DateTime, merchant_fees: Models::Components::AmountDecimal, partner_cost: Models::Components::AmountDecimal, net_income: Models::Components::AmountDecimal, revenue_share: ::String, residual_amount: Models::Components::AmountDecimal, created_on: ::DateTime, updated_on: ::DateTime).void }
+        def initialize(residual_id:, partner_account_id:, period_start:, period_end:, merchant_fees:, partner_cost:, net_income:, revenue_share:, residual_amount:, created_on:, updated_on:)
           @residual_id = residual_id
           @partner_account_id = partner_account_id
           @period_start = period_start
@@ -50,7 +46,6 @@ module Moov
           @net_income = net_income
           @revenue_share = revenue_share
           @residual_amount = residual_amount
-          @moov_share = moov_share
           @created_on = created_on
           @updated_on = updated_on
         end
@@ -67,7 +62,6 @@ module Moov
           return false unless @net_income == other.net_income
           return false unless @revenue_share == other.revenue_share
           return false unless @residual_amount == other.residual_amount
-          return false unless @moov_share == other.moov_share
           return false unless @created_on == other.created_on
           return false unless @updated_on == other.updated_on
           true

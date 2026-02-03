@@ -26,8 +26,6 @@ class Moov::Models::Components::Residual
   def revenue_share=(str_); end
   def residual_amount(); end
   def residual_amount=(str_); end
-  def moov_share(); end
-  def moov_share=(str_); end
   def created_on(); end
   def created_on=(str_); end
   def updated_on(); end
