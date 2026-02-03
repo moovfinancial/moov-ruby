@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    latest:
+        inputs:
+            - location: registry.speakeasyapi.dev/moov/moov/api-{{API_VERSION}}
+        registry:
+            location: registry.speakeasyapi.dev/moov/moov/ruby-{{API_VERSION}}
+targets:
+    moov:
+        target: ruby
+        source: latest
+        publish:
+            rubygems:
+                token: $rubygems_auth_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/moov/moov/{{API_VERSION}}-ruby-code-samples
+            labelOverride:
+                fixedValue: Ruby (SDK)
+            blocking: false
