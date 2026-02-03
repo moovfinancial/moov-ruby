@@ -5,15 +5,15 @@ management:
   docVersion: v2025.01.00
   speakeasyVersion: 1.700.2
   generationVersion: 2.801.2
-  releaseVersion: 25.1.0-dev.0
-  configChecksum: 53bd1eaec59fe9cd9f84371530b0a2f4
+  releaseVersion: 25.1.0
+  configChecksum: 33f510dedbcb0350ac071619948d39f4
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 1ad3a30c-078f-48f0-a7c6-f892d2b64831
-  pristine_commit_hash: d45a489e0f782814694eddd1bff77e63f9872f06
-  pristine_tree_hash: fa1cf73fa7b0e7a9b5cab7bfaff44ee78c01c1b9
+  generation_id: 3e8569d5-071c-4054-8d5e-0cd2609ca1ec
+  pristine_commit_hash: 4f67ce145bc9f8f479396577b7ff166ba2c8e408
+  pristine_tree_hash: 7144b556a0b2472bb661ed76ccb65f56411fb740
 features:
   ruby:
     constsAndDefaults: 0.1.1
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:aff78cc54eafe1cf4288ed6f5884530c7996eaa1
-    pristine_git_object: b2be14a6a770bf8197c47aad4d5f777432809a0c
+    last_write_checksum: sha1:c9c9e626e94298909a0a0aa3e5d6464d056c4101
+    pristine_git_object: 286e0a020291bcc2b56f0786af69b4119f2ea9c9
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -11335,8 +11335,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:c8deb45cffa9ea6eb9842f55330adc79ad096d47
-    pristine_git_object: 78c9d51c5b44b920efd881a2e073b90e69324085
+    last_write_checksum: sha1:da3b11f52389c2bdd7efdfe3cb2799bb7f7cbb96
+    pristine_git_object: 13ae1b75d98592d5254f18af0599f43956cb7388
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -11411,8 +11411,8 @@ trackedFiles:
     pristine_git_object: 14c62564bc3e68a41ddffd5a2f33037f4d55049e
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:1ea085007579d27ffc5fe1263b143be17243fba2
-    pristine_git_object: 2afa99163abf9bf9fd2739e84b3ccde2be773ec2
+    last_write_checksum: sha1:72d7a1cb30d1384dbda45a2ad99c443b8ed22123
+    pristine_git_object: a4c0374f9990929bb7966a269c3d12eb50b52edf
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -13936,7 +13936,6 @@ examples:
         "200":
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.payment_methods.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.transfers.generate_options()`:  `response.source_options[]` **Changed** **Breaking** ⚠️\n* `client.capabilities.request()`: \n  *  `request.add_capabilities.capabilities[]` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.onboarding.get_invite()`:  `response.capabilities[]` **Changed** **Breaking** ⚠️\n* `client.onboarding.list_invites()`:  `response.[].capabilities[]` **Changed** **Breaking** ⚠️\n* `client.onboarding.create_invite()`: \n  *  `request.onboarding_invite_request.capabilities[]` **Changed** **Breaking** ⚠️\n  *  `response.capabilities[]` **Changed** **Breaking** ⚠️\n* `client.industries.list()`:  `response.industries[]` **Changed** **Breaking** ⚠️\n* `client.underwriting.upsert()`:  `response` **Changed** **Breaking** ⚠️\n* `client.underwriting.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.transfers.update()`:  `response` **Changed** **Breaking** ⚠️\n* `client.transfers.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.transfers.list()`:  `response.[]` **Changed** **Breaking** ⚠️\n* `client.accounts.create()`: \n  *  `request.create_account.capabilities[]` **Changed** **Breaking** ⚠️\n  *  `response` **Changed** **Breaking** ⚠️\n* `client.accounts.list()`: \n  *  `request.capability` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.accounts.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.accounts.update()`:  `response` **Changed** **Breaking** ⚠️\n* `client.accounts.list_connected()`: \n  *  `request.capability` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.apple_pay.link_token()`:  `response.payment_method_type` **Changed** **Breaking** ⚠️\n* `client.bank_accounts.link()`: \n  *  `request.link_bank_account.union(BankAccountPayload).account.holder_type.enum(guest)` **Removed** **Breaking** ⚠️\n  *  `response` **Changed** **Breaking** ⚠️\n* `client.bank_accounts.list()`:  `response.[]` **Changed** **Breaking** ⚠️\n* `client.transfers.create()`: \n  *  `response` **Changed** **Breaking** ⚠️\n  *  `error` **Changed** **Breaking** ⚠️\n* `client.capabilities.list()`:  `response.[]` **Changed** **Breaking** ⚠️\n* `client.bank_accounts.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.capabilities.get()`: \n  *  `request.capability_id` **Changed** **Breaking** ⚠️\n  *  `response` **Changed** **Breaking** ⚠️\n* `client.capabilities.disable()`:  `request.capability_id` **Changed** **Breaking** ⚠️\n* `client.cards.link()`:  `response.payment_methods[].payment_method_type` **Changed** **Breaking** ⚠️\n* `client.cards.list()`:  `response.[].payment_methods[].payment_method_type` **Changed** **Breaking** ⚠️\n* `client.cards.get()`:  `response.payment_methods[].payment_method_type` **Changed** **Breaking** ⚠️\n* `client.cards.update()`:  `response.payment_methods[].payment_method_type` **Changed** **Breaking** ⚠️\n* `client.payment_methods.list()`: \n  *  `request.payment_method_type` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.invoices.create_invoice()`: **Removed** **Breaking** ⚠️\n* `client.invoices.get_invoice()`: **Removed** **Breaking** ⚠️\n* `client.invoices.list_invoices()`: **Removed** **Breaking** ⚠️\n* `client.underwriting.save()`: **Removed** **Breaking** ⚠️\n* `client.support.list_ticket_messages()`: **Removed** **Breaking** ⚠️\n* `client.support.update_ticket()`: **Removed** **Breaking** ⚠️\n* `client.support.get_ticket()`: **Removed** **Breaking** ⚠️\n* `client.support.list_tickets()`: **Removed** **Breaking** ⚠️\n* `client.support.create_ticket()`: **Removed** **Breaking** ⚠️\n* `client.invoices.list_invoice_payments()`: **Removed** **Breaking** ⚠️\n* `client.invoices.create_invoice_payment()`: **Removed** **Breaking** ⚠️\n* `client.invoices.update_invoice()`: **Removed** **Breaking** ⚠️\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
