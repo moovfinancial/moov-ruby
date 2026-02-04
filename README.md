@@ -65,7 +65,7 @@ s = ::Moov::Client.new(
     )
 
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
-  account_type: Models::Components::CreateAccountType::BUSINESS,
+  account_type: Models::Components::AccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
       legal_business_name: 'Whole Body Fitness LLC',
@@ -105,7 +105,7 @@ s = ::Moov::Client.new(
     )
 
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
-  account_type: Models::Components::CreateAccountType::BUSINESS,
+  account_type: Models::Components::AccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
       legal_business_name: 'Whole Body Fitness LLC',
@@ -606,10 +606,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
-* [list_partner_pricing](docs/sdks/feeplans/README.md#list_partner_pricing) - List all partner pricing plans available for use by an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 * [list_partner_pricing_agreements](docs/sdks/feeplans/README.md#list_partner_pricing_agreements) - List all partner pricing agreements associated with an account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -685,34 +681,6 @@ Search for institutions by either their name or routing number.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/fed.read` scope. :warning: **Deprecated**
-
-### [Invoices](docs/sdks/invoices/README.md)
-
-* [create_invoice](docs/sdks/invoices/README.md#create_invoice) - Create an invoice for a Moov account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
-* [list_invoices](docs/sdks/invoices/README.md#list_invoices) - List all the invoices created under a Moov account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
-* [get_invoice](docs/sdks/invoices/README.md#get_invoice) - Retrieve an invoice by ID.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
-* [update_invoice](docs/sdks/invoices/README.md#update_invoice) - Updates an invoice.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
-* [create_invoice_payment](docs/sdks/invoices/README.md#create_invoice_payment) - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
-If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
-* [list_invoice_payments](docs/sdks/invoices/README.md#list_invoice_payments) - List all the payments made towards an invoice.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### [IssuingTransactions](docs/sdks/issuingtransactions/README.md)
 
@@ -906,44 +874,6 @@ Use the `Accept` header to specify the format of the response. Supported formats
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 
-### [Support](docs/sdks/support/README.md)
-
-* [create_ticket](docs/sdks/support/README.md#create_ticket) - Create a support ticket for a Moov account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
-
-If you're creating the ticket on behalf of another account, then you'll need to
-specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{accountID}/profile.read` scopes.
-* [list_tickets](docs/sdks/support/README.md#list_tickets) - List all the support tickets created under a Moov account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
-
-If you're listing another account's tickets, then you'll need to
-specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
-* [get_ticket](docs/sdks/support/README.md#get_ticket) - Retrieve a support ticket by ID.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
-
-If you're retrieving another account's ticket, then you'll need to
-specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
-* [update_ticket](docs/sdks/support/README.md#update_ticket) - Updates a support ticket.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
-you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
-
-If you're updating the ticket on behalf of another account, then you'll need to
-specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{accountID}/profile.read` scopes.
-* [list_ticket_messages](docs/sdks/support/README.md#list_ticket_messages) - List all the messages for a support ticket.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
-
-If you're listing another account's messages, then you'll need to
-specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
-
 ### [Sweeps](docs/sdks/sweeps/README.md)
 
 * [create_config](docs/sdks/sweeps/README.md#create_config) - Create a sweep config for a wallet.
@@ -1073,12 +1003,6 @@ Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/profile.read` scope.
-* [save](docs/sdks/underwriting/README.md#save) - Create or update the account's underwriting.
-
-Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.write` scope.
 * [upsert](docs/sdks/underwriting/README.md#upsert) - Create or update the account's underwriting.
 
 Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
@@ -1176,7 +1100,7 @@ s = ::Moov::Client.new(
 
 begin
     res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
-      account_type: Models::Components::CreateAccountType::BUSINESS,
+      account_type: Models::Components::AccountType::BUSINESS,
       profile: Models::Components::CreateProfile.new(
         business: Models::Components::CreateBusinessProfile.new(
           legal_business_name: 'Whole Body Fitness LLC',
@@ -1217,7 +1141,7 @@ s = ::Moov::Client.new(
     )
 
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
-  account_type: Models::Components::CreateAccountType::BUSINESS,
+  account_type: Models::Components::AccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
       legal_business_name: 'Whole Body Fitness LLC',

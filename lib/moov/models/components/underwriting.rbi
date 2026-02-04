@@ -22,18 +22,4 @@ class Moov::Models::Components::Underwriting
   def card_volume_distribution=(str_); end
   def fulfillment(); end
   def fulfillment=(str_); end
-  def geographic_reach(); end
-  def geographic_reach=(str_); end
-  def business_presence(); end
-  def business_presence=(str_); end
-  def pending_litigation(); end
-  def pending_litigation=(str_); end
-  def volume_share_by_customer_type(); end
-  def volume_share_by_customer_type=(str_); end
-  def collect_funds(); end
-  def collect_funds=(str_); end
-  def money_transfer(); end
-  def money_transfer=(str_); end
-  def send_funds(); end
-  def send_funds=(str_); end
 end

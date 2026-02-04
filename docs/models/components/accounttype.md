@@ -9,4 +9,3 @@ The type of entity represented by this account.
 | ------------ | ------------ |
 | `INDIVIDUAL` | individual   |
 | `BUSINESS`   | business     |
-| `GUEST`      | guest        |

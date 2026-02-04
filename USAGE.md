@@ -8,7 +8,7 @@ s = ::Moov::Client.new(
     )
 
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
-  account_type: Models::Components::CreateAccountType::BUSINESS,
+  account_type: Models::Components::AccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
       legal_business_name: 'Whole Body Fitness LLC',

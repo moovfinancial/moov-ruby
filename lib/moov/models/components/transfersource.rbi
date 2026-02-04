@@ -24,8 +24,6 @@ class Moov::Models::Components::TransferSource
   def card=(str_); end
   def apple_pay(); end
   def apple_pay=(str_); end
-  def terminal_card(); end
-  def terminal_card=(str_); end
   def card_details(); end
   def card_details=(str_); end
   def ach_details(); end
