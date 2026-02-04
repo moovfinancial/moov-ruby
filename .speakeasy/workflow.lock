@@ -1,29 +1,29 @@
-speakeasyVersion: 1.700.2
+speakeasyVersion: 1.703.0
 sources:
     latest:
-        sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:f113bf1bc2313a27d73754c4dde0433801ccc2b0afe5b88a97d53f4ec0776848
-        sourceBlobDigest: sha256:dd5d30466ad3ca0e8cf1b984cf6539ae6170dfca21fb194935a9c2e688bd31fc
+        sourceNamespace: api-v2026.01.00
+        sourceRevisionDigest: sha256:66442bdc3b4baa6f9d477cf5c5f1f4dd6ae9cc215df743994df829d25284000f
+        sourceBlobDigest: sha256:ee72abfa488ead3204d07d8c7ef9078424ad3ee220a80d3d801fa82fa1ecea4b
         tags:
             - latest
-            - speakeasy-sdk-regen-1770078225
+            - speakeasy-sdk-regen-versions-2026.01-1770230707
 targets:
     moov:
         source: latest
-        sourceNamespace: api-latest
-        sourceRevisionDigest: sha256:f113bf1bc2313a27d73754c4dde0433801ccc2b0afe5b88a97d53f4ec0776848
-        sourceBlobDigest: sha256:dd5d30466ad3ca0e8cf1b984cf6539ae6170dfca21fb194935a9c2e688bd31fc
-        codeSamplesNamespace: latest-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:13825d58cb64c8bc75509debba644a10222d829176aef3ce536eb19ee08d5b2e
+        sourceNamespace: api-v2026.01.00
+        sourceRevisionDigest: sha256:66442bdc3b4baa6f9d477cf5c5f1f4dd6ae9cc215df743994df829d25284000f
+        sourceBlobDigest: sha256:ee72abfa488ead3204d07d8c7ef9078424ad3ee220a80d3d801fa82fa1ecea4b
+        codeSamplesNamespace: v2026.01.00-ruby-code-samples
+        codeSamplesRevisionDigest: sha256:a0ddd20d08a2bb71114c8a8714949c22ab3de72f0622895c8e72534970f1f814
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         latest:
             inputs:
-                - location: registry.speakeasyapi.dev/moov/moov/api-latest
+                - location: registry.speakeasyapi.dev/moov/moov/api-v2026.01.00
             registry:
-                location: registry.speakeasyapi.dev/moov/moov/latest
+                location: registry.speakeasyapi.dev/moov/moov/ruby-v2026.01.00
     targets:
         moov:
             target: ruby
@@ -33,7 +33,7 @@ workflow:
                     token: $rubygems_auth_token
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/moov/moov/latest-ruby-code-samples
+                    location: registry.speakeasyapi.dev/moov/moov/v2026.01.00-ruby-code-samples
                 labelOverride:
                     fixedValue: Ruby (SDK)
                 blocking: false
