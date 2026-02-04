@@ -23,7 +23,6 @@ module Moov
           PULL_FROM_CARD = new('pull-from-card')
           APPLE_PAY = new('apple-pay')
           CARD_PRESENT_PAYMENT = new('card-present-payment')
-          INSTANT_BANK_CREDIT = new('instant-bank-credit')
         end
       end
     end

@@ -53,7 +53,7 @@ res = s.onboarding.create_invite(onboarding_invite_request: Models::Components::
     'merchant-direct',
   ],
   prefill: Models::Components::CreateAccount.new(
-    account_type: Models::Components::CreateAccountType::BUSINESS,
+    account_type: Models::Components::AccountType::BUSINESS,
     profile: Models::Components::CreateProfile.new(
       business: Models::Components::CreateBusinessProfile.new(
         legal_business_name: 'Whole Body Fitness LLC',

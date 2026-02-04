@@ -109,7 +109,7 @@ s = ::Moov::Client.new(
     )
 
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
-  account_type: Models::Components::CreateAccountType::BUSINESS,
+  account_type: Models::Components::AccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
       legal_business_name: 'Whole Body Fitness LLC',
@@ -165,7 +165,7 @@ s = ::Moov::Client.new(
     )
 
 req = Models::Operations::ListAccountsRequest.new(
-  type: Models::Components::CreateAccountType::BUSINESS,
+  type: Models::Components::AccountType::BUSINESS,
   skip: 60,
   count: 20,
 )
@@ -441,6 +441,7 @@ s = ::Moov::Client.new(
 
 req = Models::Operations::ListConnectedAccountsForAccountRequest.new(
   account_id: '7e09ffc8-e508-4fd4-a54e-21cff90a1824',
+  type: Models::Components::AccountType::BUSINESS,
   skip: 60,
   count: 20,
 )

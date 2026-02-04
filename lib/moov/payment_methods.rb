@@ -137,7 +137,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod, Models::Components::InstantBankCreditPaymentMethod)))
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod)))
           response = Models::Operations::ListPaymentMethodsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -259,7 +259,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod, Models::Components::InstantBankCreditPaymentMethod))
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod))
           response = Models::Operations::GetPaymentMethodResponse.new(
             status_code: http_response.status,
             content_type: content_type,

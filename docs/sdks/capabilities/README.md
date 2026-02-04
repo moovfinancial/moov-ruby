@@ -136,7 +136,7 @@ s = ::Moov::Client.new(
       x_moov_version: 'v2024.01.00',
     )
 
-res = s.capabilities.get(account_id: 'c1697ea6-c984-4ba1-9b81-93e5e18660af', capability_id: Models::Components::CapabilityID::SEND_FUNDS_ACH)
+res = s.capabilities.get(account_id: 'c1697ea6-c984-4ba1-9b81-93e5e18660af', capability_id: Models::Components::CapabilityID::CARD_ISSUING)
 
 unless res.capability.nil?
   # handle response
