@@ -3,9 +3,9 @@ speakeasyVersion: latest
 sources:
     latest:
         inputs:
-            - location: registry.speakeasyapi.dev/moov/moov/api-latest
+            - location: registry.speakeasyapi.dev/moov/moov/api-v2025.10.00
         registry:
-            location: registry.speakeasyapi.dev/moov/moov/latest
+            location: registry.speakeasyapi.dev/moov/moov/ruby-v2025.10.00
 targets:
     moov:
         target: ruby
@@ -15,7 +15,7 @@ targets:
                 token: $rubygems_auth_token
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/moov/moov/latest-ruby-code-samples
+                location: registry.speakeasyapi.dev/moov/moov/v2025.10.00-ruby-code-samples
             labelOverride:
                 fixedValue: Ruby (SDK)
             blocking: false
