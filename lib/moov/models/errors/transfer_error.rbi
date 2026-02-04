@@ -64,8 +64,6 @@ class Moov::Models::Errors::TransferError
   def foreign_id=(str_); end
   def line_items(); end
   def line_items=(str_); end
-  def invoice_id(); end
-  def invoice_id=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
 end
