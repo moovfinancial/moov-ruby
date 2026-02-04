@@ -239,8 +239,6 @@ module Moov
       autoload :ListOnboardingInvitesResponse, 'moov/models/operations/listonboardinginvites_response.rb'
       autoload :ListPartnerPricingAgreementsRequest, 'moov/models/operations/listpartnerpricingagreements_request.rb'
       autoload :ListPartnerPricingAgreementsResponse, 'moov/models/operations/listpartnerpricingagreements_response.rb'
-      autoload :ListPartnerPricingRequest, 'moov/models/operations/listpartnerpricing_request.rb'
-      autoload :ListPartnerPricingResponse, 'moov/models/operations/listpartnerpricing_response.rb'
       autoload :ListPaymentLinksRequest, 'moov/models/operations/listpaymentlinks_request.rb'
       autoload :ListPaymentLinksResponse, 'moov/models/operations/listpaymentlinks_response.rb'
       autoload :ListPaymentMethodsRequest, 'moov/models/operations/listpaymentmethods_request.rb'
