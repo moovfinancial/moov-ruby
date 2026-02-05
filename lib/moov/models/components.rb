@@ -360,7 +360,6 @@ module Moov
       autoload :OtherCardFees, 'moov/models/components/othercardfees.rb'
       autoload :PartialScheduleAccount, 'moov/models/components/partialscheduleaccount.rb'
       autoload :PartnerFees, 'moov/models/components/partnerfees.rb'
-      autoload :PartnerPricing, 'moov/models/components/partnerpricing.rb'
       autoload :PartnerPricingAgreement, 'moov/models/components/partnerpricingagreement.rb'
       autoload :PatchAccount, 'moov/models/components/patchaccount.rb'
       autoload :PatchAccountCustomerSupport, 'moov/models/components/patchaccount_customersupport.rb'

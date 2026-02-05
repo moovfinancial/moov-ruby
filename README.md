@@ -606,10 +606,6 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
-* [list_partner_pricing](docs/sdks/feeplans/README.md#list_partner_pricing) - List all partner pricing plans available for use by an account.
-
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
-you'll need to specify the `/accounts/{accountID}/profile.read` scope.
 * [list_partner_pricing_agreements](docs/sdks/feeplans/README.md#list_partner_pricing_agreements) - List all partner pricing agreements associated with an account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
