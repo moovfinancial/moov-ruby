@@ -1,26 +1,26 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 7bcd11eb43fa74498067aa91af0ca694
+  docChecksum: 4498983f97fb41cb0879668769e2f513
   docVersion: v2025.04.00
-  speakeasyVersion: 1.703.0
-  generationVersion: 2.803.3
-  releaseVersion: 25.4.0
-  configChecksum: 418849e6163196ab9f2014d4a176b3b1
+  speakeasyVersion: 1.707.1
+  generationVersion: 2.811.0
+  releaseVersion: 25.4.1
+  configChecksum: 60bededf3f3ce0e9168f8449f4026838
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 8aa2c1ea-9c58-429e-b63f-09547854bf8b
-  pristine_commit_hash: 61afeb21d4372be7b8ac6db1bbc9dd9ea5ce9107
-  pristine_tree_hash: 7387d8a9fd3d4789de66451c3f393b3034217aab
+  generation_id: bb5d4d9a-fea2-4eb8-821a-938c581dc598
+  pristine_commit_hash: ddcb5924ac0a7bfa8eeb106957bb1c8b26977a9f
+  pristine_tree_hash: 4e6e5b948cf5bf2f799f3cdb34ae02130c0e7982
 features:
   ruby:
-    constsAndDefaults: 0.1.1
-    core: 3.11.11
+    constsAndDefaults: 0.1.2
+    core: 3.11.13
     deprecations: 2.81.2
     flattening: 2.81.1
-    globalSecurity: 2.81.9
+    globalSecurity: 2.81.10
     globalServerURLs: 2.83.0
     globals: 2.82.1
     includes: 2.81.1
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:dcf2ebfa7b328fa8cd3023038364bdda721ef6ba
-    pristine_git_object: 9b45a4733fe2f9a111e6388c8e56aab2d0d0b142
+    last_write_checksum: sha1:be175083b12be586fa5c73cbb12b5cc692a3fbef
+    pristine_git_object: ed3343302c88f0a37bf2071fd166790b9db30aae
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -671,12 +671,12 @@ trackedFiles:
     pristine_git_object: 48836ac9aced7c88daf8d3a3f8e3bc58a5e6ec1f
   docs/models/components/createpaymentlinklineitem.md:
     id: 7e2f59afb4df
-    last_write_checksum: sha1:1bede461fd5d4a85192e12844bad1acd0d04d534
-    pristine_git_object: 39b2e59b60bdf6be8ccd26ecab06a1c6933a85ad
+    last_write_checksum: sha1:60ee0e9ed0eaaf5bd991eab263947eb80d7b5881
+    pristine_git_object: 31182e277c34446152e0534b7490a3d71c8ce3c9
   docs/models/components/createpaymentlinklineitemoption.md:
     id: b850b0ccb857
-    last_write_checksum: sha1:b127fc64897d1990bc9fdb088615660a5ab16351
-    pristine_git_object: 1ed4a479ab5141340d4623601a69f2c22bcd9e9a
+    last_write_checksum: sha1:d473ad783033679c44664b4fe842558a6baaf788
+    pristine_git_object: 3e32f82a9c50a7bedc0b9a66add9992144af3209
   docs/models/components/createpaymentlinklineitemoptionvalidationerror.md:
     id: 6045bf271afb
     last_write_checksum: sha1:72fab79b8d19deeefe5db3084c76a50201d9f6f4
@@ -735,8 +735,8 @@ trackedFiles:
     pristine_git_object: 10649de537003f2767ee8c8d5e44b5c9ebbc21d7
   docs/models/components/createscheduledtransferlineitem.md:
     id: d6fd3313b7ba
-    last_write_checksum: sha1:372fc1591b0fb67eedfd81b71430907e39c5fe24
-    pristine_git_object: fae025cd17c089f3164200f7c78a67148048c564
+    last_write_checksum: sha1:8109e67e74bbe6eb5dec08c8189ba3d52be3699c
+    pristine_git_object: 43550c315ff2142c63275e09f7bbaad5f86d6aa2
   docs/models/components/createscheduledtransferlineitemoption.md:
     id: 78cd89dac310
     last_write_checksum: sha1:4ba469fda37e13d9588b974e3eb367366c33b2a7
@@ -775,8 +775,8 @@ trackedFiles:
     pristine_git_object: 87da978919833c4ddff8fbdeee7772f50b4b65b8
   docs/models/components/createtransferlineitem.md:
     id: be49e1f91c04
-    last_write_checksum: sha1:b48d480dde8b7b322c6634d05d58614c0378dbe8
-    pristine_git_object: 71fb128e2cde1ded9274299baf0a8632d919e39c
+    last_write_checksum: sha1:e6390f4346ffd12898208517f34cd1542945b020
+    pristine_git_object: b5179acb9464efdfca3364a618a2a09ce7fe141e
   docs/models/components/createtransferlineitemoption.md:
     id: 771346923d52
     last_write_checksum: sha1:d55034bb8cd36114c99355c372a6fafc92443af9
@@ -3831,16 +3831,16 @@ trackedFiles:
     pristine_git_object: 6ba511f01f056c76094af6fc71df62f65905871d
   docs/sdks/sweeps/README.md:
     id: f69902cdea4e
-    last_write_checksum: sha1:3ded6e09386c2fd5149426298b45705eab2a1fb5
-    pristine_git_object: 6099aa98cbc5628825c97d165fd7acdbf494224d
+    last_write_checksum: sha1:4251b44778d501042992e1341ad1c0a85ee99db5
+    pristine_git_object: 067b739f29fe64005738f499607fd10ae5664ad0
   docs/sdks/terminalapplications/README.md:
     id: 2dd3e55810ad
     last_write_checksum: sha1:737ac9b84711a98eaafa734740145f2647cd1bf0
     pristine_git_object: 966beb24022d0a0184de1a58ac94633d8afe83a8
   docs/sdks/transfers/README.md:
     id: f56918861798
-    last_write_checksum: sha1:1784520deb34807def5346408b249f8d47c07416
-    pristine_git_object: 59834a44624cc027a5837666dc84b8ff8ea85183
+    last_write_checksum: sha1:d0ebfa347e4ba5e6fddf7965ec434dddfa38899f
+    pristine_git_object: ce791c80dd8d03b73bb35d749028d494efd4295d
   docs/sdks/underwriting/README.md:
     id: ef972250826e
     last_write_checksum: sha1:82468ac78d51e3b992a8923cdae8f322c78b5deb
@@ -5211,16 +5211,16 @@ trackedFiles:
     pristine_git_object: a397b527048a6666bc2d8bc231c5f8ddbca804e9
   lib/moov/models/components/createpaymentlinklineitem.rb:
     id: 8b9e48cb92fe
-    last_write_checksum: sha1:968c8ea6f89fc6b7ff8b091f065f8722140de7ac
-    pristine_git_object: 973ede32bfc083ffe8dc51736798763366b576ef
+    last_write_checksum: sha1:df2bb021ad1f2fdb78dd23c2be0c6d13c656a129
+    pristine_git_object: 76512a9926b6dfbcd66e73a401b0580fc1ff303a
   lib/moov/models/components/createpaymentlinklineitem.rbi:
     id: 2db22746e255
     last_write_checksum: sha1:9e33993715f27832cbb0e1238afb174fc9ba1365
     pristine_git_object: 1a7a0422dcaf142524c72b0b99f90c8359c966c1
   lib/moov/models/components/createpaymentlinklineitemoption.rb:
     id: 3b35a88bfdee
-    last_write_checksum: sha1:a06a89313eeadabc400d6413204d338e1e600789
-    pristine_git_object: 95212b74e273410e3915f4d207fa7f8ae7355674
+    last_write_checksum: sha1:11aaf6e7e9550b15f24a76ec0478e7da69f06c3b
+    pristine_git_object: 34450ddd3fef4c8a2e28dc0bc943be57c268018d
   lib/moov/models/components/createpaymentlinklineitemoption.rbi:
     id: b8a949211965
     last_write_checksum: sha1:d4ba01c4784b37dc64b348977afe3512bc62bb09
@@ -5339,8 +5339,8 @@ trackedFiles:
     pristine_git_object: bfe8c24f415b04771ad6b26e3a2ba105d0728dec
   lib/moov/models/components/createscheduledtransferlineitem.rb:
     id: 370d254aa2dc
-    last_write_checksum: sha1:b305fa33d90d16777ba16cdda937f755ea2b1b23
-    pristine_git_object: 3e4d0b6947577a84ff0a295261b55e4e96b38ef9
+    last_write_checksum: sha1:baab039130c4a00606696fb0dc6a730da8374dff
+    pristine_git_object: 62cbae7f330cae9f2e880655840b521a10851a91
   lib/moov/models/components/createscheduledtransferlineitem.rbi:
     id: dd2ae90e08b9
     last_write_checksum: sha1:57d9bda1958e9a6937737ec41867deafe8c7d29e
@@ -5419,8 +5419,8 @@ trackedFiles:
     pristine_git_object: 6ab6f9b7314a746cbef889109e0f8b7e90079c3a
   lib/moov/models/components/createtransferlineitem.rb:
     id: ee4ff2aebdcf
-    last_write_checksum: sha1:d65012153a6070cabcab38da6b9aab8af902c0fb
-    pristine_git_object: 861034412d0f28a477cc1142d53e98ddc85ed2c9
+    last_write_checksum: sha1:d4d3d29af9998eb44fe43042bfa200cc54591434
+    pristine_git_object: 9006369734796a7cda0048fb08478db00f40049b
   lib/moov/models/components/createtransferlineitem.rbi:
     id: e6e2cbdc18d4
     last_write_checksum: sha1:2c2671c6af01789ff5bbcec6dd07ab0c3c9aa3f0
@@ -11347,8 +11347,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:b804c92480976f7b2c4b4d9e9b931c1f4694d7c9
-    pristine_git_object: 9029c79eaf2f22656d5b14a90e2347eddb76c17d
+    last_write_checksum: sha1:d356291f438fba2e7171feb6819ad06b68eac5cd
+    pristine_git_object: fa72409f907f370aa25e0b02b92ce61b89d2c650
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -11423,8 +11423,8 @@ trackedFiles:
     pristine_git_object: 14c62564bc3e68a41ddffd5a2f33037f4d55049e
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:421953f34dc7df2db88a2dc346b3846b38b4f550
-    pristine_git_object: aefe05d7b498b3890ff66e3a5cf9d56093e5489e
+    last_write_checksum: sha1:7c0668ae9cb74ef1310f5a7a7bb5be4ad0fb7da3
+    pristine_git_object: d63ac2c4b26910e552eac45ec294c3d751746401
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -13948,7 +13948,6 @@ examples:
         "200":
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.payment_methods.list()`: \n  *  `request.payment_method_type` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.payment_methods.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.onboarding.get_invite()`:  `response.capabilities[]` **Changed** **Breaking** ⚠️\n* `client.onboarding.list_invites()`:  `response.[].capabilities[]` **Changed** **Breaking** ⚠️\n* `client.onboarding.create_invite()`: \n  *  `request.onboarding_invite_request.capabilities[]` **Changed** **Breaking** ⚠️\n  *  `response.capabilities[]` **Changed** **Breaking** ⚠️\n* `client.industries.list()`:  `response.industries[]` **Changed** **Breaking** ⚠️\n* `client.underwriting.upsert()`:  `response` **Changed** **Breaking** ⚠️\n* `client.underwriting.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.transfers.update()`:  `response` **Changed** **Breaking** ⚠️\n* `client.transfers.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.transfers.list()`:  `response.[]` **Changed** **Breaking** ⚠️\n* `client.transfers.create()`: \n  *  `response` **Changed** **Breaking** ⚠️\n  *  `error` **Changed** **Breaking** ⚠️\n* `client.transfers.generate_options()`:  `response.source_options[]` **Changed** **Breaking** ⚠️\n* `client.accounts.create()`: \n  *  `request.create_account.capabilities[]` **Changed** **Breaking** ⚠️\n  *  `response` **Changed** **Breaking** ⚠️\n* `client.accounts.list()`: \n  *  `request.capability` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.accounts.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.accounts.update()`:  `response` **Changed** **Breaking** ⚠️\n* `client.bank_accounts.get()`:  `response` **Changed** **Breaking** ⚠️\n* `client.apple_pay.link_token()`:  `response.payment_method_type.enum(instant_bank_credit)` **Removed** **Breaking** ⚠️\n* `client.bank_accounts.link()`: \n  *  `request.link_bank_account.union(BankAccountPayload).account.holder_type.enum(guest)` **Removed** **Breaking** ⚠️\n  *  `response` **Changed** **Breaking** ⚠️\n* `client.bank_accounts.list()`:  `response.[]` **Changed** **Breaking** ⚠️\n* `client.capabilities.list()`:  `response.[]` **Changed** **Breaking** ⚠️\n* `client.accounts.list_connected()`: \n  *  `request.capability` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.capabilities.request()`: \n  *  `request.add_capabilities.capabilities[]` **Changed** **Breaking** ⚠️\n  *  `response.[]` **Changed** **Breaking** ⚠️\n* `client.capabilities.get()`: \n  *  `request.capability_id` **Changed** **Breaking** ⚠️\n  *  `response` **Changed** **Breaking** ⚠️\n* `client.capabilities.disable()`:  `request.capability_id` **Changed** **Breaking** ⚠️\n* `client.cards.link()`:  `response.payment_methods[].payment_method_type.enum(instant_bank_credit)` **Removed** **Breaking** ⚠️\n* `client.cards.list()`:  `response.[].payment_methods[].payment_method_type.enum(instant_bank_credit)` **Removed** **Breaking** ⚠️\n* `client.cards.get()`:  `response.payment_methods[].payment_method_type.enum(instant_bank_credit)` **Removed** **Breaking** ⚠️\n* `client.cards.update()`:  `response.payment_methods[].payment_method_type.enum(instant_bank_credit)` **Removed** **Breaking** ⚠️\n* `client.invoices.get_invoice()`: **Removed** **Breaking** ⚠️\n* `client.invoices.create_invoice()`: **Removed** **Breaking** ⚠️\n* `client.underwriting.save()`: **Removed** **Breaking** ⚠️\n* `client.support.list_ticket_messages()`: **Removed** **Breaking** ⚠️\n* `client.support.update_ticket()`: **Removed** **Breaking** ⚠️\n* `client.support.create_ticket()`: **Removed** **Breaking** ⚠️\n* `client.support.get_ticket()`: **Removed** **Breaking** ⚠️\n* `client.fee_plans.list_partner_pricing()`: **Removed** **Breaking** ⚠️\n* `client.invoices.list_invoice_payments()`: **Removed** **Breaking** ⚠️\n* `client.invoices.create_invoice_payment()`: **Removed** **Breaking** ⚠️\n* `client.invoices.update_invoice()`: **Removed** **Breaking** ⚠️\n* `client.support.list_tickets()`: **Removed** **Breaking** ⚠️\n* `client.invoices.list_invoices()`: **Removed** **Breaking** ⚠️\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
