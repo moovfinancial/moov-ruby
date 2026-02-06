@@ -20,7 +20,10 @@ module Moov
         field :quantity, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('quantity'), required: true } }
         # Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
         field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreatePaymentLinkLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
-        # Optional list of images associated with this line item.
+        #   Optional list of images associated with this line item.
+        #   This field is deprecated and will be ignored. A future release will populate images associated with the given productID.
+        # 
+        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
         #   Optional unique identifier associating the line item with a product.
         #   This is for reporting or tracking purposes, and does not populate other details of the line item.
