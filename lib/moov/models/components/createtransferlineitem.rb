@@ -22,7 +22,8 @@ module Moov
         field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateTransferLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
         # Optional list of images associated with this line item.
         field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
-        # Optional unique identifier associating the line item with a product.
+        #   Optional unique identifier associating the line item with a product.
+        #   This is for reporting or tracking purposes, and does not populate other details of the line item.
         field :product_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('productID') } }
 
         sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, options: T.nilable(T::Array[Models::Components::CreateTransferLineItemOption]), image_i_ds: T.nilable(T::Array[::String]), product_id: T.nilable(::String)).void }
