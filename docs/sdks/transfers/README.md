@@ -140,9 +140,48 @@ Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/o
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### Example Usage
+### Example Usage: Created async transfer
 
-<!-- UsageSnippet language="ruby" operationID="createTransfer" method="post" path="/accounts/{accountID}/transfers" -->
+<!-- UsageSnippet language="ruby" operationID="createTransfer" method="post" path="/accounts/{accountID}/transfers" example="Created async transfer" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+      x_moov_version: 'v2024.01.00',
+    )
+
+req = Models::Operations::CreateTransferRequest.new(
+  x_idempotency_key: '6de5561f-5a9f-4bd3-a458-ce0baacae20d',
+  account_id: 'd5696c5b-7106-4093-8a7d-faa71dda002c',
+  create_transfer: Models::Components::CreateTransfer.new(
+    source: Models::Components::CreateTransferSource.new(
+      payment_method_id: '9506dbf6-4208-44c3-ad8a-e4431660e1f2',
+    ),
+    destination: Models::Components::CreateTransferDestination.new(
+      payment_method_id: '3f9969cf-a1f3-4d83-8ddc-229a506651cf',
+    ),
+    amount: Models::Components::Amount.new(
+      currency: 'USD',
+      value: 32_945,
+    ),
+    description: 'Transfer from card to wallet',
+    metadata: {
+      "optional": 'metadata',
+    },
+  ),
+)
+
+res = s.transfers.create(request: req)
+
+unless res.created_transfer.nil?
+  # handle response
+end
+
+```
+### Example Usage: Created synchronous transfer
+
+<!-- UsageSnippet language="ruby" operationID="createTransfer" method="post" path="/accounts/{accountID}/transfers" example="Created synchronous transfer" -->
 ```ruby
 require 'moov_ruby'
 
@@ -363,7 +402,7 @@ end
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="createCancellation" method="post" path="/accounts/{accountID}/transfers/{transferID}/cancellations" -->
+<!-- UsageSnippet language="ruby" operationID="createCancellation" method="post" path="/accounts/{accountID}/transfers/{transferID}/cancellations" example="Created cancellation" -->
 ```ruby
 require 'moov_ruby'
 
@@ -408,7 +447,7 @@ end
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="getCancellation" method="get" path="/accounts/{accountID}/transfers/{transferID}/cancellations/{cancellationID}" -->
+<!-- UsageSnippet language="ruby" operationID="getCancellation" method="get" path="/accounts/{accountID}/transfers/{transferID}/cancellations/{cancellationID}" example="Cancellation" -->
 ```ruby
 require 'moov_ruby'
 
@@ -454,9 +493,9 @@ See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/c
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### Example Usage
+### Example Usage: Successful async refund
 
-<!-- UsageSnippet language="ruby" operationID="initiateRefund" method="post" path="/accounts/{accountID}/transfers/{transferID}/refunds" -->
+<!-- UsageSnippet language="ruby" operationID="initiateRefund" method="post" path="/accounts/{accountID}/transfers/{transferID}/refunds" example="Successful async refund" -->
 ```ruby
 require 'moov_ruby'
 
@@ -469,6 +508,33 @@ req = Models::Operations::InitiateRefundRequest.new(
   x_idempotency_key: '8d9af6b8-67e1-4efa-8188-68039f34097d',
   account_id: 'cb6ae9f9-afab-4f06-9eb0-8abf54a3ada2',
   transfer_id: '04022119-95be-4ef4-9dd4-b3782f6aa7b9',
+  create_refund: Models::Components::CreateRefund.new(
+    amount: 1000,
+  ),
+)
+
+res = s.transfers.initiate_refund(request: req)
+
+unless res.create_refund_response.nil?
+  # handle response
+end
+
+```
+### Example Usage: Successful sync refund
+
+<!-- UsageSnippet language="ruby" operationID="initiateRefund" method="post" path="/accounts/{accountID}/transfers/{transferID}/refunds" example="Successful sync refund" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+      x_moov_version: 'v2024.01.00',
+    )
+
+req = Models::Operations::InitiateRefundRequest.new(
+  x_idempotency_key: '4e7a906a-e6d1-4bca-9cc5-6246295ef93c',
+  account_id: 'd12ddb6e-0ed9-44e8-92a7-1716ae7cc759',
+  transfer_id: 'd73be489-9da4-4be7-bc04-147d8552279d',
   create_refund: Models::Components::CreateRefund.new(
     amount: 1000,
   ),
@@ -599,9 +665,36 @@ to learn more.
 To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
 to specify the `/accounts/{accountID}/transfers.write` scope.
 
-### Example Usage
+### Example Usage: Reversed by cancellation
 
-<!-- UsageSnippet language="ruby" operationID="createReversal" method="post" path="/accounts/{accountID}/transfers/{transferID}/reversals" -->
+<!-- UsageSnippet language="ruby" operationID="createReversal" method="post" path="/accounts/{accountID}/transfers/{transferID}/reversals" example="Reversed by cancellation" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+      x_moov_version: 'v2024.01.00',
+    )
+
+req = Models::Operations::CreateReversalRequest.new(
+  x_idempotency_key: '93d03831-45c4-49ec-a9b2-88cbd41dfca7',
+  account_id: 'c5fade57-7e5a-4380-ac7b-4abf8b3c24cf',
+  transfer_id: '82c6eae7-b7e5-4b20-b24e-5116a4d70bde',
+  create_reversal: Models::Components::CreateReversal.new(
+    amount: 1000,
+  ),
+)
+
+res = s.transfers.create_reversal(request: req)
+
+unless res.reversal.nil?
+  # handle response
+end
+
+```
+### Example Usage: Reversed by refund
+
+<!-- UsageSnippet language="ruby" operationID="createReversal" method="post" path="/accounts/{accountID}/transfers/{transferID}/reversals" example="Reversed by refund" -->
 ```ruby
 require 'moov_ruby'
 
