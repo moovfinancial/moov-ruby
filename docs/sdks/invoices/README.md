@@ -39,7 +39,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="createInvoice" method="post" path="/accounts/{accountID}/invoices" -->
+<!-- UsageSnippet language="ruby" operationID="createInvoice" method="post" path="/accounts/{accountID}/invoices" example="Created invoice" -->
 ```ruby
 require 'moov_ruby'
 
@@ -48,7 +48,7 @@ s = ::Moov::Client.new(
       x_moov_version: '<value>',
     )
 
-res = s.invoices.create_invoice(account_id: '241bf524-e777-4941-a5e4-d7f3f34d7a00', create_invoice: Models::Components::CreateInvoice.new(
+res = s.invoices.create_invoice(account_id: 'c463fb80-6410-48b7-9e2e-6e9ec58a654f', create_invoice: Models::Components::CreateInvoice.new(
   customer_account_id: '3dfff852-927d-47e8-822c-2fffc57ff6b9',
   description: 'Professional services for Q1 2026',
   line_items: Models::Components::CreateInvoiceLineItems.new(
@@ -106,7 +106,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="listInvoices" method="get" path="/accounts/{accountID}/invoices" -->
+<!-- UsageSnippet language="ruby" operationID="listInvoices" method="get" path="/accounts/{accountID}/invoices" example="Invoices" -->
 ```ruby
 require 'moov_ruby'
 
@@ -155,7 +155,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="getInvoice" method="get" path="/accounts/{accountID}/invoices/{invoiceID}" -->
+<!-- UsageSnippet language="ruby" operationID="getInvoice" method="get" path="/accounts/{accountID}/invoices/{invoiceID}" example="Invoice" -->
 ```ruby
 require 'moov_ruby'
 
@@ -199,7 +199,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="updateInvoice" method="patch" path="/accounts/{accountID}/invoices/{invoiceID}" -->
+<!-- UsageSnippet language="ruby" operationID="updateInvoice" method="patch" path="/accounts/{accountID}/invoices/{invoiceID}" example="Updated invoice" -->
 ```ruby
 require 'moov_ruby'
 
@@ -208,7 +208,7 @@ s = ::Moov::Client.new(
       x_moov_version: '<value>',
     )
 
-res = s.invoices.update_invoice(account_id: 'ce46d65a-8504-4afa-b3f7-303401bd08b3', invoice_id: 'ef510999-370a-4350-87d5-bc81fc02a2ea', update_invoice: Models::Components::UpdateInvoice.new(
+res = s.invoices.update_invoice(account_id: 'fcce46d6-5a85-404a-afa3-f7303401bd08', invoice_id: '3eef5109-9937-40a3-b507-d5bc81fc02a2', update_invoice: Models::Components::UpdateInvoice.new(
   description: 'Updated professional services for Q1 2026',
   line_items: Models::Components::CreateInvoiceLineItemsUpdate.new(
     items: [
@@ -263,7 +263,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="createInvoicePayment" method="post" path="/accounts/{accountID}/invoices/{invoiceID}/payments" -->
+<!-- UsageSnippet language="ruby" operationID="createInvoicePayment" method="post" path="/accounts/{accountID}/invoices/{invoiceID}/payments" example="External payment" -->
 ```ruby
 require 'moov_ruby'
 
@@ -318,7 +318,7 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="listInvoicePayments" method="get" path="/accounts/{accountID}/invoices/{invoiceID}/payments" -->
+<!-- UsageSnippet language="ruby" operationID="listInvoicePayments" method="get" path="/accounts/{accountID}/invoices/{invoiceID}/payments" example="Payments" -->
 ```ruby
 require 'moov_ruby'
 

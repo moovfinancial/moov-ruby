@@ -20,16 +20,16 @@ module Moov
         field :price_modifier, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priceModifier') } }
         # Optional group identifier to categorize related options (e.g., 'toppings').
         field :group, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('group') } }
-        # Optional list of images associated with this line item.
-        field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
+        # Optional list of images associated with this line item option.
+        field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateInvoiceLineItemImage)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
 
-        sig { params(name: ::String, quantity: ::Integer, price_modifier: T.nilable(Models::Components::AmountDecimal), group: T.nilable(::String), image_i_ds: T.nilable(T::Array[::String])).void }
-        def initialize(name:, quantity:, price_modifier: nil, group: nil, image_i_ds: nil)
+        sig { params(name: ::String, quantity: ::Integer, price_modifier: T.nilable(Models::Components::AmountDecimal), group: T.nilable(::String), images: T.nilable(T::Array[Models::Components::CreateInvoiceLineItemImage])).void }
+        def initialize(name:, quantity:, price_modifier: nil, group: nil, images: nil)
           @name = name
           @quantity = quantity
           @price_modifier = price_modifier
           @group = group
-          @image_i_ds = image_i_ds
+          @images = images
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -39,7 +39,7 @@ module Moov
           return false unless @quantity == other.quantity
           return false unless @price_modifier == other.price_modifier
           return false unless @group == other.group
-          return false unless @image_i_ds == other.image_i_ds
+          return false unless @images == other.images
           true
         end
       end

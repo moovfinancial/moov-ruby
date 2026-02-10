@@ -16,4 +16,6 @@ class Moov::Models::Components::InvoiceLineItemOptionValidationError
   def price_modifier=(str_); end
   def quantity(); end
   def quantity=(str_); end
+  def images(); end
+  def images=(str_); end
 end

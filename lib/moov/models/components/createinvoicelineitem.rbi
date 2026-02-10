@@ -18,6 +18,6 @@ class Moov::Models::Components::CreateInvoiceLineItem
   def product_id=(str_); end
   def options(); end
   def options=(str_); end
-  def image_i_ds(); end
-  def image_i_ds=(str_); end
+  def images(); end
+  def images=(str_); end
 end
