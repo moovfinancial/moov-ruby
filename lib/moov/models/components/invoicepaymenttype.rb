@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class InvoicePaymentType < T::Enum
-
-
         enums do
           TRANSFER = new('transfer')
           EXTERNAL = new('external')

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class RefundCardStatus < T::Enum
-
-
         enums do
           INITIATED = new('initiated')
           CONFIRMED = new('confirmed')

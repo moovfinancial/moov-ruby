@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class RefundPolicy < T::Enum
-
-
         enums do
           CONDITIONAL_REFUND = new('conditional-refund')
           CUSTOM_POLICY = new('custom-policy')

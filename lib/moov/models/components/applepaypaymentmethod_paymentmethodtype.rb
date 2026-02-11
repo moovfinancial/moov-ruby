@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class ApplePayPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           APPLE_PAY = new('apple-pay')
         end

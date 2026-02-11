@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class FulfillmentTimeframe < T::Enum
-
-
         enums do
           IMMEDIATE = new('immediate')
           OTHER = new('other')

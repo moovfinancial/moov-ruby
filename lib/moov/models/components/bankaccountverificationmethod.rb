@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class BankAccountVerificationMethod < T::Enum
-
-
         enums do
           INSTANT = new('instant')
           ACH = new('ach')

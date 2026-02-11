@@ -16,11 +16,11 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :schedule_id, ::String, { 'path_param': { 'field_name': 'scheduleID', 'style': 'simple', 'explode': false } }
-        # Allows the specification of additional filters beyond the UUID.
+        #   Allows the specification of additional filters beyond the UUID.
         # 
-        # Specifying a UUID string returns the exact occurrence.
-        # Specifying a RFC 3339 timestamp returns the latest occurrence at or before that timestamp.
-        # Specifying `latest` returns the latest occurrence at or before now.
+        #   Specifying a UUID string returns the exact occurrence.
+        #   Specifying a RFC 3339 timestamp returns the latest occurrence at or before that timestamp.
+        #   Specifying `latest` returns the latest occurrence at or before now.
         field :occurrence_filter, ::String, { 'path_param': { 'field_name': 'occurrenceFilter', 'style': 'simple', 'explode': false } }
         # Specify an API version.
         # 

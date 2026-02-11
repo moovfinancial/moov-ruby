@@ -9,8 +9,6 @@ module Moov
     module Components
       # DomesticPushToCard - Indicates which level of domestic push-to-card transfer is supported by the card, if any.
       class DomesticPushToCard < T::Enum
-
-
         enums do
           NOT_SUPPORTED = new('not-supported')
           STANDARD = new('standard')

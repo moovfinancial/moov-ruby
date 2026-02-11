@@ -9,8 +9,6 @@ module Moov
     module Components
       # DisputePhase - The phase of a dispute within the dispute lifecycle.
       class DisputePhase < T::Enum
-
-
         enums do
           PRE_DISPUTE = new('pre-dispute')
           INQUIRY = new('inquiry')
