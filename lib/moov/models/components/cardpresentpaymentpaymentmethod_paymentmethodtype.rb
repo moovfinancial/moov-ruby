@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class CardPresentPaymentPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           CARD_PRESENT_PAYMENT = new('card-present-payment')
         end

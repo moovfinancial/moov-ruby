@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class SweepStatus < T::Enum
-
-
         enums do
           ACCRUING = new('accruing')
           ACTION_REQUIRED = new('action-required')

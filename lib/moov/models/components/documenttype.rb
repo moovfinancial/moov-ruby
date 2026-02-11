@@ -9,8 +9,6 @@ module Moov
     module Components
       # DocumentType - Types of documents that can be uploaded.
       class DocumentType < T::Enum
-
-
         enums do
           DRIVERS_LICENSE = new('driversLicense')
           PASSPORT = new('passport')

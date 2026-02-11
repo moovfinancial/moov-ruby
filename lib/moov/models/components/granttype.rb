@@ -12,8 +12,6 @@ module Moov
       #   - `client_credentials`: A grant type used by clients to obtain an access token
       #   - `refresh_token`: A grant type used by clients to obtain a new access token using a refresh token
       class GrantType < T::Enum
-
-
         enums do
           CLIENT_CREDENTIALS = new('client_credentials')
           REFRESH_TOKEN = new('refresh_token')

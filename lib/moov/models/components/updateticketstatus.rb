@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class UpdateTicketStatus < T::Enum
-
-
         enums do
           CLOSED = new('closed')
         end

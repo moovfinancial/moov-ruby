@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class PaymentLinkType < T::Enum
-
-
         enums do
           PAYMENT = new('payment')
           PAYOUT = new('payout')

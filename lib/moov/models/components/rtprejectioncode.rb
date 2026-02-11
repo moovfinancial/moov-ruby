@@ -17,8 +17,6 @@ module Moov
       # - AG03: Transaction Type Not Supported
       # - MD07: Customer Deceased
       class RTPRejectionCode < T::Enum
-
-
         enums do
           AC03 = new('AC03')
           AC04 = new('AC04')

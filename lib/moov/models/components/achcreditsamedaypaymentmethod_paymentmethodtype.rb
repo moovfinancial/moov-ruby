@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class AchCreditSameDayPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           ACH_CREDIT_SAME_DAY = new('ach-credit-same-day')
         end

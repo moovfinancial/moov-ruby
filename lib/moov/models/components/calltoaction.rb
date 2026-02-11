@@ -12,8 +12,6 @@ module Moov
       # If set to "auto" the UI will automatically select between 
       # "pay" and "confirm" for payments and payouts respectively.
       class CallToAction < T::Enum
-
-
         enums do
           PAY = new('pay')
           BOOK = new('book')

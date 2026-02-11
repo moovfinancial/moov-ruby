@@ -9,8 +9,6 @@ module Moov
     module Components
       # IssuingAuthorizationStatus - Status of a card issuing authorization.
       class IssuingAuthorizationStatus < T::Enum
-
-
         enums do
           PENDING = new('pending')
           DECLINED = new('declined')

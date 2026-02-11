@@ -9,8 +9,6 @@ module Moov
     module Components
       # FilePurpose - The file's purpose.
       class FilePurpose < T::Enum
-
-
         enums do
           BUSINESS_VERIFICATION = new('business_verification')
           REPRESENTATIVE_VERIFICATION = new('representative_verification')

@@ -9,8 +9,6 @@ module Moov
     module Components
       # DebitHoldPeriod - An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
       class DebitHoldPeriod < T::Enum
-
-
         enums do
           NO_HOLD = new('no-hold')
           ONE_MINUS_DAY = new('1-day')
