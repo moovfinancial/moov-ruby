@@ -9,8 +9,6 @@ module Moov
     module Components
       # CardBrand - The card brand.
       class CardBrand < T::Enum
-
-
         enums do
           AMERICAN_EXPRESS = new('American Express')
           DISCOVER = new('Discover')

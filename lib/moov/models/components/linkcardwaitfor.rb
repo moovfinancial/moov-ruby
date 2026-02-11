@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class LinkCardWaitFor < T::Enum
-
-
         enums do
           PAYMENT_METHOD = new('payment-method')
         end

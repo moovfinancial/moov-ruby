@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class InstantBankCreditPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           INSTANT_BANK_CREDIT = new('instant-bank-credit')
         end

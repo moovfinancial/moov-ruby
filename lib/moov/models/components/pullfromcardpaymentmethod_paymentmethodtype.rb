@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class PullFromCardPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           PULL_FROM_CARD = new('pull-from-card')
         end

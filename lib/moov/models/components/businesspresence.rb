@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class BusinessPresence < T::Enum
-
-
         enums do
           COMMERCIAL_OFFICE = new('commercial-office')
           HOME_BASED = new('home-based')

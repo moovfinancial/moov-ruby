@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class AchDebitFundPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           ACH_DEBIT_FUND = new('ach-debit-fund')
         end

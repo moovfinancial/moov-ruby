@@ -11,8 +11,6 @@ module Moov
       # 
       # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
       class AccountVerificationStatus < T::Enum
-
-
         enums do
           UNVERIFIED = new('unverified')
           PENDING = new('pending')

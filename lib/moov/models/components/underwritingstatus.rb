@@ -11,8 +11,6 @@ module Moov
       # 
       # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
       class UnderwritingStatus < T::Enum
-
-
         enums do
           APPROVED = new('approved')
           REJECTED = new('rejected')

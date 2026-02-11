@@ -9,8 +9,6 @@ module Moov
     module Components
       # TerminalApplicationStatus - Status of the terminal application.
       class TerminalApplicationStatus < T::Enum
-
-
         enums do
           UNDEFINED = new('undefined')
           PENDING = new('pending')

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class ReturnPolicyType < T::Enum
-
-
         enums do
           NONE = new('none')
           EXCHANGE_ONLY = new('exchangeOnly')

@@ -9,8 +9,6 @@ module Moov
     module Components
       # FileStatus - The file's status.
       class FileStatus < T::Enum
-
-
         enums do
           PENDING = new('pending')
           APPROVED = new('approved')

@@ -9,8 +9,6 @@ module Moov
     module Components
       # MonthlyVolumeRange - The low value in each range is included. The high value in each range is excluded.
       class MonthlyVolumeRange < T::Enum
-
-
         enums do
           UNDER_10K = new('under-10k')
           TENK_50K = new('10k-50k')

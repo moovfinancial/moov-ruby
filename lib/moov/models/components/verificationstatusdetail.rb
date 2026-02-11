@@ -11,8 +11,6 @@ module Moov
       # 
       # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
       class VerificationStatusDetail < T::Enum
-
-
         enums do
           FAILED_AUTO_VERIFY = new('failedAutoVerify')
           DOC_DOB_MISMATCH = new('docDobMismatch')

@@ -30,8 +30,6 @@ module Moov
       # - R38: Stop Payment on Source Document (Adjustment Entry)
       # - R39: Improper Source Document
       class ACHReturnCode < T::Enum
-
-
         enums do
           R02 = new('R02')
           R03 = new('R03')

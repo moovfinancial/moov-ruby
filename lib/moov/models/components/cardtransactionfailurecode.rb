@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class CardTransactionFailureCode < T::Enum
-
-
         enums do
           CALL_ISSUER = new('call-issuer')
           DO_NOT_HONOR = new('do-not-honor')

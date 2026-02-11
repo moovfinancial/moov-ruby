@@ -9,8 +9,6 @@ module Moov
     module Components
       # ApplicationScope - A permission that the application requests on another account.
       class ApplicationScope < T::Enum
-
-
         enums do
           ACCOUNTS_READ = new('accounts.read')
           ACCOUNTS_WRITE = new('accounts.write')
