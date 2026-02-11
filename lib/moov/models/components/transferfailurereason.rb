@@ -9,8 +9,6 @@ module Moov
     module Components
       # TransferFailureReason - Reason for a transfer's failure.
       class TransferFailureReason < T::Enum
-
-
         enums do
           SOURCE_PAYMENT_ERROR = new('source-payment-error')
           DESTINATION_PAYMENT_ERROR = new('destination-payment-error')

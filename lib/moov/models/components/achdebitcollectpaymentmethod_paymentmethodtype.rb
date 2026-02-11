@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class AchDebitCollectPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           ACH_DEBIT_COLLECT = new('ach-debit-collect')
         end

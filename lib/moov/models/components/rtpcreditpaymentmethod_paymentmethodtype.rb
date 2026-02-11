@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class RtpCreditPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           RTP_CREDIT = new('rtp-credit')
         end

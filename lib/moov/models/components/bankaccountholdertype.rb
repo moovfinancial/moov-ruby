@@ -9,8 +9,6 @@ module Moov
     module Components
       # BankAccountHolderType - The type of holder on a funding source.
       class BankAccountHolderType < T::Enum
-
-
         enums do
           INDIVIDUAL = new('individual')
           BUSINESS = new('business')

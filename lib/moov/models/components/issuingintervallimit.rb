@@ -9,8 +9,6 @@ module Moov
     module Components
       # IssuingIntervalLimit - Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
       class IssuingIntervalLimit < T::Enum
-
-
         enums do
           PER_TRANSACTION = new('per-transaction')
         end

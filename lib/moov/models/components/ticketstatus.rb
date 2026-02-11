@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class TicketStatus < T::Enum
-
-
         enums do
           NEW = new('new')
           IN_PROGRESS = new('in-progress')

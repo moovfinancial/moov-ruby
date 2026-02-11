@@ -9,8 +9,6 @@ module Moov
     module Operations
       # Hydrate
       class Hydrate < T::Enum
-
-
         enums do
           ACCOUNTS = new('accounts')
         end

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class RequirementErrorCode < T::Enum
-
-
         enums do
           INVALID_VALUE = new('invalid-value')
           FAILED_AUTOMATIC_VERIFICATION = new('failed-automatic-verification')

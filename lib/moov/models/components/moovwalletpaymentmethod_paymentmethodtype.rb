@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class MoovWalletPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           MOOV_WALLET = new('moov-wallet')
         end

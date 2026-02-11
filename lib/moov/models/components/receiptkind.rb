@@ -9,8 +9,6 @@ module Moov
     module Components
       # ReceiptKind - The type of receipt being requested.
       class ReceiptKind < T::Enum
-
-
         enums do
           SALE_CUSTOMER_V1 = new('sale.customer.v1')
         end

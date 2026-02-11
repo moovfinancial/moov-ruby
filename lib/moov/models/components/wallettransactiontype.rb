@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class WalletTransactionType < T::Enum
-
-
         enums do
           ACCOUNT_FUNDING = new('account-funding')
           ACH_REVERSAL = new('ach-reversal')

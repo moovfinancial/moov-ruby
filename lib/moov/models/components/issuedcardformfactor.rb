@@ -9,8 +9,6 @@ module Moov
     module Components
       # IssuedCardFormFactor - Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
       class IssuedCardFormFactor < T::Enum
-
-
         enums do
           VIRTUAL = new('virtual')
         end
