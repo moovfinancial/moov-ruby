@@ -55,6 +55,8 @@ module Crystalline
       Crystalline::Utils.to_boolean(data)
     elsif type.is_a?(Class) && type < T::Enum
       type.deserialize(data)
+    elsif type.is_a?(Class) && type.respond_to?(:enums) && type.respond_to?(:deserialize)
+      type.deserialize(data)
     else
       data
     end

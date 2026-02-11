@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class BankAccountWaitFor < T::Enum
-
-
         enums do
           PAYMENT_METHOD = new('payment-method')
           RAIL_RESPONSE = new('rail-response')

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class WebhookDataTransferStatus < T::Enum
-
-
         enums do
           CREATED = new('created')
           PENDING = new('pending')

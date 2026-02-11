@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class TransferWaitFor < T::Enum
-
-
         enums do
           RAIL_RESPONSE = new('rail-response')
         end

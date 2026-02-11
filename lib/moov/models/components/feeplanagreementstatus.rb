@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class FeePlanAgreementStatus < T::Enum
-
-
         enums do
           ACTIVE = new('active')
           TERMINATED = new('terminated')

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class WalletTransactionStatus < T::Enum
-
-
         enums do
           PENDING = new('pending')
           COMPLETED = new('completed')

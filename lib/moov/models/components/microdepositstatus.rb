@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class MicroDepositStatus < T::Enum
-
-
         enums do
           VERIFIED = new('verified')
         end

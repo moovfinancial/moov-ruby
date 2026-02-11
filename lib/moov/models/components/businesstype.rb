@@ -9,8 +9,6 @@ module Moov
     module Components
       # BusinessType - The type of entity represented by this business.
       class BusinessType < T::Enum
-
-
         enums do
           SOLE_PROPRIETORSHIP = new('soleProprietorship')
           UNINCORPORATED_ASSOCIATION = new('unincorporatedAssociation')

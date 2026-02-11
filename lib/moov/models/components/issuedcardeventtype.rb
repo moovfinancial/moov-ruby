@@ -9,8 +9,6 @@ module Moov
     module Components
       # IssuedCardEventType - The type of event that occurred on the card.
       class IssuedCardEventType < T::Enum
-
-
         enums do
           AUTHORIZATION = new('authorization')
           REVERSAL = new('reversal')

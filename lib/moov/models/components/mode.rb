@@ -9,8 +9,6 @@ module Moov
     module Components
       # Mode - The operating mode for an account.
       class Mode < T::Enum
-
-
         enums do
           SANDBOX = new('sandbox')
           PRODUCTION = new('production')

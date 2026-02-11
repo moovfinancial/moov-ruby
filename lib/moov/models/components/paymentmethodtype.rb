@@ -9,8 +9,6 @@ module Moov
     module Components
       # PaymentMethodType - The payment method type that represents a payment rail and directionality
       class PaymentMethodType < T::Enum
-
-
         enums do
           MOOV_WALLET = new('moov-wallet')
           ACH_DEBIT_FUND = new('ach-debit-fund')

@@ -9,8 +9,6 @@ module Moov
     module Components
       # RTPTransactionStatus - Status of a transaction within the RTP lifecycle.
       class RTPTransactionStatus < T::Enum
-
-
         enums do
           INITIATED = new('initiated')
           COMPLETED = new('completed')

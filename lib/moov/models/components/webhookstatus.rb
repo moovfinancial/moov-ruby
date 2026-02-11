@@ -9,8 +9,6 @@ module Moov
     module Components
       # WebhookStatus - The status of a webhook.
       class WebhookStatus < T::Enum
-
-
         enums do
           ENABLED = new('enabled')
           DISABLED = new('disabled')
