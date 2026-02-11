@@ -9,8 +9,6 @@ module Moov
     module Components
       # RequirementID - The unique ID of what the requirement is asking to be filled out.
       class RequirementID < T::Enum
-
-
         enums do
           ACCOUNT_TOS_ACCEPTANCE = new('account.tos-acceptance')
           INDIVIDUAL_MOBILE = new('individual.mobile')

@@ -9,8 +9,6 @@ module Moov
     module Components
       # IssuedCardAuthorizationEventResult - The result of an event.
       class IssuedCardAuthorizationEventResult < T::Enum
-
-
         enums do
           APPROVED = new('approved')
           DECLINED = new('declined')

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class BankAccountStatus < T::Enum
-
-
         enums do
           NEW = new('new')
           VERIFIED = new('verified')

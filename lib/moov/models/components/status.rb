@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class Status < T::Enum
-
-
         enums do
           ENABLED = new('enabled')
           DISABLED = new('disabled')

@@ -14,8 +14,6 @@ module Moov
       # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
       # - `pending-verification`: Awaiting additional authorized user verification before the card can be activated.
       class IssuedCardState < T::Enum
-
-
         enums do
           ACTIVE = new('active')
           INACTIVE = new('inactive')

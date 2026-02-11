@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class WalletTransactionSourceType < T::Enum
-
-
         enums do
           TRANSFER = new('transfer')
           DISPUTE = new('dispute')

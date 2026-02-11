@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class SubmissionIntent < T::Enum
-
-
         enums do
           WAIT = new('wait')
           SUBMIT = new('submit')

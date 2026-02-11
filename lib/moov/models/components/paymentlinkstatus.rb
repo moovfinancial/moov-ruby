@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class PaymentLinkStatus < T::Enum
-
-
         enums do
           ACTIVE = new('active')
           USED = new('used')

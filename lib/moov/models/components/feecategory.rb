@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class FeeCategory < T::Enum
-
-
         enums do
           ACH = new('ach')
           CARD_ACQUIRING = new('card-acquiring')

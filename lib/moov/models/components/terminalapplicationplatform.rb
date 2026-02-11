@@ -9,8 +9,6 @@ module Moov
     module Components
       # TerminalApplicationPlatform - Platform of the terminal application.
       class TerminalApplicationPlatform < T::Enum
-
-
         enums do
           UNDEFINED = new('undefined')
           IOS = new('ios')
