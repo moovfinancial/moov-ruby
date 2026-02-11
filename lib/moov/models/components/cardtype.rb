@@ -9,8 +9,6 @@ module Moov
     module Components
       # CardType - The type of the card.
       class CardType < T::Enum
-
-
         enums do
           DEBIT = new('debit')
           CREDIT = new('credit')

@@ -9,8 +9,6 @@ module Moov
     module Components
       # BankAccountType - The bank account type.
       class BankAccountType < T::Enum
-
-
         enums do
           CHECKING = new('checking')
           SAVINGS = new('savings')

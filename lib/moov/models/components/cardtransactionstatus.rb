@@ -9,8 +9,6 @@ module Moov
     module Components
       # CardTransactionStatus - Status of a transaction within the card payment lifecycle.
       class CardTransactionStatus < T::Enum
-
-
         enums do
           INITIATED = new('initiated')
           CONFIRMED = new('confirmed')

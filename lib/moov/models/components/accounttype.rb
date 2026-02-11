@@ -9,8 +9,6 @@ module Moov
     module Components
       # AccountType - The type of entity represented by this account.
       class AccountType < T::Enum
-
-
         enums do
           INDIVIDUAL = new('individual')
           BUSINESS = new('business')

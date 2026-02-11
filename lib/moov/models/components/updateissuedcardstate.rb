@@ -10,8 +10,6 @@ module Moov
       # UpdateIssuedCardState - Updates the state of a Moov issued card.
       # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
       class UpdateIssuedCardState < T::Enum
-
-
         enums do
           CLOSED = new('closed')
         end

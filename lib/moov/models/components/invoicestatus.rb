@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class InvoiceStatus < T::Enum
-
-
         enums do
           DRAFT = new('draft')
           UNPAID = new('unpaid')

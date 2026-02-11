@@ -9,8 +9,6 @@ module Moov
     module Components
       # CardUpdateReason - The results of the card update request.
       class CardUpdateReason < T::Enum
-
-
         enums do
           UNSPECIFIED = new('unspecified')
           ACCOUNT_CLOSED = new('account-closed')

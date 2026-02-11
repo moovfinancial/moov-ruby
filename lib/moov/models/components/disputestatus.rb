@@ -11,8 +11,6 @@ module Moov
       # 
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/#dispute-statuses) to learn what each status means.
       class DisputeStatus < T::Enum
-
-
         enums do
           RESPONSE_NEEDED = new('response-needed')
           RESOLVED = new('resolved')

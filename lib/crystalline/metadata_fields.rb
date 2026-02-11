@@ -182,10 +182,10 @@ module Crystalline
         next if f.nil? && !required
         result[key] = nil if f.nil? && required
 
-        if f.is_a? Array
+        if f.is_a? ::Array
           result[key] = f.map { |o| marshal_single(o) }
-        elsif f.is_a? Hash
-          result[key] = f.map { |k, v| [k, marshal_single(v)] }
+        elsif f.is_a? ::Hash
+          result[key] = f.transform_values { |v| marshal_single(v) }
         else
           result[key] = marshal_single(f)
         end

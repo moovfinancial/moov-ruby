@@ -9,8 +9,6 @@ module Moov
     module Components
       # PrimaryRegulator - If the business is a financial institution, this field describes its primary regulator.
       class PrimaryRegulator < T::Enum
-
-
         enums do
           OCC = new('OCC')
           FDIC = new('FDIC')
