@@ -9,8 +9,6 @@ module Moov
     module Components
       # TransferStatus - Status of a transfer.
       class TransferStatus < T::Enum
-
-
         enums do
           CREATED = new('created')
           PENDING = new('pending')

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class GeographicReach < T::Enum
-
-
         enums do
           INTERNATIONAL_ONLY = new('international-only')
           US_AND_INTERNATIONAL = new('us-and-international')

@@ -9,8 +9,6 @@ module Moov
     module Components
       # EntryMode - How the card information was entered into the point of sale terminal.
       class EntryMode < T::Enum
-
-
         enums do
           CONTACTLESS = new('contactless')
         end

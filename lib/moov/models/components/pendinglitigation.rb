@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class PendingLitigation < T::Enum
-
-
         enums do
           BANKRUPTCY_OR_INSOLVENCY = new('bankruptcy-or-insolvency')
           CONSUMER_PROTECTION_OR_CLASS_ACTION = new('consumer-protection-or-class-action')

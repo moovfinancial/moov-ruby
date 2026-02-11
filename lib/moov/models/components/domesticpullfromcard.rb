@@ -9,8 +9,6 @@ module Moov
     module Components
       # DomesticPullFromCard - Indicates if the card supports domestic pull-from-card transfer.
       class DomesticPullFromCard < T::Enum
-
-
         enums do
           NOT_SUPPORTED = new('not-supported')
           SUPPORTED = new('supported')

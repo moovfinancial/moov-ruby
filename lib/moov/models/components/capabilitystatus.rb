@@ -9,8 +9,6 @@ module Moov
     module Components
       # CapabilityStatus - The status of the capability requested for an account.
       class CapabilityStatus < T::Enum
-
-
         enums do
           ENABLED = new('enabled')
           DISABLED = new('disabled')

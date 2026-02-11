@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class AchCreditStandardPaymentMethodPaymentMethodType < T::Enum
-
-
         enums do
           ACH_CREDIT_STANDARD = new('ach-credit-standard')
         end

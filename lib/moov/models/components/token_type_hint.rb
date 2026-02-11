@@ -9,8 +9,6 @@ module Moov
     module Components
       # TokenTypeHint - The type of token being revoked.
       class TokenTypeHint < T::Enum
-
-
         enums do
           ACCESS_TOKEN = new('access_token')
           REFRESH_TOKEN = new('refresh_token')

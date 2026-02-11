@@ -9,8 +9,6 @@ module Moov
     module Components
       # OccurrenceStatus - Status of the completed occurrence.
       class OccurrenceStatus < T::Enum
-
-
         enums do
           PENDING = new('pending')
           FAILED = new('failed')

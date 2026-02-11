@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class EvidenceType < T::Enum
-
-
         enums do
           RECEIPT = new('receipt')
           PROOF_OF_DELIVERY = new('proof-of-delivery')

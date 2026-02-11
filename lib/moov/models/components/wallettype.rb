@@ -11,8 +11,6 @@ module Moov
       #   - `default`: The system-generated wallet automatically created when an account is granted the wallet capability.
       #   - `general`: An additional, user-defined wallet created via API or Dashboard.
       class WalletType < T::Enum
-
-
         enums do
           DEFAULT = new('default')
           GENERAL = new('general')

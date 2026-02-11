@@ -9,8 +9,6 @@ module Moov
     module Components
       # WebhookEventType - The type of event that occurred.
       class WebhookEventType < T::Enum
-
-
         enums do
           WILDCARD_ = new('*')
           ACCOUNT_CREATED = new('account.created')

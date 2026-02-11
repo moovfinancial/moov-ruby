@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class CardVerificationResult < T::Enum
-
-
         enums do
           NO_MATCH = new('noMatch')
           MATCH = new('match')

@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class TransferParty < T::Enum
-
-
         enums do
           SOURCE = new('source')
           DESTINATION = new('destination')

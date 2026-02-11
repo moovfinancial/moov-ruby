@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class CreateAccountType < T::Enum
-
-
         enums do
           INDIVIDUAL = new('individual')
           BUSINESS = new('business')

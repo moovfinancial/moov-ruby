@@ -9,8 +9,6 @@ module Moov
     module Components
 
       class FulfillmentMethod < T::Enum
-
-
         enums do
           BILL_OR_DEBT_PAYMENT = new('bill-or-debt-payment')
           DIGITAL_CONTENT = new('digital-content')

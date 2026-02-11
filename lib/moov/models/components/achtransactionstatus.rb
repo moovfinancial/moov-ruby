@@ -9,8 +9,6 @@ module Moov
     module Components
       # ACHTransactionStatus - Status of a transaction within the ACH lifecycle.
       class ACHTransactionStatus < T::Enum
-
-
         enums do
           UNKNOWN = new('')
           INITIATED = new('initiated')
