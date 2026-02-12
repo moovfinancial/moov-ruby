@@ -12,7 +12,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Unique identifier for a image resource.
         field :image_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageID'), required: true } }
         # The ID used to get an image with the public endpoint.
         field :public_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('publicID'), required: true } }
