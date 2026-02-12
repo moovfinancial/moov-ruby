@@ -18,7 +18,7 @@ module Moov
         field :payment_method_type, Models::Components::PaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::PaymentMethodType, false) } }
 
         field :account, Models::Components::TransferAccount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account'), required: true } }
-        # UUID present only if the transfer is part of a transfer group.
+        # String present only if the transfer is part of a transfer group.
         field :transfer_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID') } }
         # A bank account as contained within a payment method.
         field :bank_account, Crystalline::Nilable.new(Models::Components::PaymentMethodsBankAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccount') } }
