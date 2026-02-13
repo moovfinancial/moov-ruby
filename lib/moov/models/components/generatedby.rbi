@@ -18,4 +18,6 @@ class Moov::Models::Components::GeneratedBy
   def account_id=(str_); end
   def bank_account_id(); end
   def bank_account_id=(str_); end
+  def invoice_id(); end
+  def invoice_id=(str_); end
 end
