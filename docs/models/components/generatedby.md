@@ -12,3 +12,4 @@ The entity that generated the fee.
 | `dispute_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | N/A                   |
 | `account_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | N/A                   |
 | `bank_account_id`     | *T.nilable(::String)* | :heavy_minus_sign:    | N/A                   |
+| `invoice_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | N/A                   |
