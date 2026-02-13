@@ -112,17 +112,21 @@ module Crystalline
               union_types = Crystalline::Utils.get_union_types(field_type)
               union_types = union_types.sort_by { |klass| Crystalline.non_nilable_attr_count(klass) }
 
-              union_types.each do |union_type|
-                begin
-                  to_build[key] = Crystalline.unmarshal_json(value, union_type)
-                rescue TypeError
-                  next
-                rescue NoMethodError
-                  next
-                rescue KeyError
-                  next
+              if Crystalline.union_strategy == :populated_fields
+                to_build[key] = Crystalline.unmarshal_union_populated_fields(value, union_types)
+              else
+                union_types.each do |union_type|
+                  begin
+                    to_build[key] = Crystalline.unmarshal_json(value, union_type)
+                  rescue TypeError
+                    next
+                  rescue NoMethodError
+                    next
+                  rescue KeyError
+                    next
+                  end
+                  break
                 end
-                break
               end
             end
           elsif field_type.instance_of?(Class) && field_type.include?(::Crystalline::MetadataFields)
