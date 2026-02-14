@@ -15,15 +15,15 @@ module Moov
 
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
         # The payment method type that represents a payment rail and directionality
-        field :payment_method_type, Models::Components::PaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::PaymentMethodType, false) } }
+        field :payment_method_type, Models::Components::TransferPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TransferPaymentMethodType, false) } }
 
         field :account, Models::Components::TransferAccount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account'), required: true } }
         # A bank account as contained within a payment method.
-        field :bank_account, Crystalline::Nilable.new(Models::Components::PaymentMethodsBankAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccount') } }
+        field :bank_account, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodsBankAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccount') } }
 
-        field :wallet, Crystalline::Nilable.new(Models::Components::PaymentMethodsWallet), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('wallet') } }
+        field :wallet, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodsWallet), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('wallet') } }
         # A card as contained within a payment method.
-        field :card, Crystalline::Nilable.new(Models::Components::PaymentMethodsCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('card') } }
+        field :card, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodsCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('card') } }
         # ACH specific details about the transaction.
         field :ach_details, Crystalline::Nilable.new(Models::Components::ACHTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
         # Describes an Apple Pay token on a Moov account.
@@ -33,7 +33,7 @@ module Moov
         # RTP specific details about the transaction.
         field :rtp_details, Crystalline::Nilable.new(Models::Components::RTPTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtpDetails') } }
 
-        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::PaymentMethodType, account: Models::Components::TransferAccount, bank_account: T.nilable(Models::Components::PaymentMethodsBankAccount), wallet: T.nilable(Models::Components::PaymentMethodsWallet), card: T.nilable(Models::Components::PaymentMethodsCard), ach_details: T.nilable(Models::Components::ACHTransactionDetails), apple_pay: T.nilable(Models::Components::ApplePayResponse), card_details: T.nilable(Models::Components::CardTransactionDetails), rtp_details: T.nilable(Models::Components::RTPTransactionDetails)).void }
+        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::TransferPaymentMethodType, account: Models::Components::TransferAccount, bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), ach_details: T.nilable(Models::Components::ACHTransactionDetails), apple_pay: T.nilable(Models::Components::ApplePayResponse), card_details: T.nilable(Models::Components::CardTransactionDetails), rtp_details: T.nilable(Models::Components::RTPTransactionDetails)).void }
         def initialize(payment_method_id:, payment_method_type:, account:, bank_account: nil, wallet: nil, card: nil, ach_details: nil, apple_pay: nil, card_details: nil, rtp_details: nil)
           @payment_method_id = payment_method_id
           @payment_method_type = payment_method_type
