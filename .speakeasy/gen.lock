@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 2f658639844e63b072b4c3874251cfd5
+  docChecksum: 7a7510ae68ede756fa970b1c877d31bf
   docVersion: v2026.01.00
-  speakeasyVersion: 1.716.0
-  generationVersion: 2.823.1
-  releaseVersion: 26.1.5
-  configChecksum: 080297dc5f470a3cc8973337a6c7ceb1
+  speakeasyVersion: 1.719.1
+  generationVersion: 2.824.1
+  releaseVersion: 26.1.6
+  configChecksum: ecbff9a795bee7bf7eca490c7b588e77
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 093a273c-4073-47a9-956b-1b81f5ebbd02
-  pristine_commit_hash: bfa56cbeae81534fec8e820b0df5171664cc2474
-  pristine_tree_hash: be11f439cb647db93e3ed79685a558196128916b
+  generation_id: afcc2e3c-f3e2-4d94-b146-939e9352cfcf
+  pristine_commit_hash: 3fe6a89f85f30c28d39b928cf63cf5cb5116415b
+  pristine_tree_hash: 5d001baa9d486f2013ee2ddbcc4c383990a267e3
 features:
   ruby:
     constsAndDefaults: 0.1.2
@@ -43,8 +43,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:abdcf2af2c6a50c9d640c31685f7a46fd0e9d150
-    pristine_git_object: 8f44b6139493f03efb4e81976df4b7a84cdf7e63
+    last_write_checksum: sha1:741b8fbe581b15fc27bf52e71c951a23aa38039b
+    pristine_git_object: 82433525e824590f3dead6e928372d355a57e4ce
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -12531,8 +12531,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:997a8c8631f66c1c1f9171cac90b34531e448c08
-    pristine_git_object: 50b959d37e8ae6dc76ab18acc6e333f98fc7ffec
+    last_write_checksum: sha1:ed1269f06aa06403e2f99f38c48887760b38ba7a
+    pristine_git_object: a4bc328ffd865dce3f16c71b5e37a679121461ef
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -12611,8 +12611,8 @@ trackedFiles:
     pristine_git_object: 9608191f10ff3117c41c517235b591066176b38a
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:6754ab97702e6ced48afef7da74e8ec8a20e4470
-    pristine_git_object: f9baec8a5ba682efb552f96c3a73f1e9005101a5
+    last_write_checksum: sha1:da81cf318186f0b4db7d33cfd01358749f8cdc12
+    pristine_git_object: 58fc3e491114d7770fbf686f4ed307de2f1a226a
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
