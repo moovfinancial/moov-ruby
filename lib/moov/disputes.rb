@@ -42,9 +42,9 @@ module Moov
     sig { params(request: Models::Operations::ListDisputesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListDisputesResponse) }
     def list(request:, timeout_ms: nil)
       # list - Returns the list of disputes. 
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -178,9 +178,9 @@ module Moov
     sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetDisputeResponse) }
     def get(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Get a dispute by ID. 
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetDisputeRequest.new(
@@ -302,9 +302,9 @@ module Moov
     sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::AcceptDisputeResponse) }
     def accept(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
       # accept - Accepts liability for a dispute. 
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::AcceptDisputeRequest.new(
@@ -441,9 +441,9 @@ module Moov
     sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListDisputeEvidenceResponse) }
     def list_evidence(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
       # list_evidence - Returns a dispute's public evidence by its ID. 
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::ListDisputeEvidenceRequest.new(
@@ -565,9 +565,9 @@ module Moov
     sig { params(create_evidence_file_multi_part: Models::Components::CreateEvidenceFileMultiPart, account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UploadDisputeEvidenceFileResponse) }
     def upload_evidence_file(create_evidence_file_multi_part:, account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
       # upload_evidence_file - Uploads a file as evidence for a dispute. 
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::UploadDisputeEvidenceFileRequest.new(
@@ -591,7 +591,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -732,9 +732,9 @@ module Moov
     sig { params(create_evidence_text: Models::Components::CreateEvidenceText, account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UploadDisputeEvidenceTextResponse) }
     def upload_evidence_text(create_evidence_text:, account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
       # upload_evidence_text - Uploads text as evidence for a dispute.
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::UploadDisputeEvidenceTextRequest.new(
@@ -758,7 +758,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -884,12 +884,12 @@ module Moov
     sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::SubmitDisputeEvidenceResponse) }
     def submit_evidence(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
       # submit_evidence - Submit the evidence associated with a dispute.
-      # 
+      #
       # Evidence items must be uploaded using the appropriate endpoint(s) prior to calling this endpoint to submit it. **Evidence can only
       # be submitted once per dispute.**
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::SubmitDisputeEvidenceRequest.new(
@@ -1026,9 +1026,9 @@ module Moov
     sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetDisputeEvidenceResponse) }
     def get_evidence(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil)
       # get_evidence - Get dispute evidence by ID.
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetDisputeEvidenceRequest.new(
@@ -1151,9 +1151,9 @@ module Moov
     sig { params(request: Models::Operations::UpdateDisputeEvidenceRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateDisputeEvidenceResponse) }
     def update_evidence(request:, timeout_ms: nil)
       # update_evidence - Updates dispute evidence by ID.
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       url, params = @sdk_configuration.get_server_details
@@ -1171,7 +1171,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1297,9 +1297,9 @@ module Moov
     sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteDisputeEvidenceFileResponse) }
     def delete_evidence(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil)
       # delete_evidence - Deletes dispute evidence by ID. 
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::DeleteDisputeEvidenceFileRequest.new(
@@ -1425,12 +1425,12 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetDisputeEvidenceDataResponse) }
-    def get_evidence_data(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String)).returns(Models::Operations::GetDisputeEvidenceDataResponse) }
+    def get_evidence_data(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil)
       # get_evidence_data - Downloads dispute evidence data by ID.
-      # 
+      #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetDisputeEvidenceDataRequest.new(
@@ -1450,7 +1450,7 @@ module Moov
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
       headers = T.cast(headers, T::Hash[String, String])
-      headers['Accept'] = 'application/pdf;q=1, image/jpeg;q=0.7, image/tiff;q=0'
+      headers['Accept'] = accept_header_override || 'application/pdf;q=1, image/jpeg;q=0.7, image/tiff;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       security = @sdk_configuration.security_source&.call
@@ -1521,7 +1521,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetDisputeEvidenceDataResponse.new(
             status_code: http_response.status,
@@ -1537,7 +1537,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetDisputeEvidenceDataResponse.new(
             status_code: http_response.status,
@@ -1553,7 +1553,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetDisputeEvidenceDataResponse.new(
             status_code: http_response.status,

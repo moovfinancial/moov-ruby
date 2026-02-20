@@ -19,7 +19,7 @@ module Moov
 
         field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         sig { params(adjustment_id: ::String, wallet_id: ::String, amount: Models::Components::AmountDecimal, created_on: ::DateTime).void }
         def initialize(adjustment_id:, wallet_id:, amount:, created_on:)

@@ -17,9 +17,9 @@ module Moov
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
 
-        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
+        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
         # The reason the bank account status changed to the current value.
-        field :status_reason, Models::Components::BankAccountStatusReason, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statusReason'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountStatusReason, false) } }
+        field :status_reason, Models::Components::BankAccountStatusReason, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statusReason'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatusReason, false) } }
         # Reason for, and details related to, an `errored` or `verificationFailed` bank account status.
         field :exception_details, Crystalline::Nilable.new(Models::Components::BankAccountException), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('exceptionDetails') } }
 

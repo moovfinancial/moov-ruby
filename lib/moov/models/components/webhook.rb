@@ -17,17 +17,17 @@ module Moov
         # The URL where webhook events will be sent.
         field :url, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('url'), required: true } }
         # The status of a webhook.
-        field :status, Models::Components::WebhookStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WebhookStatus, false) } }
+        field :status, Models::Components::WebhookStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WebhookStatus, false) } }
         # The list of event types this webhook is subscribed to.
         field :event_types, Crystalline::Array.new(Models::Components::WebhookEventType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('eventTypes'), required: true } }
         # A description of the webhook for reference.
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
         # Timestamp of when the webhook was created.
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Timestamp of when the webhook was last updated.
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Timestamp of when the webhook last received an event.
-        field :last_used_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastUsedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :last_used_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastUsedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(webhook_id: ::String, url: ::String, status: Models::Components::WebhookStatus, event_types: T::Array[Models::Components::WebhookEventType], description: ::String, created_on: ::DateTime, updated_on: ::DateTime, last_used_on: T.nilable(::DateTime)).void }
         def initialize(webhook_id:, url:, status:, event_types:, description:, created_on:, updated_on:, last_used_on: nil)

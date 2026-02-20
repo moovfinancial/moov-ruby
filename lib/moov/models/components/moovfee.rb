@@ -15,7 +15,7 @@ module Moov
         # ID of the account that fees were charged to.
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # Indicates whether the account charged was the partner, source, or destination of the transfer.
-        field :transfer_party, Models::Components::TransferParty, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferParty'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TransferParty, false) } }
+        field :transfer_party, Models::Components::TransferParty, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferParty'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferParty, false) } }
         # The total amount of fees charged to the account.
         field :total_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('totalAmount'), required: true } }
         # List of fee IDs that sum to the totalAmount.

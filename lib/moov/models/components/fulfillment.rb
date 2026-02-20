@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :method, Crystalline::Nilable.new(Models::Components::FulfillmentMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('method'), 'decoder': Utils.enum_from_string(Models::Components::FulfillmentMethod, true) } }
+        field :method, Crystalline::Nilable.new(Models::Components::FulfillmentMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('method'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FulfillmentMethod, true) } }
 
-        field :timeframe, Crystalline::Nilable.new(Models::Components::FulfillmentTimeframe), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('timeframe'), 'decoder': Utils.enum_from_string(Models::Components::FulfillmentTimeframe, true) } }
+        field :timeframe, Crystalline::Nilable.new(Models::Components::FulfillmentTimeframe), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('timeframe'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FulfillmentTimeframe, true) } }
 
         sig { params(method: T.nilable(Models::Components::FulfillmentMethod), timeframe: T.nilable(Models::Components::FulfillmentTimeframe)).void }
         def initialize(method: nil, timeframe: nil)

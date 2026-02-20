@@ -19,25 +19,25 @@ module Moov
 
         field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
         # Indicates the card network's category for the dispute. 
-        # 
+        #
         # These codes may differ between card brands. You can find more information on the code from the networkReasonDescription field.
         field :network_reason_code, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkReasonCode'), required: true } }
 
         field :transfer, Models::Components::DisputeTransferDetails, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transfer'), required: true } }
 
-        field :respond_by, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('respondBy'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :respond_by, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('respondBy'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The status of a particular dispute. 
-        # 
+        #
         # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/#dispute-statuses) to learn what each status means.
-        field :status, Models::Components::DisputeStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::DisputeStatus, false) } }
+        field :status, Models::Components::DisputeStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DisputeStatus, false) } }
         # The phase of a dispute within the dispute lifecycle.
-        field :phase, Models::Components::DisputePhase, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phase'), required: true, 'decoder': Utils.enum_from_string(Models::Components::DisputePhase, false) } }
+        field :phase, Models::Components::DisputePhase, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phase'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DisputePhase, false) } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Provides detail on the card network's categorization of the dispute.
         field :network_reason_description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkReasonDescription') } }
 
-        field :submitted_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('submittedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :submitted_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('submittedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(dispute_id: ::String, merchant_account_id: ::String, amount: Models::Components::Amount, network_reason_code: ::String, transfer: Models::Components::DisputeTransferDetails, respond_by: ::DateTime, status: Models::Components::DisputeStatus, phase: Models::Components::DisputePhase, created_on: ::DateTime, network_reason_description: T.nilable(::String), submitted_on: T.nilable(::DateTime)).void }
         def initialize(dispute_id:, merchant_account_id:, amount:, network_reason_code:, transfer:, respond_by:, status:, phase:, created_on:, network_reason_description: nil, submitted_on: nil)

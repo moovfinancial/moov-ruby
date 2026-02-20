@@ -24,13 +24,12 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-      x_moov_version: 'v2024.01.00',
-    )
-
-req = Models::Operations::GetEnrichmentAddressRequest.new(
-  search: '<value>',
+  x_moov_version: 'v2024.01.00'
 )
 
+req = Models::Operations::GetEnrichmentAddressRequest.new(
+  search: '<value>'
+)
 res = s.enriched_address.get(request: req)
 
 unless res.enriched_address_response.nil?

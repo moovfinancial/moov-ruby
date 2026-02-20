@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
       #   Contains the encrypted payment data.
-      # 
+      #
       #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttoken/1916115-paymentdata) 
       #   for more information.
       class LinkApplePaymentData
@@ -22,7 +22,7 @@ module Moov
         # A base64 encoded signature of the payment and header data.
         field :signature, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('signature'), required: true } }
         # Information needed to decrypt Apple Pay payment data.
-        # 
+        #
         # Refer to [Apple's documentation](https://developer.apple.com/documentation/passkit/payment-token-format-reference#Header-keys-and-values) 
         # for more information.
         field :header, Models::Components::ApplePayHeader, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('header'), required: true } }

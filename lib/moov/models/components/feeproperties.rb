@@ -17,7 +17,7 @@ module Moov
         # A fixed fee that is applied to the amount of each transaction in the `fixed` and `blended` fee models.
         field :fixed_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fixedAmount') } }
         # A percentage fee that is applied to the amount of each transaction in the `blended` fee model, expressed as a decimal. 
-        # 
+        #
         # For example, 0.05% is '0.05'.
         field :variable_rate, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('variableRate') } }
         # Specifies the minimum allowable spending for a single transaction, working as a transaction floor.

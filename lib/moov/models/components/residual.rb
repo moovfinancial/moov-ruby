@@ -17,9 +17,9 @@ module Moov
         # The partner account ID this residual belongs to.
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
         # Start date and time of the residual calculation period.
-        field :period_start, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('periodStart'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :period_start, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('periodStart'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # End date and time of the residual calculation period.
-        field :period_end, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('periodEnd'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :period_end, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('periodEnd'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Total amount of merchant fees collected during the period. This represents the partner's revenue from merchant fees.
         field :merchant_fees, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantFees'), required: true } }
         # Partner's total cost (buy rate) during the period.
@@ -31,9 +31,9 @@ module Moov
         # The amount the partner receives as their share of the net income (netIncome × revenueShare).
         field :residual_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('residualAmount'), required: true } }
         # Timestamp when the residual was created.
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Timestamp when the residual was last updated.
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         sig { params(residual_id: ::String, partner_account_id: ::String, period_start: ::DateTime, period_end: ::DateTime, merchant_fees: Models::Components::AmountDecimal, partner_cost: Models::Components::AmountDecimal, net_income: Models::Components::AmountDecimal, revenue_share: ::String, residual_amount: Models::Components::AmountDecimal, created_on: ::DateTime, updated_on: ::DateTime).void }
         def initialize(residual_id:, partner_account_id:, period_start:, period_end:, merchant_fees:, partner_cost:, net_income:, revenue_share:, residual_amount:, created_on:, updated_on:)

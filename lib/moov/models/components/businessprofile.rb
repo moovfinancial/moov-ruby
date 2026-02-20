@@ -19,7 +19,7 @@ module Moov
         # A registered trade name under which the business operates, if different from its legal name.
         field :doing_business_as, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('doingBusinessAs') } }
         # The type of entity represented by this business.
-        field :business_type, Crystalline::Nilable.new(Models::Components::BusinessType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessType'), 'decoder': Utils.enum_from_string(Models::Components::BusinessType, true) } }
+        field :business_type, Crystalline::Nilable.new(Models::Components::BusinessType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BusinessType, true) } }
 
         field :address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('address') } }
 
@@ -39,7 +39,7 @@ module Moov
         # Classification identifier for the industry. Use the [GET industries](https://docs.moov.io/api/enrichment/form-shortening/industries/get/) endpoint to retrieve an array of valid industry details for a merchant, inducing all industry field values.
         field :industry, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('industry') } }
         # If the business is a financial institution, this field describes its primary regulator.
-        field :primary_regulator, Crystalline::Nilable.new(Models::Components::PrimaryRegulator), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('primaryRegulator'), 'decoder': Utils.enum_from_string(Models::Components::PrimaryRegulator, true) } }
+        field :primary_regulator, Crystalline::Nilable.new(Models::Components::PrimaryRegulator), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('primaryRegulator'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PrimaryRegulator, true) } }
 
         sig { params(legal_business_name: ::String, owners_provided: T::Boolean, doing_business_as: T.nilable(::String), business_type: T.nilable(Models::Components::BusinessType), address: T.nilable(Models::Components::Address), phone: T.nilable(Models::Components::PhoneNumber), email: T.nilable(::String), website: T.nilable(::String), description: T.nilable(::String), tax_id_provided: T.nilable(T::Boolean), representatives: T.nilable(T::Array[Models::Components::Representative]), industry_codes: T.nilable(Models::Components::IndustryCodes), industry: T.nilable(::String), primary_regulator: T.nilable(Models::Components::PrimaryRegulator)).void }
         def initialize(legal_business_name:, owners_provided:, doing_business_as: nil, business_type: nil, address: nil, phone: nil, email: nil, website: nil, description: nil, tax_id_provided: nil, representatives: nil, industry_codes: nil, industry: nil, primary_regulator: nil)

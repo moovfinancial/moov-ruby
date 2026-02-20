@@ -19,9 +19,9 @@ module Moov
         # A unique list of fully-qualified, top-level or sub-domain names where you will accept Apple Pay.
         field :domains, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domains'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         sig { params(account_id: ::String, display_name: ::String, domains: T::Array[::String], created_on: ::DateTime, updated_on: ::DateTime).void }
         def initialize(account_id:, display_name:, domains:, created_on:, updated_on:)

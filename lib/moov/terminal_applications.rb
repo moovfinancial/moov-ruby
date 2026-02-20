@@ -42,7 +42,7 @@ module Moov
     sig { params(create_terminal_application: Models::Components::CreateTerminalApplication, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTerminalApplicationResponse) }
     def create(create_terminal_application:, x_moov_version: nil, timeout_ms: nil)
       # create - Create a new terminal application.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.write` scope.
       request = Models::Operations::CreateTerminalApplicationRequest.new(
@@ -58,7 +58,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -199,7 +199,7 @@ module Moov
     sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTerminalApplicationsResponse) }
     def list(x_moov_version: nil, timeout_ms: nil)
       # list - List all the terminal applications for a Moov Account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.read` scope.
       request = Models::Operations::ListTerminalApplicationsRequest.new(
@@ -313,7 +313,7 @@ module Moov
     sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTerminalApplicationResponse) }
     def get(terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Fetch a specific terminal application.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.read` scope.
       request = Models::Operations::GetTerminalApplicationRequest.new(
@@ -434,7 +434,7 @@ module Moov
     sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteTerminalApplicationResponse) }
     def delete(terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
       # delete - Delete a specific terminal application.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.write` scope.
       request = Models::Operations::DeleteTerminalApplicationRequest.new(
@@ -561,7 +561,7 @@ module Moov
     sig { params(terminal_application_version: Models::Components::TerminalApplicationVersion, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTerminalApplicationVersionResponse) }
     def create_version(terminal_application_version:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
       # create_version - Register a new version of a terminal application. For Android applications, this is used to register a new version code of the application.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.write` scope.
       request = Models::Operations::CreateTerminalApplicationVersionRequest.new(
@@ -584,7 +584,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))

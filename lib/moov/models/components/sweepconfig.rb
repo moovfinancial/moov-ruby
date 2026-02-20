@@ -17,7 +17,7 @@ module Moov
 
         field :wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID'), required: true } }
 
-        field :status, Models::Components::SweepConfigStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::SweepConfigStatus, false) } }
+        field :status, Models::Components::SweepConfigStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SweepConfigStatus, false) } }
         # The payment method used to push or pull funds to a bank account.
         # The push payment method can only be ach-credit-standard, ach-credit-same-day, or rtp-credit. The pull payment method can only be ach-debit-fund.
         field :push_payment_method, Models::Components::SweepConfigPaymentMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushPaymentMethod'), required: true } }
@@ -25,9 +25,9 @@ module Moov
         # The push payment method can only be ach-credit-standard, ach-credit-same-day, or rtp-credit. The pull payment method can only be ach-debit-fund.
         field :pull_payment_method, Models::Components::SweepConfigPaymentMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pullPaymentMethod'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # An optional field to specify an amount to maintain in the wallet. This is a decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99. If not supplied, the default is 0.00.
         field :minimum_balance, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumBalance') } }
         # The text that appears on the banking statement. The default descriptor is a 10 character ID if an override is not set in the sweep configs statementDescriptor.

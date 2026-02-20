@@ -15,7 +15,7 @@ module Moov
 
         field :issued_card_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuedCardID'), required: true } }
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
 
         field :last_four_card_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber'), required: true } }
         # The expiration date of the card or token.
@@ -25,16 +25,16 @@ module Moov
         # Unique identifier for the wallet funding the card.
         field :funding_wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fundingWalletID'), required: true } }
         # The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
-        # 
+        #
         # - `active`: The card is operational and approves authorizations. Generally becomes active shortly after card creation.
         # - `inactive`: The card cannot approve authorizations. This is currently a temporary state assigned post-creation during the activation process.
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
         # - `pending-verification`: Awaiting additional authorized user verification before the card can be activated.
-        field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': Utils.enum_from_string(Models::Components::IssuedCardState, false) } }
+        field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardState, false) } }
         # Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
-        field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
+        field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The issued card's Primary Account Number (PAN)
         field :pan, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pan'), required: true } }
         # The issued card's 3- or 4-digit Card Verification Value (CVV).

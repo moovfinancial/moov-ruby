@@ -9,7 +9,7 @@ module Moov
     module Components
       # Specify the intended recipient of the payout.
       # Either `email` or `phone` must be specified, but not both.
-      # 
+      #
       # This information will be used to authenticate the end user when they follow the payment link.
       class PayoutRecipient
         extend T::Sig

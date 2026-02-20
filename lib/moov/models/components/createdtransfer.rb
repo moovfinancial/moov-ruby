@@ -15,17 +15,17 @@ module Moov
 
         field :transfer_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :source, Crystalline::Nilable.new(Models::Components::TransferSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('source') } }
 
         field :destination, Crystalline::Nilable.new(Models::Components::TransferDestination), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destination') } }
 
-        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Status of a transfer.
-        field :status, Crystalline::Nilable.new(Models::Components::TransferStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::TransferStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::TransferStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferStatus, true) } }
         # Reason for a transfer's failure.
-        field :failure_reason, Crystalline::Nilable.new(Models::Components::TransferFailureReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureReason'), 'decoder': Utils.enum_from_string(Models::Components::TransferFailureReason, true) } }
+        field :failure_reason, Crystalline::Nilable.new(Models::Components::TransferFailureReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureReason'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferFailureReason, true) } }
 
         field :amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
         # An optional description of the transfer that is used on receipts and for your own internal use.
