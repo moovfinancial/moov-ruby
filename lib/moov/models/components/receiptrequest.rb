@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :kind, Models::Components::Kind, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('kind'), required: true, 'decoder': Utils.enum_from_string(Models::Components::Kind, false) } }
+        field :kind, Models::Components::Kind, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('kind'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Kind, false) } }
         # The email address to send the receipt to.
         # Either email or emailAccountID must be provided, but not both.
         field :email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('email') } }

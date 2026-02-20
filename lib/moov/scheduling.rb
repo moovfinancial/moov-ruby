@@ -42,7 +42,7 @@ module Moov
     sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateScheduleResponse) }
     def create(upsert_schedule:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create - Describes the schedule to create or modify.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CreateScheduleRequest.new(
@@ -65,7 +65,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -206,7 +206,7 @@ module Moov
     sig { params(request: Models::Operations::ListSchedulesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListSchedulesResponse) }
     def list(request:, timeout_ms: nil)
       # list - Describes a list of schedules associated with an account. Append the `hydrate=accounts` query parameter to include partial account details in the response.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -325,7 +325,7 @@ module Moov
     sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateScheduleResponse) }
     def update(upsert_schedule:, account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Describes the schedule to modify.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::UpdateScheduleRequest.new(
@@ -349,7 +349,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -490,7 +490,7 @@ module Moov
     sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetSchedulesResponse) }
     def get(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Describes a schedule associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetSchedulesRequest.new(
@@ -612,7 +612,7 @@ module Moov
     sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CancelScheduleResponse) }
     def cancel(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil)
       # cancel - Describes the schedule to cancel.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CancelScheduleRequest.new(
@@ -740,7 +740,7 @@ module Moov
     sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetScheduledOccurrenceResponse) }
     def get_occurrance(account_id:, schedule_id:, occurrence_filter:, x_moov_version: nil, timeout_ms: nil)
       # get_occurrance - Gets a specific occurrence.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetScheduledOccurrenceRequest.new(

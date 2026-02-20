@@ -15,7 +15,7 @@ module Moov
         # A 3-letter ISO 4217 currency code.
         field :currency, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('currency') } }
         # Quantity in the smallest unit of the specified currency. 
-        # 
+        #
         # In USD this is cents, for example, $12.04 is 1204 and $0.99 is 99.
         field :value, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('value') } }
 

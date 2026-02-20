@@ -42,7 +42,7 @@ module Moov
     sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::PingResponse) }
     def ping(x_moov_version: nil, timeout_ms: nil)
       # ping - A simple endpoint to check auth.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/ping.read` scope.
       request = Models::Operations::PingRequest.new(

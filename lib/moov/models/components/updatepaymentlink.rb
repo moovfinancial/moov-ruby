@@ -28,7 +28,7 @@ module Moov
         # When line items are provided, their total plus sales tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
-        field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(amount: T.nilable(Models::Components::AmountUpdate), sales_tax_amount: T.nilable(Models::Components::AmountUpdate), display: T.nilable(Models::Components::PaymentLinkDisplayOptionsUpdate), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetailsUpdate), payout: T.nilable(Models::Components::PaymentLinkPayoutDetailsUpdate), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsUpdate), expires_on: T.nilable(::DateTime)).void }
         def initialize(amount: nil, sales_tax_amount: nil, display: nil, customer: nil, payment: nil, payout: nil, line_items: nil, expires_on: nil)

@@ -8,8 +8,8 @@ module Moov
   module Models
     module Components
       # UnderwritingStatus
-      # 
-      # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
+      #
+      # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
       class UnderwritingStatus < T::Enum
         enums do
           APPROVED = new('approved')

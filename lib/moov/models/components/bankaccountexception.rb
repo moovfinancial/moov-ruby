@@ -15,7 +15,7 @@ module Moov
         # Details related to an `errored` or `verificationFailed` bank account status.
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
         # The return code of an ACH transaction that caused the bank account status to change.
-        # 
+        #
         # - R02: Account Closed
         # - R03: No Account/Unable to Locate Account
         # - R04: Invalid Account Number
@@ -36,9 +36,9 @@ module Moov
         # - R34: Limited participation RDFI
         # - R38: Stop Payment on Source Document (Adjustment Entry)
         # - R39: Improper Source Document
-        field :ach_return_code, Crystalline::Nilable.new(Models::Components::ACHReturnCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achReturnCode'), 'decoder': Utils.enum_from_string(Models::Components::ACHReturnCode, true) } }
+        field :ach_return_code, Crystalline::Nilable.new(Models::Components::ACHReturnCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achReturnCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::ACHReturnCode, true) } }
         # The rejection code of an RTP transaction that caused the bank account status to change.
-        # 
+        #
         # - AC03: Account Invalid
         # - AC04: Account Closed
         # - AC06: Account Blocked
@@ -46,9 +46,9 @@ module Moov
         # - AG01: Transactions Forbidden On Account
         # - AG03: Transaction Type Not Supported
         # - MD07: Customer Deceased
-        field :rtp_rejection_code, Crystalline::Nilable.new(Models::Components::RTPRejectionCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtpRejectionCode'), 'decoder': Utils.enum_from_string(Models::Components::RTPRejectionCode, true) } }
+        field :rtp_rejection_code, Crystalline::Nilable.new(Models::Components::RTPRejectionCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtpRejectionCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RTPRejectionCode, true) } }
         # The rejection code of a FedNow transaction that caused the bank account status to change.
-        # 
+        #
         # - AC02: Debtor account is invalid
         # - AC03: Creditor account is invalid
         # - AC04: Account closed

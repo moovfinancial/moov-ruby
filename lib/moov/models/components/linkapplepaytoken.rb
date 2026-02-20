@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
       #   Contains the user's payment information as returned from Apple Pay.
-      # 
+      #
       #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttoken) 
       #   for more information.
       class LinkApplePayToken
@@ -16,12 +16,12 @@ module Moov
         include Crystalline::MetadataFields
 
         #   Contains the encrypted payment data.
-        # 
+        #
         #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttoken/1916115-paymentdata) 
         #   for more information.
         field :payment_data, Models::Components::LinkApplePaymentData, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentData'), required: true } }
         #   Provides information about the underlying card.
-        # 
+        #
         #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttoken/1916113-paymentmethod) 
         #   for more information.
         field :payment_method, Models::Components::LinkApplePaymentMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethod'), required: true } }

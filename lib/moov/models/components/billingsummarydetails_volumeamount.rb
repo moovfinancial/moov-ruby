@@ -8,8 +8,8 @@ module Moov
   module Models
     module Components
       # The total transaction volume amount. This field is deprecated and will be removed in a future release.
-      # 
-      # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
+      #
+      # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
       class BillingSummaryDetailsVolumeAmount
         extend T::Sig
         include Crystalline::MetadataFields
@@ -17,7 +17,7 @@ module Moov
         # A 3-letter ISO 4217 currency code.
         field :currency, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('currency'), required: true } }
         # A decimal-formatted numerical string that represents up to 9 decimal place precision. 
-        # 
+        #
         # For example, $12.987654321 is '12.987654321'.
         field :value_decimal, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('valueDecimal'), required: true } }
 

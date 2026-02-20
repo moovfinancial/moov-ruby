@@ -42,7 +42,7 @@ module Moov
     sig { params(request: Models::Operations::ListStatementsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListStatementsResponse) }
     def list(request:, timeout_ms: nil)
       # list - Retrieve all statements associated with an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -173,12 +173,12 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, statement_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetStatementResponse) }
-    def get(account_id:, statement_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, statement_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String)).returns(Models::Operations::GetStatementResponse) }
+    def get(account_id:, statement_id:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil)
       # get - Retrieve a statement by its ID.
-      # 
+      #
       # Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `application/pdf`.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetStatementRequest.new(
@@ -197,7 +197,7 @@ module Moov
       )
       headers = Utils.get_headers(request, @sdk_configuration.globals)
       headers = T.cast(headers, T::Hash[String, String])
-      headers['Accept'] = 'application/json;q=1, application/pdf;q=0'
+      headers['Accept'] = accept_header_override || 'application/json;q=1, application/pdf;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       security = @sdk_configuration.security_source&.call
@@ -286,7 +286,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetStatementResponse.new(
             status_code: http_response.status,

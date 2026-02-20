@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # The type of wallet transaction the subtotal is for.
-        field :type, Models::Components::WalletTransactionType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('type'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletTransactionType, false) } }
+        field :type, Models::Components::WalletTransactionType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('type'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionType, false) } }
         # The number of transactions of this type accrued in the sweep.
         field :count, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('count'), required: true } }
         # The value of transactions of this type accrued in the sweep.

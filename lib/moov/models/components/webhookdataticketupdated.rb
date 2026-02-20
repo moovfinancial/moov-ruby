@@ -17,7 +17,7 @@ module Moov
 
         field :ticket_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('ticketID'), required: true } }
 
-        field :status, Models::Components::TicketStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TicketStatus, false) } }
+        field :status, Models::Components::TicketStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TicketStatus, false) } }
 
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 

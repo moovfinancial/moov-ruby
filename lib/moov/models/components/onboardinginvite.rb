@@ -25,7 +25,7 @@ module Moov
         # List of fee plan codes to assign the account created by the invitee.
         field :fee_plan_codes, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePlanCodes'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The scopes requested by the inviter.
         field :return_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnURL') } }
         # The terms of service URL set by the inviter.
@@ -40,9 +40,9 @@ module Moov
         # The account that created the onboarding invite.
         field :partner, Crystalline::Nilable.new(Models::Components::OnboardingPartnerAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partner') } }
 
-        field :revoked_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('revokedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :revoked_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('revokedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :redeemed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('redeemedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :redeemed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('redeemedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(code: ::String, link: ::String, scopes: T::Array[Models::Components::ApplicationScope], capabilities: T::Array[Models::Components::CapabilityID], fee_plan_codes: T::Array[::String], created_on: ::DateTime, return_url: T.nilable(::String), terms_of_service_url: T.nilable(::String), grant_scopes: T.nilable(T::Array[Models::Components::ApplicationScope]), redeemed_account_id: T.nilable(::String), prefill: T.nilable(Models::Components::CreateAccount), partner: T.nilable(Models::Components::OnboardingPartnerAccount), revoked_on: T.nilable(::DateTime), redeemed_on: T.nilable(::DateTime)).void }
         def initialize(code:, link:, scopes:, capabilities:, fee_plan_codes:, created_on:, return_url: nil, terms_of_service_url: nil, grant_scopes: nil, redeemed_account_id: nil, prefill: nil, partner: nil, revoked_on: nil, redeemed_on: nil)

@@ -17,9 +17,9 @@ module Moov
 
         field :name, Models::Components::IndividualName, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :phone, Crystalline::Nilable.new(Models::Components::PhoneNumber), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phone') } }
 
@@ -33,7 +33,7 @@ module Moov
         # Describes the job responsibilities of a business representative.
         field :responsibilities, Crystalline::Nilable.new(Models::Components::RepresentativeResponsibilities), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('responsibilities') } }
 
-        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(representative_id: ::String, name: Models::Components::IndividualName, created_on: ::DateTime, updated_on: ::DateTime, phone: T.nilable(Models::Components::PhoneNumber), email: T.nilable(::String), address: T.nilable(Models::Components::Address), birth_date_provided: T.nilable(T::Boolean), government_id_provided: T.nilable(T::Boolean), responsibilities: T.nilable(Models::Components::RepresentativeResponsibilities), disabled_on: T.nilable(::DateTime)).void }
         def initialize(representative_id:, name:, created_on:, updated_on:, phone: nil, email: nil, address: nil, birth_date_provided: nil, government_id_provided: nil, responsibilities: nil, disabled_on: nil)

@@ -15,17 +15,17 @@ module Moov
 
         field :sweep_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sweepID'), required: true } }
 
-        field :status, Models::Components::SweepStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::SweepStatus, false) } }
+        field :status, Models::Components::SweepStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SweepStatus, false) } }
         # The total net amount of wallet transactions accrued in the sweep.
         field :accrued_amount, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accruedAmount'), required: true } }
         # A 3-letter ISO 4217 currency code.
         field :currency, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('currency'), required: true } }
         # The date-time the sweep began accruing transactions.
-        field :accrual_started_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accrualStartedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :accrual_started_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accrualStartedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Amount remaining in the wallet after the sweep transfer completes.
         field :residual_balance, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('residualBalance') } }
         # The date-time the sweep stopped accruing transactions.
-        field :accrual_ended_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accrualEndedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :accrual_ended_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accrualEndedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # ID of the payment method.
         field :push_payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushPaymentMethodID') } }
         # ID of the payment method.

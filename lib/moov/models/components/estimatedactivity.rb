@@ -17,7 +17,7 @@ module Moov
 
         field :maximum_transaction_amount, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maximumTransactionAmount') } }
         # The low value in each range is included. The high value in each range is excluded.
-        field :monthly_volume_range, Crystalline::Nilable.new(Models::Components::MonthlyVolumeRange), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('monthlyVolumeRange'), 'decoder': Utils.enum_from_string(Models::Components::MonthlyVolumeRange, true) } }
+        field :monthly_volume_range, Crystalline::Nilable.new(Models::Components::MonthlyVolumeRange), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('monthlyVolumeRange'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::MonthlyVolumeRange, true) } }
 
         sig { params(average_transaction_amount: T.nilable(::Integer), maximum_transaction_amount: T.nilable(::Integer), monthly_volume_range: T.nilable(Models::Components::MonthlyVolumeRange)).void }
         def initialize(average_transaction_amount: nil, maximum_transaction_amount: nil, monthly_volume_range: nil)

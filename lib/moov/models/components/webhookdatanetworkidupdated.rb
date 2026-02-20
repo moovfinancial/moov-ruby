@@ -23,7 +23,7 @@ module Moov
 
         field :amex_mid, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amexMid') } }
 
-        field :updated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :updated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(account_id: ::String, visa_mid: T.nilable(::String), mastercard_mid: T.nilable(::String), discover_mid: T.nilable(::String), amex_mid: T.nilable(::String), updated_on: T.nilable(::DateTime)).void }
         def initialize(account_id:, visa_mid: nil, mastercard_mid: nil, discover_mid: nil, amex_mid: nil, updated_on: nil)

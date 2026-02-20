@@ -21,7 +21,7 @@ module Moov
 
         field :fulfillment, Crystalline::Nilable.new(Models::Components::Fulfillment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fulfillment') } }
 
-        field :refund_policy, Crystalline::Nilable.new(Models::Components::RefundPolicy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refundPolicy'), 'decoder': Utils.enum_from_string(Models::Components::RefundPolicy, true) } }
+        field :refund_policy, Crystalline::Nilable.new(Models::Components::RefundPolicy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refundPolicy'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RefundPolicy, true) } }
 
         sig { params(card_acceptance_methods: T.nilable(Models::Components::CardAcceptanceMethods), currently_accepts_cards: T.nilable(T::Boolean), estimated_activity: T.nilable(Models::Components::EstimatedActivity), fulfillment: T.nilable(Models::Components::Fulfillment), refund_policy: T.nilable(Models::Components::RefundPolicy)).void }
         def initialize(card_acceptance_methods: nil, currently_accepts_cards: nil, estimated_activity: nil, fulfillment: nil, refund_policy: nil)

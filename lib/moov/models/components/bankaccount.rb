@@ -15,32 +15,32 @@ module Moov
 
         field :bank_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountID'), required: true } }
         # Once the bank account is linked, we don't reveal the full bank account number.
-        # 
+        #
         # The fingerprint acts as a way to identify whether two linked bank accounts are the same.
         field :fingerprint, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fingerprint'), required: true } }
 
-        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
+        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
 
         field :holder_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderName'), required: true } }
         # The type of holder on a funding source.
-        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountHolderType, false) } }
+        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountHolderType, false) } }
 
         field :bank_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankName'), required: true } }
         # The bank account type.
-        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountType, false) } }
+        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountType, false) } }
 
         field :routing_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('routingNumber'), required: true } }
 
         field :last_four_account_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourAccountNumber'), required: true } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The reason the bank account status changed to the current value.
-        field :status_reason, Crystalline::Nilable.new(Models::Components::BankAccountStatusReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statusReason'), 'decoder': Utils.enum_from_string(Models::Components::BankAccountStatusReason, true) } }
+        field :status_reason, Crystalline::Nilable.new(Models::Components::BankAccountStatusReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statusReason'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatusReason, true) } }
         # Reason for, and details related to, an `errored` or `verificationFailed` bank account status.
         field :exception_details, Crystalline::Nilable.new(Models::Components::BankAccountException), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('exceptionDetails') } }
         # Includes any payment methods generated for a newly created bank account, removing the need to
         # call the List Payment Methods endpoint following a successful Create BankAccount request.
-        # 
+        #
         # **NOTE: This field is only populated for Create BankAccount requests made with the `X-Wait-For` header.**
         field :payment_methods, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::BasicPaymentMethod)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethods') } }
 

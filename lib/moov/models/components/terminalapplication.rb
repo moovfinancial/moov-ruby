@@ -15,9 +15,9 @@ module Moov
         # ID of the terminal application.
         field :terminal_application_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('terminalApplicationID'), required: true } }
         # Status of the terminal application.
-        field :status, Models::Components::TerminalApplicationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TerminalApplicationStatus, false) } }
+        field :status, Models::Components::TerminalApplicationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TerminalApplicationStatus, false) } }
         # Platform of the terminal application.
-        field :platform, Models::Components::TerminalApplicationPlatform, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('platform'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TerminalApplicationPlatform, false) } }
+        field :platform, Models::Components::TerminalApplicationPlatform, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('platform'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TerminalApplicationPlatform, false) } }
         # The app bundle identifier of the terminal application. Will be returned if platform is `ios`.
         field :app_bundle_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('appBundleID') } }
         # The app package name of the terminal application. Will be returned if platform is `android`.

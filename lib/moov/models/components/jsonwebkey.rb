@@ -15,7 +15,7 @@ module Moov
         # The cryptographic algorithm family used with the key (e.g., 'RSA', 'EC', 'oct').
         field :kty, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('kty'), required: true } }
         # The intended use of the key. 'sig' for signature, 'enc' for encryption.
-        field :use, Crystalline::Nilable.new(Models::Components::Use), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('use'), 'decoder': Utils.enum_from_string(Models::Components::Use, true) } }
+        field :use, Crystalline::Nilable.new(Models::Components::Use), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('use'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Use, true) } }
         # The permitted operations for the key, e.g., 'sign', 'verify', 'encrypt', 'decrypt'.
         field :key_ops, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('key_ops') } }
         # The algorithm intended for use with the key, e.g., 'RS256' or 'ES256'.
@@ -23,23 +23,23 @@ module Moov
         # A unique identifier for the key.
         field :kid, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('kid') } }
         # The curve for Elliptic Curve keys, e.g., 'P-256', 'P-384', or 'P-521'.
-        # 
+        #
         # This field is required when `kty` is 'EC'.
         field :crv, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('crv') } }
         # The x coordinate for Elliptic Curve keys.
-        # 
+        #
         # This field is required when `kty` is 'EC'.
         field :x, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('x') } }
         # The y coordinate for Elliptic Curve keys.
-        # 
+        #
         # This field is required when `kty` is 'EC'.
         field :y, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('y') } }
         # The modulus value for RSA keys.
-        # 
+        #
         # This field is required when `kty` is 'RSA'.
         field :n, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('n') } }
         # The exponent value for RSA keys.
-        # 
+        #
         # This field is required when `kty` is 'RSA'.
         field :e, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('e') } }
 

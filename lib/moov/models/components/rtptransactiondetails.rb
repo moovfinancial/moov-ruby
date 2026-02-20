@@ -13,19 +13,19 @@ module Moov
         include Crystalline::MetadataFields
 
         # Status of a transaction within the RTP lifecycle.
-        field :status, Crystalline::Nilable.new(Models::Components::RTPTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::RTPTransactionStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::RTPTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RTPTransactionStatus, true) } }
         # Response code returned by network on failure.
         field :network_response_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkResponseCode') } }
         # Status codes for RTP failures.
-        field :failure_code, Crystalline::Nilable.new(Models::Components::RTPFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': Utils.enum_from_string(Models::Components::RTPFailureCode, true) } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::RTPFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RTPFailureCode, true) } }
 
-        field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :failed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :failed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :accepted_without_posting_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedWithoutPostingOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :accepted_without_posting_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedWithoutPostingOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(status: T.nilable(Models::Components::RTPTransactionStatus), network_response_code: T.nilable(::String), failure_code: T.nilable(Models::Components::RTPFailureCode), initiated_on: T.nilable(::DateTime), completed_on: T.nilable(::DateTime), failed_on: T.nilable(::DateTime), accepted_without_posting_on: T.nilable(::DateTime)).void }
         def initialize(status: nil, network_response_code: nil, failure_code: nil, initiated_on: nil, completed_on: nil, failed_on: nil, accepted_without_posting_on: nil)

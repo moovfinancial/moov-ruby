@@ -17,7 +17,7 @@ module Moov
         # Fields for identifying an authorized individual.
         field :authorized_user, Models::Components::CreateAuthorizedUser, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUser'), required: true } }
         # Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
-        field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
+        field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
         # An optional descriptive name for the card.
         field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
         # The expiration date of the card or token.

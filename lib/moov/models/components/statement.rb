@@ -21,17 +21,17 @@ module Moov
         # The size of the statement file in bytes.
         field :file_size, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fileSize'), required: true } }
         # The start date and time of the billing period.
-        field :billing_period_start_date_time, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingPeriodStartDateTime'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :billing_period_start_date_time, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingPeriodStartDateTime'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The end date and time of the billing period.
-        field :billing_period_end_date_time, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingPeriodEndDateTime'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :billing_period_end_date_time, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingPeriodEndDateTime'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # List of subscription IDs associated with this statement.
         field :subscription_i_ds, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('subscriptionIDs'), required: true } }
         # A summary of all fees included in a statement.
         field :summary, Models::Components::BillingSummary, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('summary'), required: true } }
         # The date and time the statement was created.
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The date and time the statement was last updated.
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # A detailed breakdown of card acquiring fees by card brand.
         field :card_acquiring_fees, Crystalline::Nilable.new(Models::Components::CardAcquiringFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAcquiringFees') } }
         # A detailed breakdown of ACH fees.
@@ -39,8 +39,8 @@ module Moov
         # A detailed breakdown of instant payment fees.
         field :instant_payment_fees, Crystalline::Nilable.new(Models::Components::InstantPaymentFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('instantPaymentFees') } }
         # A detailed breakdown of platform fees. This field is deprecated and will be removed in a future release. Use accountFees.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :platform_fees, Crystalline::Nilable.new(Models::Components::PlatformFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('platformFees') } }
         # A detailed breakdown of account fees.
         field :account_fees, Crystalline::Nilable.new(Models::Components::AccountFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountFees') } }
