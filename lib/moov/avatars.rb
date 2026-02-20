@@ -42,7 +42,7 @@ module Moov
     sig { params(unique_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAvatarResponse) }
     def get(unique_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Get avatar image for an account using a unique ID.    
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/profile-enrichment.read` scope.
       request = Models::Operations::GetAvatarRequest.new(
@@ -131,7 +131,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetAvatarResponse.new(
             status_code: http_response.status,

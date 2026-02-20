@@ -15,7 +15,7 @@ module Moov
         # ID of the payment method.
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
 
-        field :payment_method_type, Models::Components::CardPresentPaymentPaymentMethodPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardPresentPaymentPaymentMethodPaymentMethodType, false) } }
+        field :payment_method_type, Models::Components::CardPresentPaymentPaymentMethodPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardPresentPaymentPaymentMethodPaymentMethodType, false) } }
         # Describes payment card details captured with tap or in-person payment.
         field :terminal_card, Crystalline::Nilable.new(Models::Components::TerminalCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('terminalCard') } }
 

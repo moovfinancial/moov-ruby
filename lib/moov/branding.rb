@@ -42,7 +42,7 @@ module Moov
     sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateBrandResponse) }
     def create(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create - Create brand properties for the specified account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/branding.write` scope.
       request = Models::Operations::CreateBrandRequest.new(
@@ -65,7 +65,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -206,7 +206,7 @@ module Moov
     sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpsertBrandResponse) }
     def upsert(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # upsert - Create or replace brand properties for the specified account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/branding.write` scope.
       request = Models::Operations::UpsertBrandRequest.new(
@@ -229,7 +229,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -370,7 +370,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetBrandResponse) }
     def get(account_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Get brand properties for the specified account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/branding.read` scope.
       request = Models::Operations::GetBrandRequest.new(

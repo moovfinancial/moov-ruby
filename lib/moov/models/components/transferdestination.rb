@@ -15,7 +15,7 @@ module Moov
 
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
         # The payment method type that represents a payment rail and directionality
-        field :payment_method_type, Models::Components::TransferPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TransferPaymentMethodType, false) } }
+        field :payment_method_type, Models::Components::TransferPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferPaymentMethodType, false) } }
 
         field :account, Models::Components::TransferAccount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account'), required: true } }
         # A bank account as contained within a payment method.
@@ -32,9 +32,11 @@ module Moov
         field :card_details, Crystalline::Nilable.new(Models::Components::CardTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails') } }
         # RTP specific details about the transaction.
         field :rtp_details, Crystalline::Nilable.new(Models::Components::RTPTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtpDetails') } }
+        # Instant-bank specific details about the transaction.
+        field :instant_bank_details, Crystalline::Nilable.new(Models::Components::InstantBankTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('instantBankDetails') } }
 
-        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::TransferPaymentMethodType, account: Models::Components::TransferAccount, bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), ach_details: T.nilable(Models::Components::ACHTransactionDetails), apple_pay: T.nilable(Models::Components::ApplePayResponse), card_details: T.nilable(Models::Components::CardTransactionDetails), rtp_details: T.nilable(Models::Components::RTPTransactionDetails)).void }
-        def initialize(payment_method_id:, payment_method_type:, account:, bank_account: nil, wallet: nil, card: nil, ach_details: nil, apple_pay: nil, card_details: nil, rtp_details: nil)
+        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::TransferPaymentMethodType, account: Models::Components::TransferAccount, bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), ach_details: T.nilable(Models::Components::ACHTransactionDetails), apple_pay: T.nilable(Models::Components::ApplePayResponse), card_details: T.nilable(Models::Components::CardTransactionDetails), rtp_details: T.nilable(Models::Components::RTPTransactionDetails), instant_bank_details: T.nilable(Models::Components::InstantBankTransactionDetails)).void }
+        def initialize(payment_method_id:, payment_method_type:, account:, bank_account: nil, wallet: nil, card: nil, ach_details: nil, apple_pay: nil, card_details: nil, rtp_details: nil, instant_bank_details: nil)
           @payment_method_id = payment_method_id
           @payment_method_type = payment_method_type
           @account = account
@@ -45,6 +47,7 @@ module Moov
           @apple_pay = apple_pay
           @card_details = card_details
           @rtp_details = rtp_details
+          @instant_bank_details = instant_bank_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -60,6 +63,7 @@ module Moov
           return false unless @apple_pay == other.apple_pay
           return false unless @card_details == other.card_details
           return false unless @rtp_details == other.rtp_details
+          return false unless @instant_bank_details == other.instant_bank_details
           true
         end
       end

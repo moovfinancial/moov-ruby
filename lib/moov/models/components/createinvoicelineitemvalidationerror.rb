@@ -23,16 +23,13 @@ module Moov
 
         field :quantity, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('quantity') } }
 
-        field :images, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::CreateInvoiceLineItemImageValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
-
-        sig { params(product_id: T.nilable(::String), name: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), options: T.nilable(T::Hash[Symbol, Models::Components::CreateInvoiceLineItemOptionValidationError]), quantity: T.nilable(::String), images: T.nilable(T::Hash[Symbol, Models::Components::CreateInvoiceLineItemImageValidationError])).void }
-        def initialize(product_id: nil, name: nil, base_price: nil, options: nil, quantity: nil, images: nil)
+        sig { params(product_id: T.nilable(::String), name: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), options: T.nilable(T::Hash[Symbol, Models::Components::CreateInvoiceLineItemOptionValidationError]), quantity: T.nilable(::String)).void }
+        def initialize(product_id: nil, name: nil, base_price: nil, options: nil, quantity: nil)
           @product_id = product_id
           @name = name
           @base_price = base_price
           @options = options
           @quantity = quantity
-          @images = images
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -43,7 +40,6 @@ module Moov
           return false unless @base_price == other.base_price
           return false unless @options == other.options
           return false unless @quantity == other.quantity
-          return false unless @images == other.images
           true
         end
       end

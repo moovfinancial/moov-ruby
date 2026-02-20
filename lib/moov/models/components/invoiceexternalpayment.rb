@@ -17,7 +17,7 @@ module Moov
 
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
-        field :payment_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :payment_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(description: T.nilable(::String), foreign_id: T.nilable(::String), payment_date: T.nilable(::DateTime)).void }
         def initialize(description: nil, foreign_id: nil, payment_date: nil)

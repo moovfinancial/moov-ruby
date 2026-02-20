@@ -21,11 +21,11 @@ module Moov
         # A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
         field :amount, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 
-        field :authorized_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :authorized_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :merchant_data, Models::Components::IssuingMerchantData, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantData'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :authorization_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizationID') } }
 

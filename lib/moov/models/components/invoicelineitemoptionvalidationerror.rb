@@ -21,15 +21,12 @@ module Moov
 
         field :quantity, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('quantity') } }
 
-        field :images, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::InvoiceLineItemImageValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
-
-        sig { params(name: T.nilable(::String), group: T.nilable(::String), price_modifier: T.nilable(Models::Components::AmountDecimalValidationError), quantity: T.nilable(::String), images: T.nilable(T::Hash[Symbol, Models::Components::InvoiceLineItemImageValidationError])).void }
-        def initialize(name: nil, group: nil, price_modifier: nil, quantity: nil, images: nil)
+        sig { params(name: T.nilable(::String), group: T.nilable(::String), price_modifier: T.nilable(Models::Components::AmountDecimalValidationError), quantity: T.nilable(::String)).void }
+        def initialize(name: nil, group: nil, price_modifier: nil, quantity: nil)
           @name = name
           @group = group
           @price_modifier = price_modifier
           @quantity = quantity
-          @images = images
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -39,7 +36,6 @@ module Moov
           return false unless @group == other.group
           return false unless @price_modifier == other.price_modifier
           return false unless @quantity == other.quantity
-          return false unless @images == other.images
           true
         end
       end

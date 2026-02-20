@@ -15,7 +15,7 @@ module Moov
         # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :invoice_payment_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePaymentID'), required: true } }
 
-        field :invoice_payment_type, Models::Components::InvoicePaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePaymentType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoicePaymentType, false) } }
+        field :invoice_payment_type, Models::Components::InvoicePaymentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePaymentType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoicePaymentType, false) } }
 
         field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 

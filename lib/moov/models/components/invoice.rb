@@ -21,7 +21,7 @@ module Moov
         # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
 
-        field :status, Models::Components::InvoiceStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoiceStatus, false) } }
+        field :status, Models::Components::InvoiceStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoiceStatus, false) } }
         # A collection of line items for an invoice.
         field :line_items, Models::Components::InvoiceLineItems, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems'), required: true } }
 
@@ -39,7 +39,7 @@ module Moov
         # Total amount of disputes initiated against transfers paid towards the invoice
         field :disputed_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputedAmount'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
@@ -47,15 +47,15 @@ module Moov
         # Payment made towards an invoice, will be either a transfer or an external payment.
         field :invoice_payments, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoicePayment)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePayments') } }
 
-        field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :sent_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sentOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :sent_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sentOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :paid_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paidOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :paid_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paidOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(invoice_id: ::String, invoice_number: ::String, customer_account_id: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, tax_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, description: T.nilable(::String), payment_link_code: T.nilable(::String), invoice_payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime)).void }
         def initialize(invoice_id:, invoice_number:, customer_account_id:, partner_account_id:, status:, line_items:, subtotal_amount:, tax_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, description: nil, payment_link_code: nil, invoice_payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil)

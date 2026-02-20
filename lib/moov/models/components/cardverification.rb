@@ -13,11 +13,11 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :cvv, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cvv'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
+        field :cvv, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cvv'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
 
-        field :address_line1, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addressLine1'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
+        field :address_line1, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addressLine1'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
 
-        field :postal_code, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('postalCode'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
+        field :postal_code, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('postalCode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
         # The results of submitting cardholder name to a card network for verification.
         field :account_name, Crystalline::Nilable.new(Models::Components::AccountNameVerification), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountName') } }
 

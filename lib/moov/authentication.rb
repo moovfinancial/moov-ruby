@@ -42,7 +42,7 @@ module Moov
     sig { params(revoke_token_request: Models::Components::RevokeTokenRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RevokeAccessTokenResponse) }
     def revoke_access_token(revoke_token_request:, x_moov_version: nil, timeout_ms: nil)
       # revoke_access_token - Revoke an auth token.
-      # 
+      #
       # Allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.
       request = Models::Operations::RevokeAccessTokenRequest.new(
         revoke_token_request: revoke_token_request,
@@ -57,7 +57,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -202,7 +202,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))

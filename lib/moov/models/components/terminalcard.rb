@@ -13,13 +13,13 @@ module Moov
         include Crystalline::MetadataFields
 
         # How the card information was entered into the point of sale terminal.
-        field :entry_mode, Crystalline::Nilable.new(Models::Components::EntryMode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('entryMode'), 'decoder': Utils.enum_from_string(Models::Components::EntryMode, true) } }
+        field :entry_mode, Crystalline::Nilable.new(Models::Components::EntryMode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('entryMode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::EntryMode, true) } }
         # The card brand.
-        field :brand, Crystalline::Nilable.new(Models::Components::CardBrand), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), 'decoder': Utils.enum_from_string(Models::Components::CardBrand, true) } }
+        field :brand, Crystalline::Nilable.new(Models::Components::CardBrand), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, true) } }
 
         field :bin, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bin') } }
         # The type of the card.
-        field :card_type, Crystalline::Nilable.new(Models::Components::CardType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), 'decoder': Utils.enum_from_string(Models::Components::CardType, true) } }
+        field :card_type, Crystalline::Nilable.new(Models::Components::CardType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardType, true) } }
         # The expiration date of the card or token.
         field :expiration, Crystalline::Nilable.new(Models::Components::CardExpiration), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration') } }
         # Uniquely identifies a linked payment card or token.

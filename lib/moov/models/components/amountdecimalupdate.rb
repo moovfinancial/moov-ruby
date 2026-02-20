@@ -15,7 +15,7 @@ module Moov
         # A 3-letter ISO 4217 currency code.
         field :currency, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('currency') } }
         # A decimal-formatted numerical string that represents up to 9 decimal place precision. 
-        # 
+        #
         # For example, $12.987654321 is '12.987654321'.
         field :value_decimal, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('valueDecimal') } }
 

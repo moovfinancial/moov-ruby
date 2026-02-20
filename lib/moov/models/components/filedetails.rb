@@ -19,17 +19,17 @@ module Moov
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # The file's purpose.
-        field :file_purpose, Models::Components::FilePurpose, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('filePurpose'), required: true, 'decoder': Utils.enum_from_string(Models::Components::FilePurpose, false) } }
+        field :file_purpose, Models::Components::FilePurpose, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('filePurpose'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FilePurpose, false) } }
         # The file's status.
-        field :file_status, Models::Components::FileStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fileStatus'), required: true, 'decoder': Utils.enum_from_string(Models::Components::FileStatus, false) } }
+        field :file_status, Models::Components::FileStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fileStatus'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FileStatus, false) } }
 
         field :metadata, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata'), required: true } }
 
         field :file_size_bytes, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fileSizeBytes'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :decision_reason, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('decisionReason') } }
 

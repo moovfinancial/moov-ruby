@@ -42,7 +42,7 @@ module Moov
     sig { params(request_body: T::Array[Models::Components::ReceiptRequest], x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateReceiptsResponse) }
     def create(request_body:, x_moov_version: nil, timeout_ms: nil)
       # create -  Create receipts for transfers and scheduled transfers.
-      # 
+      #
       #  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       #  you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CreateReceiptsRequest.new(
@@ -58,7 +58,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -184,7 +184,7 @@ module Moov
     sig { params(id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListReceiptsResponse) }
     def list(id:, x_moov_version: nil, timeout_ms: nil)
       # list - List receipts by transferID, scheduleID, or occurrenceID.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::ListReceiptsRequest.new(

@@ -42,7 +42,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), wallet_id: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListAdjustmentsResponse) }
     def list(account_id:, x_moov_version: nil, wallet_id: nil, timeout_ms: nil)
       # list - List adjustments associated with a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::ListAdjustmentsRequest.new(
@@ -166,7 +166,7 @@ module Moov
     sig { params(account_id: ::String, adjustment_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAdjustmentResponse) }
     def get(account_id:, adjustment_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieve a specific adjustment associated with a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::GetAdjustmentRequest.new(

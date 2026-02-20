@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :status, Crystalline::Nilable.new(Models::Components::UpdateTicketStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::UpdateTicketStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::UpdateTicketStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::UpdateTicketStatus, true) } }
 
         sig { params(status: T.nilable(Models::Components::UpdateTicketStatus)).void }
         def initialize(status: nil)

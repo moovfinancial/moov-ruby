@@ -19,13 +19,13 @@ module Moov
         # The status can be updated to one of the following values under specific conditions:
         # - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`.
         # - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
-        field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::InvoiceStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoiceStatus, true) } }
 
         field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
 
-        field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsUpdate), status: T.nilable(Models::Components::InvoiceStatus), tax_amount: T.nilable(Models::Components::AmountDecimalUpdate), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime)).void }
         def initialize(description: nil, line_items: nil, status: nil, tax_amount: nil, invoice_date: nil, due_date: nil)

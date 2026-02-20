@@ -16,6 +16,4 @@ class Moov::Models::Components::CreateInvoiceLineItemOption
   def price_modifier=(str_); end
   def group(); end
   def group=(str_); end
-  def images(); end
-  def images=(str_); end
 end

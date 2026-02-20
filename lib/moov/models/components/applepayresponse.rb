@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
         # The type of the card.
-        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardType, false) } }
+        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardType, false) } }
         #   User-friendly name of the tokenized card returned by Apple.
         #   
         #   It usually contains the brand and the last four digits of the underlying card.

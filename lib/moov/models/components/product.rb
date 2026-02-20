@@ -19,11 +19,11 @@ module Moov
         # A product's starting price, before applying modifiers.
         field :base_price, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('basePrice'), required: true } }
         # The date and time when the product was added.
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The date and time when the product was last updated.
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # A detailed description of the product.
-        # 
+        #
         # - Must be valid UTF-8 text
         # - Supports Markdown for formatting
         # - HTML is not permitted and will be rejected
@@ -33,7 +33,7 @@ module Moov
         # Optional images associated with the product.
         field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ProductImageMetadata)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
         # The date and time when the product was disabled.
-        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(product_id: ::String, title: ::String, base_price: Models::Components::AmountDecimal, created_on: ::DateTime, updated_on: ::DateTime, description: T.nilable(::String), option_groups: T.nilable(T::Array[Models::Components::ProductOptionGroup]), images: T.nilable(T::Array[Models::Components::ProductImageMetadata]), disabled_on: T.nilable(::DateTime)).void }
         def initialize(product_id:, title:, base_price:, created_on:, updated_on:, description: nil, option_groups: nil, images: nil, disabled_on: nil)

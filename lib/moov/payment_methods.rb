@@ -43,7 +43,7 @@ module Moov
     def list(account_id:, x_moov_version: nil, source_id: nil, payment_method_type: nil, timeout_ms: nil)
       # list - Retrieve a list of payment methods associated with a Moov account. Read our [payment methods 
       # guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
       request = Models::Operations::ListPaymentMethodsRequest.new(
@@ -168,7 +168,7 @@ module Moov
     sig { params(account_id: ::String, payment_method_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetPaymentMethodResponse) }
     def get(account_id:, payment_method_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Get the specified payment method associated with a Moov account. Read our [payment methods guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
       request = Models::Operations::GetPaymentMethodRequest.new(

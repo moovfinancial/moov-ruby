@@ -42,7 +42,7 @@ module Moov
     sig { params(create_invoice: Models::Components::CreateInvoice, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateInvoiceResponse) }
     def create_invoice(create_invoice:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create_invoice - Create an invoice for a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::CreateInvoiceRequest.new(
@@ -65,7 +65,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -206,7 +206,7 @@ module Moov
     sig { params(request: Models::Operations::ListInvoicesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListInvoicesResponse) }
     def list_invoices(request:, timeout_ms: nil)
       # list_invoices - List all the invoices created under a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -340,7 +340,7 @@ module Moov
     sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetInvoiceResponse) }
     def get_invoice(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
       # get_invoice - Retrieve an invoice by ID.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       request = Models::Operations::GetInvoiceRequest.new(
@@ -462,7 +462,7 @@ module Moov
     sig { params(update_invoice: Models::Components::UpdateInvoice, account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateInvoiceResponse) }
     def update_invoice(update_invoice:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
       # update_invoice - Updates an invoice.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::UpdateInvoiceRequest.new(
@@ -486,7 +486,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -628,7 +628,7 @@ module Moov
     def create_invoice_payment(create_invoice_payment:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
       # create_invoice_payment - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
       # If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::CreateInvoicePaymentRequest.new(
@@ -652,7 +652,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -793,7 +793,7 @@ module Moov
     sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListInvoicePaymentsResponse) }
     def list_invoice_payments(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
       # list_invoice_payments - List all the payments made towards an invoice.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       request = Models::Operations::ListInvoicePaymentsRequest.new(

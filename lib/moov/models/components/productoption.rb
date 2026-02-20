@@ -15,7 +15,7 @@ module Moov
         # The display name of a product option.
         field :name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name'), required: true } }
         # A detailed description of the option.
-        # 
+        #
         # - Must be valid UTF-8 text
         # - Supports Markdown for formatting
         # - HTML is not permitted and will be rejected

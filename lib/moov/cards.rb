@@ -42,21 +42,21 @@ module Moov
     sig { params(link_card: Models::Components::LinkCard, account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::LinkCardWaitFor), timeout_ms: T.nilable(Integer)).returns(Models::Operations::LinkCardResponse) }
     def link(link_card:, account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil)
       # link - Link a card to an existing Moov account. 
-      # 
+      #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#link-a-card) to learn more.
-      # 
+      #
       # Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance. 
-      # 
+      #
       # During card linking, the provided data will be verified by submitting a $0 authorization (account verification) request. 
       # If `merchantAccountID` is provided, the authorization request will contain that account's statement descriptor and address. 
       # Otherwise, the platform account's profile will be used. If no statement descriptor has been set, the authorization will 
       # use the account's name instead.
-      # 
+      #
       # It is strongly recommended that callers include the `X-Wait-For` header, set to `payment-method`, if the newly linked 
       # card is intended to be used right away. If this header is not included, the caller will need to poll the [List Payment 
       # Methods](https://docs.moov.io/api/sources/payment-methods/list/)
       # endpoint to wait for the new payment methods to be available for use.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::LinkCardRequest.new(
@@ -80,7 +80,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -188,6 +188,21 @@ module Moov
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
+      elsif Utils.match_status_code(http_response.status, ['409'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::DuplicateCardError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
       elsif Utils.match_status_code(http_response.status, ['422'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
@@ -203,7 +218,7 @@ module Moov
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
-      elsif Utils.match_status_code(http_response.status, ['401', '403', '404', '409', '429'])
+      elsif Utils.match_status_code(http_response.status, ['401', '403', '404', '429'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
       elsif Utils.match_status_code(http_response.status, ['500', '504'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
@@ -221,9 +236,9 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListCardsResponse) }
     def list(account_id:, x_moov_version: nil, timeout_ms: nil)
       # list - List all the active cards associated with a Moov account. 
-      # 
+      #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/cards.read` scope.
       request = Models::Operations::ListCardsRequest.new(
@@ -344,9 +359,9 @@ module Moov
     sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetCardResponse) }
     def get(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Fetch a specific card associated with a Moov account. 
-      # 
+      #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/cards.read` scope.
       request = Models::Operations::GetCardRequest.new(
@@ -468,16 +483,16 @@ module Moov
     sig { params(update_card: Models::Components::UpdateCard, account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateCardResponse) }
     def update(update_card:, account_id:, card_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Update a linked card and/or resubmit it for verification.
-      # 
+      #
       # If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration
       # date or
       # address will update the information stored on file for the card but will not be verified.
-      # 
+      #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#reverify-a-card) to learn
       # more.
-      # 
+      #
       # Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::UpdateCardRequest.new(
@@ -501,7 +516,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -642,7 +657,7 @@ module Moov
     sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableCardResponse) }
     def disable(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil)
       # disable - Disables a card associated with a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::DisableCardRequest.new(

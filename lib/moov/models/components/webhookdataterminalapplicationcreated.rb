@@ -15,7 +15,7 @@ module Moov
 
         field :terminal_application_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('terminalApplicationID'), required: true } }
         # Status of the terminal application.
-        field :status, Models::Components::TerminalApplicationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TerminalApplicationStatus, false) } }
+        field :status, Models::Components::TerminalApplicationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TerminalApplicationStatus, false) } }
 
         sig { params(terminal_application_id: ::String, status: Models::Components::TerminalApplicationStatus).void }
         def initialize(terminal_application_id:, status:)

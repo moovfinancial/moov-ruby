@@ -17,7 +17,7 @@ module Moov
 
         field :body, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('body'), required: true } }
 
-        field :sent_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sentOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :sent_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sentOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         sig { params(author: ::String, body: ::String, sent_on: ::DateTime).void }
         def initialize(author:, body:, sent_on:)

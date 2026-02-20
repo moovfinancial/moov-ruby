@@ -15,11 +15,11 @@ module Moov
 
         field :holder_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderName'), required: true } }
         # The type of holder on a funding source.
-        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountHolderType, false) } }
+        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountHolderType, false) } }
 
         field :account_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountNumber'), required: true } }
         # The bank account type.
-        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountType, false) } }
+        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountType, false) } }
 
         field :routing_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('routingNumber'), required: true } }
 

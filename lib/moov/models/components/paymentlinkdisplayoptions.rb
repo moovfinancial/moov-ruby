@@ -17,10 +17,10 @@ module Moov
         # A payment description displayed to the user.
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
         # The text to be displayed on web form's submit button.
-        # 
+        #
         # If set to "auto" the UI will automatically select between 
         # "pay" and "confirm" for payments and payouts respectively.
-        field :call_to_action, Models::Components::CallToAction, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('callToAction'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CallToAction, false) } }
+        field :call_to_action, Models::Components::CallToAction, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('callToAction'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CallToAction, false) } }
 
         sig { params(title: ::String, description: ::String, call_to_action: Models::Components::CallToAction).void }
         def initialize(title:, description:, call_to_action:)
