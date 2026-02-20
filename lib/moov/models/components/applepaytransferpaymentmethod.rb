@@ -15,7 +15,7 @@ module Moov
         # ID of the payment method.
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
 
-        field :payment_method_type, Models::Components::ApplePayTransferPaymentMethodPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::ApplePayTransferPaymentMethodPaymentMethodType, false) } }
+        field :payment_method_type, Models::Components::ApplePayTransferPaymentMethodPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::ApplePayTransferPaymentMethodPaymentMethodType, false) } }
         # Describes an Apple Pay token on a Moov account.
         field :apple_pay, Models::Components::ApplePayResponse, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('applePay'), required: true } }
 

@@ -15,9 +15,9 @@ module Moov
         # Unique identifier for this account.
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # The operating mode for an account.
-        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': Utils.enum_from_string(Models::Components::Mode, false) } }
+        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, false) } }
         # The type of entity represented by this account.
-        field :account_type, Models::Components::AccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::AccountType, false) } }
+        field :account_type, Models::Components::AccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::AccountType, false) } }
 
         field :display_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('displayName'), required: true } }
         # Describes a Moov account profile. A profile will have a business, individual, or guest depending on the account's type.
@@ -25,9 +25,9 @@ module Moov
         # Describes identity verification status and relevant identity verification documents.
         field :verification, Models::Components::Verification, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('verification'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Describes the acceptance of the Terms of Service.
@@ -42,7 +42,7 @@ module Moov
         # User provided settings to manage an account.
         field :settings, Crystalline::Nilable.new(Models::Components::Settings), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('settings') } }
 
-        field :disconnected_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disconnectedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :disconnected_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disconnectedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(account_id: ::String, mode: Models::Components::Mode, account_type: Models::Components::AccountType, display_name: ::String, profile: Models::Components::Profile, verification: Models::Components::Verification, created_on: ::DateTime, updated_on: ::DateTime, metadata: T.nilable(T::Hash[Symbol, ::String]), terms_of_service: T.nilable(Models::Components::TermsOfService), capabilities: T.nilable(T::Array[Models::Components::AccountCapability]), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupport), settings: T.nilable(Models::Components::Settings), disconnected_on: T.nilable(::DateTime)).void }
         def initialize(account_id:, mode:, account_type:, display_name:, profile:, verification:, created_on:, updated_on:, metadata: nil, terms_of_service: nil, capabilities: nil, foreign_id: nil, customer_support: nil, settings: nil, disconnected_on: nil)

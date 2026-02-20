@@ -42,7 +42,7 @@ module Moov
     sig { params(request: Models::Operations::ListFeePlanAgreementsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFeePlanAgreementsResponse) }
     def list_fee_plan_agreements(request:, timeout_ms: nil)
       # list_fee_plan_agreements - List all fee plan agreements associated with an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -161,7 +161,7 @@ module Moov
     sig { params(create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateFeePlanAgreementsResponse) }
     def create_fee_plan_agreements(create_fee_plan_agreement:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create_fee_plan_agreements - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::CreateFeePlanAgreementsRequest.new(
@@ -184,7 +184,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -326,7 +326,7 @@ module Moov
     def list_fee_plans(account_id:, x_moov_version: nil, plan_i_ds: nil, timeout_ms: nil)
       # list_fee_plans - List all fee plans available for use by an account. This is intended to be used by an account when 
       # selecting a fee plan to apply to a connected account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::ListFeePlansRequest.new(
@@ -450,7 +450,7 @@ module Moov
     sig { params(request: Models::Operations::ListFeeRevenueRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFeeRevenueResponse) }
     def list_fee_revenue(request:, timeout_ms: nil)
       # list_fee_revenue - Used by a partner. Retrieve revenue generated from merchant fees.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -569,7 +569,7 @@ module Moov
     sig { params(request: Models::Operations::RetrieveFeesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::RetrieveFeesResponse) }
     def retrieve_fees(request:, timeout_ms: nil)
       # retrieve_fees - Retrieve fees assessed to an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -688,7 +688,7 @@ module Moov
     sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFeesFetchResponse) }
     def list_fees_fetch(account_id:, list_fees_fetch_request: nil, x_moov_version: nil, timeout_ms: nil)
       # list_fees_fetch - List fees associated with an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::ListFeesFetchRequest.new(
@@ -710,7 +710,7 @@ module Moov
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :list_fees_fetch_request, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -821,7 +821,7 @@ module Moov
     sig { params(request: Models::Operations::ListPartnerPricingAgreementsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListPartnerPricingAgreementsResponse) }
     def list_partner_pricing_agreements(request:, timeout_ms: nil)
       # list_partner_pricing_agreements - List all partner pricing agreements associated with an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -940,7 +940,7 @@ module Moov
     sig { params(request: Models::Operations::ListResidualsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListResidualsResponse) }
     def list_residuals(request:, timeout_ms: nil)
       # list_residuals - List all residuals associated with an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -1059,7 +1059,7 @@ module Moov
     sig { params(account_id: ::String, residual_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetResidualResponse) }
     def get_residual(account_id:, residual_id:, x_moov_version: nil, timeout_ms: nil)
       # get_residual - Get a residual associated with an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetResidualRequest.new(
@@ -1181,7 +1181,7 @@ module Moov
     sig { params(request: Models::Operations::ListResidualFeesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListResidualFeesResponse) }
     def list_residual_fees(request:, timeout_ms: nil)
       # list_residual_fees - List all fees associated with a residual.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       url, params = @sdk_configuration.get_server_details

@@ -20,7 +20,7 @@ module Moov
         # True if the RRule set runs indefinitely.
         field :indefinite, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('indefinite') } }
 
-        field :start, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('start'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :start, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('start'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(recurrence_rule: ::String, run_transfer: Models::Components::RunTransfer, indefinite: T.nilable(T::Boolean), start: T.nilable(::DateTime)).void }
         def initialize(recurrence_rule:, run_transfer:, indefinite: nil, start: nil)

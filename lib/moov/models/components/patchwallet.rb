@@ -17,7 +17,7 @@ module Moov
         # Status of a wallet.
         #   - `active`: The wallet is available for use and has an enabled payment method.
         #   - `closed`: The wallet is no longer active and the corresponding payment method has been disabled.
-        field :status, Crystalline::Nilable.new(Models::Components::WalletStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::WalletStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::WalletStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletStatus, true) } }
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.

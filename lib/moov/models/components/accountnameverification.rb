@@ -13,13 +13,13 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :first_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('firstName'), 'decoder': Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
+        field :first_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('firstName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
 
-        field :last_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastName'), 'decoder': Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
+        field :last_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
 
-        field :middle_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('middleName'), 'decoder': Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
+        field :middle_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('middleName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
 
-        field :full_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fullName'), 'decoder': Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
+        field :full_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fullName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
 
         sig { params(first_name: T.nilable(Models::Components::CardVerificationResult), last_name: T.nilable(Models::Components::CardVerificationResult), middle_name: T.nilable(Models::Components::CardVerificationResult), full_name: T.nilable(Models::Components::CardVerificationResult)).void }
         def initialize(first_name: nil, last_name: nil, middle_name: nil, full_name: nil)

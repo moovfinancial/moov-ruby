@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
       # Specifies a partial amount to refund. 
-      # 
+      #
       # This request body is optional, an empty body will issue a refund for the full amount of the original transfer.
       class CreateRefund
         extend T::Sig

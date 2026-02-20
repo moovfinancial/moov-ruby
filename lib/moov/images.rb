@@ -185,7 +185,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -445,7 +445,7 @@ module Moov
     sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateImageResponse) }
     def update(image_upload_request_multi_part:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Replace an existing image and, optionally, its metadata.
-      # 
+      #
       # This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
       # the metadata form section to keep existing metadata. Duplicate images, and requests larger than 16MB will be rejected.
       request = Models::Operations::UpdateImageRequest.new(
@@ -469,7 +469,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -759,7 +759,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -897,8 +897,8 @@ module Moov
     end
 
 
-    sig { params(public_id: ::String, if_none_match: T.nilable(::String), size: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetPublicImageResponse) }
-    def get_public(public_id:, if_none_match: nil, size: nil, timeout_ms: nil)
+    sig { params(public_id: ::String, if_none_match: T.nilable(::String), size: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String)).returns(Models::Operations::GetPublicImageResponse) }
+    def get_public(public_id:, if_none_match: nil, size: nil, timeout_ms: nil, accept_header_override: nil)
       # get_public - Get an image by its public ID.
       request = Models::Operations::GetPublicImageRequest.new(
         public_id: public_id,
@@ -917,7 +917,7 @@ module Moov
       headers = Utils.get_headers(request, @sdk_configuration.globals)
       headers = T.cast(headers, T::Hash[String, String])
       query_params = Utils.get_query_params(Models::Operations::GetPublicImageRequest, request, nil, @sdk_configuration.globals)
-      headers['Accept'] = 'image/jpeg;q=1, image/png;q=0.7, image/webp;q=0'
+      headers['Accept'] = accept_header_override || 'image/jpeg;q=1, image/png;q=0.7, image/webp;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       security = @sdk_configuration.security_source&.call
@@ -989,7 +989,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetPublicImageResponse.new(
             status_code: http_response.status,
@@ -1005,7 +1005,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetPublicImageResponse.new(
             status_code: http_response.status,
@@ -1021,7 +1021,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetPublicImageResponse.new(
             status_code: http_response.status,

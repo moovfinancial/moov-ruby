@@ -17,7 +17,7 @@ module Moov
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # The results of the card update request.
-        field :update_type, Models::Components::CardUpdateReason, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updateType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardUpdateReason, false) } }
+        field :update_type, Models::Components::CardUpdateReason, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updateType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardUpdateReason, false) } }
 
         sig { params(card_id: ::String, account_id: ::String, update_type: Models::Components::CardUpdateReason).void }
         def initialize(card_id:, account_id:, update_type:)

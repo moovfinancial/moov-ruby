@@ -42,7 +42,7 @@ module Moov
     sig { params(request_card: Models::Components::RequestCard, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RequestCardResponse) }
     def request(request_card:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # request - Request a virtual card be issued.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
       request = Models::Operations::RequestCardRequest.new(
@@ -65,7 +65,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -206,7 +206,7 @@ module Moov
     sig { params(request: Models::Operations::ListIssuedCardsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIssuedCardsResponse) }
     def list(request:, timeout_ms: nil)
       # list - List Moov issued cards existing for the account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -325,7 +325,7 @@ module Moov
     sig { params(account_id: ::String, issued_card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetIssuedCardResponse) }
     def get(account_id:, issued_card_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieve a single issued card associated with a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       request = Models::Operations::GetIssuedCardRequest.new(
@@ -447,7 +447,7 @@ module Moov
     sig { params(update_issued_card: Models::Components::UpdateIssuedCard, account_id: ::String, issued_card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateIssuedCardResponse) }
     def update(update_issued_card:, account_id:, issued_card_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Update a Moov issued card.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
       request = Models::Operations::UpdateIssuedCardRequest.new(
@@ -471,7 +471,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -603,9 +603,9 @@ module Moov
     sig { params(account_id: ::String, issued_card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetFullIssuedCardResponse) }
     def get_full(account_id:, issued_card_id:, x_moov_version: nil, timeout_ms: nil)
       # get_full - Get issued card with PAN, CVV, and expiration. 
-      # 
+      #
       # Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read-secure` scope.
       request = Models::Operations::GetFullIssuedCardRequest.new(

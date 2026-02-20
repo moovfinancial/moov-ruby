@@ -42,10 +42,10 @@ module Moov
     sig { params(create_ticket: Models::Components::CreateTicket, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTicketResponse) }
     def create_ticket(create_ticket:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create_ticket - Create a support ticket for a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
-      # 
+      #
       # If you're creating the ticket on behalf of another account, then you'll need to
       # specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{accountID}/profile.read` scopes.
       request = Models::Operations::CreateTicketRequest.new(
@@ -68,7 +68,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -209,10 +209,10 @@ module Moov
     sig { params(request: Models::Operations::ListTicketsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTicketsResponse) }
     def list_tickets(request:, timeout_ms: nil)
       # list_tickets - List all the support tickets created under a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
-      # 
+      #
       # If you're listing another account's tickets, then you'll need to
       # specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
       url, params = @sdk_configuration.get_server_details
@@ -331,10 +331,10 @@ module Moov
     sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTicketResponse) }
     def get_ticket(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil)
       # get_ticket - Retrieve a support ticket by ID.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
-      # 
+      #
       # If you're retrieving another account's ticket, then you'll need to
       # specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
       request = Models::Operations::GetTicketRequest.new(
@@ -456,10 +456,10 @@ module Moov
     sig { params(update_ticket: Models::Components::UpdateTicket, account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateTicketResponse) }
     def update_ticket(update_ticket:, account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil)
       # update_ticket - Updates a support ticket.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/tickets.write` scope.
-      # 
+      #
       # If you're updating the ticket on behalf of another account, then you'll need to
       # specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{accountID}/profile.read` scopes.
       request = Models::Operations::UpdateTicketRequest.new(
@@ -483,7 +483,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -624,10 +624,10 @@ module Moov
     sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTicketMessagesResponse) }
     def list_ticket_messages(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil)
       # list_ticket_messages - List all the messages for a support ticket.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/tickets.read` scope.
-      # 
+      #
       # If you're listing another account's messages, then you'll need to
       # specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
       request = Models::Operations::ListTicketMessagesRequest.new(

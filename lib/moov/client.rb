@@ -16,7 +16,7 @@ module Moov
   class Client
     extend T::Sig
 
-    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :images, :payment_links, :payment_methods, :products, :representatives, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
+    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -104,6 +104,7 @@ module Moov
       @fee_plans = FeePlans.new(@sdk_configuration)
       @files = Files.new(@sdk_configuration)
       @images = Images.new(@sdk_configuration)
+      @invoices = Invoices.new(@sdk_configuration)
       @payment_links = PaymentLinks.new(@sdk_configuration)
       @payment_methods = PaymentMethods.new(@sdk_configuration)
       @products = Products.new(@sdk_configuration)

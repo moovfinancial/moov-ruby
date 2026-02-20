@@ -15,7 +15,7 @@ module Moov
         # The account ID of the partner that created the invite.
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # The operating mode for an account.
-        field :account_mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountMode'), required: true, 'decoder': Utils.enum_from_string(Models::Components::Mode, false) } }
+        field :account_mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountMode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, false) } }
         # The name of the Moov account used to create the onboarding invite.
         field :display_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('displayName'), required: true } }
 

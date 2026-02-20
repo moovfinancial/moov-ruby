@@ -13,10 +13,10 @@ module Moov
         include Crystalline::MetadataFields
 
         # The type of grant being requested.
-        # 
+        #
         #   - `client_credentials`: A grant type used by clients to obtain an access token
         #   - `refresh_token`: A grant type used by clients to obtain a new access token using a refresh token
-        field :grant_type, Models::Components::GrantType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('grant_type'), required: true, 'decoder': Utils.enum_from_string(Models::Components::GrantType, false) }, 'form': { 'field_name': 'grant_type' } }
+        field :grant_type, Models::Components::GrantType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('grant_type'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::GrantType, false) }, 'form': { 'field_name': 'grant_type' } }
         # Client ID can be provided here in the body, or as the Username in HTTP Basic Auth.
         field :client_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('client_id') }, 'form': { 'field_name': 'client_id' } }
         # Client secret can be provided here in the body, or as the Password in HTTP Basic Auth.

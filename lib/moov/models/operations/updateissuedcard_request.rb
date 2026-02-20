@@ -19,14 +19,14 @@ module Moov
 
         field :update_issued_card, Models::Components::UpdateIssuedCard, { 'request': { 'media_type': 'application/json' } }
         # Specify an API version.
-        # 
+        #
         # API versioning follows the format `vYYYY.QQ.BB`, where 
         #   - `YYYY` is the year
         #   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
         #   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. 
         #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-        # 
-        # The `latest` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
+        #
+        # The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
         # When no version is specified, the API defaults to `v2024.01.00`.
         field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 

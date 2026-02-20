@@ -17,7 +17,7 @@ module Moov
 
         field :invoice_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceID'), required: true } }
 
-        field :status, Models::Components::InvoiceStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::InvoiceStatus, false) } }
+        field :status, Models::Components::InvoiceStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoiceStatus, false) } }
 
         sig { params(account_id: ::String, invoice_id: ::String, status: Models::Components::InvoiceStatus).void }
         def initialize(account_id:, invoice_id:, status:)

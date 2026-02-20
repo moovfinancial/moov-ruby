@@ -61,16 +61,15 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-      x_moov_version: 'v2024.01.00',
-    )
-
+  x_moov_version: 'v2024.01.00'
+)
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
   account_type: Models::Components::CreateAccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
-      legal_business_name: 'Whole Body Fitness LLC',
-    ),
-  ),
+      legal_business_name: 'Whole Body Fitness LLC'
+    )
+  )
 ))
 
 unless res.account.nil?
@@ -97,20 +96,19 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-      security: Models::Components::Security.new(
-        username: '',
-        password: '',
-      ),
-      x_moov_version: 'v2024.01.00',
-    )
-
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  ),
+  x_moov_version: 'v2024.01.00'
+)
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
   account_type: Models::Components::CreateAccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
-      legal_business_name: 'Whole Body Fitness LLC',
-    ),
-  ),
+      legal_business_name: 'Whole Body Fitness LLC'
+    )
+  )
 ))
 
 unless res.account.nil?
@@ -682,6 +680,34 @@ Search for institutions by either their name or routing number.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/fed.read` scope. :warning: **Deprecated**
 
+### [Invoices](docs/sdks/invoices/README.md)
+
+* [create_invoice](docs/sdks/invoices/README.md#create_invoice) - Create an invoice for a Moov account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+* [list_invoices](docs/sdks/invoices/README.md#list_invoices) - List all the invoices created under a Moov account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
+* [get_invoice](docs/sdks/invoices/README.md#get_invoice) - Retrieve an invoice by ID.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
+* [update_invoice](docs/sdks/invoices/README.md#update_invoice) - Updates an invoice.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+* [create_invoice_payment](docs/sdks/invoices/README.md#create_invoice_payment) - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
+If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+* [list_invoice_payments](docs/sdks/invoices/README.md#list_invoice_payments) - List all the payments made towards an invoice.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
+
 ### [IssuingTransactions](docs/sdks/issuingtransactions/README.md)
 
 * [list_authorizations](docs/sdks/issuingtransactions/README.md#list_authorizations) - List issued card authorizations associated with a Moov account.
@@ -1139,17 +1165,17 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-      x_moov_version: 'v2024.01.00',
-    )
+  x_moov_version: 'v2024.01.00'
+)
 
 begin
     res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
       account_type: Models::Components::CreateAccountType::BUSINESS,
       profile: Models::Components::CreateProfile.new(
         business: Models::Components::CreateBusinessProfile.new(
-          legal_business_name: 'Whole Body Fitness LLC',
-        ),
-      ),
+          legal_business_name: 'Whole Body Fitness LLC'
+        )
+      )
     ))
 
     unless res.account.nil?
@@ -1180,17 +1206,16 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-      server_url: 'https://api.moov.io',
-      x_moov_version: 'v2024.01.00',
-    )
-
+  server_url: 'https://api.moov.io',
+  x_moov_version: 'v2024.01.00'
+)
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
   account_type: Models::Components::CreateAccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
-      legal_business_name: 'Whole Body Fitness LLC',
-    ),
-  ),
+      legal_business_name: 'Whole Body Fitness LLC'
+    )
+  )
 ))
 
 unless res.account.nil?

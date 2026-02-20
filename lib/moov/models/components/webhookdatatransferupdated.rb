@@ -17,7 +17,7 @@ module Moov
 
         field :transfer_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID'), required: true } }
 
-        field :status, Models::Components::WebhookDataTransferStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WebhookDataTransferStatus, false) } }
+        field :status, Models::Components::WebhookDataTransferStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WebhookDataTransferStatus, false) } }
         # Payment method details for the source or destination of a transfer.
         field :source, Models::Components::WebhookTransferPaymentMethodDetails, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('source'), required: true } }
         # Payment method details for the source or destination of a transfer.

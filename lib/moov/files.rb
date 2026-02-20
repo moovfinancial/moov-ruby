@@ -42,10 +42,10 @@ module Moov
     sig { params(file_upload_request_multi_part: Models::Components::FileUploadRequestMultiPart, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UploadFileResponse) }
     def upload(file_upload_request_multi_part:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # upload - Upload a file and link it to the specified Moov account. 
-      # 
+      #
       # The maximum file size is 20MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
       # and png. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/files.write` scope.
       request = Models::Operations::UploadFileRequest.new(
@@ -68,7 +68,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -209,7 +209,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFilesResponse) }
     def list(account_id:, x_moov_version: nil, timeout_ms: nil)
       # list - List all the files associated with a particular Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/files.read` scope.
       request = Models::Operations::ListFilesRequest.new(
@@ -330,7 +330,7 @@ module Moov
     sig { params(account_id: ::String, file_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetFileDetailsResponse) }
     def get(account_id:, file_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieve file details associated with a specific Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/files.read` scope.
       request = Models::Operations::GetFileDetailsRequest.new(
