@@ -15,9 +15,9 @@ module Moov
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # Moov account capabilities.
-        # 
+        #
         # The `production-app`, `platform.production-app`, and / or `platform.wallet-transfers` capabilities might appear in your list. These are read-only capabilities that Moov requests and uses for account verification purposes. These capabilities remains active with your account and require no additional action.
-        field :capability_id, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilityID'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CapabilityID, false) } }
+        field :capability_id, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilityID'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CapabilityID, false) } }
 
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 

@@ -15,7 +15,7 @@ module Moov
 
         field :wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID'), required: true } }
 
-        field :status, Models::Components::SweepConfigStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::SweepConfigStatus, false) } }
+        field :status, Models::Components::SweepConfigStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SweepConfigStatus, false) } }
         # ID of the payment method.
         field :push_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushPaymentMethodID'), required: true } }
         # ID of the payment method.

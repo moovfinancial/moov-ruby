@@ -15,7 +15,7 @@ module Moov
         # ID of the payment method.
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
         # The payment method type that represents a payment rail and directionality
-        field :payment_method_type, Models::Components::PaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::PaymentMethodType, false) } }
+        field :payment_method_type, Models::Components::PaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PaymentMethodType, false) } }
 
         sig { params(payment_method_id: ::String, payment_method_type: Models::Components::PaymentMethodType).void }
         def initialize(payment_method_id:, payment_method_type:)

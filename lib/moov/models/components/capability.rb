@@ -13,23 +13,23 @@ module Moov
         include Crystalline::MetadataFields
 
         # Moov account capabilities.
-        # 
+        #
         # The `production-app`, `platform.production-app`, and / or `platform.wallet-transfers` capabilities might appear in your list. These are read-only capabilities that Moov requests and uses for account verification purposes. These capabilities remains active with your account and require no additional action.
-        field :capability, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capability'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CapabilityID, false) } }
+        field :capability, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capability'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CapabilityID, false) } }
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # The status of the capability requested for an account.
-        field :status, Models::Components::CapabilityStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CapabilityStatus, false) } }
+        field :status, Models::Components::CapabilityStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CapabilityStatus, false) } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Represents individual and business data necessary to facilitate the enabling of a capability for an account.
         field :requirements, Crystalline::Nilable.new(Models::Components::CapabilityRequirement), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requirements') } }
 
         field :disabled_reason, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledReason') } }
 
-        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(capability: Models::Components::CapabilityID, account_id: ::String, status: Models::Components::CapabilityStatus, created_on: ::DateTime, updated_on: ::DateTime, requirements: T.nilable(Models::Components::CapabilityRequirement), disabled_reason: T.nilable(::String), disabled_on: T.nilable(::DateTime)).void }
         def initialize(capability:, account_id:, status:, created_on:, updated_on:, requirements: nil, disabled_reason: nil, disabled_on: nil)

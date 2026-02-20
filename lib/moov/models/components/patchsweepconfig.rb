@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :status, Crystalline::Nilable.new(Models::Components::Status), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::Status, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::Status), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Status, true) } }
 
         field :push_payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushPaymentMethodID') } }
 

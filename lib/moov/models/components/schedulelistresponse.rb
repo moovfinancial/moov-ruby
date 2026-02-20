@@ -15,7 +15,7 @@ module Moov
 
         field :destination_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destinationAccountID'), required: true } }
         # The operating mode for an account.
-        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': Utils.enum_from_string(Models::Components::Mode, false) } }
+        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, false) } }
 
         field :owner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('ownerAccountID'), required: true } }
 
@@ -25,9 +25,9 @@ module Moov
 
         field :source_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceAccountID'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Simple description to place on the transfer.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
@@ -35,7 +35,7 @@ module Moov
 
         field :recur, Crystalline::Nilable.new(Models::Components::RecurResponse), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recur') } }
 
-        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         field :source_account, Crystalline::Nilable.new(Models::Components::PartialScheduleAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceAccount') } }
 

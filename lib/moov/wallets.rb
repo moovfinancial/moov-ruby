@@ -42,9 +42,9 @@ module Moov
     sig { params(create_wallet: Models::Components::CreateWallet, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateWalletResponse) }
     def create(create_wallet:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create - Create a new wallet for an account. You can specify optional attributes such as a display name and description to specify the intended use of the wallet. This will generate a new moov-wallet payment method.
-      # 
+      #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
       request = Models::Operations::CreateWalletRequest.new(
@@ -67,7 +67,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -208,9 +208,9 @@ module Moov
     sig { params(request: Models::Operations::ListWalletsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListWalletsResponse) }
     def list(request:, timeout_ms: nil)
       # list - List the wallets associated with a Moov account. 
-      # 
+      #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -344,9 +344,9 @@ module Moov
     sig { params(account_id: ::String, wallet_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWalletResponse) }
     def get(account_id:, wallet_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Get information on a specific wallet (e.g., the available balance). 
-      # 
+      #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::GetWalletRequest.new(
@@ -468,9 +468,9 @@ module Moov
     sig { params(patch_wallet: Models::Components::PatchWallet, wallet_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateWalletResponse) }
     def update(patch_wallet:, wallet_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Update properties of an existing wallet such as name, description, status, or metadata.
-      # 
+      #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
       request = Models::Operations::UpdateWalletRequest.new(
@@ -494,7 +494,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))

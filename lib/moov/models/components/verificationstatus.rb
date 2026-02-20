@@ -8,8 +8,8 @@ module Moov
   module Models
     module Components
       # VerificationStatus - Possible states an account verification can be in.
-      # 
-      # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
+      #
+      # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
       class VerificationStatus < T::Enum
         enums do
           UNVERIFIED = new('unverified')

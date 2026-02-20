@@ -15,7 +15,7 @@ module Moov
 
         field :name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name'), required: true } }
         # The minimum number of options that must be selected from this group.
-        # 
+        #
         # A value of 0 indicates that no selection from this group is required.
         field :min_select, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minSelect'), required: true } }
         # The maximum number of options that can be selected from this group.
@@ -23,7 +23,7 @@ module Moov
         # The options available within this group.
         field :options, Crystalline::Array.new(Models::Components::ProductOption), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options'), required: true } }
         # A detailed description of the option group.
-        # 
+        #
         # - Must be valid UTF-8 text
         # - Supports Markdown for formatting
         # - HTML is not permitted and will be rejected

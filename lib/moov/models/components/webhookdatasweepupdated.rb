@@ -17,7 +17,7 @@ module Moov
 
         field :sweep_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sweepID'), required: true } }
 
-        field :status, Models::Components::SweepStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::SweepStatus, false) } }
+        field :status, Models::Components::SweepStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SweepStatus, false) } }
 
         field :transfer_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID') } }
 

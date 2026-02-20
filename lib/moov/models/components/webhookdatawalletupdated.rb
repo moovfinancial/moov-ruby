@@ -19,7 +19,7 @@ module Moov
         # Status of a wallet.
         #   - `active`: The wallet is available for use and has an enabled payment method.
         #   - `closed`: The wallet is no longer active and the corresponding payment method has been disabled.
-        field :status, Models::Components::WalletStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletStatus, false) } }
+        field :status, Models::Components::WalletStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletStatus, false) } }
 
         sig { params(account_id: ::String, wallet_id: ::String, status: Models::Components::WalletStatus).void }
         def initialize(account_id:, wallet_id:, status:)

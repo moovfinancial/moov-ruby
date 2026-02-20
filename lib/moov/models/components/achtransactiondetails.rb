@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # Status of a transaction within the ACH lifecycle.
-        field :status, Crystalline::Nilable.new(Models::Components::ACHTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::ACHTransactionStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::ACHTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::ACHTransactionStatus, true) } }
 
         field :trace_number, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('traceNumber') } }
 
@@ -25,23 +25,23 @@ module Moov
         # An optional override of the default NACHA company name for a transfer.
         field :originating_company_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('originatingCompanyName') } }
         # Code used to identify the ACH authorization method.
-        field :sec_code, Crystalline::Nilable.new(Models::Components::SECCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('secCode'), 'decoder': Utils.enum_from_string(Models::Components::SECCode, true) } }
+        field :sec_code, Crystalline::Nilable.new(Models::Components::SECCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('secCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SECCode, true) } }
 
-        field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :originated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('originatedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :originated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('originatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :corrected_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('correctedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :corrected_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('correctedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :returned_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :returned_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :failed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :failed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
-        field :debit_hold_period, Crystalline::Nilable.new(Models::Components::DebitHoldPeriod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('debitHoldPeriod'), 'decoder': Utils.enum_from_string(Models::Components::DebitHoldPeriod, true) } }
+        field :debit_hold_period, Crystalline::Nilable.new(Models::Components::DebitHoldPeriod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('debitHoldPeriod'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DebitHoldPeriod, true) } }
 
         field :addenda, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TransferACHAddendaRecord)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addenda') } }
 

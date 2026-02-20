@@ -17,7 +17,7 @@ module Moov
         # A product's starting price, before applying modifiers.
         field :base_price, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('basePrice'), required: true } }
         # A detailed description of the product.
-        # 
+        #
         # - Must be valid UTF-8 text
         # - Supports Markdown for formatting
         # - HTML is not permitted and will be rejected

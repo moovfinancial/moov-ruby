@@ -17,7 +17,7 @@ module Moov
         # The purpose of the file being uploaded.
         field :file_purpose, Models::Components::FilePurpose, { 'multipart_form': { 'field_name': 'filePurpose' } }
         # Additional metadata to be stored with the file, formatted as a JSON string.
-        # 
+        #
         # Valid keys are `representative_id`, `comment`, `requirement_id`, `error_code`.
         field :metadata, Crystalline::Nilable.new(::String), { 'multipart_form': { 'field_name': 'metadata' } }
 

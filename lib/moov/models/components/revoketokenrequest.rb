@@ -15,7 +15,7 @@ module Moov
         # The access or refresh token to revoke.
         field :token, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token'), required: true }, 'form': { 'field_name': 'token' } }
         # The type of token being revoked.
-        field :token_type_hint, Crystalline::Nilable.new(Models::Components::TokenTypeHint), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token_type_hint'), 'decoder': Utils.enum_from_string(Models::Components::TokenTypeHint, true) }, 'form': { 'field_name': 'token_type_hint' } }
+        field :token_type_hint, Crystalline::Nilable.new(Models::Components::TokenTypeHint), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token_type_hint'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TokenTypeHint, true) }, 'form': { 'field_name': 'token_type_hint' } }
         # Client ID can be provided here in the body, or as the Username in HTTP Basic Auth.
         field :client_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('client_id') }, 'form': { 'field_name': 'client_id' } }
         # Client secret can be provided here in the body, or as the Password in HTTP Basic Auth.

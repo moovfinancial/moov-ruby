@@ -42,10 +42,10 @@ module Moov
     sig { params(register_apple_pay_merchant_domains: Models::Components::RegisterApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RegisterApplePayMerchantDomainsResponse) }
     def register_merchant_domains(register_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # register_merchant_domains - Add domains to be registered with Apple Pay.
-      # 
+      #
       # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) 
       # with Apple.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
       request = Models::Operations::RegisterApplePayMerchantDomainsRequest.new(
@@ -68,7 +68,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -194,10 +194,10 @@ module Moov
     sig { params(update_apple_pay_merchant_domains: Models::Components::UpdateApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateApplePayMerchantDomainsResponse) }
     def update_merchant_domains(update_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # update_merchant_domains - Add or remove domains to be registered with Apple Pay.
-      # 
+      #
       # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains)
       # with Apple.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
       request = Models::Operations::UpdateApplePayMerchantDomainsRequest.new(
@@ -220,7 +220,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -337,9 +337,9 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetApplePayMerchantDomainsResponse) }
     def get_merchant_domains(account_id:, x_moov_version: nil, timeout_ms: nil)
       # get_merchant_domains - Get domains registered with Apple Pay. 
-      # 
+      #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/apple-pay.read` scope.
       request = Models::Operations::GetApplePayMerchantDomainsRequest.new(
@@ -460,10 +460,10 @@ module Moov
     sig { params(create_apple_pay_session: Models::Components::CreateApplePaySession, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateApplePaySessionResponse) }
     def create_session(create_apple_pay_session:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create_session - Create a session with Apple Pay to facilitate a payment. 
-      # 
+      #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
       # A successful response from this endpoint should be passed through to Apple Pay unchanged. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
       request = Models::Operations::CreateApplePaySessionRequest.new(
@@ -486,7 +486,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -612,10 +612,10 @@ module Moov
     sig { params(link_apple_pay: Models::Components::LinkApplePay, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::LinkApplePayTokenResponse) }
     def link_token(link_apple_pay:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # link_token - Connect an Apple Pay token to the specified account. 
-      # 
+      #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
       # The `token` data is defined by Apple Pay and should be passed through from Apple Pay's response unmodified.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::LinkApplePayTokenRequest.new(
@@ -638,7 +638,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))

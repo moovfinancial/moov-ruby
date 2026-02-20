@@ -17,7 +17,7 @@ module Moov
         # The idempotency key used when creating the receipt.
         field :idempotency_key, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('idempotencyKey'), required: true } }
         # When the receipt was sent.
-        field :sent_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sentOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :sent_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sentOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         sig { params(receipt_id: ::String, idempotency_key: ::String, sent_on: ::DateTime).void }
         def initialize(receipt_id:, idempotency_key:, sent_on:)

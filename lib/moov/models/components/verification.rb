@@ -13,17 +13,17 @@ module Moov
         include Crystalline::MetadataFields
 
         # Possible states an account verification can be in.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
-        field :status, Models::Components::VerificationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::VerificationStatus, false) } }
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :status, Models::Components::VerificationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::VerificationStatus, false) } }
         # Possible states an account verification can be in.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
-        field :verification_status, Crystalline::Nilable.new(Models::Components::AccountVerificationStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('verificationStatus'), 'decoder': Utils.enum_from_string(Models::Components::AccountVerificationStatus, true) } }
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :verification_status, Crystalline::Nilable.new(Models::Components::AccountVerificationStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('verificationStatus'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::AccountVerificationStatus, true) } }
         # Additional detail for a verification status.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
-        field :details, Crystalline::Nilable.new(Models::Components::VerificationStatusDetail), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('details'), 'decoder': Utils.enum_from_string(Models::Components::VerificationStatusDetail, true) } }
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :details, Crystalline::Nilable.new(Models::Components::VerificationStatusDetail), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('details'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::VerificationStatusDetail, true) } }
 
         field :documents, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Document)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('documents') } }
 

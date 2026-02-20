@@ -15,7 +15,7 @@ module Moov
         # Total facilitator fee in cents. Only either `total` or `totalDecimal` can be set.
         field :total, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('total') } }
         # Same as `total`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
-        # 
+        #
         # Only either `total` or `totalDecimal` can be set. Set this field if you expect the fee to be in fractions of a cent.
         field :total_decimal, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('totalDecimal') } }
         # Markup facilitator fee in cents. Only either `markup` or `markupDecimal` can be set.

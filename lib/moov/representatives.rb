@@ -44,7 +44,7 @@ module Moov
       # create - Moov accounts associated with businesses require information regarding individuals who represent the business. 
       # You can provide this information by creating a representative. Each account is allowed a maximum of 7 representatives. 
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
       request = Models::Operations::CreateRepresentativeRequest.new(
@@ -67,7 +67,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -211,7 +211,7 @@ module Moov
       # You can use this method to list all the representatives for a given Moov account. 
       # Note that Moov accounts associated with an individual do not have representatives. 
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
       request = Models::Operations::ListRepresentativesRequest.new(
@@ -332,7 +332,7 @@ module Moov
     sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteRepresentativeResponse) }
     def delete(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil)
       # delete - Deletes a business representative associated with a Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
       request = Models::Operations::DeleteRepresentativeRequest.new(
@@ -460,7 +460,7 @@ module Moov
     sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetRepresentativeResponse) }
     def get(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieve a specific representative associated with a given Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
       request = Models::Operations::GetRepresentativeRequest.new(
@@ -583,19 +583,19 @@ module Moov
     def update(update_representative:, account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil)
       # update - If a representative's information has changed you can patch the information associated with a specific representative ID.
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
-      # 
+      #
       # When **can** profile data be updated:
-      # 
+      #
       # - For unverified representatives, all profile data can be edited.
       # - During the verification process, missing or incomplete profile data can be edited.
       # - Verified representatives can only add missing profile data.
-      # 
+      #
       # When **can't** profile data be updated:
-      # 
+      #
       # - Verified representatives cannot change any existing profile data.
-      # 
+      #
       # If you need to update information in a locked state, please contact Moov support.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
       request = Models::Operations::UpdateRepresentativeRequest.new(
@@ -619,7 +619,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
