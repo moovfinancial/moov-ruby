@@ -15,7 +15,7 @@ module Moov
         # ID of the payment method.
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
 
-        field :payment_method_type, Models::Components::PushToCardPaymentMethodPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::PushToCardPaymentMethodPaymentMethodType, false) } }
+        field :payment_method_type, Models::Components::PushToCardPaymentMethodPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PushToCardPaymentMethodPaymentMethodType, false) } }
         # A card as contained within a payment method.
         field :card, Models::Components::PaymentMethodsCard, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('card'), required: true } }
 

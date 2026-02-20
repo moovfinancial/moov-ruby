@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
       #   Provides information about the underlying card.
-      # 
+      #
       #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttoken/1916113-paymentmethod) 
       #   for more information.
       class LinkApplePaymentMethod

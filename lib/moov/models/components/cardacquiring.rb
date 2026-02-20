@@ -13,12 +13,12 @@ module Moov
         include Crystalline::MetadataFields
 
         # The total transaction volume amount. This field is deprecated and will be removed in a future release.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :volume_amount, Crystalline::Nilable.new(Models::Components::BillingSummaryVolumeAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeAmount') } }
         # The total number of transactions. This field is deprecated and will be removed in a future release.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :volume_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeCount') } }
         # The total fee amount.
         field :fee_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeAmount') } }

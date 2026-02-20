@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :evidence_type, Crystalline::Nilable.new(Models::Components::EvidenceType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), 'decoder': Utils.enum_from_string(Models::Components::EvidenceType, true) } }
+        field :evidence_type, Crystalline::Nilable.new(Models::Components::EvidenceType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::EvidenceType, true) } }
         # If updating text evidence, the new text to associate with the dispute.
         field :text, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('text') } }
 

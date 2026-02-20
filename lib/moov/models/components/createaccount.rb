@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # The type of entity represented by this account.
-        field :account_type, Models::Components::AccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::AccountType, false) } }
+        field :account_type, Models::Components::AccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::AccountType, false) } }
 
         field :profile, Models::Components::CreateProfile, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('profile'), required: true } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
@@ -30,7 +30,7 @@ module Moov
 
         field :capabilities, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CapabilityID)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
         # The operating mode for an account.
-        field :mode, Crystalline::Nilable.new(Models::Components::Mode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), 'decoder': Utils.enum_from_string(Models::Components::Mode, true) } }
+        field :mode, Crystalline::Nilable.new(Models::Components::Mode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, true) } }
 
         sig { params(account_type: Models::Components::AccountType, profile: Models::Components::CreateProfile, metadata: T.nilable(T::Hash[Symbol, ::String]), terms_of_service: T.nilable(Models::Components::TermsOfServicePayload), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupport), settings: T.nilable(Models::Components::Settings), capabilities: T.nilable(T::Array[Models::Components::CapabilityID]), mode: T.nilable(Models::Components::Mode)).void }
         def initialize(account_type:, profile:, metadata: nil, terms_of_service: nil, foreign_id: nil, customer_support: nil, settings: nil, capabilities: nil, mode: nil)

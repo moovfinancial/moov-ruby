@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
       #   The JSON structure returned from Apple Pay when authorizing a payment session.
-      # 
+      #
       #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypayment) 
       #   for more information.
       class LinkApplePay
@@ -16,7 +16,7 @@ module Moov
         include Crystalline::MetadataFields
 
         #   Contains the user's payment information as returned from Apple Pay.
-        # 
+        #
         #   Refer to [Apple's documentation](https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttoken) 
         #   for more information.
         field :token, Models::Components::LinkApplePayToken, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token'), required: true } }

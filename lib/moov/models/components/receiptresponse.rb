@@ -17,9 +17,9 @@ module Moov
         # AccountID for which the receipt request was created.
         field :created_by, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdBy'), required: true } }
         # The type of receipt.
-        field :kind, Models::Components::ReceiptKind, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('kind'), required: true, 'decoder': Utils.enum_from_string(Models::Components::ReceiptKind, false) } }
+        field :kind, Models::Components::ReceiptKind, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('kind'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::ReceiptKind, false) } }
         # The date and time the receipt was disabled.
-        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # The email address the receipt is sent to.
         # Either email or emailAccountID will be in the response, but not both.
         field :email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('email') } }

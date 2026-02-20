@@ -42,12 +42,12 @@ module Moov
     sig { params(link_bank_account: T.any(Models::Components::BankAccountPayload, Models::Components::PlaidPayload, Models::Components::PlaidLinkPayload, Models::Components::MxPayload), account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer)).returns(Models::Operations::LinkBankAccountResponse) }
     def link(link_bank_account:, account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil)
       # link - Link a bank account to an existing Moov account. Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more.
-      # 
+      #
       # It is strongly recommended that callers include the `X-Wait-For` header, set to `payment-method`, if the newly linked
       # bank-account is intended to be used right away. If this header is not included, the caller will need to poll the [List Payment
       # Methods](https://docs.moov.io/api/sources/payment-methods/list/)
       # endpoint to wait for the new payment methods to be available for use.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::LinkBankAccountRequest.new(
@@ -71,7 +71,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -212,9 +212,9 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListBankAccountsResponse) }
     def list(account_id:, x_moov_version: nil, timeout_ms: nil)
       # list - List all the bank accounts associated with a particular Moov account. 
-      # 
+      #
       # Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
       request = Models::Operations::ListBankAccountsRequest.new(
@@ -335,9 +335,9 @@ module Moov
     sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetBankAccountResponse) }
     def get(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieve bank account details (i.e. routing number or account type) associated with a specific Moov account. 
-      # 
+      #
       # Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
       request = Models::Operations::GetBankAccountRequest.new(
@@ -459,7 +459,7 @@ module Moov
     sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableBankAccountResponse) }
     def disable(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil)
       # disable - Discontinue using a specified bank account linked to a Moov account. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::DisableBankAccountRequest.new(
@@ -589,16 +589,16 @@ module Moov
       # initiate_micro_deposits - Micro-deposits help confirm bank account ownership, helping reduce fraud and the risk of unauthorized activity. 
       # Use this method to initiate the micro-deposit verification, sending two small credit transfers to the bank account 
       # you want to confirm.
-      # 
+      #
       # If you request micro-deposits before 4:15PM ET, they will appear that same day. If you request micro-deposits any 
       # time after 4:15PM ET, they will appear the next banking day. When the two credits are initiated, Moov simultaneously
       # initiates a debit to recoup the micro-deposits. 
-      # 
+      #
       # Micro-deposits initiated for a `sandbox` bank account will always be `$0.00` / `$0.00` and instantly verifiable once initiated.
-      # 
+      #
       # You can simulate micro-deposit verification in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode/#micro-deposits)
       # guide for more information.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::InitiateMicroDepositsRequest.new(
@@ -726,7 +726,7 @@ module Moov
     sig { params(complete_micro_deposits: Models::Components::CompleteMicroDeposits, account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CompleteMicroDepositsResponse) }
     def complete_micro_deposits(complete_micro_deposits:, account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil)
       # complete_micro_deposits - Complete the micro-deposit validation process by passing the amounts of the two transfers within three tries.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::CompleteMicroDepositsRequest.new(
@@ -750,7 +750,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -892,15 +892,15 @@ module Moov
     def get_verification(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil)
       # get_verification - Retrieve the current status and details of an instant verification, including whether the verification method was instant (RTP or FedNow) or same-day
       # ACH. This helps track the verification process in real-time and provides details in case of exceptions.
-      # 
+      #
       # The status will indicate the following:
-      # 
+      #
       # - `new`: Verification initiated, credit pending to the payment network
       # - `sent-credit`: Credit sent, available for verification
       # - `failed`: Verification failed, description provided, user needs to add a new bank account
       # - `expired`: Verification expired after 14 days, initiate another verification
       # - `max-attempts-exceeded`: Five incorrect code attempts exhausted, initiate another verification
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
       request = Models::Operations::GetBankAccountVerificationRequest.new(
@@ -1022,22 +1022,22 @@ module Moov
     sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer)).returns(Models::Operations::InitiateBankAccountVerificationResponse) }
     def initiate_verification(account_id:, bank_account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil)
       # initiate_verification - Instant micro-deposit verification offers a quick and efficient way to verify bank account ownership. 
-      # 
+      #
       # Send a $0.01 credit with a unique verification code via RTP, FedNow, or same-day ACH, depending on the receiving bank's capabilities. This
       # feature provides a faster alternative to traditional methods, allowing verification in a single session.
-      # 
+      #
       # It is recommended to use the `X-Wait-For: rail-response` header to synchronously receive the outcome of the instant credit in the
       #   response payload.
-      # 
+      #
       # Possible verification methods:
       #   - `instant`: Real-time verification credit sent via RTP or FedNow
       #   - `ach`: Verification credit sent via same-day ACH
-      # 
+      #
       # Possible statuses:
       #   - `new`: Verification initiated, credit pending
       #   - `sent-credit`: Credit sent, available for verification in the external bank account
       #   - `failed`: Verification failed due to credit rejection/return, details in `exceptionDetails`
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::InitiateBankAccountVerificationRequest.new(
@@ -1175,14 +1175,14 @@ module Moov
     sig { params(complete_bank_account_verification: Models::Components::CompleteBankAccountVerification, account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CompleteBankAccountVerificationResponse) }
     def complete_verification(complete_bank_account_verification:, account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil)
       # complete_verification - Finalize the instant micro-deposit verification by submitting the verification code displayed in the user's bank account. 
-      # 
+      #
       # Upon successful verification, the bank account status will be updated to `verified` and eligible for ACH debit transactions.
-      # 
+      #
       # The following formats are accepted:
       # - `MV0000`
       # - `mv0000`
       # - `0000`
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::CompleteBankAccountVerificationRequest.new(
@@ -1206,7 +1206,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))

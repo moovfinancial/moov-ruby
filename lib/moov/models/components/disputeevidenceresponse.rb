@@ -17,11 +17,11 @@ module Moov
 
         field :dispute_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputeID'), required: true } }
 
-        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::EvidenceType, false) } }
+        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::EvidenceType, false) } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # For text evidence, the text submitted as evidence.
         field :text, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('text') } }
         # For file evidence, the MIME type of the file.
@@ -31,7 +31,7 @@ module Moov
         # For file evidence, the size of the file.
         field :size, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('size') } }
         # When the evidence was submitted for review.
-        field :submitted_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('submittedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :submitted_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('submittedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(evidence_id: ::String, dispute_id: ::String, evidence_type: Models::Components::EvidenceType, created_on: ::DateTime, updated_on: ::DateTime, text: T.nilable(::String), mime_type: T.nilable(::String), filename: T.nilable(::String), size: T.nilable(::Integer), submitted_on: T.nilable(::DateTime)).void }
         def initialize(evidence_id:, dispute_id:, evidence_type:, created_on:, updated_on:, text: nil, mime_type: nil, filename: nil, size: nil, submitted_on: nil)

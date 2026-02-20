@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :status, Models::Components::MicroDepositStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::MicroDepositStatus, false) } }
+        field :status, Models::Components::MicroDepositStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::MicroDepositStatus, false) } }
 
         sig { params(status: Models::Components::MicroDepositStatus).void }
         def initialize(status:)

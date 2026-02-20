@@ -20,6 +20,7 @@ module Moov
       autoload :CreateSweepConfigError, 'moov/models/errors/createsweepconfigerror.rb'
       autoload :CreateWalletValidationError, 'moov/models/errors/createwalletvalidationerror.rb'
       autoload :CreateWebhookValidationError, 'moov/models/errors/createwebhookvalidationerror.rb'
+      autoload :DuplicateCardError, 'moov/models/errors/duplicatecarderror.rb'
       autoload :FeePlanAgreementError, 'moov/models/errors/feeplanagreementerror.rb'
       autoload :FileUploadValidationError, 'moov/models/errors/fileuploadvalidationerror.rb'
       autoload :FileValidationError, 'moov/models/errors/filevalidationerror.rb'

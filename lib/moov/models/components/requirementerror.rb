@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
         # The unique ID of what the requirement is asking to be filled out.
-        field :requirement, Models::Components::RequirementID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requirement'), required: true, 'decoder': Utils.enum_from_string(Models::Components::RequirementID, false) } }
+        field :requirement, Models::Components::RequirementID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requirement'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RequirementID, false) } }
 
-        field :error_code, Crystalline::Nilable.new(Models::Components::RequirementErrorCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('errorCode'), 'decoder': Utils.enum_from_string(Models::Components::RequirementErrorCode, true) } }
+        field :error_code, Crystalline::Nilable.new(Models::Components::RequirementErrorCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('errorCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RequirementErrorCode, true) } }
 
         sig { params(requirement: Models::Components::RequirementID, error_code: T.nilable(Models::Components::RequirementErrorCode)).void }
         def initialize(requirement:, error_code: nil)

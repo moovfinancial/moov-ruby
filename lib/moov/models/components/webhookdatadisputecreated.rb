@@ -21,11 +21,11 @@ module Moov
 
         field :dispute_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputeID'), required: true } }
         # The status of a particular dispute. 
-        # 
+        #
         # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/#dispute-statuses) to learn what each status means.
-        field :status, Models::Components::DisputeStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::DisputeStatus, false) } }
+        field :status, Models::Components::DisputeStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DisputeStatus, false) } }
         # The phase of a dispute within the dispute lifecycle.
-        field :phase, Models::Components::DisputePhase, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phase'), required: true, 'decoder': Utils.enum_from_string(Models::Components::DisputePhase, false) } }
+        field :phase, Models::Components::DisputePhase, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('phase'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DisputePhase, false) } }
 
         sig { params(account_id: ::String, transfer_id: ::String, transaction_id: ::String, dispute_id: ::String, status: Models::Components::DisputeStatus, phase: Models::Components::DisputePhase).void }
         def initialize(account_id:, transfer_id:, transaction_id:, dispute_id:, status:, phase:)

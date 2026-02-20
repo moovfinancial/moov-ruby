@@ -19,18 +19,18 @@ module Moov
         # A summary of instant payment fees.
         field :instant_payments, Crystalline::Nilable.new(Models::Components::BillingSummaryDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('instantPayments') } }
         # The total amount of platform fees. This field is deprecated and will be removed in a future release. Use summary.accountFees.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :platform_fees, Crystalline::Nilable.new(Models::Components::BillingSummaryPlatformFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('platformFees') } }
         # A summary of account fees.
         field :account_fees, Crystalline::Nilable.new(Models::Components::BillingSummaryDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountFees') } }
         # The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :adjustment_fees, Crystalline::Nilable.new(Models::Components::AdjustmentFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('adjustmentFees') } }
         # The total amount of other card fees. This field is deprecated and will be removed in a future release. Use summary.otherCardFees.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :other_fees, Crystalline::Nilable.new(Models::Components::OtherFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('otherFees') } }
         # A summary of other card fees.
         field :other_card_fees, Crystalline::Nilable.new(Models::Components::BillingSummaryDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('otherCardFees') } }

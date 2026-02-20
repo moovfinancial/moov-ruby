@@ -23,9 +23,9 @@ module Moov
         # The size of the evidence file.
         field :size, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('size'), required: true } }
 
-        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::EvidenceType, false) } }
+        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::EvidenceType, false) } }
         # The date and time the evidence was uploaded.
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         sig { params(evidence_id: ::String, dispute_id: ::String, filename: ::String, mime_type: ::String, size: ::Integer, evidence_type: Models::Components::EvidenceType, created_on: ::DateTime).void }
         def initialize(evidence_id:, dispute_id:, filename:, mime_type:, size:, evidence_type:, created_on:)

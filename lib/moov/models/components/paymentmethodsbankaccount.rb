@@ -15,25 +15,25 @@ module Moov
 
         field :bank_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountID'), required: true } }
         # Once the bank account is linked, we don't reveal the full bank account number.
-        # 
+        #
         # The fingerprint acts as a way to identify whether two linked bank accounts are the same.
         field :fingerprint, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fingerprint'), required: true } }
 
-        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
+        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
 
         field :holder_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderName'), required: true } }
         # The type of holder on a funding source.
-        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountHolderType, false) } }
+        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountHolderType, false) } }
 
         field :bank_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankName'), required: true } }
         # The bank account type.
-        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountType, false) } }
+        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountType, false) } }
 
         field :routing_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('routingNumber'), required: true } }
 
         field :last_four_account_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourAccountNumber'), required: true } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         sig { params(bank_account_id: ::String, fingerprint: ::String, status: Models::Components::BankAccountStatus, holder_name: ::String, holder_type: Models::Components::BankAccountHolderType, bank_name: ::String, bank_account_type: Models::Components::BankAccountType, routing_number: ::String, last_four_account_number: ::String, updated_on: ::DateTime).void }
         def initialize(bank_account_id:, fingerprint:, status:, holder_name:, holder_type:, bank_name:, bank_account_type:, routing_number:, last_four_account_number:, updated_on:)

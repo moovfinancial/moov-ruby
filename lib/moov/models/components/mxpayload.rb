@@ -8,10 +8,10 @@ module Moov
   module Models
     module Components
       # Describes the account to link to the Moov account using a MX processor token. 
-      # 
+      #
       # `sandbox` - When linking a bank account to a `sandbox` account using an MX authorization token a default bank account routing number will
       # be used. The following default data will be used to generate the bank account in this flow:
-      # 
+      #
       # ```
       #   RoutingNumber: "123456780",
       #   BankName: "Gringotts Bank"
@@ -21,7 +21,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # The authorization code of a MX account which allows a processor to retrieve a linked payment account. 
-        # 
+        #
         # `sandbox` - When linking a bank account to a `sandbox` account using a MX authorization code it will utilize MX's sandbox environment. 
         # The MX authorization code provided must be generated from MX's sandbox environment.
         field :mx, Models::Components::MXAuthorizationCode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mx'), required: true } }

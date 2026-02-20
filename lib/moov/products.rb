@@ -178,7 +178,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -459,7 +459,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -600,7 +600,7 @@ module Moov
     sig { params(account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableProductResponse) }
     def disable(account_id:, product_id:, x_moov_version: nil, timeout_ms: nil)
       # disable - Disable a product by ID.
-      # 
+      #
       # The product will no longer be available, but will remain in the system for historical and reporting purposes.
       request = Models::Operations::DisableProductRequest.new(
         account_id: account_id,

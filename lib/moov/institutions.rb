@@ -42,11 +42,11 @@ module Moov
     sig { params(x_moov_version: T.nilable(::String), name: T.nilable(::String), routing_number: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::SearchInstitutionsResponse) }
     def search_institutions(x_moov_version: nil, name: nil, routing_number: nil, limit: nil, timeout_ms: nil)
       # search_institutions - Search for financial institutions by name or routing number.
-      # 
+      #
       # This endpoint returns metadata about each matched institution, including basic identifying details (such as name, routing number, and address) and information about which payment services they support (e.g., ACH, RTP, and Wire).
-      # 
+      #
       # This can be used to validate a financial institution before initiating payment activity, or to check which payment rails are available for a given routing number.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/institutions.read` scope.
       request = Models::Operations::SearchInstitutionsRequest.new(
@@ -165,13 +165,13 @@ module Moov
     sig { params(request: Models::Operations::ListInstitutionsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListInstitutionsResponse) }
     def search(request:, timeout_ms: nil)
       # search - This endpoint has been deprecated and will be removed in a future release. Use [/institutions](https://docs.moov.io/api/enrichment/form-shortening/institutions/get/).
-      # 
+      #
       # Search for institutions by either their name or routing number.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/fed.read` scope.
-      # 
-      # @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
+      #
+      # @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/institutions/ach/search"
