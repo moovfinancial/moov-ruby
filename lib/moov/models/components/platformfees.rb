@@ -8,8 +8,8 @@ module Moov
   module Models
     module Components
       # A detailed breakdown of platform fees. This field is deprecated and will be removed in a future release. Use accountFees.
-      # 
-      # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
+      #
+      # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
       class PlatformFees
         extend T::Sig
         include Crystalline::MetadataFields

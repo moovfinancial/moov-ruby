@@ -14,7 +14,7 @@ module Moov
 
         # Updates the state of a Moov issued card.
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
-        field :state, Crystalline::Nilable.new(Models::Components::UpdateIssuedCardState), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), 'decoder': Utils.enum_from_string(Models::Components::UpdateIssuedCardState, true) } }
+        field :state, Crystalline::Nilable.new(Models::Components::UpdateIssuedCardState), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::UpdateIssuedCardState, true) } }
 
         field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
         # Fields for identifying an authorized individual.

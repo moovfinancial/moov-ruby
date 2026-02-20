@@ -17,7 +17,7 @@ module Moov
 
         field :transfer_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID'), required: true } }
 
-        field :status, Models::Components::CancellationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CancellationStatus, false) } }
+        field :status, Models::Components::CancellationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CancellationStatus, false) } }
 
         sig { params(cancellation_id: ::String, transfer_id: ::String, status: Models::Components::CancellationStatus).void }
         def initialize(cancellation_id:, transfer_id:, status:)

@@ -19,7 +19,7 @@ module Moov
 
         field :transaction_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionID'), required: true } }
 
-        field :status, Models::Components::WalletTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletTransactionStatus, false) } }
+        field :status, Models::Components::WalletTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionStatus, false) } }
 
         field :available_balance, Crystalline::Nilable.new(Models::Components::WalletAvailableBalance), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('availableBalance') } }
 

@@ -19,7 +19,7 @@ module Moov
 
         field :refund_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refundID'), required: true } }
 
-        field :status, Models::Components::RefundStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::RefundStatus, false) } }
+        field :status, Models::Components::RefundStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RefundStatus, false) } }
 
         sig { params(account_id: ::String, transfer_id: ::String, refund_id: ::String, status: Models::Components::RefundStatus).void }
         def initialize(account_id:, transfer_id:, refund_id:, status:)

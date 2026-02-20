@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # Platform of the terminal application.
-        field :platform, Models::Components::TerminalApplicationPlatform, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('platform'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TerminalApplicationPlatform, false) } }
+        field :platform, Models::Components::TerminalApplicationPlatform, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('platform'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TerminalApplicationPlatform, false) } }
         # The app bundle identifier of the terminal application. Required if platform is `ios`.
         field :app_bundle_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('appBundleID') } }
         # The app package name of the terminal application. Required if platform is `android`.

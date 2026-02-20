@@ -8,11 +8,11 @@ module Moov
   module Models
     module Components
       # Request to create a new payment link.
-      # 
+      #
       # A payment link must include either `payment` or `payout` details, but not both. For payout payment links,
       # `maxUses` will automatically be set to 1, as these are intended for a one-time disbursement
       # to a specific recipient.
-      # 
+      #
       class CreatePaymentLink
         extend T::Sig
         include Crystalline::MetadataFields
@@ -28,11 +28,11 @@ module Moov
 
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # An optional limit on the number of times this payment link can be used. 
-        # 
+        #
         # **For payouts, `maxUses` is always 1.**
         field :max_uses, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxUses') } }
         # An optional expiration date for this payment link.
-        field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         field :customer, Crystalline::Nilable.new(Models::Components::PaymentLinkCustomerOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customer') } }
         # Options for payment links used to collect payment.

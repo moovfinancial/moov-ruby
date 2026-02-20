@@ -19,9 +19,9 @@ module Moov
         # This field can be used to identify specific payment methods across multiple accounts on your platform.
         field :fingerprint, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fingerprint'), required: true } }
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
         # The type of the card.
-        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardType, false) } }
+        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardType, false) } }
         # Last four digits of the card number
         field :last_four_card_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber'), required: true } }
         # The first six to eight digits of the card number, which identifies the financial institution that issued the card.
@@ -45,9 +45,9 @@ module Moov
         # The results of the most recent card update request.
         field :card_account_updater, Crystalline::Nilable.new(Models::Components::CardAccountUpdater), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAccountUpdater') } }
         # Indicates which level of domestic push-to-card transfer is supported by the card, if any.
-        field :domestic_push_to_card, Crystalline::Nilable.new(Models::Components::DomesticPushToCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPushToCard'), 'decoder': Utils.enum_from_string(Models::Components::DomesticPushToCard, true) } }
+        field :domestic_push_to_card, Crystalline::Nilable.new(Models::Components::DomesticPushToCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPushToCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPushToCard, true) } }
         # Indicates if the card supports domestic pull-from-card transfer.
-        field :domestic_pull_from_card, Crystalline::Nilable.new(Models::Components::DomesticPullFromCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPullFromCard'), 'decoder': Utils.enum_from_string(Models::Components::DomesticPullFromCard, true) } }
+        field :domestic_pull_from_card, Crystalline::Nilable.new(Models::Components::DomesticPullFromCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPullFromCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPullFromCard, true) } }
 
         sig { params(card_id: ::String, fingerprint: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, last_four_card_number: ::String, bin: ::String, expiration: Models::Components::CardExpiration, billing_address: Models::Components::CardAddress, card_verification: Models::Components::CardVerification, holder_name: T.nilable(::String), issuer: T.nilable(::String), issuer_country: T.nilable(::String), card_on_file: T.nilable(T::Boolean), merchant_account_id: T.nilable(::String), card_account_updater: T.nilable(Models::Components::CardAccountUpdater), domestic_push_to_card: T.nilable(Models::Components::DomesticPushToCard), domestic_pull_from_card: T.nilable(Models::Components::DomesticPullFromCard)).void }
         def initialize(card_id:, fingerprint:, brand:, card_type:, last_four_card_number:, bin:, expiration:, billing_address:, card_verification:, holder_name: nil, issuer: nil, issuer_country: nil, card_on_file: nil, merchant_account_id: nil, card_account_updater: nil, domestic_push_to_card: nil, domestic_pull_from_card: nil)

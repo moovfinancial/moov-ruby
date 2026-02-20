@@ -17,9 +17,9 @@ module Moov
         # An optional override of the default NACHA company name for a transfer.
         field :originating_company_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('originatingCompanyName') } }
         # An optional override of your default ACH hold period in banking days. The hold period must be longer than or equal to your default setting.
-        field :debit_hold_period, Crystalline::Nilable.new(Models::Components::DebitHoldPeriod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('debitHoldPeriod'), 'decoder': Utils.enum_from_string(Models::Components::DebitHoldPeriod, true) } }
+        field :debit_hold_period, Crystalline::Nilable.new(Models::Components::DebitHoldPeriod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('debitHoldPeriod'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DebitHoldPeriod, true) } }
         # Code used to identify the ACH authorization method.
-        field :sec_code, Crystalline::Nilable.new(Models::Components::SECCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('secCode'), 'decoder': Utils.enum_from_string(Models::Components::SECCode, true) } }
+        field :sec_code, Crystalline::Nilable.new(Models::Components::SECCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('secCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SECCode, true) } }
 
         field :addenda, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateTransferACHAddendaRecord)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addenda') } }
 

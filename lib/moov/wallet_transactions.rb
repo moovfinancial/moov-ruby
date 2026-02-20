@@ -42,9 +42,9 @@ module Moov
     sig { params(request: Models::Operations::ListWalletTransactionsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListWalletTransactionsResponse) }
     def list(request:, timeout_ms: nil)
       # list - List all the transactions associated with a particular Moov wallet. 
-      # 
+      #
       # Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -178,9 +178,9 @@ module Moov
     sig { params(account_id: ::String, wallet_id: ::String, transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWalletTransactionResponse) }
     def get(account_id:, wallet_id:, transaction_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Get details on a specific wallet transaction. 
-      # 
+      #
       # Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::GetWalletTransactionRequest.new(

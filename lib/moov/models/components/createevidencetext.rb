@@ -15,7 +15,7 @@ module Moov
         # The text to associate with the dispute as evidence.
         field :text, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('text'), required: true } }
 
-        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::EvidenceType, false) } }
+        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::EvidenceType, false) } }
 
         sig { params(text: ::String, evidence_type: Models::Components::EvidenceType).void }
         def initialize(text:, evidence_type:)

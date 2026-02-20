@@ -4,16 +4,15 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-      x_moov_version: 'v2024.01.00',
-    )
-
+  x_moov_version: 'v2024.01.00'
+)
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
   account_type: Models::Components::AccountType::BUSINESS,
   profile: Models::Components::CreateProfile.new(
     business: Models::Components::CreateBusinessProfile.new(
-      legal_business_name: 'Whole Body Fitness LLC',
-    ),
-  ),
+      legal_business_name: 'Whole Body Fitness LLC'
+    )
+  )
 ))
 
 unless res.account.nil?

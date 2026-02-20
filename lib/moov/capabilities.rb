@@ -42,9 +42,9 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListCapabilitiesResponse) }
     def list(account_id:, x_moov_version: nil, timeout_ms: nil)
       # list - Retrieve all the capabilities an account has requested.
-      # 
+      #
       # Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
       request = Models::Operations::ListCapabilitiesRequest.new(
@@ -165,7 +165,7 @@ module Moov
     sig { params(add_capabilities: Models::Components::AddCapabilities, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RequestCapabilitiesResponse) }
     def request(add_capabilities:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # request - Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
       request = Models::Operations::RequestCapabilitiesRequest.new(
@@ -188,7 +188,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -329,7 +329,7 @@ module Moov
     sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetCapabilityResponse) }
     def get(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieve a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
       request = Models::Operations::GetCapabilityRequest.new(
@@ -451,7 +451,7 @@ module Moov
     sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableCapabilityResponse) }
     def disable(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil)
       # disable - Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
-      # 
+      #
       #   To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
       request = Models::Operations::DisableCapabilityRequest.new(

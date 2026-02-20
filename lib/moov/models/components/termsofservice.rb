@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # The date and time the terms of service were accepted.
-        field :accepted_date, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedDate'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :accepted_date, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedDate'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The IP address from which the terms of service were accepted.
         field :accepted_ip, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedIP'), required: true } }
 

@@ -18,8 +18,8 @@ module Moov
         field :max_transaction_size, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxTransactionSize'), required: true } }
 
         field :average_monthly_transaction_volume, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('averageMonthlyTransactionVolume'), required: true } }
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
-        field :status, Models::Components::UnderwritingStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::UnderwritingStatus, false) } }
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :status, Models::Components::UnderwritingStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::UnderwritingStatus, false) } }
 
         field :volume_by_customer_type, Models::Components::VolumeByCustomerType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeByCustomerType'), required: true } }
 

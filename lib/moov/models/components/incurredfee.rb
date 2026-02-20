@@ -19,7 +19,7 @@ module Moov
         # Wallet ID associated with the fee.
         field :wallet_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID') } }
         # Timestamp when the fee was created.
-        field :created_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :created_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Name of the fee.
         field :fee_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeName') } }
         # The fee amount.

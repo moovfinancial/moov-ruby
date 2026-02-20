@@ -42,7 +42,7 @@ module Moov
     sig { params(create_sweep_config: Models::Components::CreateSweepConfig, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateSweepConfigResponse) }
     def create_config(create_sweep_config:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # create_config - Create a sweep config for a wallet.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
       request = Models::Operations::CreateSweepConfigRequest.new(
@@ -65,7 +65,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -206,7 +206,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListSweepConfigsResponse) }
     def list_configs(account_id:, x_moov_version: nil, timeout_ms: nil)
       # list_configs - List sweep configs associated with an account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::ListSweepConfigsRequest.new(
@@ -327,7 +327,7 @@ module Moov
     sig { params(account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetSweepConfigResponse) }
     def get_config(account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil)
       # get_config - Get a sweep config associated with a wallet.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::GetSweepConfigRequest.new(
@@ -449,7 +449,7 @@ module Moov
     sig { params(patch_sweep_config: Models::Components::PatchSweepConfig, account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateSweepConfigResponse) }
     def update_config(patch_sweep_config:, account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil)
       # update_config - Update settings on a sweep config.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
       request = Models::Operations::UpdateSweepConfigRequest.new(
@@ -473,7 +473,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -614,7 +614,7 @@ module Moov
     sig { params(request: Models::Operations::ListSweepsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListSweepsResponse) }
     def list(request:, timeout_ms: nil)
       # list - List sweeps associated with a wallet.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -733,7 +733,7 @@ module Moov
     sig { params(account_id: ::String, wallet_id: ::String, sweep_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetSweepResponse) }
     def get(account_id:, wallet_id:, sweep_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Get details on a specific sweep.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::GetSweepRequest.new(

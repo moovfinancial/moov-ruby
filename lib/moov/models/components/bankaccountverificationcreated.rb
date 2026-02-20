@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :verification_method, Models::Components::BankAccountVerificationMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('verificationMethod'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountVerificationMethod, false) } }
+        field :verification_method, Models::Components::BankAccountVerificationMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('verificationMethod'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountVerificationMethod, false) } }
 
-        field :status, Models::Components::BankAccountVerificationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BankAccountVerificationStatus, false) } }
+        field :status, Models::Components::BankAccountVerificationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountVerificationStatus, false) } }
 
         sig { params(verification_method: Models::Components::BankAccountVerificationMethod, status: Models::Components::BankAccountVerificationStatus).void }
         def initialize(verification_method:, status:)

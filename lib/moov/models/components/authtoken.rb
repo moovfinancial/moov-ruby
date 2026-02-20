@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # An [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750#section-6.1) token type.
-        field :token_type, Models::Components::TokenType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token_type'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TokenType, false) } }
+        field :token_type, Models::Components::TokenType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token_type'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TokenType, false) } }
         # A value passed to the authorization server to gain access to the system.
         field :access_token, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('access_token'), required: true } }
         # A value passed to the authorization server to obtain a new access token.

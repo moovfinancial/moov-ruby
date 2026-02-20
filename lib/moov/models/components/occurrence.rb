@@ -18,7 +18,7 @@ module Moov
         #   If null or "" it defines to add a new occurrence.
         field :occurrence_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('occurrenceID') } }
         # Timestamp to run the transfer after. Value must be into the future.
-        field :run_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :run_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Defines the attributes of a transfer.
         field :run_transfer, Crystalline::Nilable.new(Models::Components::CreateRunTransfer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('runTransfer') } }
 

@@ -17,17 +17,17 @@ module Moov
 
         field :transaction_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionID'), required: true } }
 
-        field :transaction_type, Models::Components::WalletTransactionType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletTransactionType, false) } }
+        field :transaction_type, Models::Components::WalletTransactionType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionType, false) } }
 
-        field :source_type, Models::Components::WalletTransactionSourceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletTransactionSourceType, false) } }
+        field :source_type, Models::Components::WalletTransactionSourceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionSourceType, false) } }
         # The ID of the Moov object to which this transaction is related.
         field :source_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceID'), required: true } }
 
-        field :status, Models::Components::WalletTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::WalletTransactionStatus, false) } }
+        field :status, Models::Components::WalletTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionStatus, false) } }
         # Detailed description of the transaction.
         field :memo, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # A 3-letter ISO 4217 currency code.
         field :currency, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('currency'), required: true } }
         # The total transaction amount. The amount is in the smallest unit of the specified currency. In USD this is cents, for example, $12.04 is 1204 and $0.99 is 99.
@@ -43,7 +43,7 @@ module Moov
         # Net amount is the gross amount less fees paid, and the amount that affects the wallet's balance. Same as `netAmount`, but a decimal-formatted numerical string that represents up to 9 decimal place precision. In USD for example, 12.987654321 is $12.987654321 and 0.9987634521 is $0.9987634521.
         field :net_amount_decimal, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('netAmountDecimal'), required: true } }
 
-        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # The IDs of the fees paid for the transaction.
         field :fee_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeIDs') } }
         # The wallet's total available balance after recording a completed transaction. The value is in the smallest unit of the specified currency. In USD this is cents, for example, $12.04 is 1204 and $0.99 is 99.
