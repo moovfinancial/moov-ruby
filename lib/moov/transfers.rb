@@ -43,11 +43,11 @@ module Moov
     def generate_options(create_transfer_options:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # generate_options - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
       # supply in the request body.
-      # 
+      #
       # The accountID in the route should the partner's accountID.
-      # 
+      #
       # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CreateTransferOptionsRequest.new(
@@ -70,7 +70,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -211,9 +211,9 @@ module Moov
     sig { params(request: Models::Operations::CreateTransferRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTransferResponse) }
     def create(request:, timeout_ms: nil)
       # create - Move money by providing the source, destination, and amount in the request body.
-      # 
+      #
       # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       url, params = @sdk_configuration.get_server_details
@@ -231,7 +231,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -431,14 +431,14 @@ module Moov
     sig { params(request: Models::Operations::ListTransfersRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTransfersResponse) }
     def list(request:, timeout_ms: nil)
       # list - List all the transfers associated with a particular Moov account. 
-      # 
+      #
       # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
-      # 
+      #
       # When you run this request, you retrieve 200 transfers at a time. You can advance past a results set of 200 transfers by using the `skip` parameter (for example, 
       # if you set `skip`= 10, you will see a results set of 200 transfers after the first 10). If you are searching a high volume of transfers, the request will likely 
       # process very slowly. To achieve faster performance, restrict the data as much as you can by using the `StartDateTime` and `EndDateTime` parameters for a limited 
       # period of time. You can run multiple requests in smaller time window increments until you've retrieved all the transfers you need.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -572,10 +572,10 @@ module Moov
     sig { params(transfer_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTransferResponse) }
     def get(transfer_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieve full transfer details for an individual transfer of a particular Moov account. 
-      # 
+      #
       # Payment rail-specific details are included in the source and destination. Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) 
       # to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetTransferRequest.new(
@@ -697,9 +697,9 @@ module Moov
     sig { params(patch_transfer: Models::Components::PatchTransfer, transfer_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateTransferResponse) }
     def update(patch_transfer:, transfer_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # update - Update the metadata contained on a transfer.
-      # 
+      #
       # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::UpdateTransferRequest.new(
@@ -723,7 +723,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1109,10 +1109,10 @@ module Moov
     sig { params(request: Models::Operations::InitiateRefundRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::InitiateRefundResponse) }
     def initiate_refund(request:, timeout_ms: nil)
       # initiate_refund - Initiate a refund for a card transfer.
-      # 
+      #
       # **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
       # See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       url, params = @sdk_configuration.get_server_details
@@ -1129,7 +1129,7 @@ module Moov
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_refund, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1307,7 +1307,7 @@ module Moov
     sig { params(account_id: ::String, transfer_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListRefundsResponse) }
     def list_refunds(account_id:, transfer_id:, x_moov_version: nil, timeout_ms: nil)
       # list_refunds - Get a list of refunds for a card transfer.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::ListRefundsRequest.new(
@@ -1429,7 +1429,7 @@ module Moov
     sig { params(transfer_id: ::String, account_id: ::String, refund_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetRefundResponse) }
     def get_refund(transfer_id:, account_id:, refund_id:, x_moov_version: nil, timeout_ms: nil)
       # get_refund - Get details of a refund for a card transfer.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetRefundRequest.new(
@@ -1554,7 +1554,7 @@ module Moov
       # create_reversal - Reverses a card transfer by initiating a cancellation or refund depending on the transaction status. 
       # Read our [reversals guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) 
       # to learn more.
-      # 
+      #
       # To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       # to specify the `/accounts/{accountID}/transfers.write` scope.
       url, params = @sdk_configuration.get_server_details
@@ -1571,7 +1571,7 @@ module Moov
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_reversal, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))

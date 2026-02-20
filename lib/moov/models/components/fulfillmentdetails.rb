@@ -19,7 +19,7 @@ module Moov
 
         field :shipment_duration_days, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('shipmentDurationDays'), required: true } }
 
-        field :return_policy, Models::Components::ReturnPolicyType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnPolicy'), required: true, 'decoder': Utils.enum_from_string(Models::Components::ReturnPolicyType, false) } }
+        field :return_policy, Models::Components::ReturnPolicyType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnPolicy'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::ReturnPolicyType, false) } }
 
         sig { params(has_physical_goods: T::Boolean, is_shipping_product: T::Boolean, shipment_duration_days: ::Integer, return_policy: Models::Components::ReturnPolicyType).void }
         def initialize(has_physical_goods:, is_shipping_product:, shipment_duration_days:, return_policy:)

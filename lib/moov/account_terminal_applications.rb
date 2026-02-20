@@ -42,7 +42,7 @@ module Moov
     sig { params(link_account_terminal_application: Models::Components::LinkAccountTerminalApplication, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::LinkAccountTerminalApplicationResponse) }
     def link(link_account_terminal_application:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # link - Link an account with a terminal application.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-applications.write` scope.
       request = Models::Operations::LinkAccountTerminalApplicationRequest.new(
@@ -65,7 +65,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -206,7 +206,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListAccountTerminalApplicationsResponse) }
     def list(account_id:, x_moov_version: nil, timeout_ms: nil)
       # list - Retrieve all terminal applications linked to a specific account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
       request = Models::Operations::ListAccountTerminalApplicationsRequest.new(
@@ -327,7 +327,7 @@ module Moov
     sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAccountTerminalApplicationResponse) }
     def get(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Verifies if a specific Terminal Application is linked to an Account. This endpoint acts as a validation check for the link's existence.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
       request = Models::Operations::GetAccountTerminalApplicationRequest.new(
@@ -449,7 +449,7 @@ module Moov
     sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTerminalConfigurationResponse) }
     def get_configuration(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
       # get_configuration - Fetch the configuration for a given Terminal Application linked to a specific Account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` scope.
       request = Models::Operations::GetTerminalConfigurationRequest.new(

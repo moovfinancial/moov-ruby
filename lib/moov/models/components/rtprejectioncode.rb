@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
       # RTPRejectionCode - The rejection code of an RTP transaction that caused the bank account status to change.
-      # 
+      #
       # - AC03: Account Invalid
       # - AC04: Account Closed
       # - AC06: Account Blocked

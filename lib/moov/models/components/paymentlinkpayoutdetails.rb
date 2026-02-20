@@ -16,7 +16,7 @@ module Moov
         field :allowed_methods, Crystalline::Array.new(Models::Components::DisbursementPaymentMethodType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowedMethods'), required: true } }
         # Specify the intended recipient of the payout.
         # Either `email` or `phone` must be specified, but not both.
-        # 
+        #
         # This information will be used to authenticate the end user when they follow the payment link.
         field :recipient, Models::Components::PayoutRecipient, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient'), required: true } }
         # Optional free-form metadata for the transfer.

@@ -16,8 +16,6 @@ class Moov::Models::Operations::ListPaymentLinksRequest
   def skip=(str_); end
   def count(); end
   def count=(str_); end
-  def type(); end
-  def type=(str_); end
-  def status(); end
-  def status=(str_); end
+  def types(); end
+  def types=(str_); end
 end

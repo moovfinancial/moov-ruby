@@ -43,17 +43,17 @@ module Moov
     def create(create_account:, x_moov_version: nil, timeout_ms: nil)
       # create - You can create **business** or **individual** accounts for your users (i.e., customers, merchants) by passing the required
       # information to Moov. Requirements differ per account type and requested [capabilities](https://docs.moov.io/guides/accounts/capabilities/requirements/).
-      # 
+      #
       # If you're requesting the `wallet`, `send-funds`, `collect-funds`, or `card-issuing` capabilities, you'll need to:
       #   + Send Moov the user [platform terms of service agreement](https://docs.moov.io/guides/accounts/requirements/platform-agreement/) acceptance.
       #     This can be done upon account creation, or by [patching](https://docs.moov.io/api/moov-accounts/accounts/patch/) the account using the `termsOfService` field.
       # If you're creating a business account with the business type `llc`, `partnership`, or `privateCorporation`, you'll need to:
       #   + Provide [business representatives](https://docs.moov.io/api/moov-accounts/representatives/) after creating the account.
       #   + [Patch](https://docs.moov.io/api/moov-accounts/accounts/patch/) the account to indicate that business representative ownership information is complete.
-      # 
+      #
       # Visit our documentation to read more about [creating accounts](https://docs.moov.io/guides/accounts/create-accounts/) and [verification requirements](https://docs.moov.io/guides/accounts/requirements/identity-verification/).
       # Note that the `mode` field (for production or sandbox) is only required when creating a _facilitator_ account. All non-facilitator account requests will ignore the mode field and be set to the calling facilitator's mode.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       # to specify the `/accounts.write` scope.
       request = Models::Operations::CreateAccountRequest.new(
@@ -69,7 +69,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -210,11 +210,11 @@ module Moov
     sig { params(request: Models::Operations::ListAccountsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListAccountsResponse) }
     def list(request:, timeout_ms: nil)
       # list - List or search accounts to which the caller is connected.
-      # 
+      #
       # All supported query parameters are optional. If none are provided the response will include all connected accounts.
       # Pagination is supported via the `skip` and `count` query parameters. Searching by name and email will overlap and 
       # return results based on relevance. Accounts with AccountType `guest` will not be included in the response.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       # to specify the `/accounts.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -327,7 +327,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAccountResponse) }
     def get(account_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieves details for the account with the specified ID.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       # to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetAccountRequest.new(
@@ -451,12 +451,12 @@ module Moov
       #   + For unverified accounts, all profile data can be edited.
       #   + During the verification process, missing or incomplete profile data can be edited.
       #   + Verified accounts can only add missing profile data.
-      # 
+      #
       #   When **can't** profile data be updated:
       #   + Verified accounts cannot change any existing profile data.
-      # 
+      #
       # If you need to update information in a locked state, please contact Moov support.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need
       # to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::UpdateAccountRequest.new(
@@ -479,7 +479,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -622,7 +622,7 @@ module Moov
       # disconnect - This will sever the connection between you and the account specified and it will no longer be listed as 
       # active in the list of accounts. This also means you'll only have read-only access to the account going 
       # forward for reporting purposes.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.disconnect` scope.
       request = Models::Operations::DisconnectAccountRequest.new(
@@ -749,11 +749,11 @@ module Moov
     sig { params(request: Models::Operations::ListConnectedAccountsForAccountRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListConnectedAccountsForAccountResponse) }
     def list_connected(request:, timeout_ms: nil)
       # list_connected - List or search accounts to which the caller is connected.
-      # 
+      #
       # All supported query parameters are optional. If none are provided the response will include all connected accounts.
       # Pagination is supported via the `skip` and `count` query parameters. Searching by name and email will overlap and 
       # return results based on relevance. Accounts with AccountType `guest` will not be included in the response.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       # to specify the `/accounts.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -893,7 +893,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1025,7 +1025,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAccountCountriesResponse) }
     def get_countries(account_id:, x_moov_version: nil, timeout_ms: nil)
       # get_countries - Retrieve the specified countries of operation for an account. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetAccountCountriesRequest.new(
@@ -1146,9 +1146,9 @@ module Moov
     sig { params(account_countries: Models::Components::AccountCountries, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::AssignAccountCountriesResponse) }
     def assign_countries(account_countries:, account_id:, x_moov_version: nil, timeout_ms: nil)
       # assign_countries - Assign the countries of operation for an account.
-      # 
+      #
       # This endpoint will always overwrite the previously assigned values. 
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::AssignAccountCountriesRequest.new(
@@ -1171,7 +1171,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1312,7 +1312,7 @@ module Moov
     sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetMerchantProcessingAgreementResponse) }
     def get_merchant_processing_agreement(account_id:, x_moov_version: nil, timeout_ms: nil)
       # get_merchant_processing_agreement - Retrieve a merchant account's processing agreement.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetMerchantProcessingAgreementRequest.new(
@@ -1401,7 +1401,7 @@ module Moov
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetMerchantProcessingAgreementResponse.new(
             status_code: http_response.status,
@@ -1431,7 +1431,7 @@ module Moov
     sig { params(x_moov_version: T.nilable(::String), origin: T.nilable(::String), referer: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTermsOfServiceTokenResponse) }
     def get_terms_of_service_token(x_moov_version: nil, origin: nil, referer: nil, timeout_ms: nil)
       # get_terms_of_service_token - Generates a non-expiring token that can then be used to accept Moov's terms of service. 
-      # 
+      #
       # This token can only be generated via API. Any Moov account requesting the collect funds, send funds, wallet, 
       # or card issuing capabilities must accept Moov's terms of service, then have the generated terms of service 
       # token patched to the account. Read more in our [documentation](https://docs.moov.io/guides/accounts/requirements/platform-agreement/).

@@ -19,11 +19,11 @@ module Moov
         # The name of the agreement.
         field :name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name'), required: true } }
 
-        field :accepted_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :accepted_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :status, Models::Components::FeePlanAgreementStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::FeePlanAgreementStatus, false) } }
+        field :status, Models::Components::FeePlanAgreementStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FeePlanAgreementStatus, false) } }
         # Specifies the card processing pricing model
-        field :card_acquiring_model, Models::Components::CardAcquiringModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAcquiringModel'), required: true, 'decoder': Utils.enum_from_string(Models::Components::CardAcquiringModel, false) } }
+        field :card_acquiring_model, Models::Components::CardAcquiringModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAcquiringModel'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardAcquiringModel, false) } }
 
         field :billable_fees, Crystalline::Array.new(Models::Components::BillableFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billableFees'), required: true } }
         # The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.

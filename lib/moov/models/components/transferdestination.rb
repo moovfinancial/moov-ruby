@@ -15,7 +15,7 @@ module Moov
 
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
         # The payment method type that represents a payment rail and directionality
-        field :payment_method_type, Models::Components::TransferPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TransferPaymentMethodType, false) } }
+        field :payment_method_type, Models::Components::TransferPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferPaymentMethodType, false) } }
 
         field :account, Models::Components::TransferAccount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account'), required: true } }
         # A bank account as contained within a payment method.

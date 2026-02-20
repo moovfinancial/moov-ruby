@@ -42,7 +42,7 @@ module Moov
     sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIndustriesResponse) }
     def list(x_moov_version: nil, timeout_ms: nil)
       # list - Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
       # you'll need to specify the `/profile-enrichment.read` scope.
       request = Models::Operations::ListIndustriesRequest.new(

@@ -8,7 +8,7 @@ module Moov
   module Models
     module Components
       # ACHReturnCode - The return code of an ACH transaction that caused the bank account status to change.
-      # 
+      #
       # - R02: Account Closed
       # - R03: No Account/Unable to Locate Account
       # - R04: Invalid Account Number

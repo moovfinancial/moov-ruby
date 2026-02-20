@@ -15,10 +15,10 @@ module Moov
         # An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
         field :dynamic_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dynamicDescriptor') } }
         # Specifies the nature and initiator of a transaction. 
-        # 
+        #
         # Crucial for recurring and merchant-initiated transactions as per card scheme rules. 
         # Omit for customer-initiated e-commerce transactions.
-        field :transaction_source, Crystalline::Nilable.new(Models::Components::TransactionSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionSource'), 'decoder': Utils.enum_from_string(Models::Components::TransactionSource, true) } }
+        field :transaction_source, Crystalline::Nilable.new(Models::Components::TransactionSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionSource'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransactionSource, true) } }
 
         sig { params(dynamic_descriptor: T.nilable(::String), transaction_source: T.nilable(Models::Components::TransactionSource)).void }
         def initialize(dynamic_descriptor: nil, transaction_source: nil)

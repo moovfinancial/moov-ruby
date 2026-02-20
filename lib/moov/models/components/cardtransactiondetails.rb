@@ -13,31 +13,31 @@ module Moov
         include Crystalline::MetadataFields
 
         # Status of a transaction within the card payment lifecycle.
-        field :status, Crystalline::Nilable.new(Models::Components::CardTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': Utils.enum_from_string(Models::Components::CardTransactionStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::CardTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardTransactionStatus, true) } }
 
-        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': Utils.enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
         # An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
         field :dynamic_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dynamicDescriptor') } }
         # Specifies the nature and initiator of a transaction. 
-        # 
+        #
         # Crucial for recurring and merchant-initiated transactions as per card scheme rules. 
         # Omit for customer-initiated e-commerce transactions.
-        field :transaction_source, Crystalline::Nilable.new(Models::Components::TransactionSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionSource'), 'decoder': Utils.enum_from_string(Models::Components::TransactionSource, true) } }
+        field :transaction_source, Crystalline::Nilable.new(Models::Components::TransactionSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionSource'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransactionSource, true) } }
 
-        field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :confirmed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('confirmedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :confirmed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('confirmedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :settled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('settledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :settled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('settledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :failed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :failed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # The program assigned by the card network that determines the interchange rate for the transfer.
-        # 
-        # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :interchange_qualification, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interchangeQualification') } }
         # The program assigned by the card network that determines the interchange rate for the transfer.
         field :fee_program, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeProgram') } }

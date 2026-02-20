@@ -15,11 +15,11 @@ module Moov
         # Unique code identifying this payment link.
         field :code, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('code'), required: true } }
 
-        field :payment_link_type, Models::Components::PaymentLinkType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkType'), required: true, 'decoder': Utils.enum_from_string(Models::Components::PaymentLinkType, false) } }
+        field :payment_link_type, Models::Components::PaymentLinkType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PaymentLinkType, false) } }
         # The operating mode for an account.
-        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': Utils.enum_from_string(Models::Components::Mode, false) } }
+        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, false) } }
 
-        field :status, Models::Components::PaymentLinkStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': Utils.enum_from_string(Models::Components::PaymentLinkStatus, false) } }
+        field :status, Models::Components::PaymentLinkStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PaymentLinkStatus, false) } }
         # The partner's Moov account ID.
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
         # The merchant's Moov account ID.
@@ -39,19 +39,19 @@ module Moov
 
         field :customer, Models::Components::PaymentLinkCustomerOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customer'), required: true } }
 
-        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': Utils.datetime_from_iso_format(false) } }
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Optional sales tax amount.
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # An optional limit on the number of times this payment link can be used. 
-        # 
+        #
         # **For payouts, `maxUses` is always 1.**
         field :max_uses, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxUses') } }
         # The timestamp when this payment link was last used.
-        field :last_used_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastUsedOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :last_used_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastUsedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # An optional expiration date for this payment link.
-        field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Options for payment links used to collect payment.
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
@@ -60,7 +60,7 @@ module Moov
         # When line items are provided, their total plus sales tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
-        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': Utils.datetime_from_iso_format(true) } }
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, amount: Models::Components::Amount, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, sales_tax_amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime)).void }
         def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, amount:, uses:, display:, customer:, created_on:, updated_on:, sales_tax_amount: nil, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil)

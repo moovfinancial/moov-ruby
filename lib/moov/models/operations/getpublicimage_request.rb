@@ -17,7 +17,7 @@ module Moov
 
         field :if_none_match, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'if-none-match', 'style': 'simple', 'explode': false } }
         # Optional parameter to request a resized version of the image (WxH).
-        # 
+        #
         # If either dimension is 0, the image will be scaled proportionally based on
         # the non-zero dimension. Dimensions are capped at 2048 pixels. A default size
         # of 400x400 will be used if this parameter is omitted.

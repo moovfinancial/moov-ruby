@@ -42,7 +42,7 @@ module Moov
     sig { params(request: Models::Operations::ListIssuedCardAuthorizationsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIssuedCardAuthorizationsResponse) }
     def list_authorizations(request:, timeout_ms: nil)
       # list_authorizations - List issued card authorizations associated with a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -161,7 +161,7 @@ module Moov
     sig { params(account_id: ::String, authorization_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetIssuedCardAuthorizationResponse) }
     def get_authorization(account_id:, authorization_id:, x_moov_version: nil, timeout_ms: nil)
       # get_authorization - Retrieves details of an authorization associated with a specific Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       request = Models::Operations::GetIssuedCardAuthorizationRequest.new(
@@ -283,7 +283,7 @@ module Moov
     sig { params(request: Models::Operations::ListIssuedCardAuthorizationEventsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIssuedCardAuthorizationEventsResponse) }
     def list_authorization_events(request:, timeout_ms: nil)
       # list_authorization_events - List card network and Moov platform events that affect the authorization and its hold on a wallet balance.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -402,7 +402,7 @@ module Moov
     sig { params(request: Models::Operations::ListIssuedCardTransactionsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIssuedCardTransactionsResponse) }
     def list(request:, timeout_ms: nil)
       # list - List issued card transactions associated with a Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       url, params = @sdk_configuration.get_server_details
@@ -521,7 +521,7 @@ module Moov
     sig { params(account_id: ::String, card_transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetIssuedCardTransactionResponse) }
     def get(account_id:, card_transaction_id:, x_moov_version: nil, timeout_ms: nil)
       # get - Retrieves details of an issued card transaction associated with a specific Moov account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       request = Models::Operations::GetIssuedCardTransactionRequest.new(

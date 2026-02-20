@@ -13,11 +13,11 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :geographic_reach, Crystalline::Nilable.new(Models::Components::GeographicReach), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('geographicReach'), 'decoder': Utils.enum_from_string(Models::Components::GeographicReach, true) } }
+        field :geographic_reach, Crystalline::Nilable.new(Models::Components::GeographicReach), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('geographicReach'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::GeographicReach, true) } }
 
-        field :business_presence, Crystalline::Nilable.new(Models::Components::BusinessPresence), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessPresence'), 'decoder': Utils.enum_from_string(Models::Components::BusinessPresence, true) } }
+        field :business_presence, Crystalline::Nilable.new(Models::Components::BusinessPresence), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessPresence'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BusinessPresence, true) } }
 
-        field :pending_litigation, Crystalline::Nilable.new(Models::Components::PendingLitigation), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingLitigation'), 'decoder': Utils.enum_from_string(Models::Components::PendingLitigation, true) } }
+        field :pending_litigation, Crystalline::Nilable.new(Models::Components::PendingLitigation), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingLitigation'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PendingLitigation, true) } }
 
         field :volume_share_by_customer_type, Crystalline::Nilable.new(Models::Components::VolumeShareByCustomerType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeShareByCustomerType') } }
 
@@ -27,7 +27,7 @@ module Moov
 
         field :send_funds, Crystalline::Nilable.new(Models::Components::SendFunds), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sendFunds') } }
 
-        field :submission_intent, Crystalline::Nilable.new(Models::Components::SubmissionIntent), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('submissionIntent'), 'decoder': Utils.enum_from_string(Models::Components::SubmissionIntent, true) } }
+        field :submission_intent, Crystalline::Nilable.new(Models::Components::SubmissionIntent), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('submissionIntent'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SubmissionIntent, true) } }
 
         sig { params(geographic_reach: T.nilable(Models::Components::GeographicReach), business_presence: T.nilable(Models::Components::BusinessPresence), pending_litigation: T.nilable(Models::Components::PendingLitigation), volume_share_by_customer_type: T.nilable(Models::Components::VolumeShareByCustomerType), collect_funds: T.nilable(Models::Components::CollectFunds), money_transfer: T.nilable(Models::Components::MoneyTransfer), send_funds: T.nilable(Models::Components::SendFunds), submission_intent: T.nilable(Models::Components::SubmissionIntent)).void }
         def initialize(geographic_reach: nil, business_presence: nil, pending_litigation: nil, volume_share_by_customer_type: nil, collect_funds: nil, money_transfer: nil, send_funds: nil, submission_intent: nil)

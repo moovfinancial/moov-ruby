@@ -12,6 +12,7 @@ module Moov
         enums do
           PAYMENT = new('payment')
           PAYOUT = new('payout')
+          INVOICE_PAYMENT = new('invoice-payment')
         end
       end
     end

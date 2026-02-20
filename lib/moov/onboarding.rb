@@ -42,7 +42,7 @@ module Moov
     sig { params(onboarding_invite_request: Models::Components::OnboardingInviteRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateOnboardingInviteResponse) }
     def create_invite(onboarding_invite_request:, x_moov_version: nil, timeout_ms: nil)
       # create_invite - Create an invitation containing a unique link that allows the recipient to onboard their organization with Moov.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.write` scope.
       request = Models::Operations::CreateOnboardingInviteRequest.new(
@@ -58,7 +58,7 @@ module Moov
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -199,7 +199,7 @@ module Moov
     sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListOnboardingInvitesResponse) }
     def list_invites(x_moov_version: nil, timeout_ms: nil)
       # list_invites - List all the onboarding invites created by the caller's account.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.read` scope.
       request = Models::Operations::ListOnboardingInvitesRequest.new(
@@ -313,7 +313,7 @@ module Moov
     sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetOnboardingInviteResponse) }
     def get_invite(code:, x_moov_version: nil, timeout_ms: nil)
       # get_invite - Retrieve details about an onboarding invite.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.read` scope.
       request = Models::Operations::GetOnboardingInviteRequest.new(
@@ -434,7 +434,7 @@ module Moov
     sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RevokeOnboardingInviteResponse) }
     def revoke_invite(code:, x_moov_version: nil, timeout_ms: nil)
       # revoke_invite - Revoke an onboarding invite, rendering the invitation link unusable.
-      # 
+      #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.write` scope.
       request = Models::Operations::RevokeOnboardingInviteRequest.new(
