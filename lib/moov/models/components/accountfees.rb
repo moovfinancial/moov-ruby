@@ -16,6 +16,8 @@ module Moov
         field :wallet_fee, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletFee'), required: true } }
         # Fees for PCI compliance.
         field :merchant_pci_fee, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantPCIFee'), required: true } }
+        # Fees for invoice payments.
+        field :invoice_payment_fee, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePaymentFee'), required: true } }
         # Total platform fees.
         field :total, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('total'), required: true } }
         # Fees for business verification.
@@ -25,10 +27,11 @@ module Moov
         # Fees for transaction risk monitoring.
         field :transaction_monitoring_fee, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionMonitoringFee') } }
 
-        sig { params(wallet_fee: Models::Components::AmountDecimal, merchant_pci_fee: Models::Components::AmountDecimal, total: Models::Components::AmountDecimal, kyb_fee: T.nilable(Models::Components::AmountDecimal), kyc_fee: T.nilable(Models::Components::AmountDecimal), transaction_monitoring_fee: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(wallet_fee:, merchant_pci_fee:, total:, kyb_fee: nil, kyc_fee: nil, transaction_monitoring_fee: nil)
+        sig { params(wallet_fee: Models::Components::AmountDecimal, merchant_pci_fee: Models::Components::AmountDecimal, invoice_payment_fee: Models::Components::AmountDecimal, total: Models::Components::AmountDecimal, kyb_fee: T.nilable(Models::Components::AmountDecimal), kyc_fee: T.nilable(Models::Components::AmountDecimal), transaction_monitoring_fee: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(wallet_fee:, merchant_pci_fee:, invoice_payment_fee:, total:, kyb_fee: nil, kyc_fee: nil, transaction_monitoring_fee: nil)
           @wallet_fee = wallet_fee
           @merchant_pci_fee = merchant_pci_fee
+          @invoice_payment_fee = invoice_payment_fee
           @total = total
           @kyb_fee = kyb_fee
           @kyc_fee = kyc_fee
@@ -40,6 +43,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @wallet_fee == other.wallet_fee
           return false unless @merchant_pci_fee == other.merchant_pci_fee
+          return false unless @invoice_payment_fee == other.invoice_payment_fee
           return false unless @total == other.total
           return false unless @kyb_fee == other.kyb_fee
           return false unless @kyc_fee == other.kyc_fee
