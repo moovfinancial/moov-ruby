@@ -12,6 +12,8 @@ class Moov::Models::Components::AccountFees
   def wallet_fee=(str_); end
   def merchant_pci_fee(); end
   def merchant_pci_fee=(str_); end
+  def invoice_payment_fee(); end
+  def invoice_payment_fee=(str_); end
   def total(); end
   def total=(str_); end
   def kyb_fee(); end
