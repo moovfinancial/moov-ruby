@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    moov_ruby (25.10.8)
+    moov_ruby (25.10.9)
       base64 (>= 0.2.0, < 1.0)
       faraday (>= 2.14.1)
       faraday-multipart (~> 1.2.0)
