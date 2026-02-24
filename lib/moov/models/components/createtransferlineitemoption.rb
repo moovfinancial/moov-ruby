@@ -18,7 +18,10 @@ module Moov
         field :quantity, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('quantity'), required: true } }
         # Optional price modification applied by this option. Can be positive, negative, or zero.
         field :price_modifier, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priceModifier') } }
-        # Optional list of images associated with this line item option.
+        #   Optional list of images associated with this line item option.
+        #   This field is being deprecated in favor using the images associated with a productID and will soon be unsupported.
+        #
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
         # Optional group identifier to categorize related options (e.g., 'toppings').
         field :group, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('group') } }
