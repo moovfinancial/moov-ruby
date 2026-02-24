@@ -779,3 +779,13 @@ Based on:
 - [ruby v25.1.9] .
 ### Releases
 - [Ruby Gems v25.1.9] https://rubygems.org/gems/moov_ruby/versions/25.1.9 - .
+
+## 2026-02-24 02:39:34
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.725.0 (2.836.5) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v25.1.10] .
+### Releases
+- [Ruby Gems v25.1.10] https://rubygems.org/gems/moov_ruby/versions/25.1.10 - .

@@ -12,9 +12,9 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :agreement_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('agreementID'), required: true } }
-
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :plan_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('planID'), required: true } }
         # The name of the agreement.
         field :name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name'), required: true } }
@@ -30,7 +30,7 @@ module Moov
         field :minimum_commitment, Models::Components::MinimumCommitment, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumCommitment'), required: true } }
         # Fixed recurring amount paid in the billing period regardless of usage.
         field :monthly_platform_fee, Models::Components::MonthlyPlatformFee, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('monthlyPlatformFee'), required: true } }
-
+        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID') } }
         # The description of the agreement.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
