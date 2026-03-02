@@ -1,27 +1,27 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: e777abbe5f5b478cbf6b7f1bcf3a9956
+  docChecksum: 1c5059ba15f9ba17e7120c6104b717dd
   docVersion: dev
-  speakeasyVersion: 1.725.0
-  generationVersion: 2.836.5
-  releaseVersion: 0.0.0-dev.3
-  configChecksum: 84e7af6c4eb89c987413d1553c679852
+  speakeasyVersion: 1.736.3
+  generationVersion: 2.845.15
+  releaseVersion: 0.0.0-dev.4
+  configChecksum: 53549fe4a542a207c616582be0c7d4a4
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 2ce1dc66-4670-4369-ac13-4cac5cfad56d
-  pristine_commit_hash: 843ca5445472bb044e3247d5eb2f763b222b45d3
-  pristine_tree_hash: 808edab76fed0601283571b9d5c94ccabb578233
+  generation_id: b434cfbf-7be0-4094-9755-14e67f0280c6
+  pristine_commit_hash: 941c9dbf043c9d055ecbbe4934cfd2d72ee01444
+  pristine_tree_hash: 472863a3693c5c051fe4ee724e6df9e7ddd8498f
 features:
   ruby:
-    constsAndDefaults: 0.1.3
-    core: 3.11.19
+    constsAndDefaults: 0.1.4
+    core: 3.11.22
     deprecations: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.81.10
-    globalServerURLs: 2.83.0
+    globalServerURLs: 2.83.1
     globals: 2.82.1
     includes: 2.81.1
     nameOverrides: 2.81.4
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:31dad5186ef9c3664a2b857b630443cdc6ce0fbd
-    pristine_git_object: 2fe7511e39256800d8faedae6e4bcf0955e74c96
+    last_write_checksum: sha1:fc3f4fc04e7f93170b83a1b616c39576afcc4cf4
+    pristine_git_object: b76343bda13a9c1c1171deb011820e66f62891d2
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -1099,8 +1099,8 @@ trackedFiles:
     pristine_git_object: 64bb31fc1cdb359c1fe571902d385db27416011e
   docs/models/components/feecategory.md:
     id: cc3f00345b26
-    last_write_checksum: sha1:3292c16f0b30968615e81e13f3d15223f18db59e
-    pristine_git_object: 7d2f37ad70dbc796717a84477232a67f0f70bd8c
+    last_write_checksum: sha1:80a6b9faff3c50f316d7536002c0aaff7c07866f
+    pristine_git_object: 7045f2118a6a0ff476d21d4c56020a53c8e6588e
   docs/models/components/feemodel.md:
     id: 5d1f839fff02
     last_write_checksum: sha1:84eec4fc29a574f54982347d09da1666191372f7
@@ -6643,8 +6643,8 @@ trackedFiles:
     pristine_git_object: f32624116c21b912428e6e87e4b74c889b3a2e47
   lib/moov/models/components/feecategory.rb:
     id: 35c47657da2b
-    last_write_checksum: sha1:04ef1de6ab0b2d985dc8cee6630bb512276a1233
-    pristine_git_object: d52025f4062eb44a8b09fc44bdbd73c89b124bb0
+    last_write_checksum: sha1:9871815692d09d4755ded0eff2ab3b7d9928cb9d
+    pristine_git_object: e654775d1f736005cde756b67e69647aa0b70b65
   lib/moov/models/components/feecategory.rbi:
     id: 7f8a9719437a
     last_write_checksum: sha1:0588044b65a1dc6b9acff6318dbc57c110ace0e8
@@ -13067,8 +13067,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:a61d513ade361721de2a9d33965dc123d58071af
-    pristine_git_object: 3ae102af44e2e20d23757a83c7b67fbae4bb3d1e
+    last_write_checksum: sha1:f6c01d15f699fefe255ab7b8978002c0a9a4d693
+    pristine_git_object: 04c969663b0d56d6329961aceb55714656b8162e
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:1287060bac82cfde9e2fbfd48b12a39573ad172c
@@ -13147,8 +13147,8 @@ trackedFiles:
     pristine_git_object: 9d8c08247f52013a6f69bba3a9530116f8888bd2
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:2df029cc63f108d72a7534577273a754aafe7197
-    pristine_git_object: c9fcf2d660f69924af7f76328f397eba7f2b6163
+    last_write_checksum: sha1:5a91ede2e6f5326140be739948e3d198da56a7d0
+    pristine_git_object: 8fb6e1a5d36fd66f456803eb2eae95c4a2baa061
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -13163,8 +13163,8 @@ trackedFiles:
     pristine_git_object: d9bb82a4de2cf0d6b976e3b9c97b8f461767f53e
   sorbet/tapioca/config.yml:
     id: 11d0afd0d1b3
-    last_write_checksum: sha1:c0f08702c7fad9c1071e909a6b1d8e9ac9a5b9ec
-    pristine_git_object: 641f85baedb24751f64adc87b50a57676e19ed2a
+    last_write_checksum: sha1:0b9c1ef96625b48230f1e888e468628d36d9d287
+    pristine_git_object: 95ee0ac9d239e86cdd0d5e200c10c22e9eec1df3
   sorbet/tapioca/require.rb:
     id: d128056de4ad
     last_write_checksum: sha1:29b5fbd716704c2996f36f62fb32515705cfe56a
@@ -15673,6 +15673,12 @@ examples:
         "200":
           application/json: {"secret": "<value>"}
 examplesVersion: 1.0.2
+releaseNotes: |
+  ## Ruby SDK Changes:
+  * `client.fee_plans.list_fee_plan_agreements()`:  `response.[].billable_fees[].fee_category.enum(instant_bank)` **Added** (Breaking ⚠️)
+  * `client.fee_plans.create_fee_plan_agreements()`:  `response.billable_fees[].fee_category.enum(instant_bank)` **Added** (Breaking ⚠️)
+  * `client.fee_plans.list_fee_plans()`:  `response.[].billable_fees[].fee_category.enum(instant_bank)` **Added** (Breaking ⚠️)
+  * `client.fee_plans.list_partner_pricing_agreements()`:  `response.[].billable_fees[].fee_category.enum(instant_bank)` **Added** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
