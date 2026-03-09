@@ -2,6 +2,14 @@
 
 The low value in each range is included. The high value in each range is excluded.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = MonthlyVolumeRange::UNDER_10K
+```
+
 
 ## Values
 

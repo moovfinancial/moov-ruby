@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_sweep_config: Models::Components::CreateSweepConfig, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateSweepConfigResponse) }
-    def create_config(create_sweep_config:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_sweep_config: Models::Components::CreateSweepConfig, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateSweepConfigResponse) }
+    def create_config(create_sweep_config:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_config - Create a sweep config for a wallet.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -101,6 +103,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -203,8 +208,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListSweepConfigsResponse) }
-    def list_configs(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSweepConfigsResponse) }
+    def list_configs(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_configs - List sweep configs associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -252,6 +257,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -324,8 +332,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetSweepConfigResponse) }
-    def get_config(account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSweepConfigResponse) }
+    def get_config(account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_config - Get a sweep config associated with a wallet.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -374,6 +382,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -446,8 +457,8 @@ module Moov
     end
 
 
-    sig { params(patch_sweep_config: Models::Components::PatchSweepConfig, account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateSweepConfigResponse) }
-    def update_config(patch_sweep_config:, account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(patch_sweep_config: Models::Components::PatchSweepConfig, account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateSweepConfigResponse) }
+    def update_config(patch_sweep_config:, account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update_config - Update settings on a sweep config.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -509,6 +520,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -611,8 +625,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListSweepsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListSweepsResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListSweepsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSweepsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List sweeps associated with a wallet.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -658,6 +672,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -730,8 +747,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, wallet_id: ::String, sweep_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetSweepResponse) }
-    def get(account_id:, wallet_id:, sweep_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, wallet_id: ::String, sweep_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSweepResponse) }
+    def get(account_id:, wallet_id:, sweep_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get details on a specific sweep.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -781,6 +798,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -851,5 +871,5 @@ module Moov
 
       end
     end
-  end
+end
 end

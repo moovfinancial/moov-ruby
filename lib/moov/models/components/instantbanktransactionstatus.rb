@@ -7,8 +7,8 @@
 module Moov
   module Models
     module Components
-      # RTPTransactionStatus - Status of a transaction within the RTP lifecycle.
-      class RTPTransactionStatus < T::Enum
+      # InstantBankTransactionStatus - Status of a transaction within the instant-bank lifecycle.
+      class InstantBankTransactionStatus < T::Enum
         enums do
           INITIATED = new('initiated')
           COMPLETED = new('completed')

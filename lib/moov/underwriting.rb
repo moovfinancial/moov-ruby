@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetUnderwritingResponse) }
-    def get(account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetUnderwritingResponse) }
+    def get(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieve underwriting associated with a given Moov account. 
       #
       # Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more. 
@@ -90,6 +92,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -162,8 +167,8 @@ module Moov
     end
 
 
-    sig { params(upsert_underwriting: Models::Components::UpsertUnderwriting, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::SaveUnderwritingResponse) }
-    def save(upsert_underwriting:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(upsert_underwriting: Models::Components::UpsertUnderwriting, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SaveUnderwritingResponse) }
+    def save(upsert_underwriting:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # save - Create or update the account's underwriting.
       #
       # Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
@@ -226,6 +231,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -328,8 +336,8 @@ module Moov
     end
 
 
-    sig { params(update_underwriting: Models::Components::UpdateUnderwriting, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpsertUnderwritingResponse) }
-    def upsert(update_underwriting:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_underwriting: Models::Components::UpdateUnderwriting, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpsertUnderwritingResponse) }
+    def upsert(update_underwriting:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # upsert - Create or update the account's underwriting.
       #
       # Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
@@ -392,6 +400,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -492,5 +503,5 @@ module Moov
 
       end
     end
-  end
+end
 end

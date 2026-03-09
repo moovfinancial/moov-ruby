@@ -68,6 +68,8 @@ module Moov
       autoload :DeleteDisputeEvidenceFileResponse, 'moov/models/operations/deletedisputeevidencefile_response.rb'
       autoload :DeleteImageRequest, 'moov/models/operations/deleteimage_request.rb'
       autoload :DeleteImageResponse, 'moov/models/operations/deleteimage_response.rb'
+      autoload :DeleteInvoiceRequest, 'moov/models/operations/deleteinvoice_request.rb'
+      autoload :DeleteInvoiceResponse, 'moov/models/operations/deleteinvoice_response.rb'
       autoload :DeleteRepresentativeRequest, 'moov/models/operations/deleterepresentative_request.rb'
       autoload :DeleteRepresentativeResponse, 'moov/models/operations/deleterepresentative_response.rb'
       autoload :DeleteTerminalApplicationRequest, 'moov/models/operations/deleteterminalapplication_request.rb'

@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateScheduleResponse) }
-    def create(upsert_schedule:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateScheduleResponse) }
+    def create(upsert_schedule:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Describes the schedule to create or modify.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -101,6 +103,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -203,8 +208,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListSchedulesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListSchedulesResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListSchedulesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSchedulesResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - Describes a list of schedules associated with an account. Append the `hydrate=accounts` query parameter to include partial account details in the response.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -250,6 +255,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -322,8 +330,8 @@ module Moov
     end
 
 
-    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateScheduleResponse) }
-    def update(upsert_schedule:, account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateScheduleResponse) }
+    def update(upsert_schedule:, account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Describes the schedule to modify.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -385,6 +393,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -487,8 +498,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetSchedulesResponse) }
-    def get(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSchedulesResponse) }
+    def get(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Describes a schedule associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -537,6 +548,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -609,8 +623,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CancelScheduleResponse) }
-    def cancel(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CancelScheduleResponse) }
+    def cancel(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # cancel - Describes the schedule to cancel.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -659,6 +673,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -737,8 +754,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetScheduledOccurrenceResponse) }
-    def get_occurrance(account_id:, schedule_id:, occurrence_filter:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetScheduledOccurrenceResponse) }
+    def get_occurrance(account_id:, schedule_id:, occurrence_filter:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_occurrance - Gets a specific occurrence.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -788,6 +805,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -858,5 +878,5 @@ module Moov
 
       end
     end
-  end
+end
 end

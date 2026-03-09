@@ -7,8 +7,8 @@
 module Moov
   module Models
     module Components
-      # RTPFailureCode - Status codes for RTP failures.
-      class RTPFailureCode < T::Enum
+      # InstantBankFailureCode - Status codes for instant-bank failures.
+      class InstantBankFailureCode < T::Enum
         enums do
           PROCESSING_ERROR = new('processing-error')
           INVALID_ACCOUNT = new('invalid-account')
@@ -19,6 +19,7 @@ module Moov
           LIMIT_EXCEEDED = new('limit-exceeded')
           INVALID_AMOUNT = new('invalid-amount')
           CUSTOMER_DECEASED = new('customer-deceased')
+          PARTICIPANT_NOT_AVAILABLE = new('participant-not-available')
           OTHER = new('other')
         end
       end

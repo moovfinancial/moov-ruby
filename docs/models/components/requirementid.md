@@ -2,6 +2,14 @@
 
 The unique ID of what the requirement is asking to be filled out.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = RequirementID::ACCOUNT_TOS_ACCEPTANCE
+```
+
 
 ## Values
 

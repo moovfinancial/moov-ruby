@@ -1,5 +1,13 @@
 # AchDebitFundPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = AchDebitFundPaymentMethodPaymentMethodType::ACH_DEBIT_FUND
+```
+
 
 ## Values
 

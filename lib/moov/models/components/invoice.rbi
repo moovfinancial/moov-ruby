@@ -14,6 +14,10 @@ class Moov::Models::Components::Invoice
   def invoice_number=(str_); end
   def customer_account_id(); end
   def customer_account_id=(str_); end
+  def customer_display_name(); end
+  def customer_display_name=(str_); end
+  def customer_email(); end
+  def customer_email=(str_); end
   def partner_account_id(); end
   def partner_account_id=(str_); end
   def status(); end
@@ -52,4 +56,6 @@ class Moov::Models::Components::Invoice
   def paid_on=(str_); end
   def canceled_on(); end
   def canceled_on=(str_); end
+  def disabled_on(); end
+  def disabled_on=(str_); end
 end

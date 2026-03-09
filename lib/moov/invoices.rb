@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_invoice: Models::Components::CreateInvoice, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateInvoiceResponse) }
-    def create_invoice(create_invoice:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_invoice: Models::Components::CreateInvoice, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoiceResponse) }
+    def create_invoice(create_invoice:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_invoice - Create an invoice for a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -101,6 +103,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -203,8 +208,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListInvoicesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListInvoicesResponse) }
-    def list_invoices(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListInvoicesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInvoicesResponse) }
+    def list_invoices(request:, timeout_ms: nil, http_headers: nil)
       # list_invoices - List all the invoices created under a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -250,6 +255,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -337,8 +345,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetInvoiceResponse) }
-    def get_invoice(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetInvoiceResponse) }
+    def get_invoice(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_invoice - Retrieve an invoice by ID.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -387,6 +395,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -459,8 +470,8 @@ module Moov
     end
 
 
-    sig { params(update_invoice: Models::Components::UpdateInvoice, account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateInvoiceResponse) }
-    def update_invoice(update_invoice:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_invoice: Models::Components::UpdateInvoice, account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateInvoiceResponse) }
+    def update_invoice(update_invoice:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update_invoice - Updates an invoice.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -522,6 +533,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -624,8 +638,145 @@ module Moov
     end
 
 
-    sig { params(create_invoice_payment: Models::Components::CreateInvoicePayment, account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateInvoicePaymentResponse) }
-    def create_invoice_payment(create_invoice_payment:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteInvoiceResponse) }
+    def delete(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+      # delete - Delete an invoice. Only invoices in `draft` status can be deleted.
+      #
+      # Deleting an invoice indicates it was created by mistake and should be completely disregarded.
+      # Deleted invoices are hidden from list results by default, but can still be retrieved
+      # individually through the get invoice endpoint. If you need to void an invoice that was
+      # already sent or is otherwise part of the invoice history, cancel it instead by updating
+      # its status to `canceled`.
+      #
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+      # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+      request = Models::Operations::DeleteInvoiceRequest.new(
+        account_id: account_id,
+        invoice_id: invoice_id,
+        x_moov_version: x_moov_version
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Models::Operations::DeleteInvoiceRequest,
+        base_url,
+        '/accounts/{accountID}/invoices/{invoiceID}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = T.cast(headers, T::Hash[String, String])
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: nil,
+        operation_id: 'deleteInvoice',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).delete(url) do |req|
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
+        end
+      end
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['204'])
+        http_response = @sdk_configuration.hooks.after_success(
+          hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+            hook_ctx: hook_ctx
+          ),
+          response: http_response
+        )
+        return Models::Operations::DeleteInvoiceResponse.new(
+          status_code: http_response.status,
+          content_type: content_type,
+          raw_response: http_response,
+          headers: {}
+        )
+      elsif Utils.match_status_code(http_response.status, ['400', '409'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['401', '403', '404', '429'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['500', '504'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
+    end
+
+
+    sig { params(create_invoice_payment: Models::Components::CreateInvoicePayment, account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoicePaymentResponse) }
+    def create_invoice_payment(create_invoice_payment:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_invoice_payment - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
       # If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
       #
@@ -688,6 +839,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -790,8 +944,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListInvoicePaymentsResponse) }
-    def list_invoice_payments(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInvoicePaymentsResponse) }
+    def list_invoice_payments(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_invoice_payments - List all the payments made towards an invoice.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -840,6 +994,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -910,5 +1067,5 @@ module Moov
 
       end
     end
-  end
+end
 end

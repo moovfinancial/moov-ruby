@@ -2,6 +2,14 @@
 
 Types of documents that can be uploaded.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = DocumentType::DRIVERS_LICENSE
+```
+
 
 ## Values
 

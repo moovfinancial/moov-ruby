@@ -2,6 +2,14 @@
 
 The results of the card update request.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardUpdateReason::UNSPECIFIED
+```
+
 
 ## Values
 

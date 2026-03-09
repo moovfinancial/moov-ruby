@@ -1,5 +1,13 @@
 # PaymentLinkStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = PaymentLinkStatus::ACTIVE
+```
+
 
 ## Values
 

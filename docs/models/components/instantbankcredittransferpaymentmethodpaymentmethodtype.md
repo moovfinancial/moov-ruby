@@ -1,5 +1,13 @@
 # InstantBankCreditTransferPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = InstantBankCreditTransferPaymentMethodPaymentMethodType::INSTANT_BANK_CREDIT
+```
+
 
 ## Values
 

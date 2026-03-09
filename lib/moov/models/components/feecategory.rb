@@ -15,6 +15,7 @@ module Moov
           CARD_OTHER = new('card-other')
           CARD_PULL = new('card-pull')
           CARD_PUSH = new('card-push')
+          INSTANT_BANK = new('instant-bank')
           MONTHLY_PLATFORM = new('monthly-platform')
           NETWORK_PASSTHROUGH = new('network-passthrough')
           OTHER = new('other')

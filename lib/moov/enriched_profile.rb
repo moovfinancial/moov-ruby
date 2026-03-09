@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(email: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetEnrichmentProfileResponse) }
-    def get(email:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(email: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetEnrichmentProfileResponse) }
+    def get(email:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -84,6 +86,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -154,5 +159,5 @@ module Moov
 
       end
     end
-  end
+end
 end

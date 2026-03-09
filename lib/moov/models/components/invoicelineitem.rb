@@ -19,7 +19,8 @@ module Moov
         # The quantity of this item.
         field :quantity, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('quantity'), required: true } }
         #   Optional unique identifier associating the line item with a product.
-        #   This is for reporting or tracking purposes, and does not populate other details of the line item.
+        #   When provided, images associated with the product will be included on the line item.
+        #   This does not populate other details of the line item.
         field :product_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('productID') } }
         # Optional list of modifiers applied to this item (e.g., toppings, upgrades, customizations).
         field :options, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoiceLineItemOption)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }

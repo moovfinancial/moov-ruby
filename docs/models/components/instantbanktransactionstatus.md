@@ -1,6 +1,14 @@
-# RTPTransactionStatus
+# InstantBankTransactionStatus
 
-Status of a transaction within the RTP lifecycle.
+Status of a transaction within the instant-bank lifecycle.
+
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = InstantBankTransactionStatus::INITIATED
+```
 
 
 ## Values
