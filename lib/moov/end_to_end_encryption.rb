@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(e2_ee_token: Models::Components::E2EEToken, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::TestEndToEndTokenResponse) }
-    def test_encrypted_token(e2_ee_token:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(e2_ee_token: Models::Components::E2EEToken, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::TestEndToEndTokenResponse) }
+    def test_encrypted_token(e2_ee_token:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # test_encrypted_token - Allows for testing a JWE token to ensure it's acceptable by Moov. 
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -94,6 +96,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -172,8 +177,8 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GenerateEndToEndKeyResponse) }
-    def generate_key(x_moov_version: nil, timeout_ms: nil)
+    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GenerateEndToEndKeyResponse) }
+    def generate_key(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # generate_key - Generates a public key used to create a JWE token for passing secure authentication data through non-PCI compliant intermediaries.
       request = Models::Operations::GenerateEndToEndKeyRequest.new(
         x_moov_version: x_moov_version
@@ -211,6 +216,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -279,5 +287,5 @@ module Moov
 
       end
     end
-  end
+end
 end

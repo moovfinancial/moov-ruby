@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_ticket: Models::Components::CreateTicket, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTicketResponse) }
-    def create_ticket(create_ticket:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_ticket: Models::Components::CreateTicket, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTicketResponse) }
+    def create_ticket(create_ticket:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_ticket - Create a support ticket for a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -104,6 +106,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -206,8 +211,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListTicketsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTicketsResponse) }
-    def list_tickets(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListTicketsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTicketsResponse) }
+    def list_tickets(request:, timeout_ms: nil, http_headers: nil)
       # list_tickets - List all the support tickets created under a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -256,6 +261,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -328,8 +336,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTicketResponse) }
-    def get_ticket(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTicketResponse) }
+    def get_ticket(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_ticket - Retrieve a support ticket by ID.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -381,6 +389,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -453,8 +464,8 @@ module Moov
     end
 
 
-    sig { params(update_ticket: Models::Components::UpdateTicket, account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateTicketResponse) }
-    def update_ticket(update_ticket:, account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_ticket: Models::Components::UpdateTicket, account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateTicketResponse) }
+    def update_ticket(update_ticket:, account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update_ticket - Updates a support ticket.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -519,6 +530,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -621,8 +635,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTicketMessagesResponse) }
-    def list_ticket_messages(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTicketMessagesResponse) }
+    def list_ticket_messages(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_ticket_messages - List all the messages for a support ticket.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -674,6 +688,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -744,5 +761,5 @@ module Moov
 
       end
     end
-  end
+end
 end

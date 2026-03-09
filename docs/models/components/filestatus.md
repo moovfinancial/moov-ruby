@@ -2,6 +2,14 @@
 
 The file's status.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = FileStatus::PENDING
+```
+
 
 ## Values
 

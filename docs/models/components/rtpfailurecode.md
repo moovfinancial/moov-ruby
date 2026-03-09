@@ -2,6 +2,14 @@
 
 Status codes for RTP failures.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = RTPFailureCode::PROCESSING_ERROR
+```
+
 
 ## Values
 

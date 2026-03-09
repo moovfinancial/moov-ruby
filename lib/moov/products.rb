@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListProductsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListProductsResponse) }
-    def list(request:, timeout_ms: nil)
+
+
+    sig { params(request: Models::Operations::ListProductsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListProductsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List active (non-disabled) products for an account.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -83,6 +85,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -155,8 +160,8 @@ module Moov
     end
 
 
-    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateProductResponse) }
-    def create(product_request:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateProductResponse) }
+    def create(product_request:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Creates a new product for the specified account.
       request = Models::Operations::CreateProductRequest.new(
         account_id: account_id,
@@ -214,6 +219,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -316,8 +324,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetProductResponse) }
-    def get(account_id:, product_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetProductResponse) }
+    def get(account_id:, product_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a product by ID.
       request = Models::Operations::GetProductRequest.new(
         account_id: account_id,
@@ -363,6 +371,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -435,8 +446,8 @@ module Moov
     end
 
 
-    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateProductResponse) }
-    def update(product_request:, account_id:, product_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateProductResponse) }
+    def update(product_request:, account_id:, product_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Update a product and its options.
       request = Models::Operations::UpdateProductRequest.new(
         account_id: account_id,
@@ -495,6 +506,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -597,8 +611,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableProductResponse) }
-    def disable(account_id:, product_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableProductResponse) }
+    def disable(account_id:, product_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # disable - Disable a product by ID.
       #
       # The product will no longer be available, but will remain in the system for historical and reporting purposes.
@@ -646,6 +660,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -722,5 +739,5 @@ module Moov
 
       end
     end
-  end
+end
 end

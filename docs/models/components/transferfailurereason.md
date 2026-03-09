@@ -2,6 +2,14 @@
 
 Reason for a transfer's failure.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = TransferFailureReason::SOURCE_PAYMENT_ERROR
+```
+
 
 ## Values
 

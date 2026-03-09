@@ -31,7 +31,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.images.list(account_id: '3a4ed2d9-03e1-4b0e-b45f-2a9ca72f8adb', skip: 60, count: 20)
 
@@ -73,7 +77,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.images.upload(account_id: 'c0971a52-1f1c-4511-876a-f45c4cfd6154', image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart.new(
   image: Models::Components::Image.new(
@@ -120,7 +128,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.images.get_metadata(account_id: '6cf66a43-31ce-4d27-8dd4-130fa57f0a6f', image_id: '7cec5bd3-6340-4de4-a923-bf6ec0f7e921')
 
@@ -163,7 +175,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.images.update(account_id: '310f4f19-45cf-4429-9aae-8e93827ecb0d', image_id: '8ef109f8-5a61-4355-b2e4-b8ac2f6f6f47', image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart.new(
   image: Models::Components::Image.new(
@@ -214,7 +230,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.images.delete(account_id: '866c32ce-2536-4b21-8e12-f8c474fb2a9b', image_id: 'ca048253-31d2-4bfb-9077-1f07a2a09f26')
 
@@ -255,7 +275,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.images.update_metadata(account_id: '58c3c937-e648-49c5-88be-6225cca35af1', image_id: 'd957e703-ecd4-48ac-9c14-c0ecf1b496f0', image_metadata_request: Models::Components::ImageMetadataRequest.new)
 

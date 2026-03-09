@@ -30,10 +30,10 @@ module Moov
         field :apple_pay, Crystalline::Nilable.new(Models::Components::ApplePayResponse), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('applePay') } }
         # Card-specific details about the transaction.
         field :card_details, Crystalline::Nilable.new(Models::Components::CardTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails') } }
-        # RTP specific details about the transaction.
-        field :rtp_details, Crystalline::Nilable.new(Models::Components::RTPTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtpDetails') } }
+        # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
+        field :rtp_details, Crystalline::Nilable.new(Models::Components::RtpDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('rtpDetails') } }
 
-        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::TransferPaymentMethodType, account: Models::Components::TransferAccount, bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), ach_details: T.nilable(Models::Components::ACHTransactionDetails), apple_pay: T.nilable(Models::Components::ApplePayResponse), card_details: T.nilable(Models::Components::CardTransactionDetails), rtp_details: T.nilable(Models::Components::RTPTransactionDetails)).void }
+        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::TransferPaymentMethodType, account: Models::Components::TransferAccount, bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), ach_details: T.nilable(Models::Components::ACHTransactionDetails), apple_pay: T.nilable(Models::Components::ApplePayResponse), card_details: T.nilable(Models::Components::CardTransactionDetails), rtp_details: T.nilable(Models::Components::RtpDetails)).void }
         def initialize(payment_method_id:, payment_method_type:, account:, bank_account: nil, wallet: nil, card: nil, ach_details: nil, apple_pay: nil, card_details: nil, rtp_details: nil)
           @payment_method_id = payment_method_id
           @payment_method_type = payment_method_type

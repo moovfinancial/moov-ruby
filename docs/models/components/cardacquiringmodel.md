@@ -2,6 +2,14 @@
 
 Specifies the card processing pricing model
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardAcquiringModel::COST_PLUS
+```
+
 
 ## Values
 

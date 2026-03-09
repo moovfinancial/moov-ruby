@@ -2,6 +2,14 @@
 
 The reason the bank account status changed to the current value.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = BankAccountStatusReason::BANK_ACCOUNT_CREATED
+```
+
 
 ## Values
 

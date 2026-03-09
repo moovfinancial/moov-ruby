@@ -1,5 +1,13 @@
 # AchCreditSameDayTransferPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = AchCreditSameDayTransferPaymentMethodPaymentMethodType::ACH_CREDIT_SAME_DAY
+```
+
 
 ## Values
 

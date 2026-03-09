@@ -1,5 +1,13 @@
 # UpdateTicketStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = UpdateTicketStatus::CLOSED
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # CardPresentPaymentPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardPresentPaymentPaymentMethodPaymentMethodType::CARD_PRESENT_PAYMENT
+```
+
 
 ## Values
 

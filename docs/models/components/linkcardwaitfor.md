@@ -1,5 +1,13 @@
 # LinkCardWaitFor
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = LinkCardWaitFor::PAYMENT_METHOD
+```
+
 
 ## Values
 

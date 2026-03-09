@@ -1,5 +1,13 @@
 # Hydrate
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = Hydrate::ACCOUNTS
+```
+
 
 ## Values
 

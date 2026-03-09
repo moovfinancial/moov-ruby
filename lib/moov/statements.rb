@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListStatementsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListStatementsResponse) }
-    def list(request:, timeout_ms: nil)
+
+
+    sig { params(request: Models::Operations::ListStatementsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListStatementsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - Retrieve all statements associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -86,6 +88,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -173,8 +178,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, statement_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String)).returns(Models::Operations::GetStatementResponse) }
-    def get(account_id:, statement_id:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil)
+    sig { params(account_id: ::String, statement_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetStatementResponse) }
+    def get(account_id:, statement_id:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get - Retrieve a statement by its ID.
       #
       # Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `application/pdf`.
@@ -225,6 +230,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -311,5 +319,5 @@ module Moov
 
       end
     end
-  end
+end
 end

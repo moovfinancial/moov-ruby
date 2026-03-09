@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListFeePlanAgreementsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFeePlanAgreementsResponse) }
-    def list_fee_plan_agreements(request:, timeout_ms: nil)
+
+
+    sig { params(request: Models::Operations::ListFeePlanAgreementsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeePlanAgreementsResponse) }
+    def list_fee_plan_agreements(request:, timeout_ms: nil, http_headers: nil)
       # list_fee_plan_agreements - List all fee plan agreements associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -86,6 +88,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -158,8 +163,8 @@ module Moov
     end
 
 
-    sig { params(create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateFeePlanAgreementsResponse) }
-    def create_fee_plan_agreements(create_fee_plan_agreement:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateFeePlanAgreementsResponse) }
+    def create_fee_plan_agreements(create_fee_plan_agreement:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_fee_plan_agreements - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -220,6 +225,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -322,8 +330,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), plan_i_ds: T.nilable(T::Array[::String]), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFeePlansResponse) }
-    def list_fee_plans(account_id:, x_moov_version: nil, plan_i_ds: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), plan_i_ds: T.nilable(T::Array[::String]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeePlansResponse) }
+    def list_fee_plans(account_id:, x_moov_version: nil, plan_i_ds: nil, timeout_ms: nil, http_headers: nil)
       # list_fee_plans - List all fee plans available for use by an account. This is intended to be used by an account when 
       # selecting a fee plan to apply to a connected account.
       #
@@ -375,6 +383,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -447,8 +458,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListFeeRevenueRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFeeRevenueResponse) }
-    def list_fee_revenue(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListFeeRevenueRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeeRevenueResponse) }
+    def list_fee_revenue(request:, timeout_ms: nil, http_headers: nil)
       # list_fee_revenue - Used by a partner. Retrieve revenue generated from merchant fees.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -494,6 +505,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -566,8 +580,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::RetrieveFeesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::RetrieveFeesResponse) }
-    def retrieve_fees(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::RetrieveFeesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RetrieveFeesResponse) }
+    def retrieve_fees(request:, timeout_ms: nil, http_headers: nil)
       # retrieve_fees - Retrieve fees assessed to an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -613,6 +627,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -685,8 +702,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFeesFetchResponse) }
-    def list_fees_fetch(account_id:, list_fees_fetch_request: nil, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeesFetchResponse) }
+    def list_fees_fetch(account_id:, list_fees_fetch_request: nil, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_fees_fetch - List fees associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -746,6 +763,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -818,8 +838,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListPartnerPricingAgreementsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListPartnerPricingAgreementsResponse) }
-    def list_partner_pricing_agreements(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListPartnerPricingAgreementsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPartnerPricingAgreementsResponse) }
+    def list_partner_pricing_agreements(request:, timeout_ms: nil, http_headers: nil)
       # list_partner_pricing_agreements - List all partner pricing agreements associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -865,6 +885,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -937,8 +960,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListResidualsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListResidualsResponse) }
-    def list_residuals(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListResidualsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListResidualsResponse) }
+    def list_residuals(request:, timeout_ms: nil, http_headers: nil)
       # list_residuals - List all residuals associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -984,6 +1007,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1056,8 +1082,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, residual_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetResidualResponse) }
-    def get_residual(account_id:, residual_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, residual_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetResidualResponse) }
+    def get_residual(account_id:, residual_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_residual - Get a residual associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1106,6 +1132,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1178,8 +1207,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListResidualFeesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListResidualFeesResponse) }
-    def list_residual_fees(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListResidualFeesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListResidualFeesResponse) }
+    def list_residual_fees(request:, timeout_ms: nil, http_headers: nil)
       # list_residual_fees - List all fees associated with a residual.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1225,6 +1254,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1295,5 +1327,5 @@ module Moov
 
       end
     end
-  end
+end
 end
