@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListPaymentMethodsResponse) }
-    def list(account_id:, x_moov_version: nil, source_id: nil, payment_method_type: nil, timeout_ms: nil)
+
+
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentMethodsResponse) }
+    def list(account_id:, x_moov_version: nil, source_id: nil, payment_method_type: nil, timeout_ms: nil, http_headers: nil)
       # list - Retrieve a list of payment methods associated with a Moov account. Read our [payment methods 
       # guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
       #
@@ -93,6 +95,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -165,8 +170,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_method_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetPaymentMethodResponse) }
-    def get(account_id:, payment_method_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, payment_method_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentMethodResponse) }
+    def get(account_id:, payment_method_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get the specified payment method associated with a Moov account. Read our [payment methods guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -215,6 +220,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -285,5 +293,5 @@ module Moov
 
       end
     end
-  end
+end
 end

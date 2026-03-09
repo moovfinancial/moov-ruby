@@ -26,7 +26,8 @@ module Moov
         # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
         field :image_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('imageIDs') } }
         #   Optional unique identifier associating the line item with a product.
-        #   This is for reporting or tracking purposes, and does not populate other details of the line item.
+        #   When provided, images associated with the product will be included on the line item.
+        #   This does not populate other details of the line item.
         field :product_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('productID') } }
 
         sig { params(name: ::String, base_price: Models::Components::AmountDecimal, quantity: ::Integer, options: T.nilable(T::Array[Models::Components::CreatePaymentLinkLineItemOption]), image_i_ds: T.nilable(T::Array[::String]), product_id: T.nilable(::String)).void }

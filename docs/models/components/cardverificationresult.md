@@ -1,5 +1,13 @@
 # CardVerificationResult
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardVerificationResult::NO_MATCH
+```
+
 
 ## Values
 

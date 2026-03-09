@@ -1,5 +1,13 @@
 # ApplePayPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = ApplePayPaymentMethodPaymentMethodType::APPLE_PAY
+```
+
 
 ## Values
 

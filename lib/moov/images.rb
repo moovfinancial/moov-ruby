@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListImageMetadataResponse) }
-    def list(account_id:, x_moov_version: nil, skip: nil, count: nil, timeout_ms: nil)
+
+
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListImageMetadataResponse) }
+    def list(account_id:, x_moov_version: nil, skip: nil, count: nil, timeout_ms: nil, http_headers: nil)
       # list - List metadata for all images in the specified account.
       request = Models::Operations::ListImageMetadataRequest.new(
         account_id: account_id,
@@ -89,6 +91,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -161,8 +166,8 @@ module Moov
     end
 
 
-    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UploadImageResponse) }
-    def upload(image_upload_request_multi_part:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadImageResponse) }
+    def upload(image_upload_request_multi_part:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # upload -   Upload a new PNG, JPEG, or WebP image with optional metadata. 
       #   Duplicate images, and requests larger than 16MB will be rejected.
       request = Models::Operations::UploadImageRequest.new(
@@ -221,6 +226,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -323,8 +331,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetImageMetadataResponse) }
-    def get_metadata(account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetImageMetadataResponse) }
+    def get_metadata(account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_metadata - Retrieve metadata for a specific image by its ID.
       request = Models::Operations::GetImageMetadataRequest.new(
         account_id: account_id,
@@ -370,6 +378,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -442,8 +453,8 @@ module Moov
     end
 
 
-    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateImageResponse) }
-    def update(image_upload_request_multi_part:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateImageResponse) }
+    def update(image_upload_request_multi_part:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Replace an existing image and, optionally, its metadata.
       #
       # This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
@@ -505,6 +516,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -607,8 +621,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteImageResponse) }
-    def delete(account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteImageResponse) }
+    def delete(account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # delete -   Disable an image by its ID.
       #   
       #   Disabled images are still be accessible via their public URL, and cannot be assigned
@@ -657,6 +671,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -735,8 +752,8 @@ module Moov
     end
 
 
-    sig { params(image_metadata_request: Models::Components::ImageMetadataRequest, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateImageMetadataResponse) }
-    def update_metadata(image_metadata_request:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(image_metadata_request: Models::Components::ImageMetadataRequest, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateImageMetadataResponse) }
+    def update_metadata(image_metadata_request:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update_metadata - Replace the metadata for an existing image.
       request = Models::Operations::UpdateImageMetadataRequest.new(
         account_id: account_id,
@@ -795,6 +812,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -897,8 +917,8 @@ module Moov
     end
 
 
-    sig { params(public_id: ::String, if_none_match: T.nilable(::String), size: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String)).returns(Models::Operations::GetPublicImageResponse) }
-    def get_public(public_id:, if_none_match: nil, size: nil, timeout_ms: nil, accept_header_override: nil)
+    sig { params(public_id: ::String, if_none_match: T.nilable(::String), size: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPublicImageResponse) }
+    def get_public(public_id:, if_none_match: nil, size: nil, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get_public - Get an image by its public ID.
       request = Models::Operations::GetPublicImageRequest.new(
         public_id: public_id,
@@ -920,8 +940,6 @@ module Moov
       headers['Accept'] = accept_header_override || 'image/jpeg;q=1, image/png;q=0.7, image/webp;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 
-      security = @sdk_configuration.security_source&.call
-
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       timeout ||= @sdk_configuration.timeout
       
@@ -933,7 +951,7 @@ module Moov
         base_url: base_url,
         oauth2_scopes: nil,
         operation_id: 'getPublicImage',
-        security_source: @sdk_configuration.security_source
+        security_source: nil
       )
 
       error = T.let(nil, T.nilable(StandardError))
@@ -945,7 +963,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
-          Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1059,5 +1079,5 @@ module Moov
 
       end
     end
-  end
+end
 end

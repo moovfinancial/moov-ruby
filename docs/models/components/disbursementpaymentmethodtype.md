@@ -2,6 +2,14 @@
 
 Payment methods allowed for disbursing funds.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = DisbursementPaymentMethodType::PUSH_TO_CARD
+```
+
 
 ## Values
 

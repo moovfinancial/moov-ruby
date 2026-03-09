@@ -1,5 +1,13 @@
 # PullFromCardPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = PullFromCardPaymentMethodPaymentMethodType::PULL_FROM_CARD
+```
+
 
 ## Values
 

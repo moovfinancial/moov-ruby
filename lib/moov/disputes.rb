@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListDisputesRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListDisputesResponse) }
-    def list(request:, timeout_ms: nil)
+
+
+    sig { params(request: Models::Operations::ListDisputesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListDisputesResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - Returns the list of disputes. 
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -88,6 +90,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -175,8 +180,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetDisputeResponse) }
-    def get(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetDisputeResponse) }
+    def get(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get a dispute by ID. 
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -227,6 +232,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -299,8 +307,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::AcceptDisputeResponse) }
-    def accept(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AcceptDisputeResponse) }
+    def accept(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # accept - Accepts liability for a dispute. 
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -351,6 +359,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -438,8 +449,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListDisputeEvidenceResponse) }
-    def list_evidence(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListDisputeEvidenceResponse) }
+    def list_evidence(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_evidence - Returns a dispute's public evidence by its ID. 
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -490,6 +501,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -562,8 +576,8 @@ module Moov
     end
 
 
-    sig { params(create_evidence_file_multi_part: Models::Components::CreateEvidenceFileMultiPart, account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UploadDisputeEvidenceFileResponse) }
-    def upload_evidence_file(create_evidence_file_multi_part:, account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(create_evidence_file_multi_part: Models::Components::CreateEvidenceFileMultiPart, account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadDisputeEvidenceFileResponse) }
+    def upload_evidence_file(create_evidence_file_multi_part:, account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # upload_evidence_file - Uploads a file as evidence for a dispute. 
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -627,6 +641,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -729,8 +746,8 @@ module Moov
     end
 
 
-    sig { params(create_evidence_text: Models::Components::CreateEvidenceText, account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UploadDisputeEvidenceTextResponse) }
-    def upload_evidence_text(create_evidence_text:, account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(create_evidence_text: Models::Components::CreateEvidenceText, account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadDisputeEvidenceTextResponse) }
+    def upload_evidence_text(create_evidence_text:, account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # upload_evidence_text - Uploads text as evidence for a dispute.
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -794,6 +811,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -881,8 +901,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::SubmitDisputeEvidenceResponse) }
-    def submit_evidence(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SubmitDisputeEvidenceResponse) }
+    def submit_evidence(account_id:, dispute_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # submit_evidence - Submit the evidence associated with a dispute.
       #
       # Evidence items must be uploaded using the appropriate endpoint(s) prior to calling this endpoint to submit it. **Evidence can only
@@ -936,6 +956,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1023,8 +1046,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetDisputeEvidenceResponse) }
-    def get_evidence(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetDisputeEvidenceResponse) }
+    def get_evidence(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_evidence - Get dispute evidence by ID.
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -1076,6 +1099,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1148,8 +1174,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::UpdateDisputeEvidenceRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateDisputeEvidenceResponse) }
-    def update_evidence(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::UpdateDisputeEvidenceRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateDisputeEvidenceResponse) }
+    def update_evidence(request:, timeout_ms: nil, http_headers: nil)
       # update_evidence - Updates dispute evidence by ID.
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -1207,6 +1233,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1294,8 +1323,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteDisputeEvidenceFileResponse) }
-    def delete_evidence(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteDisputeEvidenceFileResponse) }
+    def delete_evidence(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # delete_evidence - Deletes dispute evidence by ID. 
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -1347,6 +1376,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1425,8 +1457,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String)).returns(Models::Operations::GetDisputeEvidenceDataResponse) }
-    def get_evidence_data(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil)
+    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetDisputeEvidenceDataResponse) }
+    def get_evidence_data(account_id:, dispute_id:, evidence_id:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get_evidence_data - Downloads dispute evidence data by ID.
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/) to learn more.
@@ -1478,6 +1510,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1578,5 +1613,5 @@ module Moov
 
       end
     end
-  end
+end
 end

@@ -2,6 +2,14 @@
 
 The type of token being revoked.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = TokenTypeHint::ACCESS_TOKEN
+```
+
 
 ## Values
 

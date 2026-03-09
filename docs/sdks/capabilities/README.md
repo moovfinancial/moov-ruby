@@ -40,7 +40,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.capabilities.list(account_id: '1a50ab1c-1714-49e7-a016-cea17b33511a')
 
@@ -82,7 +86,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.capabilities.request(account_id: 'de140d5c-c78e-4ebb-a001-f51aaf6c814a', add_capabilities: Models::Components::AddCapabilities.new(
   capabilities: [
@@ -131,7 +139,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.capabilities.get(account_id: 'c1697ea6-c984-4ba1-9b81-93e5e18660af', capability_id: Models::Components::CapabilityID::CARD_ISSUING)
 
@@ -174,7 +186,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.capabilities.disable(account_id: '2be80c4e-d409-49ea-8a8a-76dfa4006d69', capability_id: Models::Components::CapabilityID::SEND_FUNDS)
 
