@@ -46,7 +46,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.payment_links.create(account_id: 'cc1d04a8-03b1-4600-b675-e6180d574074', create_payment_link: Models::Components::CreatePaymentLink.new(
   partner_account_id: 'd290f1ee-6c54-4b01-90e6-d701748f0851',
@@ -112,7 +116,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 
 req = Models::Operations::ListPaymentLinksRequest.new(
@@ -159,7 +167,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.payment_links.get(account_id: '323f95b1-3798-4203-8a73-5c8668a9226e', payment_link_code: 'uc7ZYKrMhi')
 
@@ -202,7 +214,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.payment_links.update(account_id: 'ddad6613-2350-446a-883b-f76abb2cd4ea', payment_link_code: 'uc7ZYKrMhi', update_payment_link: Models::Components::UpdatePaymentLink.new(
   amount: Models::Components::AmountUpdate.new(
@@ -257,7 +273,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.payment_links.disable(account_id: 'c1cf000d-0dd9-4dec-bd5e-a88e135adf82', payment_link_code: 'uc7ZYKrMhi')
 
@@ -302,7 +322,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.payment_links.get_qr_code(account_id: '2f01a42a-aa5a-424f-9f47-6f8999ed05dc', payment_link_code: 'uc7ZYKrMhi')
 

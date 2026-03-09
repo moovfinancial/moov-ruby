@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListIssuedCardAuthorizationsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIssuedCardAuthorizationsResponse) }
-    def list_authorizations(request:, timeout_ms: nil)
+
+
+    sig { params(request: Models::Operations::ListIssuedCardAuthorizationsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardAuthorizationsResponse) }
+    def list_authorizations(request:, timeout_ms: nil, http_headers: nil)
       # list_authorizations - List issued card authorizations associated with a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -86,6 +88,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -158,8 +163,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, authorization_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetIssuedCardAuthorizationResponse) }
-    def get_authorization(account_id:, authorization_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, authorization_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardAuthorizationResponse) }
+    def get_authorization(account_id:, authorization_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_authorization - Retrieves details of an authorization associated with a specific Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -208,6 +213,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -280,8 +288,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListIssuedCardAuthorizationEventsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIssuedCardAuthorizationEventsResponse) }
-    def list_authorization_events(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListIssuedCardAuthorizationEventsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardAuthorizationEventsResponse) }
+    def list_authorization_events(request:, timeout_ms: nil, http_headers: nil)
       # list_authorization_events - List card network and Moov platform events that affect the authorization and its hold on a wallet balance.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -327,6 +335,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -399,8 +410,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListIssuedCardTransactionsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListIssuedCardTransactionsResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListIssuedCardTransactionsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardTransactionsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List issued card transactions associated with a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -446,6 +457,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -518,8 +532,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, card_transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetIssuedCardTransactionResponse) }
-    def get(account_id:, card_transaction_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, card_transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardTransactionResponse) }
+    def get(account_id:, card_transaction_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieves details of an issued card transaction associated with a specific Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -568,6 +582,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -638,5 +655,5 @@ module Moov
 
       end
     end
-  end
+end
 end

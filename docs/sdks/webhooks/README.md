@@ -25,7 +25,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.list_event_types
 
@@ -63,7 +67,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.list
 
@@ -101,7 +109,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.create(create_webhook: Models::Components::CreateWebhook.new(
   url: 'https://experienced-sailor.biz/',
@@ -147,7 +159,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.get(webhook_id: 'deeb5a05-74d4-40ad-b4be-a9265fd49428')
 
@@ -186,7 +202,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.update(webhook_id: '954b566e-0c37-481b-bf92-6cdbd0e47dc0', update_webhook: Models::Components::UpdateWebhook.new(
   url: 'https://nimble-affect.name',
@@ -233,7 +253,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.disable(webhook_id: 'c88929b3-cbb6-4144-923f-e9a5ba645708')
 
@@ -273,7 +297,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.ping(webhook_id: '87e0ecc6-d6c3-4eeb-99e8-6dbe9212a6a2')
 
@@ -312,7 +340,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.webhooks.get_secret(webhook_id: '1fac81d6-2d5b-4180-8765-81282a450eda')
 

@@ -1,5 +1,13 @@
 # WalletTransactionStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = WalletTransactionStatus::PENDING
+```
+
 
 ## Values
 

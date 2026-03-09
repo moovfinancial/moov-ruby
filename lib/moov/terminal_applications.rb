@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_terminal_application: Models::Components::CreateTerminalApplication, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTerminalApplicationResponse) }
-    def create(create_terminal_application:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_terminal_application: Models::Components::CreateTerminalApplication, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTerminalApplicationResponse) }
+    def create(create_terminal_application:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Create a new terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -94,6 +96,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -196,8 +201,8 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTerminalApplicationsResponse) }
-    def list(x_moov_version: nil, timeout_ms: nil)
+    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTerminalApplicationsResponse) }
+    def list(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list - List all the terminal applications for a Moov Account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -238,6 +243,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -310,8 +318,8 @@ module Moov
     end
 
 
-    sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTerminalApplicationResponse) }
-    def get(terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTerminalApplicationResponse) }
+    def get(terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Fetch a specific terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -359,6 +367,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -431,8 +442,8 @@ module Moov
     end
 
 
-    sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteTerminalApplicationResponse) }
-    def delete(terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteTerminalApplicationResponse) }
+    def delete(terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # delete - Delete a specific terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -480,6 +491,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -558,8 +572,8 @@ module Moov
     end
 
 
-    sig { params(terminal_application_version: Models::Components::TerminalApplicationVersion, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTerminalApplicationVersionResponse) }
-    def create_version(terminal_application_version:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(terminal_application_version: Models::Components::TerminalApplicationVersion, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTerminalApplicationVersionResponse) }
+    def create_version(terminal_application_version:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_version - Register a new version of a terminal application. For Android applications, this is used to register a new version code of the application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -620,6 +634,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -720,5 +737,5 @@ module Moov
 
       end
     end
-  end
+end
 end

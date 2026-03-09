@@ -2,6 +2,14 @@
 
 Payment methods allowed for collecting a payment.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CollectionPaymentMethodType::APPLE_PAY
+```
+
 
 ## Values
 

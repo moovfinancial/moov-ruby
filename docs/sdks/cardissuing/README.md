@@ -42,7 +42,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.card_issuing.request(account_id: '4d9ac71a-efcc-4bdf-bcfe-d710ca654e3e', request_card: Models::Components::RequestCard.new(
   funding_wallet_id: 'fd98e3b2-696f-4f67-9250-17b3474ababf',
@@ -111,7 +115,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 
 req = Models::Operations::ListIssuedCardsRequest.new(
@@ -158,7 +166,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.card_issuing.get(account_id: '4fde8da4-b6c5-4379-82a2-4ff6a742e41a', issued_card_id: 'd04885c9-ea6b-43a7-9186-63d9fbd57716')
 
@@ -201,7 +213,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.card_issuing.update(account_id: '44db31bc-2813-424b-9b8c-2d3f5f1300e3', issued_card_id: '69ca2a7e-7bbc-4176-9d0c-2a1aa7143006', update_issued_card: Models::Components::UpdateIssuedCard.new(
   authorized_user: Models::Components::CreateAuthorizedUserUpdate.new(
@@ -257,7 +273,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.card_issuing.get_full(account_id: '512052fb-5e2c-4d24-98dd-fa893c9d8a03', issued_card_id: '087ecc51-11fe-4471-a3bb-44f20c1e87a9')
 

@@ -1,5 +1,13 @@
 # PendingLitigation
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = PendingLitigation::BANKRUPTCY_OR_INSOLVENCY
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # RequirementErrorCode
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = RequirementErrorCode::INVALID_VALUE
+```
+
 
 ## Values
 

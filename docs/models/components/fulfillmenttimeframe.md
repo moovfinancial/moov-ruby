@@ -1,5 +1,13 @@
 # FulfillmentTimeframe
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = FulfillmentTimeframe::IMMEDIATE
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # GeographicReach
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = GeographicReach::INTERNATIONAL_ONLY
+```
+
 
 ## Values
 

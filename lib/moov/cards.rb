@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(link_card: Models::Components::LinkCard, account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::LinkCardWaitFor), timeout_ms: T.nilable(Integer)).returns(Models::Operations::LinkCardResponse) }
-    def link(link_card:, account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil)
+
+
+    sig { params(link_card: Models::Components::LinkCard, account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::LinkCardWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkCardResponse) }
+    def link(link_card:, account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
       # link - Link a card to an existing Moov account. 
       #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#link-a-card) to learn more.
@@ -116,6 +118,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -233,8 +238,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListCardsResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCardsResponse) }
+    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list - List all the active cards associated with a Moov account. 
       #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/) to learn more.
@@ -284,6 +289,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -356,8 +364,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetCardResponse) }
-    def get(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCardResponse) }
+    def get(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Fetch a specific card associated with a Moov account. 
       #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/) to learn more.
@@ -408,6 +416,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -480,8 +491,8 @@ module Moov
     end
 
 
-    sig { params(update_card: Models::Components::UpdateCard, account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateCardResponse) }
-    def update(update_card:, account_id:, card_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_card: Models::Components::UpdateCard, account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateCardResponse) }
+    def update(update_card:, account_id:, card_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Update a linked card and/or resubmit it for verification.
       #
       # If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration
@@ -552,6 +563,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -654,8 +668,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableCardResponse) }
-    def disable(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableCardResponse) }
+    def disable(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # disable - Disables a card associated with a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -704,6 +718,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -780,5 +797,5 @@ module Moov
 
       end
     end
-  end
+end
 end

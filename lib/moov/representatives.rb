@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_representative: Models::Components::CreateRepresentative, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateRepresentativeResponse) }
-    def create(create_representative:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_representative: Models::Components::CreateRepresentative, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateRepresentativeResponse) }
+    def create(create_representative:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Moov accounts associated with businesses require information regarding individuals who represent the business. 
       # You can provide this information by creating a representative. Each account is allowed a maximum of 7 representatives. 
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
@@ -103,6 +105,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -205,8 +210,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListRepresentativesResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListRepresentativesResponse) }
+    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list - A Moov account may have multiple representatives depending on the associated business's ownership and management structure. 
       # You can use this method to list all the representatives for a given Moov account. 
       # Note that Moov accounts associated with an individual do not have representatives. 
@@ -257,6 +262,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -329,8 +337,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DeleteRepresentativeResponse) }
-    def delete(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteRepresentativeResponse) }
+    def delete(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # delete - Deletes a business representative associated with a Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -379,6 +387,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -457,8 +468,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetRepresentativeResponse) }
-    def get(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetRepresentativeResponse) }
+    def get(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a specific representative associated with a given Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -507,6 +518,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -579,8 +593,8 @@ module Moov
     end
 
 
-    sig { params(update_representative: Models::Components::UpdateRepresentative, account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateRepresentativeResponse) }
-    def update(update_representative:, account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_representative: Models::Components::UpdateRepresentative, account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateRepresentativeResponse) }
+    def update(update_representative:, account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - If a representative's information has changed you can patch the information associated with a specific representative ID.
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
       #
@@ -655,6 +669,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -740,5 +757,5 @@ module Moov
 
       end
     end
-  end
+end
 end

@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(register_apple_pay_merchant_domains: Models::Components::RegisterApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RegisterApplePayMerchantDomainsResponse) }
-    def register_merchant_domains(register_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(register_apple_pay_merchant_domains: Models::Components::RegisterApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RegisterApplePayMerchantDomainsResponse) }
+    def register_merchant_domains(register_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # register_merchant_domains - Add domains to be registered with Apple Pay.
       #
       # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) 
@@ -104,6 +106,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -191,8 +196,8 @@ module Moov
     end
 
 
-    sig { params(update_apple_pay_merchant_domains: Models::Components::UpdateApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateApplePayMerchantDomainsResponse) }
-    def update_merchant_domains(update_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_apple_pay_merchant_domains: Models::Components::UpdateApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateApplePayMerchantDomainsResponse) }
+    def update_merchant_domains(update_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update_merchant_domains - Add or remove domains to be registered with Apple Pay.
       #
       # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains)
@@ -256,6 +261,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -334,8 +342,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetApplePayMerchantDomainsResponse) }
-    def get_merchant_domains(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetApplePayMerchantDomainsResponse) }
+    def get_merchant_domains(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_merchant_domains - Get domains registered with Apple Pay. 
       #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
@@ -385,6 +393,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -457,8 +468,8 @@ module Moov
     end
 
 
-    sig { params(create_apple_pay_session: Models::Components::CreateApplePaySession, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateApplePaySessionResponse) }
-    def create_session(create_apple_pay_session:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(create_apple_pay_session: Models::Components::CreateApplePaySession, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateApplePaySessionResponse) }
+    def create_session(create_apple_pay_session:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_session - Create a session with Apple Pay to facilitate a payment. 
       #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
@@ -522,6 +533,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -609,8 +623,8 @@ module Moov
     end
 
 
-    sig { params(link_apple_pay: Models::Components::LinkApplePay, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::LinkApplePayTokenResponse) }
-    def link_token(link_apple_pay:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(link_apple_pay: Models::Components::LinkApplePay, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkApplePayTokenResponse) }
+    def link_token(link_apple_pay:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # link_token - Connect an Apple Pay token to the specified account. 
       #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
@@ -674,6 +688,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -774,5 +791,5 @@ module Moov
 
       end
     end
-  end
+end
 end

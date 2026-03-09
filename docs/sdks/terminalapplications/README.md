@@ -40,7 +40,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.terminal_applications.create(create_terminal_application: Models::Components::CreateTerminalApplication.new(
   platform: Models::Components::TerminalApplicationPlatform::ANDROID,
@@ -89,7 +93,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.terminal_applications.list
 
@@ -130,7 +138,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.terminal_applications.get(terminal_application_id: '12345678-1234-1234-1234-123456789012')
 
@@ -172,7 +184,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.terminal_applications.delete(terminal_application_id: '12345678-1234-1234-1234-123456789012')
 
@@ -215,7 +231,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.terminal_applications.create_version(terminal_application_id: '12345678-1234-1234-1234-123456789012', terminal_application_version: Models::Components::TerminalApplicationVersion.new(
   version: '20440059'

@@ -1,5 +1,13 @@
 # CardTransactionFailureCode
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardTransactionFailureCode::CALL_ISSUER
+```
+
 
 ## Values
 
