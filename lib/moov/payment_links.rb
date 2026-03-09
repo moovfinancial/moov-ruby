@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_payment_link: Models::Components::CreatePaymentLink, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreatePaymentLinkResponse) }
-    def create(create_payment_link:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_payment_link: Models::Components::CreatePaymentLink, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreatePaymentLinkResponse) }
+    def create(create_payment_link:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Create a payment link that allows an end user to make a payment on Moov's hosted payment link page.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -101,6 +103,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -203,8 +208,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListPaymentLinksRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListPaymentLinksResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListPaymentLinksRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentLinksResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List all the payment links created under a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -250,6 +255,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -322,8 +330,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetPaymentLinkResponse) }
-    def get(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkResponse) }
+    def get(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a payment link by code.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -372,6 +380,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -444,8 +455,8 @@ module Moov
     end
 
 
-    sig { params(update_payment_link: Models::Components::UpdatePaymentLink, account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdatePaymentLinkResponse) }
-    def update(update_payment_link:, account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_payment_link: Models::Components::UpdatePaymentLink, account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdatePaymentLinkResponse) }
+    def update(update_payment_link:, account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Update a payment link.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -507,6 +518,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -609,8 +623,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisablePaymentLinkResponse) }
-    def disable(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisablePaymentLinkResponse) }
+    def disable(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # disable - Disable a payment link.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -659,6 +673,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -722,8 +739,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String)).returns(Models::Operations::GetPaymentLinkQRCodeResponse) }
-    def get_qr_code(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil)
+    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkQRCodeResponse) }
+    def get_qr_code(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get_qr_code - Retrieve the payment link encoded in a QR code. 
       #
       # Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `image/png`.
@@ -774,6 +791,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -860,5 +880,5 @@ module Moov
 
       end
     end
-  end
+end
 end

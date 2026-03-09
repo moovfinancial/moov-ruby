@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(link_account_terminal_application: Models::Components::LinkAccountTerminalApplication, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::LinkAccountTerminalApplicationResponse) }
-    def link(link_account_terminal_application:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(link_account_terminal_application: Models::Components::LinkAccountTerminalApplication, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkAccountTerminalApplicationResponse) }
+    def link(link_account_terminal_application:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # link - Link an account with a terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -101,6 +103,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -203,8 +208,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListAccountTerminalApplicationsResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListAccountTerminalApplicationsResponse) }
+    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list - Retrieve all terminal applications linked to a specific account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -252,6 +257,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -324,8 +332,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAccountTerminalApplicationResponse) }
-    def get(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountTerminalApplicationResponse) }
+    def get(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Verifies if a specific Terminal Application is linked to an Account. This endpoint acts as a validation check for the link's existence.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -374,6 +382,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -446,8 +457,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTerminalConfigurationResponse) }
-    def get_configuration(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTerminalConfigurationResponse) }
+    def get_configuration(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_configuration - Fetch the configuration for a given Terminal Application linked to a specific Account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -496,6 +507,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -566,5 +580,5 @@ module Moov
 
       end
     end
-  end
+end
 end

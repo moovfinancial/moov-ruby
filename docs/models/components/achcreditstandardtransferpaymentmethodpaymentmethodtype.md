@@ -1,5 +1,13 @@
 # AchCreditStandardTransferPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = AchCreditStandardTransferPaymentMethodPaymentMethodType::ACH_CREDIT_STANDARD
+```
+
 
 ## Values
 

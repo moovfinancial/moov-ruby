@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(onboarding_invite_request: Models::Components::OnboardingInviteRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateOnboardingInviteResponse) }
-    def create_invite(onboarding_invite_request:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(onboarding_invite_request: Models::Components::OnboardingInviteRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateOnboardingInviteResponse) }
+    def create_invite(onboarding_invite_request:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_invite - Create an invitation containing a unique link that allows the recipient to onboard their organization with Moov.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -94,6 +96,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -196,8 +201,8 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListOnboardingInvitesResponse) }
-    def list_invites(x_moov_version: nil, timeout_ms: nil)
+    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListOnboardingInvitesResponse) }
+    def list_invites(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_invites - List all the onboarding invites created by the caller's account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -238,6 +243,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -310,8 +318,8 @@ module Moov
     end
 
 
-    sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetOnboardingInviteResponse) }
-    def get_invite(code:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetOnboardingInviteResponse) }
+    def get_invite(code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_invite - Retrieve details about an onboarding invite.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -359,6 +367,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -431,8 +442,8 @@ module Moov
     end
 
 
-    sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RevokeOnboardingInviteResponse) }
-    def revoke_invite(code:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RevokeOnboardingInviteResponse) }
+    def revoke_invite(code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # revoke_invite - Revoke an onboarding invite, rendering the invitation link unusable.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -480,6 +491,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -537,5 +551,5 @@ module Moov
 
       end
     end
-  end
+end
 end

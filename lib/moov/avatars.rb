@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(unique_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAvatarResponse) }
-    def get(unique_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(unique_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAvatarResponse) }
+    def get(unique_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get avatar image for an account using a unique ID.    
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -88,6 +90,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -156,5 +161,5 @@ module Moov
 
       end
     end
-  end
+end
 end

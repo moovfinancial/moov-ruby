@@ -105,7 +105,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.create(create_account: Models::Components::CreateAccount.new(
   account_type: Models::Components::AccountType::BUSINESS,
@@ -160,7 +164,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 
 req = Models::Operations::ListAccountsRequest.new(
@@ -207,7 +215,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.get(account_id: '2f93a6cf-3b3b-4c17-8d3b-110dfadccea4')
 
@@ -257,7 +269,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.update(account_id: '433cb9d1-5943-4fd5-91b4-2aef5b30e2e7', patch_account: Models::Components::PatchAccount.new(
   profile: Models::Components::PatchProfile.new(
@@ -384,7 +400,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.disconnect(account_id: 'cfdfea7d-f185-4de5-ba90-b09f14fe6683')
 
@@ -431,7 +451,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 
 req = Models::Operations::ListConnectedAccountsForAccountRequest.new(
@@ -477,7 +501,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.connect(account_id: '456cb5b6-20dc-4585-97b4-745d013adb1f', share_scopes: Models::Components::ShareScopes.new(
   principal_account_id: 'c520f1b9-0ba7-42f5-b977-248cdbe41c69',
@@ -528,7 +556,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.get_countries(account_id: 'a2026036-cc26-42c1-beef-950662d13b5d')
 
@@ -572,7 +604,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.assign_countries(account_id: '46736fa8-4bf7-4144-8e0e-dbea1eb0805b', account_countries: Models::Components::AccountCountries.new(
   countries: [
@@ -621,7 +657,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.get_merchant_processing_agreement(account_id: '6180d9b9-2377-4190-8530-70a99d31a578')
 
@@ -664,7 +704,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.accounts.get_terms_of_service_token
 

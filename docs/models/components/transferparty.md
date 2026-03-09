@@ -1,5 +1,13 @@
 # TransferParty
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = TransferParty::SOURCE
+```
+
 
 ## Values
 

@@ -2,6 +2,14 @@
 
 The type of event that occurred on the card.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = IssuedCardEventType::AUTHORIZATION
+```
+
 
 ## Values
 

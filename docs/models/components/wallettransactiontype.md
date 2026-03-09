@@ -1,5 +1,13 @@
 # WalletTransactionType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = WalletTransactionType::ACCOUNT_FUNDING
+```
+
 
 ## Values
 

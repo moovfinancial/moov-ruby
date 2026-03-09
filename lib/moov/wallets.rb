@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_wallet: Models::Components::CreateWallet, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateWalletResponse) }
-    def create(create_wallet:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_wallet: Models::Components::CreateWallet, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateWalletResponse) }
+    def create(create_wallet:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Create a new wallet for an account. You can specify optional attributes such as a display name and description to specify the intended use of the wallet. This will generate a new moov-wallet payment method.
       #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
@@ -103,6 +105,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -205,8 +210,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListWalletsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListWalletsResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListWalletsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListWalletsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List the wallets associated with a Moov account. 
       #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
@@ -254,6 +259,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -341,8 +349,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, wallet_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWalletResponse) }
-    def get(account_id:, wallet_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, wallet_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWalletResponse) }
+    def get(account_id:, wallet_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get information on a specific wallet (e.g., the available balance). 
       #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
@@ -393,6 +401,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -465,8 +476,8 @@ module Moov
     end
 
 
-    sig { params(patch_wallet: Models::Components::PatchWallet, wallet_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateWalletResponse) }
-    def update(patch_wallet:, wallet_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(patch_wallet: Models::Components::PatchWallet, wallet_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateWalletResponse) }
+    def update(patch_wallet:, wallet_id:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Update properties of an existing wallet such as name, description, status, or metadata.
       #
       # Read our [Moov wallets guide](https://docs.moov.io/guides/sources/wallets/) to learn more.
@@ -530,6 +541,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -630,5 +644,5 @@ module Moov
 
       end
     end
-  end
+end
 end

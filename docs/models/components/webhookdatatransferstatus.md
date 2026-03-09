@@ -1,5 +1,13 @@
 # WebhookDataTransferStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = WebhookDataTransferStatus::CREATED
+```
+
 
 ## Values
 

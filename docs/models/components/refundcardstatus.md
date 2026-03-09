@@ -1,5 +1,13 @@
 # RefundCardStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = RefundCardStatus::INITIATED
+```
+
 
 ## Values
 

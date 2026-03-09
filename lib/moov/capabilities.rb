@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListCapabilitiesResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCapabilitiesResponse) }
+    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list - Retrieve all the capabilities an account has requested.
       #
       # Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
@@ -90,6 +92,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -162,8 +167,8 @@ module Moov
     end
 
 
-    sig { params(add_capabilities: Models::Components::AddCapabilities, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RequestCapabilitiesResponse) }
-    def request(add_capabilities:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(add_capabilities: Models::Components::AddCapabilities, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RequestCapabilitiesResponse) }
+    def request(add_capabilities:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # request - Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -224,6 +229,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -326,8 +334,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetCapabilityResponse) }
-    def get(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCapabilityResponse) }
+    def get(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -376,6 +384,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -448,8 +459,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableCapabilityResponse) }
-    def disable(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableCapabilityResponse) }
+    def disable(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # disable - Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
       #
       #   To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -498,6 +509,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -574,5 +588,5 @@ module Moov
 
       end
     end
-  end
+end
 end

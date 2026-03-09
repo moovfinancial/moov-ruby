@@ -2,6 +2,14 @@
 
 The bank account type.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = BankAccountType::CHECKING
+```
+
 
 ## Values
 
