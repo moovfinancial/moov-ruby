@@ -2,6 +2,14 @@
 
 The operating mode for an account.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = Mode::SANDBOX
+```
+
 
 ## Values
 

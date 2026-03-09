@@ -2,6 +2,14 @@
 
 Status of a transaction within the ACH lifecycle.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = ACHTransactionStatus::UNKNOWN
+```
+
 
 ## Values
 

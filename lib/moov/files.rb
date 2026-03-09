@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(file_upload_request_multi_part: Models::Components::FileUploadRequestMultiPart, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UploadFileResponse) }
-    def upload(file_upload_request_multi_part:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(file_upload_request_multi_part: Models::Components::FileUploadRequestMultiPart, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadFileResponse) }
+    def upload(file_upload_request_multi_part:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # upload - Upload a file and link it to the specified Moov account. 
       #
       # The maximum file size is 20MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
@@ -104,6 +106,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -206,8 +211,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListFilesResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFilesResponse) }
+    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list - List all the files associated with a particular Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -255,6 +260,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -327,8 +335,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, file_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetFileDetailsResponse) }
-    def get(account_id:, file_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, file_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetFileDetailsResponse) }
+    def get(account_id:, file_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieve file details associated with a specific Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -377,6 +385,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -447,5 +458,5 @@ module Moov
 
       end
     end
-  end
+end
 end

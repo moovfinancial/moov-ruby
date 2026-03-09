@@ -32,7 +32,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.branding.create(account_id: '0a6ae927-b52b-4ef4-86d0-288f27479817', brand_properties: Models::Components::BrandProperties.new(
   colors: Models::Components::BrandColors.new(
@@ -86,7 +90,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.branding.upsert(account_id: '0cd408b1-a57d-477b-825b-12331c2ed00a', brand_properties: Models::Components::BrandProperties.new(
   colors: Models::Components::BrandColors.new(
@@ -140,7 +148,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.branding.get(account_id: '8a4ec43e-d45f-481d-a291-683cb221e3cc')
 

@@ -1,5 +1,13 @@
 # InvoiceStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = InvoiceStatus::DRAFT
+```
+
 
 ## Values
 

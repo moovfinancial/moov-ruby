@@ -1,5 +1,13 @@
 # EvidenceType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = EvidenceType::RECEIPT
+```
+
 
 ## Values
 

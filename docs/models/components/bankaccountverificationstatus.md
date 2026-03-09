@@ -1,5 +1,13 @@
 # BankAccountVerificationStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = BankAccountVerificationStatus::NEW
+```
+
 
 ## Values
 

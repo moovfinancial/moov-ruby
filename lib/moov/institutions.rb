@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), name: T.nilable(::String), routing_number: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::SearchInstitutionsResponse) }
-    def search_institutions(x_moov_version: nil, name: nil, routing_number: nil, limit: nil, timeout_ms: nil)
+
+
+    sig { params(x_moov_version: T.nilable(::String), name: T.nilable(::String), routing_number: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SearchInstitutionsResponse) }
+    def search_institutions(x_moov_version: nil, name: nil, routing_number: nil, limit: nil, timeout_ms: nil, http_headers: nil)
       # search_institutions - Search for financial institutions by name or routing number.
       #
       # This endpoint returns metadata about each matched institution, including basic identifying details (such as name, routing number, and address) and information about which payment services they support (e.g., ACH, RTP, and Wire).
@@ -90,6 +92,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -162,8 +167,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListInstitutionsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListInstitutionsResponse) }
-    def search(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListInstitutionsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInstitutionsResponse) }
+    def search(request:, timeout_ms: nil, http_headers: nil)
       # search - This endpoint has been deprecated and will be removed in a future release. Use [/institutions](https://docs.moov.io/api/enrichment/form-shortening/institutions/get/).
       #
       # Search for institutions by either their name or routing number.
@@ -207,6 +212,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -292,5 +300,5 @@ module Moov
 
       end
     end
-  end
+end
 end

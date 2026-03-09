@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateBrandResponse) }
-    def create(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateBrandResponse) }
+    def create(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Create brand properties for the specified account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -101,6 +103,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -203,8 +208,8 @@ module Moov
     end
 
 
-    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpsertBrandResponse) }
-    def upsert(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpsertBrandResponse) }
+    def upsert(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # upsert - Create or replace brand properties for the specified account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -265,6 +270,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -367,8 +375,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetBrandResponse) }
-    def get(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBrandResponse) }
+    def get(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get brand properties for the specified account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -416,6 +424,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -486,5 +497,5 @@ module Moov
 
       end
     end
-  end
+end
 end

@@ -2,6 +2,14 @@
 
 Status of a transfer.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = TransferStatus::CREATED
+```
+
 
 ## Values
 

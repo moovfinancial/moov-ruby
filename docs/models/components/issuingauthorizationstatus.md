@@ -2,6 +2,14 @@
 
 Status of a card issuing authorization.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = IssuingAuthorizationStatus::PENDING
+```
+
 
 ## Values
 
