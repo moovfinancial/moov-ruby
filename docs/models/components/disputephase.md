@@ -2,6 +2,14 @@
 
 The phase of a dispute within the dispute lifecycle.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = DisputePhase::PRE_DISPUTE
+```
+
 
 ## Values
 

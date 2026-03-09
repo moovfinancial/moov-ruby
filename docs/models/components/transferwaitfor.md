@@ -1,5 +1,13 @@
 # TransferWaitFor
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = TransferWaitFor::RAIL_RESPONSE
+```
+
 
 ## Values
 

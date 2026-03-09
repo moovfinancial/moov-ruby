@@ -2,6 +2,14 @@
 
 The file's purpose.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = FilePurpose::BUSINESS_VERIFICATION
+```
+
 
 ## Values
 

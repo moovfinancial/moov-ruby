@@ -2,6 +2,14 @@
 
 The status of the capability requested for an account.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CapabilityStatus::ENABLED
+```
+
 
 ## Values
 

@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListEventTypesResponse) }
-    def list_event_types(x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListEventTypesResponse) }
+    def list_event_types(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_event_types - List all available event types that can be subscribed to.
       request = Models::Operations::ListEventTypesRequest.new(
         x_moov_version: x_moov_version
@@ -78,6 +80,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -150,8 +155,8 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListWebhooksResponse) }
-    def list(x_moov_version: nil, timeout_ms: nil)
+    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListWebhooksResponse) }
+    def list(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list - List all webhooks configured for the account.
       request = Models::Operations::ListWebhooksRequest.new(
         x_moov_version: x_moov_version
@@ -189,6 +194,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -261,8 +269,8 @@ module Moov
     end
 
 
-    sig { params(create_webhook: Models::Components::CreateWebhook, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateWebhookResponse) }
-    def create(create_webhook:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(create_webhook: Models::Components::CreateWebhook, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateWebhookResponse) }
+    def create(create_webhook:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - Create a new webhook for the account.
       request = Models::Operations::CreateWebhookRequest.new(
         create_webhook: create_webhook,
@@ -313,6 +321,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -415,8 +426,8 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWebhookResponse) }
-    def get(webhook_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWebhookResponse) }
+    def get(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get details of a specific webhook.
       request = Models::Operations::GetWebhookRequest.new(
         webhook_id: webhook_id,
@@ -461,6 +472,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -533,8 +547,8 @@ module Moov
     end
 
 
-    sig { params(update_webhook: Models::Components::UpdateWebhook, webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateWebhookResponse) }
-    def update(update_webhook:, webhook_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(update_webhook: Models::Components::UpdateWebhook, webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateWebhookResponse) }
+    def update(update_webhook:, webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Update an existing webhook.
       request = Models::Operations::UpdateWebhookRequest.new(
         webhook_id: webhook_id,
@@ -592,6 +606,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -694,8 +711,8 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisableWebhookResponse) }
-    def disable(webhook_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableWebhookResponse) }
+    def disable(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # disable - Disable a webhook. Disabled webhooks will no longer receive events.
       request = Models::Operations::DisableWebhookRequest.new(
         webhook_id: webhook_id,
@@ -740,6 +757,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -818,8 +838,8 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::PingWebhookResponse) }
-    def ping(webhook_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::PingWebhookResponse) }
+    def ping(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # ping - Send a test ping to a webhook to verify it is configured correctly.
       request = Models::Operations::PingWebhookRequest.new(
         webhook_id: webhook_id,
@@ -864,6 +884,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -936,8 +959,8 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWebhookSecretResponse) }
-    def get_secret(webhook_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWebhookSecretResponse) }
+    def get_secret(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_secret - Get the secret key for verifying webhook payloads.
       request = Models::Operations::GetWebhookSecretRequest.new(
         webhook_id: webhook_id,
@@ -982,6 +1005,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1052,5 +1078,5 @@ module Moov
 
       end
     end
-  end
+end
 end

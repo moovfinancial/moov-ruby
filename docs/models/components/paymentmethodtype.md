@@ -2,6 +2,14 @@
 
 The payment method type that represents a payment rail and directionality
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = PaymentMethodType::MOOV_WALLET
+```
+
 
 ## Values
 

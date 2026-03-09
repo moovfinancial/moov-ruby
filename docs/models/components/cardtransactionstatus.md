@@ -2,6 +2,14 @@
 
 Status of a transaction within the card payment lifecycle.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardTransactionStatus::INITIATED
+```
+
 
 ## Values
 

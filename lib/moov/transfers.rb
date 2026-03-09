@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_transfer_options: Models::Components::CreateTransferOptions, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTransferOptionsResponse) }
-    def generate_options(create_transfer_options:, account_id:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_transfer_options: Models::Components::CreateTransferOptions, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTransferOptionsResponse) }
+    def generate_options(create_transfer_options:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # generate_options - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
       # supply in the request body.
       #
@@ -106,6 +108,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -208,8 +213,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::CreateTransferRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateTransferResponse) }
-    def create(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::CreateTransferRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTransferResponse) }
+    def create(request:, timeout_ms: nil, http_headers: nil)
       # create - Move money by providing the source, destination, and amount in the request body.
       #
       # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
@@ -267,6 +272,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -428,8 +436,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListTransfersRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListTransfersResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListTransfersRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTransfersResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List all the transfers associated with a particular Moov account. 
       #
       # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more. 
@@ -482,6 +490,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -569,8 +580,8 @@ module Moov
     end
 
 
-    sig { params(transfer_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTransferResponse) }
-    def get(transfer_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(transfer_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTransferResponse) }
+    def get(transfer_id:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieve full transfer details for an individual transfer of a particular Moov account. 
       #
       # Payment rail-specific details are included in the source and destination. Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) 
@@ -622,6 +633,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -694,8 +708,8 @@ module Moov
     end
 
 
-    sig { params(patch_transfer: Models::Components::PatchTransfer, transfer_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateTransferResponse) }
-    def update(patch_transfer:, transfer_id:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(patch_transfer: Models::Components::PatchTransfer, transfer_id: ::String, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateTransferResponse) }
+    def update(patch_transfer:, transfer_id:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - Update the metadata contained on a transfer.
       #
       # Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
@@ -759,6 +773,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -846,8 +863,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateCancellationResponse) }
-    def create_cancellation(account_id:, transfer_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, transfer_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateCancellationResponse) }
+    def create_cancellation(account_id:, transfer_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_cancellation -   Initiate a cancellation for a card, ACH, or queued transfer.
       #   
       #   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
@@ -896,6 +913,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -983,8 +1003,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, cancellation_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetCancellationResponse) }
-    def get_cancellation(account_id:, transfer_id:, cancellation_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, transfer_id: ::String, cancellation_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCancellationResponse) }
+    def get_cancellation(account_id:, transfer_id:, cancellation_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_cancellation -   Get details of a cancellation for a transfer.
       #   
       #   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
@@ -1034,6 +1054,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1106,8 +1129,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::InitiateRefundRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::InitiateRefundResponse) }
-    def initiate_refund(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::InitiateRefundRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateRefundResponse) }
+    def initiate_refund(request:, timeout_ms: nil, http_headers: nil)
       # initiate_refund - Initiate a refund for a card transfer.
       #
       # **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
@@ -1165,6 +1188,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1304,8 +1330,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListRefundsResponse) }
-    def list_refunds(account_id:, transfer_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, transfer_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListRefundsResponse) }
+    def list_refunds(account_id:, transfer_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # list_refunds - Get a list of refunds for a card transfer.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1354,6 +1380,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1426,8 +1455,8 @@ module Moov
     end
 
 
-    sig { params(transfer_id: ::String, account_id: ::String, refund_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetRefundResponse) }
-    def get_refund(transfer_id:, account_id:, refund_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(transfer_id: ::String, account_id: ::String, refund_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetRefundResponse) }
+    def get_refund(transfer_id:, account_id:, refund_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_refund - Get details of a refund for a card transfer.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1477,6 +1506,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1549,8 +1581,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::CreateReversalRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateReversalResponse) }
-    def create_reversal(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::CreateReversalRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateReversalResponse) }
+    def create_reversal(request:, timeout_ms: nil, http_headers: nil)
       # create_reversal - Reverses a card transfer by initiating a cancellation or refund depending on the transaction status. 
       # Read our [reversals guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) 
       # to learn more.
@@ -1607,6 +1639,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1707,5 +1742,5 @@ module Moov
 
       end
     end
-  end
+end
 end

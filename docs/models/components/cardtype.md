@@ -2,6 +2,14 @@
 
 The type of the card.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardType::DEBIT
+```
+
 
 ## Values
 

@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListWalletTransactionsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListWalletTransactionsResponse) }
-    def list(request:, timeout_ms: nil)
+
+
+    sig { params(request: Models::Operations::ListWalletTransactionsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListWalletTransactionsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List all the transactions associated with a particular Moov wallet. 
       #
       # Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
@@ -88,6 +90,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -175,8 +180,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, wallet_id: ::String, transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetWalletTransactionResponse) }
-    def get(account_id:, wallet_id:, transaction_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, wallet_id: ::String, transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWalletTransactionResponse) }
+    def get(account_id:, wallet_id:, transaction_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Get details on a specific wallet transaction. 
       #
       # Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
@@ -228,6 +233,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -298,5 +306,5 @@ module Moov
 
       end
     end
-  end
+end
 end

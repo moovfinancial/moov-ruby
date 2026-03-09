@@ -1,5 +1,13 @@
 # PaymentLinkType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = PaymentLinkType::PAYMENT
+```
+
 
 ## Values
 

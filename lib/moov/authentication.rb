@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(revoke_token_request: Models::Components::RevokeTokenRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::RevokeAccessTokenResponse) }
-    def revoke_access_token(revoke_token_request:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(revoke_token_request: Models::Components::RevokeTokenRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RevokeAccessTokenResponse) }
+    def revoke_access_token(revoke_token_request:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # revoke_access_token - Revoke an auth token.
       #
       # Allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.
@@ -93,6 +95,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -186,8 +191,8 @@ module Moov
     end
 
 
-    sig { params(auth_token_request: Models::Components::AuthTokenRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateAccessTokenResponse) }
-    def create_access_token(auth_token_request:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(auth_token_request: Models::Components::AuthTokenRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateAccessTokenResponse) }
+    def create_access_token(auth_token_request:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create_access_token - Create or refresh an access token.
       request = Models::Operations::CreateAccessTokenRequest.new(
         auth_token_request: auth_token_request,
@@ -238,6 +243,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -338,5 +346,5 @@ module Moov
 
       end
     end
-  end
+end
 end
