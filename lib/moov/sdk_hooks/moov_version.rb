@@ -11,14 +11,13 @@ module Moov
 
       sig do
         override.params(
-          config: SDKConfiguration
-        ).returns(SDKConfiguration)
+          hook_ctx: BeforeRequestHookContext,
+          request: Faraday::Request
+        ).returns(Faraday::Request)
       end
-      def sdk_init(config:)
-        parameters = (config.globals[:parameters] ||= {})
-        header = (parameters[:header] ||= {})
-        header[:x_moov_version] = config.openapi_doc_version
-        config
+      def before_request(hook_ctx:, request:)
+        request.headers['X-Moov-Version'] = hook_ctx.config.openapi_doc_version
+        request
       end
 
     end
