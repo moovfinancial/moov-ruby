@@ -2,6 +2,14 @@
 
 The type of event that occurred.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = WebhookEventType::WILDCARD_
+```
+
 
 ## Values
 

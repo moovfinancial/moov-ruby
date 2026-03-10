@@ -1,5 +1,13 @@
 # RefundPolicy
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = RefundPolicy::CONDITIONAL_REFUND
+```
+
 
 ## Values
 

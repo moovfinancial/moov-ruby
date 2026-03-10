@@ -20,6 +20,16 @@ you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+* [delete](#delete) - Delete an invoice. Only invoices in `draft` status can be deleted.
+
+Deleting an invoice indicates it was created by mistake and should be completely disregarded.
+Deleted invoices are hidden from list results by default, but can still be retrieved
+individually through the get invoice endpoint. If you need to void an invoice that was
+already sent or is otherwise part of the invoice history, cancel it instead by updating
+its status to `canceled`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
 * [create_invoice_payment](#create_invoice_payment) - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
 If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
 
@@ -45,7 +55,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.invoices.create_invoice(account_id: 'c463fb80-6410-48b7-9e2e-6e9ec58a654f', create_invoice: Models::Components::CreateInvoice.new(
   customer_account_id: '3dfff852-927d-47e8-822c-2fffc57ff6b9',
@@ -111,7 +125,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 
 req = Models::Operations::ListInvoicesRequest.new(
@@ -159,7 +177,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.invoices.get_invoice(account_id: '3ecce96f-a052-4c96-b389-98e880af1ab4', invoice_id: 'fc90d016-39ea-4110-b77a-2e1c95827f46')
 
@@ -202,7 +224,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.invoices.update_invoice(account_id: 'fcce46d6-5a85-404a-afa3-f7303401bd08', invoice_id: '3eef5109-9937-40a3-b507-d5bc81fc02a2', update_invoice: Models::Components::UpdateInvoice.new(
   description: 'Updated professional services for Q1 2026',
@@ -249,6 +275,60 @@ end
 | Models::Errors::UpdateInvoiceError | 422                                | application/json                   |
 | Errors::APIError                   | 4XX, 5XX                           | \*/\*                              |
 
+## delete
+
+Delete an invoice. Only invoices in `draft` status can be deleted.
+
+Deleting an invoice indicates it was created by mistake and should be completely disregarded.
+Deleted invoices are hidden from list results by default, but can still be retrieved
+individually through the get invoice endpoint. If you need to void an invoice that was
+already sent or is otherwise part of the invoice history, cancel it instead by updating
+its status to `canceled`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="deleteInvoice" method="delete" path="/accounts/{accountID}/invoices/{invoiceID}" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.invoices.delete(account_id: '<id>', invoice_id: '<id>')
+
+if res.status_code == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | *::String*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `invoice_id`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | *::String*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `x_moov_version`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | *T.nilable(::String)*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Specify an API version.<br/><br/>API versioning follows the format `vYYYY.QQ.BB`, where <br/>  - `YYYY` is the year<br/>  - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)<br/>  - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. <br/>    - For example, `v2024.01.00` is the initial release of the first quarter of 2024.<br/><br/>The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.<br/>When no version is specified, the API defaults to `v2024.01.00`. |
+
+### Response
+
+**[T.nilable(Models::Operations::DeleteInvoiceResponse)](../../models/operations/deleteinvoiceresponse.md)**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| Models::Errors::GenericError | 400, 409                     | application/json             |
+| Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
+
 ## create_invoice_payment
 
 Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
@@ -265,7 +345,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.invoices.create_invoice_payment(account_id: 'e02333e4-a835-46d1-8d02-9af7a405e65f', invoice_id: '99e7ebb0-9996-49b2-98f0-304c7332ece6', create_invoice_payment: Models::Components::CreateInvoicePayment.new(
   foreign_id: 'EXT-PAY-12345',
@@ -319,7 +403,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: '<value>'
+  x_moov_version: '<value>',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.invoices.list_invoice_payments(account_id: 'dcfbb04d-465e-4dbc-ad14-420961d94d21', invoice_id: 'd25d8b7f-bb29-420c-8185-4ed9df60ba13')
 

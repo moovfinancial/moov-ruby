@@ -2,6 +2,14 @@
 
 The card brand.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CardBrand::AMERICAN_EXPRESS
+```
+
 
 ## Values
 

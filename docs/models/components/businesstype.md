@@ -2,6 +2,14 @@
 
 The type of entity represented by this business.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = BusinessType::SOLE_PROPRIETORSHIP
+```
+
 
 ## Values
 

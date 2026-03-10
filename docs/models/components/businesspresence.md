@@ -1,5 +1,13 @@
 # BusinessPresence
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = BusinessPresence::COMMERCIAL_OFFICE
+```
+
 
 ## Values
 

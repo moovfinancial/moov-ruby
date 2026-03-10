@@ -30,7 +30,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 
 req = Models::Operations::ListStatementsRequest.new(
@@ -80,7 +84,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.statements.get(account_id: '5623ff52-0b05-41ea-b7b3-655835064007', statement_id: '9d45acbf-c4fe-4843-846c-eaa43c9ca17f')
 

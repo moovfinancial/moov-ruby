@@ -39,8 +39,10 @@ module Moov
     end
 
 
-    sig { params(create_account: Models::Components::CreateAccount, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::CreateAccountResponse) }
-    def create(create_account:, x_moov_version: nil, timeout_ms: nil)
+
+
+    sig { params(create_account: Models::Components::CreateAccount, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateAccountResponse) }
+    def create(create_account:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # create - You can create **business** or **individual** accounts for your users (i.e., customers, merchants) by passing the required
       # information to Moov. Requirements differ per account type and requested [capabilities](https://docs.moov.io/guides/accounts/capabilities/requirements/).
       #
@@ -105,6 +107,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -207,8 +212,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListAccountsRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListAccountsResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListAccountsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListAccountsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List or search accounts to which the caller is connected.
       #
       # All supported query parameters are optional. If none are provided the response will include all connected accounts.
@@ -252,6 +257,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -324,8 +332,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAccountResponse) }
-    def get(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountResponse) }
+    def get(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get - Retrieves details for the account with the specified ID.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
@@ -373,6 +381,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -445,8 +456,8 @@ module Moov
     end
 
 
-    sig { params(patch_account: Models::Components::PatchAccount, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateAccountResponse) }
-    def update(patch_account:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(patch_account: Models::Components::PatchAccount, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateAccountResponse) }
+    def update(patch_account:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # update - When **can** profile data be updated:
       #   + For unverified accounts, all profile data can be edited.
       #   + During the verification process, missing or incomplete profile data can be edited.
@@ -515,6 +526,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -617,8 +631,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::DisconnectAccountResponse) }
-    def disconnect(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisconnectAccountResponse) }
+    def disconnect(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # disconnect - This will sever the connection between you and the account specified and it will no longer be listed as 
       # active in the list of accounts. This also means you'll only have read-only access to the account going 
       # forward for reporting purposes.
@@ -668,6 +682,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -746,8 +763,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListConnectedAccountsForAccountRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ListConnectedAccountsForAccountResponse) }
-    def list_connected(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::ListConnectedAccountsForAccountRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListConnectedAccountsForAccountResponse) }
+    def list_connected(request:, timeout_ms: nil, http_headers: nil)
       # list_connected - List or search accounts to which the caller is connected.
       #
       # All supported query parameters are optional. If none are provided the response will include all connected accounts.
@@ -797,6 +814,9 @@ module Moov
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -869,8 +889,8 @@ module Moov
     end
 
 
-    sig { params(share_scopes: Models::Components::ShareScopes, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ConnectAccountResponse) }
-    def connect(share_scopes:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(share_scopes: Models::Components::ShareScopes, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ConnectAccountResponse) }
+    def connect(share_scopes:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # connect - Shares access scopes from the account specified to the caller, establishing a connection 
       # between the two accounts with the specified permissions.
       request = Models::Operations::ConnectAccountRequest.new(
@@ -929,6 +949,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1022,8 +1045,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetAccountCountriesResponse) }
-    def get_countries(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountCountriesResponse) }
+    def get_countries(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_countries - Retrieve the specified countries of operation for an account. 
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1071,6 +1094,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1143,8 +1169,8 @@ module Moov
     end
 
 
-    sig { params(account_countries: Models::Components::AccountCountries, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::AssignAccountCountriesResponse) }
-    def assign_countries(account_countries:, account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_countries: Models::Components::AccountCountries, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AssignAccountCountriesResponse) }
+    def assign_countries(account_countries:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # assign_countries - Assign the countries of operation for an account.
       #
       # This endpoint will always overwrite the previously assigned values. 
@@ -1207,6 +1233,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1309,8 +1338,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetMerchantProcessingAgreementResponse) }
-    def get_merchant_processing_agreement(account_id:, x_moov_version: nil, timeout_ms: nil)
+    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetMerchantProcessingAgreementResponse) }
+    def get_merchant_processing_agreement(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
       # get_merchant_processing_agreement - Retrieve a merchant account's processing agreement.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -1358,6 +1387,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1428,8 +1460,8 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), origin: T.nilable(::String), referer: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetTermsOfServiceTokenResponse) }
-    def get_terms_of_service_token(x_moov_version: nil, origin: nil, referer: nil, timeout_ms: nil)
+    sig { params(x_moov_version: T.nilable(::String), origin: T.nilable(::String), referer: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTermsOfServiceTokenResponse) }
+    def get_terms_of_service_token(x_moov_version: nil, origin: nil, referer: nil, timeout_ms: nil, http_headers: nil)
       # get_terms_of_service_token - Generates a non-expiring token that can then be used to accept Moov's terms of service. 
       #
       # This token can only be generated via API. Any Moov account requesting the collect funds, send funds, wallet, 
@@ -1473,6 +1505,9 @@ module Moov
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1543,5 +1578,5 @@ module Moov
 
       end
     end
-  end
+end
 end

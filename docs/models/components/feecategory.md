@@ -1,5 +1,13 @@
 # FeeCategory
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = FeeCategory::ACH
+```
+
 
 ## Values
 

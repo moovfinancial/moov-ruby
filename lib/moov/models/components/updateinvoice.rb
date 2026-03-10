@@ -17,7 +17,10 @@ module Moov
         # A collection of line items for an invoice.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateInvoiceLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
         # The status can be updated to one of the following values under specific conditions:
-        # - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`.
+        # - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`. Canceling an invoice
+        #   indicates the invoice is no longer expected to be paid (e.g., the charge was waived or terms changed).
+        #   Canceled invoices still appear in list results by default and remain part of the invoice history.
+        #   To completely discard an invoice created by mistake, use the delete endpoint instead.
         # - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
         field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoiceStatus, true) } }
 

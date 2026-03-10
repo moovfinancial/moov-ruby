@@ -1,5 +1,13 @@
 # SweepStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = SweepStatus::ACCRUING
+```
+
 
 ## Values
 

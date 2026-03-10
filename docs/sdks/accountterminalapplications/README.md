@@ -36,7 +36,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.account_terminal_applications.link(account_id: '76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e', link_account_terminal_application: Models::Components::LinkAccountTerminalApplication.new(
   terminal_application_id: '12345678-1234-1234-1234-123456789012'
@@ -83,7 +87,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.account_terminal_applications.list(account_id: '76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e')
 
@@ -125,7 +133,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.account_terminal_applications.get(account_id: '76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e', terminal_application_id: '12345678-1234-1234-1234-123456789012')
 
@@ -168,7 +180,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.account_terminal_applications.get_configuration(account_id: '76d4c8a0-1f2b-4e3b-8f5c-7a9e1b2c3d4e', terminal_application_id: '12345678-1234-1234-1234-123456789012')
 

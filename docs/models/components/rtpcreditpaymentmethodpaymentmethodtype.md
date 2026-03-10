@@ -1,5 +1,13 @@
 # RtpCreditPaymentMethodPaymentMethodType
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = RtpCreditPaymentMethodPaymentMethodType::RTP_CREDIT
+```
+
 
 ## Values
 

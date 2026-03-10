@@ -24,7 +24,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 
 req = Models::Operations::ListProductsRequest.new(
@@ -68,7 +72,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.products.create(account_id: '27cd3181-7c1c-4d81-b020-e7d55c33941f', product_request: Models::Components::ProductRequest.new(
   title: 'World\'s best lemonade',
@@ -184,7 +192,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.products.get(account_id: 'a749d848-5ebc-42a4-9ae6-555804317835', product_id: 'dd0b4873-5cf5-4aa8-aa86-e31d86f7e38a')
 
@@ -224,7 +236,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.products.update(account_id: '7a7b55ed-d90d-4e83-a8f6-f146eaebd0cc', product_id: 'fa407877-3b46-4484-814e-65b147d76a9e', product_request: Models::Components::ProductRequest.new(
   title: '<value>',
@@ -283,7 +299,11 @@ require 'moov_ruby'
 
 Models = ::Moov::Models
 s = ::Moov::Client.new(
-  x_moov_version: 'v2024.01.00'
+  x_moov_version: 'v2024.01.00',
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
 )
 res = s.products.disable(account_id: '9fbe72c0-abba-4bb7-b1d0-d15ee702fe62', product_id: '1e11a7dc-4e86-41ed-b256-55c22f3bfd38')
 

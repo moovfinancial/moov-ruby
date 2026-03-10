@@ -1,5 +1,13 @@
 # FulfillmentMethod
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = FulfillmentMethod::BILL_OR_DEBT_PAYMENT
+```
+
 
 ## Values
 

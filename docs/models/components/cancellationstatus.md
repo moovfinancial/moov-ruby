@@ -1,5 +1,13 @@
 # CancellationStatus
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = CancellationStatus::PENDING
+```
+
 
 ## Values
 

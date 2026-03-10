@@ -2,6 +2,14 @@
 
 A permission that the application requests on another account.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = ApplicationScope::ACCOUNTS_READ
+```
+
 
 ## Values
 

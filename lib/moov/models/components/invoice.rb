@@ -18,6 +18,10 @@ module Moov
         field :invoice_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceNumber'), required: true } }
         # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :customer_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerAccountID'), required: true } }
+        # Display name of the customer account.
+        field :customer_display_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerDisplayName'), required: true } }
+        # Email address of the customer account.
+        field :customer_email, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerEmail'), required: true } }
         # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
 
@@ -57,11 +61,15 @@ module Moov
 
         field :canceled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('canceledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(invoice_id: ::String, invoice_number: ::String, customer_account_id: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, tax_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, description: T.nilable(::String), payment_link_code: T.nilable(::String), invoice_payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime)).void }
-        def initialize(invoice_id:, invoice_number:, customer_account_id:, partner_account_id:, status:, line_items:, subtotal_amount:, tax_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, description: nil, payment_link_code: nil, invoice_payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil)
+        field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
+
+        sig { params(invoice_id: ::String, invoice_number: ::String, customer_account_id: ::String, customer_display_name: ::String, customer_email: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, tax_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, description: T.nilable(::String), payment_link_code: T.nilable(::String), invoice_payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime), disabled_on: T.nilable(::DateTime)).void }
+        def initialize(invoice_id:, invoice_number:, customer_account_id:, customer_display_name:, customer_email:, partner_account_id:, status:, line_items:, subtotal_amount:, tax_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, description: nil, payment_link_code: nil, invoice_payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil, disabled_on: nil)
           @invoice_id = invoice_id
           @invoice_number = invoice_number
           @customer_account_id = customer_account_id
+          @customer_display_name = customer_display_name
+          @customer_email = customer_email
           @partner_account_id = partner_account_id
           @status = status
           @line_items = line_items
@@ -81,6 +89,7 @@ module Moov
           @sent_on = sent_on
           @paid_on = paid_on
           @canceled_on = canceled_on
+          @disabled_on = disabled_on
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -89,6 +98,8 @@ module Moov
           return false unless @invoice_id == other.invoice_id
           return false unless @invoice_number == other.invoice_number
           return false unless @customer_account_id == other.customer_account_id
+          return false unless @customer_display_name == other.customer_display_name
+          return false unless @customer_email == other.customer_email
           return false unless @partner_account_id == other.partner_account_id
           return false unless @status == other.status
           return false unless @line_items == other.line_items
@@ -108,6 +119,7 @@ module Moov
           return false unless @sent_on == other.sent_on
           return false unless @paid_on == other.paid_on
           return false unless @canceled_on == other.canceled_on
+          return false unless @disabled_on == other.disabled_on
           true
         end
       end

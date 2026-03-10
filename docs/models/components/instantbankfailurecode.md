@@ -2,6 +2,14 @@
 
 Status codes for instant-bank failures.
 
+## Example Usage
+
+```ruby
+require "moov_ruby"
+
+value = InstantBankFailureCode::PROCESSING_ERROR
+```
+
 
 ## Values
 
