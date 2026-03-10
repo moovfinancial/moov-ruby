@@ -24,7 +24,7 @@ module Moov
       end
       def self.init_hooks(hooks)
         version_hook = MoovVersionHook.new
-        hooks.register_sdk_init_hook version_hook
+        hooks.register_before_request_hook version_hook
       end
     end
   end
