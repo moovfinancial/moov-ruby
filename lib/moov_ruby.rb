@@ -21,6 +21,7 @@ module Moov
   autoload :PaymentMethods, 'moov/payment_methods'
   autoload :Products, 'moov/products'
   autoload :Representatives, 'moov/representatives'
+  autoload :ResolutionLinks, 'moov/resolution_links'
   autoload :Scheduling, 'moov/scheduling'
   autoload :Statements, 'moov/statements'
   autoload :Sweeps, 'moov/sweeps'

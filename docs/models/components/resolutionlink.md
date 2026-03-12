@@ -1,0 +1,18 @@
+# ResolutionLink
+
+A temporary, secure link sent to a merchant to resolve account requirements such as KYC verification or document uploads.
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `code`                                                                  | *::String*                                                              | :heavy_check_mark:                                                      | A unique nanoid identifier for the resolution link.                     |
+| `account_id`                                                            | *::String*                                                              | :heavy_check_mark:                                                      | The ID of the merchant account this resolution link is associated with. |
+| `partner_account_id`                                                    | *::String*                                                              | :heavy_check_mark:                                                      | The ID of the partner account this resolution link is associated with.  |
+| `recipient`                                                             | *::String*                                                              | :heavy_check_mark:                                                      | The recipient contact information for the resolution link.              |
+| `url`                                                                   | *::String*                                                              | :heavy_check_mark:                                                      | The URL of the resolution link.                                         |
+| `created_on`                                                            | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)    | :heavy_check_mark:                                                      | The date and time the resolution link was created.                      |
+| `updated_on`                                                            | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)    | :heavy_check_mark:                                                      | The date and time the resolution link was last updated.                 |
+| `disabled_on`                                                           | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)    | :heavy_minus_sign:                                                      | The date and time the resolution link was disabled, if applicable.      |
+| `expires_on`                                                            | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)    | :heavy_check_mark:                                                      | The date and time the resolution link expires.                          |

@@ -19,6 +19,7 @@ module Moov
       autoload :CreateInvoiceError, 'moov/models/errors/createinvoiceerror.rb'
       autoload :CreateInvoicePaymentError, 'moov/models/errors/createinvoicepaymenterror.rb'
       autoload :CreatePaymentLinkError, 'moov/models/errors/createpaymentlinkerror.rb'
+      autoload :CreateResolutionLinkError, 'moov/models/errors/createresolutionlinkerror.rb'
       autoload :CreateSweepConfigError, 'moov/models/errors/createsweepconfigerror.rb'
       autoload :CreateTicketError, 'moov/models/errors/createticketerror.rb'
       autoload :CreateWalletValidationError, 'moov/models/errors/createwalletvalidationerror.rb'
