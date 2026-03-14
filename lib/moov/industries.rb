@@ -41,19 +41,16 @@ module Moov
 
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIndustriesResponse) }
-    def list(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIndustriesResponse) }
+    def list(timeout_ms: nil, http_headers: nil)
       # list - Returns a list of industries relevant to merchant profile enrichment.  Results are ordered by industry name.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
       # you'll need to specify the `/profile-enrichment.read` scope.
-      request = Models::Operations::ListIndustriesRequest.new(
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/industries"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

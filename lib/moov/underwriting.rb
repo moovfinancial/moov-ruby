@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetUnderwritingResponse) }
-    def get(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetUnderwritingResponse) }
+    def get(account_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve underwriting associated with a given Moov account. 
       #
       # Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more. 
@@ -50,8 +50,7 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetUnderwritingRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -59,10 +58,9 @@ module Moov
         Models::Operations::GetUnderwritingRequest,
         base_url,
         '/accounts/{accountID}/underwriting',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -167,8 +165,8 @@ module Moov
     end
 
 
-    sig { params(upsert_underwriting: Models::Components::UpsertUnderwriting, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SaveUnderwritingResponse) }
-    def save(upsert_underwriting:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(upsert_underwriting: Models::Components::UpsertUnderwriting, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SaveUnderwritingResponse) }
+    def save(upsert_underwriting:, account_id:, timeout_ms: nil, http_headers: nil)
       # save - Create or update the account's underwriting.
       #
       # Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
@@ -177,8 +175,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::SaveUnderwritingRequest.new(
         account_id: account_id,
-        upsert_underwriting: upsert_underwriting,
-        x_moov_version: x_moov_version
+        upsert_underwriting: upsert_underwriting
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -186,10 +183,9 @@ module Moov
         Models::Operations::SaveUnderwritingRequest,
         base_url,
         '/accounts/{accountID}/underwriting',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :upsert_underwriting, :json)
       headers['content-type'] = req_content_type
@@ -336,8 +332,8 @@ module Moov
     end
 
 
-    sig { params(update_underwriting: Models::Components::UpdateUnderwriting, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpsertUnderwritingResponse) }
-    def upsert(update_underwriting:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_underwriting: Models::Components::UpdateUnderwriting, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpsertUnderwritingResponse) }
+    def upsert(update_underwriting:, account_id:, timeout_ms: nil, http_headers: nil)
       # upsert - Create or update the account's underwriting.
       #
       # Read our [underwriting guide](https://docs.moov.io/guides/accounts/requirements/underwriting/) to learn more.
@@ -346,8 +342,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::UpsertUnderwritingRequest.new(
         account_id: account_id,
-        update_underwriting: update_underwriting,
-        x_moov_version: x_moov_version
+        update_underwriting: update_underwriting
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -355,10 +350,9 @@ module Moov
         Models::Operations::UpsertUnderwritingRequest,
         base_url,
         '/accounts/{accountID}/underwriting',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_underwriting, :json)
       headers['content-type'] = req_content_type

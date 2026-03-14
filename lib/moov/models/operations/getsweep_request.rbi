@@ -14,6 +14,4 @@ class Moov::Models::Operations::GetSweepRequest
   def wallet_id=(str_); end
   def sweep_id(); end
   def sweep_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

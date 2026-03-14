@@ -41,16 +41,15 @@ module Moov
 
 
 
-    sig { params(create_sweep_config: Models::Components::CreateSweepConfig, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateSweepConfigResponse) }
-    def create_config(create_sweep_config:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_sweep_config: Models::Components::CreateSweepConfig, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateSweepConfigResponse) }
+    def create_config(create_sweep_config:, account_id:, timeout_ms: nil, http_headers: nil)
       # create_config - Create a sweep config for a wallet.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.write` scope.
       request = Models::Operations::CreateSweepConfigRequest.new(
         account_id: account_id,
-        create_sweep_config: create_sweep_config,
-        x_moov_version: x_moov_version
+        create_sweep_config: create_sweep_config
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -58,10 +57,9 @@ module Moov
         Models::Operations::CreateSweepConfigRequest,
         base_url,
         '/accounts/{accountID}/sweep-configs',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_sweep_config, :json)
       headers['content-type'] = req_content_type
@@ -208,15 +206,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSweepConfigsResponse) }
-    def list_configs(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSweepConfigsResponse) }
+    def list_configs(account_id:, timeout_ms: nil, http_headers: nil)
       # list_configs - List sweep configs associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::ListSweepConfigsRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -224,10 +221,9 @@ module Moov
         Models::Operations::ListSweepConfigsRequest,
         base_url,
         '/accounts/{accountID}/sweep-configs',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -332,16 +328,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSweepConfigResponse) }
-    def get_config(account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, sweep_config_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSweepConfigResponse) }
+    def get_config(account_id:, sweep_config_id:, timeout_ms: nil, http_headers: nil)
       # get_config - Get a sweep config associated with a wallet.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/wallets.read` scope.
       request = Models::Operations::GetSweepConfigRequest.new(
         account_id: account_id,
-        sweep_config_id: sweep_config_id,
-        x_moov_version: x_moov_version
+        sweep_config_id: sweep_config_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -349,10 +344,9 @@ module Moov
         Models::Operations::GetSweepConfigRequest,
         base_url,
         '/accounts/{accountID}/sweep-configs/{sweepConfigID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -457,8 +451,8 @@ module Moov
     end
 
 
-    sig { params(patch_sweep_config: Models::Components::PatchSweepConfig, account_id: ::String, sweep_config_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateSweepConfigResponse) }
-    def update_config(patch_sweep_config:, account_id:, sweep_config_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(patch_sweep_config: Models::Components::PatchSweepConfig, account_id: ::String, sweep_config_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateSweepConfigResponse) }
+    def update_config(patch_sweep_config:, account_id:, sweep_config_id:, timeout_ms: nil, http_headers: nil)
       # update_config - Update settings on a sweep config.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -466,8 +460,7 @@ module Moov
       request = Models::Operations::UpdateSweepConfigRequest.new(
         account_id: account_id,
         sweep_config_id: sweep_config_id,
-        patch_sweep_config: patch_sweep_config,
-        x_moov_version: x_moov_version
+        patch_sweep_config: patch_sweep_config
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -475,10 +468,9 @@ module Moov
         Models::Operations::UpdateSweepConfigRequest,
         base_url,
         '/accounts/{accountID}/sweep-configs/{sweepConfigID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :patch_sweep_config, :json)
       headers['content-type'] = req_content_type
@@ -637,12 +629,11 @@ module Moov
         Models::Operations::ListSweepsRequest,
         base_url,
         '/accounts/{accountID}/wallets/{walletID}/sweeps',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListSweepsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListSweepsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -747,8 +738,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, wallet_id: ::String, sweep_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSweepResponse) }
-    def get(account_id:, wallet_id:, sweep_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, wallet_id: ::String, sweep_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSweepResponse) }
+    def get(account_id:, wallet_id:, sweep_id:, timeout_ms: nil, http_headers: nil)
       # get - Get details on a specific sweep.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -756,8 +747,7 @@ module Moov
       request = Models::Operations::GetSweepRequest.new(
         account_id: account_id,
         wallet_id: wallet_id,
-        sweep_id: sweep_id,
-        x_moov_version: x_moov_version
+        sweep_id: sweep_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -765,10 +755,9 @@ module Moov
         Models::Operations::GetSweepRequest,
         base_url,
         '/accounts/{accountID}/wallets/{walletID}/sweeps/{sweepID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

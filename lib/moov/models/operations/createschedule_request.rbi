@@ -12,6 +12,4 @@ class Moov::Models::Operations::CreateScheduleRequest
   def account_id=(str_); end
   def upsert_schedule(); end
   def upsert_schedule=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

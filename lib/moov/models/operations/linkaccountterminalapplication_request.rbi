@@ -12,6 +12,4 @@ class Moov::Models::Operations::LinkAccountTerminalApplicationRequest
   def account_id=(str_); end
   def link_account_terminal_application(); end
   def link_account_terminal_application=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

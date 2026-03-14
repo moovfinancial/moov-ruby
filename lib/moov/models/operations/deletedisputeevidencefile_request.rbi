@@ -14,6 +14,4 @@ class Moov::Models::Operations::DeleteDisputeEvidenceFileRequest
   def dispute_id=(str_); end
   def evidence_id(); end
   def evidence_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

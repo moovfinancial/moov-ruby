@@ -14,6 +14,4 @@ class Moov::Models::Operations::UpdateProductRequest
   def product_id=(str_); end
   def product_request(); end
   def product_request=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

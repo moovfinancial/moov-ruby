@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(create_account: Models::Components::CreateAccount, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateAccountResponse) }
-    def create(create_account:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Components::CreateAccount, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateAccountResponse) }
+    def create(request:, timeout_ms: nil, http_headers: nil)
       # create - You can create **business** or **individual** accounts for your users (i.e., customers, merchants) by passing the required
       # information to Moov. Requirements differ per account type and requested [capabilities](https://docs.moov.io/guides/accounts/capabilities/requirements/).
       #
@@ -58,16 +58,12 @@ module Moov
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       # to specify the `/accounts.write` scope.
-      request = Models::Operations::CreateAccountRequest.new(
-        create_account: create_account,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/accounts"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_account, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
@@ -225,9 +221,9 @@ module Moov
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/accounts"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListAccountsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListAccountsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -332,15 +328,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountResponse) }
-    def get(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountResponse) }
+    def get(account_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieves details for the account with the specified ID.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       # to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetAccountRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -348,10 +343,9 @@ module Moov
         Models::Operations::GetAccountRequest,
         base_url,
         '/accounts/{accountID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -456,8 +450,8 @@ module Moov
     end
 
 
-    sig { params(patch_account: Models::Components::PatchAccount, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateAccountResponse) }
-    def update(patch_account:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(patch_account: Models::Components::PatchAccount, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateAccountResponse) }
+    def update(patch_account:, account_id:, timeout_ms: nil, http_headers: nil)
       # update - When **can** profile data be updated:
       #   + For unverified accounts, all profile data can be edited.
       #   + During the verification process, missing or incomplete profile data can be edited.
@@ -472,8 +466,7 @@ module Moov
       # to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::UpdateAccountRequest.new(
         account_id: account_id,
-        patch_account: patch_account,
-        x_moov_version: x_moov_version
+        patch_account: patch_account
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -481,10 +474,9 @@ module Moov
         Models::Operations::UpdateAccountRequest,
         base_url,
         '/accounts/{accountID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :patch_account, :json)
       headers['content-type'] = req_content_type
@@ -631,8 +623,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisconnectAccountResponse) }
-    def disconnect(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisconnectAccountResponse) }
+    def disconnect(account_id:, timeout_ms: nil, http_headers: nil)
       # disconnect - This will sever the connection between you and the account specified and it will no longer be listed as 
       # active in the list of accounts. This also means you'll only have read-only access to the account going 
       # forward for reporting purposes.
@@ -640,8 +632,7 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.disconnect` scope.
       request = Models::Operations::DisconnectAccountRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -649,10 +640,9 @@ module Moov
         Models::Operations::DisconnectAccountRequest,
         base_url,
         '/accounts/{accountID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -779,12 +769,11 @@ module Moov
         Models::Operations::ListConnectedAccountsForAccountRequest,
         base_url,
         '/accounts/{accountID}/connected-accounts',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListConnectedAccountsForAccountRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListConnectedAccountsForAccountRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -889,14 +878,13 @@ module Moov
     end
 
 
-    sig { params(share_scopes: Models::Components::ShareScopes, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ConnectAccountResponse) }
-    def connect(share_scopes:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(share_scopes: Models::Components::ShareScopes, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ConnectAccountResponse) }
+    def connect(share_scopes:, account_id:, timeout_ms: nil, http_headers: nil)
       # connect - Shares access scopes from the account specified to the caller, establishing a connection 
       # between the two accounts with the specified permissions.
       request = Models::Operations::ConnectAccountRequest.new(
         account_id: account_id,
-        share_scopes: share_scopes,
-        x_moov_version: x_moov_version
+        share_scopes: share_scopes
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -904,10 +892,9 @@ module Moov
         Models::Operations::ConnectAccountRequest,
         base_url,
         '/accounts/{accountID}/connections',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :share_scopes, :json)
       headers['content-type'] = req_content_type
@@ -1045,15 +1032,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountCountriesResponse) }
-    def get_countries(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountCountriesResponse) }
+    def get_countries(account_id:, timeout_ms: nil, http_headers: nil)
       # get_countries - Retrieve the specified countries of operation for an account. 
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetAccountCountriesRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -1061,10 +1047,9 @@ module Moov
         Models::Operations::GetAccountCountriesRequest,
         base_url,
         '/accounts/{accountID}/countries',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1169,8 +1154,8 @@ module Moov
     end
 
 
-    sig { params(account_countries: Models::Components::AccountCountries, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AssignAccountCountriesResponse) }
-    def assign_countries(account_countries:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_countries: Models::Components::AccountCountries, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AssignAccountCountriesResponse) }
+    def assign_countries(account_countries:, account_id:, timeout_ms: nil, http_headers: nil)
       # assign_countries - Assign the countries of operation for an account.
       #
       # This endpoint will always overwrite the previously assigned values. 
@@ -1179,8 +1164,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::AssignAccountCountriesRequest.new(
         account_id: account_id,
-        account_countries: account_countries,
-        x_moov_version: x_moov_version
+        account_countries: account_countries
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -1188,10 +1172,9 @@ module Moov
         Models::Operations::AssignAccountCountriesRequest,
         base_url,
         '/accounts/{accountID}/countries',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :account_countries, :json)
       headers['content-type'] = req_content_type
@@ -1338,15 +1321,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetMerchantProcessingAgreementResponse) }
-    def get_merchant_processing_agreement(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetMerchantProcessingAgreementResponse) }
+    def get_merchant_processing_agreement(account_id:, timeout_ms: nil, http_headers: nil)
       # get_merchant_processing_agreement - Retrieve a merchant account's processing agreement.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetMerchantProcessingAgreementRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -1354,10 +1336,9 @@ module Moov
         Models::Operations::GetMerchantProcessingAgreementRequest,
         base_url,
         '/accounts/{accountID}/merchant-agreement',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/pdf'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1460,22 +1441,21 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), origin: T.nilable(::String), referer: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTermsOfServiceTokenResponse) }
-    def get_terms_of_service_token(x_moov_version: nil, origin: nil, referer: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(origin: T.nilable(::String), referer: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTermsOfServiceTokenResponse) }
+    def get_terms_of_service_token(origin: nil, referer: nil, timeout_ms: nil, http_headers: nil)
       # get_terms_of_service_token - Generates a non-expiring token that can then be used to accept Moov's terms of service. 
       #
       # This token can only be generated via API. Any Moov account requesting the collect funds, send funds, wallet, 
       # or card issuing capabilities must accept Moov's terms of service, then have the generated terms of service 
       # token patched to the account. Read more in our [documentation](https://docs.moov.io/guides/accounts/requirements/platform-agreement/).
       request = Models::Operations::GetTermsOfServiceTokenRequest.new(
-        x_moov_version: x_moov_version,
         origin: origin,
         referer: referer
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/tos-token"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = Utils.get_headers(request)
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

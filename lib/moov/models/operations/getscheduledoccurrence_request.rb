@@ -22,24 +22,12 @@ module Moov
         #   Specifying a RFC 3339 timestamp returns the latest occurrence at or before that timestamp.
         #   Specifying `latest` returns the latest occurrence at or before now.
         field :occurrence_filter, ::String, { 'path_param': { 'field_name': 'occurrenceFilter', 'style': 'simple', 'explode': false } }
-        # Specify an API version.
-        #
-        # API versioning follows the format `vYYYY.QQ.BB`, where 
-        #   - `YYYY` is the year
-        #   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-        #   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. 
-        #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-        #
-        # The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        # When no version is specified, the API defaults to `v2024.01.00`.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, schedule_id:, occurrence_filter:, x_moov_version: nil)
+        sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String).void }
+        def initialize(account_id:, schedule_id:, occurrence_filter:)
           @account_id = account_id
           @schedule_id = schedule_id
           @occurrence_filter = occurrence_filter
-          @x_moov_version = x_moov_version
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -48,7 +36,6 @@ module Moov
           return false unless @account_id == other.account_id
           return false unless @schedule_id == other.schedule_id
           return false unless @occurrence_filter == other.occurrence_filter
-          return false unless @x_moov_version == other.x_moov_version
           true
         end
       end

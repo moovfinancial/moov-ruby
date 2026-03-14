@@ -12,6 +12,4 @@ class Moov::Models::Operations::GetFullIssuedCardRequest
   def account_id=(str_); end
   def issued_card_id(); end
   def issued_card_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

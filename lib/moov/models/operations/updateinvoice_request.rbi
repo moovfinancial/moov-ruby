@@ -14,6 +14,4 @@ class Moov::Models::Operations::UpdateInvoiceRequest
   def invoice_id=(str_); end
   def update_invoice(); end
   def update_invoice=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

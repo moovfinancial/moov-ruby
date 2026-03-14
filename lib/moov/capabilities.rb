@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCapabilitiesResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCapabilitiesResponse) }
+    def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - Retrieve all the capabilities an account has requested.
       #
       # Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
@@ -50,8 +50,7 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
       request = Models::Operations::ListCapabilitiesRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -59,10 +58,9 @@ module Moov
         Models::Operations::ListCapabilitiesRequest,
         base_url,
         '/accounts/{accountID}/capabilities',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -167,16 +165,15 @@ module Moov
     end
 
 
-    sig { params(add_capabilities: Models::Components::AddCapabilities, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RequestCapabilitiesResponse) }
-    def request(add_capabilities:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(add_capabilities: Models::Components::AddCapabilities, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RequestCapabilitiesResponse) }
+    def request(add_capabilities:, account_id:, timeout_ms: nil, http_headers: nil)
       # request - Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
       request = Models::Operations::RequestCapabilitiesRequest.new(
         account_id: account_id,
-        add_capabilities: add_capabilities,
-        x_moov_version: x_moov_version
+        add_capabilities: add_capabilities
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -184,10 +181,9 @@ module Moov
         Models::Operations::RequestCapabilitiesRequest,
         base_url,
         '/accounts/{accountID}/capabilities',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :add_capabilities, :json)
       headers['content-type'] = req_content_type
@@ -334,16 +330,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCapabilityResponse) }
-    def get(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCapabilityResponse) }
+    def get(account_id:, capability_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
       request = Models::Operations::GetCapabilityRequest.new(
         account_id: account_id,
-        capability_id: capability_id,
-        x_moov_version: x_moov_version
+        capability_id: capability_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -351,10 +346,9 @@ module Moov
         Models::Operations::GetCapabilityRequest,
         base_url,
         '/accounts/{accountID}/capabilities/{capabilityID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -459,16 +453,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableCapabilityResponse) }
-    def disable(account_id:, capability_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableCapabilityResponse) }
+    def disable(account_id:, capability_id:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
       #
       #   To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
       request = Models::Operations::DisableCapabilityRequest.new(
         account_id: account_id,
-        capability_id: capability_id,
-        x_moov_version: x_moov_version
+        capability_id: capability_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -476,10 +469,9 @@ module Moov
         Models::Operations::DisableCapabilityRequest,
         base_url,
         '/accounts/{accountID}/capabilities/{capabilityID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

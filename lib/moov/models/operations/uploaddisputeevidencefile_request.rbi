@@ -14,6 +14,4 @@ class Moov::Models::Operations::UploadDisputeEvidenceFileRequest
   def dispute_id=(str_); end
   def create_evidence_file_multi_part(); end
   def create_evidence_file_multi_part=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

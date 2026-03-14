@@ -12,6 +12,4 @@ class Moov::Models::Operations::GetSweepConfigRequest
   def account_id=(str_); end
   def sweep_config_id(); end
   def sweep_config_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

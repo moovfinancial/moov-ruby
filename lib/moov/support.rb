@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(create_ticket: Models::Components::CreateTicket, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTicketResponse) }
-    def create_ticket(create_ticket:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_ticket: Models::Components::CreateTicket, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTicketResponse) }
+    def create_ticket(create_ticket:, account_id:, timeout_ms: nil, http_headers: nil)
       # create_ticket - Create a support ticket for a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -52,8 +52,7 @@ module Moov
       # specify the `/accounts/{partnerAccountID}/tickets.write` and `/accounts/{accountID}/profile.read` scopes.
       request = Models::Operations::CreateTicketRequest.new(
         account_id: account_id,
-        create_ticket: create_ticket,
-        x_moov_version: x_moov_version
+        create_ticket: create_ticket
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -61,10 +60,9 @@ module Moov
         Models::Operations::CreateTicketRequest,
         base_url,
         '/accounts/{accountID}/tickets',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_ticket, :json)
       headers['content-type'] = req_content_type
@@ -226,12 +224,11 @@ module Moov
         Models::Operations::ListTicketsRequest,
         base_url,
         '/accounts/{accountID}/tickets',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListTicketsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListTicketsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -336,8 +333,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTicketResponse) }
-    def get_ticket(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, ticket_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTicketResponse) }
+    def get_ticket(account_id:, ticket_id:, timeout_ms: nil, http_headers: nil)
       # get_ticket - Retrieve a support ticket by ID.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -347,8 +344,7 @@ module Moov
       # specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
       request = Models::Operations::GetTicketRequest.new(
         account_id: account_id,
-        ticket_id: ticket_id,
-        x_moov_version: x_moov_version
+        ticket_id: ticket_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -356,10 +352,9 @@ module Moov
         Models::Operations::GetTicketRequest,
         base_url,
         '/accounts/{accountID}/tickets/{ticketID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -464,8 +459,8 @@ module Moov
     end
 
 
-    sig { params(update_ticket: Models::Components::UpdateTicket, account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateTicketResponse) }
-    def update_ticket(update_ticket:, account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_ticket: Models::Components::UpdateTicket, account_id: ::String, ticket_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateTicketResponse) }
+    def update_ticket(update_ticket:, account_id:, ticket_id:, timeout_ms: nil, http_headers: nil)
       # update_ticket - Updates a support ticket.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -476,8 +471,7 @@ module Moov
       request = Models::Operations::UpdateTicketRequest.new(
         account_id: account_id,
         ticket_id: ticket_id,
-        update_ticket: update_ticket,
-        x_moov_version: x_moov_version
+        update_ticket: update_ticket
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -485,10 +479,9 @@ module Moov
         Models::Operations::UpdateTicketRequest,
         base_url,
         '/accounts/{accountID}/tickets/{ticketID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_ticket, :json)
       headers['content-type'] = req_content_type
@@ -635,8 +628,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, ticket_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTicketMessagesResponse) }
-    def list_ticket_messages(account_id:, ticket_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, ticket_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTicketMessagesResponse) }
+    def list_ticket_messages(account_id:, ticket_id:, timeout_ms: nil, http_headers: nil)
       # list_ticket_messages - List all the messages for a support ticket.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -646,8 +639,7 @@ module Moov
       # specify the `/accounts/{partnerAccountID}/tickets.read` and `/accounts/{accountID}/profile.read` scopes.
       request = Models::Operations::ListTicketMessagesRequest.new(
         account_id: account_id,
-        ticket_id: ticket_id,
-        x_moov_version: x_moov_version
+        ticket_id: ticket_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -655,10 +647,9 @@ module Moov
         Models::Operations::ListTicketMessagesRequest,
         base_url,
         '/accounts/{accountID}/tickets/{ticketID}/messages',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

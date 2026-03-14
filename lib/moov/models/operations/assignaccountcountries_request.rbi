@@ -12,6 +12,4 @@ class Moov::Models::Operations::AssignAccountCountriesRequest
   def account_id=(str_); end
   def account_countries(); end
   def account_countries=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

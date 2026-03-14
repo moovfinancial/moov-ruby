@@ -53,12 +53,11 @@ module Moov
         Models::Operations::ListIssuedCardAuthorizationsRequest,
         base_url,
         '/issuing/{accountID}/authorizations',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListIssuedCardAuthorizationsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListIssuedCardAuthorizationsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -163,16 +162,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, authorization_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardAuthorizationResponse) }
-    def get_authorization(account_id:, authorization_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, authorization_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardAuthorizationResponse) }
+    def get_authorization(account_id:, authorization_id:, timeout_ms: nil, http_headers: nil)
       # get_authorization - Retrieves details of an authorization associated with a specific Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       request = Models::Operations::GetIssuedCardAuthorizationRequest.new(
         account_id: account_id,
-        authorization_id: authorization_id,
-        x_moov_version: x_moov_version
+        authorization_id: authorization_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -180,10 +178,9 @@ module Moov
         Models::Operations::GetIssuedCardAuthorizationRequest,
         base_url,
         '/issuing/{accountID}/authorizations/{authorizationID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -288,24 +285,29 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListIssuedCardAuthorizationEventsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardAuthorizationEventsResponse) }
-    def list_authorization_events(request:, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, authorization_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardAuthorizationEventsResponse) }
+    def list_authorization_events(account_id:, authorization_id:, skip: nil, count: nil, timeout_ms: nil, http_headers: nil)
       # list_authorization_events - List card network and Moov platform events that affect the authorization and its hold on a wallet balance.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+      request = Models::Operations::ListIssuedCardAuthorizationEventsRequest.new(
+        account_id: account_id,
+        authorization_id: authorization_id,
+        skip: skip,
+        count: count
+      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Models::Operations::ListIssuedCardAuthorizationEventsRequest,
         base_url,
         '/issuing/{accountID}/authorizations/{authorizationID}/events',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListIssuedCardAuthorizationEventsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListIssuedCardAuthorizationEventsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -422,12 +424,11 @@ module Moov
         Models::Operations::ListIssuedCardTransactionsRequest,
         base_url,
         '/issuing/{accountID}/card-transactions',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListIssuedCardTransactionsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListIssuedCardTransactionsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -532,16 +533,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, card_transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardTransactionResponse) }
-    def get(account_id:, card_transaction_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, card_transaction_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardTransactionResponse) }
+    def get(account_id:, card_transaction_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieves details of an issued card transaction associated with a specific Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
       request = Models::Operations::GetIssuedCardTransactionRequest.new(
         account_id: account_id,
-        card_transaction_id: card_transaction_id,
-        x_moov_version: x_moov_version
+        card_transaction_id: card_transaction_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -549,10 +549,9 @@ module Moov
         Models::Operations::GetIssuedCardTransactionRequest,
         base_url,
         '/issuing/{accountID}/card-transactions/{cardTransactionID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

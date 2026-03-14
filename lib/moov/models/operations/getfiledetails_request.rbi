@@ -12,6 +12,4 @@ class Moov::Models::Operations::GetFileDetailsRequest
   def account_id=(str_); end
   def file_id(); end
   def file_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end
