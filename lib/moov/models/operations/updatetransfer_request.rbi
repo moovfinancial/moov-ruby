@@ -14,6 +14,4 @@ class Moov::Models::Operations::UpdateTransferRequest
   def account_id=(str_); end
   def patch_transfer(); end
   def patch_transfer=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

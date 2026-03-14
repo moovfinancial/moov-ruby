@@ -41,21 +41,26 @@ module Moov
 
 
 
-    sig { params(request: Models::Operations::ListProductsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListProductsResponse) }
-    def list(request:, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, title: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListProductsResponse) }
+    def list(account_id:, title: nil, skip: nil, count: nil, timeout_ms: nil, http_headers: nil)
       # list - List active (non-disabled) products for an account.
+      request = Models::Operations::ListProductsRequest.new(
+        account_id: account_id,
+        title: title,
+        skip: skip,
+        count: count
+      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Models::Operations::ListProductsRequest,
         base_url,
         '/accounts/{accountID}/products',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListProductsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListProductsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -160,13 +165,12 @@ module Moov
     end
 
 
-    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateProductResponse) }
-    def create(product_request:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateProductResponse) }
+    def create(product_request:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Creates a new product for the specified account.
       request = Models::Operations::CreateProductRequest.new(
         account_id: account_id,
-        product_request: product_request,
-        x_moov_version: x_moov_version
+        product_request: product_request
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -174,10 +178,9 @@ module Moov
         Models::Operations::CreateProductRequest,
         base_url,
         '/accounts/{accountID}/products',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :product_request, :json)
       headers['content-type'] = req_content_type
@@ -324,13 +327,12 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetProductResponse) }
-    def get(account_id:, product_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, product_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetProductResponse) }
+    def get(account_id:, product_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a product by ID.
       request = Models::Operations::GetProductRequest.new(
         account_id: account_id,
-        product_id: product_id,
-        x_moov_version: x_moov_version
+        product_id: product_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -338,10 +340,9 @@ module Moov
         Models::Operations::GetProductRequest,
         base_url,
         '/accounts/{accountID}/products/{productID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -446,14 +447,13 @@ module Moov
     end
 
 
-    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateProductResponse) }
-    def update(product_request:, account_id:, product_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, product_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateProductResponse) }
+    def update(product_request:, account_id:, product_id:, timeout_ms: nil, http_headers: nil)
       # update - Update a product and its options.
       request = Models::Operations::UpdateProductRequest.new(
         account_id: account_id,
         product_id: product_id,
-        product_request: product_request,
-        x_moov_version: x_moov_version
+        product_request: product_request
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -461,10 +461,9 @@ module Moov
         Models::Operations::UpdateProductRequest,
         base_url,
         '/accounts/{accountID}/products/{productID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :product_request, :json)
       headers['content-type'] = req_content_type
@@ -611,15 +610,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, product_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableProductResponse) }
-    def disable(account_id:, product_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, product_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableProductResponse) }
+    def disable(account_id:, product_id:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a product by ID.
       #
       # The product will no longer be available, but will remain in the system for historical and reporting purposes.
       request = Models::Operations::DisableProductRequest.new(
         account_id: account_id,
-        product_id: product_id,
-        x_moov_version: x_moov_version
+        product_id: product_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -627,10 +625,9 @@ module Moov
         Models::Operations::DisableProductRequest,
         base_url,
         '/accounts/{accountID}/products/{productID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

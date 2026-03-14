@@ -10,6 +10,4 @@ end
 class Moov::Models::Operations::ListReceiptsRequest
   def id(); end
   def id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

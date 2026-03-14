@@ -12,6 +12,4 @@ class Moov::Models::Operations::AcceptDisputeRequest
   def account_id=(str_); end
   def dispute_id(); end
   def dispute_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

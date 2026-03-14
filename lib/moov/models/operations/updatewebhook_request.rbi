@@ -12,6 +12,4 @@ class Moov::Models::Operations::UpdateWebhookRequest
   def webhook_id=(str_); end
   def update_webhook(); end
   def update_webhook=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

@@ -41,16 +41,13 @@ module Moov
 
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListEventTypesResponse) }
-    def list_event_types(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListEventTypesResponse) }
+    def list_event_types(timeout_ms: nil, http_headers: nil)
       # list_event_types - List all available event types that can be subscribed to.
-      request = Models::Operations::ListEventTypesRequest.new(
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/event-types"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -155,16 +152,13 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListWebhooksResponse) }
-    def list(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListWebhooksResponse) }
+    def list(timeout_ms: nil, http_headers: nil)
       # list - List all webhooks configured for the account.
-      request = Models::Operations::ListWebhooksRequest.new(
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/webhooks"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -269,19 +263,15 @@ module Moov
     end
 
 
-    sig { params(create_webhook: Models::Components::CreateWebhook, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateWebhookResponse) }
-    def create(create_webhook:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Components::CreateWebhook, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateWebhookResponse) }
+    def create(request:, timeout_ms: nil, http_headers: nil)
       # create - Create a new webhook for the account.
-      request = Models::Operations::CreateWebhookRequest.new(
-        create_webhook: create_webhook,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/webhooks"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_webhook, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
@@ -426,12 +416,11 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWebhookResponse) }
-    def get(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(webhook_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWebhookResponse) }
+    def get(webhook_id:, timeout_ms: nil, http_headers: nil)
       # get - Get details of a specific webhook.
       request = Models::Operations::GetWebhookRequest.new(
-        webhook_id: webhook_id,
-        x_moov_version: x_moov_version
+        webhook_id: webhook_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -439,10 +428,9 @@ module Moov
         Models::Operations::GetWebhookRequest,
         base_url,
         '/webhooks/{webhookID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -547,13 +535,12 @@ module Moov
     end
 
 
-    sig { params(update_webhook: Models::Components::UpdateWebhook, webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateWebhookResponse) }
-    def update(update_webhook:, webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_webhook: Models::Components::UpdateWebhook, webhook_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateWebhookResponse) }
+    def update(update_webhook:, webhook_id:, timeout_ms: nil, http_headers: nil)
       # update - Update an existing webhook.
       request = Models::Operations::UpdateWebhookRequest.new(
         webhook_id: webhook_id,
-        update_webhook: update_webhook,
-        x_moov_version: x_moov_version
+        update_webhook: update_webhook
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -561,10 +548,9 @@ module Moov
         Models::Operations::UpdateWebhookRequest,
         base_url,
         '/webhooks/{webhookID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_webhook, :json)
       headers['content-type'] = req_content_type
@@ -711,12 +697,11 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableWebhookResponse) }
-    def disable(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(webhook_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableWebhookResponse) }
+    def disable(webhook_id:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a webhook. Disabled webhooks will no longer receive events.
       request = Models::Operations::DisableWebhookRequest.new(
-        webhook_id: webhook_id,
-        x_moov_version: x_moov_version
+        webhook_id: webhook_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -724,10 +709,9 @@ module Moov
         Models::Operations::DisableWebhookRequest,
         base_url,
         '/webhooks/{webhookID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -838,12 +822,11 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::PingWebhookResponse) }
-    def ping(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(webhook_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::PingWebhookResponse) }
+    def ping(webhook_id:, timeout_ms: nil, http_headers: nil)
       # ping - Send a test ping to a webhook to verify it is configured correctly.
       request = Models::Operations::PingWebhookRequest.new(
-        webhook_id: webhook_id,
-        x_moov_version: x_moov_version
+        webhook_id: webhook_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -851,10 +834,9 @@ module Moov
         Models::Operations::PingWebhookRequest,
         base_url,
         '/webhooks/{webhookID}/ping',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -959,12 +941,11 @@ module Moov
     end
 
 
-    sig { params(webhook_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWebhookSecretResponse) }
-    def get_secret(webhook_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(webhook_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWebhookSecretResponse) }
+    def get_secret(webhook_id:, timeout_ms: nil, http_headers: nil)
       # get_secret - Get the secret key for verifying webhook payloads.
       request = Models::Operations::GetWebhookSecretRequest.new(
-        webhook_id: webhook_id,
-        x_moov_version: x_moov_version
+        webhook_id: webhook_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -972,10 +953,9 @@ module Moov
         Models::Operations::GetWebhookSecretRequest,
         base_url,
         '/webhooks/{webhookID}/secret',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

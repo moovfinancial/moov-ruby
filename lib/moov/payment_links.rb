@@ -41,16 +41,15 @@ module Moov
 
 
 
-    sig { params(create_payment_link: Models::Components::CreatePaymentLink, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreatePaymentLinkResponse) }
-    def create(create_payment_link:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_payment_link: Models::Components::CreatePaymentLink, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreatePaymentLinkResponse) }
+    def create(create_payment_link:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Create a payment link that allows an end user to make a payment on Moov's hosted payment link page.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CreatePaymentLinkRequest.new(
         account_id: account_id,
-        create_payment_link: create_payment_link,
-        x_moov_version: x_moov_version
+        create_payment_link: create_payment_link
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -58,10 +57,9 @@ module Moov
         Models::Operations::CreatePaymentLinkRequest,
         base_url,
         '/accounts/{accountID}/payment-links',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_payment_link, :json)
       headers['content-type'] = req_content_type
@@ -208,24 +206,29 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListPaymentLinksRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentLinksResponse) }
-    def list(request:, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), types: T.nilable(T::Array[Models::Components::PaymentLinkType]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentLinksResponse) }
+    def list(account_id:, skip: nil, count: nil, types: nil, timeout_ms: nil, http_headers: nil)
       # list - List all the payment links created under a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+      request = Models::Operations::ListPaymentLinksRequest.new(
+        account_id: account_id,
+        skip: skip,
+        count: count,
+        types: types
+      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Models::Operations::ListPaymentLinksRequest,
         base_url,
         '/accounts/{accountID}/payment-links',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListPaymentLinksRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListPaymentLinksRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -330,16 +333,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkResponse) }
-    def get(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkResponse) }
+    def get(account_id:, payment_link_code:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a payment link by code.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetPaymentLinkRequest.new(
         account_id: account_id,
-        payment_link_code: payment_link_code,
-        x_moov_version: x_moov_version
+        payment_link_code: payment_link_code
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -347,10 +349,9 @@ module Moov
         Models::Operations::GetPaymentLinkRequest,
         base_url,
         '/accounts/{accountID}/payment-links/{paymentLinkCode}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -455,8 +456,8 @@ module Moov
     end
 
 
-    sig { params(update_payment_link: Models::Components::UpdatePaymentLink, account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdatePaymentLinkResponse) }
-    def update(update_payment_link:, account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_payment_link: Models::Components::UpdatePaymentLink, account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdatePaymentLinkResponse) }
+    def update(update_payment_link:, account_id:, payment_link_code:, timeout_ms: nil, http_headers: nil)
       # update - Update a payment link.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -464,8 +465,7 @@ module Moov
       request = Models::Operations::UpdatePaymentLinkRequest.new(
         account_id: account_id,
         payment_link_code: payment_link_code,
-        update_payment_link: update_payment_link,
-        x_moov_version: x_moov_version
+        update_payment_link: update_payment_link
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -473,10 +473,9 @@ module Moov
         Models::Operations::UpdatePaymentLinkRequest,
         base_url,
         '/accounts/{accountID}/payment-links/{paymentLinkCode}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_payment_link, :json)
       headers['content-type'] = req_content_type
@@ -623,16 +622,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisablePaymentLinkResponse) }
-    def disable(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisablePaymentLinkResponse) }
+    def disable(account_id:, payment_link_code:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a payment link.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::DisablePaymentLinkRequest.new(
         account_id: account_id,
-        payment_link_code: payment_link_code,
-        x_moov_version: x_moov_version
+        payment_link_code: payment_link_code
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -640,10 +638,9 @@ module Moov
         Models::Operations::DisablePaymentLinkRequest,
         base_url,
         '/accounts/{accountID}/payment-links/{paymentLinkCode}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = '*/*'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -739,8 +736,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkQRCodeResponse) }
-    def get_qr_code(account_id:, payment_link_code:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
+    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkQRCodeResponse) }
+    def get_qr_code(account_id:, payment_link_code:, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get_qr_code - Retrieve the payment link encoded in a QR code. 
       #
       # Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `image/png`.
@@ -749,8 +746,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::GetPaymentLinkQRCodeRequest.new(
         account_id: account_id,
-        payment_link_code: payment_link_code,
-        x_moov_version: x_moov_version
+        payment_link_code: payment_link_code
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -758,10 +754,9 @@ module Moov
         Models::Operations::GetPaymentLinkQRCodeRequest,
         base_url,
         '/accounts/{accountID}/payment-links/{paymentLinkCode}/qrcode',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = accept_header_override || 'application/json;q=1, image/png;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent

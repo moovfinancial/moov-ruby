@@ -12,25 +12,13 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Specify an API version.
-        #
-        # API versioning follows the format `vYYYY.QQ.BB`, where 
-        #   - `YYYY` is the year
-        #   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-        #   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. 
-        #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-        #
-        # The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        # When no version is specified, the API defaults to `v2024.01.00`.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
         # Indicates the domain from which the request originated. Required if referer header is not present.
         field :origin, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'origin', 'style': 'simple', 'explode': false } }
         # Specifies the URL of the resource from which the request originated. Required if origin header is not present.
         field :referer, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'referer', 'style': 'simple', 'explode': false } }
 
-        sig { params(x_moov_version: T.nilable(::String), origin: T.nilable(::String), referer: T.nilable(::String)).void }
-        def initialize(x_moov_version: nil, origin: nil, referer: nil)
-          @x_moov_version = x_moov_version
+        sig { params(origin: T.nilable(::String), referer: T.nilable(::String)).void }
+        def initialize(origin: nil, referer: nil)
           @origin = origin
           @referer = referer
         end
@@ -38,7 +26,6 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @x_moov_version == other.x_moov_version
           return false unless @origin == other.origin
           return false unless @referer == other.referer
           true

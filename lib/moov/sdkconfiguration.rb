@@ -47,10 +47,6 @@ module Moov
     attr_accessor :server_idx
 
     
-    sig { returns(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]) }
-    attr_accessor :globals
-
-    
     sig { returns(String) }
     attr_accessor :language
 
@@ -75,11 +71,10 @@ module Moov
         security: T.nilable(Models::Components::Security),
         security_source: T.nilable(T.proc.returns(Models::Components::Security)),
         server_url: T.nilable(String),
-        server_idx: T.nilable(Integer),
-        globals: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])
+        server_idx: T.nilable(Integer)
       ).void
     end
-    def initialize(client, hooks, retry_config, timeout_ms, security, security_source, server_url, server_idx, globals)
+    def initialize(client, hooks, retry_config, timeout_ms, security, security_source, server_url, server_idx)
       @client = client
       @hooks = hooks
       @retry_config = retry_config
@@ -92,12 +87,11 @@ module Moov
       elsif !security.nil?
         @security_source = -> { security }
       end
-      @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = 'dev'
-      @sdk_version = '0.0.0-dev.6'
-      @gen_version = '2.859.2'
-      @user_agent = 'speakeasy-sdk/ruby 0.0.0-dev.6 2.859.2 dev moov_ruby'
+      @sdk_version = '0.0.0-dev.7'
+      @gen_version = '2.865.2'
+      @user_agent = 'speakeasy-sdk/ruby 0.0.0-dev.7 2.865.2 dev moov_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

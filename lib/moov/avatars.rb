@@ -41,15 +41,14 @@ module Moov
 
 
 
-    sig { params(unique_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAvatarResponse) }
-    def get(unique_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(unique_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAvatarResponse) }
+    def get(unique_id:, timeout_ms: nil, http_headers: nil)
       # get - Get avatar image for an account using a unique ID.    
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/profile-enrichment.read` scope.
       request = Models::Operations::GetAvatarRequest.new(
-        unique_id: unique_id,
-        x_moov_version: x_moov_version
+        unique_id: unique_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -57,10 +56,9 @@ module Moov
         Models::Operations::GetAvatarRequest,
         base_url,
         '/avatars/{uniqueID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'image/*'
       headers['user-agent'] = @sdk_configuration.user_agent

@@ -41,22 +41,18 @@ module Moov
 
 
 
-    sig { params(e2_ee_token: Models::Components::E2EEToken, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::TestEndToEndTokenResponse) }
-    def test_encrypted_token(e2_ee_token:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Components::E2EEToken, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::TestEndToEndTokenResponse) }
+    def test_encrypted_token(request:, timeout_ms: nil, http_headers: nil)
       # test_encrypted_token - Allows for testing a JWE token to ensure it's acceptable by Moov. 
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/ping.read` scope.
-      request = Models::Operations::TestEndToEndTokenRequest.new(
-        e2_ee_token: e2_ee_token,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/debug/end-to-end-token"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :e2_ee_token, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
@@ -177,16 +173,13 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GenerateEndToEndKeyResponse) }
-    def generate_key(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GenerateEndToEndKeyResponse) }
+    def generate_key(timeout_ms: nil, http_headers: nil)
       # generate_key - Generates a public key used to create a JWE token for passing secure authentication data through non-PCI compliant intermediaries.
-      request = Models::Operations::GenerateEndToEndKeyRequest.new(
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/end-to-end-keys"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

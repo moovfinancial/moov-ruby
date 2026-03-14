@@ -19,27 +19,15 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :create_transfer, Models::Components::CreateTransfer, { 'request': { 'media_type': 'application/json' } }
-        # Specify an API version.
-        #
-        # API versioning follows the format `vYYYY.QQ.BB`, where 
-        #   - `YYYY` is the year
-        #   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-        #   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. 
-        #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-        #
-        # The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        # When no version is specified, the API defaults to `v2024.01.00`.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
         # Optional header that indicates whether to return a synchronous response that includes full transfer and rail-specific details or an 
         # asynchronous response indicating the transfer was created (this is the default response if the header is omitted). A timeout will occur after 15 seconds.
         field :x_wait_for, Crystalline::Nilable.new(Models::Components::TransferWaitFor), { 'header': { 'field_name': 'x-wait-for', 'style': 'simple', 'explode': false } }
 
-        sig { params(x_idempotency_key: ::String, account_id: ::String, create_transfer: Models::Components::CreateTransfer, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::TransferWaitFor)).void }
-        def initialize(x_idempotency_key:, account_id:, create_transfer:, x_moov_version: nil, x_wait_for: nil)
+        sig { params(x_idempotency_key: ::String, account_id: ::String, create_transfer: Models::Components::CreateTransfer, x_wait_for: T.nilable(Models::Components::TransferWaitFor)).void }
+        def initialize(x_idempotency_key:, account_id:, create_transfer:, x_wait_for: nil)
           @x_idempotency_key = x_idempotency_key
           @account_id = account_id
           @create_transfer = create_transfer
-          @x_moov_version = x_moov_version
           @x_wait_for = x_wait_for
         end
 
@@ -49,7 +37,6 @@ module Moov
           return false unless @x_idempotency_key == other.x_idempotency_key
           return false unless @account_id == other.account_id
           return false unless @create_transfer == other.create_transfer
-          return false unless @x_moov_version == other.x_moov_version
           return false unless @x_wait_for == other.x_wait_for
           true
         end

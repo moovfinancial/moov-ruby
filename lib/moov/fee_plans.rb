@@ -53,12 +53,11 @@ module Moov
         Models::Operations::ListFeePlanAgreementsRequest,
         base_url,
         '/accounts/{accountID}/fee-plan-agreements',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListFeePlanAgreementsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListFeePlanAgreementsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -163,16 +162,15 @@ module Moov
     end
 
 
-    sig { params(create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateFeePlanAgreementsResponse) }
-    def create_fee_plan_agreements(create_fee_plan_agreement:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateFeePlanAgreementsResponse) }
+    def create_fee_plan_agreements(create_fee_plan_agreement:, account_id:, timeout_ms: nil, http_headers: nil)
       # create_fee_plan_agreements - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::CreateFeePlanAgreementsRequest.new(
         account_id: account_id,
-        create_fee_plan_agreement: create_fee_plan_agreement,
-        x_moov_version: x_moov_version
+        create_fee_plan_agreement: create_fee_plan_agreement
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -180,10 +178,9 @@ module Moov
         Models::Operations::CreateFeePlanAgreementsRequest,
         base_url,
         '/accounts/{accountID}/fee-plan-agreements',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_fee_plan_agreement, :json)
       headers['content-type'] = req_content_type
@@ -330,8 +327,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), plan_i_ds: T.nilable(T::Array[::String]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeePlansResponse) }
-    def list_fee_plans(account_id:, x_moov_version: nil, plan_i_ds: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, plan_i_ds: T.nilable(T::Array[::String]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeePlansResponse) }
+    def list_fee_plans(account_id:, plan_i_ds: nil, timeout_ms: nil, http_headers: nil)
       # list_fee_plans - List all fee plans available for use by an account. This is intended to be used by an account when 
       # selecting a fee plan to apply to a connected account.
       #
@@ -339,7 +336,6 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::ListFeePlansRequest.new(
         account_id: account_id,
-        x_moov_version: x_moov_version,
         plan_i_ds: plan_i_ds
       )
       url, params = @sdk_configuration.get_server_details
@@ -348,12 +344,11 @@ module Moov
         Models::Operations::ListFeePlansRequest,
         base_url,
         '/accounts/{accountID}/fee-plans',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListFeePlansRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListFeePlansRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -470,12 +465,11 @@ module Moov
         Models::Operations::ListFeeRevenueRequest,
         base_url,
         '/accounts/{accountID}/fee-revenue',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListFeeRevenueRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListFeeRevenueRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -592,12 +586,11 @@ module Moov
         Models::Operations::RetrieveFeesRequest,
         base_url,
         '/accounts/{accountID}/fees',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::RetrieveFeesRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::RetrieveFeesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -702,15 +695,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeesFetchResponse) }
-    def list_fees_fetch(account_id:, list_fees_fetch_request: nil, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeesFetchResponse) }
+    def list_fees_fetch(account_id:, list_fees_fetch_request: nil, timeout_ms: nil, http_headers: nil)
       # list_fees_fetch - List fees associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::ListFeesFetchRequest.new(
         account_id: account_id,
-        x_moov_version: x_moov_version,
         list_fees_fetch_request: list_fees_fetch_request
       )
       url, params = @sdk_configuration.get_server_details
@@ -719,10 +711,9 @@ module Moov
         Models::Operations::ListFeesFetchRequest,
         base_url,
         '/accounts/{accountID}/fees/.fetch',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :list_fees_fetch_request, :json)
       headers['content-type'] = req_content_type
@@ -850,12 +841,11 @@ module Moov
         Models::Operations::ListPartnerPricingAgreementsRequest,
         base_url,
         '/accounts/{accountID}/partner-pricing-agreements',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListPartnerPricingAgreementsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListPartnerPricingAgreementsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -972,12 +962,11 @@ module Moov
         Models::Operations::ListResidualsRequest,
         base_url,
         '/accounts/{accountID}/residuals',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListResidualsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListResidualsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1082,16 +1071,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, residual_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetResidualResponse) }
-    def get_residual(account_id:, residual_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, residual_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetResidualResponse) }
+    def get_residual(account_id:, residual_id:, timeout_ms: nil, http_headers: nil)
       # get_residual - Get a residual associated with an account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetResidualRequest.new(
         account_id: account_id,
-        residual_id: residual_id,
-        x_moov_version: x_moov_version
+        residual_id: residual_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -1099,10 +1087,9 @@ module Moov
         Models::Operations::GetResidualRequest,
         base_url,
         '/accounts/{accountID}/residuals/{residualID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1219,12 +1206,11 @@ module Moov
         Models::Operations::ListResidualFeesRequest,
         base_url,
         '/accounts/{accountID}/residuals/{residualID}/fees',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListResidualFeesRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListResidualFeesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 

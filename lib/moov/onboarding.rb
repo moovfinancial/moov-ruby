@@ -41,22 +41,18 @@ module Moov
 
 
 
-    sig { params(onboarding_invite_request: Models::Components::OnboardingInviteRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateOnboardingInviteResponse) }
-    def create_invite(onboarding_invite_request:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Components::OnboardingInviteRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateOnboardingInviteResponse) }
+    def create_invite(request:, timeout_ms: nil, http_headers: nil)
       # create_invite - Create an invitation containing a unique link that allows the recipient to onboard their organization with Moov.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.write` scope.
-      request = Models::Operations::CreateOnboardingInviteRequest.new(
-        onboarding_invite_request: onboarding_invite_request,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/onboarding-invites"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :onboarding_invite_request, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
@@ -201,19 +197,16 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListOnboardingInvitesResponse) }
-    def list_invites(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListOnboardingInvitesResponse) }
+    def list_invites(timeout_ms: nil, http_headers: nil)
       # list_invites - List all the onboarding invites created by the caller's account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.read` scope.
-      request = Models::Operations::ListOnboardingInvitesRequest.new(
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/onboarding-invites"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -318,15 +311,14 @@ module Moov
     end
 
 
-    sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetOnboardingInviteResponse) }
-    def get_invite(code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetOnboardingInviteResponse) }
+    def get_invite(code:, timeout_ms: nil, http_headers: nil)
       # get_invite - Retrieve details about an onboarding invite.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.read` scope.
       request = Models::Operations::GetOnboardingInviteRequest.new(
-        code: code,
-        x_moov_version: x_moov_version
+        code: code
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -334,10 +326,9 @@ module Moov
         Models::Operations::GetOnboardingInviteRequest,
         base_url,
         '/onboarding-invites/{code}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -442,15 +433,14 @@ module Moov
     end
 
 
-    sig { params(code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RevokeOnboardingInviteResponse) }
-    def revoke_invite(code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RevokeOnboardingInviteResponse) }
+    def revoke_invite(code:, timeout_ms: nil, http_headers: nil)
       # revoke_invite - Revoke an onboarding invite, rendering the invitation link unusable.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts.write` scope.
       request = Models::Operations::RevokeOnboardingInviteRequest.new(
-        code: code,
-        x_moov_version: x_moov_version
+        code: code
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -458,10 +448,9 @@ module Moov
         Models::Operations::RevokeOnboardingInviteRequest,
         base_url,
         '/onboarding-invites/{code}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = '*/*'
       headers['user-agent'] = @sdk_configuration.user_agent

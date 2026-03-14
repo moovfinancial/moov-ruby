@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(create_resolution_link: Models::Components::CreateResolutionLink, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateResolutionLinkResponse) }
-    def create(create_resolution_link:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_resolution_link: Models::Components::CreateResolutionLink, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateResolutionLinkResponse) }
+    def create(create_resolution_link:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Create a resolution link for the specified account. Resolution links are temporary, secure links
       # sent to merchants to resolve account requirements such as KYC verification or document uploads.  Only one active resolution link
       # is allowed per connected account. 
@@ -51,8 +51,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/profile.write`, `/accounts/{accountID}/representatives.write` and `/accounts/{accountID}/files.write` scopes.
       request = Models::Operations::CreateResolutionLinkRequest.new(
         account_id: account_id,
-        create_resolution_link: create_resolution_link,
-        x_moov_version: x_moov_version
+        create_resolution_link: create_resolution_link
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -60,10 +59,9 @@ module Moov
         Models::Operations::CreateResolutionLinkRequest,
         base_url,
         '/accounts/{accountID}/resolution-links',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_resolution_link, :json)
       headers['content-type'] = req_content_type
@@ -210,15 +208,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListResolutionLinksResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListResolutionLinksResponse) }
+    def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - List resolution links for the specified account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::ListResolutionLinksRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -226,10 +223,9 @@ module Moov
         Models::Operations::ListResolutionLinksRequest,
         base_url,
         '/accounts/{accountID}/resolution-links',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -334,16 +330,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, resolution_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetResolutionLinkResponse) }
-    def get(account_id:, resolution_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, resolution_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetResolutionLinkResponse) }
+    def get(account_id:, resolution_link_code:, timeout_ms: nil, http_headers: nil)
       # get - Get a resolution link by code.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetResolutionLinkRequest.new(
         account_id: account_id,
-        resolution_link_code: resolution_link_code,
-        x_moov_version: x_moov_version
+        resolution_link_code: resolution_link_code
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -351,10 +346,9 @@ module Moov
         Models::Operations::GetResolutionLinkRequest,
         base_url,
         '/accounts/{accountID}/resolution-links/{resolutionLinkCode}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -459,16 +453,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, resolution_link_code: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableResolutionLinkResponse) }
-    def disable(account_id:, resolution_link_code:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, resolution_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableResolutionLinkResponse) }
+    def disable(account_id:, resolution_link_code:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a resolution link. Disabled resolution links can no longer be used by merchants.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/profile.write` scope.
       request = Models::Operations::DisableResolutionLinkRequest.new(
         account_id: account_id,
-        resolution_link_code: resolution_link_code,
-        x_moov_version: x_moov_version
+        resolution_link_code: resolution_link_code
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -476,10 +469,9 @@ module Moov
         Models::Operations::DisableResolutionLinkRequest,
         base_url,
         '/accounts/{accountID}/resolution-links/{resolutionLinkCode}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

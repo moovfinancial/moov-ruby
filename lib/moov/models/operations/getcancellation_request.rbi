@@ -14,6 +14,4 @@ class Moov::Models::Operations::GetCancellationRequest
   def transfer_id=(str_); end
   def cancellation_id(); end
   def cancellation_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

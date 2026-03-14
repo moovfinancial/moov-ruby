@@ -14,6 +14,4 @@ class Moov::Models::Operations::CreateInvoicePaymentRequest
   def invoice_id=(str_); end
   def create_invoice_payment(); end
   def create_invoice_payment=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(register_apple_pay_merchant_domains: Models::Components::RegisterApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RegisterApplePayMerchantDomainsResponse) }
-    def register_merchant_domains(register_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(register_apple_pay_merchant_domains: Models::Components::RegisterApplePayMerchantDomains, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RegisterApplePayMerchantDomainsResponse) }
+    def register_merchant_domains(register_apple_pay_merchant_domains:, account_id:, timeout_ms: nil, http_headers: nil)
       # register_merchant_domains - Add domains to be registered with Apple Pay.
       #
       # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) 
@@ -52,8 +52,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
       request = Models::Operations::RegisterApplePayMerchantDomainsRequest.new(
         account_id: account_id,
-        register_apple_pay_merchant_domains: register_apple_pay_merchant_domains,
-        x_moov_version: x_moov_version
+        register_apple_pay_merchant_domains: register_apple_pay_merchant_domains
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -61,10 +60,9 @@ module Moov
         Models::Operations::RegisterApplePayMerchantDomainsRequest,
         base_url,
         '/accounts/{accountID}/apple-pay/domains',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :register_apple_pay_merchant_domains, :json)
       headers['content-type'] = req_content_type
@@ -196,8 +194,8 @@ module Moov
     end
 
 
-    sig { params(update_apple_pay_merchant_domains: Models::Components::UpdateApplePayMerchantDomains, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateApplePayMerchantDomainsResponse) }
-    def update_merchant_domains(update_apple_pay_merchant_domains:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_apple_pay_merchant_domains: Models::Components::UpdateApplePayMerchantDomains, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateApplePayMerchantDomainsResponse) }
+    def update_merchant_domains(update_apple_pay_merchant_domains:, account_id:, timeout_ms: nil, http_headers: nil)
       # update_merchant_domains - Add or remove domains to be registered with Apple Pay.
       #
       # Any domains that will be used to accept payments must first be [verified](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains)
@@ -207,8 +205,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
       request = Models::Operations::UpdateApplePayMerchantDomainsRequest.new(
         account_id: account_id,
-        update_apple_pay_merchant_domains: update_apple_pay_merchant_domains,
-        x_moov_version: x_moov_version
+        update_apple_pay_merchant_domains: update_apple_pay_merchant_domains
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -216,10 +213,9 @@ module Moov
         Models::Operations::UpdateApplePayMerchantDomainsRequest,
         base_url,
         '/accounts/{accountID}/apple-pay/domains',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_apple_pay_merchant_domains, :json)
       headers['content-type'] = req_content_type
@@ -342,8 +338,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetApplePayMerchantDomainsResponse) }
-    def get_merchant_domains(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetApplePayMerchantDomainsResponse) }
+    def get_merchant_domains(account_id:, timeout_ms: nil, http_headers: nil)
       # get_merchant_domains - Get domains registered with Apple Pay. 
       #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
@@ -351,8 +347,7 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/apple-pay.read` scope.
       request = Models::Operations::GetApplePayMerchantDomainsRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -360,10 +355,9 @@ module Moov
         Models::Operations::GetApplePayMerchantDomainsRequest,
         base_url,
         '/accounts/{accountID}/apple-pay/domains',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -468,8 +462,8 @@ module Moov
     end
 
 
-    sig { params(create_apple_pay_session: Models::Components::CreateApplePaySession, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateApplePaySessionResponse) }
-    def create_session(create_apple_pay_session:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_apple_pay_session: Models::Components::CreateApplePaySession, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateApplePaySessionResponse) }
+    def create_session(create_apple_pay_session:, account_id:, timeout_ms: nil, http_headers: nil)
       # create_session - Create a session with Apple Pay to facilitate a payment. 
       #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
@@ -479,8 +473,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
       request = Models::Operations::CreateApplePaySessionRequest.new(
         account_id: account_id,
-        create_apple_pay_session: create_apple_pay_session,
-        x_moov_version: x_moov_version
+        create_apple_pay_session: create_apple_pay_session
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -488,10 +481,9 @@ module Moov
         Models::Operations::CreateApplePaySessionRequest,
         base_url,
         '/accounts/{accountID}/apple-pay/sessions',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_apple_pay_session, :json)
       headers['content-type'] = req_content_type
@@ -623,8 +615,8 @@ module Moov
     end
 
 
-    sig { params(link_apple_pay: Models::Components::LinkApplePay, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkApplePayTokenResponse) }
-    def link_token(link_apple_pay:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(link_apple_pay: Models::Components::LinkApplePay, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkApplePayTokenResponse) }
+    def link_token(link_apple_pay:, account_id:, timeout_ms: nil, http_headers: nil)
       # link_token - Connect an Apple Pay token to the specified account. 
       #
       # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
@@ -634,8 +626,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::LinkApplePayTokenRequest.new(
         account_id: account_id,
-        link_apple_pay: link_apple_pay,
-        x_moov_version: x_moov_version
+        link_apple_pay: link_apple_pay
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -643,10 +634,9 @@ module Moov
         Models::Operations::LinkApplePayTokenRequest,
         base_url,
         '/accounts/{accountID}/apple-pay/tokens',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :link_apple_pay, :json)
       headers['content-type'] = req_content_type

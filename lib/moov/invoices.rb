@@ -41,16 +41,15 @@ module Moov
 
 
 
-    sig { params(create_invoice: Models::Components::CreateInvoice, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoiceResponse) }
-    def create_invoice(create_invoice:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_invoice: Models::Components::CreateInvoice, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoiceResponse) }
+    def create_invoice(create_invoice:, account_id:, timeout_ms: nil, http_headers: nil)
       # create_invoice - Create an invoice for a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::CreateInvoiceRequest.new(
         account_id: account_id,
-        create_invoice: create_invoice,
-        x_moov_version: x_moov_version
+        create_invoice: create_invoice
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -58,10 +57,9 @@ module Moov
         Models::Operations::CreateInvoiceRequest,
         base_url,
         '/accounts/{accountID}/invoices',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_invoice, :json)
       headers['content-type'] = req_content_type
@@ -220,12 +218,11 @@ module Moov
         Models::Operations::ListInvoicesRequest,
         base_url,
         '/accounts/{accountID}/invoices',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListInvoicesRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListInvoicesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -345,16 +342,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetInvoiceResponse) }
-    def get_invoice(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetInvoiceResponse) }
+    def get_invoice(account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # get_invoice - Retrieve an invoice by ID.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       request = Models::Operations::GetInvoiceRequest.new(
         account_id: account_id,
-        invoice_id: invoice_id,
-        x_moov_version: x_moov_version
+        invoice_id: invoice_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -362,10 +358,9 @@ module Moov
         Models::Operations::GetInvoiceRequest,
         base_url,
         '/accounts/{accountID}/invoices/{invoiceID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -470,8 +465,8 @@ module Moov
     end
 
 
-    sig { params(update_invoice: Models::Components::UpdateInvoice, account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateInvoiceResponse) }
-    def update_invoice(update_invoice:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_invoice: Models::Components::UpdateInvoice, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateInvoiceResponse) }
+    def update_invoice(update_invoice:, account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # update_invoice - Updates an invoice.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
@@ -479,8 +474,7 @@ module Moov
       request = Models::Operations::UpdateInvoiceRequest.new(
         account_id: account_id,
         invoice_id: invoice_id,
-        update_invoice: update_invoice,
-        x_moov_version: x_moov_version
+        update_invoice: update_invoice
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -488,10 +482,9 @@ module Moov
         Models::Operations::UpdateInvoiceRequest,
         base_url,
         '/accounts/{accountID}/invoices/{invoiceID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_invoice, :json)
       headers['content-type'] = req_content_type
@@ -638,8 +631,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteInvoiceResponse) }
-    def delete(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteInvoiceResponse) }
+    def delete(account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # delete - Delete an invoice. Only invoices in `draft` status can be deleted.
       #
       # Deleting an invoice indicates it was created by mistake and should be completely disregarded.
@@ -652,8 +645,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/invoices.write` scope.
       request = Models::Operations::DeleteInvoiceRequest.new(
         account_id: account_id,
-        invoice_id: invoice_id,
-        x_moov_version: x_moov_version
+        invoice_id: invoice_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -661,10 +653,9 @@ module Moov
         Models::Operations::DeleteInvoiceRequest,
         base_url,
         '/accounts/{accountID}/invoices/{invoiceID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -775,8 +766,8 @@ module Moov
     end
 
 
-    sig { params(create_invoice_payment: Models::Components::CreateInvoicePayment, account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoicePaymentResponse) }
-    def create_invoice_payment(create_invoice_payment:, account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_invoice_payment: Models::Components::CreateInvoicePayment, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoicePaymentResponse) }
+    def create_invoice_payment(create_invoice_payment:, account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # create_invoice_payment - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
       # If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
       #
@@ -785,8 +776,7 @@ module Moov
       request = Models::Operations::CreateInvoicePaymentRequest.new(
         account_id: account_id,
         invoice_id: invoice_id,
-        create_invoice_payment: create_invoice_payment,
-        x_moov_version: x_moov_version
+        create_invoice_payment: create_invoice_payment
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -794,10 +784,9 @@ module Moov
         Models::Operations::CreateInvoicePaymentRequest,
         base_url,
         '/accounts/{accountID}/invoices/{invoiceID}/payments',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_invoice_payment, :json)
       headers['content-type'] = req_content_type
@@ -944,16 +933,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInvoicePaymentsResponse) }
-    def list_invoice_payments(account_id:, invoice_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInvoicePaymentsResponse) }
+    def list_invoice_payments(account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # list_invoice_payments - List all the payments made towards an invoice.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
       request = Models::Operations::ListInvoicePaymentsRequest.new(
         account_id: account_id,
-        invoice_id: invoice_id,
-        x_moov_version: x_moov_version
+        invoice_id: invoice_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -961,10 +949,9 @@ module Moov
         Models::Operations::ListInvoicePaymentsRequest,
         base_url,
         '/accounts/{accountID}/invoices/{invoiceID}/payments',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
