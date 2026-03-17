@@ -12,17 +12,17 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Postal or ZIP code.
         field :postal_code, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('postalCode'), required: true } }
-
+        # Street address line 1.
         field :address_line1, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addressLine1') } }
-
+        # Street address line 2 (e.g., apartment or suite number).
         field :address_line2, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addressLine2') } }
-
+        # City name.
         field :city, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('city') } }
-
+        # Two-letter state or province code.
         field :state_or_province, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('stateOrProvince') } }
-
+        # Two-letter ISO 3166-1 country code.
         field :country, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('country') } }
 
         sig { params(postal_code: ::String, address_line1: T.nilable(::String), address_line2: T.nilable(::String), city: T.nilable(::String), state_or_province: T.nilable(::String), country: T.nilable(::String)).void }
