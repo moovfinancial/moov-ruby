@@ -12,13 +12,15 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Verification result of the card's CVV.
         field :cvv, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cvv'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
-
+        # Verification result of the billing address line 1.
+        # Derived from the same AVS code as `postalCode`; the card network returns a single code covering both address fields.
         field :address_line1, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('addressLine1'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
-
+        # Verification result of the billing address postal code.
+        # Derived from the same AVS code as `addressLine1`; the card network returns a single code covering both address fields.
         field :postal_code, Models::Components::CardVerificationResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('postalCode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, false) } }
-        # The results of submitting cardholder name to a card network for verification.
+        # Verification results of the cardholder's name, broken down by name component.
         field :account_name, Crystalline::Nilable.new(Models::Components::AccountNameVerification), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountName') } }
 
         sig { params(cvv: Models::Components::CardVerificationResult, address_line1: Models::Components::CardVerificationResult, postal_code: Models::Components::CardVerificationResult, account_name: T.nilable(Models::Components::AccountNameVerification)).void }

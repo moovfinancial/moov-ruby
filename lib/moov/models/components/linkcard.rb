@@ -12,25 +12,28 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # The full card number (PAN).
         field :card_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardNumber'), required: true } }
-
+        # The card's 3- or 4-digit card verification value.
         field :card_cvv, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardCvv'), required: true } }
         # The expiration date of the card or token.
         field :expiration, Models::Components::CardExpiration, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration'), required: true } }
-
+        # The billing address associated with the card.
         field :billing_address, Models::Components::CardAddress, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress'), required: true } }
         # Wraps a compact-serialized JSON Web Encryption (JWE) token used for secure transmission of sensitive data (e.g., PCI information) through intermediaries. 
         # This token is encrypted using the public key from /end-to-end-keys and wraps an AES key. For details and examples, refer to our 
         # [GitHub repository](https://github.com/moovfinancial/moov-go/blob/main/examples/e2ee/e2ee_test.go).
         field :e2ee, Crystalline::Nilable.new(Models::Components::E2EEToken), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('e2ee') } }
-
+        # The name of the cardholder as it appears on the card.
         field :holder_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderName') } }
-
+        # Indicates cardholder has authorized card to be stored for future payments. (e.g., recurring payments).
+        # If true and no `merchantAccountID` is provided, the partner account's ID is used as the merchant account for verification.
         field :card_on_file, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardOnFile') } }
-
+        # Merchant account whose details (statement descriptor, address, etc.) are used for the card verification authorization.
+        # If omitted, the partner account's details are used instead.
         field :merchant_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantAccountID') } }
-
+        # If true, submits the cardholder's name to the card network for verification as part of the $0 authorization.
+        # Only supported for Visa and Mastercard; requesting name verification for American Express or Discover will return an error.
         field :verify_name, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('verifyName') } }
 
         sig { params(card_number: ::String, card_cvv: ::String, expiration: Models::Components::CardExpiration, billing_address: Models::Components::CardAddress, e2ee: T.nilable(Models::Components::E2EEToken), holder_name: T.nilable(::String), card_on_file: T.nilable(T::Boolean), merchant_account_id: T.nilable(::String), verify_name: T.nilable(T::Boolean)).void }
