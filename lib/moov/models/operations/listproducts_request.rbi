@@ -10,8 +10,6 @@ end
 class Moov::Models::Operations::ListProductsRequest
   def account_id(); end
   def account_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
   def title(); end
   def title=(str_); end
   def skip(); end

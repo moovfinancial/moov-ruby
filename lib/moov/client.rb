@@ -25,7 +25,6 @@ module Moov
     # @param timeout_ms [Integer, nil] Request timeout in milliseconds for all operations
     # @param security [Models::Components::Security, nil] The security details required for authentication
     # @param security_source [Proc{|| Models::Components::Security, nil}] A function that returns security details required for authentication
-    # @param x_moov_version [String, nil] Configures the x_moov_version parameter for all supported operations
     # @param server_idx [Integer, nil] The index of the server to use for all operations
     # @param server_url [String, nil] The server URL to use for all operations
     # @param url_params [Hash{Symbol => String}, nil] Parameters to optionally template the server URL with
@@ -36,13 +35,12 @@ module Moov
         timeout_ms: T.nilable(Integer),
         security: T.nilable(Models::Components::Security),
         security_source: T.nilable(T.proc.returns(Models::Components::Security)),
-        x_moov_version: T.nilable(::String),
         server_idx: T.nilable(Integer),
         server_url: T.nilable(String),
         url_params: T.nilable(T::Hash[Symbol, String])
       ).void
     end
-    def initialize(client: nil, retry_config: nil, timeout_ms: nil, security: nil, security_source: nil, x_moov_version: nil, server_idx: nil, server_url: nil, url_params: nil)
+    def initialize(client: nil, retry_config: nil, timeout_ms: nil, security: nil, security_source: nil, server_idx: nil, server_url: nil, url_params: nil)
 
       connection_options = {
         request: {
@@ -63,18 +61,6 @@ module Moov
       end
 
       server_idx = 0 if server_idx.nil?
-
-      globals = {
-        'parameters': {
-          'queryParam': {
-          },
-          'pathParam': {
-          },
-          'header': {
-            'x_moov_version': x_moov_version,
-          }
-        }
-      }
       hooks = SDKHooks::Hooks.new
       @sdk_configuration = SDKConfiguration.new(
         client,
@@ -84,8 +70,7 @@ module Moov
         security,
         security_source,
         server_url,
-        server_idx,
-        globals
+        server_idx
       )
       @sdk_configuration = hooks.sdk_init(config: @sdk_configuration)
       init_sdks

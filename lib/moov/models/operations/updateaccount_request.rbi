@@ -12,6 +12,4 @@ class Moov::Models::Operations::UpdateAccountRequest
   def account_id=(str_); end
   def patch_account(); end
   def patch_account=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

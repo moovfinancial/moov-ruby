@@ -12,6 +12,4 @@ class Moov::Models::Operations::CreateRepresentativeRequest
   def account_id=(str_); end
   def create_representative(); end
   def create_representative=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

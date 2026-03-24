@@ -10,8 +10,6 @@ end
 class Moov::Models::Operations::GetEnrichmentAddressRequest
   def search(); end
   def search=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
   def max_results(); end
   def max_results=(str_); end
   def include_cities(); end

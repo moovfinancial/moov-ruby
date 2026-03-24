@@ -55,12 +55,11 @@ module Moov
         Models::Operations::ListWalletTransactionsRequest,
         base_url,
         '/accounts/{accountID}/wallets/{walletID}/transactions',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListWalletTransactionsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListWalletTransactionsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -180,8 +179,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, wallet_id: ::String, transaction_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWalletTransactionResponse) }
-    def get(account_id:, wallet_id:, transaction_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, wallet_id: ::String, transaction_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetWalletTransactionResponse) }
+    def get(account_id:, wallet_id:, transaction_id:, timeout_ms: nil, http_headers: nil)
       # get - Get details on a specific wallet transaction. 
       #
       # Read our [wallet transactions guide](https://docs.moov.io/guides/sources/wallets/transactions/) to learn more.
@@ -191,8 +190,7 @@ module Moov
       request = Models::Operations::GetWalletTransactionRequest.new(
         account_id: account_id,
         wallet_id: wallet_id,
-        transaction_id: transaction_id,
-        x_moov_version: x_moov_version
+        transaction_id: transaction_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -200,10 +198,9 @@ module Moov
         Models::Operations::GetWalletTransactionRequest,
         base_url,
         '/accounts/{accountID}/wallets/{walletID}/transactions/{transactionID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

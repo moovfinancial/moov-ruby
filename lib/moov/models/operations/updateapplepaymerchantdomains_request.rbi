@@ -12,6 +12,4 @@ class Moov::Models::Operations::UpdateApplePayMerchantDomainsRequest
   def account_id=(str_); end
   def update_apple_pay_merchant_domains(); end
   def update_apple_pay_merchant_domains=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end
