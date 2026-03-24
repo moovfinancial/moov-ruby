@@ -14,6 +14,4 @@ class Moov::Models::Operations::UpdateImageMetadataRequest
   def image_id=(str_); end
   def image_metadata_request(); end
   def image_metadata_request=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

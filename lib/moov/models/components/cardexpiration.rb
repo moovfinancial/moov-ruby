@@ -12,9 +12,9 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Two-digit month the card expires.
         field :month, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('month'), required: true } }
-
+        # Two-digit year the card expires.
         field :year, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('year'), required: true } }
 
         sig { params(month: ::String, year: ::String).void }

@@ -12,6 +12,4 @@ class Moov::Models::Operations::DeleteImageRequest
   def account_id=(str_); end
   def image_id(); end
   def image_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

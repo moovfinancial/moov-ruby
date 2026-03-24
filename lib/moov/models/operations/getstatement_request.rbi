@@ -12,6 +12,4 @@ class Moov::Models::Operations::GetStatementRequest
   def account_id=(str_); end
   def statement_id(); end
   def statement_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

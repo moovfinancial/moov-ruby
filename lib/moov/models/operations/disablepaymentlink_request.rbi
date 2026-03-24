@@ -12,6 +12,4 @@ class Moov::Models::Operations::DisablePaymentLinkRequest
   def account_id=(str_); end
   def payment_link_code(); end
   def payment_link_code=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

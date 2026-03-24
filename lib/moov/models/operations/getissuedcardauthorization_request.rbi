@@ -12,6 +12,4 @@ class Moov::Models::Operations::GetIssuedCardAuthorizationRequest
   def account_id=(str_); end
   def authorization_id(); end
   def authorization_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

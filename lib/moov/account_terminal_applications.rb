@@ -41,16 +41,15 @@ module Moov
 
 
 
-    sig { params(link_account_terminal_application: Models::Components::LinkAccountTerminalApplication, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkAccountTerminalApplicationResponse) }
-    def link(link_account_terminal_application:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(link_account_terminal_application: Models::Components::LinkAccountTerminalApplication, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkAccountTerminalApplicationResponse) }
+    def link(link_account_terminal_application:, account_id:, timeout_ms: nil, http_headers: nil)
       # link - Link an account with a terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-applications.write` scope.
       request = Models::Operations::LinkAccountTerminalApplicationRequest.new(
         account_id: account_id,
-        link_account_terminal_application: link_account_terminal_application,
-        x_moov_version: x_moov_version
+        link_account_terminal_application: link_account_terminal_application
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -58,10 +57,9 @@ module Moov
         Models::Operations::LinkAccountTerminalApplicationRequest,
         base_url,
         '/accounts/{accountID}/terminal-applications',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :link_account_terminal_application, :json)
       headers['content-type'] = req_content_type
@@ -208,15 +206,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListAccountTerminalApplicationsResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListAccountTerminalApplicationsResponse) }
+    def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - Retrieve all terminal applications linked to a specific account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
       request = Models::Operations::ListAccountTerminalApplicationsRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -224,10 +221,9 @@ module Moov
         Models::Operations::ListAccountTerminalApplicationsRequest,
         base_url,
         '/accounts/{accountID}/terminal-applications',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -332,16 +328,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountTerminalApplicationResponse) }
-    def get(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, terminal_application_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetAccountTerminalApplicationResponse) }
+    def get(account_id:, terminal_application_id:, timeout_ms: nil, http_headers: nil)
       # get - Verifies if a specific Terminal Application is linked to an Account. This endpoint acts as a validation check for the link's existence.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-applications.read` scope.
       request = Models::Operations::GetAccountTerminalApplicationRequest.new(
         account_id: account_id,
-        terminal_application_id: terminal_application_id,
-        x_moov_version: x_moov_version
+        terminal_application_id: terminal_application_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -349,10 +344,9 @@ module Moov
         Models::Operations::GetAccountTerminalApplicationRequest,
         base_url,
         '/accounts/{accountID}/terminal-applications/{terminalApplicationID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -457,16 +451,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTerminalConfigurationResponse) }
-    def get_configuration(account_id:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, terminal_application_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTerminalConfigurationResponse) }
+    def get_configuration(account_id:, terminal_application_id:, timeout_ms: nil, http_headers: nil)
       # get_configuration - Fetch the configuration for a given Terminal Application linked to a specific Account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/terminal-configuration.read` scope.
       request = Models::Operations::GetTerminalConfigurationRequest.new(
         account_id: account_id,
-        terminal_application_id: terminal_application_id,
-        x_moov_version: x_moov_version
+        terminal_application_id: terminal_application_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -474,10 +467,9 @@ module Moov
         Models::Operations::GetTerminalConfigurationRequest,
         base_url,
         '/accounts/{accountID}/terminal-applications/{terminalApplicationID}/configuration',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

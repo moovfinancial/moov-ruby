@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(link_bank_account: T.any(Models::Components::BankAccountPayload, Models::Components::PlaidPayload, Models::Components::PlaidLinkPayload, Models::Components::MxPayload), account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkBankAccountResponse) }
-    def link(link_bank_account:, account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(link_bank_account: T.any(Models::Components::BankAccountPayload, Models::Components::PlaidPayload, Models::Components::PlaidLinkPayload, Models::Components::MxPayload), account_id: ::String, x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkBankAccountResponse) }
+    def link(link_bank_account:, account_id:, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
       # link - Link a bank account to an existing Moov account. Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more.
       #
       # It is strongly recommended that callers include the `X-Wait-For` header, set to `payment-method`, if the newly linked
@@ -55,7 +55,6 @@ module Moov
       request = Models::Operations::LinkBankAccountRequest.new(
         account_id: account_id,
         link_bank_account: link_bank_account,
-        x_moov_version: x_moov_version,
         x_wait_for: x_wait_for
       )
       url, params = @sdk_configuration.get_server_details
@@ -64,10 +63,9 @@ module Moov
         Models::Operations::LinkBankAccountRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = Utils.get_headers(request)
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :link_bank_account, :json)
       headers['content-type'] = req_content_type
@@ -214,8 +212,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListBankAccountsResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListBankAccountsResponse) }
+    def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - List all the bank accounts associated with a particular Moov account. 
       #
       # Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more. 
@@ -223,8 +221,7 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
       request = Models::Operations::ListBankAccountsRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -232,10 +229,9 @@ module Moov
         Models::Operations::ListBankAccountsRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -340,8 +336,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBankAccountResponse) }
-    def get(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBankAccountResponse) }
+    def get(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve bank account details (i.e. routing number or account type) associated with a specific Moov account. 
       #
       # Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more. 
@@ -350,8 +346,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
       request = Models::Operations::GetBankAccountRequest.new(
         account_id: account_id,
-        bank_account_id: bank_account_id,
-        x_moov_version: x_moov_version
+        bank_account_id: bank_account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -359,10 +354,9 @@ module Moov
         Models::Operations::GetBankAccountRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts/{bankAccountID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -467,16 +461,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableBankAccountResponse) }
-    def disable(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableBankAccountResponse) }
+    def disable(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # disable - Discontinue using a specified bank account linked to a Moov account. 
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::DisableBankAccountRequest.new(
         account_id: account_id,
-        bank_account_id: bank_account_id,
-        x_moov_version: x_moov_version
+        bank_account_id: bank_account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -484,10 +477,9 @@ module Moov
         Models::Operations::DisableBankAccountRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts/{bankAccountID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -598,8 +590,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateMicroDepositsResponse) }
-    def initiate_micro_deposits(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateMicroDepositsResponse) }
+    def initiate_micro_deposits(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # initiate_micro_deposits - Micro-deposits help confirm bank account ownership, helping reduce fraud and the risk of unauthorized activity. 
       # Use this method to initiate the micro-deposit verification, sending two small credit transfers to the bank account 
       # you want to confirm.
@@ -617,8 +609,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
       request = Models::Operations::InitiateMicroDepositsRequest.new(
         account_id: account_id,
-        bank_account_id: bank_account_id,
-        x_moov_version: x_moov_version
+        bank_account_id: bank_account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -626,10 +617,9 @@ module Moov
         Models::Operations::InitiateMicroDepositsRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts/{bankAccountID}/micro-deposits',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -740,8 +730,8 @@ module Moov
     end
 
 
-    sig { params(complete_micro_deposits: Models::Components::CompleteMicroDeposits, account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CompleteMicroDepositsResponse) }
-    def complete_micro_deposits(complete_micro_deposits:, account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(complete_micro_deposits: Models::Components::CompleteMicroDeposits, account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CompleteMicroDepositsResponse) }
+    def complete_micro_deposits(complete_micro_deposits:, account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # complete_micro_deposits - Complete the micro-deposit validation process by passing the amounts of the two transfers within three tries.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -749,8 +739,7 @@ module Moov
       request = Models::Operations::CompleteMicroDepositsRequest.new(
         account_id: account_id,
         bank_account_id: bank_account_id,
-        complete_micro_deposits: complete_micro_deposits,
-        x_moov_version: x_moov_version
+        complete_micro_deposits: complete_micro_deposits
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -758,10 +747,9 @@ module Moov
         Models::Operations::CompleteMicroDepositsRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts/{bankAccountID}/micro-deposits',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :complete_micro_deposits, :json)
       headers['content-type'] = req_content_type
@@ -908,8 +896,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBankAccountVerificationResponse) }
-    def get_verification(account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBankAccountVerificationResponse) }
+    def get_verification(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # get_verification - Retrieve the current status and details of an instant verification, including whether the verification method was instant (RTP or FedNow) or same-day
       # ACH. This helps track the verification process in real-time and provides details in case of exceptions.
       #
@@ -925,8 +913,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
       request = Models::Operations::GetBankAccountVerificationRequest.new(
         account_id: account_id,
-        bank_account_id: bank_account_id,
-        x_moov_version: x_moov_version
+        bank_account_id: bank_account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -934,10 +921,9 @@ module Moov
         Models::Operations::GetBankAccountVerificationRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts/{bankAccountID}/verify',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1042,8 +1028,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateBankAccountVerificationResponse) }
-    def initiate_verification(account_id:, bank_account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, bank_account_id: ::String, x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateBankAccountVerificationResponse) }
+    def initiate_verification(account_id:, bank_account_id:, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
       # initiate_verification - Instant micro-deposit verification offers a quick and efficient way to verify bank account ownership. 
       #
       # Send a $0.01 credit with a unique verification code via RTP, FedNow, or same-day ACH, depending on the receiving bank's capabilities. This
@@ -1066,7 +1052,6 @@ module Moov
       request = Models::Operations::InitiateBankAccountVerificationRequest.new(
         account_id: account_id,
         bank_account_id: bank_account_id,
-        x_moov_version: x_moov_version,
         x_wait_for: x_wait_for
       )
       url, params = @sdk_configuration.get_server_details
@@ -1075,10 +1060,9 @@ module Moov
         Models::Operations::InitiateBankAccountVerificationRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts/{bankAccountID}/verify',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = Utils.get_headers(request)
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1198,8 +1182,8 @@ module Moov
     end
 
 
-    sig { params(complete_bank_account_verification: Models::Components::CompleteBankAccountVerification, account_id: ::String, bank_account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CompleteBankAccountVerificationResponse) }
-    def complete_verification(complete_bank_account_verification:, account_id:, bank_account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(complete_bank_account_verification: Models::Components::CompleteBankAccountVerification, account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CompleteBankAccountVerificationResponse) }
+    def complete_verification(complete_bank_account_verification:, account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # complete_verification - Finalize the instant micro-deposit verification by submitting the verification code displayed in the user's bank account. 
       #
       # Upon successful verification, the bank account status will be updated to `verified` and eligible for ACH debit transactions.
@@ -1214,8 +1198,7 @@ module Moov
       request = Models::Operations::CompleteBankAccountVerificationRequest.new(
         account_id: account_id,
         bank_account_id: bank_account_id,
-        complete_bank_account_verification: complete_bank_account_verification,
-        x_moov_version: x_moov_version
+        complete_bank_account_verification: complete_bank_account_verification
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -1223,10 +1206,9 @@ module Moov
         Models::Operations::CompleteBankAccountVerificationRequest,
         base_url,
         '/accounts/{accountID}/bank-accounts/{bankAccountID}/verify',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :complete_bank_account_verification, :json)
       headers['content-type'] = req_content_type

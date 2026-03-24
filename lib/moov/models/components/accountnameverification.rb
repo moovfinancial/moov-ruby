@@ -12,13 +12,13 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Verification result of the cardholder's first name.
         field :first_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('firstName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
-
+        # Verification result of the cardholder's last name.
         field :last_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
-
+        # Verification result of the cardholder's middle name.
         field :middle_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('middleName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
-
+        # Verification result of the cardholder's full name.
         field :full_name, Crystalline::Nilable.new(Models::Components::CardVerificationResult), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fullName'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardVerificationResult, true) } }
 
         sig { params(first_name: T.nilable(Models::Components::CardVerificationResult), last_name: T.nilable(Models::Components::CardVerificationResult), middle_name: T.nilable(Models::Components::CardVerificationResult), full_name: T.nilable(Models::Components::CardVerificationResult)).void }

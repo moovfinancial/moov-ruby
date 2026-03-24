@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(file_upload_request_multi_part: Models::Components::FileUploadRequestMultiPart, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadFileResponse) }
-    def upload(file_upload_request_multi_part:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(file_upload_request_multi_part: Models::Components::FileUploadRequestMultiPart, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadFileResponse) }
+    def upload(file_upload_request_multi_part:, account_id:, timeout_ms: nil, http_headers: nil)
       # upload - Upload a file and link it to the specified Moov account. 
       #
       # The maximum file size is 20MB. Each account is allowed a maximum of 50 files. Acceptable file types include csv, jpg, pdf, 
@@ -52,8 +52,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/files.write` scope.
       request = Models::Operations::UploadFileRequest.new(
         account_id: account_id,
-        file_upload_request_multi_part: file_upload_request_multi_part,
-        x_moov_version: x_moov_version
+        file_upload_request_multi_part: file_upload_request_multi_part
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -61,10 +60,9 @@ module Moov
         Models::Operations::UploadFileRequest,
         base_url,
         '/accounts/{accountID}/files',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :file_upload_request_multi_part, :multipart)
       headers['content-type'] = req_content_type
@@ -211,15 +209,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFilesResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFilesResponse) }
+    def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - List all the files associated with a particular Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/files.read` scope.
       request = Models::Operations::ListFilesRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -227,10 +224,9 @@ module Moov
         Models::Operations::ListFilesRequest,
         base_url,
         '/accounts/{accountID}/files',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -335,16 +331,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, file_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetFileDetailsResponse) }
-    def get(account_id:, file_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, file_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetFileDetailsResponse) }
+    def get(account_id:, file_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve file details associated with a specific Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/files.read` scope.
       request = Models::Operations::GetFileDetailsRequest.new(
         account_id: account_id,
-        file_id: file_id,
-        x_moov_version: x_moov_version
+        file_id: file_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -352,10 +347,9 @@ module Moov
         Models::Operations::GetFileDetailsRequest,
         base_url,
         '/accounts/{accountID}/files/{fileID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

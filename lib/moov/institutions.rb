@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(x_moov_version: T.nilable(::String), name: T.nilable(::String), routing_number: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SearchInstitutionsResponse) }
-    def search_institutions(x_moov_version: nil, name: nil, routing_number: nil, limit: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SearchInstitutionsResponse) }
+    def search_institutions(name: nil, routing_number: nil, limit: nil, timeout_ms: nil, http_headers: nil)
       # search_institutions - Search for financial institutions by name or routing number.
       #
       # This endpoint returns metadata about each matched institution, including basic identifying details (such as name, routing number, and address) and information about which payment services they support (e.g., ACH, RTP, and Wire).
@@ -52,7 +52,6 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/institutions.read` scope.
       request = Models::Operations::SearchInstitutionsRequest.new(
-        x_moov_version: x_moov_version,
         name: name,
         routing_number: routing_number,
         limit: limit
@@ -60,9 +59,9 @@ module Moov
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/institutions"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::SearchInstitutionsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::SearchInstitutionsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -167,8 +166,8 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListInstitutionsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInstitutionsResponse) }
-    def search(request:, timeout_ms: nil, http_headers: nil)
+    sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), state: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInstitutionsResponse) }
+    def search(name: nil, routing_number: nil, state: nil, limit: nil, timeout_ms: nil, http_headers: nil)
       # search - This endpoint has been deprecated and will be removed in a future release. Use [/institutions](https://docs.moov.io/api/enrichment/form-shortening/institutions/get/).
       #
       # Search for institutions by either their name or routing number.
@@ -177,12 +176,18 @@ module Moov
       # you'll need to specify the `/fed.read` scope.
       #
       # @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+      request = Models::Operations::ListInstitutionsRequest.new(
+        name: name,
+        routing_number: routing_number,
+        state: state,
+        limit: limit
+      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/institutions/ach/search"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListInstitutionsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListInstitutionsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 

@@ -14,6 +14,4 @@ class Moov::Models::Operations::UpdatePaymentLinkRequest
   def payment_link_code=(str_); end
   def update_payment_link(); end
   def update_payment_link=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

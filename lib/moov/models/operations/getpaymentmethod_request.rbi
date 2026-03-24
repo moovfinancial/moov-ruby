@@ -12,6 +12,4 @@ class Moov::Models::Operations::GetPaymentMethodRequest
   def account_id=(str_); end
   def payment_method_id(); end
   def payment_method_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

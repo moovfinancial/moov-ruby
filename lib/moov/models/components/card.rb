@@ -28,7 +28,7 @@ module Moov
         field :bin, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bin'), required: true } }
         # The expiration date of the card or token.
         field :expiration, Models::Components::CardExpiration, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration'), required: true } }
-
+        # The billing address associated with the card.
         field :billing_address, Models::Components::CardAddress, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress'), required: true } }
         # The results of submitting cardholder data to a card network for verification.
         field :card_verification, Models::Components::CardVerification, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardVerification'), required: true } }
@@ -53,7 +53,8 @@ module Moov
         field :regulated, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('regulated') } }
         # Indicates cardholder has authorized card to be stored for future payments.
         field :card_on_file, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardOnFile') } }
-
+        # Merchant account whose details (statement descriptor, address, etc.) are used for the card verification authorization.
+        # If omitted, the partner account's details are used instead.
         field :merchant_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantAccountID') } }
         # The results of the most recent card update request.
         field :card_account_updater, Crystalline::Nilable.new(Models::Components::CardAccountUpdater), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAccountUpdater') } }
