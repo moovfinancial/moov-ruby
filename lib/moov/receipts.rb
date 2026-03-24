@@ -41,22 +41,18 @@ module Moov
 
 
 
-    sig { params(request_body: T::Array[Models::Components::ReceiptRequest], x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateReceiptsResponse) }
-    def create(request_body:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: T::Array[Models::Components::ReceiptRequest], timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateReceiptsResponse) }
+    def create(request:, timeout_ms: nil, http_headers: nil)
       # create -  Create receipts for transfers and scheduled transfers.
       #
       #  To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       #  you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
-      request = Models::Operations::CreateReceiptsRequest.new(
-        request_body: request_body,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/receipts"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
@@ -186,22 +182,21 @@ module Moov
     end
 
 
-    sig { params(id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListReceiptsResponse) }
-    def list(id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListReceiptsResponse) }
+    def list(id:, timeout_ms: nil, http_headers: nil)
       # list - List receipts by transferID, scheduleID, or occurrenceID.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::ListReceiptsRequest.new(
-        id: id,
-        x_moov_version: x_moov_version
+        id: id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/receipts"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListReceiptsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListReceiptsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 

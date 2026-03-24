@@ -13,10 +13,9 @@ require_relative 'utils/retries'
 module Moov
   extend T::Sig
 
-  SERVERS = [
+  SERVERS = T.let([
     'https://api.moov.io', # 1 - Production API host
-  ].freeze
-  SERVERS = T.let(SERVERS, T::Array[String])
+  ].freeze, T::Array[String])
   # Contains the list of servers available to the SDK
 
   class SDKConfiguration
@@ -47,10 +46,6 @@ module Moov
     attr_accessor :server_idx
 
     
-    sig { returns(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]) }
-    attr_accessor :globals
-
-    
     sig { returns(String) }
     attr_accessor :language
 
@@ -75,11 +70,10 @@ module Moov
         security: T.nilable(Models::Components::Security),
         security_source: T.nilable(T.proc.returns(Models::Components::Security)),
         server_url: T.nilable(String),
-        server_idx: T.nilable(Integer),
-        globals: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])
+        server_idx: T.nilable(Integer)
       ).void
     end
-    def initialize(client, hooks, retry_config, timeout_ms, security, security_source, server_url, server_idx, globals)
+    def initialize(client, hooks, retry_config, timeout_ms, security, security_source, server_url, server_idx)
       @client = client
       @hooks = hooks
       @retry_config = retry_config
@@ -92,12 +86,11 @@ module Moov
       elsif !security.nil?
         @security_source = -> { security }
       end
-      @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = 'v2025.01.00'
-      @sdk_version = '25.1.11'
-      @gen_version = '2.856.1'
-      @user_agent = 'speakeasy-sdk/ruby 25.1.11 2.856.1 v2025.01.00 moov_ruby'
+      @sdk_version = '25.2.0'
+      @gen_version = '2.869.10'
+      @user_agent = 'speakeasy-sdk/ruby 25.2.0 2.869.10 v2025.01.00 moov_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

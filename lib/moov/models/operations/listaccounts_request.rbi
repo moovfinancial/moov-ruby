@@ -8,8 +8,6 @@ end
 
 
 class Moov::Models::Operations::ListAccountsRequest
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
   def name(); end
   def name=(str_); end
   def email(); end

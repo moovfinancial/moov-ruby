@@ -12,6 +12,4 @@ class Moov::Models::Operations::ConnectAccountRequest
   def account_id=(str_); end
   def share_scopes(); end
   def share_scopes=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

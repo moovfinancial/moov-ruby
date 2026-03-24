@@ -41,16 +41,15 @@ module Moov
 
 
 
-    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateScheduleResponse) }
-    def create(upsert_schedule:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateScheduleResponse) }
+    def create(upsert_schedule:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Describes the schedule to create or modify.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CreateScheduleRequest.new(
         account_id: account_id,
-        upsert_schedule: upsert_schedule,
-        x_moov_version: x_moov_version
+        upsert_schedule: upsert_schedule
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -58,10 +57,9 @@ module Moov
         Models::Operations::CreateScheduleRequest,
         base_url,
         '/accounts/{accountID}/schedules',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :upsert_schedule, :json)
       headers['content-type'] = req_content_type
@@ -208,24 +206,29 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListSchedulesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSchedulesResponse) }
-    def list(request:, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), hydrate: T.nilable(Models::Operations::Hydrate), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSchedulesResponse) }
+    def list(account_id:, skip: nil, count: nil, hydrate: nil, timeout_ms: nil, http_headers: nil)
       # list - Describes a list of schedules associated with an account. Append the `hydrate=accounts` query parameter to include partial account details in the response.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+      request = Models::Operations::ListSchedulesRequest.new(
+        account_id: account_id,
+        skip: skip,
+        count: count,
+        hydrate: hydrate
+      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Models::Operations::ListSchedulesRequest,
         base_url,
         '/accounts/{accountID}/schedules',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListSchedulesRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListSchedulesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -330,8 +333,8 @@ module Moov
     end
 
 
-    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateScheduleResponse) }
-    def update(upsert_schedule:, account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateScheduleResponse) }
+    def update(upsert_schedule:, account_id:, schedule_id:, timeout_ms: nil, http_headers: nil)
       # update - Describes the schedule to modify.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -339,8 +342,7 @@ module Moov
       request = Models::Operations::UpdateScheduleRequest.new(
         account_id: account_id,
         schedule_id: schedule_id,
-        upsert_schedule: upsert_schedule,
-        x_moov_version: x_moov_version
+        upsert_schedule: upsert_schedule
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -348,10 +350,9 @@ module Moov
         Models::Operations::UpdateScheduleRequest,
         base_url,
         '/accounts/{accountID}/schedules/{scheduleID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :upsert_schedule, :json)
       headers['content-type'] = req_content_type
@@ -498,16 +499,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSchedulesResponse) }
-    def get(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSchedulesResponse) }
+    def get(account_id:, schedule_id:, timeout_ms: nil, http_headers: nil)
       # get - Describes a schedule associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::GetSchedulesRequest.new(
         account_id: account_id,
-        schedule_id: schedule_id,
-        x_moov_version: x_moov_version
+        schedule_id: schedule_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -515,10 +515,9 @@ module Moov
         Models::Operations::GetSchedulesRequest,
         base_url,
         '/accounts/{accountID}/schedules/{scheduleID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -623,16 +622,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CancelScheduleResponse) }
-    def cancel(account_id:, schedule_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CancelScheduleResponse) }
+    def cancel(account_id:, schedule_id:, timeout_ms: nil, http_headers: nil)
       # cancel - Describes the schedule to cancel.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CancelScheduleRequest.new(
         account_id: account_id,
-        schedule_id: schedule_id,
-        x_moov_version: x_moov_version
+        schedule_id: schedule_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -640,10 +638,9 @@ module Moov
         Models::Operations::CancelScheduleRequest,
         base_url,
         '/accounts/{accountID}/schedules/{scheduleID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -754,8 +751,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetScheduledOccurrenceResponse) }
-    def get_occurrance(account_id:, schedule_id:, occurrence_filter:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetScheduledOccurrenceResponse) }
+    def get_occurrance(account_id:, schedule_id:, occurrence_filter:, timeout_ms: nil, http_headers: nil)
       # get_occurrance - Gets a specific occurrence.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -763,8 +760,7 @@ module Moov
       request = Models::Operations::GetScheduledOccurrenceRequest.new(
         account_id: account_id,
         schedule_id: schedule_id,
-        occurrence_filter: occurrence_filter,
-        x_moov_version: x_moov_version
+        occurrence_filter: occurrence_filter
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -772,10 +768,9 @@ module Moov
         Models::Operations::GetScheduledOccurrenceRequest,
         base_url,
         '/accounts/{accountID}/schedules/{scheduleID}/occurrences/{occurrenceFilter}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

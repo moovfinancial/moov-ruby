@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(create_representative: Models::Components::CreateRepresentative, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateRepresentativeResponse) }
-    def create(create_representative:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(create_representative: Models::Components::CreateRepresentative, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateRepresentativeResponse) }
+    def create(create_representative:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Moov accounts associated with businesses require information regarding individuals who represent the business. 
       # You can provide this information by creating a representative. Each account is allowed a maximum of 7 representatives. 
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
@@ -51,8 +51,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
       request = Models::Operations::CreateRepresentativeRequest.new(
         account_id: account_id,
-        create_representative: create_representative,
-        x_moov_version: x_moov_version
+        create_representative: create_representative
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -60,10 +59,9 @@ module Moov
         Models::Operations::CreateRepresentativeRequest,
         base_url,
         '/accounts/{accountID}/representatives',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_representative, :json)
       headers['content-type'] = req_content_type
@@ -210,8 +208,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListRepresentativesResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListRepresentativesResponse) }
+    def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - A Moov account may have multiple representatives depending on the associated business's ownership and management structure. 
       # You can use this method to list all the representatives for a given Moov account. 
       # Note that Moov accounts associated with an individual do not have representatives. 
@@ -220,8 +218,7 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
       request = Models::Operations::ListRepresentativesRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -229,10 +226,9 @@ module Moov
         Models::Operations::ListRepresentativesRequest,
         base_url,
         '/accounts/{accountID}/representatives',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -337,16 +333,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteRepresentativeResponse) }
-    def delete(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, representative_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteRepresentativeResponse) }
+    def delete(account_id:, representative_id:, timeout_ms: nil, http_headers: nil)
       # delete - Deletes a business representative associated with a Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/representatives.write` scope.
       request = Models::Operations::DeleteRepresentativeRequest.new(
         account_id: account_id,
-        representative_id: representative_id,
-        x_moov_version: x_moov_version
+        representative_id: representative_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -354,10 +349,9 @@ module Moov
         Models::Operations::DeleteRepresentativeRequest,
         base_url,
         '/accounts/{accountID}/representatives/{representativeID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -468,16 +462,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetRepresentativeResponse) }
-    def get(account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, representative_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetRepresentativeResponse) }
+    def get(account_id:, representative_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a specific representative associated with a given Moov account. Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/representatives.read` scope.
       request = Models::Operations::GetRepresentativeRequest.new(
         account_id: account_id,
-        representative_id: representative_id,
-        x_moov_version: x_moov_version
+        representative_id: representative_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -485,10 +478,9 @@ module Moov
         Models::Operations::GetRepresentativeRequest,
         base_url,
         '/accounts/{accountID}/representatives/{representativeID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -593,8 +585,8 @@ module Moov
     end
 
 
-    sig { params(update_representative: Models::Components::UpdateRepresentative, account_id: ::String, representative_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateRepresentativeResponse) }
-    def update(update_representative:, account_id:, representative_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_representative: Models::Components::UpdateRepresentative, account_id: ::String, representative_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateRepresentativeResponse) }
+    def update(update_representative:, account_id:, representative_id:, timeout_ms: nil, http_headers: nil)
       # update - If a representative's information has changed you can patch the information associated with a specific representative ID.
       # Read our [business representatives guide](https://docs.moov.io/guides/accounts/requirements/business-representatives/) to learn more.
       #
@@ -615,8 +607,7 @@ module Moov
       request = Models::Operations::UpdateRepresentativeRequest.new(
         account_id: account_id,
         representative_id: representative_id,
-        update_representative: update_representative,
-        x_moov_version: x_moov_version
+        update_representative: update_representative
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -624,10 +615,9 @@ module Moov
         Models::Operations::UpdateRepresentativeRequest,
         base_url,
         '/accounts/{accountID}/representatives/{representativeID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_representative, :json)
       headers['content-type'] = req_content_type
