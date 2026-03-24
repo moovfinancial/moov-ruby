@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: f70c0c3c72916caeb30864bce46a3cde
+  docChecksum: aaf87e988ac47c8be2d6f450a07e9539
   docVersion: v2026.04.00
-  speakeasyVersion: 1.757.0
-  generationVersion: 2.866.0
-  releaseVersion: 26.4.0-dev.15
-  configChecksum: 17ee3ce81ac79af2b6f140d5c3bae245
+  speakeasyVersion: 1.759.1
+  generationVersion: 2.869.10
+  releaseVersion: 26.4.0-dev.16
+  configChecksum: e22eacd4b3f3cc71748f9bb50e4c0aa7
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: ec6c1845-f008-4bd0-8083-94ba97760ba3
-  pristine_commit_hash: e4189c72e4dd8098b9bdd48214525d7aaffc0e30
-  pristine_tree_hash: c167a9f2e8977223c27586c8b958bc86091c788b
+  generation_id: 91379b07-b7d6-415a-b98f-30a4af9fc39a
+  pristine_commit_hash: 8d3fc09e5c3cc0f53cf8094ff97a13656914480c
+  pristine_tree_hash: 3ca03c620b72d9843c6fe7c7f757e28cfd76a0f7
 features:
   ruby:
     constsAndDefaults: 0.1.4
-    core: 3.11.24
+    core: 3.11.25
     deprecations: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.81.10
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:44a168b1303d57b851e9d0acb6349eb831e23ca0
-    pristine_git_object: 491ffc7cf1584576442fa2739fa75fd2ac164971
+    last_write_checksum: sha1:ff30a612f1598a6e3bf5d867a377d490db122ab7
+    pristine_git_object: 3fde4a22888d35785cfeb08352277bedc83af859
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -2447,8 +2447,8 @@ trackedFiles:
     pristine_git_object: 01629ba06e02180381ce54e8b5f75430c6cea2fe
   docs/models/components/wallettransactiontype.md:
     id: 6253110ebe81
-    last_write_checksum: sha1:a5d0b5a838ee7bb909bc9568954c79a061b898c0
-    pristine_git_object: c25e82567282e4572e12356c8cd5a74e6b9095c5
+    last_write_checksum: sha1:e44d565ed385e6c5372e3c3d12513d380aab10fc
+    pristine_git_object: a77f30b4f691b3057bffe1451b20b5e234241710
   docs/models/components/wallettype.md:
     id: 6ef6c3c12393
     last_write_checksum: sha1:f7a9499279a933c94450fbe58c02b6729f21ff31
@@ -9327,8 +9327,8 @@ trackedFiles:
     pristine_git_object: da3be107165de0c381229283391a30c380d0c4b3
   lib/moov/models/components/wallettransactiontype.rb:
     id: "063574518579"
-    last_write_checksum: sha1:0cdd40ea709db89b6b9e2aebc3b1a4c3edb7338b
-    pristine_git_object: ec7a99ba313d17ccb216c685b2a6f0774d6cda6c
+    last_write_checksum: sha1:b77892a73ea9a2225fa8d3e33177486b797c7e68
+    pristine_git_object: dd64302111bb8d145ccb474b77138474855b408e
   lib/moov/models/components/wallettransactiontype.rbi:
     id: 973c679912c3
     last_write_checksum: sha1:6c59ed031621cc343834ff78671148937f1df39c
@@ -13027,8 +13027,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:6123331ec2bf45792aed7a0631eee271da2403d1
-    pristine_git_object: a741213af691ae08e1f4476068ec97159cef47e1
+    last_write_checksum: sha1:014013762e62c8eb007c18dc0519eeb575a2bb7a
+    pristine_git_object: 281105ddc2a508c7eea83983e1fff5411f463d66
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -13107,8 +13107,8 @@ trackedFiles:
     pristine_git_object: 3ef5c0b10f5d23c9acbbe328c679edcccb103dac
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:99ff45f4e8fd119d11ee83dd571a8c3530016f0b
-    pristine_git_object: 4a26a55dfac644f4d419ccc77b783be4884d4a2c
+    last_write_checksum: sha1:16eca1240a1b6583e9212a8ee4d9b9e543610d8a
+    pristine_git_object: 5477dc72240ebed7189fa1da5b389ee65ee654f7
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -15682,6 +15682,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
 examplesVersion: 1.0.2
+releaseNotes: "## Ruby SDK Changes:\n* `client.sweeps.list()`:  `response.[].subtotals[].type.enum(instant_bank_failure)` **Added** (Breaking ⚠️)\n* `client.sweeps.get()`:  `response.subtotals[].type.enum(instant_bank_failure)` **Added** (Breaking ⚠️)\n* `client.wallet_transactions.list()`: \n  *  `request` **Changed**\n  *  `response.[].transaction_type.enum(instant_bank_failure)` **Added** (Breaking ⚠️)\n* `client.wallet_transactions.get()`:  `response.transaction_type.enum(instant_bank_failure)` **Added** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

@@ -37,6 +37,7 @@ module Moov
           ADJUSTMENT = new('adjustment')
           FEE_REVENUE = new('fee-revenue')
           RESIDUAL = new('residual')
+          INSTANT_BANK_FAILURE = new('instant-bank-failure')
         end
       end
     end
