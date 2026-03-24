@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentMethodsResponse) }
-    def list(account_id:, x_moov_version: nil, source_id: nil, payment_method_type: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentMethodsResponse) }
+    def list(account_id:, source_id: nil, payment_method_type: nil, timeout_ms: nil, http_headers: nil)
       # list - Retrieve a list of payment methods associated with a Moov account. Read our [payment methods 
       # guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
       #
@@ -50,7 +50,6 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
       request = Models::Operations::ListPaymentMethodsRequest.new(
         account_id: account_id,
-        x_moov_version: x_moov_version,
         source_id: source_id,
         payment_method_type: payment_method_type
       )
@@ -60,12 +59,11 @@ module Moov
         Models::Operations::ListPaymentMethodsRequest,
         base_url,
         '/accounts/{accountID}/payment-methods',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListPaymentMethodsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListPaymentMethodsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -170,16 +168,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_method_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentMethodResponse) }
-    def get(account_id:, payment_method_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, payment_method_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentMethodResponse) }
+    def get(account_id:, payment_method_id:, timeout_ms: nil, http_headers: nil)
       # get - Get the specified payment method associated with a Moov account. Read our [payment methods guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/payment-methods.read` scope.
       request = Models::Operations::GetPaymentMethodRequest.new(
         account_id: account_id,
-        payment_method_id: payment_method_id,
-        x_moov_version: x_moov_version
+        payment_method_id: payment_method_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -187,10 +184,9 @@ module Moov
         Models::Operations::GetPaymentMethodRequest,
         base_url,
         '/accounts/{accountID}/payment-methods/{paymentMethodID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

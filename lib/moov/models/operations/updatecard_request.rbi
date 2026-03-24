@@ -14,6 +14,4 @@ class Moov::Models::Operations::UpdateCardRequest
   def card_id=(str_); end
   def update_card(); end
   def update_card=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

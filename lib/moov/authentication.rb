@@ -41,21 +41,17 @@ module Moov
 
 
 
-    sig { params(revoke_token_request: Models::Components::RevokeTokenRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RevokeAccessTokenResponse) }
-    def revoke_access_token(revoke_token_request:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Components::RevokeTokenRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RevokeAccessTokenResponse) }
+    def revoke_access_token(request:, timeout_ms: nil, http_headers: nil)
       # revoke_access_token - Revoke an auth token.
       #
       # Allows clients to notify the authorization server that a previously obtained refresh or access token is no longer needed.
-      request = Models::Operations::RevokeAccessTokenRequest.new(
-        revoke_token_request: revoke_token_request,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/oauth2/revoke"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :revoke_token_request, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
@@ -191,19 +187,15 @@ module Moov
     end
 
 
-    sig { params(auth_token_request: Models::Components::AuthTokenRequest, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateAccessTokenResponse) }
-    def create_access_token(auth_token_request:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Components::AuthTokenRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateAccessTokenResponse) }
+    def create_access_token(request:, timeout_ms: nil, http_headers: nil)
       # create_access_token - Create or refresh an access token.
-      request = Models::Operations::CreateAccessTokenRequest.new(
-        auth_token_request: auth_token_request,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/oauth2/token"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :auth_token_request, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 

@@ -12,6 +12,4 @@ class Moov::Models::Operations::UpsertBrandRequest
   def account_id=(str_); end
   def brand_properties(); end
   def brand_properties=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

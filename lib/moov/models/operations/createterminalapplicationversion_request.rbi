@@ -12,6 +12,4 @@ class Moov::Models::Operations::CreateTerminalApplicationVersionRequest
   def terminal_application_id=(str_); end
   def terminal_application_version(); end
   def terminal_application_version=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

@@ -41,12 +41,11 @@ module Moov
 
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListImageMetadataResponse) }
-    def list(account_id:, x_moov_version: nil, skip: nil, count: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListImageMetadataResponse) }
+    def list(account_id:, skip: nil, count: nil, timeout_ms: nil, http_headers: nil)
       # list - List metadata for all images in the specified account.
       request = Models::Operations::ListImageMetadataRequest.new(
         account_id: account_id,
-        x_moov_version: x_moov_version,
         skip: skip,
         count: count
       )
@@ -56,12 +55,11 @@ module Moov
         Models::Operations::ListImageMetadataRequest,
         base_url,
         '/accounts/{accountID}/images',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListImageMetadataRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListImageMetadataRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -166,14 +164,13 @@ module Moov
     end
 
 
-    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadImageResponse) }
-    def upload(image_upload_request_multi_part:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadImageResponse) }
+    def upload(image_upload_request_multi_part:, account_id:, timeout_ms: nil, http_headers: nil)
       # upload -   Upload a new PNG, JPEG, or WebP image with optional metadata. 
       #   Duplicate images, and requests larger than 16MB will be rejected.
       request = Models::Operations::UploadImageRequest.new(
         account_id: account_id,
-        image_upload_request_multi_part: image_upload_request_multi_part,
-        x_moov_version: x_moov_version
+        image_upload_request_multi_part: image_upload_request_multi_part
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -181,10 +178,9 @@ module Moov
         Models::Operations::UploadImageRequest,
         base_url,
         '/accounts/{accountID}/images',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :image_upload_request_multi_part, :multipart)
       headers['content-type'] = req_content_type
@@ -331,13 +327,12 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetImageMetadataResponse) }
-    def get_metadata(account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, image_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetImageMetadataResponse) }
+    def get_metadata(account_id:, image_id:, timeout_ms: nil, http_headers: nil)
       # get_metadata - Retrieve metadata for a specific image by its ID.
       request = Models::Operations::GetImageMetadataRequest.new(
         account_id: account_id,
-        image_id: image_id,
-        x_moov_version: x_moov_version
+        image_id: image_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -345,10 +340,9 @@ module Moov
         Models::Operations::GetImageMetadataRequest,
         base_url,
         '/accounts/{accountID}/images/{imageID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -453,8 +447,8 @@ module Moov
     end
 
 
-    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateImageResponse) }
-    def update(image_upload_request_multi_part:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, image_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateImageResponse) }
+    def update(image_upload_request_multi_part:, account_id:, image_id:, timeout_ms: nil, http_headers: nil)
       # update - Replace an existing image and, optionally, its metadata.
       #
       # This endpoint replaces the existing image with the new PNG, JPEG, or WebP. Omit
@@ -462,8 +456,7 @@ module Moov
       request = Models::Operations::UpdateImageRequest.new(
         account_id: account_id,
         image_id: image_id,
-        image_upload_request_multi_part: image_upload_request_multi_part,
-        x_moov_version: x_moov_version
+        image_upload_request_multi_part: image_upload_request_multi_part
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -471,10 +464,9 @@ module Moov
         Models::Operations::UpdateImageRequest,
         base_url,
         '/accounts/{accountID}/images/{imageID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :image_upload_request_multi_part, :multipart)
       headers['content-type'] = req_content_type
@@ -621,16 +613,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteImageResponse) }
-    def delete(account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, image_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteImageResponse) }
+    def delete(account_id:, image_id:, timeout_ms: nil, http_headers: nil)
       # delete -   Disable an image by its ID.
       #   
       #   Disabled images are still be accessible via their public URL, and cannot be assigned
       #   to products or line-items.
       request = Models::Operations::DeleteImageRequest.new(
         account_id: account_id,
-        image_id: image_id,
-        x_moov_version: x_moov_version
+        image_id: image_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -638,10 +629,9 @@ module Moov
         Models::Operations::DeleteImageRequest,
         base_url,
         '/accounts/{accountID}/images/{imageID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -752,14 +742,13 @@ module Moov
     end
 
 
-    sig { params(image_metadata_request: Models::Components::ImageMetadataRequest, account_id: ::String, image_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateImageMetadataResponse) }
-    def update_metadata(image_metadata_request:, account_id:, image_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(image_metadata_request: Models::Components::ImageMetadataRequest, account_id: ::String, image_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateImageMetadataResponse) }
+    def update_metadata(image_metadata_request:, account_id:, image_id:, timeout_ms: nil, http_headers: nil)
       # update_metadata - Replace the metadata for an existing image.
       request = Models::Operations::UpdateImageMetadataRequest.new(
         account_id: account_id,
         image_id: image_id,
-        image_metadata_request: image_metadata_request,
-        x_moov_version: x_moov_version
+        image_metadata_request: image_metadata_request
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -767,10 +756,9 @@ module Moov
         Models::Operations::UpdateImageMetadataRequest,
         base_url,
         '/accounts/{accountID}/images/{imageID}/metadata',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :image_metadata_request, :json)
       headers['content-type'] = req_content_type
@@ -931,12 +919,11 @@ module Moov
         Models::Operations::GetPublicImageRequest,
         base_url,
         '/images/{publicID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = Utils.get_headers(request)
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::GetPublicImageRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::GetPublicImageRequest, request, nil)
       headers['Accept'] = accept_header_override || 'image/jpeg;q=1, image/png;q=0.7, image/webp;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 

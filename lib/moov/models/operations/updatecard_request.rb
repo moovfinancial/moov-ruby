@@ -18,24 +18,12 @@ module Moov
         field :card_id, ::String, { 'path_param': { 'field_name': 'cardID', 'style': 'simple', 'explode': false } }
 
         field :update_card, Models::Components::UpdateCard, { 'request': { 'media_type': 'application/json' } }
-        # Specify an API version.
-        #
-        # API versioning follows the format `vYYYY.QQ.BB`, where 
-        #   - `YYYY` is the year
-        #   - `QQ` is the two-digit month for the first month of the quarter (e.g., 01, 04, 07, 10)
-        #   - `BB` is the build number, starting at `.01`, for subsequent builds in the same quarter. 
-        #     - For example, `v2024.01.00` is the initial release of the first quarter of 2024.
-        #
-        # The `dev` version represents the most recent development state. It may include breaking changes and should be treated as a beta release.
-        # When no version is specified, the API defaults to `v2024.01.00`.
-        field :x_moov_version, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'X-Moov-Version', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, card_id: ::String, update_card: Models::Components::UpdateCard, x_moov_version: T.nilable(::String)).void }
-        def initialize(account_id:, card_id:, update_card:, x_moov_version: nil)
+        sig { params(account_id: ::String, card_id: ::String, update_card: Models::Components::UpdateCard).void }
+        def initialize(account_id:, card_id:, update_card:)
           @account_id = account_id
           @card_id = card_id
           @update_card = update_card
-          @x_moov_version = x_moov_version
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -44,7 +32,6 @@ module Moov
           return false unless @account_id == other.account_id
           return false unless @card_id == other.card_id
           return false unless @update_card == other.update_card
-          return false unless @x_moov_version == other.x_moov_version
           true
         end
       end

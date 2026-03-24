@@ -41,8 +41,8 @@ module Moov
 
 
 
-    sig { params(link_card: Models::Components::LinkCard, account_id: ::String, x_moov_version: T.nilable(::String), x_wait_for: T.nilable(Models::Components::LinkCardWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkCardResponse) }
-    def link(link_card:, account_id:, x_moov_version: nil, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(link_card: Models::Components::LinkCard, account_id: ::String, x_wait_for: T.nilable(Models::Components::LinkCardWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkCardResponse) }
+    def link(link_card:, account_id:, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
       # link - Link a card to an existing Moov account. 
       #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/#link-a-card) to learn more.
@@ -64,7 +64,6 @@ module Moov
       request = Models::Operations::LinkCardRequest.new(
         account_id: account_id,
         link_card: link_card,
-        x_moov_version: x_moov_version,
         x_wait_for: x_wait_for
       )
       url, params = @sdk_configuration.get_server_details
@@ -73,10 +72,9 @@ module Moov
         Models::Operations::LinkCardRequest,
         base_url,
         '/accounts/{accountID}/cards',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = Utils.get_headers(request)
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :link_card, :json)
       headers['content-type'] = req_content_type
@@ -238,8 +236,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCardsResponse) }
-    def list(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCardsResponse) }
+    def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - List all the active cards associated with a Moov account. 
       #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/) to learn more.
@@ -247,8 +245,7 @@ module Moov
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/cards.read` scope.
       request = Models::Operations::ListCardsRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -256,10 +253,9 @@ module Moov
         Models::Operations::ListCardsRequest,
         base_url,
         '/accounts/{accountID}/cards',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -364,8 +360,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCardResponse) }
-    def get(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, card_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCardResponse) }
+    def get(account_id:, card_id:, timeout_ms: nil, http_headers: nil)
       # get - Fetch a specific card associated with a Moov account. 
       #
       # Read our [accept card payments guide](https://docs.moov.io/guides/sources/cards/accept-card-payments/) to learn more.
@@ -374,8 +370,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/cards.read` scope.
       request = Models::Operations::GetCardRequest.new(
         account_id: account_id,
-        card_id: card_id,
-        x_moov_version: x_moov_version
+        card_id: card_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -383,10 +378,9 @@ module Moov
         Models::Operations::GetCardRequest,
         base_url,
         '/accounts/{accountID}/cards/{cardID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -491,8 +485,8 @@ module Moov
     end
 
 
-    sig { params(update_card: Models::Components::UpdateCard, account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateCardResponse) }
-    def update(update_card:, account_id:, card_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(update_card: Models::Components::UpdateCard, account_id: ::String, card_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateCardResponse) }
+    def update(update_card:, account_id:, card_id:, timeout_ms: nil, http_headers: nil)
       # update - Update a linked card and/or resubmit it for verification.
       #
       # If a value is provided for CVV, a new verification ($0 authorization) will be submitted for the card. Updating the expiration
@@ -509,8 +503,7 @@ module Moov
       request = Models::Operations::UpdateCardRequest.new(
         account_id: account_id,
         card_id: card_id,
-        update_card: update_card,
-        x_moov_version: x_moov_version
+        update_card: update_card
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -518,10 +511,9 @@ module Moov
         Models::Operations::UpdateCardRequest,
         base_url,
         '/accounts/{accountID}/cards/{cardID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_card, :json)
       headers['content-type'] = req_content_type
@@ -668,16 +660,15 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, card_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableCardResponse) }
-    def disable(account_id:, card_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, card_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableCardResponse) }
+    def disable(account_id:, card_id:, timeout_ms: nil, http_headers: nil)
       # disable - Disables a card associated with a Moov account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::DisableCardRequest.new(
         account_id: account_id,
-        card_id: card_id,
-        x_moov_version: x_moov_version
+        card_id: card_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -685,10 +676,9 @@ module Moov
         Models::Operations::DisableCardRequest,
         base_url,
         '/accounts/{accountID}/cards/{cardID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

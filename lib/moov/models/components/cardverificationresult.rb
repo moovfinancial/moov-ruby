@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-
+      # CardVerificationResult - The result of a card verification check.
       class CardVerificationResult < T::Enum
         enums do
           NO_MATCH = new('noMatch')
