@@ -14,6 +14,4 @@ class Moov::Models::Operations::UpdateSweepConfigRequest
   def sweep_config_id=(str_); end
   def patch_sweep_config(); end
   def patch_sweep_config=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

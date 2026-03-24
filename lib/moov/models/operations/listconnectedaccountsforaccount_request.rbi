@@ -10,8 +10,6 @@ end
 class Moov::Models::Operations::ListConnectedAccountsForAccountRequest
   def account_id(); end
   def account_id=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
   def name(); end
   def name=(str_); end
   def email(); end

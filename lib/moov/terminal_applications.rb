@@ -41,22 +41,18 @@ module Moov
 
 
 
-    sig { params(create_terminal_application: Models::Components::CreateTerminalApplication, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTerminalApplicationResponse) }
-    def create(create_terminal_application:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Components::CreateTerminalApplication, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTerminalApplicationResponse) }
+    def create(request:, timeout_ms: nil, http_headers: nil)
       # create - Create a new terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.write` scope.
-      request = Models::Operations::CreateTerminalApplicationRequest.new(
-        create_terminal_application: create_terminal_application,
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/terminal-applications"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_terminal_application, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
@@ -201,19 +197,16 @@ module Moov
     end
 
 
-    sig { params(x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTerminalApplicationsResponse) }
-    def list(x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTerminalApplicationsResponse) }
+    def list(timeout_ms: nil, http_headers: nil)
       # list - List all the terminal applications for a Moov Account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.read` scope.
-      request = Models::Operations::ListTerminalApplicationsRequest.new(
-        x_moov_version: x_moov_version
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/terminal-applications"
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -318,15 +311,14 @@ module Moov
     end
 
 
-    sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTerminalApplicationResponse) }
-    def get(terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(terminal_application_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTerminalApplicationResponse) }
+    def get(terminal_application_id:, timeout_ms: nil, http_headers: nil)
       # get - Fetch a specific terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.read` scope.
       request = Models::Operations::GetTerminalApplicationRequest.new(
-        terminal_application_id: terminal_application_id,
-        x_moov_version: x_moov_version
+        terminal_application_id: terminal_application_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -334,10 +326,9 @@ module Moov
         Models::Operations::GetTerminalApplicationRequest,
         base_url,
         '/terminal-applications/{terminalApplicationID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -442,15 +433,14 @@ module Moov
     end
 
 
-    sig { params(terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteTerminalApplicationResponse) }
-    def delete(terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(terminal_application_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteTerminalApplicationResponse) }
+    def delete(terminal_application_id:, timeout_ms: nil, http_headers: nil)
       # delete - Delete a specific terminal application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.write` scope.
       request = Models::Operations::DeleteTerminalApplicationRequest.new(
-        terminal_application_id: terminal_application_id,
-        x_moov_version: x_moov_version
+        terminal_application_id: terminal_application_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -458,10 +448,9 @@ module Moov
         Models::Operations::DeleteTerminalApplicationRequest,
         base_url,
         '/terminal-applications/{terminalApplicationID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -572,16 +561,15 @@ module Moov
     end
 
 
-    sig { params(terminal_application_version: Models::Components::TerminalApplicationVersion, terminal_application_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTerminalApplicationVersionResponse) }
-    def create_version(terminal_application_version:, terminal_application_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(terminal_application_version: Models::Components::TerminalApplicationVersion, terminal_application_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTerminalApplicationVersionResponse) }
+    def create_version(terminal_application_version:, terminal_application_id:, timeout_ms: nil, http_headers: nil)
       # create_version - Register a new version of a terminal application. For Android applications, this is used to register a new version code of the application.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/terminal-applications.write` scope.
       request = Models::Operations::CreateTerminalApplicationVersionRequest.new(
         terminal_application_id: terminal_application_id,
-        terminal_application_version: terminal_application_version,
-        x_moov_version: x_moov_version
+        terminal_application_version: terminal_application_version
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -589,10 +577,9 @@ module Moov
         Models::Operations::CreateTerminalApplicationVersionRequest,
         base_url,
         '/terminal-applications/{terminalApplicationID}/versions',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :terminal_application_version, :json)
       headers['content-type'] = req_content_type

@@ -53,12 +53,11 @@ module Moov
         Models::Operations::ListStatementsRequest,
         base_url,
         '/accounts/{accountID}/statements',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ListStatementsRequest, request, nil, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Models::Operations::ListStatementsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -178,8 +177,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, statement_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetStatementResponse) }
-    def get(account_id:, statement_id:, x_moov_version: nil, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
+    sig { params(account_id: ::String, statement_id: ::String, timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetStatementResponse) }
+    def get(account_id:, statement_id:, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get - Retrieve a statement by its ID.
       #
       # Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `application/pdf`.
@@ -188,8 +187,7 @@ module Moov
       # you'll need to specify the `/accounts/{accountID}/profile.read` scope.
       request = Models::Operations::GetStatementRequest.new(
         account_id: account_id,
-        statement_id: statement_id,
-        x_moov_version: x_moov_version
+        statement_id: statement_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -197,10 +195,9 @@ module Moov
         Models::Operations::GetStatementRequest,
         base_url,
         '/accounts/{accountID}/statements/{statementID}',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = accept_header_override || 'application/json;q=1, application/pdf;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent

@@ -12,6 +12,4 @@ class Moov::Models::Operations::RequestCardRequest
   def account_id=(str_); end
   def request_card(); end
   def request_card=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

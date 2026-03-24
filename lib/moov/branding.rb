@@ -41,16 +41,15 @@ module Moov
 
 
 
-    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateBrandResponse) }
-    def create(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateBrandResponse) }
+    def create(brand_properties:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Create brand properties for the specified account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/branding.write` scope.
       request = Models::Operations::CreateBrandRequest.new(
         account_id: account_id,
-        brand_properties: brand_properties,
-        x_moov_version: x_moov_version
+        brand_properties: brand_properties
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -58,10 +57,9 @@ module Moov
         Models::Operations::CreateBrandRequest,
         base_url,
         '/accounts/{accountID}/branding',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :brand_properties, :json)
       headers['content-type'] = req_content_type
@@ -208,16 +206,15 @@ module Moov
     end
 
 
-    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpsertBrandResponse) }
-    def upsert(brand_properties:, account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(brand_properties: Models::Components::BrandProperties, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpsertBrandResponse) }
+    def upsert(brand_properties:, account_id:, timeout_ms: nil, http_headers: nil)
       # upsert - Create or replace brand properties for the specified account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/branding.write` scope.
       request = Models::Operations::UpsertBrandRequest.new(
         account_id: account_id,
-        brand_properties: brand_properties,
-        x_moov_version: x_moov_version
+        brand_properties: brand_properties
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -225,10 +222,9 @@ module Moov
         Models::Operations::UpsertBrandRequest,
         base_url,
         '/accounts/{accountID}/branding',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :brand_properties, :json)
       headers['content-type'] = req_content_type
@@ -375,15 +371,14 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, x_moov_version: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBrandResponse) }
-    def get(account_id:, x_moov_version: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBrandResponse) }
+    def get(account_id:, timeout_ms: nil, http_headers: nil)
       # get - Get brand properties for the specified account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/branding.read` scope.
       request = Models::Operations::GetBrandRequest.new(
-        account_id: account_id,
-        x_moov_version: x_moov_version
+        account_id: account_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -391,10 +386,9 @@ module Moov
         Models::Operations::GetBrandRequest,
         base_url,
         '/accounts/{accountID}/branding',
-        request,
-        @sdk_configuration.globals
+        request
       )
-      headers = Utils.get_headers(request, @sdk_configuration.globals)
+      headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent

@@ -14,6 +14,4 @@ class Moov::Models::Operations::GetScheduledOccurrenceRequest
   def schedule_id=(str_); end
   def occurrence_filter(); end
   def occurrence_filter=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end
