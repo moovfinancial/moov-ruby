@@ -12,7 +12,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Timestamp from the card network indicating when the card update was processed.
         field :updated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # The results of the card update request.
         field :update_type, Crystalline::Nilable.new(Models::Components::CardUpdateReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updateType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardUpdateReason, true) } }

@@ -12,6 +12,4 @@ class Moov::Models::Operations::CreateWalletRequest
   def account_id=(str_); end
   def create_wallet(); end
   def create_wallet=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end

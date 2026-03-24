@@ -14,6 +14,4 @@ class Moov::Models::Operations::CompleteMicroDepositsRequest
   def bank_account_id=(str_); end
   def complete_micro_deposits(); end
   def complete_micro_deposits=(str_); end
-  def x_moov_version(); end
-  def x_moov_version=(str_); end
 end
