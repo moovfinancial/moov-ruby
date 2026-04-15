@@ -220,7 +220,7 @@ res = s.card_issuing.update(account_id: '44db31bc-2813-424b-9b8c-2d3f5f1300e3', 
   )
 ))
 
-if res.status_code == 200
+unless res.issued_card.nil?
   # handle response
 end
 

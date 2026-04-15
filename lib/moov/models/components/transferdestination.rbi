@@ -28,4 +28,6 @@ class Moov::Models::Components::TransferDestination
   def card_details=(str_); end
   def rtp_details(); end
   def rtp_details=(str_); end
+  def instant_bank_details(); end
+  def instant_bank_details=(str_); end
 end
