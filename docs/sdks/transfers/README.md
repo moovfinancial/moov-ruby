@@ -30,6 +30,14 @@ period of time. You can run multiple requests in smaller time window increments 
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+* [batch_get_transfers](#batch_get_transfers) - Retrieve transfer details for multiple transfers in one request. The response is a map from each
+requested transfer ID to its full transfer details when available; IDs that are not found or not
+accessible under this account are omitted from the map.
+
+Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 * [get](#get) - Retrieve full transfer details for an individual transfer of a particular Moov account. 
 
 Payment rail-specific details are included in the source and destination. Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) 
@@ -291,6 +299,60 @@ end
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | Models::Errors::ListTransfersValidationError | 422                                          | application/json                             |
 | Errors::APIError                             | 4XX, 5XX                                     | \*/\*                                        |
+
+## batch_get_transfers
+
+Retrieve transfer details for multiple transfers in one request. The response is a map from each
+requested transfer ID to its full transfer details when available; IDs that are not found or not
+accessible under this account are omitted from the map.
+
+Read our [transfers overview guide](https://docs.moov.io/guides/money-movement/overview/) to learn more.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="batchGetTransfers" method="post" path="/accounts/{accountID}/transfers/.fetch" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.transfers.batch_get_transfers(account_id: '<id>', batch_get_transfers_request: Models::Components::BatchGetTransfersRequest.new(
+  transfer_i_ds: [
+    '<value 1>',
+    '<value 2>',
+  ]
+))
+
+unless res.object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                    | *::String*                                                                                      | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `batch_get_transfers_request`                                                                   | [Models::Components::BatchGetTransfersRequest](../../models/shared/batchgettransfersrequest.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+
+### Response
+
+**[T.nilable(Models::Operations::BatchGetTransfersResponse)](../../models/operations/batchgettransfersresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
 
 ## get
 
