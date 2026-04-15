@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Operations::UpdateIssuedCardResponse
+class Moov::Models::Operations::BatchGetTransfersResponse
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Operations::UpdateIssuedCardResponse
+class Moov::Models::Operations::BatchGetTransfersResponse
   def content_type(); end
   def content_type=(str_); end
   def status_code(); end
@@ -16,6 +16,6 @@ class Moov::Models::Operations::UpdateIssuedCardResponse
   def raw_response=(str_); end
   def headers(); end
   def headers=(str_); end
-  def issued_card(); end
-  def issued_card=(str_); end
+  def object(); end
+  def object=(str_); end
 end
