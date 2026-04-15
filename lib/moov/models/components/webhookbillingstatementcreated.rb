@@ -13,16 +13,20 @@ module Moov
         include Crystalline::MetadataFields
 
 
+        field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
+
         field :statement_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statementID'), required: true } }
 
-        sig { params(statement_id: ::String).void }
-        def initialize(statement_id:)
+        sig { params(account_id: ::String, statement_id: ::String).void }
+        def initialize(account_id:, statement_id:)
+          @account_id = account_id
           @statement_id = statement_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @account_id == other.account_id
           return false unless @statement_id == other.statement_id
           true
         end
