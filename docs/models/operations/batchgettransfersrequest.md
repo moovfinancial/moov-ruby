@@ -1,0 +1,9 @@
+# BatchGetTransfersRequest
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                    | *::String*                                                                                      | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `batch_get_transfers_request`                                                                   | [Models::Components::BatchGetTransfersRequest](../../models/shared/batchgettransfersrequest.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |

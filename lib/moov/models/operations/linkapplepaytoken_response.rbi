@@ -16,6 +16,6 @@ class Moov::Models::Operations::LinkApplePayTokenResponse
   def raw_response=(str_); end
   def headers(); end
   def headers=(str_); end
-  def linked_apple_pay_payment_method(); end
-  def linked_apple_pay_payment_method=(str_); end
+  def linked_apple_pay_payment_methods(); end
+  def linked_apple_pay_payment_methods=(str_); end
 end

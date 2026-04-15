@@ -31,12 +31,12 @@ A successful response from this endpoint should be passed through to Apple Pay u
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/apple-pay.write` scope.
-* [link_token](#link_token) - Connect an Apple Pay token to the specified account. 
+* [link_token](#link_token) - Connect an Apple Pay token to the specified account.
 
-Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
+Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more.
 The `token` data is defined by Apple Pay and should be passed through from Apple Pay's response unmodified.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 ## register_merchant_domains
@@ -248,12 +248,12 @@ end
 
 ## link_token
 
-Connect an Apple Pay token to the specified account. 
+Connect an Apple Pay token to the specified account.
 
-Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
+Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more.
 The `token` data is defined by Apple Pay and should be passed through from Apple Pay's response unmodified.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 ### Example Usage
@@ -299,7 +299,7 @@ res = s.apple_pay.link_token(account_id: 'bf498c07-3852-4060-b561-bf992e26a851',
   )
 ))
 
-unless res.linked_apple_pay_payment_method.nil?
+unless res.linked_apple_pay_payment_methods.nil?
   # handle response
 end
 

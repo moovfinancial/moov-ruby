@@ -22,6 +22,8 @@ module Moov
           APPLE_PAY = new('apple-pay')
           CARD_PRESENT_PAYMENT = new('card-present-payment')
           INSTANT_BANK_CREDIT = new('instant-bank-credit')
+          PUSH_TO_APPLE_PAY = new('push-to-apple-pay')
+          PULL_FROM_APPLE_PAY = new('pull-from-apple-pay')
         end
       end
     end
