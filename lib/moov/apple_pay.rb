@@ -617,12 +617,12 @@ module Moov
 
     sig { params(link_apple_pay: Models::Components::LinkApplePay, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkApplePayTokenResponse) }
     def link_token(link_apple_pay:, account_id:, timeout_ms: nil, http_headers: nil)
-      # link_token - Connect an Apple Pay token to the specified account. 
+      # link_token - Connect an Apple Pay token to the specified account.
       #
-      # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more. 
+      # Read our [Apple Pay tutorial](https://docs.moov.io/guides/sources/cards/apple-pay/#register-your-domains) to learn more.
       # The `token` data is defined by Apple Pay and should be passed through from Apple Pay's response unmodified.
       #
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/cards.write` scope.
       request = Models::Operations::LinkApplePayTokenRequest.new(
         account_id: account_id,
@@ -725,13 +725,13 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::LinkedApplePayPaymentMethod)
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::LinkedApplePayPaymentMethod))
           response = Models::Operations::LinkApplePayTokenResponse.new(
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
             headers: http_response.headers,
-            linked_apple_pay_payment_method: T.unsafe(obj)
+            linked_apple_pay_payment_methods: T.unsafe(obj)
           )
 
           return response

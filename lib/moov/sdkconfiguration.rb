@@ -13,10 +13,9 @@ require_relative 'utils/retries'
 module Moov
   extend T::Sig
 
-  SERVERS = [
+  SERVERS = T.let([
     'https://api.moov.io', # 1 - Production API host
-  ].freeze
-  SERVERS = T.let(SERVERS, T::Array[String])
+  ].freeze, T::Array[String])
   # Contains the list of servers available to the SDK
 
   class SDKConfiguration
@@ -89,9 +88,9 @@ module Moov
       end
       @language = 'ruby'
       @openapi_doc_version = 'dev'
-      @sdk_version = '0.0.0-dev.11'
-      @gen_version = '2.866.0'
-      @user_agent = 'speakeasy-sdk/ruby 0.0.0-dev.11 2.866.0 dev moov_ruby'
+      @sdk_version = '0.0.0-dev.12'
+      @gen_version = '2.879.13'
+      @user_agent = 'speakeasy-sdk/ruby 0.0.0-dev.12 2.879.13 dev moov_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

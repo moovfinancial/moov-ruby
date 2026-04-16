@@ -10,6 +10,8 @@ module Moov
       autoload :AcceptDisputeResponse, 'moov/models/operations/acceptdispute_response.rb'
       autoload :AssignAccountCountriesRequest, 'moov/models/operations/assignaccountcountries_request.rb'
       autoload :AssignAccountCountriesResponse, 'moov/models/operations/assignaccountcountries_response.rb'
+      autoload :BatchGetTransfersRequest, 'moov/models/operations/batchgettransfers_request.rb'
+      autoload :BatchGetTransfersResponse, 'moov/models/operations/batchgettransfers_response.rb'
       autoload :CancelScheduleRequest, 'moov/models/operations/cancelschedule_request.rb'
       autoload :CancelScheduleResponse, 'moov/models/operations/cancelschedule_response.rb'
       autoload :CompleteBankAccountVerificationRequest, 'moov/models/operations/completebankaccountverification_request.rb'

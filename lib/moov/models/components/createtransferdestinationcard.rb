@@ -14,16 +14,20 @@ module Moov
 
         # An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
         field :dynamic_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dynamicDescriptor') } }
+        # An optional field to specify the type of card payout, used to route the transfer with the appropriate business application identifier (BAI).
+        field :payout_type, Crystalline::Nilable.new(Models::Components::CardPayoutType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payoutType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardPayoutType, true) } }
 
-        sig { params(dynamic_descriptor: T.nilable(::String)).void }
-        def initialize(dynamic_descriptor: nil)
+        sig { params(dynamic_descriptor: T.nilable(::String), payout_type: T.nilable(Models::Components::CardPayoutType)).void }
+        def initialize(dynamic_descriptor: nil, payout_type: nil)
           @dynamic_descriptor = dynamic_descriptor
+          @payout_type = payout_type
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @dynamic_descriptor == other.dynamic_descriptor
+          return false unless @payout_type == other.payout_type
           true
         end
       end

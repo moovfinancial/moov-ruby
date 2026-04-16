@@ -16,4 +16,6 @@ class Moov::Models::Operations::UpdateIssuedCardResponse
   def raw_response=(str_); end
   def headers(); end
   def headers=(str_); end
+  def issued_card(); end
+  def issued_card=(str_); end
 end

@@ -21,15 +21,15 @@ module Moov
 
         field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
         # The request completed successfully.
-        field :linked_apple_pay_payment_method, Crystalline::Nilable.new(Models::Components::LinkedApplePayPaymentMethod)
+        field :linked_apple_pay_payment_methods, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::LinkedApplePayPaymentMethod))
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], linked_apple_pay_payment_method: T.nilable(Models::Components::LinkedApplePayPaymentMethod)).void }
-        def initialize(content_type:, status_code:, raw_response:, headers:, linked_apple_pay_payment_method: nil)
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], linked_apple_pay_payment_methods: T.nilable(T::Array[Models::Components::LinkedApplePayPaymentMethod])).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:, linked_apple_pay_payment_methods: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
           @headers = headers
-          @linked_apple_pay_payment_method = linked_apple_pay_payment_method
+          @linked_apple_pay_payment_methods = linked_apple_pay_payment_methods
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -39,7 +39,7 @@ module Moov
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
           return false unless @headers == other.headers
-          return false unless @linked_apple_pay_payment_method == other.linked_apple_pay_payment_method
+          return false unless @linked_apple_pay_payment_methods == other.linked_apple_pay_payment_methods
           true
         end
       end
