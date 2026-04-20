@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: c5c86ae8fa6084f01d904f28016decb3
+  docChecksum: f76f9f930caa5408f2c272792f4e32c8
   docVersion: v2024.01.00
-  speakeasyVersion: 1.761.5
-  generationVersion: 2.879.13
-  releaseVersion: 24.2.1
-  configChecksum: 0c83ef6e7b9e90984dc79079ee15126d
+  speakeasyVersion: 1.761.8
+  generationVersion: 2.881.2
+  releaseVersion: 24.2.2
+  configChecksum: 417f736fb1725a0111d8a3e2822ec850
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: c119562b-706a-449c-b98b-6ad48f3921d7
-  pristine_commit_hash: 9690abc7c50a9d842374a1f11088f6d0dd50cc62
-  pristine_tree_hash: 99d83e5fd1bf6eab649fecb6de1d8f6b64d4c112
+  generation_id: 5de5d090-40cc-4517-b0fe-e1f1fbadcbe8
+  pristine_commit_hash: 7d7b889f8b583efdba991af0b952c78528f45db4
+  pristine_tree_hash: 86ec4cce2f077ec3aa7faeded7923c5b5115f32b
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:98330e7988550a5264bf7b555e6f701c8f604c6b
-    pristine_git_object: 8e64dcff07c3cbb7bb53dfddc2f4f413afe5104c
+    last_write_checksum: sha1:c6b04764aee0030da0dfcda6d759ec9a79a28a85
+    pristine_git_object: 6f71d582e8163ab49e4c6e9a70f30187ec1b35e2
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -883,8 +883,8 @@ trackedFiles:
     pristine_git_object: 9e6070312ad335c131a9105f02a07b2cbe7222b8
   docs/models/components/disbursementpaymentmethodtype.md:
     id: 8126eb809837
-    last_write_checksum: sha1:cbcf46376753d6c8c7c2584d1ae7c1a9abf3dafd
-    pristine_git_object: 0b808ab953feb72aee789c0ffd04f21afe8aefa9
+    last_write_checksum: sha1:eab1e5ce8afe26e582e10c19acca237a383785a5
+    pristine_git_object: 68362f6d12ea84958a4103033ee99231aa3c6cb2
   docs/models/components/displayoptionserror.md:
     id: 890279251b22
     last_write_checksum: sha1:938c1161b5745b8d02de71b862304ea6c129da36
@@ -5687,8 +5687,8 @@ trackedFiles:
     pristine_git_object: b51c79ea25bc7deb96c9f9fbc4b28db52c76931b
   lib/moov/models/components/disbursementpaymentmethodtype.rb:
     id: c84889715555
-    last_write_checksum: sha1:a0a55b1247633e33dc45760b1a8a837c0b6eca48
-    pristine_git_object: 22b19cbfb2400fc09f0275dc413b5c53b5ea420b
+    last_write_checksum: sha1:bf72f0a9c6d62f0e24c2c4897685a895c1095ebb
+    pristine_git_object: a0ca8ded0ad84b1e30aa08e12af31a5ecfd8cd74
   lib/moov/models/components/disbursementpaymentmethodtype.rbi:
     id: a57aef156f89
     last_write_checksum: sha1:e717f6d2e4633b5072232d4c86a1f6bd7736dfe7
@@ -11519,8 +11519,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:ae4bb2d2a56923f9c0cadf591540bcd8c05fb984
-    pristine_git_object: 6bf8056c99f5dc7c0ca11d4afe113f0c764e8a41
+    last_write_checksum: sha1:9681300830d42addf88a414aef613f6a435ce27d
+    pristine_git_object: f80a9a35a881d67939a2a615c3e495e45ca57844
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -11595,8 +11595,8 @@ trackedFiles:
     pristine_git_object: 14c62564bc3e68a41ddffd5a2f33037f4d55049e
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:a0a4254e8cea9a2bb2177f52a1068f8c4f9095d0
-    pristine_git_object: c386e6035ac9c7792043240e2c60065b9e5f4097
+    last_write_checksum: sha1:2895264b820ca05d95b08723c5664fa617ef7493
+    pristine_git_object: 48bae0025fccbe1200dd14b046f30357626e8278
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -14134,7 +14134,7 @@ examples:
         "200":
           application/json: {"key": {"transferID": "d835gf30-4b19-4850-a9b2-c0624c41ecb3", "createdOn": "2025-01-21T21:32:16Z", "source": {"paymentMethodID": "9506dbf6-4208-44c3-ad8a-e4431660e1f2", "paymentMethodType": "card-payment", "account": {"accountID": "7e4b26c2-b399-49ef-8390-50e1ea44d550", "email": "jules@julesjackson.com", "displayName": "Jules Jackson"}, "card": {"cardID": "aefd5563-93c6-413c-875e-1bd0ebfc116d", "fingerprint": "2f5d782ceef1c3bd31ed5...", "brand": "Visa", "cardType": "credit", "lastFourCardNumber": "2000", "bin": "400020", "expiration": {"month": "01", "year": "28"}, "holderName": "Jules Jackson", "billingAddress": {"postalCode": "80301"}, "cardVerification": {"cvv": "unavailable", "addressLine1": "unavailable", "postalCode": "unavailable", "accountName": {"firstName": "unavailable", "lastName": "unavailable", "middleName": "unavailable", "fullName": "unavailable"}}, "issuer": "Moov Visa Sandbox", "issuerCountry": "US", "cardAccountUpdater": {}, "domesticPushToCard": "standard", "domesticPullFromCard": "supported"}, "cardDetails": {"status": "confirmed", "dynamicDescriptor": "WhlBdy *Yoga 11-12", "confirmedOn": "2025-01-21T21:32:16.799681237Z"}}, "destination": {"paymentMethodID": "3f9969cf-a1f3-4d83-8ddc-229a506651cf", "paymentMethodType": "moov-wallet", "account": {"accountID": "34233b72-780c-4a0d-8b08-cbbe23k878f8", "email": "john@wholebodyfitness.io", "displayName": "Whole Body Fitness"}, "wallet": {"walletID": "744b2e78-8cc8-4a6a-af42-611e3b844503", "partnerAccountID": "65b57f28-49e9-4afb-9bf6-7e4fb6444917", "walletType": "general"}}, "status": "pending", "amount": {"currency": "USD", "value": 32945}, "description": "Transfer from card to wallet", "moovFees": [{"accountID": "7e4b26c2-b399-49ef-8390-50e1ea44d550", "transferParty": "source", "totalAmount": {"currency": "USD", "valueDecimal": "0.1"}, "feeIDs": ["9d957d33-1a9a-47aa-9460-fe1a90f003dd"]}]}}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.card_issuing.update()`:  `response` **Changed** (Breaking ⚠️)\n* `client.transfers.batch_get_transfers()`: **Added**\n* `client.transfers.create()`: \n  *  `response.destination.instant_bank_details` **Added**\n  *  `error.destination.instant_bank_details` **Added**\n* `client.transfers.list()`:  `response.[].destination.instant_bank_details` **Added**\n* `client.transfers.get()`:  `response.destination.instant_bank_details` **Added**\n* `client.transfers.update()`:  `response.destination.instant_bank_details` **Added**\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.payout.allowed_methods[]` **Changed**\n  *  `response.payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n* `client.payment_links.list()`:  `response.[].payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n* `client.payment_links.get()`:  `response.payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.payout.allowed_methods[]` **Changed**\n  *  `response.payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

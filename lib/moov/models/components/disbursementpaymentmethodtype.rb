@@ -14,6 +14,8 @@ module Moov
           RTP_CREDIT = new('rtp-credit')
           ACH_CREDIT_SAME_DAY = new('ach-credit-same-day')
           ACH_CREDIT_STANDARD = new('ach-credit-standard')
+          PUSH_TO_APPLE_PAY = new('push-to-apple-pay')
+          PUSH_TO_GOOGLE_PAY = new('push-to-google-pay')
         end
       end
     end
