@@ -5,15 +5,15 @@ management:
   docVersion: v2026.04.00
   speakeasyVersion: 1.761.8
   generationVersion: 2.881.2
-  releaseVersion: 26.4.0-dev.18
-  configChecksum: 7deb34f88d8c8fad53f2e2c2db1b2364
+  releaseVersion: 26.4.0
+  configChecksum: ac323bf040e829289b8fdc5e2d413134
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 0729b79e-e548-4f2f-a981-cce3c518eef6
-  pristine_commit_hash: cae203e7914ad53c508df0695c227dc19f5c69a5
-  pristine_tree_hash: 7b1e4d461c576206f86c550d7c550c545824d9a7
+  generation_id: 07b55f4c-da3d-4be4-8908-d325065eedb3
+  pristine_commit_hash: cd455d6db6ca6fdd4b3ee289ab5551de5a69ca6c
+  pristine_tree_hash: 7ca415fb26bfd1208f9d8ff5c026b60dbc1cd024
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:a3c6a3f8768b76289d17aaa670d7de52882f0c6e
-    pristine_git_object: e63049209dd14a0707cb46fc5c163db50dad6c97
+    last_write_checksum: sha1:a94b4a7e3274e3eaccdf0ae18d597185638bdd9a
+    pristine_git_object: bbf8adfb7fabf9ae34fc63f1b59dca85e52b82f7
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -13479,8 +13479,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:dbefab9e445e292b3844a4b38bba9bae4890cb33
-    pristine_git_object: 96ed8b26ac1528649410f8d22e3f5e2cc37ee3ae
+    last_write_checksum: sha1:e43129fe6f6f805d8443342ee674ccce6ca6d18e
+    pristine_git_object: ed667d13e696dd89ff313e61fdf7c70075f54577
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -13559,8 +13559,8 @@ trackedFiles:
     pristine_git_object: 2afa21bcf5716de992a21ca393c9fb05dafa295d
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:d729fbddc5989f8e59dfeb64a4640958ef2b0cf5
-    pristine_git_object: 2b2ec4c2b2cb79d00dfe46e43ec87643d01f7e28
+    last_write_checksum: sha1:cd4802a8ab21f18a77be2c6713eeb5503eaba170
+    pristine_git_object: c570ac384754a66338c6754eb950ff19d9d3aadb
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -16160,7 +16160,6 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.payout.allowed_methods[]` **Changed**\n  *  `response.payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n* `client.cards.list()`:  `response.[].payment_methods[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.bank_accounts.link()`:  `response.payment_methods[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.bank_accounts.list()`:  `response.[].payment_methods[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.bank_accounts.get()`:  `response.payment_methods[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.cards.link()`:  `response.payment_methods[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.payment_links.get()`:  `response.payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n* `client.cards.get()`:  `response.payment_methods[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.cards.update()`:  `response.payment_methods[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.payout.allowed_methods[]` **Changed**\n  *  `response.payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n* `client.apple_pay.link_token()`:  `response.[].payment_method_type` **Changed** (Breaking ⚠️)\n* `client.payment_links.list()`:  `response.[].payout.allowed_methods[]` **Changed** (Breaking ⚠️)\n* `client.transfers.update()`:  `response.source.payment_method_type` **Changed** (Breaking ⚠️)\n* `client.payment_methods.list()`: \n  *  `request.payment_method_type` **Changed**\n  *  `response.[]` **Changed** (Breaking ⚠️)\n* `client.payment_methods.get()`:  `response` **Changed** (Breaking ⚠️)\n* `client.transfers.get()`:  `response.source.payment_method_type` **Changed** (Breaking ⚠️)\n* `client.transfers.batch_get_transfers()`:  `response.Map<Transfer>.source.payment_method_type` **Changed** (Breaking ⚠️)\n* `client.transfers.list()`:  `response.[].source.payment_method_type` **Changed** (Breaking ⚠️)\n* `client.transfers.generate_options()`:  `response.source_options[]` **Changed** (Breaking ⚠️)\n* `client.transfers.create()`: \n  *  `response.source.payment_method_type` **Changed** (Breaking ⚠️)\n  *  `error.source.payment_method_type` **Changed** (Breaking ⚠️)\n* `client.resolution_links.get()`:  `response.status` **Added**\n* `client.google_pay.link_token()`: **Added**\n* `client.resolution_links.create()`:  `response.status` **Added**\n* `client.resolution_links.list()`:  `response.[].status` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

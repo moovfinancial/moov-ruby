@@ -13,7 +13,7 @@ targets:
         sourceRevisionDigest: sha256:4c9c70b29778495c772b441f235be5da47677649a83b3e14eb399cf0030f6cb3
         sourceBlobDigest: sha256:a4aa59e694f6a4fb1b764788a12b048ee95c3d932a00098a816d8cbd0849cd00
         codeSamplesNamespace: v2026.04.00-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:7e5db6522dbd8b8da7b9d1a117dd2e448687dfaf27cab1544f12eec5f115eda7
+        codeSamplesRevisionDigest: sha256:6d6f70fc47fc55a4cfcf0f4e072d4bb5334f75f42c5c543ae6139bc38ffcd68e
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
