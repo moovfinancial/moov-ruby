@@ -204,6 +204,8 @@ module Moov
       autoload :LinkBankAccountResponse, 'moov/models/operations/linkbankaccount_response.rb'
       autoload :LinkCardRequest, 'moov/models/operations/linkcard_request.rb'
       autoload :LinkCardResponse, 'moov/models/operations/linkcard_response.rb'
+      autoload :LinkGooglePayTokenRequest, 'moov/models/operations/linkgooglepaytoken_request.rb'
+      autoload :LinkGooglePayTokenResponse, 'moov/models/operations/linkgooglepaytoken_response.rb'
       autoload :ListAccountTerminalApplicationsRequest, 'moov/models/operations/listaccountterminalapplications_request.rb'
       autoload :ListAccountTerminalApplicationsResponse, 'moov/models/operations/listaccountterminalapplications_response.rb'
       autoload :ListAccountsRequest, 'moov/models/operations/listaccounts_request.rb'

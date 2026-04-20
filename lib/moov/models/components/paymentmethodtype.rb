@@ -24,6 +24,9 @@ module Moov
           INSTANT_BANK_CREDIT = new('instant-bank-credit')
           PUSH_TO_APPLE_PAY = new('push-to-apple-pay')
           PULL_FROM_APPLE_PAY = new('pull-from-apple-pay')
+          GOOGLE_PAY = new('google-pay')
+          PUSH_TO_GOOGLE_PAY = new('push-to-google-pay')
+          PULL_FROM_GOOGLE_PAY = new('pull-from-google-pay')
         end
       end
     end

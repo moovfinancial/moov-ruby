@@ -15,6 +15,7 @@ module Moov
   autoload :Disputes, 'moov/disputes'
   autoload :FeePlans, 'moov/fee_plans'
   autoload :Files, 'moov/files'
+  autoload :GooglePay, 'moov/google_pay'
   autoload :Images, 'moov/images'
   autoload :Invoices, 'moov/invoices'
   autoload :PaymentLinks, 'moov/payment_links'

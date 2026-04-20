@@ -645,6 +645,15 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
+### [GooglePay](docs/sdks/googlepay/README.md)
+
+* [link_token](docs/sdks/googlepay/README.md#link_token) - Connect a Google Pay token to the specified account.
+
+The `token` data is defined by Google Pay and should be passed through from Google Pay's response unmodified.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/cards.write` scope.
+
 ### [Images](docs/sdks/images/README.md)
 
 * [list](docs/sdks/images/README.md#list) - List metadata for all images in the specified account.
