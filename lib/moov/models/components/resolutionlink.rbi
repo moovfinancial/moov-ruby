@@ -18,6 +18,8 @@ class Moov::Models::Components::ResolutionLink
   def recipient=(str_); end
   def url(); end
   def url=(str_); end
+  def status(); end
+  def status=(str_); end
   def created_on(); end
   def created_on=(str_); end
   def updated_on(); end

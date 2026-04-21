@@ -22,6 +22,8 @@ module Moov
         field :recipient, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient'), required: true } }
         # The URL of the resolution link.
         field :url, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('url'), required: true } }
+        # The current status of the resolution link.
+        field :status, Models::Components::ResolutionLinkStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::ResolutionLinkStatus, false) } }
         # The date and time the resolution link was created.
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The date and time the resolution link was last updated.
@@ -31,13 +33,14 @@ module Moov
         # The date and time the resolution link was disabled, if applicable.
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(code: ::String, account_id: ::String, partner_account_id: ::String, recipient: ::String, url: ::String, created_on: ::DateTime, updated_on: ::DateTime, expires_on: ::DateTime, disabled_on: T.nilable(::DateTime)).void }
-        def initialize(code:, account_id:, partner_account_id:, recipient:, url:, created_on:, updated_on:, expires_on:, disabled_on: nil)
+        sig { params(code: ::String, account_id: ::String, partner_account_id: ::String, recipient: ::String, url: ::String, status: Models::Components::ResolutionLinkStatus, created_on: ::DateTime, updated_on: ::DateTime, expires_on: ::DateTime, disabled_on: T.nilable(::DateTime)).void }
+        def initialize(code:, account_id:, partner_account_id:, recipient:, url:, status:, created_on:, updated_on:, expires_on:, disabled_on: nil)
           @code = code
           @account_id = account_id
           @partner_account_id = partner_account_id
           @recipient = recipient
           @url = url
+          @status = status
           @created_on = created_on
           @updated_on = updated_on
           @expires_on = expires_on
@@ -52,6 +55,7 @@ module Moov
           return false unless @partner_account_id == other.partner_account_id
           return false unless @recipient == other.recipient
           return false unless @url == other.url
+          return false unless @status == other.status
           return false unless @created_on == other.created_on
           return false unless @updated_on == other.updated_on
           return false unless @expires_on == other.expires_on

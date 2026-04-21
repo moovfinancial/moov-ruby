@@ -62,4 +62,6 @@ class Moov::Models::Components::CreatedTransfer
   def foreign_id=(str_); end
   def line_items(); end
   def line_items=(str_); end
+  def capture(); end
+  def capture=(str_); end
 end

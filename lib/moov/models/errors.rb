@@ -33,6 +33,7 @@ module Moov
       autoload :ImageRequestValidationError, 'moov/models/errors/imagerequestvalidationerror.rb'
       autoload :LinkApplePayError, 'moov/models/errors/linkapplepayerror.rb'
       autoload :LinkCardError, 'moov/models/errors/linkcarderror.rb'
+      autoload :LinkGooglePayError, 'moov/models/errors/linkgooglepayerror.rb'
       autoload :ListInvoicesValidationError, 'moov/models/errors/listinvoicesvalidationerror.rb'
       autoload :ListTransfersValidationError, 'moov/models/errors/listtransfersvalidationerror.rb'
       autoload :ListWalletTransactionsValidationError, 'moov/models/errors/listwallettransactionsvalidationerror.rb'

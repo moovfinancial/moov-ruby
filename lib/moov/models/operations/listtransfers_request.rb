@@ -34,13 +34,17 @@ module Moov
         field :disputed, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'query_param': { 'field_name': 'disputed', 'style': 'form', 'explode': false } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'foreignID', 'style': 'form', 'explode': false } }
+        # Optional comma-separated IDs to filter for transfers associated with specific card authorizations.
+        field :authorization_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'query_param': { 'field_name': 'authorizationIDs', 'style': 'form', 'explode': false } }
+        # Optional comma-separated IDs to filter for transfers associated with specific card captures.
+        field :capture_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'query_param': { 'field_name': 'captureIDs', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
 
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, account_i_ds: T.nilable(T::Array[::String]), status: T.nilable(Models::Components::TransferStatus), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), group_id: T.nilable(::String), schedule_id: T.nilable(::String), payment_link_code: T.nilable(::String), refunded: T.nilable(T::Boolean), disputed: T.nilable(T::Boolean), foreign_id: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
-        def initialize(account_id:, account_i_ds: nil, status: nil, start_date_time: nil, end_date_time: nil, group_id: nil, schedule_id: nil, payment_link_code: nil, refunded: nil, disputed: nil, foreign_id: nil, skip: nil, count: nil)
+        sig { params(account_id: ::String, account_i_ds: T.nilable(T::Array[::String]), status: T.nilable(Models::Components::TransferStatus), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), group_id: T.nilable(::String), schedule_id: T.nilable(::String), payment_link_code: T.nilable(::String), refunded: T.nilable(T::Boolean), disputed: T.nilable(T::Boolean), foreign_id: T.nilable(::String), authorization_i_ds: T.nilable(T::Array[::String]), capture_i_ds: T.nilable(T::Array[::String]), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
+        def initialize(account_id:, account_i_ds: nil, status: nil, start_date_time: nil, end_date_time: nil, group_id: nil, schedule_id: nil, payment_link_code: nil, refunded: nil, disputed: nil, foreign_id: nil, authorization_i_ds: nil, capture_i_ds: nil, skip: nil, count: nil)
           @account_id = account_id
           @account_i_ds = account_i_ds
           @status = status
@@ -52,6 +56,8 @@ module Moov
           @refunded = refunded
           @disputed = disputed
           @foreign_id = foreign_id
+          @authorization_i_ds = authorization_i_ds
+          @capture_i_ds = capture_i_ds
           @skip = skip
           @count = count
         end
@@ -70,6 +76,8 @@ module Moov
           return false unless @refunded == other.refunded
           return false unless @disputed == other.disputed
           return false unless @foreign_id == other.foreign_id
+          return false unless @authorization_i_ds == other.authorization_i_ds
+          return false unless @capture_i_ds == other.capture_i_ds
           return false unless @skip == other.skip
           return false unless @count == other.count
           true
