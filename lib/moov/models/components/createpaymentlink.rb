@@ -21,13 +21,18 @@ module Moov
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
         # The merchant's preferred payment method ID. Must be a wallet payment method.
         field :merchant_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantPaymentMethodID'), required: true } }
-
+        # The fixed amount of the payment link. 
+        #
+        # In API versions before `2026.07.00`, this was a required field.
+        #
+        # In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted 
+        # for `open` payment amount types.
         field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
         # Customizable display options for a payment link.
         field :display, Models::Components::PaymentLinkDisplayOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('display'), required: true } }
-
+        # Optional sales tax amount.
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
-        # An optional limit on the number of times this payment link can be used. 
+        # An optional limit on the number of times this payment link can be used.
         #
         # **For payouts, `maxUses` is always 1.**
         field :max_uses, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxUses') } }

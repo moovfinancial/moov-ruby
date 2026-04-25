@@ -62,7 +62,7 @@ module Moov
         field :occurrence_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('occurrenceID') } }
 
         field :payment_link_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkCode') } }
-        # Optional sales tax amount. `transfer.amount.value` should be inclusive of any sales tax and represents the total amount charged.
+
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
