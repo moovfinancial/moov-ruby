@@ -7,10 +7,10 @@
 module Moov
   module Models
     module Components
-
-      class LinkedGooglePayPaymentMethodPaymentMethodType < T::Enum
+      # GooglePayPaymentMethodDataType - The type of payment method. Always `CARD`.
+      class GooglePayPaymentMethodDataType < T::Enum
         enums do
-          GOOGLE_PAY = new('google-pay')
+          CARD = new('CARD')
         end
       end
     end

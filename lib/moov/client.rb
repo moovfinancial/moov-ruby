@@ -16,7 +16,7 @@ module Moov
   class Client
     extend T::Sig
 
-    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :google_pay, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :resolution_links, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
+    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :google_pay, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :resolution_links, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfer_config, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -101,6 +101,7 @@ module Moov
       @sweeps = Sweeps.new(@sdk_configuration)
       @account_terminal_applications = AccountTerminalApplications.new(@sdk_configuration)
       @support = Support.new(@sdk_configuration)
+      @transfer_config = TransferConfig.new(@sdk_configuration)
       @transfers = Transfers.new(@sdk_configuration)
       @underwriting = Underwriting.new(@sdk_configuration)
       @wallets = Wallets.new(@sdk_configuration)

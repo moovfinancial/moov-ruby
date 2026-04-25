@@ -16,13 +16,16 @@ module Moov
         field :require_address, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requireAddress') } }
         # If true, a phone number is required when completing the payment form.
         field :require_phone, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requirePhone') } }
+        # If true, tipping is enabled on the payment form. Defaults to false.
+        field :tipping_enabled, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tippingEnabled') } }
         # Optional free-form metadata for the Moov account that will represent this customer.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        sig { params(require_address: T.nilable(T::Boolean), require_phone: T.nilable(T::Boolean), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
-        def initialize(require_address: nil, require_phone: nil, metadata: nil)
+        sig { params(require_address: T.nilable(T::Boolean), require_phone: T.nilable(T::Boolean), tipping_enabled: T.nilable(T::Boolean), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
+        def initialize(require_address: nil, require_phone: nil, tipping_enabled: nil, metadata: nil)
           @require_address = require_address
           @require_phone = require_phone
+          @tipping_enabled = tipping_enabled
           @metadata = metadata
         end
 
@@ -31,6 +34,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @require_address == other.require_address
           return false unless @require_phone == other.require_phone
+          return false unless @tipping_enabled == other.tipping_enabled
           return false unless @metadata == other.metadata
           true
         end

@@ -14,15 +14,18 @@ module Moov
 
         # Describes an error that wasn't attributable to a single request field.
         field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
-        # Describes an error within the `token` request field.
-        field :token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token') } }
+        # Describes an error within the `merchantAccountID` request field.
+        field :merchant_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantAccountID') } }
+        # Describes an error within the `paymentMethodData` request field.
+        field :payment_method_data, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodData') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(error: T.nilable(::String), token: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(error: nil, token: nil, raw_response: nil)
+        sig { params(error: T.nilable(::String), merchant_account_id: T.nilable(::String), payment_method_data: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(error: nil, merchant_account_id: nil, payment_method_data: nil, raw_response: nil)
           @error = error
-          @token = token
+          @merchant_account_id = merchant_account_id
+          @payment_method_data = payment_method_data
           @raw_response = raw_response
         end
 
@@ -30,7 +33,8 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @error == other.error
-          return false unless @token == other.token
+          return false unless @merchant_account_id == other.merchant_account_id
+          return false unless @payment_method_data == other.payment_method_data
           return false unless @raw_response == other.raw_response
           true
         end

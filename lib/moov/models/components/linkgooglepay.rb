@@ -7,29 +7,34 @@
 module Moov
   module Models
     module Components
-      #   The encrypted Google Pay payment token (ECv2 format).
+      #   Links a Google Pay token to a Moov account.
       #
-      #   Refer to [Google's documentation](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#payment-method-token-structure)
-      #   for more information.
+      #   The `paymentMethodData` field should contain the `paymentMethodData` property from the
+      #   [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response
+      #   returned by Google Pay's client SDK. Pass it through unmodified.
       class LinkGooglePay
         extend T::Sig
         include Crystalline::MetadataFields
 
-        #   Contains the encrypted payment token as returned from Google Pay.
-        #
-        #   Refer to [Google's documentation](https://developers.google.com/pay/api/web/guides/resources/payment-data-cryptography#payment-method-token-structure)
-        #   for more information.
-        field :token, Models::Components::GooglePayToken, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('token'), required: true } }
+        #   The merchant accountID this token was minted for. Must match the `gatewayMerchantId`
+        #   value passed to Google Pay when constructing the PaymentDataRequest. card-gateway validates
+        #   that the decrypted `gatewayMerchantId` matches this value.
+        field :merchant_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantAccountID'), required: true } }
+        #   The `paymentMethodData` object from Google Pay's
+        #   [PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response.
+        field :payment_method_data, Models::Components::GooglePayPaymentMethodData, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodData'), required: true } }
 
-        sig { params(token: Models::Components::GooglePayToken).void }
-        def initialize(token:)
-          @token = token
+        sig { params(merchant_account_id: ::String, payment_method_data: Models::Components::GooglePayPaymentMethodData).void }
+        def initialize(merchant_account_id:, payment_method_data:)
+          @merchant_account_id = merchant_account_id
+          @payment_method_data = payment_method_data
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @token == other.token
+          return false unless @merchant_account_id == other.merchant_account_id
+          return false unless @payment_method_data == other.payment_method_data
           true
         end
       end

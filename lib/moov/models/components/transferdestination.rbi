@@ -24,6 +24,8 @@ class Moov::Models::Components::TransferDestination
   def ach_details=(str_); end
   def apple_pay(); end
   def apple_pay=(str_); end
+  def google_pay(); end
+  def google_pay=(str_); end
   def card_details(); end
   def card_details=(str_); end
   def rtp_details(); end

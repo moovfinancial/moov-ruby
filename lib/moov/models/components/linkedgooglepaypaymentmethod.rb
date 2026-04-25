@@ -14,12 +14,12 @@ module Moov
 
         # The new payment method's ID.
         field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
-
-        field :payment_method_type, Models::Components::LinkedGooglePayPaymentMethodPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::LinkedGooglePayPaymentMethodPaymentMethodType, false) } }
+        # The payment method type that represents a payment rail and directionality
+        field :payment_method_type, Models::Components::PaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PaymentMethodType, false) } }
         # Describes a Google Pay token on a Moov account.
         field :google_pay, Models::Components::GooglePayResponse, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('googlePay'), required: true } }
 
-        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::LinkedGooglePayPaymentMethodPaymentMethodType, google_pay: Models::Components::GooglePayResponse).void }
+        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::PaymentMethodType, google_pay: Models::Components::GooglePayResponse).void }
         def initialize(payment_method_id:, payment_method_type:, google_pay:)
           @payment_method_id = payment_method_id
           @payment_method_type = payment_method_type

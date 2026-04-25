@@ -66,4 +66,6 @@ class Moov::Models::Components::Transfer
   def line_items=(str_); end
   def invoice_id(); end
   def invoice_id=(str_); end
+  def amount_details(); end
+  def amount_details=(str_); end
 end

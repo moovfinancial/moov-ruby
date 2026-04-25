@@ -28,6 +28,7 @@ module Moov
   autoload :Sweeps, 'moov/sweeps'
   autoload :AccountTerminalApplications, 'moov/account_terminal_applications'
   autoload :Support, 'moov/support'
+  autoload :TransferConfig, 'moov/transfer_config'
   autoload :Transfers, 'moov/transfers'
   autoload :Underwriting, 'moov/underwriting'
   autoload :Wallets, 'moov/wallets'
