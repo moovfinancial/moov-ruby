@@ -30,8 +30,6 @@ module Moov
         field :merchant_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantPaymentMethodID'), required: true } }
         # Link to the payment landing page for this payment link.
         field :link, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('link'), required: true } }
-
-        field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
         # The number of times this payment link has been used.
         field :uses, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('uses'), required: true } }
         # Customizable display options for a payment link.
@@ -42,9 +40,16 @@ module Moov
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
+        # The fixed amount of the payment link. 
+        #
+        # In API versions before `2026.07.00`, this was a required field.
+        #
+        # In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted 
+        # for `open` payment amount types.
+        field :amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
         # Optional sales tax amount.
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
-        # An optional limit on the number of times this payment link can be used. 
+        # An optional limit on the number of times this payment link can be used.
         #
         # **For payouts, `maxUses` is always 1.**
         field :max_uses, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxUses') } }
@@ -62,8 +67,10 @@ module Moov
 
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, amount: Models::Components::Amount, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, sales_tax_amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime)).void }
-        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, amount:, uses:, display:, customer:, created_on:, updated_on:, sales_tax_amount: nil, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil)
+        field :amount_details, Crystalline::Nilable.new(Models::Components::PaymentLinkAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
+
+        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, amount: T.nilable(Models::Components::Amount), sales_tax_amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::PaymentLinkAmountDetails)).void }
+        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, uses:, display:, customer:, created_on:, updated_on:, amount: nil, sales_tax_amount: nil, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil, amount_details: nil)
           @code = code
           @payment_link_type = payment_link_type
           @mode = mode
@@ -73,12 +80,12 @@ module Moov
           @owner_account_id = owner_account_id
           @merchant_payment_method_id = merchant_payment_method_id
           @link = link
-          @amount = amount
           @uses = uses
           @display = display
           @customer = customer
           @created_on = created_on
           @updated_on = updated_on
+          @amount = amount
           @sales_tax_amount = sales_tax_amount
           @max_uses = max_uses
           @last_used_on = last_used_on
@@ -87,6 +94,7 @@ module Moov
           @payout = payout
           @line_items = line_items
           @disabled_on = disabled_on
+          @amount_details = amount_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -101,12 +109,12 @@ module Moov
           return false unless @owner_account_id == other.owner_account_id
           return false unless @merchant_payment_method_id == other.merchant_payment_method_id
           return false unless @link == other.link
-          return false unless @amount == other.amount
           return false unless @uses == other.uses
           return false unless @display == other.display
           return false unless @customer == other.customer
           return false unless @created_on == other.created_on
           return false unless @updated_on == other.updated_on
+          return false unless @amount == other.amount
           return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @max_uses == other.max_uses
           return false unless @last_used_on == other.last_used_on
@@ -115,6 +123,7 @@ module Moov
           return false unless @payout == other.payout
           return false unless @line_items == other.line_items
           return false unless @disabled_on == other.disabled_on
+          return false unless @amount_details == other.amount_details
           true
         end
       end

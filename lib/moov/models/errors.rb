@@ -52,6 +52,7 @@ module Moov
       autoload :RevokeTokenRequestError, 'moov/models/errors/revoketokenrequesterror.rb'
       autoload :ScheduleValidationError, 'moov/models/errors/schedulevalidationerror.rb'
       autoload :TerminalApplicationError, 'moov/models/errors/terminalapplicationerror.rb'
+      autoload :TransferConfigValidationError, 'moov/models/errors/transferconfigvalidationerror.rb'
       autoload :TransferOptionsValidationError, 'moov/models/errors/transferoptionsvalidationerror.rb'
       autoload :TransferValidationError, 'moov/models/errors/transfervalidationerror.rb'
       autoload :TransferError, 'moov/models/errors/transfer_error.rb'

@@ -14,14 +14,17 @@ module Moov
 
 
         field :amount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+
+        field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetailsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
         # Used for generic errors when invalid request data isn't attributed to a single request field.
         field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(amount: T.nilable(::String), error: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(amount: nil, error: nil, raw_response: nil)
+        sig { params(amount: T.nilable(::String), amount_details: T.nilable(Models::Components::RefundAmountDetailsValidationError), error: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(amount: nil, amount_details: nil, error: nil, raw_response: nil)
           @amount = amount
+          @amount_details = amount_details
           @error = error
           @raw_response = raw_response
         end
@@ -30,6 +33,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @amount == other.amount
+          return false unless @amount_details == other.amount_details
           return false unless @error == other.error
           return false unless @raw_response == other.raw_response
           true

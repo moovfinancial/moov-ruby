@@ -26,8 +26,6 @@ class Moov::Models::Components::PaymentLink
   def merchant_payment_method_id=(str_); end
   def link(); end
   def link=(str_); end
-  def amount(); end
-  def amount=(str_); end
   def uses(); end
   def uses=(str_); end
   def display(); end
@@ -38,6 +36,8 @@ class Moov::Models::Components::PaymentLink
   def created_on=(str_); end
   def updated_on(); end
   def updated_on=(str_); end
+  def amount(); end
+  def amount=(str_); end
   def sales_tax_amount(); end
   def sales_tax_amount=(str_); end
   def max_uses(); end
@@ -54,4 +54,6 @@ class Moov::Models::Components::PaymentLink
   def line_items=(str_); end
   def disabled_on(); end
   def disabled_on=(str_); end
+  def amount_details(); end
+  def amount_details=(str_); end
 end

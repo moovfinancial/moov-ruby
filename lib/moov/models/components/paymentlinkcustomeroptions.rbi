@@ -12,6 +12,8 @@ class Moov::Models::Components::PaymentLinkCustomerOptions
   def require_address=(str_); end
   def require_phone(); end
   def require_phone=(str_); end
+  def tipping_enabled(); end
+  def tipping_enabled=(str_); end
   def metadata(); end
   def metadata=(str_); end
 end

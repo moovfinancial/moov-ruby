@@ -6,7 +6,9 @@
 
 * [link_token](#link_token) - Connect a Google Pay token to the specified account.
 
-The `token` data is defined by Google Pay and should be passed through from Google Pay's response unmodified.
+The `paymentMethodData` field should contain the `paymentMethodData` property from Google Pay's
+[PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response,
+passed through unmodified.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
@@ -15,7 +17,9 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 Connect a Google Pay token to the specified account.
 
-The `token` data is defined by Google Pay and should be passed through from Google Pay's response unmodified.
+The `paymentMethodData` field should contain the `paymentMethodData` property from Google Pay's
+[PaymentData](https://developers.google.com/pay/api/web/reference/response-objects#PaymentData) response,
+passed through unmodified.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
@@ -34,18 +38,21 @@ s = ::Moov::Client.new(
   )
 )
 res = s.google_pay.link_token(account_id: '<id>', link_google_pay: Models::Components::LinkGooglePay.new(
-  token: Models::Components::GooglePayToken.new(
-    protocol_version: 'ECv2',
-    signature: '<value>',
-    intermediate_signing_key: Models::Components::GooglePayIntermediateSigningKey.new(
-      signed_key: '<value>',
-      signatures: [
-        '<value 1>',
-        '<value 2>',
-        '<value 3>',
-      ]
+  merchant_account_id: 'c5f78a7e-2fb0-4e4a-bcf0-9e1f8b0e5c7a',
+  payment_method_data: Models::Components::GooglePayPaymentMethodData.new(
+    type: Models::Components::GooglePayPaymentMethodDataType::CARD,
+    info: Models::Components::GooglePayCardInfo.new(
+      card_network: Models::Components::CardNetwork::VISA,
+      card_details: '1234',
+      card_funding_source: Models::Components::CardFundingSource::DEBIT,
+      billing_address: Models::Components::GooglePayBillingAddress.new(
+        country_code: 'US'
+      )
     ),
-    signed_message: '<value>'
+    tokenization_data: Models::Components::GooglePayTokenizationData.new(
+      type: Models::Components::GooglePayTokenizationDataType::PAYMENT_GATEWAY,
+      token: '<value>'
+    )
   )
 ))
 

@@ -1,0 +1,8 @@
+# UpdatePaymentLinkAmountDetails
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `surcharge`                                                                                      | [T.nilable(Models::Components::AmountDecimalUpdate)](../../models/shared/amountdecimalupdate.md) | :heavy_minus_sign:                                                                               | The amount of surcharge applied to the payment link.                                             |

@@ -1,0 +1,9 @@
+# AmountDecimalRangeUpdate
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `minimum`                                                                                        | [T.nilable(Models::Components::AmountDecimalUpdate)](../../models/shared/amountdecimalupdate.md) | :heavy_minus_sign:                                                                               | Minimum amount allowed in the range                                                              |
+| `maximum`                                                                                        | [T.nilable(Models::Components::AmountDecimalUpdate)](../../models/shared/amountdecimalupdate.md) | :heavy_minus_sign:                                                                               | Maximum amount allowed in the range                                                              |

@@ -14,28 +14,40 @@ module Moov
 
         # A list of payment methods that should be supported for this payment link.
         field :allowed_methods, Crystalline::Array.new(Models::Components::CollectionPaymentMethodType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowedMethods'), required: true } }
+        # The minimum and maximum amounts the buyer can specify when `amountType` is `open`.
+        field :amount_range, Crystalline::Nilable.new(Models::Components::AmountDecimalRange), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountRange') } }
+        # Optional preset amounts displayed to the buyer when `amountType` is `open`.
+        field :suggested_amounts, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AmountDecimal)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('suggestedAmounts') } }
         # Options for payment links used to collect a card payment.
         field :card_details, Crystalline::Nilable.new(Models::Components::CardPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails') } }
         # Options for payment links used to collect an ACH payment.
         field :ach_details, Crystalline::Nilable.new(Models::Components::ACHPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
         # Optional free-form metadata for the transfer.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        # Indicates whether the payment amount is fixed by the merchant or open for the buyer to choose.
+        field :amount_type, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetailsAmountType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PaymentLinkPaymentDetailsAmountType, true) } }
 
-        sig { params(allowed_methods: T::Array[Models::Components::CollectionPaymentMethodType], card_details: T.nilable(Models::Components::CardPaymentDetails), ach_details: T.nilable(Models::Components::ACHPaymentDetails), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
-        def initialize(allowed_methods:, card_details: nil, ach_details: nil, metadata: nil)
+        sig { params(allowed_methods: T::Array[Models::Components::CollectionPaymentMethodType], amount_range: T.nilable(Models::Components::AmountDecimalRange), suggested_amounts: T.nilable(T::Array[Models::Components::AmountDecimal]), card_details: T.nilable(Models::Components::CardPaymentDetails), ach_details: T.nilable(Models::Components::ACHPaymentDetails), metadata: T.nilable(T::Hash[Symbol, ::String]), amount_type: T.nilable(Models::Components::PaymentLinkPaymentDetailsAmountType)).void }
+        def initialize(allowed_methods:, amount_range: nil, suggested_amounts: nil, card_details: nil, ach_details: nil, metadata: nil, amount_type: Models::Components::PaymentLinkPaymentDetailsAmountType::FIXED)
           @allowed_methods = allowed_methods
+          @amount_range = amount_range
+          @suggested_amounts = suggested_amounts
           @card_details = card_details
           @ach_details = ach_details
           @metadata = metadata
+          @amount_type = amount_type
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @allowed_methods == other.allowed_methods
+          return false unless @amount_range == other.amount_range
+          return false unless @suggested_amounts == other.suggested_amounts
           return false unless @card_details == other.card_details
           return false unless @ach_details == other.ach_details
           return false unless @metadata == other.metadata
+          return false unless @amount_type == other.amount_type
           true
         end
       end

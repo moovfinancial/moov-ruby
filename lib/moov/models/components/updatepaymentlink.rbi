@@ -22,6 +22,8 @@ class Moov::Models::Components::UpdatePaymentLink
   def payout=(str_); end
   def line_items(); end
   def line_items=(str_); end
+  def amount_details(); end
+  def amount_details=(str_); end
   def expires_on(); end
   def expires_on=(str_); end
 end

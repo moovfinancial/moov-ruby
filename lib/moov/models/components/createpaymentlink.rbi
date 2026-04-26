@@ -12,10 +12,10 @@ class Moov::Models::Components::CreatePaymentLink
   def partner_account_id=(str_); end
   def merchant_payment_method_id(); end
   def merchant_payment_method_id=(str_); end
-  def amount(); end
-  def amount=(str_); end
   def display(); end
   def display=(str_); end
+  def amount(); end
+  def amount=(str_); end
   def sales_tax_amount(); end
   def sales_tax_amount=(str_); end
   def max_uses(); end
@@ -30,4 +30,6 @@ class Moov::Models::Components::CreatePaymentLink
   def payout=(str_); end
   def line_items(); end
   def line_items=(str_); end
+  def amount_details(); end
+  def amount_details=(str_); end
 end
