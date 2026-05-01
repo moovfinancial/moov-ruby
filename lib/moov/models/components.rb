@@ -247,6 +247,7 @@ module Moov
       autoload :FileDetails, 'moov/models/components/filedetails.rb'
       autoload :FilePurpose, 'moov/models/components/filepurpose.rb'
       autoload :FileStatus, 'moov/models/components/filestatus.rb'
+      autoload :FileUploadMetadata, 'moov/models/components/fileuploadmetadata.rb'
       autoload :FileUploadRequestMultiPart, 'moov/models/components/fileuploadrequestmultipart.rb'
       autoload :FileUploadRequestMultiPartFile, 'moov/models/components/fileuploadrequestmultipart_file.rb'
       autoload :FileUploadValidationErrorFile, 'moov/models/components/fileuploadvalidationerror_file.rb'

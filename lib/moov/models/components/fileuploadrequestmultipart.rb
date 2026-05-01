@@ -12,16 +12,14 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The file to be added. Valid types are `csv`, `png`, `jpeg`, `pdf`.
+        # The file to upload. Valid types are `csv`, `png`, `jpeg`, `pdf`.
         field :file, Models::Components::FileUploadRequestMultiPartFile, { 'multipart_form': { 'file': true, 'field_name': 'file' } }
         # The purpose of the file being uploaded.
         field :file_purpose, Models::Components::FilePurpose, { 'multipart_form': { 'field_name': 'filePurpose' } }
-        # Additional metadata to be stored with the file, formatted as a JSON string.
-        #
-        # Valid keys are `representative_id`, `comment`, `requirement_id`, `error_code`.
-        field :metadata, Crystalline::Nilable.new(::String), { 'multipart_form': { 'field_name': 'metadata' } }
+        # Additional metadata to be stored with the file.
+        field :metadata, Crystalline::Nilable.new(Models::Components::FileUploadMetadata), { 'multipart_form': { 'field_name': 'metadata', 'json': true } }
 
-        sig { params(file: Models::Components::FileUploadRequestMultiPartFile, file_purpose: Models::Components::FilePurpose, metadata: T.nilable(::String)).void }
+        sig { params(file: Models::Components::FileUploadRequestMultiPartFile, file_purpose: Models::Components::FilePurpose, metadata: T.nilable(Models::Components::FileUploadMetadata)).void }
         def initialize(file:, file_purpose:, metadata: nil)
           @file = file
           @file_purpose = file_purpose
