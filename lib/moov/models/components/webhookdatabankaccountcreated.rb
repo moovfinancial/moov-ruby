@@ -17,10 +17,13 @@ module Moov
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
 
-        sig { params(bank_account_id: ::String, account_id: ::String).void }
-        def initialize(bank_account_id:, account_id:)
+        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
+
+        sig { params(bank_account_id: ::String, account_id: ::String, status: Models::Components::BankAccountStatus).void }
+        def initialize(bank_account_id:, account_id:, status:)
           @bank_account_id = bank_account_id
           @account_id = account_id
+          @status = status
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -28,6 +31,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @bank_account_id == other.bank_account_id
           return false unless @account_id == other.account_id
+          return false unless @status == other.status
           true
         end
       end
