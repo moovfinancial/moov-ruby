@@ -13,6 +13,7 @@ module Moov
           APPLE_PAY = new('apple-pay')
           CARD_PAYMENT = new('card-payment')
           ACH_DEBIT_COLLECT = new('ach-debit-collect')
+          GOOGLE_PAY = new('google-pay')
         end
       end
     end

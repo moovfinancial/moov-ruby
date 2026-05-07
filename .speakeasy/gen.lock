@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: da6a6f38dbded5f83dcc4c7881d71307
+  docChecksum: b52ca137dea3791c0e2d0a889c39b40e
   docVersion: v2026.04.00
-  speakeasyVersion: 1.761.11
-  generationVersion: 2.881.17
-  releaseVersion: 26.4.2
-  configChecksum: 86927d4f1bc55762e1742120054f059d
+  speakeasyVersion: 1.762.0
+  generationVersion: 2.882.0
+  releaseVersion: 26.4.3
+  configChecksum: ca55f1ae7eb77f01822b95e887f4b385
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: aa0a7c79-e1fa-4a39-960f-58091b450121
-  pristine_commit_hash: b42411d5405d0060520cebab103bec4ae5d3cc56
-  pristine_tree_hash: 7f4fa4cf061dd2d6333830450e84dd8ef05a9b56
+  generation_id: c82ff505-9b2b-4e2e-b501-b9b857985c8d
+  pristine_commit_hash: 205fbe8a1e7fe56c79b36b3937b10643e3ec2b5c
+  pristine_tree_hash: 0bd841a31f9d75fff1d3aebf969be6d4ab5d2aae
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:69b185181d283836d8dcfca1c32eef5a18fb8b45
-    pristine_git_object: a9b5935bdc780103f506e1233d73c76d5be31279
+    last_write_checksum: sha1:69e2bf6399b98f241fa6e48f880a70126a80c3c7
+    pristine_git_object: 79cca6836baca43f27ef99a65637601f9ebf960c
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -675,8 +675,8 @@ trackedFiles:
     pristine_git_object: 256b2450fdd951654263f8e0d5d759db65d1aa6e
   docs/models/components/collectionpaymentmethodtype.md:
     id: cbe8cc7ebbae
-    last_write_checksum: sha1:84d130db1f2ad202671e5707b23650587305d89a
-    pristine_git_object: c8aec6e1e8499fc2383068af2914a716942f23b5
+    last_write_checksum: sha1:a28f8df5e5da58b5cefc652dbe62fcc580fb24fb
+    pristine_git_object: 020b814b9eb81e2bb0a485f5ecab9127dd295f09
   docs/models/components/colorsvalidationerror.md:
     id: 5b3bd235d674
     last_write_checksum: sha1:7b354361b876a757158828101fa75ee101499d5d
@@ -6039,8 +6039,8 @@ trackedFiles:
     pristine_git_object: fb69f134856dc525fc9411bd437e2ccb53b59cf7
   lib/moov/models/components/collectionpaymentmethodtype.rb:
     id: 17bc5fee4127
-    last_write_checksum: sha1:c18e7935d8b00af41ba310b5acfc5d23f3c77cd9
-    pristine_git_object: 4d8c359b967cda248b3c315d965e17d32e096166
+    last_write_checksum: sha1:1341e7113c355f461705d2ba559c5454abd95bae
+    pristine_git_object: ed8c50f52578c53777549b23f8140ebf75f5a61e
   lib/moov/models/components/collectionpaymentmethodtype.rbi:
     id: e4c8dd54f99a
     last_write_checksum: sha1:212b2b356918b654a67c1da435709b8eb4798285
@@ -13771,8 +13771,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:d6e51f8b342879e571c8f5426697671919393177
-    pristine_git_object: ae8180a60c700d8a90f23e1264bfa295e9c0898a
+    last_write_checksum: sha1:aed38c6171dd8c7a795dfc8a0861ea1c8270e34c
+    pristine_git_object: acea020424ebd6990ca7916e1832052ca5d32a1e
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -13855,8 +13855,8 @@ trackedFiles:
     pristine_git_object: 27e3c0130ed088684808d78c9d520cbfe65ae186
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:80aff6b3ebc832a13cb1e61041c1dd0ef03f4311
-    pristine_git_object: 59be1890e0c9e8db3c6122ee99ad8dfc271523c0
+    last_write_checksum: sha1:b6ecbf822396e66af596856dbd080bc6e3015c88
+    pristine_git_object: c4ff0df63f63cce4c7421bcd798ff7e2a39d8363
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -16509,7 +16509,7 @@ examples:
         "200":
           application/json: {"tipPresets": {"calculationBasis": "pre-tax", "percentageOptions": [10, 15, 20]}}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.files.upload()`: \n  *  `request.file_upload_request_multi_part.metadata` **Changed** (Breaking ⚠️)\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.payment.allowed_methods[].enum(google_pay)` **Added**\n  *  `response.payment.allowed_methods[].enum(google_pay)` **Added** (Breaking ⚠️)\n* `client.payment_links.list()`:  `response.[].payment.allowed_methods[].enum(google_pay)` **Added** (Breaking ⚠️)\n* `client.payment_links.get()`:  `response.payment.allowed_methods[].enum(google_pay)` **Added** (Breaking ⚠️)\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.payment.allowed_methods[].enum(google_pay)` **Added**\n  *  `response.payment.allowed_methods[].enum(google_pay)` **Added** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
