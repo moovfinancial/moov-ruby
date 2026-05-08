@@ -113,6 +113,7 @@ module Moov
       autoload :GetCancellationResponse, 'moov/models/operations/getcancellation_response.rb'
       autoload :GetCapabilityRequest, 'moov/models/operations/getcapability_request.rb'
       autoload :GetCapabilityResponse, 'moov/models/operations/getcapability_response.rb'
+      autoload :GetCardMetadataResponse, 'moov/models/operations/getcardmetadata_response.rb'
       autoload :GetCardRequest, 'moov/models/operations/getcard_request.rb'
       autoload :GetCardResponse, 'moov/models/operations/getcard_response.rb'
       autoload :GetDisputeEvidenceDataRequest, 'moov/models/operations/getdisputeevidencedata_request.rb'

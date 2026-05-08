@@ -14,6 +14,7 @@ module Moov
       autoload :BankAccountValidationError, 'moov/models/errors/bankaccountvalidationerror.rb'
       autoload :BrandValidationError, 'moov/models/errors/brandvalidationerror.rb'
       autoload :CardAcquiringRefundError, 'moov/models/errors/cardacquiringrefund_error.rb'
+      autoload :CardMetadataRequestError, 'moov/models/errors/cardmetadatarequesterror.rb'
       autoload :ConnectAccountRequestValidationError, 'moov/models/errors/connectaccountrequestvalidationerror.rb'
       autoload :CreateAccountError, 'moov/models/errors/createaccounterror.rb'
       autoload :CreateInvoiceError, 'moov/models/errors/createinvoiceerror.rb'

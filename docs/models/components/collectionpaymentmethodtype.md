@@ -18,3 +18,4 @@ value = CollectionPaymentMethodType::APPLE_PAY
 | `APPLE_PAY`         | apple-pay           |
 | `CARD_PAYMENT`      | card-payment        |
 | `ACH_DEBIT_COLLECT` | ach-debit-collect   |
+| `GOOGLE_PAY`        | google-pay          |

@@ -51,6 +51,12 @@ you'll need to specify the `/accounts/{accountID}/cards.write` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/cards.write` scope.
+* [get_metadata](#get_metadata) - Look up metadata for a card without linking it to a Moov account.
+  
+Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/card-metadata.read` scope.
 
 ## link
 
@@ -323,3 +329,55 @@ end
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | Models::Errors::GenericError | 400, 409                     | application/json             |
 | Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
+
+## get_metadata
+
+Look up metadata for a card without linking it to a Moov account.
+  
+Only use this endpoint if you have provided Moov with a copy of your PCI attestation of compliance.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/card-metadata.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="getCardMetadata" method="post" path="/card-metadata" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+
+req = Models::Components::CardMetadataRequest.new(
+  card_number: '4111111111111111'
+)
+res = s.cards.get_metadata(request: req)
+
+unless res.card_metadata.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [Models::Components::CardMetadataRequest](../../models/shared/cardmetadatarequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+### Response
+
+**[T.nilable(Models::Operations::GetCardMetadataResponse)](../../models/operations/getcardmetadataresponse.md)**
+
+### Errors
+
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Models::Errors::GenericError             | 400, 409                                 | application/json                         |
+| Models::Errors::CardMetadataRequestError | 422                                      | application/json                         |
+| Errors::APIError                         | 4XX, 5XX                                 | \*/\*                                    |

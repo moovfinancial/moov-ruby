@@ -761,7 +761,13 @@ s = ::Moov::Client.new(
   )
 )
 res = s.transfers.create_reversal(x_idempotency_key: '93d03831-45c4-49ec-a9b2-88cbd41dfca7', account_id: 'c5fade57-7e5a-4380-ac7b-4abf8b3c24cf', transfer_id: '82c6eae7-b7e5-4b20-b24e-5116a4d70bde', create_reversal: Models::Components::CreateReversal.new(
-  amount: 1000
+  amount: 1000,
+  amount_details: Models::Components::ReversalAmountDetails.new(
+    surcharge: Models::Components::AmountDecimal.new(
+      currency: 'USD',
+      value_decimal: '12.987654321'
+    )
+  )
 ))
 
 unless res.reversal.nil?
@@ -783,7 +789,13 @@ s = ::Moov::Client.new(
   )
 )
 res = s.transfers.create_reversal(x_idempotency_key: 'b91d00b2-4ecb-4eb4-a67f-d6f76c0b7ad8', account_id: 'f225b49d-911b-440b-baed-6065968b69cb', transfer_id: 'a17b29e2-4af6-4c9d-ad3a-dd0ded2966ad', create_reversal: Models::Components::CreateReversal.new(
-  amount: 1000
+  amount: 1000,
+  amount_details: Models::Components::ReversalAmountDetails.new(
+    surcharge: Models::Components::AmountDecimal.new(
+      currency: 'USD',
+      value_decimal: '12.987654321'
+    )
+  )
 ))
 
 unless res.reversal.nil?
