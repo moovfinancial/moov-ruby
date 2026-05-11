@@ -10,7 +10,7 @@ module Moov
       # DEPRECATED: use `InstantBankTransactionDetails` instead (v2026.04.00 or later). RTP specific details about the transaction.
       #
       # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
-      class RtpDetails
+      class RTPTransactionDetails
         extend T::Sig
         include Crystalline::MetadataFields
 

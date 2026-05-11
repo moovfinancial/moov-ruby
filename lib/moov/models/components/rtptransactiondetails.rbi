@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Components::RtpDetails
+class Moov::Models::Components::RTPTransactionDetails
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Components::RtpDetails
+class Moov::Models::Components::RTPTransactionDetails
   def status(); end
   def status=(str_); end
   def network_response_code(); end
