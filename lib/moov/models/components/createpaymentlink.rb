@@ -45,7 +45,7 @@ module Moov
 
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
         # An optional collection of line items for a payment link.
-        # When line items are provided, their total plus sales tax must equal the payment link amount.
+        # When line items are provided, their total plus tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         sig { params(partner_account_id: ::String, merchant_payment_method_id: ::String, amount: Models::Components::Amount, display: Models::Components::PaymentLinkDisplayOptions, sales_tax_amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), expires_on: T.nilable(::DateTime), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItems)).void }
