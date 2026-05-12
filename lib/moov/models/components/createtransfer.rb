@@ -29,7 +29,7 @@ module Moov
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # An optional collection of line items for a transfer.
-        # When line items are provided, their total plus sales tax must equal the transfer amount.
+        # When line items are provided, their total plus tax must equal the transfer amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateTransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::CreateTransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
