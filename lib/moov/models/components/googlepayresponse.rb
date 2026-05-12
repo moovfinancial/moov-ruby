@@ -12,36 +12,55 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # The unique identifier of the Google Pay token.
+        field :token_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tokenID'), required: true } }
         # The card brand.
         field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
-        # The last four digits of the underlying card number.
-        field :card_details, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails'), required: true } }
+        # The type of the card.
+        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardType, false) } }
+        #   User-friendly name of the tokenized card returned by Google Pay.
+        #
+        #   It usually contains the last four digits of the underlying card.
+        #   There is no standard format.
+        field :card_display_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDisplayName'), required: true } }
         # Uniquely identifies a linked payment card or token.
         # For Apple Pay, the fingerprint is based on the tokenized card number and may vary based on the user's device.
         # This field can be used to identify specific payment methods across multiple accounts on your platform.
         field :fingerprint, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fingerprint'), required: true } }
         # The expiration date of the card or token.
         field :expiration, Models::Components::CardExpiration, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration'), required: true } }
+        # The last four digits of the Google Pay token, which may differ from the tokenized card's last four digits.
+        field :dynamic_last_four, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dynamicLastFour'), required: true } }
         # Country where the underlying card was issued.
         field :issuer_country, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuerCountry') } }
+        # The authentication method used for the Google Pay token.
+        field :auth_method, Crystalline::Nilable.new(Models::Components::AuthMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authMethod'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::AuthMethod, true) } }
 
-        sig { params(brand: Models::Components::CardBrand, card_details: ::String, fingerprint: ::String, expiration: Models::Components::CardExpiration, issuer_country: T.nilable(::String)).void }
-        def initialize(brand:, card_details:, fingerprint:, expiration:, issuer_country: nil)
+        sig { params(token_id: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, card_display_name: ::String, fingerprint: ::String, expiration: Models::Components::CardExpiration, dynamic_last_four: ::String, issuer_country: T.nilable(::String), auth_method: T.nilable(Models::Components::AuthMethod)).void }
+        def initialize(token_id:, brand:, card_type:, card_display_name:, fingerprint:, expiration:, dynamic_last_four:, issuer_country: nil, auth_method: nil)
+          @token_id = token_id
           @brand = brand
-          @card_details = card_details
+          @card_type = card_type
+          @card_display_name = card_display_name
           @fingerprint = fingerprint
           @expiration = expiration
+          @dynamic_last_four = dynamic_last_four
           @issuer_country = issuer_country
+          @auth_method = auth_method
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @token_id == other.token_id
           return false unless @brand == other.brand
-          return false unless @card_details == other.card_details
+          return false unless @card_type == other.card_type
+          return false unless @card_display_name == other.card_display_name
           return false unless @fingerprint == other.fingerprint
           return false unless @expiration == other.expiration
+          return false unless @dynamic_last_four == other.dynamic_last_four
           return false unless @issuer_country == other.issuer_country
+          return false unless @auth_method == other.auth_method
           true
         end
       end
