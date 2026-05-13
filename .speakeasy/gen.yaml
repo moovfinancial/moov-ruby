@@ -30,7 +30,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 25.11.6
+  version: 25.11.7
   additionalDependencies:
     development: {}
     runtime: {}
@@ -54,6 +54,7 @@ ruby:
       webhooks: models/webhooks
   inferUnionDiscriminators: false
   inputModelSuffix: input
+  license: Apache-2.0
   maxMethodParams: 4
   module: Moov
   multipartArrayFormat: legacy
