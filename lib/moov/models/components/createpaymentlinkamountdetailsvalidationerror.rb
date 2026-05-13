@@ -13,16 +13,20 @@ module Moov
         include Crystalline::MetadataFields
 
 
+        field :tax, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tax') } }
+
         field :surcharge, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('surcharge') } }
 
-        sig { params(surcharge: T.nilable(::String)).void }
-        def initialize(surcharge: nil)
+        sig { params(tax: T.nilable(::String), surcharge: T.nilable(::String)).void }
+        def initialize(tax: nil, surcharge: nil)
+          @tax = tax
           @surcharge = surcharge
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @tax == other.tax
           return false unless @surcharge == other.surcharge
           true
         end

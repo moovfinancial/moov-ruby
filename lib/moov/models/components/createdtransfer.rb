@@ -60,20 +60,18 @@ module Moov
         field :occurrence_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('occurrenceID') } }
 
         field :payment_link_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkCode') } }
-        # Optional sales tax amount.
-        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # An optional collection of line items for a transfer.
-        # When line items are provided, their total plus sales tax must equal the transfer amount.
+        # When line items are provided, their total plus tax must equal the transfer amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::TransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::TransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
         # The card authorization and capture IDs associated with a transfer.
         field :capture, Crystalline::Nilable.new(Models::Components::TransferCapture), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capture') } }
 
-        sig { params(transfer_id: ::String, created_on: ::DateTime, source: T.nilable(Models::Components::TransferSource), destination: T.nilable(Models::Components::TransferDestination), completed_on: T.nilable(::DateTime), status: T.nilable(Models::Components::TransferStatus), failure_reason: T.nilable(Models::Components::TransferFailureReason), amount: T.nilable(Models::Components::Amount), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), facilitator_fee: T.nilable(Models::Components::FacilitatorFee), moov_fee: T.nilable(::Integer), moov_fee_decimal: T.nilable(::String), moov_fee_details: T.nilable(Models::Components::MoovFeeDetails), group_id: T.nilable(::String), cancellations: T.nilable(T::Array[Models::Components::Cancellation]), refunded_amount: T.nilable(Models::Components::Amount), refunds: T.nilable(T::Array[Models::Components::CardAcquiringRefund]), disputed_amount: T.nilable(Models::Components::Amount), disputes: T.nilable(T::Array[Models::Components::CardAcquiringDispute]), sweep_id: T.nilable(::String), schedule_id: T.nilable(::String), occurrence_id: T.nilable(::String), payment_link_code: T.nilable(::String), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), capture: T.nilable(Models::Components::TransferCapture)).void }
-        def initialize(transfer_id:, created_on:, source: nil, destination: nil, completed_on: nil, status: nil, failure_reason: nil, amount: nil, description: nil, metadata: nil, facilitator_fee: nil, moov_fee: nil, moov_fee_decimal: nil, moov_fee_details: nil, group_id: nil, cancellations: nil, refunded_amount: nil, refunds: nil, disputed_amount: nil, disputes: nil, sweep_id: nil, schedule_id: nil, occurrence_id: nil, payment_link_code: nil, sales_tax_amount: nil, foreign_id: nil, line_items: nil, amount_details: nil, capture: nil)
+        sig { params(transfer_id: ::String, created_on: ::DateTime, source: T.nilable(Models::Components::TransferSource), destination: T.nilable(Models::Components::TransferDestination), completed_on: T.nilable(::DateTime), status: T.nilable(Models::Components::TransferStatus), failure_reason: T.nilable(Models::Components::TransferFailureReason), amount: T.nilable(Models::Components::Amount), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), facilitator_fee: T.nilable(Models::Components::FacilitatorFee), moov_fee: T.nilable(::Integer), moov_fee_decimal: T.nilable(::String), moov_fee_details: T.nilable(Models::Components::MoovFeeDetails), group_id: T.nilable(::String), cancellations: T.nilable(T::Array[Models::Components::Cancellation]), refunded_amount: T.nilable(Models::Components::Amount), refunds: T.nilable(T::Array[Models::Components::CardAcquiringRefund]), disputed_amount: T.nilable(Models::Components::Amount), disputes: T.nilable(T::Array[Models::Components::CardAcquiringDispute]), sweep_id: T.nilable(::String), schedule_id: T.nilable(::String), occurrence_id: T.nilable(::String), payment_link_code: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), capture: T.nilable(Models::Components::TransferCapture)).void }
+        def initialize(transfer_id:, created_on:, source: nil, destination: nil, completed_on: nil, status: nil, failure_reason: nil, amount: nil, description: nil, metadata: nil, facilitator_fee: nil, moov_fee: nil, moov_fee_decimal: nil, moov_fee_details: nil, group_id: nil, cancellations: nil, refunded_amount: nil, refunds: nil, disputed_amount: nil, disputes: nil, sweep_id: nil, schedule_id: nil, occurrence_id: nil, payment_link_code: nil, foreign_id: nil, line_items: nil, amount_details: nil, capture: nil)
           @transfer_id = transfer_id
           @created_on = created_on
           @source = source
@@ -98,7 +96,6 @@ module Moov
           @schedule_id = schedule_id
           @occurrence_id = occurrence_id
           @payment_link_code = payment_link_code
-          @sales_tax_amount = sales_tax_amount
           @foreign_id = foreign_id
           @line_items = line_items
           @amount_details = amount_details
@@ -132,7 +129,6 @@ module Moov
           return false unless @schedule_id == other.schedule_id
           return false unless @occurrence_id == other.occurrence_id
           return false unless @payment_link_code == other.payment_link_code
-          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @foreign_id == other.foreign_id
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details

@@ -58,8 +58,6 @@ class Moov::Models::Errors::TransferError
   def occurrence_id=(str_); end
   def payment_link_code(); end
   def payment_link_code=(str_); end
-  def sales_tax_amount(); end
-  def sales_tax_amount=(str_); end
   def foreign_id(); end
   def foreign_id=(str_); end
   def line_items(); end

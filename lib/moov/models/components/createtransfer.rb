@@ -24,25 +24,22 @@ module Moov
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
-
-        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # An optional collection of line items for a transfer.
-        # When line items are provided, their total plus sales tax must equal the transfer amount.
+        # When line items are provided, their total plus tax must equal the transfer amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateTransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::CreateTransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails)).void }
-        def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, sales_tax_amount: nil, foreign_id: nil, line_items: nil, amount_details: nil)
+        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails)).void }
+        def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil)
           @source = source
           @destination = destination
           @amount = amount
           @facilitator_fee = facilitator_fee
           @description = description
           @metadata = metadata
-          @sales_tax_amount = sales_tax_amount
           @foreign_id = foreign_id
           @line_items = line_items
           @amount_details = amount_details
@@ -57,7 +54,6 @@ module Moov
           return false unless @facilitator_fee == other.facilitator_fee
           return false unless @description == other.description
           return false unless @metadata == other.metadata
-          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @foreign_id == other.foreign_id
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details

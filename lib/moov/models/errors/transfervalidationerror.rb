@@ -29,8 +29,6 @@ module Moov
 
         field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        field :sales_tax_amount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
-
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateTransferLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
@@ -39,8 +37,8 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(amount: T.nilable(::String), source: T.nilable(::String), source_payment_method_id: T.nilable(::String), destination_payment_method_id: T.nilable(::String), description: T.nilable(::String), facilitator_fee_total_decimal: T.nilable(::String), facilitator_fee_markup_decimal: T.nilable(::String), metadata: T.nilable(::String), sales_tax_amount: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItemsValidationError), amount_details: T.nilable(Models::Components::CreateTransferAmountDetailsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(amount: nil, source: nil, source_payment_method_id: nil, destination_payment_method_id: nil, description: nil, facilitator_fee_total_decimal: nil, facilitator_fee_markup_decimal: nil, metadata: nil, sales_tax_amount: nil, foreign_id: nil, line_items: nil, amount_details: nil, raw_response: nil)
+        sig { params(amount: T.nilable(::String), source: T.nilable(::String), source_payment_method_id: T.nilable(::String), destination_payment_method_id: T.nilable(::String), description: T.nilable(::String), facilitator_fee_total_decimal: T.nilable(::String), facilitator_fee_markup_decimal: T.nilable(::String), metadata: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItemsValidationError), amount_details: T.nilable(Models::Components::CreateTransferAmountDetailsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(amount: nil, source: nil, source_payment_method_id: nil, destination_payment_method_id: nil, description: nil, facilitator_fee_total_decimal: nil, facilitator_fee_markup_decimal: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, raw_response: nil)
           @amount = amount
           @source = source
           @source_payment_method_id = source_payment_method_id
@@ -49,7 +47,6 @@ module Moov
           @facilitator_fee_total_decimal = facilitator_fee_total_decimal
           @facilitator_fee_markup_decimal = facilitator_fee_markup_decimal
           @metadata = metadata
-          @sales_tax_amount = sales_tax_amount
           @foreign_id = foreign_id
           @line_items = line_items
           @amount_details = amount_details
@@ -67,7 +64,6 @@ module Moov
           return false unless @facilitator_fee_total_decimal == other.facilitator_fee_total_decimal
           return false unless @facilitator_fee_markup_decimal == other.facilitator_fee_markup_decimal
           return false unless @metadata == other.metadata
-          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @foreign_id == other.foreign_id
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details

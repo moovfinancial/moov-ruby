@@ -15,11 +15,14 @@ module Moov
 
         field :tip, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tip') } }
 
+        field :tax, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tax') } }
+
         field :surcharge, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('surcharge') } }
 
-        sig { params(tip: T.nilable(::String), surcharge: T.nilable(::String)).void }
-        def initialize(tip: nil, surcharge: nil)
+        sig { params(tip: T.nilable(::String), tax: T.nilable(::String), surcharge: T.nilable(::String)).void }
+        def initialize(tip: nil, tax: nil, surcharge: nil)
           @tip = tip
+          @tax = tax
           @surcharge = surcharge
         end
 
@@ -27,6 +30,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @tip == other.tip
+          return false unless @tax == other.tax
           return false unless @surcharge == other.surcharge
           true
         end

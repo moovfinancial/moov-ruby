@@ -47,8 +47,6 @@ module Moov
         # In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted 
         # for `open` payment amount types.
         field :amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
-        # Optional sales tax amount.
-        field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # An optional limit on the number of times this payment link can be used.
         #
         # **For payouts, `maxUses` is always 1.**
@@ -62,15 +60,15 @@ module Moov
 
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
         # An optional collection of line items for a payment link.
-        # When line items are provided, their total plus sales tax must equal the payment link amount.
+        # When line items are provided, their total plus tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::PaymentLinkAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, amount: T.nilable(Models::Components::Amount), sales_tax_amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::PaymentLinkAmountDetails)).void }
-        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, uses:, display:, customer:, created_on:, updated_on:, amount: nil, sales_tax_amount: nil, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil, amount_details: nil)
+        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::PaymentLinkAmountDetails)).void }
+        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, uses:, display:, customer:, created_on:, updated_on:, amount: nil, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil, amount_details: nil)
           @code = code
           @payment_link_type = payment_link_type
           @mode = mode
@@ -86,7 +84,6 @@ module Moov
           @created_on = created_on
           @updated_on = updated_on
           @amount = amount
-          @sales_tax_amount = sales_tax_amount
           @max_uses = max_uses
           @last_used_on = last_used_on
           @expires_on = expires_on
@@ -115,7 +112,6 @@ module Moov
           return false unless @created_on == other.created_on
           return false unless @updated_on == other.updated_on
           return false unless @amount == other.amount
-          return false unless @sales_tax_amount == other.sales_tax_amount
           return false unless @max_uses == other.max_uses
           return false unless @last_used_on == other.last_used_on
           return false unless @expires_on == other.expires_on

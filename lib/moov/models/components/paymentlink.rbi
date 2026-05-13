@@ -38,8 +38,6 @@ class Moov::Models::Components::PaymentLink
   def updated_on=(str_); end
   def amount(); end
   def amount=(str_); end
-  def sales_tax_amount(); end
-  def sales_tax_amount=(str_); end
   def max_uses(); end
   def max_uses=(str_); end
   def last_used_on(); end

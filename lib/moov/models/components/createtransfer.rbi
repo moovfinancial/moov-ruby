@@ -20,8 +20,6 @@ class Moov::Models::Components::CreateTransfer
   def description=(str_); end
   def metadata(); end
   def metadata=(str_); end
-  def sales_tax_amount(); end
-  def sales_tax_amount=(str_); end
   def foreign_id(); end
   def foreign_id=(str_); end
   def line_items(); end

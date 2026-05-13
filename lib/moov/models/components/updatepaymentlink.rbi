@@ -10,8 +10,6 @@ end
 class Moov::Models::Components::UpdatePaymentLink
   def amount(); end
   def amount=(str_); end
-  def sales_tax_amount(); end
-  def sales_tax_amount=(str_); end
   def display(); end
   def display=(str_); end
   def customer(); end

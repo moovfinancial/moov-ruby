@@ -8,6 +8,8 @@ end
 
 
 class Moov::Models::Components::CreatePaymentLinkAmountDetails
+  def tax(); end
+  def tax=(str_); end
   def surcharge(); end
   def surcharge=(str_); end
 end
