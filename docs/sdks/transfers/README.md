@@ -596,13 +596,7 @@ req = Models::Operations::InitiateRefundRequest.new(
   account_id: 'cb6ae9f9-afab-4f06-9eb0-8abf54a3ada2',
   transfer_id: '04022119-95be-4ef4-9dd4-b3782f6aa7b9',
   create_refund: Models::Components::CreateRefund.new(
-    amount: 1000,
-    amount_details: Models::Components::RefundAmountDetails.new(
-      surcharge: Models::Components::AmountDecimal.new(
-        currency: 'USD',
-        value_decimal: '12.987654321'
-      )
-    )
+    amount: 1000
   )
 )
 res = s.transfers.initiate_refund(request: req)
@@ -631,13 +625,7 @@ req = Models::Operations::InitiateRefundRequest.new(
   account_id: 'd12ddb6e-0ed9-44e8-92a7-1716ae7cc759',
   transfer_id: 'd73be489-9da4-4be7-bc04-147d8552279d',
   create_refund: Models::Components::CreateRefund.new(
-    amount: 1000,
-    amount_details: Models::Components::RefundAmountDetails.new(
-      surcharge: Models::Components::AmountDecimal.new(
-        currency: 'USD',
-        value_decimal: '12.987654321'
-      )
-    )
+    amount: 1000
   )
 )
 res = s.transfers.initiate_refund(request: req)
@@ -781,13 +769,7 @@ s = ::Moov::Client.new(
   )
 )
 res = s.transfers.create_reversal(x_idempotency_key: '93d03831-45c4-49ec-a9b2-88cbd41dfca7', account_id: 'c5fade57-7e5a-4380-ac7b-4abf8b3c24cf', transfer_id: '82c6eae7-b7e5-4b20-b24e-5116a4d70bde', create_reversal: Models::Components::CreateReversal.new(
-  amount: 1000,
-  amount_details: Models::Components::ReversalAmountDetails.new(
-    surcharge: Models::Components::AmountDecimal.new(
-      currency: 'USD',
-      value_decimal: '12.987654321'
-    )
-  )
+  amount: 1000
 ))
 
 unless res.reversal.nil?
@@ -809,13 +791,7 @@ s = ::Moov::Client.new(
   )
 )
 res = s.transfers.create_reversal(x_idempotency_key: 'b91d00b2-4ecb-4eb4-a67f-d6f76c0b7ad8', account_id: 'f225b49d-911b-440b-baed-6065968b69cb', transfer_id: 'a17b29e2-4af6-4c9d-ad3a-dd0ded2966ad', create_reversal: Models::Components::CreateReversal.new(
-  amount: 1000,
-  amount_details: Models::Components::ReversalAmountDetails.new(
-    surcharge: Models::Components::AmountDecimal.new(
-      currency: 'USD',
-      value_decimal: '12.987654321'
-    )
-  )
+  amount: 1000
 ))
 
 unless res.reversal.nil?

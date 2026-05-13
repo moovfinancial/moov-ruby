@@ -30,10 +30,6 @@ class Moov::Models::Operations::ListTransfersRequest
   def disputed=(str_); end
   def foreign_id(); end
   def foreign_id=(str_); end
-  def authorization_i_ds(); end
-  def authorization_i_ds=(str_); end
-  def capture_i_ds(); end
-  def capture_i_ds=(str_); end
   def skip(); end
   def skip=(str_); end
   def count(); end

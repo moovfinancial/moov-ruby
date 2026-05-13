@@ -18,8 +18,6 @@ class Moov::Models::Errors::CardAcquiringRefundError
   def status=(str_); end
   def amount(); end
   def amount=(str_); end
-  def amount_details(); end
-  def amount_details=(str_); end
   def card_details(); end
   def card_details=(str_); end
   def raw_response(); end

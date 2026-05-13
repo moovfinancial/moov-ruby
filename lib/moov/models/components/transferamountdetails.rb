@@ -16,14 +16,11 @@ module Moov
         field :tip, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tip') } }
         # The amount of tax applied to the transfer.
         field :tax, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tax') } }
-        # The amount of surcharge applied to the transfer.
-        field :surcharge, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('surcharge') } }
 
-        sig { params(tip: T.nilable(Models::Components::AmountDecimal), tax: T.nilable(Models::Components::AmountDecimal), surcharge: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(tip: nil, tax: nil, surcharge: nil)
+        sig { params(tip: T.nilable(Models::Components::AmountDecimal), tax: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(tip: nil, tax: nil)
           @tip = tip
           @tax = tax
-          @surcharge = surcharge
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -31,7 +28,6 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @tip == other.tip
           return false unless @tax == other.tax
-          return false unless @surcharge == other.surcharge
           true
         end
       end

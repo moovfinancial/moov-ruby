@@ -14,20 +14,16 @@ module Moov
 
         # Amount to reverse in cents. Partial amounts will automatically trigger a refund instead of a cancellation.
         field :amount, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
-        # Breakdown of the reversed amount.
-        field :amount_details, Crystalline::Nilable.new(Models::Components::ReversalAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(amount: ::Integer, amount_details: T.nilable(Models::Components::ReversalAmountDetails)).void }
-        def initialize(amount:, amount_details: nil)
+        sig { params(amount: ::Integer).void }
+        def initialize(amount:)
           @amount = amount
-          @amount_details = amount_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @amount == other.amount
-          return false unless @amount_details == other.amount_details
           true
         end
       end

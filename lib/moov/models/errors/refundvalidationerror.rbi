@@ -10,8 +10,6 @@ end
 class Moov::Models::Errors::RefundValidationError
   def amount(); end
   def amount=(str_); end
-  def amount_details(); end
-  def amount_details=(str_); end
   def error(); end
   def error=(str_); end
   def raw_response(); end

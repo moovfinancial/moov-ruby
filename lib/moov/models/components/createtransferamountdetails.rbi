@@ -12,6 +12,4 @@ class Moov::Models::Components::CreateTransferAmountDetails
   def tip=(str_); end
   def tax(); end
   def tax=(str_); end
-  def surcharge(); end
-  def surcharge=(str_); end
 end
