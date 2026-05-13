@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: e5f5c247fd5f746da4ff91c3dc707316
+  docChecksum: 3df58689dfbdfdd3e3c9672bbd44c64c
   docVersion: v2026.07.00
   speakeasyVersion: 1.763.0
   generationVersion: 2.884.0
-  releaseVersion: 26.7.0-dev.0
-  configChecksum: 30d492e7b6537297fbbd59d9eb47aa44
+  releaseVersion: 26.7.0-dev.1
+  configChecksum: b6ce75027712995450b1b22f26bec174
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 670682f8-5884-47f5-a9ee-ca547f78f4f8
-  pristine_commit_hash: bd43a3a39124f02a53fe0add209aa0238880844b
-  pristine_tree_hash: 5a76561a0a2af3bf7c9e87d9b07ba2482f23ed07
+  generation_id: 998636ea-a15a-40d4-9fa4-5f7b9d4e5346
+  pristine_commit_hash: 98468c864c4aed7af2ca52d00805f76a0f80c74c
+  pristine_tree_hash: 04171f5b336abb702727f67e4489478ea86ebc0b
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:6f9a01f5b9912261ec94772b9f2ff8ca1f7589b8
-    pristine_git_object: af96f1c5c2828eb4e54fcf4febc110359b84f6cb
+    last_write_checksum: sha1:b6c5f2328cde9b8e7d77cc9edfea908b37959f3e
+    pristine_git_object: 8a6d5fbc0c8dbda41d354022a53a3648ec36e3ed
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -2719,8 +2719,8 @@ trackedFiles:
     pristine_git_object: 8ce96e8c9fd265643a66d63f55dc004b738cb69d
   docs/models/components/webhookdatabankaccountdeleted.md:
     id: 378f3904e661
-    last_write_checksum: sha1:df000f4f84798b4db96b76fe49caea5b2209a444
-    pristine_git_object: 7b78a1861fcec36958271a930191142c837d8131
+    last_write_checksum: sha1:eace4d3b846cabddb3ba9aab7ce81bcce485e340
+    pristine_git_object: 8b4bdaeb405bcff2abf9b8a111525c8fba03c581
   docs/models/components/webhookdatabankaccountupdated.md:
     id: e1488aacc065
     last_write_checksum: sha1:9b48d3e72f62102cef5b8e1b0bb2f55f09904685
@@ -10171,12 +10171,12 @@ trackedFiles:
     pristine_git_object: 54d61112214c4adc6f9a4f0a49c52f4a2e0d0227
   lib/moov/models/components/webhookdatabankaccountdeleted.rb:
     id: 57a044b7ab33
-    last_write_checksum: sha1:b22e4f99819e990db96b64bf9b1614c1e2e9a30d
-    pristine_git_object: a830b51281005d2a247184990ee62e3025d96187
+    last_write_checksum: sha1:a636ef319f843a5757d1b02459caa310a854ff97
+    pristine_git_object: bddfed855a49be1663a6af59034ec069488b89fa
   lib/moov/models/components/webhookdatabankaccountdeleted.rbi:
     id: 550f56250346
-    last_write_checksum: sha1:fe5b38733dbcb091389dba33cb8729c68d5f20ac
-    pristine_git_object: 9cbf2acdb9e4ac75cfdafb2e449ee03367d5c82f
+    last_write_checksum: sha1:87e94a453462f6522f1c8fcbef13b4ded4a504eb
+    pristine_git_object: 099457c0e398a8411c457518cb0efdb436023c4c
   lib/moov/models/components/webhookdatabankaccountupdated.rb:
     id: 26f3611a7621
     last_write_checksum: sha1:2eb1176bef51a7c70ed4da7e2ba0e945abaa9a67
@@ -13903,8 +13903,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:6b4340b5c332745f74795d7928b6e6b396462b26
-    pristine_git_object: 315427ba86d6094c0fc58def454f1cdc581abf4c
+    last_write_checksum: sha1:5d992e542e09dfcbdd623b00b95e5c7fef1fd69a
+    pristine_git_object: ce681553b6ccb79711565a44bd29101872c7fbc1
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -13987,8 +13987,8 @@ trackedFiles:
     pristine_git_object: 27e3c0130ed088684808d78c9d520cbfe65ae186
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:c58834e80069cedf3de1550ad415c2ce047f659c
-    pristine_git_object: 6cef79b0fb410273573c98139a528ffcef5daa1e
+    last_write_checksum: sha1:c10c78270c517c6919998583a968e38ab93df22a
+    pristine_git_object: 94108578462d2cb3de0e0455e68f8676bc07a7e4
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -16652,7 +16652,6 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.payment_links.create()`: \n  *  `request.create_payment_link.amount_details.surcharge` **Removed** (Breaking ⚠️)\n  *  `response.amount_details.surcharge` **Removed** (Breaking ⚠️)\n  *  `error.amount_details.surcharge` **Removed** (Breaking ⚠️)\n* `client.payment_links.list()`:  `response.[].amount_details.surcharge` **Removed** (Breaking ⚠️)\n* `client.payment_links.get()`:  `response.amount_details.surcharge` **Removed** (Breaking ⚠️)\n* `client.payment_links.update()`: \n  *  `request.update_payment_link.amount_details.surcharge` **Removed** (Breaking ⚠️)\n  *  `response.amount_details.surcharge` **Removed** (Breaking ⚠️)\n  *  `error.amount_details.surcharge` **Removed** (Breaking ⚠️)\n* `client.transfers.create()`: \n  *  `request.create_transfer.amount_details.surcharge` **Removed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error` **Changed** (Breaking ⚠️)\n* `client.transfers.list()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response.[]` **Changed** (Breaking ⚠️)\n* `client.transfers.batch_get_transfers()`:  `response.Map<Transfer>` **Changed** (Breaking ⚠️)\n* `client.transfers.get()`:  `response` **Changed** (Breaking ⚠️)\n* `client.transfers.update()`:  `response` **Changed** (Breaking ⚠️)\n* `client.transfers.initiate_refund()`: \n  *  `request.create_refund.amount_details` **Removed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.amount_details` **Removed** (Breaking ⚠️)\n* `client.transfers.list_refunds()`:  `response.[].amount_details` **Removed** (Breaking ⚠️)\n* `client.transfers.get_refund()`:  `response.amount_details` **Removed** (Breaking ⚠️)\n* `client.transfers.create_reversal()`: \n  *  `request.create_reversal.amount_details` **Removed** (Breaking ⚠️)\n  *  `response.union(ReversedWithRefund).refund.amount_details` **Removed** (Breaking ⚠️)\n  *  `error.amount_details` **Removed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

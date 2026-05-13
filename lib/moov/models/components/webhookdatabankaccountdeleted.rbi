@@ -12,4 +12,6 @@ class Moov::Models::Components::WebhookDataBankAccountDeleted
   def bank_account_id=(str_); end
   def account_id(); end
   def account_id=(str_); end
+  def status(); end
+  def status=(str_); end
 end
