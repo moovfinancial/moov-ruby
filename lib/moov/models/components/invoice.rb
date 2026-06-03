@@ -32,7 +32,7 @@ module Moov
         field :subtotal_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('subtotalAmount'), required: true } }
 
         field :tax_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount'), required: true } }
-        # Total amount of the invoice, sum of subTotalAmount and taxAmount
+        # Total amount of the invoice, including subtotal, tax, and surcharge amounts.
         field :total_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('totalAmount'), required: true } }
         # Total amount of pending transfers paid towards the invoice
         field :pending_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingAmount'), required: true } }

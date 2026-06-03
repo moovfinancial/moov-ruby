@@ -578,6 +578,7 @@ module Moov
       autoload :TransferAccount, 'moov/models/components/transferaccount.rb'
       autoload :TransferAmountDetails, 'moov/models/components/transferamountdetails.rb'
       autoload :TransferConfig, 'moov/models/components/transferconfig.rb'
+      autoload :TransferControls, 'moov/models/components/transfercontrols.rb'
       autoload :TransferDestination, 'moov/models/components/transferdestination.rb'
       autoload :TransferEntryMode, 'moov/models/components/transferentrymode.rb'
       autoload :TransferFailureReason, 'moov/models/components/transferfailurereason.rb'
