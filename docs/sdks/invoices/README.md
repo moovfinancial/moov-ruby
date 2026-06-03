@@ -76,11 +76,7 @@ res = s.invoices.create_invoice(account_id: 'c463fb80-6410-48b7-9e2e-6e9ec58a654
     ]
   ),
   invoice_date: DateTime.iso8601('2026-01-15T00:00:00Z'),
-  due_date: DateTime.iso8601('2026-02-15T00:00:00Z'),
-  tax_amount: Models::Components::AmountDecimal.new(
-    currency: 'USD',
-    value_decimal: '80.00'
-  )
+  due_date: DateTime.iso8601('2026-02-15T00:00:00Z')
 ))
 
 unless res.invoice.nil?

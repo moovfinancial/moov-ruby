@@ -10,4 +10,6 @@ end
 class Moov::Models::Components::CreateRefund
   def amount(); end
   def amount=(str_); end
+  def amount_details(); end
+  def amount_details=(str_); end
 end

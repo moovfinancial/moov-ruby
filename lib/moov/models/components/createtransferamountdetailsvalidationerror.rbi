@@ -12,4 +12,6 @@ class Moov::Models::Components::CreateTransferAmountDetailsValidationError
   def tip=(str_); end
   def tax(); end
   def tax=(str_); end
+  def surcharge(); end
+  def surcharge=(str_); end
 end

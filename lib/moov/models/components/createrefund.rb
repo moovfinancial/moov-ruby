@@ -16,16 +16,20 @@ module Moov
 
         # Amount to refund in cents. If null, the original transfer's full amount will be refunded.
         field :amount, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+        # Breakdown of the refunded amount.
+        field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(amount: T.nilable(::Integer)).void }
-        def initialize(amount: nil)
+        sig { params(amount: T.nilable(::Integer), amount_details: T.nilable(Models::Components::RefundAmountDetails)).void }
+        def initialize(amount: nil, amount_details: nil)
           @amount = amount
+          @amount_details = amount_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @amount == other.amount
+          return false unless @amount_details == other.amount_details
           true
         end
       end

@@ -19,11 +19,14 @@ module Moov
 
         field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 
-        sig { params(refund_id: ::String, created_on: ::DateTime, amount: Models::Components::Amount).void }
-        def initialize(refund_id:, created_on:, amount:)
+        field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
+
+        sig { params(refund_id: ::String, created_on: ::DateTime, amount: Models::Components::Amount, amount_details: T.nilable(Models::Components::RefundAmountDetails)).void }
+        def initialize(refund_id:, created_on:, amount:, amount_details: nil)
           @refund_id = refund_id
           @created_on = created_on
           @amount = amount
+          @amount_details = amount_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -32,6 +35,7 @@ module Moov
           return false unless @refund_id == other.refund_id
           return false unless @created_on == other.created_on
           return false unless @amount == other.amount
+          return false unless @amount_details == other.amount_details
           true
         end
       end

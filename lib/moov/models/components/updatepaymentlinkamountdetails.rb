@@ -14,16 +14,20 @@ module Moov
 
         # The amount of tax applied to the payment link.
         field :tax, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tax') } }
+        # The amount of surcharge applied to the payment link.
+        field :surcharge, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('surcharge') } }
 
-        sig { params(tax: T.nilable(Models::Components::AmountDecimalUpdate)).void }
-        def initialize(tax: nil)
+        sig { params(tax: T.nilable(Models::Components::AmountDecimalUpdate), surcharge: T.nilable(Models::Components::AmountDecimalUpdate)).void }
+        def initialize(tax: nil, surcharge: nil)
           @tax = tax
+          @surcharge = surcharge
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @tax == other.tax
+          return false unless @surcharge == other.surcharge
           true
         end
       end

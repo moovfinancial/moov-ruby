@@ -15,15 +15,19 @@ module Moov
         # Tip presets when calculating tips for a transfer.
         field :tip_presets, Crystalline::Nilable.new(Models::Components::TipPresets), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tipPresets') } }
 
-        sig { params(tip_presets: T.nilable(Models::Components::TipPresets)).void }
-        def initialize(tip_presets: nil)
+        field :transfer_controls, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TransferControls)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferControls') } }
+
+        sig { params(tip_presets: T.nilable(Models::Components::TipPresets), transfer_controls: T.nilable(T::Array[Models::Components::TransferControls])).void }
+        def initialize(tip_presets: nil, transfer_controls: nil)
           @tip_presets = tip_presets
+          @transfer_controls = transfer_controls
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @tip_presets == other.tip_presets
+          return false unless @transfer_controls == other.transfer_controls
           true
         end
       end
