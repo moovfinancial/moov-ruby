@@ -26,8 +26,6 @@ class Moov::Models::Components::Invoice
   def line_items=(str_); end
   def subtotal_amount(); end
   def subtotal_amount=(str_); end
-  def tax_amount(); end
-  def tax_amount=(str_); end
   def total_amount(); end
   def total_amount=(str_); end
   def pending_amount(); end
@@ -42,6 +40,8 @@ class Moov::Models::Components::Invoice
   def created_on=(str_); end
   def description(); end
   def description=(str_); end
+  def amount_details(); end
+  def amount_details=(str_); end
   def payment_link_code(); end
   def payment_link_code=(str_); end
   def invoice_payments(); end

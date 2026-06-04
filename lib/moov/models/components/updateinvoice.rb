@@ -16,26 +16,26 @@ module Moov
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # A collection of line items for an invoice.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateInvoiceLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
-        # The status can be updated to one of the following values under specific conditions:
-        # - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`. Canceling an invoice
-        #   indicates the invoice is no longer expected to be paid (e.g., the charge was waived or terms changed).
-        #   Canceled invoices still appear in list results by default and remain part of the invoice history.
-        #   To completely discard an invoice created by mistake, use the delete endpoint instead.
-        # - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
+        #   The status can be updated to one of the following values under specific conditions:
+        #   - `canceled`: Can only be set if the current status is `draft`, `unpaid`, or `overdue`. Canceling an invoice
+        #     indicates the invoice is no longer expected to be paid (e.g., the charge was waived or terms changed).
+        #     Canceled invoices still appear in list results by default and remain part of the invoice history.
+        #     To completely discard an invoice created by mistake, use the delete endpoint instead.
+        #   - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
         field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoiceStatus, true) } }
 
-        field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
+        field :amount_details, Crystalline::Nilable.new(Models::Components::AmountDetailsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
         field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsUpdate), status: T.nilable(Models::Components::InvoiceStatus), tax_amount: T.nilable(Models::Components::AmountDecimalUpdate), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime)).void }
-        def initialize(description: nil, line_items: nil, status: nil, tax_amount: nil, invoice_date: nil, due_date: nil)
+        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsUpdate), status: T.nilable(Models::Components::InvoiceStatus), amount_details: T.nilable(Models::Components::AmountDetailsUpdate), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime)).void }
+        def initialize(description: nil, line_items: nil, status: nil, amount_details: nil, invoice_date: nil, due_date: nil)
           @description = description
           @line_items = line_items
           @status = status
-          @tax_amount = tax_amount
+          @amount_details = amount_details
           @invoice_date = invoice_date
           @due_date = due_date
         end
@@ -46,7 +46,7 @@ module Moov
           return false unless @description == other.description
           return false unless @line_items == other.line_items
           return false unless @status == other.status
-          return false unless @tax_amount == other.tax_amount
+          return false unless @amount_details == other.amount_details
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date
           true

@@ -23,16 +23,16 @@ module Moov
 
         field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
+        field :amount_details, Crystalline::Nilable.new(Models::Components::AmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(customer_account_id: ::String, line_items: Models::Components::CreateInvoiceLineItems, description: T.nilable(::String), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), tax_amount: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(customer_account_id:, line_items:, description: nil, invoice_date: nil, due_date: nil, tax_amount: nil)
+        sig { params(customer_account_id: ::String, line_items: Models::Components::CreateInvoiceLineItems, description: T.nilable(::String), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::AmountDetails)).void }
+        def initialize(customer_account_id:, line_items:, description: nil, invoice_date: nil, due_date: nil, amount_details: nil)
           @customer_account_id = customer_account_id
           @line_items = line_items
           @description = description
           @invoice_date = invoice_date
           @due_date = due_date
-          @tax_amount = tax_amount
+          @amount_details = amount_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -43,7 +43,7 @@ module Moov
           return false unless @description == other.description
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date
-          return false unless @tax_amount == other.tax_amount
+          return false unless @amount_details == other.amount_details
           true
         end
       end

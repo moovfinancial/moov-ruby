@@ -23,18 +23,18 @@ module Moov
 
         field :status, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status') } }
 
-        field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimalValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
+        field :amount_details, Crystalline::Nilable.new(Models::Components::AmountDetailsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::InvoiceLineItemsValidationError), invoice_date: T.nilable(::String), due_date: T.nilable(::String), status: T.nilable(::String), tax_amount: T.nilable(Models::Components::AmountDecimalValidationError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(description: nil, line_items: nil, invoice_date: nil, due_date: nil, status: nil, tax_amount: nil, raw_response: nil)
+        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::InvoiceLineItemsValidationError), invoice_date: T.nilable(::String), due_date: T.nilable(::String), status: T.nilable(::String), amount_details: T.nilable(Models::Components::AmountDetailsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(description: nil, line_items: nil, invoice_date: nil, due_date: nil, status: nil, amount_details: nil, raw_response: nil)
           @description = description
           @line_items = line_items
           @invoice_date = invoice_date
           @due_date = due_date
           @status = status
-          @tax_amount = tax_amount
+          @amount_details = amount_details
           @raw_response = raw_response
         end
 
@@ -46,7 +46,7 @@ module Moov
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date
           return false unless @status == other.status
-          return false unless @tax_amount == other.tax_amount
+          return false unless @amount_details == other.amount_details
           return false unless @raw_response == other.raw_response
           true
         end
