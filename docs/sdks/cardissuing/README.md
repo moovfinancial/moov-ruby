@@ -36,7 +36,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="requestCard" method="post" path="/issuing/{accountID}/issued-cards" -->
+<!-- UsageSnippet language="ruby" operationID="requestCard" method="post" path="/issuing/{accountID}/cards" -->
 ```ruby
 require 'moov_ruby'
 
@@ -48,17 +48,17 @@ s = ::Moov::Client.new(
   )
 )
 res = s.card_issuing.request(account_id: '4d9ac71a-efcc-4bdf-bcfe-d710ca654e3e', request_card: Models::Components::RequestCard.new(
-  funding_wallet_id: 'fd98e3b2-696f-4f67-9250-17b3474ababf',
-  authorized_user: Models::Components::CreateAuthorizedUser.new(
-    first_name: 'Milton',
-    last_name: 'Stiedemann',
-    birth_date: Models::Components::BirthDate.new(
-      day: 9,
-      month: 11,
-      year: 1989
-    )
+  metadata: {
+    'optional' => 'metadata',
+  },
+  billing_address: Models::Components::Address.new(
+    address_line1: '123 Main Street',
+    address_line2: 'Apt 302',
+    city: 'Boulder',
+    state_or_province: 'CO',
+    postal_code: '80301',
+    country: 'US'
   ),
-  form_factor: Models::Components::IssuedCardFormFactor::VIRTUAL,
   expiration: Models::Components::CardExpiration.new(
     month: '01',
     year: '21'
@@ -107,7 +107,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="listIssuedCards" method="get" path="/issuing/{accountID}/issued-cards" -->
+<!-- UsageSnippet language="ruby" operationID="listIssuedCards" method="get" path="/issuing/{accountID}/cards" -->
 ```ruby
 require 'moov_ruby'
 
@@ -154,7 +154,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="getIssuedCard" method="get" path="/issuing/{accountID}/issued-cards/{issuedCardID}" -->
+<!-- UsageSnippet language="ruby" operationID="getIssuedCard" method="get" path="/issuing/{accountID}/cards/{issuedCardID}" -->
 ```ruby
 require 'moov_ruby'
 
@@ -199,7 +199,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="updateIssuedCard" method="patch" path="/issuing/{accountID}/issued-cards/{issuedCardID}" -->
+<!-- UsageSnippet language="ruby" operationID="updateIssuedCard" method="patch" path="/issuing/{accountID}/cards/{issuedCardID}" -->
 ```ruby
 require 'moov_ruby'
 
@@ -211,12 +211,16 @@ s = ::Moov::Client.new(
   )
 )
 res = s.card_issuing.update(account_id: '44db31bc-2813-424b-9b8c-2d3f5f1300e3', issued_card_id: '69ca2a7e-7bbc-4176-9d0c-2a1aa7143006', update_issued_card: Models::Components::UpdateIssuedCard.new(
-  authorized_user: Models::Components::CreateAuthorizedUserUpdate.new(
-    birth_date: Models::Components::BirthDateUpdate.new(
-      day: 9,
-      month: 11,
-      year: 1989
-    )
+  metadata: {
+    'optional' => 'metadata',
+  },
+  billing_address: Models::Components::BillingAddress.new(
+    address_line1: '123 Main Street',
+    address_line2: 'Apt 302',
+    city: 'Boulder',
+    state_or_province: 'CO',
+    postal_code: '80301',
+    country: 'US'
   )
 ))
 
@@ -257,7 +261,7 @@ you'll need to specify the `/accounts/{accountID}/issued-cards.read-secure` scop
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="getFullIssuedCard" method="get" path="/issuing/{accountID}/issued-cards/{issuedCardID}/details" -->
+<!-- UsageSnippet language="ruby" operationID="getFullIssuedCard" method="get" path="/issuing/{accountID}/cards/{issuedCardID}/details" -->
 ```ruby
 require 'moov_ruby'
 

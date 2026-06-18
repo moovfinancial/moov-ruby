@@ -12,6 +12,8 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # The accountID associated with the wallet being swept.
+        field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
 
         field :wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID'), required: true } }
 
@@ -21,8 +23,9 @@ module Moov
 
         field :transfer_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID') } }
 
-        sig { params(wallet_id: ::String, sweep_id: ::String, status: Models::Components::SweepStatus, transfer_id: T.nilable(::String)).void }
-        def initialize(wallet_id:, sweep_id:, status:, transfer_id: nil)
+        sig { params(account_id: ::String, wallet_id: ::String, sweep_id: ::String, status: Models::Components::SweepStatus, transfer_id: T.nilable(::String)).void }
+        def initialize(account_id:, wallet_id:, sweep_id:, status:, transfer_id: nil)
+          @account_id = account_id
           @wallet_id = wallet_id
           @sweep_id = sweep_id
           @status = status
@@ -32,6 +35,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @account_id == other.account_id
           return false unless @wallet_id == other.wallet_id
           return false unless @sweep_id == other.sweep_id
           return false unless @status == other.status

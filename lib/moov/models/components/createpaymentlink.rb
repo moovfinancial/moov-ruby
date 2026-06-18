@@ -9,7 +9,7 @@ module Moov
     module Components
       # Request to create a new payment link.
       #
-      # A payment link must include either `payment` or `payout` details, but not both. For payout payment links,
+      # A payment link must include exactly one of `payment`, `payout`, or `customAmountPayment` details. For payout payment links,
       # `maxUses` will automatically be set to 1, as these are intended for a one-time disbursement
       # to a specific recipient.
       #
@@ -21,12 +21,12 @@ module Moov
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
         # The merchant's preferred payment method ID. Must be a wallet payment method.
         field :merchant_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantPaymentMethodID'), required: true } }
-        # The fixed amount of the payment link. 
+        # The fixed amount of the payment link.
         #
         # In API versions before `2026.07.00`, this was a required field.
         #
-        # In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted 
-        # for `open` payment amount types.
+        # In API version `2026.07.00` and beyond, this field is required for `payment` and `payout` links and must be
+        # omitted for `customAmountPayment` links, where the payor chooses the amount.
         field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
         # Customizable display options for a payment link.
         field :display, Models::Components::PaymentLinkDisplayOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('display'), required: true } }
