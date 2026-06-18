@@ -27,7 +27,11 @@ module Moov
         field :customer_support, Crystalline::Nilable.new(Models::Components::CustomerSupport), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerSupport') } }
         # User provided settings to manage an account.
         field :settings, Crystalline::Nilable.new(Models::Components::Settings), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('settings') } }
-
+        # Capabilities to request when the account is created. Request granular capability IDs that match your use case.
+        #
+        # Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to choose the right capabilities for your integration.
+        #
+        # The `send-funds`, `collect-funds`, and `wallet` capability IDs are deprecated. Use granular values such as `send-funds.ach`, `collect-funds.card-payments`, or `wallet.balance` instead.
         field :capabilities, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CapabilityID)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
         # The operating mode for an account.
         field :mode, Crystalline::Nilable.new(Models::Components::Mode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, true) } }

@@ -10,8 +10,10 @@ end
 class Moov::Models::Components::UpdateIssuedCard
   def state(); end
   def state=(str_); end
-  def memo(); end
-  def memo=(str_); end
-  def authorized_user(); end
-  def authorized_user=(str_); end
+  def nickname(); end
+  def nickname=(str_); end
+  def metadata(); end
+  def metadata=(str_); end
+  def billing_address(); end
+  def billing_address=(str_); end
 end

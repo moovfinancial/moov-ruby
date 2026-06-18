@@ -20,8 +20,6 @@ module Moov
         field :last_four_card_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber'), required: true } }
         # The expiration date of the card or token.
         field :expiration, Models::Components::CardExpiration, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration'), required: true } }
-        # Fields for identifying an authorized individual.
-        field :authorized_user, Models::Components::AuthorizedUser, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUser'), required: true } }
         # Unique identifier for the wallet funding the card.
         field :funding_wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fundingWalletID'), required: true } }
         # The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
@@ -35,23 +33,34 @@ module Moov
         field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
-        # Optional descriptor for the card.
-        field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
+
+        field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
+        # Identifier for the account of the card's authorized user.
+        field :authorized_user_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUserAccountID') } }
+        # An optional descriptive name for the card.
+        field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
+        # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        # Billing address associated with the card.
+        field :billing_address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
 
         field :controls, Crystalline::Nilable.new(Models::Components::IssuingControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
-        sig { params(issued_card_id: ::String, brand: Models::Components::CardBrand, last_four_card_number: ::String, expiration: Models::Components::CardExpiration, authorized_user: Models::Components::AuthorizedUser, funding_wallet_id: ::String, state: Models::Components::IssuedCardState, form_factor: Models::Components::IssuedCardFormFactor, created_on: ::DateTime, memo: T.nilable(::String), controls: T.nilable(Models::Components::IssuingControls)).void }
-        def initialize(issued_card_id:, brand:, last_four_card_number:, expiration:, authorized_user:, funding_wallet_id:, state:, form_factor:, created_on:, memo: nil, controls: nil)
+        sig { params(issued_card_id: ::String, brand: Models::Components::CardBrand, last_four_card_number: ::String, expiration: Models::Components::CardExpiration, funding_wallet_id: ::String, state: Models::Components::IssuedCardState, form_factor: Models::Components::IssuedCardFormFactor, created_on: ::DateTime, updated_on: ::DateTime, authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), controls: T.nilable(Models::Components::IssuingControls)).void }
+        def initialize(issued_card_id:, brand:, last_four_card_number:, expiration:, funding_wallet_id:, state:, form_factor:, created_on:, updated_on:, authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, controls: nil)
           @issued_card_id = issued_card_id
           @brand = brand
           @last_four_card_number = last_four_card_number
           @expiration = expiration
-          @authorized_user = authorized_user
           @funding_wallet_id = funding_wallet_id
           @state = state
           @form_factor = form_factor
           @created_on = created_on
-          @memo = memo
+          @updated_on = updated_on
+          @authorized_user_account_id = authorized_user_account_id
+          @nickname = nickname
+          @metadata = metadata
+          @billing_address = billing_address
           @controls = controls
         end
 
@@ -62,12 +71,15 @@ module Moov
           return false unless @brand == other.brand
           return false unless @last_four_card_number == other.last_four_card_number
           return false unless @expiration == other.expiration
-          return false unless @authorized_user == other.authorized_user
           return false unless @funding_wallet_id == other.funding_wallet_id
           return false unless @state == other.state
           return false unless @form_factor == other.form_factor
           return false unless @created_on == other.created_on
-          return false unless @memo == other.memo
+          return false unless @updated_on == other.updated_on
+          return false unless @authorized_user_account_id == other.authorized_user_account_id
+          return false unless @nickname == other.nickname
+          return false unless @metadata == other.metadata
+          return false unless @billing_address == other.billing_address
           return false unless @controls == other.controls
           true
         end
