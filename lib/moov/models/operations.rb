@@ -198,6 +198,8 @@ module Moov
       autoload :ListAdjustmentsResponse, 'moov/models/operations/listadjustments_response.rb'
       autoload :ListBankAccountsRequest, 'moov/models/operations/listbankaccounts_request.rb'
       autoload :ListBankAccountsResponse, 'moov/models/operations/listbankaccounts_response.rb'
+      autoload :ListCancellationsRequest, 'moov/models/operations/listcancellations_request.rb'
+      autoload :ListCancellationsResponse, 'moov/models/operations/listcancellations_response.rb'
       autoload :ListCapabilitiesRequest, 'moov/models/operations/listcapabilities_request.rb'
       autoload :ListCapabilitiesResponse, 'moov/models/operations/listcapabilities_response.rb'
       autoload :ListCardsRequest, 'moov/models/operations/listcards_request.rb'
