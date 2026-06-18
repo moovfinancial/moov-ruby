@@ -19,7 +19,7 @@ module Moov
         # List of [scopes](https://docs.moov.io/api/authentication/scopes/) you request to use on this
         # account. These values are used to determine what can be done with the account onboarded.
         field :scopes, Crystalline::Array.new(Models::Components::ApplicationScope), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scopes'), required: true } }
-        #   List of [capabilities](https://docs.moov.io/guides/accounts/capabilities/) you intend to request for this
+        #   List of [capabilities](https://docs.moov.io/guides/accounts/capabilities/reference/) you intend to request for this
         #   account. These values are used to determine what information to collect from the user during onboarding.
         field :capabilities, Crystalline::Array.new(Models::Components::CapabilityID), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities'), required: true } }
         # List of fee plan codes to assign the account created by the invitee.

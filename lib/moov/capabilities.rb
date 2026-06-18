@@ -45,7 +45,7 @@ module Moov
     def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - Retrieve all the capabilities an account has requested.
       #
-      # Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
+      # Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
@@ -69,7 +69,7 @@ module Moov
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       timeout ||= @sdk_configuration.timeout
-      
+
 
       connection = @sdk_configuration.client
 
@@ -84,7 +84,7 @@ module Moov
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
@@ -120,13 +120,13 @@ module Moov
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -167,7 +167,7 @@ module Moov
 
     sig { params(add_capabilities: Models::Components::AddCapabilities, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RequestCapabilitiesResponse) }
     def request(add_capabilities:, account_id:, timeout_ms: nil, http_headers: nil)
-      # request - Request capabilities for a specific account. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
+      # request - Request capabilities for a specific account. Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
@@ -203,7 +203,7 @@ module Moov
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       timeout ||= @sdk_configuration.timeout
-      
+
 
       connection = @sdk_configuration.client
 
@@ -218,7 +218,7 @@ module Moov
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).post(url) do |req|
           req.body = body
@@ -255,13 +255,13 @@ module Moov
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -332,7 +332,7 @@ module Moov
 
     sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCapabilityResponse) }
     def get(account_id:, capability_id:, timeout_ms: nil, http_headers: nil)
-      # get - Retrieve a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
+      # get - Retrieve a specific capability that an account has requested. Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to learn more.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.read` scope.
@@ -357,7 +357,7 @@ module Moov
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       timeout ||= @sdk_configuration.timeout
-      
+
 
       connection = @sdk_configuration.client
 
@@ -372,7 +372,7 @@ module Moov
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
@@ -408,13 +408,13 @@ module Moov
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -455,7 +455,7 @@ module Moov
 
     sig { params(account_id: ::String, capability_id: Models::Components::CapabilityID, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableCapabilityResponse) }
     def disable(account_id:, capability_id:, timeout_ms: nil, http_headers: nil)
-      # disable - Disable a specific capability that an account has requested. Read our [capabilities guide](https://docs.moov.io/guides/accounts/capabilities/) to learn more.
+      # disable - Disable a specific capability that an account has requested. Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to learn more.
       #
       #   To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
@@ -480,7 +480,7 @@ module Moov
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       timeout ||= @sdk_configuration.timeout
-      
+
 
       connection = @sdk_configuration.client
 
@@ -495,7 +495,7 @@ module Moov
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).delete(url) do |req|
           req.headers.merge!(headers)
@@ -531,13 +531,13 @@ module Moov
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['204'])
         http_response = @sdk_configuration.hooks.after_success(

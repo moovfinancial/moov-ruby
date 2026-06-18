@@ -16,8 +16,6 @@ class Moov::Models::Components::IssuedCard
   def last_four_card_number=(str_); end
   def expiration(); end
   def expiration=(str_); end
-  def authorized_user(); end
-  def authorized_user=(str_); end
   def funding_wallet_id(); end
   def funding_wallet_id=(str_); end
   def state(); end
@@ -26,8 +24,16 @@ class Moov::Models::Components::IssuedCard
   def form_factor=(str_); end
   def created_on(); end
   def created_on=(str_); end
-  def memo(); end
-  def memo=(str_); end
+  def updated_on(); end
+  def updated_on=(str_); end
+  def authorized_user_account_id(); end
+  def authorized_user_account_id=(str_); end
+  def nickname(); end
+  def nickname=(str_); end
+  def metadata(); end
+  def metadata=(str_); end
+  def billing_address(); end
+  def billing_address=(str_); end
   def controls(); end
   def controls=(str_); end
 end
