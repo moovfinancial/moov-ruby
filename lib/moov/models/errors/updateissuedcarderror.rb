@@ -15,17 +15,20 @@ module Moov
 
         field :state, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state') } }
 
-        field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
+        field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
 
-        field :authorized_user, Crystalline::Nilable.new(Models::Components::CreateAuthorizedUserError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUser') } }
+        field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+
+        field :billing_address, Crystalline::Nilable.new(Models::Components::AddressError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(state: T.nilable(::String), memo: T.nilable(::String), authorized_user: T.nilable(Models::Components::CreateAuthorizedUserError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(state: nil, memo: nil, authorized_user: nil, raw_response: nil)
+        sig { params(state: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(::String), billing_address: T.nilable(Models::Components::AddressError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(state: nil, nickname: nil, metadata: nil, billing_address: nil, raw_response: nil)
           @state = state
-          @memo = memo
-          @authorized_user = authorized_user
+          @nickname = nickname
+          @metadata = metadata
+          @billing_address = billing_address
           @raw_response = raw_response
         end
 
@@ -33,8 +36,9 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @state == other.state
-          return false unless @memo == other.memo
-          return false unless @authorized_user == other.authorized_user
+          return false unless @nickname == other.nickname
+          return false unless @metadata == other.metadata
+          return false unless @billing_address == other.billing_address
           return false unless @raw_response == other.raw_response
           true
         end
