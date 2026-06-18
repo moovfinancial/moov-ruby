@@ -55,6 +55,10 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
   
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
   to specify the `/accounts/{accountID}/transfers.write` scope.
+* [list_cancellations](#list_cancellations) -   Get a list of cancellations for a transfer.
+  
+  To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+  to specify the `/accounts/{accountID}/transfers.read` scope.
 * [get_cancellation](#get_cancellation) -   Get details of a cancellation for a transfer.
   
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
@@ -512,6 +516,51 @@ end
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | Models::Errors::GenericError | 400                          | application/json             |
 | Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
+
+## list_cancellations
+
+  Get a list of cancellations for a transfer.
+  
+  To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
+  to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="listCancellations" method="get" path="/accounts/{accountID}/transfers/{transferID}/cancellations" example="Cancellations" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.transfers.list_cancellations(account_id: '<id>', transfer_id: '<id>')
+
+unless res.cancellations.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `account_id`                                                        | *::String*                                                          | :heavy_check_mark:                                                  | Moov account ID of the partner or transfer's source or destination. |
+| `transfer_id`                                                       | *::String*                                                          | :heavy_check_mark:                                                  | Identifier for the transfer.                                        |
+
+### Response
+
+**[T.nilable(Models::Operations::ListCancellationsResponse)](../../models/operations/listcancellationsresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
 
 ## get_cancellation
 

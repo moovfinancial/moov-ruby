@@ -16,23 +16,27 @@ module Moov
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
         field :state, Crystalline::Nilable.new(Models::Components::UpdateIssuedCardState), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::UpdateIssuedCardState, true) } }
 
-        field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
-        # Fields for identifying an authorized individual.
-        field :authorized_user, Crystalline::Nilable.new(Models::Components::CreateAuthorizedUserUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUser') } }
+        field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
 
-        sig { params(state: T.nilable(Models::Components::UpdateIssuedCardState), memo: T.nilable(::String), authorized_user: T.nilable(Models::Components::CreateAuthorizedUserUpdate)).void }
-        def initialize(state: nil, memo: nil, authorized_user: nil)
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+
+        field :billing_address, Crystalline::Nilable.new(Models::Components::BillingAddress), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
+
+        sig { params(state: T.nilable(Models::Components::UpdateIssuedCardState), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::BillingAddress)).void }
+        def initialize(state: nil, nickname: nil, metadata: nil, billing_address: nil)
           @state = state
-          @memo = memo
-          @authorized_user = authorized_user
+          @nickname = nickname
+          @metadata = metadata
+          @billing_address = billing_address
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @state == other.state
-          return false unless @memo == other.memo
-          return false unless @authorized_user == other.authorized_user
+          return false unless @nickname == other.nickname
+          return false unless @metadata == other.metadata
+          return false unless @billing_address == other.billing_address
           true
         end
       end
