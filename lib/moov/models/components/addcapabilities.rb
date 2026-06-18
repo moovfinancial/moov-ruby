@@ -12,7 +12,11 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Capabilities to request for the account. Request granular capability IDs that match your use case.
+        #
+        # Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to choose the right capabilities for your integration.
+        #
+        # The `send-funds`, `collect-funds`, and `wallet` capability IDs are deprecated. Use granular values such as `send-funds.ach`, `collect-funds.card-payments`, or `wallet.balance` instead.
         field :capabilities, Crystalline::Array.new(Models::Components::CapabilityID), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities'), required: true } }
 
         sig { params(capabilities: T::Array[Models::Components::CapabilityID]).void }

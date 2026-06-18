@@ -22,6 +22,8 @@ module Moov
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetailsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetailsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
+        # Options for a custom amount payment link. A payment link's type cannot be changed after creation.
+        field :custom_amount_payment, Crystalline::Nilable.new(Models::Components::PaymentLinkCustomAmountPaymentDetailsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customAmountPayment') } }
         # An optional collection of line items for a payment link.
         # When line items are provided, their total plus tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItemsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
@@ -30,13 +32,14 @@ module Moov
 
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountUpdate), display: T.nilable(Models::Components::PaymentLinkDisplayOptionsUpdate), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetailsUpdate), payout: T.nilable(Models::Components::PaymentLinkPayoutDetailsUpdate), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsUpdate), amount_details: T.nilable(Models::Components::UpdatePaymentLinkAmountDetails), expires_on: T.nilable(::DateTime)).void }
-        def initialize(amount: nil, display: nil, customer: nil, payment: nil, payout: nil, line_items: nil, amount_details: nil, expires_on: nil)
+        sig { params(amount: T.nilable(Models::Components::AmountUpdate), display: T.nilable(Models::Components::PaymentLinkDisplayOptionsUpdate), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetailsUpdate), payout: T.nilable(Models::Components::PaymentLinkPayoutDetailsUpdate), custom_amount_payment: T.nilable(Models::Components::PaymentLinkCustomAmountPaymentDetailsUpdate), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsUpdate), amount_details: T.nilable(Models::Components::UpdatePaymentLinkAmountDetails), expires_on: T.nilable(::DateTime)).void }
+        def initialize(amount: nil, display: nil, customer: nil, payment: nil, payout: nil, custom_amount_payment: nil, line_items: nil, amount_details: nil, expires_on: nil)
           @amount = amount
           @display = display
           @customer = customer
           @payment = payment
           @payout = payout
+          @custom_amount_payment = custom_amount_payment
           @line_items = line_items
           @amount_details = amount_details
           @expires_on = expires_on
@@ -50,6 +53,7 @@ module Moov
           return false unless @customer == other.customer
           return false unless @payment == other.payment
           return false unless @payout == other.payout
+          return false unless @custom_amount_payment == other.custom_amount_payment
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details
           return false unless @expires_on == other.expires_on

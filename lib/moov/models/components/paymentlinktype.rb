@@ -13,6 +13,7 @@ module Moov
           PAYMENT = new('payment')
           PAYOUT = new('payout')
           INVOICE_PAYMENT = new('invoice-payment')
+          CUSTOM_AMOUNT_PAYMENT = new('custom-amount-payment')
         end
       end
     end

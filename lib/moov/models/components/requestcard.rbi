@@ -8,14 +8,14 @@ end
 
 
 class Moov::Models::Components::RequestCard
-  def funding_wallet_id(); end
-  def funding_wallet_id=(str_); end
-  def authorized_user(); end
-  def authorized_user=(str_); end
-  def form_factor(); end
-  def form_factor=(str_); end
-  def memo(); end
-  def memo=(str_); end
+  def authorized_user_account_id(); end
+  def authorized_user_account_id=(str_); end
+  def nickname(); end
+  def nickname=(str_); end
+  def metadata(); end
+  def metadata=(str_); end
+  def billing_address(); end
+  def billing_address=(str_); end
   def expiration(); end
   def expiration=(str_); end
   def controls(); end

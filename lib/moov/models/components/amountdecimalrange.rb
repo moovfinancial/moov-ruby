@@ -7,18 +7,24 @@
 module Moov
   module Models
     module Components
-
+      # A range of values that an AmountDecimal can take.
+      #
+      # If either `minimum` or `maximum` is omitted, the range is "open" on that end:
+      #
+      # `minimum` specified: `amt >= minimum`
+      # `maximum` specified: `amt <= maximum`
+      # both specified: `minimum <= amt <= maximum`
       class AmountDecimalRange
         extend T::Sig
         include Crystalline::MetadataFields
 
         # Minimum amount allowed in the range
-        field :minimum, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimum'), required: true } }
+        field :minimum, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimum') } }
         # Maximum amount allowed in the range
-        field :maximum, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maximum'), required: true } }
+        field :maximum, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maximum') } }
 
-        sig { params(minimum: Models::Components::AmountDecimal, maximum: Models::Components::AmountDecimal).void }
-        def initialize(minimum:, maximum:)
+        sig { params(minimum: T.nilable(Models::Components::AmountDecimal), maximum: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(minimum: nil, maximum: nil)
           @minimum = minimum
           @maximum = maximum
         end
