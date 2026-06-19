@@ -23,19 +23,22 @@ module Moov
 
         field :payout, Crystalline::Nilable.new(Models::Components::PayoutDetailsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
 
+        field :custom_amount_payment, Crystalline::Nilable.new(Models::Components::CustomAmountPaymentDetailsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customAmountPayment') } }
+
         field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::UpdatePaymentLinkAmountDetailsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountValidationError), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsValidationError), amount_details: T.nilable(Models::Components::UpdatePaymentLinkAmountDetailsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(amount: nil, expires_on: nil, display: nil, payment: nil, payout: nil, line_items: nil, amount_details: nil, raw_response: nil)
+        sig { params(amount: T.nilable(Models::Components::AmountValidationError), expires_on: T.nilable(::String), display: T.nilable(Models::Components::DisplayOptionsError), payment: T.nilable(Models::Components::PaymentDetailsError), payout: T.nilable(Models::Components::PayoutDetailsError), custom_amount_payment: T.nilable(Models::Components::CustomAmountPaymentDetailsError), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItemsValidationError), amount_details: T.nilable(Models::Components::UpdatePaymentLinkAmountDetailsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(amount: nil, expires_on: nil, display: nil, payment: nil, payout: nil, custom_amount_payment: nil, line_items: nil, amount_details: nil, raw_response: nil)
           @amount = amount
           @expires_on = expires_on
           @display = display
           @payment = payment
           @payout = payout
+          @custom_amount_payment = custom_amount_payment
           @line_items = line_items
           @amount_details = amount_details
           @raw_response = raw_response
@@ -49,6 +52,7 @@ module Moov
           return false unless @display == other.display
           return false unless @payment == other.payment
           return false unless @payout == other.payout
+          return false unless @custom_amount_payment == other.custom_amount_payment
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details
           return false unless @raw_response == other.raw_response

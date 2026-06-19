@@ -13,24 +13,24 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :funding_wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fundingWalletID'), required: true } }
-        # Fields for identifying an authorized individual.
-        field :authorized_user, Models::Components::CreateAuthorizedUser, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUser'), required: true } }
-        # Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
-        field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
-        # An optional descriptive name for the card.
-        field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
+        field :authorized_user_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUserAccountID') } }
+
+        field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
+        # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+
+        field :billing_address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
         # The expiration date of the card or token.
         field :expiration, Crystalline::Nilable.new(Models::Components::CardExpiration), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration') } }
 
         field :controls, Crystalline::Nilable.new(Models::Components::IssuingControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
-        sig { params(funding_wallet_id: ::String, authorized_user: Models::Components::CreateAuthorizedUser, form_factor: Models::Components::IssuedCardFormFactor, memo: T.nilable(::String), expiration: T.nilable(Models::Components::CardExpiration), controls: T.nilable(Models::Components::IssuingControls)).void }
-        def initialize(funding_wallet_id:, authorized_user:, form_factor:, memo: nil, expiration: nil, controls: nil)
-          @funding_wallet_id = funding_wallet_id
-          @authorized_user = authorized_user
-          @form_factor = form_factor
-          @memo = memo
+        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), expiration: T.nilable(Models::Components::CardExpiration), controls: T.nilable(Models::Components::IssuingControls)).void }
+        def initialize(authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, expiration: nil, controls: nil)
+          @authorized_user_account_id = authorized_user_account_id
+          @nickname = nickname
+          @metadata = metadata
+          @billing_address = billing_address
           @expiration = expiration
           @controls = controls
         end
@@ -38,10 +38,10 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @funding_wallet_id == other.funding_wallet_id
-          return false unless @authorized_user == other.authorized_user
-          return false unless @form_factor == other.form_factor
-          return false unless @memo == other.memo
+          return false unless @authorized_user_account_id == other.authorized_user_account_id
+          return false unless @nickname == other.nickname
+          return false unless @metadata == other.metadata
+          return false unless @billing_address == other.billing_address
           return false unless @expiration == other.expiration
           return false unless @controls == other.controls
           true

@@ -14,12 +14,15 @@ module Moov
 
         # An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
         field :dynamic_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dynamicDescriptor') } }
+        # The scheduled date and time for the transfer to be delivered. This field is only valid for push-to-card transfers. Must be between 24 and 48 hours in the future.
+        field :scheduled_delivery_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scheduledDeliveryOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # An optional field to specify the type of card payout, used to route the transfer with the appropriate business application identifier (BAI).
         field :payout_type, Crystalline::Nilable.new(Models::Components::CardPayoutType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payoutType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardPayoutType, true) } }
 
-        sig { params(dynamic_descriptor: T.nilable(::String), payout_type: T.nilable(Models::Components::CardPayoutType)).void }
-        def initialize(dynamic_descriptor: nil, payout_type: nil)
+        sig { params(dynamic_descriptor: T.nilable(::String), scheduled_delivery_on: T.nilable(::DateTime), payout_type: T.nilable(Models::Components::CardPayoutType)).void }
+        def initialize(dynamic_descriptor: nil, scheduled_delivery_on: nil, payout_type: nil)
           @dynamic_descriptor = dynamic_descriptor
+          @scheduled_delivery_on = scheduled_delivery_on
           @payout_type = payout_type
         end
 
@@ -27,6 +30,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @dynamic_descriptor == other.dynamic_descriptor
+          return false unless @scheduled_delivery_on == other.scheduled_delivery_on
           return false unless @payout_type == other.payout_type
           true
         end

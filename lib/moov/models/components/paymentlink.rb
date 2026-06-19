@@ -40,12 +40,12 @@ module Moov
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
         field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
-        # The fixed amount of the payment link. 
+        # The fixed amount of the payment link.
         #
         # In API versions before `2026.07.00`, this was a required field.
         #
-        # In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted 
-        # for `open` payment amount types.
+        # In API version `2026.07.00` and beyond, this field is present for `payment` and `payout` links and omitted
+        # for `customAmountPayment` links, where the payor chooses the amount.
         field :amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
         # An optional limit on the number of times this payment link can be used.
         #
@@ -59,6 +59,11 @@ module Moov
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
+        # Options for custom amount payment links.
+        #
+        # A custom amount payment link shares all the options of a `payment` link, but the payor chooses how much to
+        # pay rather than the merchant fixing the amount. The amount may optionally be constrained to a range.
+        field :custom_amount_payment, Crystalline::Nilable.new(Models::Components::PaymentLinkCustomAmountPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customAmountPayment') } }
         # An optional collection of line items for a payment link.
         # When line items are provided, their total plus tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::PaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
@@ -67,8 +72,8 @@ module Moov
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::PaymentLinkAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::PaymentLinkAmountDetails)).void }
-        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, uses:, display:, customer:, created_on:, updated_on:, amount: nil, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, line_items: nil, disabled_on: nil, amount_details: nil)
+        sig { params(code: ::String, payment_link_type: Models::Components::PaymentLinkType, mode: Models::Components::Mode, status: Models::Components::PaymentLinkStatus, partner_account_id: ::String, merchant_account_id: ::String, owner_account_id: ::String, merchant_payment_method_id: ::String, link: ::String, uses: ::Integer, display: Models::Components::PaymentLinkDisplayOptions, customer: Models::Components::PaymentLinkCustomerOptions, created_on: ::DateTime, updated_on: ::DateTime, amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), last_used_on: T.nilable(::DateTime), expires_on: T.nilable(::DateTime), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), custom_amount_payment: T.nilable(Models::Components::PaymentLinkCustomAmountPaymentDetails), line_items: T.nilable(Models::Components::PaymentLinkLineItems), disabled_on: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::PaymentLinkAmountDetails)).void }
+        def initialize(code:, payment_link_type:, mode:, status:, partner_account_id:, merchant_account_id:, owner_account_id:, merchant_payment_method_id:, link:, uses:, display:, customer:, created_on:, updated_on:, amount: nil, max_uses: nil, last_used_on: nil, expires_on: nil, payment: nil, payout: nil, custom_amount_payment: nil, line_items: nil, disabled_on: nil, amount_details: nil)
           @code = code
           @payment_link_type = payment_link_type
           @mode = mode
@@ -89,6 +94,7 @@ module Moov
           @expires_on = expires_on
           @payment = payment
           @payout = payout
+          @custom_amount_payment = custom_amount_payment
           @line_items = line_items
           @disabled_on = disabled_on
           @amount_details = amount_details
@@ -117,6 +123,7 @@ module Moov
           return false unless @expires_on == other.expires_on
           return false unless @payment == other.payment
           return false unless @payout == other.payout
+          return false unless @custom_amount_payment == other.custom_amount_payment
           return false unless @line_items == other.line_items
           return false unless @disabled_on == other.disabled_on
           return false unless @amount_details == other.amount_details

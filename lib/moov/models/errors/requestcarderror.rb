@@ -13,13 +13,13 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :funding_wallet_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fundingWalletID') } }
+        field :authorized_user_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUserAccountID') } }
 
-        field :form_factor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor') } }
+        field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
 
-        field :authorized_user, Crystalline::Nilable.new(Models::Components::CreateAuthorizedUserError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedUser') } }
+        field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        field :memo, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo') } }
+        field :billing_address, Crystalline::Nilable.new(Models::Components::AddressError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
 
         field :expiration, Crystalline::Nilable.new(Models::Components::CardExpirationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration') } }
 
@@ -27,12 +27,12 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(funding_wallet_id: T.nilable(::String), form_factor: T.nilable(::String), authorized_user: T.nilable(Models::Components::CreateAuthorizedUserError), memo: T.nilable(::String), expiration: T.nilable(Models::Components::CardExpirationError), controls: T.nilable(Models::Components::IssuingControlsError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(funding_wallet_id: nil, form_factor: nil, authorized_user: nil, memo: nil, expiration: nil, controls: nil, raw_response: nil)
-          @funding_wallet_id = funding_wallet_id
-          @form_factor = form_factor
-          @authorized_user = authorized_user
-          @memo = memo
+        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(::String), billing_address: T.nilable(Models::Components::AddressError), expiration: T.nilable(Models::Components::CardExpirationError), controls: T.nilable(Models::Components::IssuingControlsError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, expiration: nil, controls: nil, raw_response: nil)
+          @authorized_user_account_id = authorized_user_account_id
+          @nickname = nickname
+          @metadata = metadata
+          @billing_address = billing_address
           @expiration = expiration
           @controls = controls
           @raw_response = raw_response
@@ -41,10 +41,10 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @funding_wallet_id == other.funding_wallet_id
-          return false unless @form_factor == other.form_factor
-          return false unless @authorized_user == other.authorized_user
-          return false unless @memo == other.memo
+          return false unless @authorized_user_account_id == other.authorized_user_account_id
+          return false unless @nickname == other.nickname
+          return false unless @metadata == other.metadata
+          return false unless @billing_address == other.billing_address
           return false unless @expiration == other.expiration
           return false unless @controls == other.controls
           return false unless @raw_response == other.raw_response

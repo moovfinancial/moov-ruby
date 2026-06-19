@@ -9,7 +9,7 @@ module Moov
     module Components
       # Request to create a new payment link.
       #
-      # A payment link must include either `payment` or `payout` details, but not both. For payout payment links,
+      # A payment link must include exactly one of `payment`, `payout`, or `customAmountPayment` details. For payout payment links,
       # `maxUses` will automatically be set to 1, as these are intended for a one-time disbursement
       # to a specific recipient.
       #
@@ -23,12 +23,12 @@ module Moov
         field :merchant_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantPaymentMethodID'), required: true } }
         # Customizable display options for a payment link.
         field :display, Models::Components::PaymentLinkDisplayOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('display'), required: true } }
-        # The fixed amount of the payment link. 
+        # The fixed amount of the payment link.
         #
         # In API versions before `2026.07.00`, this was a required field.
         #
-        # In API version `2026.07.00` and beyond, this field is required for `fixed` payment amount types and omitted 
-        # for `open` payment amount types.
+        # In API version `2026.07.00` and beyond, this field is required for `payment` and `payout` links and must be
+        # omitted for `customAmountPayment` links, where the payor chooses the amount.
         field :amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
         # An optional limit on the number of times this payment link can be used.
         #
@@ -42,14 +42,16 @@ module Moov
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
+        # Options for a custom amount payment link. Mutually exclusive with `payment` and `payout`.
+        field :custom_amount_payment, Crystalline::Nilable.new(Models::Components::PaymentLinkCustomAmountPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customAmountPayment') } }
         # An optional collection of line items for a payment link.
         # When line items are provided, their total plus tax must equal the payment link amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::CreatePaymentLinkAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(partner_account_id: ::String, merchant_payment_method_id: ::String, display: Models::Components::PaymentLinkDisplayOptions, amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), expires_on: T.nilable(::DateTime), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItems), amount_details: T.nilable(Models::Components::CreatePaymentLinkAmountDetails)).void }
-        def initialize(partner_account_id:, merchant_payment_method_id:, display:, amount: nil, max_uses: nil, expires_on: nil, customer: nil, payment: nil, payout: nil, line_items: nil, amount_details: nil)
+        sig { params(partner_account_id: ::String, merchant_payment_method_id: ::String, display: Models::Components::PaymentLinkDisplayOptions, amount: T.nilable(Models::Components::Amount), max_uses: T.nilable(::Integer), expires_on: T.nilable(::DateTime), customer: T.nilable(Models::Components::PaymentLinkCustomerOptions), payment: T.nilable(Models::Components::PaymentLinkPaymentDetails), payout: T.nilable(Models::Components::PaymentLinkPayoutDetails), custom_amount_payment: T.nilable(Models::Components::PaymentLinkCustomAmountPaymentDetails), line_items: T.nilable(Models::Components::CreatePaymentLinkLineItems), amount_details: T.nilable(Models::Components::CreatePaymentLinkAmountDetails)).void }
+        def initialize(partner_account_id:, merchant_payment_method_id:, display:, amount: nil, max_uses: nil, expires_on: nil, customer: nil, payment: nil, payout: nil, custom_amount_payment: nil, line_items: nil, amount_details: nil)
           @partner_account_id = partner_account_id
           @merchant_payment_method_id = merchant_payment_method_id
           @display = display
@@ -59,6 +61,7 @@ module Moov
           @customer = customer
           @payment = payment
           @payout = payout
+          @custom_amount_payment = custom_amount_payment
           @line_items = line_items
           @amount_details = amount_details
         end
@@ -75,6 +78,7 @@ module Moov
           return false unless @customer == other.customer
           return false unless @payment == other.payment
           return false unless @payout == other.payout
+          return false unless @custom_amount_payment == other.custom_amount_payment
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details
           true

@@ -48,6 +48,8 @@ class Moov::Models::Components::PaymentLink
   def payment=(str_); end
   def payout(); end
   def payout=(str_); end
+  def custom_amount_payment(); end
+  def custom_amount_payment=(str_); end
   def line_items(); end
   def line_items=(str_); end
   def disabled_on(); end

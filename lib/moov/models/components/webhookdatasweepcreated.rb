@@ -12,13 +12,16 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # The accountID associated with the wallet being swept.
+        field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
 
         field :wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID'), required: true } }
 
         field :sweep_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sweepID'), required: true } }
 
-        sig { params(wallet_id: ::String, sweep_id: ::String).void }
-        def initialize(wallet_id:, sweep_id:)
+        sig { params(account_id: ::String, wallet_id: ::String, sweep_id: ::String).void }
+        def initialize(account_id:, wallet_id:, sweep_id:)
+          @account_id = account_id
           @wallet_id = wallet_id
           @sweep_id = sweep_id
         end
@@ -26,6 +29,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @account_id == other.account_id
           return false unless @wallet_id == other.wallet_id
           return false unless @sweep_id == other.sweep_id
           true
