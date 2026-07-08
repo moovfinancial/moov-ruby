@@ -49,9 +49,12 @@ module Moov
         field :domestic_push_to_card, Crystalline::Nilable.new(Models::Components::DomesticPushToCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPushToCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPushToCard, true) } }
         # Indicates if the card supports domestic pull-from-card transfer.
         field :domestic_pull_from_card, Crystalline::Nilable.new(Models::Components::DomesticPullFromCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPullFromCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPullFromCard, true) } }
+        # The category or level of the card defined by the issuer.
+        # Examples include, but not limited to, "REWARDS", "TRADITIONAL REWARDS", "CLASSIC", and "CORPORATE PURCHASING".
+        field :card_category, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardCategory') } }
 
-        sig { params(card_id: ::String, fingerprint: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, last_four_card_number: ::String, bin: ::String, expiration: Models::Components::CardExpiration, billing_address: Models::Components::CardAddress, card_verification: Models::Components::CardVerification, holder_name: T.nilable(::String), issuer: T.nilable(::String), issuer_country: T.nilable(::String), card_on_file: T.nilable(T::Boolean), merchant_account_id: T.nilable(::String), card_account_updater: T.nilable(Models::Components::CardAccountUpdater), domestic_push_to_card: T.nilable(Models::Components::DomesticPushToCard), domestic_pull_from_card: T.nilable(Models::Components::DomesticPullFromCard)).void }
-        def initialize(card_id:, fingerprint:, brand:, card_type:, last_four_card_number:, bin:, expiration:, billing_address:, card_verification:, holder_name: nil, issuer: nil, issuer_country: nil, card_on_file: nil, merchant_account_id: nil, card_account_updater: nil, domestic_push_to_card: nil, domestic_pull_from_card: nil)
+        sig { params(card_id: ::String, fingerprint: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, last_four_card_number: ::String, bin: ::String, expiration: Models::Components::CardExpiration, billing_address: Models::Components::CardAddress, card_verification: Models::Components::CardVerification, holder_name: T.nilable(::String), issuer: T.nilable(::String), issuer_country: T.nilable(::String), card_on_file: T.nilable(T::Boolean), merchant_account_id: T.nilable(::String), card_account_updater: T.nilable(Models::Components::CardAccountUpdater), domestic_push_to_card: T.nilable(Models::Components::DomesticPushToCard), domestic_pull_from_card: T.nilable(Models::Components::DomesticPullFromCard), card_category: T.nilable(::String)).void }
+        def initialize(card_id:, fingerprint:, brand:, card_type:, last_four_card_number:, bin:, expiration:, billing_address:, card_verification:, holder_name: nil, issuer: nil, issuer_country: nil, card_on_file: nil, merchant_account_id: nil, card_account_updater: nil, domestic_push_to_card: nil, domestic_pull_from_card: nil, card_category: nil)
           @card_id = card_id
           @fingerprint = fingerprint
           @brand = brand
@@ -69,6 +72,7 @@ module Moov
           @card_account_updater = card_account_updater
           @domestic_push_to_card = domestic_push_to_card
           @domestic_pull_from_card = domestic_pull_from_card
+          @card_category = card_category
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -91,6 +95,7 @@ module Moov
           return false unless @card_account_updater == other.card_account_updater
           return false unless @domestic_push_to_card == other.domestic_push_to_card
           return false unless @domestic_pull_from_card == other.domestic_pull_from_card
+          return false unless @card_category == other.card_category
           true
         end
       end

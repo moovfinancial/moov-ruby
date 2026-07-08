@@ -28,6 +28,8 @@ module Moov
       autoload :CreateBrandResponse, 'moov/models/operations/createbrand_response.rb'
       autoload :CreateCancellationRequest, 'moov/models/operations/createcancellation_request.rb'
       autoload :CreateCancellationResponse, 'moov/models/operations/createcancellation_response.rb'
+      autoload :CreateDepositAccountRequest, 'moov/models/operations/createdepositaccount_request.rb'
+      autoload :CreateDepositAccountResponse, 'moov/models/operations/createdepositaccount_response.rb'
       autoload :CreateFeePlanAgreementsRequest, 'moov/models/operations/createfeeplanagreements_request.rb'
       autoload :CreateFeePlanAgreementsResponse, 'moov/models/operations/createfeeplanagreements_response.rb'
       autoload :CreateInvoicePaymentRequest, 'moov/models/operations/createinvoicepayment_request.rb'

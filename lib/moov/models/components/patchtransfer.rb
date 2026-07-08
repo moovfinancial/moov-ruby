@@ -12,22 +12,22 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
-
-        sig { params(foreign_id: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
-        def initialize(foreign_id: nil, metadata: nil)
-          @foreign_id = foreign_id
+        sig { params(metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String)).void }
+        def initialize(metadata: nil, foreign_id: nil)
           @metadata = metadata
+          @foreign_id = foreign_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @foreign_id == other.foreign_id
           return false unless @metadata == other.metadata
+          return false unless @foreign_id == other.foreign_id
           true
         end
       end

@@ -13,11 +13,11 @@ module Moov
         include Crystalline::MetadataFields
 
         # The amount of tax applied to the payment link.
-        field :tax, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tax') } }
+        field :tax, Crystalline::Nilable.new(Models::Components::Tax), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tax') } }
         # The amount of surcharge applied to the payment link.
-        field :surcharge, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('surcharge') } }
+        field :surcharge, Crystalline::Nilable.new(Models::Components::Surcharge), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('surcharge') } }
 
-        sig { params(tax: T.nilable(Models::Components::AmountDecimalUpdate), surcharge: T.nilable(Models::Components::AmountDecimalUpdate)).void }
+        sig { params(tax: T.nilable(Models::Components::Tax), surcharge: T.nilable(Models::Components::Surcharge)).void }
         def initialize(tax: nil, surcharge: nil)
           @tax = tax
           @surcharge = surcharge

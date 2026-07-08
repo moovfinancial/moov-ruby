@@ -48,6 +48,8 @@ module Moov
         field :amount_details, Crystalline::Nilable.new(Models::Components::AmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
         field :payment_link_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkCode') } }
+        # URL to the hosted payment link for the invoice.
+        field :payment_link_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkURL') } }
         # Payment made towards an invoice, will be either a transfer or an external payment.
         field :invoice_payments, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::InvoicePayment)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoicePayments') } }
 
@@ -63,8 +65,8 @@ module Moov
 
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(invoice_id: ::String, invoice_number: ::String, customer_account_id: ::String, customer_display_name: ::String, customer_email: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, description: T.nilable(::String), amount_details: T.nilable(Models::Components::AmountDetails), payment_link_code: T.nilable(::String), invoice_payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime), disabled_on: T.nilable(::DateTime)).void }
-        def initialize(invoice_id:, invoice_number:, customer_account_id:, customer_display_name:, customer_email:, partner_account_id:, status:, line_items:, subtotal_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, description: nil, amount_details: nil, payment_link_code: nil, invoice_payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil, disabled_on: nil)
+        sig { params(invoice_id: ::String, invoice_number: ::String, customer_account_id: ::String, customer_display_name: ::String, customer_email: ::String, partner_account_id: ::String, status: Models::Components::InvoiceStatus, line_items: Models::Components::InvoiceLineItems, subtotal_amount: Models::Components::AmountDecimal, total_amount: Models::Components::AmountDecimal, pending_amount: Models::Components::AmountDecimal, paid_amount: Models::Components::AmountDecimal, refunded_amount: Models::Components::AmountDecimal, disputed_amount: Models::Components::AmountDecimal, created_on: ::DateTime, description: T.nilable(::String), amount_details: T.nilable(Models::Components::AmountDetails), payment_link_code: T.nilable(::String), payment_link_url: T.nilable(::String), invoice_payments: T.nilable(T::Array[Models::Components::InvoicePayment]), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), sent_on: T.nilable(::DateTime), paid_on: T.nilable(::DateTime), canceled_on: T.nilable(::DateTime), disabled_on: T.nilable(::DateTime)).void }
+        def initialize(invoice_id:, invoice_number:, customer_account_id:, customer_display_name:, customer_email:, partner_account_id:, status:, line_items:, subtotal_amount:, total_amount:, pending_amount:, paid_amount:, refunded_amount:, disputed_amount:, created_on:, description: nil, amount_details: nil, payment_link_code: nil, payment_link_url: nil, invoice_payments: nil, invoice_date: nil, due_date: nil, sent_on: nil, paid_on: nil, canceled_on: nil, disabled_on: nil)
           @invoice_id = invoice_id
           @invoice_number = invoice_number
           @customer_account_id = customer_account_id
@@ -83,6 +85,7 @@ module Moov
           @description = description
           @amount_details = amount_details
           @payment_link_code = payment_link_code
+          @payment_link_url = payment_link_url
           @invoice_payments = invoice_payments
           @invoice_date = invoice_date
           @due_date = due_date
@@ -113,6 +116,7 @@ module Moov
           return false unless @description == other.description
           return false unless @amount_details == other.amount_details
           return false unless @payment_link_code == other.payment_link_code
+          return false unless @payment_link_url == other.payment_link_url
           return false unless @invoice_payments == other.invoice_payments
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date

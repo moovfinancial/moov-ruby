@@ -21,12 +21,18 @@ module Moov
         field :recipient, Crystalline::Nilable.new(Models::Components::PayoutRecipient), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient') } }
         # Optional free-form metadata for the transfer.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        # Delivery options for push-to-card payouts. Only applies when `allowedMethods` includes `push-to-card`.
+        #
+        # The `deferred` speed and `deferredBy` apply to `push-to-card` only. Other push methods
+        # (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
+        field :push_options, Crystalline::Nilable.new(Models::Components::PushOptionsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
 
-        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipient), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
-        def initialize(allowed_methods: nil, recipient: nil, metadata: nil)
+        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipient), metadata: T.nilable(T::Hash[Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptionsUpdate)).void }
+        def initialize(allowed_methods: nil, recipient: nil, metadata: nil, push_options: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient
           @metadata = metadata
+          @push_options = push_options
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -35,6 +41,7 @@ module Moov
           return false unless @allowed_methods == other.allowed_methods
           return false unless @recipient == other.recipient
           return false unless @metadata == other.metadata
+          return false unless @push_options == other.push_options
           true
         end
       end

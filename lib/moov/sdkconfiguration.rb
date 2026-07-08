@@ -88,9 +88,9 @@ module Moov
       end
       @language = 'ruby'
       @openapi_doc_version = 'v2026.07.00'
-      @sdk_version = '26.7.0-dev.3'
-      @gen_version = '2.910.1'
-      @user_agent = 'speakeasy-sdk/ruby 26.7.0-dev.3 2.910.1 v2026.07.00 moov_ruby'
+      @sdk_version = '26.7.0-dev.4'
+      @gen_version = '2.916.2'
+      @user_agent = 'speakeasy-sdk/ruby 26.7.0-dev.4 2.916.2 v2026.07.00 moov_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

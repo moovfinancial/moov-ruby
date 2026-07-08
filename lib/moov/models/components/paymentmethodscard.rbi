@@ -42,4 +42,6 @@ class Moov::Models::Components::PaymentMethodsCard
   def domestic_push_to_card=(str_); end
   def domestic_pull_from_card(); end
   def domestic_pull_from_card=(str_); end
+  def card_category(); end
+  def card_category=(str_); end
 end

@@ -16,7 +16,7 @@ module Moov
   class Client
     extend T::Sig
 
-    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :google_pay, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :resolution_links, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfer_config, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications
+    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :google_pay, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :resolution_links, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfer_config, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications, :deposit_view
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -120,6 +120,7 @@ module Moov
       @ping = Ping.new(@sdk_configuration)
       @receipts = Receipts.new(@sdk_configuration)
       @terminal_applications = TerminalApplications.new(@sdk_configuration)
+      @deposit_view = DepositView.new(@sdk_configuration)
     end
 
     sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
