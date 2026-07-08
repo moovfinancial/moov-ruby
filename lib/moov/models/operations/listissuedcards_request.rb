@@ -18,7 +18,7 @@ module Moov
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
 
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
-        # Optional, comma-separated states to filter the Moov list issued cards response. For example `active,pending-verification`
+        # Optional, comma-separated states to filter the Moov list issued cards response. For example `active,closed`
         field :states, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::IssuedCardState)), { 'query_param': { 'field_name': 'states', 'style': 'form', 'explode': false } }
 
         sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), states: T.nilable(T::Array[Models::Components::IssuedCardState])).void }
