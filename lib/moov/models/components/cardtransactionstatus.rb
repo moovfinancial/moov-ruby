@@ -16,6 +16,7 @@ module Moov
           SETTLED = new('settled')
           FAILED = new('failed')
           COMPLETED = new('completed')
+          DEFERRED = new('deferred')
         end
       end
     end

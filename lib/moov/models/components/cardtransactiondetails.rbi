@@ -14,6 +14,8 @@ class Moov::Models::Components::CardTransactionDetails
   def failure_code=(str_); end
   def dynamic_descriptor(); end
   def dynamic_descriptor=(str_); end
+  def scheduled_delivery_on(); end
+  def scheduled_delivery_on=(str_); end
   def transaction_source(); end
   def transaction_source=(str_); end
   def initiated_on(); end
@@ -28,6 +30,8 @@ class Moov::Models::Components::CardTransactionDetails
   def canceled_on=(str_); end
   def completed_on(); end
   def completed_on=(str_); end
+  def deferred_on(); end
+  def deferred_on=(str_); end
   def interchange_qualification(); end
   def interchange_qualification=(str_); end
   def fee_program(); end
