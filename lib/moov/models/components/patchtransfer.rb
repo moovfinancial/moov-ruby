@@ -14,7 +14,7 @@ module Moov
 
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
-
+        # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         sig { params(foreign_id: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String])).void }

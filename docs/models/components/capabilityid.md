@@ -21,11 +21,12 @@ value = CapabilityID::TRANSFERS
 
 ## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `TRANSFERS`      | transfers        |
-| `SEND_FUNDS`     | send-funds       |
-| `COLLECT_FUNDS`  | collect-funds    |
-| `WALLET`         | wallet           |
-| `CARD_ISSUING`   | card-issuing     |
-| `PRODUCTION_APP` | production-app   |
+| Name                 | Value                |
+| -------------------- | -------------------- |
+| `TRANSFERS`          | transfers            |
+| `SEND_FUNDS`         | send-funds           |
+| `COLLECT_FUNDS`      | collect-funds        |
+| `WALLET`             | wallet               |
+| `CARD_ISSUING`       | card-issuing         |
+| `ISSUING_CARDHOLDER` | issuing.cardholder   |
+| `PRODUCTION_APP`     | production-app       |
