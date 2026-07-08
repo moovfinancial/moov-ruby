@@ -23,6 +23,7 @@ module Moov
           COLLECT_FUNDS = new('collect-funds')
           WALLET = new('wallet')
           CARD_ISSUING = new('card-issuing')
+          ISSUING_CARDHOLDER = new('issuing.cardholder')
           PRODUCTION_APP = new('production-app')
         end
       end

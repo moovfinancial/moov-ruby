@@ -24,10 +24,8 @@ module Moov
         field :funding_wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fundingWalletID'), required: true } }
         # The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
         #
-        # - `active`: The card is operational and approves authorizations. Generally becomes active shortly after card creation.
-        # - `inactive`: The card cannot approve authorizations. This is currently a temporary state assigned post-creation during the activation process.
+        # - `active`: The card is operational and can approve authorizations.
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
-        # - `pending-verification`: Awaiting additional authorized user verification before the card can be activated.
         field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardState, false) } }
         # Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
         field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
