@@ -14,7 +14,7 @@ module Moov
 
         # The date and time the terms of service were accepted.
         field :accepted_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
-        # The IP address from which the terms of service were accepted.
+        # The IP address (IPv4 or IPv6) from which the terms of service were accepted.
         field :accepted_ip, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedIP') } }
         # The user-agent of the user making the request.
         field :accepted_user_agent, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedUserAgent') } }
