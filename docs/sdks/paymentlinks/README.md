@@ -245,7 +245,7 @@ res = s.payment_links.update(account_id: 'ddad6613-2350-446a-883b-f76abb2cd4ea',
     require_phone: true
   ),
   amount_details: Models::Components::UpdatePaymentLinkAmountDetails.new(
-    tax: Models::Components::AmountDecimalUpdate.new(
+    tax: Models::Components::Tax.new(
       currency: 'USD',
       value_decimal: '9.25'
     )

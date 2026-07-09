@@ -19,11 +19,14 @@ module Moov
 
         field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        sig { params(allowed_methods: T.nilable(::String), recipient: T.nilable(Models::Components::PayoutRecipientError), metadata: T.nilable(::String)).void }
-        def initialize(allowed_methods: nil, recipient: nil, metadata: nil)
+        field :push_options, Crystalline::Nilable.new(Models::Components::PushOptionsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
+
+        sig { params(allowed_methods: T.nilable(::String), recipient: T.nilable(Models::Components::PayoutRecipientError), metadata: T.nilable(::String), push_options: T.nilable(Models::Components::PushOptionsError)).void }
+        def initialize(allowed_methods: nil, recipient: nil, metadata: nil, push_options: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient
           @metadata = metadata
+          @push_options = push_options
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -32,6 +35,7 @@ module Moov
           return false unless @allowed_methods == other.allowed_methods
           return false unless @recipient == other.recipient
           return false unless @metadata == other.metadata
+          return false unless @push_options == other.push_options
           true
         end
       end

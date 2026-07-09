@@ -30,6 +30,8 @@ class Moov::Models::Components::CardTransactionDetails
   def canceled_on=(str_); end
   def completed_on(); end
   def completed_on=(str_); end
+  def deferred_on(); end
+  def deferred_on=(str_); end
   def interchange_qualification(); end
   def interchange_qualification=(str_); end
   def fee_program(); end

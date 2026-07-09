@@ -32,6 +32,7 @@ module Moov
           WALLET = new('wallet')
           WALLET_BALANCE = new('wallet.balance')
           CARD_ISSUING = new('card-issuing')
+          ISSUING_CARDHOLDER = new('issuing.cardholder')
           PRODUCTION_APP = new('production-app')
           PLATFORM_PRODUCTION_APP = new('platform.production-app')
           PLATFORM_WALLET_TRANSFERS = new('platform.wallet-transfers')

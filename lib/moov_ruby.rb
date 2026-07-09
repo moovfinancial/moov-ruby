@@ -47,6 +47,7 @@ module Moov
   autoload :Ping, 'moov/ping'
   autoload :Receipts, 'moov/receipts'
   autoload :TerminalApplications, 'moov/terminal_applications'
+  autoload :DepositView, 'moov/deposit_view'
   module Models
     autoload :Components, 'moov/models/components'
     autoload :Operations, 'moov/models/operations'

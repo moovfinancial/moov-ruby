@@ -14,4 +14,6 @@ class Moov::Models::Components::PaymentLinkPayoutDetailsUpdate
   def recipient=(str_); end
   def metadata(); end
   def metadata=(str_); end
+  def push_options(); end
+  def push_options=(str_); end
 end
