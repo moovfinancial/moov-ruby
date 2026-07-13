@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-      # FilePurpose - The file's purpose.
+      # FilePurpose - The purpose of the file being uploaded.
       class FilePurpose < T::Enum
         enums do
           BUSINESS_VERIFICATION = new('business_verification')
