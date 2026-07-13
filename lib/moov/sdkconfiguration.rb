@@ -87,10 +87,10 @@ module Moov
         @security_source = -> { security }
       end
       @language = 'ruby'
-      @openapi_doc_version = 'dev'
-      @sdk_version = '0.0.0-dev.22'
-      @gen_version = '2.916.2'
-      @user_agent = 'speakeasy-sdk/ruby 0.0.0-dev.22 2.916.2 dev moov_ruby'
+      @openapi_doc_version = 'v2026.10.00'
+      @sdk_version = '26.10.0-dev.0'
+      @gen_version = '2.917.0'
+      @user_agent = 'speakeasy-sdk/ruby 26.10.0-dev.0 2.917.0 v2026.10.00 moov_ruby'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

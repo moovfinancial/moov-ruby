@@ -84,6 +84,12 @@ to learn more.
 
 To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
 to specify the `/accounts/{accountID}/transfers.write` scope.
+* [get_risk_outcomes](#get_risk_outcomes) - Retrieve the risk rules that contributed to a transfer's risk decision.
+
+This endpoint has limited availability and must be enabled for your account by Moov.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 ## generate_options
 
@@ -893,3 +899,50 @@ end
 | Models::Errors::GenericError            | 400, 409                                | application/json                        |
 | Models::Errors::ReversalValidationError | 422                                     | application/json                        |
 | Errors::APIError                        | 4XX, 5XX                                | \*/\*                                   |
+
+## get_risk_outcomes
+
+Retrieve the risk rules that contributed to a transfer's risk decision.
+
+This endpoint has limited availability and must be enabled for your account by Moov.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="getTransferRiskOutcomes" method="get" path="/transfers/{transferID}/risk-outcomes" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.transfers.get_risk_outcomes(transfer_id: '<id>')
+
+unless res.partner_risk_outcomes_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `transfer_id`                                                                                            | *::String*                                                                                               | :heavy_check_mark:                                                                                       | Identifier for the transfer.                                                                             |
+| `x_account_id`                                                                                           | *T.nilable(::String)*                                                                                    | :heavy_minus_sign:                                                                                       | The account the transfer belongs to. When omitted, the account is resolved<br/>from the calling credentials. |
+
+### Response
+
+**[T.nilable(Models::Operations::GetTransferRiskOutcomesResponse)](../../models/operations/gettransferriskoutcomesresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |

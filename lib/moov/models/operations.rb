@@ -184,6 +184,8 @@ module Moov
       autoload :GetTicketResponse, 'moov/models/operations/getticket_response.rb'
       autoload :GetTransferConfigRequest, 'moov/models/operations/gettransferconfig_request.rb'
       autoload :GetTransferConfigResponse, 'moov/models/operations/gettransferconfig_response.rb'
+      autoload :GetTransferRiskOutcomesRequest, 'moov/models/operations/gettransferriskoutcomes_request.rb'
+      autoload :GetTransferRiskOutcomesResponse, 'moov/models/operations/gettransferriskoutcomes_response.rb'
       autoload :GetTransferRequest, 'moov/models/operations/gettransfer_request.rb'
       autoload :GetTransferResponse, 'moov/models/operations/gettransfer_response.rb'
       autoload :GetUnderwritingRequest, 'moov/models/operations/getunderwriting_request.rb'
