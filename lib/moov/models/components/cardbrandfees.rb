@@ -32,9 +32,11 @@ module Moov
         field :declines, Crystalline::Nilable.new(Models::Components::BillingCountAndAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('declines') } }
         # Details of refunded transactions.
         field :refunds, Crystalline::Nilable.new(Models::Components::BillingCountAndAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refunds') } }
+        # Details of card cancellations.
+        field :card_cancellations, Crystalline::Nilable.new(Models::Components::BillingCountAndAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardCancellations') } }
 
-        sig { params(total: Models::Components::BillingCountAndAmount, interchange: T.nilable(Models::Components::BillingCountAndAmount), interchange_programs: T.nilable(T::Array[Models::Components::BillingInterchangeProgramFee]), network_passthrough: T.nilable(Models::Components::BillingCountAndAmount), completed_domestic_online: T.nilable(Models::Components::BillingCountAndAmount), completed_domestic_in_person: T.nilable(Models::Components::BillingCountAndAmount), completed_international_online: T.nilable(Models::Components::BillingCountAndAmount), completed_international_in_person: T.nilable(Models::Components::BillingCountAndAmount), declines: T.nilable(Models::Components::BillingCountAndAmount), refunds: T.nilable(Models::Components::BillingCountAndAmount)).void }
-        def initialize(total:, interchange: nil, interchange_programs: nil, network_passthrough: nil, completed_domestic_online: nil, completed_domestic_in_person: nil, completed_international_online: nil, completed_international_in_person: nil, declines: nil, refunds: nil)
+        sig { params(total: Models::Components::BillingCountAndAmount, interchange: T.nilable(Models::Components::BillingCountAndAmount), interchange_programs: T.nilable(T::Array[Models::Components::BillingInterchangeProgramFee]), network_passthrough: T.nilable(Models::Components::BillingCountAndAmount), completed_domestic_online: T.nilable(Models::Components::BillingCountAndAmount), completed_domestic_in_person: T.nilable(Models::Components::BillingCountAndAmount), completed_international_online: T.nilable(Models::Components::BillingCountAndAmount), completed_international_in_person: T.nilable(Models::Components::BillingCountAndAmount), declines: T.nilable(Models::Components::BillingCountAndAmount), refunds: T.nilable(Models::Components::BillingCountAndAmount), card_cancellations: T.nilable(Models::Components::BillingCountAndAmount)).void }
+        def initialize(total:, interchange: nil, interchange_programs: nil, network_passthrough: nil, completed_domestic_online: nil, completed_domestic_in_person: nil, completed_international_online: nil, completed_international_in_person: nil, declines: nil, refunds: nil, card_cancellations: nil)
           @total = total
           @interchange = interchange
           @interchange_programs = interchange_programs
@@ -45,6 +47,7 @@ module Moov
           @completed_international_in_person = completed_international_in_person
           @declines = declines
           @refunds = refunds
+          @card_cancellations = card_cancellations
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -60,6 +63,7 @@ module Moov
           return false unless @completed_international_in_person == other.completed_international_in_person
           return false unless @declines == other.declines
           return false unless @refunds == other.refunds
+          return false unless @card_cancellations == other.card_cancellations
           true
         end
       end

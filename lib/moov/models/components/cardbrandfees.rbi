@@ -28,4 +28,6 @@ class Moov::Models::Components::CardBrandFees
   def declines=(str_); end
   def refunds(); end
   def refunds=(str_); end
+  def card_cancellations(); end
+  def card_cancellations=(str_); end
 end
