@@ -26,7 +26,7 @@ module Moov
         field :fee_plan_codes, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePlanCodes'), required: true } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
-        # The scopes requested by the inviter.
+        # Optional URL to redirect the user to after they complete the onboarding process.
         field :return_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('returnURL') } }
         # The terms of service URL set by the inviter.
         field :terms_of_service_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfServiceURL') } }

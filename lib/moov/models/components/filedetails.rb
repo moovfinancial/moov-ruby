@@ -18,7 +18,7 @@ module Moov
         field :file_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fileName'), required: true } }
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
-        # The file's purpose.
+        # The purpose of the file being uploaded.
         field :file_purpose, Models::Components::FilePurpose, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('filePurpose'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FilePurpose, false) } }
         # The file's status.
         field :file_status, Models::Components::FileStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fileStatus'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FileStatus, false) } }
