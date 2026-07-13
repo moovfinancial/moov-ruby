@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 6aadcd2e5f579ab4b407869faf12a3d5
+  docChecksum: 45decc24d8fe591b6a686e8d3bbc92f7
   docVersion: v2026.07.00
   speakeasyVersion: 1.790.0
   generationVersion: 2.917.0
-  releaseVersion: 26.7.0-dev.5
-  configChecksum: 81f18ff544b58ededfd7186842099e81
+  releaseVersion: 26.7.0-dev.6
+  configChecksum: df6d1654f9c306c883cb633cf7d2ff4f
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 8d4ef1b2-f287-41fb-94e8-0bbe6a25ae65
-  pristine_commit_hash: 419d2635b8b4e1e4b9bb77a8800e71f0b492e0a1
-  pristine_tree_hash: 9807794a34a197ad9798cc266c3ea71864903ddc
+  generation_id: 95847891-d51e-4463-bd5d-4c40313eb674
+  pristine_commit_hash: 961c26657ec59221db02213a54ea1c03f67b5c7c
+  pristine_tree_hash: 2487d29308439f6a1921dda8f8203dd177ee498a
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:2d52420a33ce20ff3cbed13b6c656a65c157dd88
-    pristine_git_object: ff809b9b489dce628f3b41af7af2fd4a0ca85b92
+    last_write_checksum: sha1:274b69a569f17a45086a26e373112f29f5356280
+    pristine_git_object: ad1afafbf20c08eaeda86ed708119955003e0e1d
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -1195,12 +1195,12 @@ trackedFiles:
     pristine_git_object: 367a453e831d778391ff8af637255093498a9d14
   docs/models/components/filedetails.md:
     id: 30d6ca3df594
-    last_write_checksum: sha1:4f1d452413c9162d4908328d1cac95c42ed44bda
-    pristine_git_object: 40998d285617eb61d671c19506b5567adad13e9f
+    last_write_checksum: sha1:16fb9fc37bf989f7d64c5a1004edf48022d28fb3
+    pristine_git_object: 55d7ed20e77c5895129797552aedb8dab9d37906
   docs/models/components/filepurpose.md:
     id: 348d3736e64d
-    last_write_checksum: sha1:faa6f6062f4d54a44595e307268a0860c0b4439e
-    pristine_git_object: 5714837825f3d388f334bac61834af9f9e19e483
+    last_write_checksum: sha1:865376d14ca6b3e2865ff880107a51c50e0a9a90
+    pristine_git_object: acf92c1293a450f86910aefa78dd1f9e1019dc51
   docs/models/components/filestatus.md:
     id: 60bd56b1bb8c
     last_write_checksum: sha1:de090f5f8c02ca0d77d8f075da17b9280665c571
@@ -1711,8 +1711,8 @@ trackedFiles:
     pristine_git_object: 11065cff46579d79c4ea00884d4a83d39d762929
   docs/models/components/onboardinginvite.md:
     id: 8357af2b90ac
-    last_write_checksum: sha1:1db226cce5d90ac06ab21de9f270178222668a8d
-    pristine_git_object: 92699c09d3ee3d1d2a6e835e815fd427fc9e7319
+    last_write_checksum: sha1:db4608530a39c967d658d4635b98a10ade09504e
+    pristine_git_object: 996c4a26c5bd860c98b89a22f21aa01ff03f86c7
   docs/models/components/onboardinginviterequest.md:
     id: 8df4c9e0b9c5
     last_write_checksum: sha1:c2f47388f46a3007b9499086d1cf3fadb5dfd016
@@ -7211,16 +7211,16 @@ trackedFiles:
     pristine_git_object: 97e3c6fab8a5dc44188962024a501db6cbfb952b
   lib/moov/models/components/filedetails.rb:
     id: 33f85a3b3a98
-    last_write_checksum: sha1:c2f73cd8d2c88ef41f4ea72fb0a57e8abe8c5616
-    pristine_git_object: d14528a359cf6f4b06ed54216c4d7ae68d4c734b
+    last_write_checksum: sha1:d314d6fd9a8ca28bd685b78c2231f8ea02797457
+    pristine_git_object: a62ee6f879e90586abb525cd60d865d5a401741d
   lib/moov/models/components/filedetails.rbi:
     id: 157b7d31145d
     last_write_checksum: sha1:06ce442a1ad3b0b8bf0157f78cdd37826f06d677
     pristine_git_object: 1e6178566052b3bd9269a582aaa5baed391698db
   lib/moov/models/components/filepurpose.rb:
     id: 827b7d4968bb
-    last_write_checksum: sha1:1a84b0fb380489620f2b70dde149aa35ca0fb255
-    pristine_git_object: 583b421cc01fcf4a1d1fb3d1699447261b46969f
+    last_write_checksum: sha1:fe753c27b7390da2ce4bce66e8a7b2b3eb4a7c63
+    pristine_git_object: 0fbff1ef59049eec7e955edff12ff0d3e4fb9feb
   lib/moov/models/components/filepurpose.rbi:
     id: 7eef634e1704
     last_write_checksum: sha1:69276cf40e20b5aca5681ec49dab2a2a0b2614ca
@@ -8243,8 +8243,8 @@ trackedFiles:
     pristine_git_object: 219bfec1c8b24909c4efee47f924d44d47cc3df4
   lib/moov/models/components/onboardinginvite.rb:
     id: "666352079196"
-    last_write_checksum: sha1:e80e74e637fa6f09ab2394d8b7a3ce77067d292d
-    pristine_git_object: 5f27cae46c19df75e4d7a9aeb6a4ad8e1b97c26d
+    last_write_checksum: sha1:fd389c8d0cbbbf5fd7bd07b31f89f1da182629e3
+    pristine_git_object: 07fd6707643ae9a442fc17180cd40369cc9d4eaa
   lib/moov/models/components/onboardinginvite.rbi:
     id: ff2cc2032eed
     last_write_checksum: sha1:c884f9532e4577be7a452339bfc3513c9d122bf0
@@ -14151,8 +14151,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:08cee1b18492b1ff96c8694049371bc754d73319
-    pristine_git_object: 7d0d7ea14971f3ed41dff6cc9ac3d9ef9a36c970
+    last_write_checksum: sha1:4aa86879d22817f9f8ea1a5a9d18a6ae6fedbe17
+    pristine_git_object: 73bd26a29ca46bef1a48668fdd39ef1af52e7503
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -14235,8 +14235,8 @@ trackedFiles:
     pristine_git_object: 83eb73eab05484d89f7bef4ffc3e6f6e97f0d4a1
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:8a79db94cc9c4828bb343063adf535b3b3700ca1
-    pristine_git_object: 8a6333296b3ea82d629294bcb99dc316b3b140cf
+    last_write_checksum: sha1:3a1bb97904e9827d36b07d0d5a2d3fa2c26fd35f
+    pristine_git_object: a097a1bd4aa02ce61ac6eaccae7824694a4ab993
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -16925,10 +16925,6 @@ examples:
         "422":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Ruby SDK Changes:
-  * `client.statements.list()`:  `response.[].card_acquiring_fees.visa.card_cancellations` **Added**
-  * `client.statements.get()`:  `response.card_acquiring_fees.visa.card_cancellations` **Added**
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
