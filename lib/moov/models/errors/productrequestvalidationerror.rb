@@ -22,16 +22,19 @@ module Moov
         field :images, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::AssignProductImageValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
 
         field :option_groups, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::ProductOptionGroupValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('optionGroups') } }
+
+        field :category_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('categoryID') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(title: T.nilable(::String), description: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), images: T.nilable(T::Hash[Symbol, Models::Components::AssignProductImageValidationError]), option_groups: T.nilable(T::Hash[Symbol, Models::Components::ProductOptionGroupValidationError]), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(title: nil, description: nil, base_price: nil, images: nil, option_groups: nil, raw_response: nil)
+        sig { params(title: T.nilable(::String), description: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), images: T.nilable(T::Hash[Symbol, Models::Components::AssignProductImageValidationError]), option_groups: T.nilable(T::Hash[Symbol, Models::Components::ProductOptionGroupValidationError]), category_id: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(title: nil, description: nil, base_price: nil, images: nil, option_groups: nil, category_id: nil, raw_response: nil)
           @title = title
           @description = description
           @base_price = base_price
           @images = images
           @option_groups = option_groups
+          @category_id = category_id
           @raw_response = raw_response
         end
 
@@ -43,6 +46,7 @@ module Moov
           return false unless @base_price == other.base_price
           return false unless @images == other.images
           return false unless @option_groups == other.option_groups
+          return false unless @category_id == other.category_id
           return false unless @raw_response == other.raw_response
           true
         end

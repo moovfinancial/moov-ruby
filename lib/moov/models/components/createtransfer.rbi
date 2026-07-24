@@ -26,4 +26,6 @@ class Moov::Models::Components::CreateTransfer
   def line_items=(str_); end
   def amount_details(); end
   def amount_details=(str_); end
+  def fee_paid_by(); end
+  def fee_paid_by=(str_); end
 end

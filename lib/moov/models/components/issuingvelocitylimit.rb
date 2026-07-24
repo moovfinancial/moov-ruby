@@ -14,7 +14,7 @@ module Moov
 
         # The maximum amount in cents that can be spent in a given interval.
         field :amount, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
-        # Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
+        # Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
         field :interval, Models::Components::IssuingIntervalLimit, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interval'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingIntervalLimit, false) } }
 
         sig { params(amount: ::Integer, interval: Models::Components::IssuingIntervalLimit).void }

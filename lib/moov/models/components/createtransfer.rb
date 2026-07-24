@@ -31,9 +31,11 @@ module Moov
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateTransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::CreateTransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
+        # Indicates which party bears fees for the transfer, keyed by fee type.
+        field :fee_paid_by, Crystalline::Nilable.new(Models::Components::TransferFeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
 
-        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails)).void }
-        def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil)
+        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), fee_paid_by: T.nilable(Models::Components::TransferFeePaidBy)).void }
+        def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, fee_paid_by: nil)
           @source = source
           @destination = destination
           @amount = amount
@@ -43,6 +45,7 @@ module Moov
           @foreign_id = foreign_id
           @line_items = line_items
           @amount_details = amount_details
+          @fee_paid_by = fee_paid_by
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -57,6 +60,7 @@ module Moov
           return false unless @foreign_id == other.foreign_id
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details
+          return false unless @fee_paid_by == other.fee_paid_by
           true
         end
       end

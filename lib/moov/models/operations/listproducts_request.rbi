@@ -12,6 +12,8 @@ class Moov::Models::Operations::ListProductsRequest
   def account_id=(str_); end
   def title(); end
   def title=(str_); end
+  def category(); end
+  def category=(str_); end
   def skip(); end
   def skip=(str_); end
   def count(); end

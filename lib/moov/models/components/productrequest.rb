@@ -26,14 +26,17 @@ module Moov
         field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AssignProductImage)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
         # Optional configuration options for a product, such as size or color.
         field :option_groups, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CreateProductOptionGroup)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('optionGroups') } }
+        # The ID of a product taxonomy category to associate with the product.
+        field :category_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('categoryID') } }
 
-        sig { params(title: ::String, base_price: Models::Components::AmountDecimal, description: T.nilable(::String), images: T.nilable(T::Array[Models::Components::AssignProductImage]), option_groups: T.nilable(T::Array[Models::Components::CreateProductOptionGroup])).void }
-        def initialize(title:, base_price:, description: nil, images: nil, option_groups: nil)
+        sig { params(title: ::String, base_price: Models::Components::AmountDecimal, description: T.nilable(::String), images: T.nilable(T::Array[Models::Components::AssignProductImage]), option_groups: T.nilable(T::Array[Models::Components::CreateProductOptionGroup]), category_id: T.nilable(::String)).void }
+        def initialize(title:, base_price:, description: nil, images: nil, option_groups: nil, category_id: nil)
           @title = title
           @base_price = base_price
           @description = description
           @images = images
           @option_groups = option_groups
+          @category_id = category_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -44,6 +47,7 @@ module Moov
           return false unless @description == other.description
           return false unless @images == other.images
           return false unless @option_groups == other.option_groups
+          return false unless @category_id == other.category_id
           true
         end
       end

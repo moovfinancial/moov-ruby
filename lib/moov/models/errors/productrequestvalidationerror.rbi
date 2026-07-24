@@ -18,6 +18,8 @@ class Moov::Models::Errors::ProductRequestValidationError
   def images=(str_); end
   def option_groups(); end
   def option_groups=(str_); end
+  def category_id(); end
+  def category_id=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
 end
