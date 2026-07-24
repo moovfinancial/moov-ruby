@@ -21,12 +21,15 @@ module Moov
 
         field :push_options, Crystalline::Nilable.new(Models::Components::PushOptionsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
 
-        sig { params(allowed_methods: T.nilable(::String), recipient: T.nilable(Models::Components::PayoutRecipientError), metadata: T.nilable(::String), push_options: T.nilable(Models::Components::PushOptionsError)).void }
-        def initialize(allowed_methods: nil, recipient: nil, metadata: nil, push_options: nil)
+        field :fee_paid_by, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
+
+        sig { params(allowed_methods: T.nilable(::String), recipient: T.nilable(Models::Components::PayoutRecipientError), metadata: T.nilable(::String), push_options: T.nilable(Models::Components::PushOptionsError), fee_paid_by: T.nilable(::String)).void }
+        def initialize(allowed_methods: nil, recipient: nil, metadata: nil, push_options: nil, fee_paid_by: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient
           @metadata = metadata
           @push_options = push_options
+          @fee_paid_by = fee_paid_by
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -36,6 +39,7 @@ module Moov
           return false unless @recipient == other.recipient
           return false unless @metadata == other.metadata
           return false unless @push_options == other.push_options
+          return false unless @fee_paid_by == other.fee_paid_by
           true
         end
       end

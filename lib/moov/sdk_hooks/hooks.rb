@@ -5,6 +5,8 @@
 
 require_relative './types'
 require_relative './registration'
+require_relative './oauth2scopes'
+require_relative './clientcredentials'
 
 module Moov
   module SDKHooks
@@ -17,6 +19,10 @@ module Moov
         @before_request_hooks = T.let([], T::Array[AbstractSDKHook])
         @after_success_hooks = T.let([], T::Array[AbstractSDKHook])
         @after_error_hooks = T.let([], T::Array[AbstractSDKHook])
+        cc_hook = ClientCredentialsHook.new
+        register_sdk_init_hook cc_hook
+        register_before_request_hook cc_hook
+        register_after_error_hook cc_hook
         Registration.init_hooks self
       end
 

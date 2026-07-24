@@ -18,4 +18,6 @@ class Moov::Models::Components::ProductRequest
   def images=(str_); end
   def option_groups(); end
   def option_groups=(str_); end
+  def category_id(); end
+  def category_id=(str_); end
 end
