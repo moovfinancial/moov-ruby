@@ -32,11 +32,13 @@ module Moov
         field :option_groups, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ProductOptionGroup)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('optionGroups') } }
         # Optional images associated with the product.
         field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ProductImageMetadata)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
+        # The product taxonomy category associated with the product, if any.
+        field :category, Crystalline::Nilable.new(Models::Components::ProductCategory), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('category') } }
         # The date and time when the product was disabled.
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(product_id: ::String, title: ::String, base_price: Models::Components::AmountDecimal, created_on: ::DateTime, updated_on: ::DateTime, description: T.nilable(::String), option_groups: T.nilable(T::Array[Models::Components::ProductOptionGroup]), images: T.nilable(T::Array[Models::Components::ProductImageMetadata]), disabled_on: T.nilable(::DateTime)).void }
-        def initialize(product_id:, title:, base_price:, created_on:, updated_on:, description: nil, option_groups: nil, images: nil, disabled_on: nil)
+        sig { params(product_id: ::String, title: ::String, base_price: Models::Components::AmountDecimal, created_on: ::DateTime, updated_on: ::DateTime, description: T.nilable(::String), option_groups: T.nilable(T::Array[Models::Components::ProductOptionGroup]), images: T.nilable(T::Array[Models::Components::ProductImageMetadata]), category: T.nilable(Models::Components::ProductCategory), disabled_on: T.nilable(::DateTime)).void }
+        def initialize(product_id:, title:, base_price:, created_on:, updated_on:, description: nil, option_groups: nil, images: nil, category: nil, disabled_on: nil)
           @product_id = product_id
           @title = title
           @base_price = base_price
@@ -45,6 +47,7 @@ module Moov
           @description = description
           @option_groups = option_groups
           @images = images
+          @category = category
           @disabled_on = disabled_on
         end
 
@@ -59,6 +62,7 @@ module Moov
           return false unless @description == other.description
           return false unless @option_groups == other.option_groups
           return false unless @images == other.images
+          return false unless @category == other.category
           return false unless @disabled_on == other.disabled_on
           true
         end

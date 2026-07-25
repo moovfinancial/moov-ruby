@@ -25,6 +25,7 @@ module Moov
           SEND_FUNDS_ACH = new('send-funds.ach')
           SEND_FUNDS_RTP = new('send-funds.rtp')
           SEND_FUNDS_INSTANT_BANK = new('send-funds.instant-bank')
+          SEND_FUNDS_WIRE = new('send-funds.wire')
           COLLECT_FUNDS = new('collect-funds')
           COLLECT_FUNDS_CARD_PAYMENTS = new('collect-funds.card-payments')
           MONEY_TRANSFER_PULL_FROM_CARD = new('money-transfer.pull-from-card')

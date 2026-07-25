@@ -16,15 +16,20 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
         # Allows filtering products by title. This supports partial matches and is case-insensitive
         field :title, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'title', 'style': 'form', 'explode': false } }
+        # Filter products by category. Accepts a category ID at any level of the taxonomy;
+        # a product matches when the given category is anywhere in its category's breadcrumb
+        # (i.e. filtering by a top-level category returns products in any of its descendants).
+        field :category, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'category', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
 
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, title: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
-        def initialize(account_id:, title: nil, skip: nil, count: nil)
+        sig { params(account_id: ::String, title: T.nilable(::String), category: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
+        def initialize(account_id:, title: nil, category: nil, skip: nil, count: nil)
           @account_id = account_id
           @title = title
+          @category = category
           @skip = skip
           @count = count
         end
@@ -34,6 +39,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @title == other.title
+          return false unless @category == other.category
           return false unless @skip == other.skip
           return false unless @count == other.count
           true

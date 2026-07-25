@@ -24,6 +24,8 @@ class Moov::Models::Components::Product
   def option_groups=(str_); end
   def images(); end
   def images=(str_); end
+  def category(); end
+  def category=(str_); end
   def disabled_on(); end
   def disabled_on=(str_); end
 end

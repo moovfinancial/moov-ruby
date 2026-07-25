@@ -8,8 +8,10 @@ end
 
 
 class Moov::Models::Components::IssuingVelocityLimit
-  def amount(); end
-  def amount=(str_); end
   def interval(); end
   def interval=(str_); end
+  def amount(); end
+  def amount=(str_); end
+  def count(); end
+  def count=(str_); end
 end

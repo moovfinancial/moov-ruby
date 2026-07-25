@@ -12,22 +12,26 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The maximum amount in cents that can be spent in a given interval.
-        field :amount, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
-        # Specifies the time frame for the velocity limit. Currently supports only per-transaction limits.
+        # Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
         field :interval, Models::Components::IssuingIntervalLimit, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interval'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingIntervalLimit, false) } }
+        # The maximum amount in cents that can be spent in a given interval.
+        field :amount, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+        # The maximum number of transactions allowed in the given interval. At least one of `amount` or `count` must be set.
+        field :count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('count') } }
 
-        sig { params(amount: ::Integer, interval: Models::Components::IssuingIntervalLimit).void }
-        def initialize(amount:, interval:)
-          @amount = amount
+        sig { params(interval: Models::Components::IssuingIntervalLimit, amount: T.nilable(::Integer), count: T.nilable(::Integer)).void }
+        def initialize(interval:, amount: nil, count: nil)
           @interval = interval
+          @amount = amount
+          @count = count
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @amount == other.amount
           return false unless @interval == other.interval
+          return false unless @amount == other.amount
+          return false unless @count == other.count
           true
         end
       end

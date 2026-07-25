@@ -11,6 +11,7 @@
 * [disable](#disable) - Disable a product by ID.
 
 The product will no longer be available, but will remain in the system for historical and reporting purposes.
+* [list_categories](#list_categories) - Returns the full, read-only list of product categories from the product taxonomy.
 
 ## list
 
@@ -29,7 +30,13 @@ s = ::Moov::Client.new(
     password: ''
   )
 )
-res = s.products.list(account_id: 'cd696219-4308-446c-b0d8-1759254995c2', skip: 60, count: 20)
+
+req = Models::Operations::ListProductsRequest.new(
+  account_id: 'cd696219-4308-446c-b0d8-1759254995c2',
+  skip: 60,
+  count: 20
+)
+res = s.products.list(request: req)
 
 unless res.products.nil?
   # handle response
@@ -39,12 +46,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `account_id`                                                                              | *::String*                                                                                | :heavy_check_mark:                                                                        | N/A                                                                                       |                                                                                           |
-| `title`                                                                                   | *T.nilable(::String)*                                                                     | :heavy_minus_sign:                                                                        | Allows filtering products by title. This supports partial matches and is case-insensitive |                                                                                           |
-| `skip`                                                                                    | *T.nilable(::Integer)*                                                                    | :heavy_minus_sign:                                                                        | N/A                                                                                       | 60                                                                                        |
-| `count`                                                                                   | *T.nilable(::Integer)*                                                                    | :heavy_minus_sign:                                                                        | N/A                                                                                       | 20                                                                                        |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [Models::Operations::ListProductsRequest](../../models/operations/listproductsrequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 ### Response
 
@@ -319,3 +323,38 @@ end
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | Models::Errors::GenericError | 400, 409                     | application/json             |
 | Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
+
+## list_categories
+
+Returns the full, read-only list of product categories from the product taxonomy.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="listProductCategories" method="get" path="/product-categories" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.products.list_categories
+
+unless res.product_categories.nil?
+  # handle response
+end
+
+```
+
+### Response
+
+**[T.nilable(Models::Operations::ListProductCategoriesResponse)](../../models/operations/listproductcategoriesresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |

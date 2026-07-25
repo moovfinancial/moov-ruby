@@ -26,13 +26,18 @@ module Moov
         # The `deferred` speed and `deferredBy` apply to `push-to-card` only. Other push methods
         # (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
         field :push_options, Crystalline::Nilable.new(Models::Components::PushOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
+        # Indicates which party bears the fee, keyed by disbursement payment method (`DisbursementPaymentMethodType`).
+        #
+        # Sparse — include only the methods you want to attribute. Any method left unset defaults to `source`.
+        field :fee_paid_by, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::FeePaidBy)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
 
-        sig { params(allowed_methods: T::Array[Models::Components::DisbursementPaymentMethodType], recipient: Models::Components::PayoutRecipient, metadata: T.nilable(T::Hash[Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptions)).void }
-        def initialize(allowed_methods:, recipient:, metadata: nil, push_options: nil)
+        sig { params(allowed_methods: T::Array[Models::Components::DisbursementPaymentMethodType], recipient: Models::Components::PayoutRecipient, metadata: T.nilable(T::Hash[Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptions), fee_paid_by: T.nilable(T::Hash[Symbol, Models::Components::FeePaidBy])).void }
+        def initialize(allowed_methods:, recipient:, metadata: nil, push_options: nil, fee_paid_by: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient
           @metadata = metadata
           @push_options = push_options
+          @fee_paid_by = fee_paid_by
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -42,6 +47,7 @@ module Moov
           return false unless @recipient == other.recipient
           return false unless @metadata == other.metadata
           return false unless @push_options == other.push_options
+          return false unless @fee_paid_by == other.fee_paid_by
           true
         end
       end

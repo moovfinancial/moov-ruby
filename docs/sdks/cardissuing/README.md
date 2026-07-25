@@ -221,6 +221,14 @@ res = s.card_issuing.update(account_id: '44db31bc-2813-424b-9b8c-2d3f5f1300e3', 
     state_or_province: 'CO',
     postal_code: '80301',
     country: 'US'
+  ),
+  controls: Models::Components::UpdateIssuingControls.new(
+    velocity_limits: [
+      Models::Components::IssuingVelocityLimit.new(
+        amount: 10_000,
+        interval: Models::Components::IssuingIntervalLimit::DAILY
+      ),
+    ]
   )
 ))
 

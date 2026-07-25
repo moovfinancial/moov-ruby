@@ -30,9 +30,11 @@ module Moov
         field :fee_group, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeGroup') } }
         # Unique identifier for this residual payment calculation.
         field :residual_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('residualID') } }
+        # Indicates which party to the money movement bore this fee.
+        field :fee_paid_by, Crystalline::Nilable.new(Models::Components::FeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FeePaidBy, true) } }
 
-        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy), fee_group: T.nilable(::String), residual_id: T.nilable(::String)).void }
-        def initialize(fee_id: nil, account_id: nil, wallet_id: nil, created_on: nil, fee_name: nil, amount: nil, generated_by: nil, fee_group: nil, residual_id: nil)
+        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy), fee_group: T.nilable(::String), residual_id: T.nilable(::String), fee_paid_by: T.nilable(Models::Components::FeePaidBy)).void }
+        def initialize(fee_id: nil, account_id: nil, wallet_id: nil, created_on: nil, fee_name: nil, amount: nil, generated_by: nil, fee_group: nil, residual_id: nil, fee_paid_by: nil)
           @fee_id = fee_id
           @account_id = account_id
           @wallet_id = wallet_id
@@ -42,6 +44,7 @@ module Moov
           @generated_by = generated_by
           @fee_group = fee_group
           @residual_id = residual_id
+          @fee_paid_by = fee_paid_by
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -56,6 +59,7 @@ module Moov
           return false unless @generated_by == other.generated_by
           return false unless @fee_group == other.fee_group
           return false unless @residual_id == other.residual_id
+          return false unless @fee_paid_by == other.fee_paid_by
           true
         end
       end

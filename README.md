@@ -122,6 +122,29 @@ unless res.account.nil?
 end
 
 ```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new
+res = s.avatars.upload(security: Models::Operations::UploadAvatarSecurity.new(
+
+), unique_id: '<id>', avatar_upload_request: Models::Components::AvatarUploadRequest.new(
+  file: Models::Components::AvatarUploadRequestFile.new(
+    file_name: 'example.file',
+    content: File.binread('example.file')
+  )
+))
+
+if res.status_code == 200
+  # handle response
+end
+
+```
 <!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
@@ -285,6 +308,24 @@ Allows clients to notify the authorization server that a previously obtained ref
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/profile-enrichment.read` scope.
+* [upload](docs/sdks/avatars/README.md#upload) - Upload a user avatar image for an account.
+
+The image will be normalized to 512x512 PNG format and stored separately from 
+automatically discovered logos. User-uploaded avatars take precedence over enriched avatars at read time.
+
+This endpoint only accepts accountID values for the uniqueID parameter.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts.write` scope.
+* [delete](docs/sdks/avatars/README.md#delete) - Delete a user-uploaded avatar for an account.
+
+After deletion, the avatar endpoint will fall back to the enriched avatar
+or an account-type-aware fallback icon.
+
+This endpoint only accepts accountID values for the uniqueID parameter.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts.write` scope.
 
 ### [BankAccounts](docs/sdks/bankaccounts/README.md)
 
@@ -849,6 +890,7 @@ you'll need to specify the `/ping.read` scope.
 * [disable](docs/sdks/products/README.md#disable) - Disable a product by ID.
 
 The product will no longer be available, but will remain in the system for historical and reporting purposes.
+* [list_categories](docs/sdks/products/README.md#list_categories) - Returns the full, read-only list of product categories from the product taxonomy.
 
 ### [Receipts](docs/sdks/receipts/README.md)
 
