@@ -16,4 +16,6 @@ class Moov::Models::Components::SendFundsError
   def rtp=(str_); end
   def instant_bank(); end
   def instant_bank=(str_); end
+  def wire(); end
+  def wire=(str_); end
 end

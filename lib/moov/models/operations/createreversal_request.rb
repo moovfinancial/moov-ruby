@@ -19,10 +19,10 @@ module Moov
         # The transfer ID to reverse.
         field :transfer_id, ::String, { 'path_param': { 'field_name': 'transferID', 'style': 'simple', 'explode': false } }
 
-        field :create_reversal, Crystalline::Nilable.new(Models::Components::CreateReversal), { 'request': { 'media_type': 'application/json' } }
+        field :create_reversal, Models::Components::CreateReversal, { 'request': { 'media_type': 'application/json' } }
 
-        sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, create_reversal: T.nilable(Models::Components::CreateReversal)).void }
-        def initialize(x_idempotency_key:, account_id:, transfer_id:, create_reversal: nil)
+        sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, create_reversal: Models::Components::CreateReversal).void }
+        def initialize(x_idempotency_key:, account_id:, transfer_id:, create_reversal:)
           @x_idempotency_key = x_idempotency_key
           @account_id = account_id
           @transfer_id = transfer_id

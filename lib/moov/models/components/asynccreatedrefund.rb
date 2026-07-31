@@ -17,15 +17,18 @@ module Moov
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+        field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+        # ID of the capture this refund applies to, when applicable.
+        field :capture_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('captureID') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(refund_id: ::String, created_on: ::DateTime, amount: Models::Components::Amount, amount_details: T.nilable(Models::Components::RefundAmountDetails)).void }
-        def initialize(refund_id:, created_on:, amount:, amount_details: nil)
+        sig { params(refund_id: ::String, created_on: ::DateTime, amount: Models::Components::AmountDecimal, capture_id: T.nilable(::String), amount_details: T.nilable(Models::Components::RefundAmountDetails)).void }
+        def initialize(refund_id:, created_on:, amount:, capture_id: nil, amount_details: nil)
           @refund_id = refund_id
           @created_on = created_on
           @amount = amount
+          @capture_id = capture_id
           @amount_details = amount_details
         end
 
@@ -35,6 +38,7 @@ module Moov
           return false unless @refund_id == other.refund_id
           return false unless @created_on == other.created_on
           return false unless @amount == other.amount
+          return false unless @capture_id == other.capture_id
           return false unless @amount_details == other.amount_details
           true
         end

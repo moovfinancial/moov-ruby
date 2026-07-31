@@ -14,8 +14,8 @@ class Moov::Models::Operations::InitiateRefundRequest
   def account_id=(str_); end
   def transfer_id(); end
   def transfer_id=(str_); end
-  def x_wait_for(); end
-  def x_wait_for=(str_); end
   def create_refund(); end
   def create_refund=(str_); end
+  def x_wait_for(); end
+  def x_wait_for=(str_); end
 end

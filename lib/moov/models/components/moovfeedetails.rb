@@ -13,15 +13,15 @@ module Moov
         include Crystalline::MetadataFields
 
         # Moov processing fee. String type represents dollars with up to 9 decimal place precision.
-        field :moov_processing, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovProcessing'), required: true } }
+        field :moov_processing, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovProcessing'), required: true } }
         # Card scheme fees accrued during authorization and settlement. String type represents dollars with up to 9 decimal place precision.
-        field :card_scheme, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardScheme') } }
+        field :card_scheme, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardScheme') } }
         # Network interchange fee for Visa, Mastercard, or Discover. String type represents dollars with up to 9 decimal place precision.
-        field :interchange, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interchange') } }
+        field :interchange, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interchange') } }
         # Network discount fee for American Express. String type represents dollars with up to 9 decimal place precision.
-        field :discount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('discount') } }
+        field :discount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('discount') } }
 
-        sig { params(moov_processing: ::String, card_scheme: T.nilable(::String), interchange: T.nilable(::String), discount: T.nilable(::String)).void }
+        sig { params(moov_processing: Models::Components::AmountDecimal, card_scheme: T.nilable(Models::Components::AmountDecimal), interchange: T.nilable(Models::Components::AmountDecimal), discount: T.nilable(Models::Components::AmountDecimal)).void }
         def initialize(moov_processing:, card_scheme: nil, interchange: nil, discount: nil)
           @moov_processing = moov_processing
           @card_scheme = card_scheme

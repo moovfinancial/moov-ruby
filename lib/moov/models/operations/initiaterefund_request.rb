@@ -18,19 +18,19 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
         # Identifier for the transfer.
         field :transfer_id, ::String, { 'path_param': { 'field_name': 'transferID', 'style': 'simple', 'explode': false } }
+
+        field :create_refund, Models::Components::CreateRefund, { 'request': { 'media_type': 'application/json' } }
         # Optional header that indicates whether to return a synchronous response that includes full transfer and rail-specific details or an 
         # asynchronous response indicating the transfer was created (this is the default response if the header is omitted). A timeout will occur after 15 seconds.
         field :x_wait_for, Crystalline::Nilable.new(Models::Components::TransferWaitFor), { 'header': { 'field_name': 'x-wait-for', 'style': 'simple', 'explode': false } }
 
-        field :create_refund, Crystalline::Nilable.new(Models::Components::CreateRefund), { 'request': { 'media_type': 'application/json' } }
-
-        sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, x_wait_for: T.nilable(Models::Components::TransferWaitFor), create_refund: T.nilable(Models::Components::CreateRefund)).void }
-        def initialize(x_idempotency_key:, account_id:, transfer_id:, x_wait_for: nil, create_refund: nil)
+        sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, create_refund: Models::Components::CreateRefund, x_wait_for: T.nilable(Models::Components::TransferWaitFor)).void }
+        def initialize(x_idempotency_key:, account_id:, transfer_id:, create_refund:, x_wait_for: nil)
           @x_idempotency_key = x_idempotency_key
           @account_id = account_id
           @transfer_id = transfer_id
-          @x_wait_for = x_wait_for
           @create_refund = create_refund
+          @x_wait_for = x_wait_for
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -39,8 +39,8 @@ module Moov
           return false unless @x_idempotency_key == other.x_idempotency_key
           return false unless @account_id == other.account_id
           return false unless @transfer_id == other.transfer_id
-          return false unless @x_wait_for == other.x_wait_for
           return false unless @create_refund == other.create_refund
+          return false unless @x_wait_for == other.x_wait_for
           true
         end
       end

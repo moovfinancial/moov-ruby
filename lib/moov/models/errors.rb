@@ -13,6 +13,7 @@ module Moov
       autoload :AuthTokenRequestError, 'moov/models/errors/authtokenrequesterror.rb'
       autoload :BankAccountValidationError, 'moov/models/errors/bankaccountvalidationerror.rb'
       autoload :BrandValidationError, 'moov/models/errors/brandvalidationerror.rb'
+      autoload :CaptureValidationError, 'moov/models/errors/capturevalidationerror.rb'
       autoload :CardAcquiringRefundError, 'moov/models/errors/cardacquiringrefund_error.rb'
       autoload :CardMetadataRequestError, 'moov/models/errors/cardmetadatarequesterror.rb'
       autoload :ConnectAccountRequestValidationError, 'moov/models/errors/connectaccountrequestvalidationerror.rb'

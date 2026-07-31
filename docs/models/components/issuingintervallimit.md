@@ -16,3 +16,6 @@ value = IssuingIntervalLimit::PER_TRANSACTION
 | Name              | Value             |
 | ----------------- | ----------------- |
 | `PER_TRANSACTION` | per-transaction   |
+| `DAILY`           | daily             |
+| `WEEKLY`          | weekly            |
+| `MONTHLY`         | monthly           |

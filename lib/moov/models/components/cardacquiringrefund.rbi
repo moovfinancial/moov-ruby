@@ -18,8 +18,10 @@ class Moov::Models::Components::CardAcquiringRefund
   def status=(str_); end
   def amount(); end
   def amount=(str_); end
+  def processing_details(); end
+  def processing_details=(str_); end
+  def capture_id(); end
+  def capture_id=(str_); end
   def amount_details(); end
   def amount_details=(str_); end
-  def card_details(); end
-  def card_details=(str_); end
 end

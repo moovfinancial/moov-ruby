@@ -12,14 +12,14 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
-        field :payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID'), required: true } }
-        # The payment method type that represents a payment rail and directionality
-        field :payment_method_type, Models::Components::TransferPaymentMethodType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferPaymentMethodType, false) } }
-
-        field :account, Models::Components::TransferAccount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account'), required: true } }
         # String present only if the transfer is part of a transfer group.
         field :transfer_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID') } }
+
+        field :payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID') } }
+        # The payment method type that represents a payment rail and directionality
+        field :payment_method_type, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferPaymentMethodType, true) } }
+
+        field :account, Crystalline::Nilable.new(Models::Components::TransferAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account') } }
         # A bank account as contained within a payment method.
         field :bank_account, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodsBankAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccount') } }
 
@@ -32,42 +32,34 @@ module Moov
         field :google_pay, Crystalline::Nilable.new(Models::Components::GooglePayResponse), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('googlePay') } }
         # Describes payment card details captured with tap or in-person payment.
         field :terminal_card, Crystalline::Nilable.new(Models::Components::TransferTerminalCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('terminalCard') } }
-        # Card-specific details about the transaction.
-        field :card_details, Crystalline::Nilable.new(Models::Components::CardTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails') } }
-        # ACH specific details about the transaction.
-        field :ach_details, Crystalline::Nilable.new(Models::Components::ACHTransactionDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
 
-        sig { params(payment_method_id: ::String, payment_method_type: Models::Components::TransferPaymentMethodType, account: Models::Components::TransferAccount, transfer_id: T.nilable(::String), bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), apple_pay: T.nilable(Models::Components::ApplePayResponse), google_pay: T.nilable(Models::Components::GooglePayResponse), terminal_card: T.nilable(Models::Components::TransferTerminalCard), card_details: T.nilable(Models::Components::CardTransactionDetails), ach_details: T.nilable(Models::Components::ACHTransactionDetails)).void }
-        def initialize(payment_method_id:, payment_method_type:, account:, transfer_id: nil, bank_account: nil, wallet: nil, card: nil, apple_pay: nil, google_pay: nil, terminal_card: nil, card_details: nil, ach_details: nil)
+        sig { params(transfer_id: T.nilable(::String), payment_method_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::TransferPaymentMethodType), account: T.nilable(Models::Components::TransferAccount), bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), apple_pay: T.nilable(Models::Components::ApplePayResponse), google_pay: T.nilable(Models::Components::GooglePayResponse), terminal_card: T.nilable(Models::Components::TransferTerminalCard)).void }
+        def initialize(transfer_id: nil, payment_method_id: nil, payment_method_type: nil, account: nil, bank_account: nil, wallet: nil, card: nil, apple_pay: nil, google_pay: nil, terminal_card: nil)
+          @transfer_id = transfer_id
           @payment_method_id = payment_method_id
           @payment_method_type = payment_method_type
           @account = account
-          @transfer_id = transfer_id
           @bank_account = bank_account
           @wallet = wallet
           @card = card
           @apple_pay = apple_pay
           @google_pay = google_pay
           @terminal_card = terminal_card
-          @card_details = card_details
-          @ach_details = ach_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @transfer_id == other.transfer_id
           return false unless @payment_method_id == other.payment_method_id
           return false unless @payment_method_type == other.payment_method_type
           return false unless @account == other.account
-          return false unless @transfer_id == other.transfer_id
           return false unless @bank_account == other.bank_account
           return false unless @wallet == other.wallet
           return false unless @card == other.card
           return false unless @apple_pay == other.apple_pay
           return false unless @google_pay == other.google_pay
           return false unless @terminal_card == other.terminal_card
-          return false unless @card_details == other.card_details
-          return false unless @ach_details == other.ach_details
           true
         end
       end

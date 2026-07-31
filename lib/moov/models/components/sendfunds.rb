@@ -21,12 +21,15 @@ module Moov
 
         field :instant_bank, Crystalline::Nilable.new(Models::Components::SendFundsInstantBank), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('instantBank') } }
 
-        sig { params(ach: T.nilable(Models::Components::SendFundsAch), push_to_card: T.nilable(Models::Components::SendFundsPushToCard), rtp: T.nilable(Models::Components::SendFundsRtp), instant_bank: T.nilable(Models::Components::SendFundsInstantBank)).void }
-        def initialize(ach: nil, push_to_card: nil, rtp: nil, instant_bank: nil)
+        field :wire, Crystalline::Nilable.new(Models::Components::SendFundsWire), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('wire') } }
+
+        sig { params(ach: T.nilable(Models::Components::SendFundsAch), push_to_card: T.nilable(Models::Components::SendFundsPushToCard), rtp: T.nilable(Models::Components::SendFundsRtp), instant_bank: T.nilable(Models::Components::SendFundsInstantBank), wire: T.nilable(Models::Components::SendFundsWire)).void }
+        def initialize(ach: nil, push_to_card: nil, rtp: nil, instant_bank: nil, wire: nil)
           @ach = ach
           @push_to_card = push_to_card
           @rtp = rtp
           @instant_bank = instant_bank
+          @wire = wire
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -36,6 +39,7 @@ module Moov
           return false unless @push_to_card == other.push_to_card
           return false unless @rtp == other.rtp
           return false unless @instant_bank == other.instant_bank
+          return false unless @wire == other.wire
           true
         end
       end

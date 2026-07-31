@@ -14,6 +14,8 @@ class Moov::Models::Components::AsyncCreatedRefund
   def created_on=(str_); end
   def amount(); end
   def amount=(str_); end
+  def capture_id(); end
+  def capture_id=(str_); end
   def amount_details(); end
   def amount_details=(str_); end
 end

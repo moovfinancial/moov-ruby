@@ -16,7 +16,7 @@ module Moov
   class Client
     extend T::Sig
 
-    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :google_pay, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :resolution_links, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfer_config, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :issuing_transactions, :card_issuing, :authentication, :onboarding, :ping, :receipts, :terminal_applications, :deposit_view
+    attr_accessor :accounts, :adjustments, :apple_pay, :bank_accounts, :branding, :capabilities, :cards, :disputes, :fee_plans, :files, :google_pay, :images, :invoices, :payment_links, :payment_methods, :products, :representatives, :resolution_links, :scheduling, :statements, :sweeps, :account_terminal_applications, :support, :transfer_config, :transfers, :underwriting, :wallets, :wallet_transactions, :avatars, :end_to_end_encryption, :enriched_address, :enriched_profile, :webhooks, :industries, :institutions, :card_issuing, :issuing_transactions, :authentication, :onboarding, :ping, :receipts, :terminal_applications, :deposit_view
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -113,8 +113,8 @@ module Moov
       @webhooks = Webhooks.new(@sdk_configuration)
       @industries = Industries.new(@sdk_configuration)
       @institutions = Institutions.new(@sdk_configuration)
-      @issuing_transactions = IssuingTransactions.new(@sdk_configuration)
       @card_issuing = CardIssuing.new(@sdk_configuration)
+      @issuing_transactions = IssuingTransactions.new(@sdk_configuration)
       @authentication = Authentication.new(@sdk_configuration)
       @onboarding = Onboarding.new(@sdk_configuration)
       @ping = Ping.new(@sdk_configuration)

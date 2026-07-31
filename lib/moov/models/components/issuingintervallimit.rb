@@ -11,6 +11,9 @@ module Moov
       class IssuingIntervalLimit < T::Enum
         enums do
           PER_TRANSACTION = new('per-transaction')
+          DAILY = new('daily')
+          WEEKLY = new('weekly')
+          MONTHLY = new('monthly')
         end
       end
     end

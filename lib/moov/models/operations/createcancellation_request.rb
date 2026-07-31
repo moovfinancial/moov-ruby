@@ -17,10 +17,13 @@ module Moov
         # The transfer ID to cancel.
         field :transfer_id, ::String, { 'path_param': { 'field_name': 'transferID', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, transfer_id: ::String).void }
-        def initialize(account_id:, transfer_id:)
+        field :create_cancellation, Models::Components::CreateCancellation, { 'request': { 'media_type': 'application/json' } }
+
+        sig { params(account_id: ::String, transfer_id: ::String, create_cancellation: Models::Components::CreateCancellation).void }
+        def initialize(account_id:, transfer_id:, create_cancellation:)
           @account_id = account_id
           @transfer_id = transfer_id
+          @create_cancellation = create_cancellation
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -28,6 +31,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @transfer_id == other.transfer_id
+          return false unless @create_cancellation == other.create_cancellation
           true
         end
       end

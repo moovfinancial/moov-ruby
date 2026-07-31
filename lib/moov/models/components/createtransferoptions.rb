@@ -17,9 +17,9 @@ module Moov
 
         field :destination, Models::Components::SourceDestinationOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destination'), required: true } }
 
-        field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+        field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 
-        sig { params(source: Models::Components::SourceDestinationOptions, destination: Models::Components::SourceDestinationOptions, amount: Models::Components::Amount).void }
+        sig { params(source: Models::Components::SourceDestinationOptions, destination: Models::Components::SourceDestinationOptions, amount: Models::Components::AmountDecimal).void }
         def initialize(source:, destination:, amount:)
           @source = source
           @destination = destination

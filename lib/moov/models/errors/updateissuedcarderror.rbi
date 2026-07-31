@@ -16,6 +16,8 @@ class Moov::Models::Errors::UpdateIssuedCardError
   def metadata=(str_); end
   def billing_address(); end
   def billing_address=(str_); end
+  def controls(); end
+  def controls=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
 end
