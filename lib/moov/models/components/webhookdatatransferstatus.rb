@@ -32,8 +32,11 @@ module Moov
           DESTINATION_RETURNED = new('destination.returned')
           DESTINATION_ORIGINATED = new('destination.originated')
           DESTINATION_CONFIRMED = new('destination.confirmed')
+          DESTINATION_SETTLED = new('destination.settled')
           DESTINATION_FAILED = new('destination.failed')
+          DESTINATION_CANCELED = new('destination.canceled')
           DESTINATION_ACCEPTED_WITHOUT_POSTING = new('destination.accepted-without-posting')
+          DESTINATION_DEFERRED = new('destination.deferred')
         end
       end
     end
