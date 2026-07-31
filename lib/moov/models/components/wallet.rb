@@ -27,6 +27,7 @@ module Moov
         # Type of a wallet.
         #   - `default`: The system-generated wallet automatically created when an account is granted the wallet capability.
         #   - `general`: An additional, user-defined wallet created via API or Dashboard.
+        #   - `card-issuing`: The system-generated wallet automatically created when an account is granted the card-issuing capability.
         field :wallet_type, Models::Components::WalletType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletType, false) } }
         # Description of the wallet
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }

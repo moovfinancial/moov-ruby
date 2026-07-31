@@ -9,12 +9,12 @@ module Moov
     module Components
       # Specifies a partial amount to refund. 
       #
-      # This request body is optional, an empty body will issue a refund for the full amount of the original transfer.
+      # Before v2026.10, this request body may be omitted. In v2026.10 and later, send an empty object to refund the full amount of the original transfer.
       class CreateRefund
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Amount to refund in cents. If null, the original transfer's full amount will be refunded.
+        # Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded.
         field :amount, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
         sig { params(amount: T.nilable(::Integer)).void }

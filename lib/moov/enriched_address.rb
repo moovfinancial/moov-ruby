@@ -45,7 +45,7 @@ module Moov
     def get(request:, timeout_ms: nil, http_headers: nil)
       # get - Fetch enriched address suggestions. Requires a partial address. 
       #   
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/profile-enrichment.read` scope.
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
