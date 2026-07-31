@@ -45,7 +45,7 @@ module Moov
     def get(unique_id:, timeout_ms: nil, http_headers: nil)
       # get - Get avatar image for an account using a unique ID.    
       #
-      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+      # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/profile-enrichment.read` scope.
       request = Models::Operations::GetAvatarRequest.new(
         unique_id: unique_id

@@ -453,6 +453,7 @@ module Moov
       autoload :Transfer, 'moov/models/components/transfer.rb'
       autoload :TransferACHAddendaRecord, 'moov/models/components/transferachaddendarecord.rb'
       autoload :TransferAccount, 'moov/models/components/transferaccount.rb'
+      autoload :TransferCapture, 'moov/models/components/transfercapture.rb'
       autoload :TransferDestination, 'moov/models/components/transferdestination.rb'
       autoload :TransferFailureReason, 'moov/models/components/transferfailurereason.rb'
       autoload :TransferLineItem, 'moov/models/components/transferlineitem.rb'
