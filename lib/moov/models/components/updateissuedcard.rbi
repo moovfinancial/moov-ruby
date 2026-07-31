@@ -10,6 +10,8 @@ end
 class Moov::Models::Components::UpdateIssuedCard
   def state(); end
   def state=(str_); end
+  def controls(); end
+  def controls=(str_); end
   def nickname(); end
   def nickname=(str_); end
   def metadata(); end

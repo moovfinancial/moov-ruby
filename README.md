@@ -306,16 +306,16 @@ Allows clients to notify the authorization server that a previously obtained ref
 
 * [get](docs/sdks/avatars/README.md#get) - Get avatar image for an account using a unique ID.    
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 * [upload](docs/sdks/avatars/README.md#upload) - Upload a user avatar image for an account.
 
-The image will be normalized to 512x512 PNG format and stored separately from 
+The image will be normalized to 512x512 PNG format and stored separately from
 automatically discovered logos. User-uploaded avatars take precedence over enriched avatars at read time.
 
 This endpoint only accepts accountID values for the uniqueID parameter.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts.write` scope.
 * [delete](docs/sdks/avatars/README.md#delete) - Delete a user-uploaded avatar for an account.
 
@@ -324,7 +324,7 @@ or an account-type-aware fallback icon.
 
 This endpoint only accepts accountID values for the uniqueID parameter.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts.write` scope.
 
 ### [BankAccounts](docs/sdks/bankaccounts/README.md)
@@ -455,6 +455,12 @@ you'll need to specify the `/accounts/{accountID}/capabilities.write` scope.
 
 ### [CardIssuing](docs/sdks/cardissuing/README.md)
 
+* [list_merchant_categories](docs/sdks/cardissuing/README.md#list_merchant_categories) - List the predefined merchant category groups available for issued card spend controls, along with
+the merchant category codes (MCCs) each group covers. Use these category names in an issued card's
+`merchantCategoryRestrictions`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
+you'll need to specify the `/issued-cards.read` scope.
 * [request](docs/sdks/cardissuing/README.md#request) - Request a virtual card be issued.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -629,14 +635,14 @@ you'll need to specify the `/ping.read` scope.
 
 * [get](docs/sdks/enrichedaddress/README.md#get) - Fetch enriched address suggestions. Requires a partial address. 
   
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 
 ### [EnrichedProfile](docs/sdks/enrichedprofile/README.md)
 
 * [get](docs/sdks/enrichedprofile/README.md#get) - Fetch enriched profile data. Requires a valid email address. This service is offered in collaboration with Clearbit. 
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/profile-enrichment.read` scope.
 
 ### [FeePlans](docs/sdks/feeplans/README.md)
@@ -750,7 +756,7 @@ you'll need to specify the `/institutions.read` scope.
 
 Search for institutions by either their name or routing number.
 
-To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/fed.read` scope. :warning: **Deprecated**
 
 ### [Invoices](docs/sdks/invoices/README.md)

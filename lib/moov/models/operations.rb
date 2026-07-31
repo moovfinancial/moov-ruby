@@ -264,6 +264,7 @@ module Moov
       autoload :ListIssuedCardTransactionsResponse, 'moov/models/operations/listissuedcardtransactions_response.rb'
       autoload :ListIssuedCardsRequest, 'moov/models/operations/listissuedcards_request.rb'
       autoload :ListIssuedCardsResponse, 'moov/models/operations/listissuedcards_response.rb'
+      autoload :ListIssuingMerchantCategoriesResponse, 'moov/models/operations/listissuingmerchantcategories_response.rb'
       autoload :ListOnboardingInvitesResponse, 'moov/models/operations/listonboardinginvites_response.rb'
       autoload :ListPartnerPricingAgreementsRequest, 'moov/models/operations/listpartnerpricingagreements_request.rb'
       autoload :ListPartnerPricingAgreementsResponse, 'moov/models/operations/listpartnerpricingagreements_response.rb'

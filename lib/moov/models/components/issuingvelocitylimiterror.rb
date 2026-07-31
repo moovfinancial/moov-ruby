@@ -15,11 +15,14 @@ module Moov
 
         field :amount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
+        field :count, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('count') } }
+
         field :interval, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interval') } }
 
-        sig { params(amount: T.nilable(::String), interval: T.nilable(::String)).void }
-        def initialize(amount: nil, interval: nil)
+        sig { params(amount: T.nilable(::String), count: T.nilable(::String), interval: T.nilable(::String)).void }
+        def initialize(amount: nil, count: nil, interval: nil)
           @amount = amount
+          @count = count
           @interval = interval
         end
 
@@ -27,6 +30,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @amount == other.amount
+          return false unless @count == other.count
           return false unless @interval == other.interval
           true
         end

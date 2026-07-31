@@ -4,6 +4,12 @@
 
 ### Available Operations
 
+* [list_merchant_categories](#list_merchant_categories) - List the predefined merchant category groups available for issued card spend controls, along with
+the merchant category codes (MCCs) each group covers. Use these category names in an issued card's
+`merchantCategoryRestrictions`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
+you'll need to specify the `/issued-cards.read` scope.
 * [request](#request) - Request a virtual card be issued.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -26,6 +32,46 @@ Only use this endpoint if you have provided Moov with a copy of your PCI attesta
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/issued-cards.read-secure` scope.
+
+## list_merchant_categories
+
+List the predefined merchant category groups available for issued card spend controls, along with
+the merchant category codes (MCCs) each group covers. Use these category names in an issued card's
+`merchantCategoryRestrictions`.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
+you'll need to specify the `/issued-cards.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="listIssuingMerchantCategories" method="get" path="/issuing/merchant-categories" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.card_issuing.list_merchant_categories
+
+unless res.merchant_categories.nil?
+  # handle response
+end
+
+```
+
+### Response
+
+**[T.nilable(Models::Operations::ListIssuingMerchantCategoriesResponse)](../../models/operations/listissuingmerchantcategoriesresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
 
 ## request
 
@@ -221,6 +267,14 @@ res = s.card_issuing.update(account_id: '44db31bc-2813-424b-9b8c-2d3f5f1300e3', 
     state_or_province: 'CO',
     postal_code: '80301',
     country: 'US'
+  ),
+  controls: Models::Components::UpdateIssuingControls.new(
+    velocity_limits: [
+      Models::Components::IssuingVelocityLimit.new(
+        amount: 10_000,
+        interval: Models::Components::IssuingIntervalLimit::DAILY
+      ),
+    ]
   )
 ))
 

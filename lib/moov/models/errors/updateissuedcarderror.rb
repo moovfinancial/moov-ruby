@@ -20,15 +20,18 @@ module Moov
         field :metadata, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         field :billing_address, Crystalline::Nilable.new(Models::Components::AddressError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
+
+        field :controls, Crystalline::Nilable.new(Models::Components::UpdateIssuingControlsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(state: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(::String), billing_address: T.nilable(Models::Components::AddressError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(state: nil, nickname: nil, metadata: nil, billing_address: nil, raw_response: nil)
+        sig { params(state: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(::String), billing_address: T.nilable(Models::Components::AddressError), controls: T.nilable(Models::Components::UpdateIssuingControlsError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(state: nil, nickname: nil, metadata: nil, billing_address: nil, controls: nil, raw_response: nil)
           @state = state
           @nickname = nickname
           @metadata = metadata
           @billing_address = billing_address
+          @controls = controls
           @raw_response = raw_response
         end
 
@@ -39,6 +42,7 @@ module Moov
           return false unless @nickname == other.nickname
           return false unless @metadata == other.metadata
           return false unless @billing_address == other.billing_address
+          return false unless @controls == other.controls
           return false unless @raw_response == other.raw_response
           true
         end

@@ -15,6 +15,8 @@ module Moov
         # Updates the state of a Moov issued card.
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
         field :state, Crystalline::Nilable.new(Models::Components::UpdateIssuedCardState), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::UpdateIssuedCardState, true) } }
+        # Mutable spend controls for the card.
+        field :controls, Crystalline::Nilable.new(Models::Components::UpdateIssuingControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
         field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
 
@@ -22,9 +24,10 @@ module Moov
 
         field :billing_address, Crystalline::Nilable.new(Models::Components::BillingAddress), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
 
-        sig { params(state: T.nilable(Models::Components::UpdateIssuedCardState), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::BillingAddress)).void }
-        def initialize(state: nil, nickname: nil, metadata: nil, billing_address: nil)
+        sig { params(state: T.nilable(Models::Components::UpdateIssuedCardState), controls: T.nilable(Models::Components::UpdateIssuingControls), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::BillingAddress)).void }
+        def initialize(state: nil, controls: nil, nickname: nil, metadata: nil, billing_address: nil)
           @state = state
+          @controls = controls
           @nickname = nickname
           @metadata = metadata
           @billing_address = billing_address
@@ -34,6 +37,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @state == other.state
+          return false unless @controls == other.controls
           return false unless @nickname == other.nickname
           return false unless @metadata == other.metadata
           return false unless @billing_address == other.billing_address

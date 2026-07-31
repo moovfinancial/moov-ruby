@@ -12,7 +12,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Amount to reverse in cents. Partial amounts will automatically trigger a refund instead of a cancellation.
+        # Amount to reverse. Before v2026.10, specify the amount in integer cents. Partial amounts automatically trigger a refund instead of a cancellation.
         field :amount, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
         # Breakdown of the reversed amount.
         field :amount_details, Crystalline::Nilable.new(Models::Components::ReversalAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
