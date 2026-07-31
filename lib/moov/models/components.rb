@@ -577,6 +577,7 @@ module Moov
       autoload :TransferACHAddendaRecord, 'moov/models/components/transferachaddendarecord.rb'
       autoload :TransferAccount, 'moov/models/components/transferaccount.rb'
       autoload :TransferAmountDetails, 'moov/models/components/transferamountdetails.rb'
+      autoload :TransferCapture, 'moov/models/components/transfercapture.rb'
       autoload :TransferConfig, 'moov/models/components/transferconfig.rb'
       autoload :TransferControls, 'moov/models/components/transfercontrols.rb'
       autoload :TransferDestination, 'moov/models/components/transferdestination.rb'
