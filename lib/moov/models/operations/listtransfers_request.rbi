@@ -34,6 +34,8 @@ class Moov::Models::Operations::ListTransfersRequest
   def authorization_i_ds=(str_); end
   def capture_i_ds(); end
   def capture_i_ds=(str_); end
+  def transfer_types(); end
+  def transfer_types=(str_); end
   def skip(); end
   def skip=(str_); end
   def count(); end

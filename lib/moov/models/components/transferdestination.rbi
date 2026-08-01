@@ -20,14 +20,8 @@ class Moov::Models::Components::TransferDestination
   def wallet=(str_); end
   def card(); end
   def card=(str_); end
-  def ach_details(); end
-  def ach_details=(str_); end
   def apple_pay(); end
   def apple_pay=(str_); end
   def google_pay(); end
   def google_pay=(str_); end
-  def card_details(); end
-  def card_details=(str_); end
-  def instant_bank_details(); end
-  def instant_bank_details=(str_); end
 end

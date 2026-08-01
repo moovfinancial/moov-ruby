@@ -1,0 +1,13 @@
+# TransferAuthorization
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `authorization_id`                                                        | *::String*                                                                | :heavy_check_mark:                                                        | N/A                                                                       |
+| `requested_amount`                                                        | [Models::Components::AmountDecimal](../../models/shared/amountdecimal.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `authorized_amount`                                                       | [Models::Components::AmountDecimal](../../models/shared/amountdecimal.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `captured_amount`                                                         | [Models::Components::AmountDecimal](../../models/shared/amountdecimal.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `capturable_amount`                                                       | [Models::Components::AmountDecimal](../../models/shared/amountdecimal.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `expires_on`                                                              | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html)      | :heavy_minus_sign:                                                        | N/A                                                                       |

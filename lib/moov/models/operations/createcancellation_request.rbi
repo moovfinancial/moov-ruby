@@ -12,4 +12,6 @@ class Moov::Models::Operations::CreateCancellationRequest
   def account_id=(str_); end
   def transfer_id(); end
   def transfer_id=(str_); end
+  def create_cancellation(); end
+  def create_cancellation=(str_); end
 end

@@ -13,12 +13,13 @@ value = TransferStatus::CREATED
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `CREATED`   | created     |
-| `PENDING`   | pending     |
-| `COMPLETED` | completed   |
-| `FAILED`    | failed      |
-| `REVERSED`  | reversed    |
-| `QUEUED`    | queued      |
-| `CANCELED`  | canceled    |
+| Name               | Value              |
+| ------------------ | ------------------ |
+| `CREATED`          | created            |
+| `PENDING`          | pending            |
+| `COMPLETED`        | completed          |
+| `FAILED`           | failed             |
+| `REVERSED`         | reversed           |
+| `QUEUED`           | queued             |
+| `AWAITING_CAPTURE` | awaiting-capture   |
+| `CANCELED`         | canceled           |

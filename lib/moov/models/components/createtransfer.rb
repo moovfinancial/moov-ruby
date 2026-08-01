@@ -17,9 +17,9 @@ module Moov
         # The final stage of a transfer and the ultimate recipient of the funds.
         field :destination, Models::Components::CreateTransferDestination, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destination'), required: true } }
 
-        field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
-        # Total or markup fee.
-        field :facilitator_fee, Crystalline::Nilable.new(Models::Components::FacilitatorFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFee') } }
+        field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+        # Total or markup fee to apply when creating a transfer.
+        field :facilitator_fee, Crystalline::Nilable.new(Models::Components::CreateTransferFacilitatorFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFee') } }
         # An optional description of the transfer that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
@@ -34,7 +34,7 @@ module Moov
         # Indicates which party bears fees for the transfer, keyed by fee type.
         field :fee_paid_by, Crystalline::Nilable.new(Models::Components::TransferFeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
 
-        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), fee_paid_by: T.nilable(Models::Components::TransferFeePaidBy)).void }
+        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::AmountDecimal, facilitator_fee: T.nilable(Models::Components::CreateTransferFacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), fee_paid_by: T.nilable(Models::Components::TransferFeePaidBy)).void }
         def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, fee_paid_by: nil)
           @source = source
           @destination = destination

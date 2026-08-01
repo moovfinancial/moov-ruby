@@ -10,6 +10,8 @@ end
 class Moov::Models::Components::Transfer
   def transfer_id(); end
   def transfer_id=(str_); end
+  def transfer_type(); end
+  def transfer_type=(str_); end
   def created_on(); end
   def created_on=(str_); end
   def source(); end
@@ -20,6 +22,10 @@ class Moov::Models::Components::Transfer
   def status=(str_); end
   def amount(); end
   def amount=(str_); end
+  def options(); end
+  def options=(str_); end
+  def processing_details(); end
+  def processing_details=(str_); end
   def completed_on(); end
   def completed_on=(str_); end
   def failure_reason(); end
@@ -32,24 +38,16 @@ class Moov::Models::Components::Transfer
   def facilitator_fee=(str_); end
   def moov_fee(); end
   def moov_fee=(str_); end
-  def moov_fee_decimal(); end
-  def moov_fee_decimal=(str_); end
   def moov_fee_details(); end
   def moov_fee_details=(str_); end
   def moov_fees(); end
   def moov_fees=(str_); end
   def group_id(); end
   def group_id=(str_); end
-  def cancellations(); end
-  def cancellations=(str_); end
   def refunded_amount(); end
   def refunded_amount=(str_); end
-  def refunds(); end
-  def refunds=(str_); end
   def disputed_amount(); end
   def disputed_amount=(str_); end
-  def disputes(); end
-  def disputes=(str_); end
   def sweep_id(); end
   def sweep_id=(str_); end
   def schedule_id(); end
@@ -66,6 +64,6 @@ class Moov::Models::Components::Transfer
   def invoice_id=(str_); end
   def amount_details(); end
   def amount_details=(str_); end
-  def capture(); end
-  def capture=(str_); end
+  def authorization(); end
+  def authorization=(str_); end
 end

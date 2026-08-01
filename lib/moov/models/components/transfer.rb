@@ -14,6 +14,8 @@ module Moov
 
 
         field :transfer_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID'), required: true } }
+        # The rail and direction used to move funds for a transfer.
+        field :transfer_type, Models::Components::TransferType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferType, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
@@ -23,7 +25,11 @@ module Moov
         # Status of a transfer.
         field :status, Models::Components::TransferStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferStatus, false) } }
 
-        field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+        field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+
+        field :options, Models::Components::TransferRailOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options'), required: true } }
+
+        field :processing_details, Models::Components::TransferProcessingDetails, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('processingDetails'), required: true } }
 
         field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Reason for a transfer's failure.
@@ -35,9 +41,7 @@ module Moov
         # Total or markup fee.
         field :facilitator_fee, Crystalline::Nilable.new(Models::Components::FacilitatorFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFee') } }
         # Fees charged to your platform account for transfers.
-        field :moov_fee, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovFee') } }
-        # Same as `moovFee`, but a decimal-formatted numerical string that represents up to 9 decimal place precision.
-        field :moov_fee_decimal, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovFeeDecimal') } }
+        field :moov_fee, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovFee') } }
         # Processing and pass-through costs that add up to the moovFee.
         field :moov_fee_details, Crystalline::Nilable.new(Models::Components::MoovFeeDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovFeeDetails') } }
         # Fees charged to accounts involved in the transfer.
@@ -45,15 +49,9 @@ module Moov
 
         field :group_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('groupID') } }
 
-        field :cancellations, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Cancellation)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cancellations') } }
+        field :refunded_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refundedAmount') } }
 
-        field :refunded_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refundedAmount') } }
-
-        field :refunds, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CardAcquiringRefund)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refunds') } }
-
-        field :disputed_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputedAmount') } }
-
-        field :disputes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CardAcquiringDispute)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputes') } }
+        field :disputed_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputedAmount') } }
         # ID of the sweep that created this transfer.
         field :sweep_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sweepID') } }
 
@@ -71,32 +69,31 @@ module Moov
         field :invoice_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceID') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::TransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
-        # The card authorization and capture IDs associated with a transfer.
-        field :capture, Crystalline::Nilable.new(Models::Components::TransferCapture), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capture') } }
 
-        sig { params(transfer_id: ::String, created_on: ::DateTime, source: Models::Components::TransferSource, destination: Models::Components::TransferDestination, status: Models::Components::TransferStatus, amount: Models::Components::Amount, completed_on: T.nilable(::DateTime), failure_reason: T.nilable(Models::Components::TransferFailureReason), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), facilitator_fee: T.nilable(Models::Components::FacilitatorFee), moov_fee: T.nilable(::Integer), moov_fee_decimal: T.nilable(::String), moov_fee_details: T.nilable(Models::Components::MoovFeeDetails), moov_fees: T.nilable(T::Array[Models::Components::MoovFee]), group_id: T.nilable(::String), cancellations: T.nilable(T::Array[Models::Components::Cancellation]), refunded_amount: T.nilable(Models::Components::Amount), refunds: T.nilable(T::Array[Models::Components::CardAcquiringRefund]), disputed_amount: T.nilable(Models::Components::Amount), disputes: T.nilable(T::Array[Models::Components::CardAcquiringDispute]), sweep_id: T.nilable(::String), schedule_id: T.nilable(::String), occurrence_id: T.nilable(::String), payment_link_code: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), invoice_id: T.nilable(::String), amount_details: T.nilable(Models::Components::TransferAmountDetails), capture: T.nilable(Models::Components::TransferCapture)).void }
-        def initialize(transfer_id:, created_on:, source:, destination:, status:, amount:, completed_on: nil, failure_reason: nil, description: nil, metadata: nil, facilitator_fee: nil, moov_fee: nil, moov_fee_decimal: nil, moov_fee_details: nil, moov_fees: nil, group_id: nil, cancellations: nil, refunded_amount: nil, refunds: nil, disputed_amount: nil, disputes: nil, sweep_id: nil, schedule_id: nil, occurrence_id: nil, payment_link_code: nil, foreign_id: nil, line_items: nil, invoice_id: nil, amount_details: nil, capture: nil)
+        field :authorization, Crystalline::Nilable.new(Models::Components::TransferAuthorization), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorization') } }
+
+        sig { params(transfer_id: ::String, transfer_type: Models::Components::TransferType, created_on: ::DateTime, source: Models::Components::TransferSource, destination: Models::Components::TransferDestination, status: Models::Components::TransferStatus, amount: Models::Components::AmountDecimal, options: Models::Components::TransferRailOptions, processing_details: Models::Components::TransferProcessingDetails, completed_on: T.nilable(::DateTime), failure_reason: T.nilable(Models::Components::TransferFailureReason), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), facilitator_fee: T.nilable(Models::Components::FacilitatorFee), moov_fee: T.nilable(Models::Components::AmountDecimal), moov_fee_details: T.nilable(Models::Components::MoovFeeDetails), moov_fees: T.nilable(T::Array[Models::Components::MoovFee]), group_id: T.nilable(::String), refunded_amount: T.nilable(Models::Components::AmountDecimal), disputed_amount: T.nilable(Models::Components::AmountDecimal), sweep_id: T.nilable(::String), schedule_id: T.nilable(::String), occurrence_id: T.nilable(::String), payment_link_code: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), invoice_id: T.nilable(::String), amount_details: T.nilable(Models::Components::TransferAmountDetails), authorization: T.nilable(Models::Components::TransferAuthorization)).void }
+        def initialize(transfer_id:, transfer_type:, created_on:, source:, destination:, status:, amount:, options:, processing_details:, completed_on: nil, failure_reason: nil, description: nil, metadata: nil, facilitator_fee: nil, moov_fee: nil, moov_fee_details: nil, moov_fees: nil, group_id: nil, refunded_amount: nil, disputed_amount: nil, sweep_id: nil, schedule_id: nil, occurrence_id: nil, payment_link_code: nil, foreign_id: nil, line_items: nil, invoice_id: nil, amount_details: nil, authorization: nil)
           @transfer_id = transfer_id
+          @transfer_type = transfer_type
           @created_on = created_on
           @source = source
           @destination = destination
           @status = status
           @amount = amount
+          @options = options
+          @processing_details = processing_details
           @completed_on = completed_on
           @failure_reason = failure_reason
           @description = description
           @metadata = metadata
           @facilitator_fee = facilitator_fee
           @moov_fee = moov_fee
-          @moov_fee_decimal = moov_fee_decimal
           @moov_fee_details = moov_fee_details
           @moov_fees = moov_fees
           @group_id = group_id
-          @cancellations = cancellations
           @refunded_amount = refunded_amount
-          @refunds = refunds
           @disputed_amount = disputed_amount
-          @disputes = disputes
           @sweep_id = sweep_id
           @schedule_id = schedule_id
           @occurrence_id = occurrence_id
@@ -105,33 +102,32 @@ module Moov
           @line_items = line_items
           @invoice_id = invoice_id
           @amount_details = amount_details
-          @capture = capture
+          @authorization = authorization
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @transfer_id == other.transfer_id
+          return false unless @transfer_type == other.transfer_type
           return false unless @created_on == other.created_on
           return false unless @source == other.source
           return false unless @destination == other.destination
           return false unless @status == other.status
           return false unless @amount == other.amount
+          return false unless @options == other.options
+          return false unless @processing_details == other.processing_details
           return false unless @completed_on == other.completed_on
           return false unless @failure_reason == other.failure_reason
           return false unless @description == other.description
           return false unless @metadata == other.metadata
           return false unless @facilitator_fee == other.facilitator_fee
           return false unless @moov_fee == other.moov_fee
-          return false unless @moov_fee_decimal == other.moov_fee_decimal
           return false unless @moov_fee_details == other.moov_fee_details
           return false unless @moov_fees == other.moov_fees
           return false unless @group_id == other.group_id
-          return false unless @cancellations == other.cancellations
           return false unless @refunded_amount == other.refunded_amount
-          return false unless @refunds == other.refunds
           return false unless @disputed_amount == other.disputed_amount
-          return false unless @disputes == other.disputes
           return false unless @sweep_id == other.sweep_id
           return false unless @schedule_id == other.schedule_id
           return false unless @occurrence_id == other.occurrence_id
@@ -140,7 +136,7 @@ module Moov
           return false unless @line_items == other.line_items
           return false unless @invoice_id == other.invoice_id
           return false unless @amount_details == other.amount_details
-          return false unless @capture == other.capture
+          return false unless @authorization == other.authorization
           true
         end
       end

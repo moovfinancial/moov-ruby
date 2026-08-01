@@ -9,19 +9,22 @@ module Moov
     module Components
       # Specifies a partial amount to refund. 
       #
-      # This request body is optional, an empty body will issue a refund for the full amount of the original transfer.
+      # Before v2026.10, this request body may be omitted. In v2026.10 and later, send an empty object to refund the full amount of the original transfer.
       class CreateRefund
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Amount to refund in cents. If null, the original transfer's full amount will be refunded.
-        field :amount, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+        # Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded.
+        field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+        # ID of the capture to refund. Required for multi-capture card payment transfers.
+        field :capture_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('captureID') } }
         # Breakdown of the refunded amount.
         field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(amount: T.nilable(::Integer), amount_details: T.nilable(Models::Components::RefundAmountDetails)).void }
-        def initialize(amount: nil, amount_details: nil)
+        sig { params(amount: T.nilable(Models::Components::AmountDecimal), capture_id: T.nilable(::String), amount_details: T.nilable(Models::Components::RefundAmountDetails)).void }
+        def initialize(amount: nil, capture_id: nil, amount_details: nil)
           @amount = amount
+          @capture_id = capture_id
           @amount_details = amount_details
         end
 
@@ -29,6 +32,7 @@ module Moov
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @amount == other.amount
+          return false unless @capture_id == other.capture_id
           return false unless @amount_details == other.amount_details
           true
         end

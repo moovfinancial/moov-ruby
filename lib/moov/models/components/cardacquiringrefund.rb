@@ -21,21 +21,24 @@ module Moov
 
         field :status, Models::Components::RefundStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RefundStatus, false) } }
 
-        field :amount, Models::Components::Amount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+        field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+
+        field :processing_details, Models::Components::RefundProcessingDetails, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('processingDetails'), required: true } }
+        # ID of the capture this refund applies to, when applicable.
+        field :capture_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('captureID') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        field :card_details, Crystalline::Nilable.new(Models::Components::RefundCardDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails') } }
-
-        sig { params(refund_id: ::String, created_on: ::DateTime, updated_on: ::DateTime, status: Models::Components::RefundStatus, amount: Models::Components::Amount, amount_details: T.nilable(Models::Components::RefundAmountDetails), card_details: T.nilable(Models::Components::RefundCardDetails)).void }
-        def initialize(refund_id:, created_on:, updated_on:, status:, amount:, amount_details: nil, card_details: nil)
+        sig { params(refund_id: ::String, created_on: ::DateTime, updated_on: ::DateTime, status: Models::Components::RefundStatus, amount: Models::Components::AmountDecimal, processing_details: Models::Components::RefundProcessingDetails, capture_id: T.nilable(::String), amount_details: T.nilable(Models::Components::RefundAmountDetails)).void }
+        def initialize(refund_id:, created_on:, updated_on:, status:, amount:, processing_details:, capture_id: nil, amount_details: nil)
           @refund_id = refund_id
           @created_on = created_on
           @updated_on = updated_on
           @status = status
           @amount = amount
+          @processing_details = processing_details
+          @capture_id = capture_id
           @amount_details = amount_details
-          @card_details = card_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -46,8 +49,9 @@ module Moov
           return false unless @updated_on == other.updated_on
           return false unless @status == other.status
           return false unless @amount == other.amount
+          return false unless @processing_details == other.processing_details
+          return false unless @capture_id == other.capture_id
           return false unless @amount_details == other.amount_details
-          return false unless @card_details == other.card_details
           true
         end
       end
