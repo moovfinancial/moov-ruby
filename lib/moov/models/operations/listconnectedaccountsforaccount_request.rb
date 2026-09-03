@@ -49,7 +49,7 @@ module Moov
         field :capability_status, Crystalline::Nilable.new(Models::Components::CapabilityStatus), { 'query_param': { 'field_name': 'capabilityStatus', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
         sig { params(account_id: ::String, name: T.nilable(::String), email: T.nilable(::String), type: T.nilable(Models::Components::AccountType), foreign_id: T.nilable(::String), include_disconnected: T.nilable(T::Boolean), capability: T.nilable(Models::Components::CapabilityID), capability_status: T.nilable(Models::Components::CapabilityStatus), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }

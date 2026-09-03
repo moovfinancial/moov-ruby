@@ -8,6 +8,9 @@ Status of a transaction within the instant-bank lifecycle.
 require "moov_ruby"
 
 value = InstantBankTransactionStatus::INITIATED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = InstantBankTransactionStatus.deserialize("custom_value")
 ```
 
 

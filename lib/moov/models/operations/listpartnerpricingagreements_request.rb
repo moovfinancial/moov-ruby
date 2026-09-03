@@ -16,7 +16,7 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # A comma-separated list of agreement IDs to filter the results by.
         field :agreement_id, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'query_param': { 'field_name': 'agreementID', 'style': 'form', 'explode': false } }

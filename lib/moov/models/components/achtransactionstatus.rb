@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # ACHTransactionStatus - Status of a transaction within the ACH lifecycle.
-      class ACHTransactionStatus < T::Enum
+      class ACHTransactionStatus
+        include ::Crystalline::Enum
         enums do
           UNKNOWN = new('')
           INITIATED = new('initiated')
@@ -18,6 +19,7 @@ module Moov
           COMPLETED = new('completed')
           CANCELED = new('canceled')
         end
+        open!
       end
     end
   end

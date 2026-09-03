@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # DisputePhase - The phase of a dispute within the dispute lifecycle.
-      class DisputePhase < T::Enum
+      class DisputePhase
+        include ::Crystalline::Enum
         enums do
           PRE_DISPUTE = new('pre-dispute')
           INQUIRY = new('inquiry')
           CHARGEBACK = new('chargeback')
           UNKNOWN = new('unknown')
         end
+        open!
       end
     end
   end

@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = FeeCategory::ACH
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = FeeCategory.deserialize("custom_value")
 ```
 
 

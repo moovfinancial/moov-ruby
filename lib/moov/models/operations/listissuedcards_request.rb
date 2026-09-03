@@ -16,7 +16,7 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # Optional, comma-separated states to filter the Moov list issued cards response. For example `active,closed`
         field :states, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::IssuedCardState)), { 'query_param': { 'field_name': 'states', 'style': 'form', 'explode': false } }

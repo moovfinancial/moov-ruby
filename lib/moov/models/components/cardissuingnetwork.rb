@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # CardIssuingNetwork - The name of the network a card transaction is routed through.
-      class CardIssuingNetwork < T::Enum
+      class CardIssuingNetwork
+        include ::Crystalline::Enum
         enums do
           DISCOVER = new('discover')
           SHAZAM = new('shazam')
           VISA = new('visa')
         end
+        open!
       end
     end
   end

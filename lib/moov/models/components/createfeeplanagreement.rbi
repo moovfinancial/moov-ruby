@@ -10,4 +10,6 @@ end
 class Moov::Models::Components::CreateFeePlanAgreement
   def plan_id(); end
   def plan_id=(str_); end
+  def prior_agreement_id(); end
+  def prior_agreement_id=(str_); end
 end

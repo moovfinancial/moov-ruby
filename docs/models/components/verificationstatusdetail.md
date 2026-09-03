@@ -10,6 +10,9 @@ Additional detail for a verification status.
 require "moov_ruby"
 
 value = VerificationStatusDetail::FAILED_AUTO_VERIFY
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = VerificationStatusDetail.deserialize("custom_value")
 ```
 
 

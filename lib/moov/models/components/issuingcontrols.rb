@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-
+      # Mutable spend controls for the card.
       class IssuingControls
         extend T::Sig
         include Crystalline::MetadataFields

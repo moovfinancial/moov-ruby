@@ -8,6 +8,9 @@ Status of the completed occurrence.
 require "moov_ruby"
 
 value = OccurrenceStatus::PENDING
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = OccurrenceStatus.deserialize("custom_value")
 ```
 
 

@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
 
-      class FeePlanAgreementStatus < T::Enum
+      class FeePlanAgreementStatus
+        include ::Crystalline::Enum
         enums do
           ACTIVE = new('active')
           TERMINATED = new('terminated')
         end
+        open!
       end
     end
   end

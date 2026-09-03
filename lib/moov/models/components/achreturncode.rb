@@ -29,7 +29,8 @@ module Moov
       # - R34: Limited participation RDFI
       # - R38: Stop Payment on Source Document (Adjustment Entry)
       # - R39: Improper Source Document
-      class ACHReturnCode < T::Enum
+      class ACHReturnCode
+        include ::Crystalline::Enum
         enums do
           R02 = new('R02')
           R03 = new('R03')
@@ -52,6 +53,7 @@ module Moov
           R38 = new('R38')
           R39 = new('R39')
         end
+        open!
       end
     end
   end

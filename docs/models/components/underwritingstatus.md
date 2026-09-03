@@ -8,6 +8,9 @@
 require "moov_ruby"
 
 value = UnderwritingStatus::APPROVED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = UnderwritingStatus.deserialize("custom_value")
 ```
 
 

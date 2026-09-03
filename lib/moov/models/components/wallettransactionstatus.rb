@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
 
-      class WalletTransactionStatus < T::Enum
+      class WalletTransactionStatus
+        include ::Crystalline::Enum
         enums do
           PENDING = new('pending')
           COMPLETED = new('completed')
           CANCELED = new('canceled')
           FAILED = new('failed')
         end
+        open!
       end
     end
   end

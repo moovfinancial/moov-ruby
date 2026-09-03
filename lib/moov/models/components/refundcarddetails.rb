@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :status, Models::Components::RefundCardStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RefundCardStatus, false) } }
+        field :status, Models::Components::RefundCardStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::RefundCardStatus, false) } }
 
-        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
 
         field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 

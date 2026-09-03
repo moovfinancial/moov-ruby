@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
 
-      class CancellationStatus < T::Enum
+      class CancellationStatus
+        include ::Crystalline::Enum
         enums do
           PENDING = new('pending')
           COMPLETED = new('completed')
           FAILED = new('failed')
         end
+        open!
       end
     end
   end

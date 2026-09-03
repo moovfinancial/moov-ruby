@@ -8,6 +8,9 @@ The results of the card update request.
 require "moov_ruby"
 
 value = CardUpdateReason::UNSPECIFIED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardUpdateReason.deserialize("custom_value")
 ```
 
 

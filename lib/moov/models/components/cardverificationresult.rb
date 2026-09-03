@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # CardVerificationResult - The result of a card verification check.
-      class CardVerificationResult < T::Enum
+      class CardVerificationResult
+        include ::Crystalline::Enum
         enums do
           NO_MATCH = new('noMatch')
           MATCH = new('match')
@@ -16,6 +17,7 @@ module Moov
           UNAVAILABLE = new('unavailable')
           PARTIAL_MATCH = new('partialMatch')
         end
+        open!
       end
     end
   end

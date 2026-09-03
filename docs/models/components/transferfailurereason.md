@@ -8,6 +8,9 @@ Reason for a transfer's failure.
 require "moov_ruby"
 
 value = TransferFailureReason::SOURCE_PAYMENT_ERROR
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TransferFailureReason.deserialize("custom_value")
 ```
 
 

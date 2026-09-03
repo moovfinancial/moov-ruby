@@ -20,7 +20,7 @@ module Moov
         field :wallet_type, Crystalline::Nilable.new(Models::Components::WalletType), { 'query_param': { 'field_name': 'walletType', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
         sig { params(account_id: ::String, status: T.nilable(Models::Components::WalletStatus), wallet_type: T.nilable(Models::Components::WalletType), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }

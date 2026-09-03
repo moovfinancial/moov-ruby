@@ -15,7 +15,7 @@ module Moov
         # The cryptographic algorithm family used with the key (e.g., 'RSA', 'EC', 'oct').
         field :kty, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('kty'), required: true } }
         # The intended use of the key. 'sig' for signature, 'enc' for encryption.
-        field :use, Crystalline::Nilable.new(Models::Components::Use), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('use'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Use, true) } }
+        field :use, Crystalline::Nilable.new(Models::Components::Use), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('use'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::Use, true) } }
         # The permitted operations for the key, e.g., 'sign', 'verify', 'encrypt', 'decrypt'.
         field :key_ops, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('key_ops') } }
         # The algorithm intended for use with the key, e.g., 'RS256' or 'ES256'.
