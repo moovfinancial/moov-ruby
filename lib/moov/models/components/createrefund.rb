@@ -14,7 +14,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded.
+        # Amount to refund. If omitted, the original transfer's full amount will be refunded.
         field :amount, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
         sig { params(amount: T.nilable(::Integer)).void }

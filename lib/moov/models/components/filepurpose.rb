@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # FilePurpose - The purpose of the file being uploaded.
-      class FilePurpose < T::Enum
+      class FilePurpose
+        include ::Crystalline::Enum
         enums do
           BUSINESS_VERIFICATION = new('business_verification')
           REPRESENTATIVE_VERIFICATION = new('representative_verification')
@@ -17,6 +18,7 @@ module Moov
           ACCOUNT_REQUIREMENT = new('account_requirement')
           IDENTITY_VERIFICATION = new('identity_verification')
         end
+        open!
       end
     end
   end

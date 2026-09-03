@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # FeeModel - Specifies the pricing model used for the calculation of the final fee.
-      class FeeModel < T::Enum
+      class FeeModel
+        include ::Crystalline::Enum
         enums do
           FIXED = new('fixed')
           BLENDED = new('blended')
           VARIABLE = new('variable')
         end
+        open!
       end
     end
   end

@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = SweepConfigStatus::ENABLED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = SweepConfigStatus.deserialize("custom_value")
 ```
 
 

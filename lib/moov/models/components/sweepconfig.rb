@@ -17,12 +17,12 @@ module Moov
 
         field :wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletID'), required: true } }
 
-        field :status, Models::Components::SweepConfigStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SweepConfigStatus, false) } }
+        field :status, Models::Components::SweepConfigStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::SweepConfigStatus, false) } }
         # The payment method used to push or pull funds to a bank account.
-        # The push payment method can only be ach-credit-standard, ach-credit-same-day, or rtp-credit. The pull payment method can only be ach-debit-fund.
+        # The push payment method can only be ach-credit-standard, ach-credit-same-day, rtp-credit, or instant-bank-credit (API v2026.01.00 and later). The pull payment method can only be ach-debit-fund.
         field :push_payment_method, Models::Components::SweepConfigPaymentMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushPaymentMethod'), required: true } }
         # The payment method used to push or pull funds to a bank account.
-        # The push payment method can only be ach-credit-standard, ach-credit-same-day, or rtp-credit. The pull payment method can only be ach-debit-fund.
+        # The push payment method can only be ach-credit-standard, ach-credit-same-day, rtp-credit, or instant-bank-credit (API v2026.01.00 and later). The pull payment method can only be ach-debit-fund.
         field :pull_payment_method, Models::Components::SweepConfigPaymentMethod, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pullPaymentMethod'), required: true } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }

@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class BankAccountVerificationStatus < T::Enum
+      class BankAccountVerificationStatus
+        include ::Crystalline::Enum
         enums do
           NEW = new('new')
           SENT_CREDIT = new('sent-credit')
@@ -17,6 +18,7 @@ module Moov
           EXPIRED = new('expired')
           SUCCESSFUL = new('successful')
         end
+        open!
       end
     end
   end

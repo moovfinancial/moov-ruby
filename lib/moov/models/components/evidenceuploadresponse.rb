@@ -23,7 +23,7 @@ module Moov
         # The size of the evidence file.
         field :size, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('size'), required: true } }
 
-        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::EvidenceType, false) } }
+        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::EvidenceType, false) } }
         # The date and time the evidence was uploaded.
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 

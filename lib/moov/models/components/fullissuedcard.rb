@@ -15,7 +15,7 @@ module Moov
 
         field :issued_card_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuedCardID'), required: true } }
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardBrand, false) } }
 
         field :last_four_card_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber'), required: true } }
         # The expiration date of the card or token.
@@ -25,8 +25,9 @@ module Moov
         # The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
         #
         # - `active`: The card is operational and can approve authorizations.
+        # - `frozen`: The card is temporarily suspended and cannot approve authorizations. A frozen card can be reactivated by setting its state back to `active`.
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
-        field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardState, false) } }
+        field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuedCardState, false) } }
         # Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
         field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
 
@@ -45,7 +46,7 @@ module Moov
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Billing address associated with the card.
         field :billing_address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
-
+        # Mutable spend controls for the card.
         field :controls, Crystalline::Nilable.new(Models::Components::IssuingControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
         sig { params(issued_card_id: ::String, brand: Models::Components::CardBrand, last_four_card_number: ::String, expiration: Models::Components::CardExpiration, funding_wallet_id: ::String, state: Models::Components::IssuedCardState, form_factor: Models::Components::IssuedCardFormFactor, created_on: ::DateTime, updated_on: ::DateTime, pan: ::String, cvv: ::String, authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), controls: T.nilable(Models::Components::IssuingControls)).void }

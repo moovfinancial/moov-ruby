@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class EvidenceType < T::Enum
+      class EvidenceType
+        include ::Crystalline::Enum
         enums do
           RECEIPT = new('receipt')
           PROOF_OF_DELIVERY = new('proof-of-delivery')
@@ -19,6 +20,7 @@ module Moov
           COVER_LETTER = new('cover-letter')
           OTHER = new('other')
         end
+        open!
       end
     end
   end

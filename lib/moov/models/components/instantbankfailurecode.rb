@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # InstantBankFailureCode - Status codes for instant-bank failures.
-      class InstantBankFailureCode < T::Enum
+      class InstantBankFailureCode
+        include ::Crystalline::Enum
         enums do
           PROCESSING_ERROR = new('processing-error')
           INVALID_ACCOUNT = new('invalid-account')
@@ -22,6 +23,7 @@ module Moov
           PARTICIPANT_NOT_AVAILABLE = new('participant-not-available')
           OTHER = new('other')
         end
+        open!
       end
     end
   end

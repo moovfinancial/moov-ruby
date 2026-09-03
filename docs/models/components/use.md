@@ -8,6 +8,9 @@ The intended use of the key. 'sig' for signature, 'enc' for encryption.
 require "moov_ruby"
 
 value = Use::SIG
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = Use.deserialize("custom_value")
 ```
 
 

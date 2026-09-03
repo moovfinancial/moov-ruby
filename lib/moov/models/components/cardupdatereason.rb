@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # CardUpdateReason - The results of the card update request.
-      class CardUpdateReason < T::Enum
+      class CardUpdateReason
+        include ::Crystalline::Enum
         enums do
           UNSPECIFIED = new('unspecified')
           ACCOUNT_CLOSED = new('account-closed')
@@ -18,6 +19,7 @@ module Moov
           NO_MATCH = new('no-match')
           NUMBER_UPDATE = new('number-update')
         end
+        open!
       end
     end
   end

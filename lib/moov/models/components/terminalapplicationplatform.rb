@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # TerminalApplicationPlatform - Platform of the terminal application.
-      class TerminalApplicationPlatform < T::Enum
+      class TerminalApplicationPlatform
+        include ::Crystalline::Enum
         enums do
           UNDEFINED = new('undefined')
           IOS = new('ios')
           ANDROID = new('android')
         end
+        open!
       end
     end
   end

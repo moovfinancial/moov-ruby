@@ -8,6 +8,9 @@ Code used to identify the ACH authorization method.
 require "moov_ruby"
 
 value = SECCode::WEB
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = SECCode.deserialize("custom_value")
 ```
 
 

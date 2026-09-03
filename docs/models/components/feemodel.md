@@ -8,6 +8,9 @@ Specifies the pricing model used for the calculation of the final fee.
 require "moov_ruby"
 
 value = FeeModel::FIXED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = FeeModel.deserialize("custom_value")
 ```
 
 

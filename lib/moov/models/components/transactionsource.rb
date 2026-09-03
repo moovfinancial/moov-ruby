@@ -11,12 +11,14 @@ module Moov
       #
       # Crucial for recurring and merchant-initiated transactions as per card scheme rules. 
       # Omit for customer-initiated e-commerce transactions.
-      class TransactionSource < T::Enum
+      class TransactionSource
+        include ::Crystalline::Enum
         enums do
           FIRST_RECURRING = new('first-recurring')
           RECURRING = new('recurring')
           UNSCHEDULED = new('unscheduled')
         end
+        open!
       end
     end
   end

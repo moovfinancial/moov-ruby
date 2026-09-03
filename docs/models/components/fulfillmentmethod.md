@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = FulfillmentMethod::BILL_OR_DEBT_PAYMENT
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = FulfillmentMethod.deserialize("custom_value")
 ```
 
 

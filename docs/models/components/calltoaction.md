@@ -11,6 +11,9 @@ If set to "auto" the UI will automatically select between
 require "moov_ruby"
 
 value = CallToAction::PAY
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CallToAction.deserialize("custom_value")
 ```
 
 

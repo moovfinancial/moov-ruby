@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
 
-      class TicketStatus < T::Enum
+      class TicketStatus
+        include ::Crystalline::Enum
         enums do
           NEW = new('new')
           IN_PROGRESS = new('in-progress')
           ON_HOLD = new('on-hold')
           CLOSED = new('closed')
         end
+        open!
       end
     end
   end

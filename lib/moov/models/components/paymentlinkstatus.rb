@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
 
-      class PaymentLinkStatus < T::Enum
+      class PaymentLinkStatus
+        include ::Crystalline::Enum
         enums do
           ACTIVE = new('active')
           USED = new('used')
           DISABLED = new('disabled')
           EXPIRED = new('expired')
         end
+        open!
       end
     end
   end
