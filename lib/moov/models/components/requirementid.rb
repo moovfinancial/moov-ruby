@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # RequirementID - The unique ID of what the requirement is asking to be filled out.
-      class RequirementID < T::Enum
+      class RequirementID
+        include ::Crystalline::Enum
         enums do
           ACCOUNT_TOS_ACCEPTANCE = new('account.tos-acceptance')
           INDIVIDUAL_MOBILE = new('individual.mobile')
@@ -66,6 +67,7 @@ module Moov
           REPRESENTATIVE_REP_UUID_OWNERSHIP = new('representative.{rep-uuid}.ownership')
           DOCUMENT_DOC_UUID_ = new('document.{doc-uuid}')
         end
+        open!
       end
     end
   end

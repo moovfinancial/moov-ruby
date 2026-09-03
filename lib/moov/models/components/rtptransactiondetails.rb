@@ -15,11 +15,11 @@ module Moov
         include Crystalline::MetadataFields
 
         # Status of a transaction within the RTP lifecycle.
-        field :status, Crystalline::Nilable.new(Models::Components::RTPTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RTPTransactionStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::RTPTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::RTPTransactionStatus, true) } }
         # Response code returned by network on failure.
         field :network_response_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkResponseCode') } }
         # Status codes for RTP failures.
-        field :failure_code, Crystalline::Nilable.new(Models::Components::RTPFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RTPFailureCode, true) } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::RTPFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::RTPFailureCode, true) } }
 
         field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 

@@ -20,7 +20,7 @@ module Moov
         field :billing_period_end_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'billingPeriodEndDateTime', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
         sig { params(account_id: ::String, billing_period_start_date_time: T.nilable(::DateTime), billing_period_end_date_time: T.nilable(::DateTime), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }

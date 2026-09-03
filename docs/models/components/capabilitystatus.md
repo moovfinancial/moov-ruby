@@ -8,6 +8,9 @@ The status of the capability requested for an account.
 require "moov_ruby"
 
 value = CapabilityStatus::ENABLED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CapabilityStatus.deserialize("custom_value")
 ```
 
 

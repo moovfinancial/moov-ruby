@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # IssuedCardAuthorizationEventResult - The result of an event.
-      class IssuedCardAuthorizationEventResult < T::Enum
+      class IssuedCardAuthorizationEventResult
+        include ::Crystalline::Enum
         enums do
           APPROVED = new('approved')
           DECLINED = new('declined')
           PROCESSED = new('processed')
         end
+        open!
       end
     end
   end

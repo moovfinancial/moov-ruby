@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = RequirementErrorCode::INVALID_VALUE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RequirementErrorCode.deserialize("custom_value")
 ```
 
 

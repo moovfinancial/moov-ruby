@@ -36,4 +36,6 @@ class Moov::Models::Components::BillingSummary
   def monthly_partner_costs=(str_); end
   def net_partner_payment(); end
   def net_partner_payment=(str_); end
+  def total_net_partner_payment(); end
+  def total_net_partner_payment=(str_); end
 end

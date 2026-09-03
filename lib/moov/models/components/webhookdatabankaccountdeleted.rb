@@ -17,7 +17,7 @@ module Moov
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
 
-        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
+        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::BankAccountStatus, false) } }
 
         sig { params(bank_account_id: ::String, account_id: ::String, status: Models::Components::BankAccountStatus).void }
         def initialize(bank_account_id:, account_id:, status:)

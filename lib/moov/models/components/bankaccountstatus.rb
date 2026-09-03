@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class BankAccountStatus < T::Enum
+      class BankAccountStatus
+        include ::Crystalline::Enum
         enums do
           NEW = new('new')
           VERIFIED = new('verified')
@@ -16,6 +17,7 @@ module Moov
           PENDING = new('pending')
           ERRORED = new('errored')
         end
+        open!
       end
     end
   end

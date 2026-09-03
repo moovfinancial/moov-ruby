@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
       # Use - The intended use of the key. 'sig' for signature, 'enc' for encryption.
-      class Use < T::Enum
+      class Use
+        include ::Crystalline::Enum
         enums do
           SIG = new('sig')
           ENC = new('enc')
         end
+        open!
       end
     end
   end

@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-
+      # Options for payout links used to send a payout.
       class PaymentLinkPayoutDetailsUpdate
         extend T::Sig
         include Crystalline::MetadataFields

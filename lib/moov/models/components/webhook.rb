@@ -17,7 +17,7 @@ module Moov
         # The URL where webhook events will be sent.
         field :url, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('url'), required: true } }
         # The status of a webhook.
-        field :status, Models::Components::WebhookStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WebhookStatus, false) } }
+        field :status, Models::Components::WebhookStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::WebhookStatus, false) } }
         # The list of event types this webhook is subscribed to.
         field :event_types, Crystalline::Array.new(Models::Components::WebhookEventType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('eventTypes'), required: true } }
         # A description of the webhook for reference.

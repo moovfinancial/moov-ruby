@@ -8,6 +8,9 @@ The phase of a dispute within the dispute lifecycle.
 require "moov_ruby"
 
 value = DisputePhase::PRE_DISPUTE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = DisputePhase.deserialize("custom_value")
 ```
 
 

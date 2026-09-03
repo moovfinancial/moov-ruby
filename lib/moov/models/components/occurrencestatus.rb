@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # OccurrenceStatus - Status of the completed occurrence.
-      class OccurrenceStatus < T::Enum
+      class OccurrenceStatus
+        include ::Crystalline::Enum
         enums do
           PENDING = new('pending')
           FAILED = new('failed')
           COMPLETED = new('completed')
         end
+        open!
       end
     end
   end

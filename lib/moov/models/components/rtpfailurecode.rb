@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # RTPFailureCode - Status codes for RTP failures.
-      class RTPFailureCode < T::Enum
+      class RTPFailureCode
+        include ::Crystalline::Enum
         enums do
           PROCESSING_ERROR = new('processing-error')
           INVALID_ACCOUNT = new('invalid-account')
@@ -21,6 +22,7 @@ module Moov
           CUSTOMER_DECEASED = new('customer-deceased')
           OTHER = new('other')
         end
+        open!
       end
     end
   end

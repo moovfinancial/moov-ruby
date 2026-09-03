@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class RequirementErrorCode < T::Enum
+      class RequirementErrorCode
+        include ::Crystalline::Enum
         enums do
           INVALID_VALUE = new('invalid-value')
           FAILED_AUTOMATIC_VERIFICATION = new('failed-automatic-verification')
@@ -29,6 +30,7 @@ module Moov
           DOCUMENT_CORRUPT = new('document-corrupt')
           DOCUMENT_EXPIRED = new('document-expired')
         end
+        open!
       end
     end
   end

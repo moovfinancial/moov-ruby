@@ -8,6 +8,9 @@ The type of event that occurred on the card.
 require "moov_ruby"
 
 value = IssuedCardEventType::AUTHORIZATION
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = IssuedCardEventType.deserialize("custom_value")
 ```
 
 

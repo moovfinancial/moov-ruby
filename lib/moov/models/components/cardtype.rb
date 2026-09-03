@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # CardType - The type of the card.
-      class CardType < T::Enum
+      class CardType
+        include ::Crystalline::Enum
         enums do
           DEBIT = new('debit')
           CREDIT = new('credit')
           PREPAID = new('prepaid')
           UNKNOWN = new('unknown')
         end
+        open!
       end
     end
   end

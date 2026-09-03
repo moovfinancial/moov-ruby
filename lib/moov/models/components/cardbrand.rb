@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # CardBrand - The card brand.
-      class CardBrand < T::Enum
+      class CardBrand
+        include ::Crystalline::Enum
         enums do
           AMERICAN_EXPRESS = new('American Express')
           DISCOVER = new('Discover')
@@ -16,6 +17,7 @@ module Moov
           VISA = new('Visa')
           UNKNOWN = new('Unknown')
         end
+        open!
       end
     end
   end

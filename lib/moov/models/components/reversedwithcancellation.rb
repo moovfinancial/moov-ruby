@@ -12,7 +12,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Cancellation of a transfer.
         field :cancellation, Models::Components::Cancellation, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cancellation'), required: true } }
 
         sig { params(cancellation: Models::Components::Cancellation).void }
