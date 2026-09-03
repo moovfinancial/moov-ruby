@@ -19,7 +19,7 @@ module Moov
 
         field :average_monthly_transaction_volume, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('averageMonthlyTransactionVolume') } }
         # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
-        field :status, Crystalline::Nilable.new(Models::Components::UnderwritingStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::UnderwritingStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::UnderwritingStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::UnderwritingStatus, true) } }
 
         field :volume_by_customer_type, Crystalline::Nilable.new(Models::Components::VolumeByCustomerType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeByCustomerType') } }
 
@@ -27,11 +27,11 @@ module Moov
 
         field :fulfillment, Crystalline::Nilable.new(Models::Components::FulfillmentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fulfillment') } }
 
-        field :geographic_reach, Crystalline::Nilable.new(Models::Components::GeographicReach), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('geographicReach'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::GeographicReach, true) } }
+        field :geographic_reach, Crystalline::Nilable.new(Models::Components::GeographicReach), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('geographicReach'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::GeographicReach, true) } }
 
-        field :business_presence, Crystalline::Nilable.new(Models::Components::BusinessPresence), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessPresence'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BusinessPresence, true) } }
+        field :business_presence, Crystalline::Nilable.new(Models::Components::BusinessPresence), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessPresence'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::BusinessPresence, true) } }
 
-        field :pending_litigation, Crystalline::Nilable.new(Models::Components::PendingLitigation), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingLitigation'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PendingLitigation, true) } }
+        field :pending_litigation, Crystalline::Nilable.new(Models::Components::PendingLitigation), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingLitigation'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::PendingLitigation, true) } }
 
         field :volume_share_by_customer_type, Crystalline::Nilable.new(Models::Components::VolumeShareByCustomerType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeShareByCustomerType') } }
 

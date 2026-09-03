@@ -12,7 +12,10 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Amount to reverse. Before v2026.10, specify the amount in integer cents. Partial amounts automatically trigger a refund instead of a cancellation.
+        # Amount to reverse.
+        # Before v2026.10, specify the amount in integer cents.
+        # For supported auth-capture `card-payment` reversals in v2026.10 and later, a transfer with no captures uses the full `capturableAmount`.
+        # For those transfers with one final capture, a cancellation uses the full capture amount, while a refund may be partial.
         field :amount, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 
         sig { params(amount: ::Integer).void }

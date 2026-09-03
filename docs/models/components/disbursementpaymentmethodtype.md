@@ -8,6 +8,9 @@ Payment methods allowed for disbursing funds.
 require "moov_ruby"
 
 value = DisbursementPaymentMethodType::PUSH_TO_CARD
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = DisbursementPaymentMethodType.deserialize("custom_value")
 ```
 
 

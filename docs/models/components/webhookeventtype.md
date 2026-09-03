@@ -8,6 +8,9 @@ The type of event that occurred.
 require "moov_ruby"
 
 value = WebhookEventType::WILDCARD_
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = WebhookEventType.deserialize("custom_value")
 ```
 
 

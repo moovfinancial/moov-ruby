@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = TicketStatus::NEW
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TicketStatus.deserialize("custom_value")
 ```
 
 

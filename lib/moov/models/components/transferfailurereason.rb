@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # TransferFailureReason - Reason for a transfer's failure.
-      class TransferFailureReason < T::Enum
+      class TransferFailureReason
+        include ::Crystalline::Enum
         enums do
           SOURCE_PAYMENT_ERROR = new('source-payment-error')
           DESTINATION_PAYMENT_ERROR = new('destination-payment-error')
@@ -16,6 +17,7 @@ module Moov
           REJECTED_HIGH_RISK = new('rejected-high-risk')
           PROCESSING_ERROR = new('processing-error')
         end
+        open!
       end
     end
   end

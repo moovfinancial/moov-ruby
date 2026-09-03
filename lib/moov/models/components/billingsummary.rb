@@ -24,10 +24,10 @@ module Moov
         field :platform_fees, Crystalline::Nilable.new(Models::Components::BillingSummaryPlatformFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('platformFees') } }
         # A summary of account fees.
         field :account_fees, Crystalline::Nilable.new(Models::Components::BillingSummaryDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountFees') } }
-        # The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
+        # The total amount of adjustment fees. This field is deprecated and will be removed in a future release. Use adjustments.total.
         #
         # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
-        field :adjustment_fees, Crystalline::Nilable.new(Models::Components::AdjustmentFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('adjustmentFees') } }
+        field :adjustment_fees, Crystalline::Nilable.new(Models::Components::BillingSummaryAdjustmentFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('adjustmentFees') } }
         # The total amount of other card fees. This field is deprecated and will be removed in a future release. Use summary.otherCardFees.
         #
         # @deprecated true: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -46,9 +46,11 @@ module Moov
         field :monthly_partner_costs, Crystalline::Nilable.new(Models::Components::PartnerFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('monthlyPartnerCosts') } }
         # Final partner payment after deducting monthlyPartnerCosts.
         field :net_partner_payment, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('netPartnerPayment') } }
+        # Final partner payment after deducting monthlyPartnerCosts and any adjustments.
+        field :total_net_partner_payment, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('totalNetPartnerPayment') } }
 
-        sig { params(card_acquiring: T.nilable(Models::Components::CardAcquiring), ach: T.nilable(Models::Components::BillingSummaryDetails), instant_payments: T.nilable(Models::Components::BillingSummaryDetails), platform_fees: T.nilable(Models::Components::BillingSummaryPlatformFees), account_fees: T.nilable(Models::Components::BillingSummaryDetails), adjustment_fees: T.nilable(Models::Components::AdjustmentFees), other_fees: T.nilable(Models::Components::OtherFees), other_card_fees: T.nilable(Models::Components::BillingSummaryDetails), total: T.nilable(Models::Components::AmountDecimal), net_income_subtotal: T.nilable(Models::Components::BillingSummaryDetails), revenue_share: T.nilable(::String), residual_subtotal: T.nilable(Models::Components::AmountDecimal), monthly_partner_costs: T.nilable(Models::Components::PartnerFees), net_partner_payment: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(card_acquiring: nil, ach: nil, instant_payments: nil, platform_fees: nil, account_fees: nil, adjustment_fees: nil, other_fees: nil, other_card_fees: nil, total: nil, net_income_subtotal: nil, revenue_share: nil, residual_subtotal: nil, monthly_partner_costs: nil, net_partner_payment: nil)
+        sig { params(card_acquiring: T.nilable(Models::Components::CardAcquiring), ach: T.nilable(Models::Components::BillingSummaryDetails), instant_payments: T.nilable(Models::Components::BillingSummaryDetails), platform_fees: T.nilable(Models::Components::BillingSummaryPlatformFees), account_fees: T.nilable(Models::Components::BillingSummaryDetails), adjustment_fees: T.nilable(Models::Components::BillingSummaryAdjustmentFees), other_fees: T.nilable(Models::Components::OtherFees), other_card_fees: T.nilable(Models::Components::BillingSummaryDetails), total: T.nilable(Models::Components::AmountDecimal), net_income_subtotal: T.nilable(Models::Components::BillingSummaryDetails), revenue_share: T.nilable(::String), residual_subtotal: T.nilable(Models::Components::AmountDecimal), monthly_partner_costs: T.nilable(Models::Components::PartnerFees), net_partner_payment: T.nilable(Models::Components::AmountDecimal), total_net_partner_payment: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(card_acquiring: nil, ach: nil, instant_payments: nil, platform_fees: nil, account_fees: nil, adjustment_fees: nil, other_fees: nil, other_card_fees: nil, total: nil, net_income_subtotal: nil, revenue_share: nil, residual_subtotal: nil, monthly_partner_costs: nil, net_partner_payment: nil, total_net_partner_payment: nil)
           @card_acquiring = card_acquiring
           @ach = ach
           @instant_payments = instant_payments
@@ -63,6 +65,7 @@ module Moov
           @residual_subtotal = residual_subtotal
           @monthly_partner_costs = monthly_partner_costs
           @net_partner_payment = net_partner_payment
+          @total_net_partner_payment = total_net_partner_payment
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -82,6 +85,7 @@ module Moov
           return false unless @residual_subtotal == other.residual_subtotal
           return false unless @monthly_partner_costs == other.monthly_partner_costs
           return false unless @net_partner_payment == other.net_partner_payment
+          return false unless @total_net_partner_payment == other.total_net_partner_payment
           true
         end
       end

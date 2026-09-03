@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = ReturnPolicyType::NONE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = ReturnPolicyType.deserialize("custom_value")
 ```
 
 

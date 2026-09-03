@@ -13,11 +13,11 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :geographic_reach, Crystalline::Nilable.new(Models::Components::GeographicReach), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('geographicReach'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::GeographicReach, true) } }
+        field :geographic_reach, Crystalline::Nilable.new(Models::Components::GeographicReach), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('geographicReach'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::GeographicReach, true) } }
 
-        field :business_presence, Crystalline::Nilable.new(Models::Components::BusinessPresence), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessPresence'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BusinessPresence, true) } }
+        field :business_presence, Crystalline::Nilable.new(Models::Components::BusinessPresence), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('businessPresence'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::BusinessPresence, true) } }
 
-        field :pending_litigation, Crystalline::Nilable.new(Models::Components::PendingLitigation), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingLitigation'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PendingLitigation, true) } }
+        field :pending_litigation, Crystalline::Nilable.new(Models::Components::PendingLitigation), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pendingLitigation'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::PendingLitigation, true) } }
 
         field :volume_share_by_customer_type, Crystalline::Nilable.new(Models::Components::VolumeShareByCustomerType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('volumeShareByCustomerType') } }
 

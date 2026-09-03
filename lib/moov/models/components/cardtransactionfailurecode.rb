@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class CardTransactionFailureCode < T::Enum
+      class CardTransactionFailureCode
+        include ::Crystalline::Enum
         enums do
           CALL_ISSUER = new('call-issuer')
           DO_NOT_HONOR = new('do-not-honor')
@@ -36,6 +37,7 @@ module Moov
           UNKNOWN_ISSUE = new('unknown-issue')
           DUPLICATE_TRANSACTION = new('duplicate-transaction')
         end
+        open!
       end
     end
   end

@@ -8,6 +8,9 @@ Status of the terminal application.
 require "moov_ruby"
 
 value = TerminalApplicationStatus::UNDEFINED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TerminalApplicationStatus.deserialize("custom_value")
 ```
 
 

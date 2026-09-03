@@ -8,6 +8,9 @@ The operating mode for an account.
 require "moov_ruby"
 
 value = Mode::SANDBOX
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = Mode.deserialize("custom_value")
 ```
 
 

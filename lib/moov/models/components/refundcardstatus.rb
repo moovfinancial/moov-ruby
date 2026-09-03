@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class RefundCardStatus < T::Enum
+      class RefundCardStatus
+        include ::Crystalline::Enum
         enums do
           INITIATED = new('initiated')
           CONFIRMED = new('confirmed')
@@ -16,6 +17,7 @@ module Moov
           FAILED = new('failed')
           COMPLETED = new('completed')
         end
+        open!
       end
     end
   end

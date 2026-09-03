@@ -8,6 +8,9 @@ The status of a webhook.
 require "moov_ruby"
 
 value = WebhookStatus::ENABLED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = WebhookStatus.deserialize("custom_value")
 ```
 
 

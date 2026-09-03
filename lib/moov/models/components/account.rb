@@ -15,9 +15,9 @@ module Moov
         # Unique identifier for this account.
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # The operating mode for an account.
-        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, false) } }
+        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::Mode, false) } }
         # The type of entity represented by this account.
-        field :account_type, Models::Components::AccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::AccountType, false) } }
+        field :account_type, Models::Components::AccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::AccountType, false) } }
 
         field :display_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('displayName'), required: true } }
         # Describes a Moov account profile. A profile will have a business, individual, or guest depending on the account's type.

@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
       # InstantBankNetwork - The network that the transaction was processed on.
-      class InstantBankNetwork < T::Enum
+      class InstantBankNetwork
+        include ::Crystalline::Enum
         enums do
           FEDNOW = new('fednow')
           RTP = new('rtp')
         end
+        open!
       end
     end
   end

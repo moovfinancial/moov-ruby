@@ -8,6 +8,9 @@ Platform of the terminal application.
 require "moov_ruby"
 
 value = TerminalApplicationPlatform::UNDEFINED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TerminalApplicationPlatform.deserialize("custom_value")
 ```
 
 

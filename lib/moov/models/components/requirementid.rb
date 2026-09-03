@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # RequirementID - The unique ID of what the requirement is asking to be filled out.
-      class RequirementID < T::Enum
+      class RequirementID
+        include ::Crystalline::Enum
         enums do
           ACCOUNT_TOS_ACCEPTANCE = new('account.tos-acceptance')
           INDIVIDUAL_MOBILE = new('individual.mobile')
@@ -105,6 +106,13 @@ module Moov
           UNDERWRITING_SEND_FUNDS_PUSH_TO_CARD_ESTIMATED_ACTIVITY_MONTHLY_VOLUME_RANGE = new('underwriting.sendFunds.pushToCard.estimatedActivity.monthlyVolumeRange')
           UNDERWRITING_SEND_FUNDS_PUSH_TO_CARD_FULFILLMENT = new('underwriting.sendFunds.pushToCard.fulfillment')
           UNDERWRITING_SEND_FUNDS_PUSH_TO_CARD_REFUND_POLICY = new('underwriting.sendFunds.pushToCard.refundPolicy')
+          UNDERWRITING_SEND_FUNDS_INSTANT_BANK_CARD_ACCEPTANCE_METHODS = new('underwriting.sendFunds.instantBank.cardAcceptanceMethods')
+          UNDERWRITING_SEND_FUNDS_INSTANT_BANK_CURRENTLY_ACCEPTS_CARDS = new('underwriting.sendFunds.instantBank.currentlyAcceptsCards')
+          UNDERWRITING_SEND_FUNDS_INSTANT_BANK_ESTIMATED_ACTIVITY_AVERAGE_TRANSACTION_AMOUNT = new('underwriting.sendFunds.instantBank.estimatedActivity.averageTransactionAmount')
+          UNDERWRITING_SEND_FUNDS_INSTANT_BANK_ESTIMATED_ACTIVITY_MAXIMUM_TRANSACTION_AMOUNT = new('underwriting.sendFunds.instantBank.estimatedActivity.maximumTransactionAmount')
+          UNDERWRITING_SEND_FUNDS_INSTANT_BANK_ESTIMATED_ACTIVITY_MONTHLY_VOLUME_RANGE = new('underwriting.sendFunds.instantBank.estimatedActivity.monthlyVolumeRange')
+          UNDERWRITING_SEND_FUNDS_INSTANT_BANK_FULFILLMENT = new('underwriting.sendFunds.instantBank.fulfillment')
+          UNDERWRITING_SEND_FUNDS_INSTANT_BANK_REFUND_POLICY = new('underwriting.sendFunds.instantBank.refundPolicy')
           UNDERWRITING_MONEY_TRANSFER_PULL_FROM_CARD_CARD_ACCEPTANCE_METHODS = new('underwriting.moneyTransfer.pullFromCard.cardAcceptanceMethods')
           UNDERWRITING_MONEY_TRANSFER_PULL_FROM_CARD_CURRENTLY_ACCEPTS_CARDS = new('underwriting.moneyTransfer.pullFromCard.currentlyAcceptsCards')
           UNDERWRITING_MONEY_TRANSFER_PULL_FROM_CARD_ESTIMATED_ACTIVITY_AVERAGE_TRANSACTION_AMOUNT = new('underwriting.moneyTransfer.pullFromCard.estimatedActivity.averageTransactionAmount')
@@ -120,6 +128,7 @@ module Moov
           UNDERWRITING_MONEY_TRANSFER_PUSH_TO_CARD_FULFILLMENT = new('underwriting.moneyTransfer.pushToCard.fulfillment')
           UNDERWRITING_MONEY_TRANSFER_PUSH_TO_CARD_REFUND_POLICY = new('underwriting.moneyTransfer.pushToCard.refundPolicy')
         end
+        open!
       end
     end
   end
