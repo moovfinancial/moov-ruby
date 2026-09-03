@@ -13,20 +13,20 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :mid, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mid') } }
+        field :network_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkID') } }
 
         field :descriptor_pattern, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('descriptorPattern') } }
 
-        sig { params(mid: T.nilable(::String), descriptor_pattern: T.nilable(::String)).void }
-        def initialize(mid: nil, descriptor_pattern: nil)
-          @mid = mid
+        sig { params(network_id: T.nilable(::String), descriptor_pattern: T.nilable(::String)).void }
+        def initialize(network_id: nil, descriptor_pattern: nil)
+          @network_id = network_id
           @descriptor_pattern = descriptor_pattern
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @mid == other.mid
+          return false unless @network_id == other.network_id
           return false unless @descriptor_pattern == other.descriptor_pattern
           true
         end

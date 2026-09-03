@@ -15,7 +15,7 @@ module Moov
         # Timestamp from the card network indicating when the card update was processed.
         field :updated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # The results of the card update request.
-        field :update_type, Crystalline::Nilable.new(Models::Components::CardUpdateReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updateType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardUpdateReason, true) } }
+        field :update_type, Crystalline::Nilable.new(Models::Components::CardUpdateReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updateType'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardUpdateReason, true) } }
 
         sig { params(updated_on: T.nilable(::DateTime), update_type: T.nilable(Models::Components::CardUpdateReason)).void }
         def initialize(updated_on: nil, update_type: nil)

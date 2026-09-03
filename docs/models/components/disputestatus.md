@@ -10,6 +10,9 @@ Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-paym
 require "moov_ruby"
 
 value = DisputeStatus::RESPONSE_NEEDED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = DisputeStatus.deserialize("custom_value")
 ```
 
 

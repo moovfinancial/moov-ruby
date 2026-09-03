@@ -18,9 +18,9 @@ module Moov
         field :velocity_limits, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::IssuedVelocityLimit)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('velocityLimits') } }
         # Restricts card usage by merchant category. When not set, all categories are allowed.
         field :merchant_category_restrictions, Crystalline::Nilable.new(Models::Components::MerchantCategoryRestrictions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantCategoryRestrictions') } }
-        # Restricts card usage to specific merchants, or blocks specific merchants.
+        # Restricts card usage to specific merchants, independent of merchant category.
         field :merchant_restrictions, Crystalline::Nilable.new(Models::Components::MerchantRestrictions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantRestrictions') } }
-        # Limits card usage to specific days and times.
+
         field :allowed_schedule, Crystalline::Nilable.new(Models::Components::IssuedControlsAllowedSchedule), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowedSchedule') } }
         # A spend cutoff date and time. When set, all authorizations after this datetime are declined regardless of other controls.
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }

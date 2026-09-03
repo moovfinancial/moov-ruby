@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class FulfillmentTimeframe < T::Enum
+      class FulfillmentTimeframe
+        include ::Crystalline::Enum
         enums do
           IMMEDIATE = new('immediate')
           OTHER = new('other')
@@ -19,6 +20,7 @@ module Moov
           WITHIN_30_DAYS = new('within-30-days')
           WITHIN_7_DAYS = new('within-7-days')
         end
+        open!
       end
     end
   end

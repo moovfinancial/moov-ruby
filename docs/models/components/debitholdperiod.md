@@ -8,6 +8,9 @@ An optional override of your default ACH hold period in banking days. The hold p
 require "moov_ruby"
 
 value = DebitHoldPeriod::NO_HOLD
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = DebitHoldPeriod.deserialize("custom_value")
 ```
 
 

@@ -8,6 +8,9 @@ The payment method type that represents a payment rail and directionality
 require "moov_ruby"
 
 value = TransferPaymentMethodType::MOOV_WALLET
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TransferPaymentMethodType.deserialize("custom_value")
 ```
 
 

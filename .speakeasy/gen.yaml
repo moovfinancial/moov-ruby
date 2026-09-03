@@ -30,7 +30,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 26.7.1
+  version: 26.7.2
   additionalDependencies:
     development: {}
     runtime: {}
@@ -61,4 +61,4 @@ ruby:
   outputModelSuffix: output
   packageName: moov_ruby
   typingStrategy: sorbet
-  unionStrategy: left-to-right
+  unionStrategy: populated-fields

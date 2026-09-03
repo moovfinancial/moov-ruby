@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = GeographicReach::INTERNATIONAL_ONLY
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = GeographicReach.deserialize("custom_value")
 ```
 
 

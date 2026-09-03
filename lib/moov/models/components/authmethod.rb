@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
       # AuthMethod - The authentication method used for the Google Pay token.
-      class AuthMethod < T::Enum
+      class AuthMethod
+        include ::Crystalline::Enum
         enums do
           PAN_ONLY = new('PAN_ONLY')
           CRYPTOGRAM_3_DS = new('CRYPTOGRAM_3DS')
         end
+        open!
       end
     end
   end

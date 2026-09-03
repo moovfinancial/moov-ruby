@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
-        field :interval, Models::Components::IssuingIntervalLimit, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interval'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingIntervalLimit, false) } }
+        field :interval, Models::Components::IssuingIntervalLimit, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('interval'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingIntervalLimit, false) } }
         # The maximum amount in cents that can be spent in a given interval.
         field :amount, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
         # The maximum number of transactions allowed in the given interval.

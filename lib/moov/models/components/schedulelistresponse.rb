@@ -15,7 +15,7 @@ module Moov
 
         field :destination_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destinationAccountID'), required: true } }
         # The operating mode for an account.
-        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, false) } }
+        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::Mode, false) } }
 
         field :owner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('ownerAccountID'), required: true } }
 

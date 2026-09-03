@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
 
-      class BankAccountVerificationMethod < T::Enum
+      class BankAccountVerificationMethod
+        include ::Crystalline::Enum
         enums do
           INSTANT = new('instant')
           ACH = new('ach')
         end
+        open!
       end
     end
   end

@@ -8,6 +8,9 @@ The file's status.
 require "moov_ruby"
 
 value = FileStatus::PENDING
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = FileStatus.deserialize("custom_value")
 ```
 
 

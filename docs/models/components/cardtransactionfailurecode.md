@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = CardTransactionFailureCode::CALL_ISSUER
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardTransactionFailureCode.deserialize("custom_value")
 ```
 
 

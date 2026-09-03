@@ -11,12 +11,14 @@ module Moov
       #
       # The expected format of the request body depends on this value, so it must be supplied
       # in the `X-Source-System` header on every request.
-      class SourceSystem < T::Enum
+      class SourceSystem
+        include ::Crystalline::Enum
         enums do
           JH_SILVERLAKE = new('jh_silverlake')
           JH_CIF2020 = new('jh_cif2020')
           JH_COREDIRECTOR = new('jh_coredirector')
         end
+        open!
       end
     end
   end

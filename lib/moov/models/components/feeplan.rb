@@ -17,7 +17,7 @@ module Moov
         # The name of the fee plan.
         field :name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name'), required: true } }
         # Specifies the card processing pricing model
-        field :card_acquiring_model, Models::Components::CardAcquiringModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAcquiringModel'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardAcquiringModel, false) } }
+        field :card_acquiring_model, Models::Components::CardAcquiringModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAcquiringModel'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardAcquiringModel, false) } }
         # Additional usage-based fees for this plan.
         field :billable_fees, Crystalline::Array.new(Models::Components::BillableFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billableFees'), required: true } }
         # The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.

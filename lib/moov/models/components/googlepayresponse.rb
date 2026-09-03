@@ -15,9 +15,9 @@ module Moov
         # The unique identifier of the Google Pay token.
         field :token_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tokenID'), required: true } }
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardBrand, false) } }
         # The type of the card.
-        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardType, false) } }
+        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardType, false) } }
         #   User-friendly name of the tokenized card returned by Google Pay.
         #
         #   It usually contains the last four digits of the underlying card.
@@ -34,7 +34,7 @@ module Moov
         # Country where the underlying card was issued.
         field :issuer_country, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuerCountry') } }
         # The authentication method used for the Google Pay token.
-        field :auth_method, Crystalline::Nilable.new(Models::Components::AuthMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authMethod'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::AuthMethod, true) } }
+        field :auth_method, Crystalline::Nilable.new(Models::Components::AuthMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authMethod'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::AuthMethod, true) } }
 
         sig { params(token_id: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, card_display_name: ::String, fingerprint: ::String, expiration: Models::Components::CardExpiration, dynamic_last_four: ::String, issuer_country: T.nilable(::String), auth_method: T.nilable(Models::Components::AuthMethod)).void }
         def initialize(token_id:, brand:, card_type:, card_display_name:, fingerprint:, expiration:, dynamic_last_four:, issuer_country: nil, auth_method: nil)

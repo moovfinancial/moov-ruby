@@ -19,11 +19,11 @@ module Moov
 
         field :funding_wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fundingWalletID'), required: true } }
         # The name of the network a card transaction is routed through.
-        field :network, Models::Components::CardIssuingNetwork, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('network'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardIssuingNetwork, false) } }
+        field :network, Models::Components::CardIssuingNetwork, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('network'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardIssuingNetwork, false) } }
         # A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
         field :authorized_amount, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedAmount'), required: true } }
         # Status of a card issuing authorization.
-        field :status, Models::Components::IssuingAuthorizationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingAuthorizationStatus, false) } }
+        field :status, Models::Components::IssuingAuthorizationStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingAuthorizationStatus, false) } }
 
         field :merchant_data, Models::Components::IssuingMerchantData, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantData'), required: true } }
 

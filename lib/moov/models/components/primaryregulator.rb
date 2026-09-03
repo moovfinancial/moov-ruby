@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # PrimaryRegulator - If the business is a financial institution, this field describes its primary regulator.
-      class PrimaryRegulator < T::Enum
+      class PrimaryRegulator
+        include ::Crystalline::Enum
         enums do
           OCC = new('OCC')
           FDIC = new('FDIC')
@@ -16,6 +17,7 @@ module Moov
           FRB = new('FRB')
           STATE_CU_REGULATOR = new('state-cu-regulator')
         end
+        open!
       end
     end
   end

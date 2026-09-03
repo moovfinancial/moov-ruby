@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # DisbursementPaymentMethodType - Payment methods allowed for disbursing funds.
-      class DisbursementPaymentMethodType < T::Enum
+      class DisbursementPaymentMethodType
+        include ::Crystalline::Enum
         enums do
           PUSH_TO_CARD = new('push-to-card')
           RTP_CREDIT = new('rtp-credit')
@@ -17,6 +18,7 @@ module Moov
           PUSH_TO_APPLE_PAY = new('push-to-apple-pay')
           PUSH_TO_GOOGLE_PAY = new('push-to-google-pay')
         end
+        open!
       end
     end
   end

@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
       # WebhookStatus - The status of a webhook.
-      class WebhookStatus < T::Enum
+      class WebhookStatus
+        include ::Crystalline::Enum
         enums do
           ENABLED = new('enabled')
           DISABLED = new('disabled')
         end
+        open!
       end
     end
   end

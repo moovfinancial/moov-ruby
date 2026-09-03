@@ -16,6 +16,9 @@ The `production-app`, `platform.production-app`, and / or `platform.wallet-trans
 require "moov_ruby"
 
 value = CapabilityID::TRANSFERS
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CapabilityID.deserialize("custom_value")
 ```
 
 

@@ -4,7 +4,7 @@
 # frozen_string_literal: true
 
 module Crystalline
-  @union_strategy = :left_to_right
+  @union_strategy = :populated_fields
 
   class << self
     attr_accessor :union_strategy

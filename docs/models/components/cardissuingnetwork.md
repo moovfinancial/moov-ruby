@@ -8,6 +8,9 @@ The name of the network a card transaction is routed through.
 require "moov_ruby"
 
 value = CardIssuingNetwork::DISCOVER
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardIssuingNetwork.deserialize("custom_value")
 ```
 
 

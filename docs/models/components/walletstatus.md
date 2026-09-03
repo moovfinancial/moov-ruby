@@ -10,6 +10,9 @@ Status of a wallet.
 require "moov_ruby"
 
 value = WalletStatus::ACTIVE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = WalletStatus.deserialize("custom_value")
 ```
 
 

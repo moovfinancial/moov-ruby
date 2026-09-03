@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # WebhookEventType - The type of event that occurred.
-      class WebhookEventType < T::Enum
+      class WebhookEventType
+        include ::Crystalline::Enum
         enums do
           WILDCARD_ = new('*')
           ACCOUNT_CREATED = new('account.created')
@@ -50,6 +51,7 @@ module Moov
           BILLING_STATEMENT_CREATED = new('billingStatement.created')
           AUTHORIZATION_EXPIRING = new('authorization.expiring')
         end
+        open!
       end
     end
   end

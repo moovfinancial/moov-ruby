@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = CancellationStatus::PENDING
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CancellationStatus.deserialize("custom_value")
 ```
 
 

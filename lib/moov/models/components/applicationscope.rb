@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # ApplicationScope - A permission that the application requests on another account.
-      class ApplicationScope < T::Enum
+      class ApplicationScope
+        include ::Crystalline::Enum
         enums do
           ACCOUNTS_READ = new('accounts.read')
           ACCOUNTS_WRITE = new('accounts.write')
@@ -30,7 +31,7 @@ module Moov
           FILES_WRITE = new('files.write')
           ISSUED_CARDS_READ = new('issued-cards.read')
           ISSUED_CARDS_WRITE = new('issued-cards.write')
-          ISSUED_CARDS_READ_SECURE = new('issued-cards.read-secure')
+          ISSUED_CARDS_READ_PRIVATE = new('issued-cards.read-private')
           PAYMENT_METHODS_READ = new('payment-methods.read')
           PING_READ = new('ping.read')
           PROFILE_ENRICHMENT_READ = new('profile-enrichment.read')
@@ -43,6 +44,7 @@ module Moov
           TRANSFERS_WRITE = new('transfers.write')
           WALLETS_READ = new('wallets.read')
         end
+        open!
       end
     end
   end

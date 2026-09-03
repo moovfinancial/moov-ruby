@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # IssuingIntervalLimit - Specifies the time frame for a velocity limit. `per-transaction` applies to each individual authorization and never resets. Time-based intervals (where supported) reset at midnight ET.
-      class IssuingIntervalLimit < T::Enum
+      class IssuingIntervalLimit
+        include ::Crystalline::Enum
         enums do
           PER_TRANSACTION = new('per-transaction')
           DAILY = new('daily')
           WEEKLY = new('weekly')
           MONTHLY = new('monthly')
         end
+        open!
       end
     end
   end

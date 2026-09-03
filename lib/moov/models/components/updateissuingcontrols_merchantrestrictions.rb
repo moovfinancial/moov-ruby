@@ -7,13 +7,13 @@
 module Moov
   module Models
     module Components
-      # Replaces the merchant restrictions. Set to `null` to remove.
+      # Restricts card usage to specific merchants, independent of merchant category. Set to `null` to remove merchant restrictions.
       class UpdateIssuingControlsMerchantRestrictions
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Whether the listed merchants are the only ones allowed, or the ones to block.
-        field :mode, Crystalline::Nilable.new(Models::Components::IssuingControlsRestrictionMode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingControlsRestrictionMode, true) } }
+        # Whether the listed items should be allowed (`allow`) or blocked (`block`).
+        field :mode, Crystalline::Nilable.new(Models::Components::IssuingControlsRestrictionMode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingControlsRestrictionMode, true) } }
         # The merchants to allow or block.
         field :merchants, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::MerchantEntry)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchants') } }
 

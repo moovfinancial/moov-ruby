@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = FulfillmentTimeframe::IMMEDIATE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = FulfillmentTimeframe.deserialize("custom_value")
 ```
 
 

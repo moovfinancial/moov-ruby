@@ -8,6 +8,9 @@ The authentication method used for the Google Pay token.
 require "moov_ruby"
 
 value = AuthMethod::PAN_ONLY
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = AuthMethod.deserialize("custom_value")
 ```
 
 

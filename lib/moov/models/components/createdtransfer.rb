@@ -23,10 +23,13 @@ module Moov
 
         field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Status of a transfer.
-        field :status, Crystalline::Nilable.new(Models::Components::TransferStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::TransferStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransferStatus, true) } }
         # Reason for a transfer's failure.
-        field :failure_reason, Crystalline::Nilable.new(Models::Components::TransferFailureReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureReason'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferFailureReason, true) } }
-
+        field :failure_reason, Crystalline::Nilable.new(Models::Components::TransferFailureReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureReason'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransferFailureReason, true) } }
+        # Amount associated with this transfer.
+        # In v2026.10 and later, an auth-capture `card-payment` transfer reports the approved authorization amount until a final capture is created.
+        # For these transfers, when a final capture is created, this is updated to the cumulative captured amount.
+        # For other transfer types, this is the transfer amount.
         field :amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
         # An optional description of the transfer that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }

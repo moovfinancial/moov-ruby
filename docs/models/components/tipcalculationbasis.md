@@ -10,6 +10,9 @@ Defines which amount should be used when calculating the final payment total. Th
 require "moov_ruby"
 
 value = TipCalculationBasis::PRE_TAX
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TipCalculationBasis.deserialize("custom_value")
 ```
 
 

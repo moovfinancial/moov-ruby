@@ -17,13 +17,13 @@ module Moov
 
         field :transaction_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionID'), required: true } }
 
-        field :transaction_type, Models::Components::WalletTransactionType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionType, false) } }
+        field :transaction_type, Models::Components::WalletTransactionType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::WalletTransactionType, false) } }
 
-        field :source_type, Models::Components::WalletTransactionSourceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionSourceType, false) } }
+        field :source_type, Models::Components::WalletTransactionSourceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::WalletTransactionSourceType, false) } }
         # The ID of the Moov object to which this transaction is related.
         field :source_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceID'), required: true } }
 
-        field :status, Models::Components::WalletTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletTransactionStatus, false) } }
+        field :status, Models::Components::WalletTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::WalletTransactionStatus, false) } }
         # Detailed description of the transaction.
         field :memo, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('memo'), required: true } }
 

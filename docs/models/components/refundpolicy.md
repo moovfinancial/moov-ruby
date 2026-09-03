@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = RefundPolicy::CONDITIONAL_REFUND
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RefundPolicy.deserialize("custom_value")
 ```
 
 
