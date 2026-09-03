@@ -8,8 +8,8 @@ end
 
 
 class Moov::Models::Components::AdjustmentFees
-  def currency(); end
-  def currency=(str_); end
-  def value_decimal(); end
-  def value_decimal=(str_); end
+  def items(); end
+  def items=(str_); end
+  def total(); end
+  def total=(str_); end
 end

@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = WalletTransactionType::ACCOUNT_FUNDING
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = WalletTransactionType.deserialize("custom_value")
 ```
 
 

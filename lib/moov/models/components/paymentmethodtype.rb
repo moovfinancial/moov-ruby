@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # PaymentMethodType - The payment method type that represents a payment rail and directionality
-      class PaymentMethodType < T::Enum
+      class PaymentMethodType
+        include ::Crystalline::Enum
         enums do
           MOOV_WALLET = new('moov-wallet')
           ACH_DEBIT_FUND = new('ach-debit-fund')
@@ -23,6 +24,7 @@ module Moov
           CARD_PRESENT_PAYMENT = new('card-present-payment')
           INSTANT_BANK_CREDIT = new('instant-bank-credit')
         end
+        open!
       end
     end
   end

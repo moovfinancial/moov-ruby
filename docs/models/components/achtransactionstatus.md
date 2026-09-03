@@ -8,6 +8,9 @@ Status of a transaction within the ACH lifecycle.
 require "moov_ruby"
 
 value = ACHTransactionStatus::UNKNOWN
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = ACHTransactionStatus.deserialize("custom_value")
 ```
 
 

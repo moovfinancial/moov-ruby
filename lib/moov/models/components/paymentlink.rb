@@ -15,11 +15,11 @@ module Moov
         # Unique code identifying this payment link.
         field :code, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('code'), required: true } }
 
-        field :payment_link_type, Models::Components::PaymentLinkType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PaymentLinkType, false) } }
+        field :payment_link_type, Models::Components::PaymentLinkType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentLinkType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::PaymentLinkType, false) } }
         # The operating mode for an account.
-        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::Mode, false) } }
+        field :mode, Models::Components::Mode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::Mode, false) } }
 
-        field :status, Models::Components::PaymentLinkStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::PaymentLinkStatus, false) } }
+        field :status, Models::Components::PaymentLinkStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::PaymentLinkStatus, false) } }
         # The partner's Moov account ID.
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
         # The merchant's Moov account ID.
@@ -59,7 +59,7 @@ module Moov
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Options for payment links used to collect payment.
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
-
+        # Options for payout links used to send a payout.
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
         # An optional collection of line items for a payment link.
         # When line items are provided, their total plus tax must equal the payment link amount.

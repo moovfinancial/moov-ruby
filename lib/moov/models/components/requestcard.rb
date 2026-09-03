@@ -22,7 +22,7 @@ module Moov
         field :billing_address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
         # The expiration date of the card or token.
         field :expiration, Crystalline::Nilable.new(Models::Components::CardExpiration), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration') } }
-
+        # Mutable spend controls for the card.
         field :controls, Crystalline::Nilable.new(Models::Components::IssuingControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
         sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), expiration: T.nilable(Models::Components::CardExpiration), controls: T.nilable(Models::Components::IssuingControls)).void }

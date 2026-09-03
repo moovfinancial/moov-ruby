@@ -20,7 +20,7 @@ module Moov
         #
         # If set to "auto" the UI will automatically select between 
         # "pay" and "confirm" for payments and payouts respectively.
-        field :call_to_action, Crystalline::Nilable.new(Models::Components::CallToAction), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('callToAction'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CallToAction, true) } }
+        field :call_to_action, Crystalline::Nilable.new(Models::Components::CallToAction), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('callToAction'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CallToAction, true) } }
 
         sig { params(title: T.nilable(::String), description: T.nilable(::String), call_to_action: T.nilable(Models::Components::CallToAction)).void }
         def initialize(title: nil, description: nil, call_to_action: nil)

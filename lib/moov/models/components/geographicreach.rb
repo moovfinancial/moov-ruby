@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
 
-      class GeographicReach < T::Enum
+      class GeographicReach
+        include ::Crystalline::Enum
         enums do
           INTERNATIONAL_ONLY = new('international-only')
           US_AND_INTERNATIONAL = new('us-and-international')
           US_ONLY = new('us-only')
         end
+        open!
       end
     end
   end

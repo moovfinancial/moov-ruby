@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
         # Specifies the pricing model used for the calculation of the final fee.
-        field :fee_model, Models::Components::FeeModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeModel'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FeeModel, false) } }
+        field :fee_model, Models::Components::FeeModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeModel'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::FeeModel, false) } }
 
-        field :fee_category, Models::Components::FeeCategory, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeCategory'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FeeCategory, false) } }
+        field :fee_category, Models::Components::FeeCategory, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeCategory'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::FeeCategory, false) } }
         # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :billable_fee_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billableFeeID') } }
         # A unique code identifying a charge.

@@ -167,7 +167,7 @@ module Moov
     sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadImageResponse) }
     def upload(image_upload_request_multi_part:, account_id:, timeout_ms: nil, http_headers: nil)
       # upload -   Upload a new PNG, JPEG, or WebP image with optional metadata. 
-      #   Duplicate images, and requests larger than 16MB will be rejected.
+      #   Duplicate images return the existing image's metadata with a 409 status. Requests larger than 16MB will be rejected.
       request = Models::Operations::UploadImageRequest.new(
         account_id: account_id,
         image_upload_request_multi_part: image_upload_request_multi_part

@@ -21,9 +21,9 @@ module Moov
 
         field :accepted_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('acceptedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :status, Models::Components::FeePlanAgreementStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FeePlanAgreementStatus, false) } }
+        field :status, Models::Components::FeePlanAgreementStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::FeePlanAgreementStatus, false) } }
         # Specifies the card processing pricing model
-        field :card_acquiring_model, Models::Components::CardAcquiringModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAcquiringModel'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardAcquiringModel, false) } }
+        field :card_acquiring_model, Models::Components::CardAcquiringModel, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAcquiringModel'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardAcquiringModel, false) } }
 
         field :billable_fees, Crystalline::Array.new(Models::Components::BillableFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billableFees'), required: true } }
         # The minimum spending amount that must be met in the billing period. If actual usage is below the minimum amount, account is charged the difference.
@@ -34,9 +34,13 @@ module Moov
         field :account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID') } }
         # The description of the agreement.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
+        # The agreement this one replaced. Only set when the agreement was created by replacing another.
+        field :prior_agreement_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priorAgreementID') } }
+        # The date and time the prior agreement was terminated.
+        field :prior_agreement_terminated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priorAgreementTerminatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(agreement_id: ::String, plan_id: ::String, name: ::String, accepted_on: ::DateTime, status: Models::Components::FeePlanAgreementStatus, card_acquiring_model: Models::Components::CardAcquiringModel, billable_fees: T::Array[Models::Components::BillableFee], minimum_commitment: Models::Components::MinimumCommitment, monthly_platform_fee: Models::Components::MonthlyPlatformFee, account_id: T.nilable(::String), description: T.nilable(::String)).void }
-        def initialize(agreement_id:, plan_id:, name:, accepted_on:, status:, card_acquiring_model:, billable_fees:, minimum_commitment:, monthly_platform_fee:, account_id: nil, description: nil)
+        sig { params(agreement_id: ::String, plan_id: ::String, name: ::String, accepted_on: ::DateTime, status: Models::Components::FeePlanAgreementStatus, card_acquiring_model: Models::Components::CardAcquiringModel, billable_fees: T::Array[Models::Components::BillableFee], minimum_commitment: Models::Components::MinimumCommitment, monthly_platform_fee: Models::Components::MonthlyPlatformFee, account_id: T.nilable(::String), description: T.nilable(::String), prior_agreement_id: T.nilable(::String), prior_agreement_terminated_on: T.nilable(::DateTime)).void }
+        def initialize(agreement_id:, plan_id:, name:, accepted_on:, status:, card_acquiring_model:, billable_fees:, minimum_commitment:, monthly_platform_fee:, account_id: nil, description: nil, prior_agreement_id: nil, prior_agreement_terminated_on: nil)
           @agreement_id = agreement_id
           @plan_id = plan_id
           @name = name
@@ -48,6 +52,8 @@ module Moov
           @monthly_platform_fee = monthly_platform_fee
           @account_id = account_id
           @description = description
+          @prior_agreement_id = prior_agreement_id
+          @prior_agreement_terminated_on = prior_agreement_terminated_on
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -64,6 +70,8 @@ module Moov
           return false unless @monthly_platform_fee == other.monthly_platform_fee
           return false unless @account_id == other.account_id
           return false unless @description == other.description
+          return false unless @prior_agreement_id == other.prior_agreement_id
+          return false unless @prior_agreement_terminated_on == other.prior_agreement_terminated_on
           true
         end
       end

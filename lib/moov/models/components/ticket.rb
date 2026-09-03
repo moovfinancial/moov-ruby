@@ -21,7 +21,7 @@ module Moov
 
         field :contact, Models::Components::TicketContact, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('contact'), required: true } }
 
-        field :status, Models::Components::TicketStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TicketStatus, false) } }
+        field :status, Models::Components::TicketStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TicketStatus, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 

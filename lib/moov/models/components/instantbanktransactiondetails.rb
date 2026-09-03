@@ -13,13 +13,13 @@ module Moov
         include Crystalline::MetadataFields
 
         # The network that the transaction was processed on.
-        field :network, Models::Components::InstantBankNetwork, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('network'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InstantBankNetwork, false) } }
+        field :network, Models::Components::InstantBankNetwork, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('network'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InstantBankNetwork, false) } }
         # Status of a transaction within the instant-bank lifecycle.
-        field :status, Models::Components::InstantBankTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InstantBankTransactionStatus, false) } }
+        field :status, Models::Components::InstantBankTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InstantBankTransactionStatus, false) } }
         # Response code returned by network on failure.
         field :network_response_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkResponseCode') } }
         # Status codes for instant-bank failures.
-        field :failure_code, Crystalline::Nilable.new(Models::Components::InstantBankFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InstantBankFailureCode, true) } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::InstantBankFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InstantBankFailureCode, true) } }
 
         field :end_to_end_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('endToEndID') } }
 

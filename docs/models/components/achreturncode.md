@@ -29,6 +29,9 @@ The return code of an ACH transaction that caused the bank account status to cha
 require "moov_ruby"
 
 value = ACHReturnCode::R02
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = ACHReturnCode.deserialize("custom_value")
 ```
 
 

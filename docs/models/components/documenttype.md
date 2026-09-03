@@ -8,6 +8,9 @@ Types of documents that can be uploaded.
 require "moov_ruby"
 
 value = DocumentType::DRIVERS_LICENSE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = DocumentType.deserialize("custom_value")
 ```
 
 

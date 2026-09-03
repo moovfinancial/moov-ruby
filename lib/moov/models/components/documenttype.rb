@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # DocumentType - Types of documents that can be uploaded.
-      class DocumentType < T::Enum
+      class DocumentType
+        include ::Crystalline::Enum
         enums do
           DRIVERS_LICENSE = new('driversLicense')
           PASSPORT = new('passport')
           UTILITY_BILL = new('utilityBill')
           BANK_STATEMENT = new('bankStatement')
         end
+        open!
       end
     end
   end

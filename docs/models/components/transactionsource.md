@@ -11,6 +11,9 @@ Omit for customer-initiated e-commerce transactions.
 require "moov_ruby"
 
 value = TransactionSource::FIRST_RECURRING
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TransactionSource.deserialize("custom_value")
 ```
 
 

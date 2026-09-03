@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class FulfillmentMethod < T::Enum
+      class FulfillmentMethod
+        include ::Crystalline::Enum
         enums do
           BILL_OR_DEBT_PAYMENT = new('bill-or-debt-payment')
           DIGITAL_CONTENT = new('digital-content')
@@ -20,6 +21,7 @@ module Moov
           SHIPPED_PHYSICAL_GOODS = new('shipped-physical-goods')
           SUBSCRIPTION_OR_MEMBERSHIP = new('subscription-or-membership')
         end
+        open!
       end
     end
   end

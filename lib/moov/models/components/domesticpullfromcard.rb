@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # DomesticPullFromCard - Indicates if the card supports domestic pull-from-card transfer.
-      class DomesticPullFromCard < T::Enum
+      class DomesticPullFromCard
+        include ::Crystalline::Enum
         enums do
           NOT_SUPPORTED = new('not-supported')
           SUPPORTED = new('supported')
           UNKNOWN = new('unknown')
         end
+        open!
       end
     end
   end
