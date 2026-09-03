@@ -1,0 +1,12 @@
+# BankAccountAttestationValidationError
+
+Describes which fields of a bank account attestation request failed validation.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `attested_at`                                                                                                          | *T.nilable(::String)*                                                                                                  | :heavy_minus_sign:                                                                                                     | Populated when `attestedAt` is missing, malformed, before the bank account's most recent R29 return, or a future date. |
+| `description`                                                                                                          | *T.nilable(::String)*                                                                                                  | :heavy_minus_sign:                                                                                                     | Populated when `description` is missing or exceeds the maximum length.                                                 |
+| `raw_response`                                                                                                         | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response)                                            | :heavy_minus_sign:                                                                                                     | Raw HTTP response; suitable for custom response parsing                                                                |

@@ -12,8 +12,8 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # For payouts, indicates which party bears the fee. Defaults to `source`.
-        field :payout, Crystalline::Nilable.new(Models::Components::FeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::FeePaidBy, true) } }
+        # Defaults to `source`.
+        field :payout, Crystalline::Nilable.new(Models::Components::FeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::FeePaidBy, true) } }
 
         sig { params(payout: T.nilable(Models::Components::FeePaidBy)).void }
         def initialize(payout: nil)

@@ -22,14 +22,17 @@ module Moov
         field :ach_debit, Crystalline::Nilable.new(Models::Components::ACHDebitOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDebit') } }
 
         field :ach_credit, Crystalline::Nilable.new(Models::Components::ACHCreditOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achCredit') } }
+        # Wire-specific options returned on a transfer.
+        field :wire, Crystalline::Nilable.new(Models::Components::WireOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('wire') } }
 
-        sig { params(card_payment: T.nilable(Models::Components::CardPaymentOptions), push_to_card: T.nilable(Models::Components::PushToCardOptions), pull_from_card: T.nilable(Models::Components::PullFromCardOptions), ach_debit: T.nilable(Models::Components::ACHDebitOptions), ach_credit: T.nilable(Models::Components::ACHCreditOptions)).void }
-        def initialize(card_payment: nil, push_to_card: nil, pull_from_card: nil, ach_debit: nil, ach_credit: nil)
+        sig { params(card_payment: T.nilable(Models::Components::CardPaymentOptions), push_to_card: T.nilable(Models::Components::PushToCardOptions), pull_from_card: T.nilable(Models::Components::PullFromCardOptions), ach_debit: T.nilable(Models::Components::ACHDebitOptions), ach_credit: T.nilable(Models::Components::ACHCreditOptions), wire: T.nilable(Models::Components::WireOptions)).void }
+        def initialize(card_payment: nil, push_to_card: nil, pull_from_card: nil, ach_debit: nil, ach_credit: nil, wire: nil)
           @card_payment = card_payment
           @push_to_card = push_to_card
           @pull_from_card = pull_from_card
           @ach_debit = ach_debit
           @ach_credit = ach_credit
+          @wire = wire
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -40,6 +43,7 @@ module Moov
           return false unless @pull_from_card == other.pull_from_card
           return false unless @ach_debit == other.ach_debit
           return false unless @ach_credit == other.ach_credit
+          return false unless @wire == other.wire
           true
         end
       end

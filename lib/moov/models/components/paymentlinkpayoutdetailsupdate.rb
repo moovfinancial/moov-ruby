@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-
+      # Options for payout links used to send a payout.
       class PaymentLinkPayoutDetailsUpdate
         extend T::Sig
         include Crystalline::MetadataFields
@@ -21,14 +21,12 @@ module Moov
         field :recipient, Crystalline::Nilable.new(Models::Components::PayoutRecipient), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient') } }
         # Optional free-form metadata for the transfer.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
-        # Delivery options for push-to-card payouts. Only applies when `allowedMethods` includes `push-to-card`.
-        #
-        # The `deferred` speed and `deferredBy` apply to `push-to-card` only. Other push methods
-        # (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
+        # Delivery options for `push-to-card` and `push-to-apple-pay` payouts.
         field :push_options, Crystalline::Nilable.new(Models::Components::PushOptionsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
-        # Indicates which party bears the fee, keyed by disbursement payment method (`DisbursementPaymentMethodType`).
+        # Indicates which party pays the fee, keyed by `PayoutFeePaidByKey`. If keys are not set,
+        # the default is `source`.
         #
-        # Sparse — include only the methods you want to attribute. Any method left unset defaults to `source`.
+        # Possible `PayoutFeePaidByKey` keys: `instant-push-to-card`, `deferred-push-to-card`, `instant-push-to-apple-pay`, `deferred-push-to-apple-pay`, `rtp-credit`, `ach-credit-same-day`, `ach-credit-standard`, `push-to-google-pay`
         field :fee_paid_by, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::FeePaidBy)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
 
         sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipient), metadata: T.nilable(T::Hash[Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptionsUpdate), fee_paid_by: T.nilable(T::Hash[Symbol, Models::Components::FeePaidBy])).void }

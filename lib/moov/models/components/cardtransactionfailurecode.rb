@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class CardTransactionFailureCode < T::Enum
+      class CardTransactionFailureCode
+        include ::Crystalline::Enum
         enums do
           CALL_ISSUER = new('call-issuer')
           DO_NOT_HONOR = new('do-not-honor')
@@ -33,9 +34,26 @@ module Moov
           ISSUER_NOT_AVAILABLE = new('issuer-not-available')
           COULD_NOT_ROUTE = new('could-not-route')
           CARDHOLDER_ACCOUNT_CLOSED = new('cardholder-account-closed')
+          ACCOUNT_CLOSED = new('account-closed')
+          ACCOUNT_NOT_ACTIVATED = new('account-not-activated')
+          AUTHENTICATION_FAILED = new('authentication-failed')
+          AUTHENTICATION_REQUIRED = new('authentication-required')
+          CARDHOLDER_ACTION_REQUIRED = new('cardholder-action-required')
+          FORMAT_ERROR = new('format-error')
+          INVALID_PIN = new('invalid-pin')
+          OFFLINE_APPROVED = new('offline-approved')
+          OFFLINE_DECLINED = new('offline-declined')
+          PARTIAL_APPROVAL = new('partial-approval')
+          PAYMENT_STOPPED = new('payment-stopped')
+          PIN_REQUIRED = new('pin-required')
+          RECORD_NOT_FOUND = new('record-not-found')
+          SURCHARGE_NOT_PERMITTED = new('surcharge-not-permitted')
+          TRANSACTION_REVERSED = new('transaction-reversed')
+          VERIFICATION_FAILED = new('verification-failed')
           UNKNOWN_ISSUE = new('unknown-issue')
           DUPLICATE_TRANSACTION = new('duplicate-transaction')
         end
+        open!
       end
     end
   end

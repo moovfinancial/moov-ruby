@@ -12,6 +12,8 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # Status of a transaction within the ACH lifecycle.
+        field :status, Models::Components::ACHTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::ACHTransactionStatus, false) } }
 
         field :trace_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('traceNumber'), required: true } }
 
@@ -19,8 +21,9 @@ module Moov
 
         field :correction, Crystalline::Nilable.new(Models::Components::ACHException), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('correction') } }
 
-        sig { params(trace_number: ::String, return_: T.nilable(Models::Components::ACHException), correction: T.nilable(Models::Components::ACHException)).void }
-        def initialize(trace_number:, return_: nil, correction: nil)
+        sig { params(status: Models::Components::ACHTransactionStatus, trace_number: ::String, return_: T.nilable(Models::Components::ACHException), correction: T.nilable(Models::Components::ACHException)).void }
+        def initialize(status:, trace_number:, return_: nil, correction: nil)
+          @status = status
           @trace_number = trace_number
           @return_ = return_
           @correction = correction
@@ -29,6 +32,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @status == other.status
           return false unless @trace_number == other.trace_number
           return false unless @return_ == other.return_
           return false unless @correction == other.correction

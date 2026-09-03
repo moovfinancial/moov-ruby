@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # CapabilityStatus - The status of the capability requested for an account.
-      class CapabilityStatus < T::Enum
+      class CapabilityStatus
+        include ::Crystalline::Enum
         enums do
           ENABLED = new('enabled')
           DISABLED = new('disabled')
           PENDING = new('pending')
           IN_REVIEW = new('in-review')
         end
+        open!
       end
     end
   end

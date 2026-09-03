@@ -14,9 +14,9 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Amount to refund. Before v2026.10, specify the amount in integer cents. If omitted, the original transfer's full amount will be refunded.
+        # Amount to refund. If omitted, the original transfer's full amount will be refunded.
         field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
-        # ID of the capture to refund. Required for multi-capture card payment transfers.
+        # ID of the capture to refund. This field is only relevant for an auth-capture `card-payment` transfer.
         field :capture_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('captureID') } }
         # Breakdown of the refunded amount.
         field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }

@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # AccountType - The type of entity represented by this account.
-      class AccountType < T::Enum
+      class AccountType
+        include ::Crystalline::Enum
         enums do
           INDIVIDUAL = new('individual')
           BUSINESS = new('business')
           GUEST = new('guest')
         end
+        open!
       end
     end
   end

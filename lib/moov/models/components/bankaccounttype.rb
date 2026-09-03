@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # BankAccountType - The bank account type.
-      class BankAccountType < T::Enum
+      class BankAccountType
+        include ::Crystalline::Enum
         enums do
           CHECKING = new('checking')
           SAVINGS = new('savings')
           GENERAL_LEDGER = new('general-ledger')
           LOAN = new('loan')
         end
+        open!
       end
     end
   end

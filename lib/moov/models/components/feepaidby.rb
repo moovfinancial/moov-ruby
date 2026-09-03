@@ -7,12 +7,14 @@
 module Moov
   module Models
     module Components
-      # FeePaidBy - Indicates which party to a money movement bears an incurred fee.
-      class FeePaidBy < T::Enum
+
+      class FeePaidBy
+        include ::Crystalline::Enum
         enums do
           SOURCE = new('source')
           DESTINATION = new('destination')
         end
+        open!
       end
     end
   end

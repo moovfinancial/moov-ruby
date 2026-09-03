@@ -15,7 +15,7 @@ module Moov
         # The Moov account that owns the deposit view the account was ingested into.
         field :moov_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('moovAccountID'), required: true } }
         # The core banking source system that produced the ingested payload.
-        field :source_system, Models::Components::SourceSystem, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceSystem'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SourceSystem, false) } }
+        field :source_system, Models::Components::SourceSystem, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceSystem'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::SourceSystem, false) } }
         # The identifier of the deposit account within the source system.
         field :source_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sourceAccountID'), required: true } }
         # The date and time the deposit account was ingested.

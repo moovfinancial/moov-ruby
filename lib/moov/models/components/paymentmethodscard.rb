@@ -19,9 +19,9 @@ module Moov
         # This field can be used to identify specific payment methods across multiple accounts on your platform.
         field :fingerprint, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fingerprint'), required: true } }
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardBrand, false) } }
         # The type of the card.
-        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardType, false) } }
+        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardType, false) } }
         # Last four digits of the card number
         field :last_four_card_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber'), required: true } }
         # The first six to eight digits of the card number, which identifies the financial institution that issued the card.
@@ -46,9 +46,9 @@ module Moov
         # The results of the most recent card update request.
         field :card_account_updater, Crystalline::Nilable.new(Models::Components::CardAccountUpdater), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardAccountUpdater') } }
         # Indicates which level of domestic push-to-card transfer is supported by the card, if any.
-        field :domestic_push_to_card, Crystalline::Nilable.new(Models::Components::DomesticPushToCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPushToCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPushToCard, true) } }
+        field :domestic_push_to_card, Crystalline::Nilable.new(Models::Components::DomesticPushToCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPushToCard'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::DomesticPushToCard, true) } }
         # Indicates if the card supports domestic pull-from-card transfer.
-        field :domestic_pull_from_card, Crystalline::Nilable.new(Models::Components::DomesticPullFromCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPullFromCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPullFromCard, true) } }
+        field :domestic_pull_from_card, Crystalline::Nilable.new(Models::Components::DomesticPullFromCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPullFromCard'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::DomesticPullFromCard, true) } }
         # The category or level of the card defined by the issuer.
         # Examples include, but not limited to, "REWARDS", "TRADITIONAL REWARDS", "CLASSIC", and "CORPORATE PURCHASING".
         field :card_category, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardCategory') } }

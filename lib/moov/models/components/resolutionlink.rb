@@ -23,7 +23,7 @@ module Moov
         # The URL of the resolution link.
         field :url, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('url'), required: true } }
         # The current status of the resolution link.
-        field :status, Models::Components::ResolutionLinkStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::ResolutionLinkStatus, false) } }
+        field :status, Models::Components::ResolutionLinkStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::ResolutionLinkStatus, false) } }
         # The date and time the resolution link was created.
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The date and time the resolution link was last updated.

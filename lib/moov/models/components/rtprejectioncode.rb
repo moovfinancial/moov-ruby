@@ -16,7 +16,8 @@ module Moov
       # - AG01: Transactions Forbidden On Account
       # - AG03: Transaction Type Not Supported
       # - MD07: Customer Deceased
-      class RTPRejectionCode < T::Enum
+      class RTPRejectionCode
+        include ::Crystalline::Enum
         enums do
           AC03 = new('AC03')
           AC04 = new('AC04')
@@ -26,6 +27,7 @@ module Moov
           AG03 = new('AG03')
           MD07 = new('MD07')
         end
+        open!
       end
     end
   end

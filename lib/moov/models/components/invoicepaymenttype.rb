@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
 
-      class InvoicePaymentType < T::Enum
+      class InvoicePaymentType
+        include ::Crystalline::Enum
         enums do
           TRANSFER = new('transfer')
           EXTERNAL = new('external')
         end
+        open!
       end
     end
   end

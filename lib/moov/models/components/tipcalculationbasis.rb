@@ -10,11 +10,13 @@ module Moov
       # TipCalculationBasis - Defines which amount should be used when calculating the final payment total. This calculation applies for percentage tip values.
       # - `pre-tax`: Tip amounts are calculated using the subtotal amount before taxes
       # - `post-tax`: Tip amounts are calculated using the subtotal amount + taxes
-      class TipCalculationBasis < T::Enum
+      class TipCalculationBasis
+        include ::Crystalline::Enum
         enums do
           PRE_TAX = new('pre-tax')
           POST_TAX = new('post-tax')
         end
+        open!
       end
     end
   end

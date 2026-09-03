@@ -16,7 +16,7 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :cursor, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'cursor', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
         field :status, Crystalline::Nilable.new(Models::Components::TicketStatus), { 'query_param': { 'field_name': 'status', 'style': 'form', 'explode': false } }

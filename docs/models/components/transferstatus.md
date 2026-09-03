@@ -8,6 +8,9 @@ Status of a transfer.
 require "moov_ruby"
 
 value = TransferStatus::CREATED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TransferStatus.deserialize("custom_value")
 ```
 
 

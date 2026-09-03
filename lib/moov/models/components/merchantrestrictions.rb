@@ -12,8 +12,8 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Whether the listed merchants are the only ones allowed, or the ones to block.
-        field :mode, Models::Components::IssuingControlsRestrictionMode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingControlsRestrictionMode, false) } }
+        # Whether the listed items should be allowed (`allow`) or blocked (`block`).
+        field :mode, Models::Components::IssuingControlsRestrictionMode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingControlsRestrictionMode, false) } }
         # The merchants to allow or block.
         field :merchants, Crystalline::Array.new(Models::Components::MerchantEntry), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchants'), required: true } }
 

@@ -15,11 +15,11 @@ module Moov
         # The identifier for this event. Use the `eventType` field to determine what resource is identified by this ID (`authorization`, `reversal`, etc.).
         field :event_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('eventID'), required: true } }
         # The type of event that occurred on the card.
-        field :event_type, Models::Components::IssuedCardEventType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('eventType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardEventType, false) } }
+        field :event_type, Models::Components::IssuedCardEventType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('eventType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuedCardEventType, false) } }
         # A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
         field :amount, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
         # The result of an event.
-        field :result, Models::Components::IssuedCardAuthorizationEventResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('result'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardAuthorizationEventResult, false) } }
+        field :result, Models::Components::IssuedCardAuthorizationEventResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('result'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuedCardAuthorizationEventResult, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 

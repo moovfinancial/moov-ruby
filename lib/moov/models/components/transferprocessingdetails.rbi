@@ -20,4 +20,6 @@ class Moov::Models::Components::TransferProcessingDetails
   def ach_credit=(str_); end
   def instant_bank_credit(); end
   def instant_bank_credit=(str_); end
+  def wire(); end
+  def wire=(str_); end
 end

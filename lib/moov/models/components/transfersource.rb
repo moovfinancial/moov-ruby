@@ -17,7 +17,7 @@ module Moov
 
         field :payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID') } }
         # The payment method type that represents a payment rail and directionality
-        field :payment_method_type, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferPaymentMethodType, true) } }
+        field :payment_method_type, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodType'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransferPaymentMethodType, true) } }
 
         field :account, Crystalline::Nilable.new(Models::Components::TransferAccount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account') } }
         # A bank account as contained within a payment method.

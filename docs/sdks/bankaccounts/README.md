@@ -29,6 +29,27 @@ you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/bank-accounts.write` scope.
+* [create_attestation](#create_attestation) -   Submit a new authorization attestation for a bank account in an `errored` status due to an R29 ACH return (`Corporate Customer Advises Not Authorized`).
+
+  After obtaining new authorization from the receiver, submit an attestation with the date the authorization was obtained and a brief description of how the authorization was obtained. If the attestation is accepted, the bank account transitions from `errored` to `verified`.
+
+  Constraints
+
+  - The bank account's current errored status must be the result of an R29 return.
+  - `attestedAt` must be on or after the date of the bank account's most recent R29 return and cannot be a future date.
+  - Only one attestation may be submitted for a bank account. Use the [Get attestation eligibility](https://docs.moov.io/api/sources/bank-accounts/attestation-eligibility/) endpoint to confirm eligibility before submitting an attestation.
+
+  This endpoint is available only to allowlisted partners. Contact Moov Support for more information.
+* [list_attestations](#list_attestations) - List the attestations submitted for a bank account.
+* [get_attestation_eligibility](#get_attestation_eligibility) - Check whether a bank account is currently eligible for a new authorization attestation without submitting one.
+
+- `enabled` indicates whether the calling account has access to the attestations feature. If `enabled` is `false`, `eligible` is always `false`.
+- When `enabled` is `true`, `eligible` indicates whether the bank account currently meets the eligibility requirements for a new attestation: the bank account must be `errored` due to an R29 return, with no prior attestations.
+
+This endpoint always returns `200`, including when the bank account is not eligible. Check the `eligible` field to determine eligibility.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
 * [initiate_micro_deposits](#initiate_micro_deposits) - Micro-deposits help confirm bank account ownership, helping reduce fraud and the risk of unauthorized activity. 
 Use this method to initiate the micro-deposit verification, sending two small credit transfers to the bank account 
 you want to confirm.
@@ -286,6 +307,158 @@ end
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | Models::Errors::GenericError | 400, 409                     | application/json             |
+| Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
+
+## create_attestation
+
+  Submit a new authorization attestation for a bank account in an `errored` status due to an R29 ACH return (`Corporate Customer Advises Not Authorized`).
+
+  After obtaining new authorization from the receiver, submit an attestation with the date the authorization was obtained and a brief description of how the authorization was obtained. If the attestation is accepted, the bank account transitions from `errored` to `verified`.
+
+  Constraints
+
+  - The bank account's current errored status must be the result of an R29 return.
+  - `attestedAt` must be on or after the date of the bank account's most recent R29 return and cannot be a future date.
+  - Only one attestation may be submitted for a bank account. Use the [Get attestation eligibility](https://docs.moov.io/api/sources/bank-accounts/attestation-eligibility/) endpoint to confirm eligibility before submitting an attestation.
+
+  This endpoint is available only to allowlisted partners. Contact Moov Support for more information.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="createBankAccountAttestation" method="post" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/attestations" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.bank_accounts.create_attestation(account_id: '<id>', bank_account_id: '<id>', create_bank_account_attestation: Models::Components::CreateBankAccountAttestation.new(
+  attested_at: Date.parse('2026-05-15'),
+  description: 'each duh famously athwart'
+))
+
+unless res.bank_account_attestation.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                            | *::String*                                                                                              | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `bank_account_id`                                                                                       | *::String*                                                                                              | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `create_bank_account_attestation`                                                                       | [Models::Components::CreateBankAccountAttestation](../../models/shared/createbankaccountattestation.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+
+### Response
+
+**[T.nilable(Models::Operations::CreateBankAccountAttestationResponse)](../../models/operations/createbankaccountattestationresponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| Models::Errors::GenericError                          | 400, 409                                              | application/json                                      |
+| Models::Errors::BankAccountAttestationValidationError | 422                                                   | application/json                                      |
+| Errors::APIError                                      | 4XX, 5XX                                              | \*/\*                                                 |
+
+## list_attestations
+
+List the attestations submitted for a bank account.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="listBankAccountAttestations" method="get" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/attestations" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.bank_accounts.list_attestations(account_id: '<id>', bank_account_id: '<id>')
+
+unless res.bank_account_attestation_summaries.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `account_id`       | *::String*         | :heavy_check_mark: | N/A                |
+| `bank_account_id`  | *::String*         | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[T.nilable(Models::Operations::ListBankAccountAttestationsResponse)](../../models/operations/listbankaccountattestationsresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## get_attestation_eligibility
+
+Check whether a bank account is currently eligible for a new authorization attestation without submitting one.
+
+- `enabled` indicates whether the calling account has access to the attestations feature. If `enabled` is `false`, `eligible` is always `false`.
+- When `enabled` is `true`, `eligible` indicates whether the bank account currently meets the eligibility requirements for a new attestation: the bank account must be `errored` due to an R29 return, with no prior attestations.
+
+This endpoint always returns `200`, including when the bank account is not eligible. Check the `eligible` field to determine eligibility.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/bank-accounts.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="getBankAccountAttestationEligibility" method="get" path="/accounts/{accountID}/bank-accounts/{bankAccountID}/attestations-eligibility" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.bank_accounts.get_attestation_eligibility(account_id: '<id>', bank_account_id: '<id>')
+
+unless res.bank_account_attestation_eligibility.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                                                | *::String*                                                                                                                  | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
+| `bank_account_id`                                                                                                           | *::String*                                                                                                                  | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
+| `attested_at`                                                                                                               | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html)                                                | :heavy_minus_sign:                                                                                                          | Date to check eligibility against, as if it were the `attestedAt` value of a new attestation. Defaults<br/>to the current date. |
+
+### Response
+
+**[T.nilable(Models::Operations::GetBankAccountAttestationEligibilityResponse)](../../models/operations/getbankaccountattestationeligibilityresponse.md)**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| Models::Errors::GenericError | 400                          | application/json             |
 | Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
 
 ## initiate_micro_deposits

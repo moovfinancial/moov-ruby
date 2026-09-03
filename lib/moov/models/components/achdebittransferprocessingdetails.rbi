@@ -8,6 +8,8 @@ end
 
 
 class Moov::Models::Components::ACHDebitTransferProcessingDetails
+  def status(); end
+  def status=(str_); end
   def trace_number(); end
   def trace_number=(str_); end
   def return_(); end

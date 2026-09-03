@@ -16,6 +16,9 @@ The rejection code of an RTP transaction that caused the bank account status to 
 require "moov_ruby"
 
 value = RTPRejectionCode::AC03
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RTPRejectionCode.deserialize("custom_value")
 ```
 
 

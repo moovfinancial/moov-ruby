@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # IssuingMerchantCategory - Predefined merchant category groups.
-      class IssuingMerchantCategory < T::Enum
+      class IssuingMerchantCategory
+        include ::Crystalline::Enum
         enums do
           ADVERTISING = new('advertising')
           AIRLINES = new('airlines')
@@ -37,6 +38,7 @@ module Moov
           SUBSCRIPTIONS = new('subscriptions')
           TRAVEL_AGENCIES = new('travel-agencies')
         end
+        open!
       end
     end
   end

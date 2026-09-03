@@ -11,6 +11,9 @@ in the `X-Source-System` header on every request.
 require "moov_ruby"
 
 value = SourceSystem::JH_SILVERLAKE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = SourceSystem.deserialize("custom_value")
 ```
 
 

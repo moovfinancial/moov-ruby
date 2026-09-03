@@ -8,6 +8,9 @@ The rail and direction used to move funds for a transfer.
 require "moov_ruby"
 
 value = TransferType::CARD_PAYMENT
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = TransferType.deserialize("custom_value")
 ```
 
 
@@ -23,3 +26,4 @@ value = TransferType::CARD_PAYMENT
 | `ACH_DEBIT_TO_ACH_CREDIT` | ach-debit-to-ach-credit   |
 | `INSTANT_BANK_CREDIT`     | instant-bank-credit       |
 | `WALLET`                  | wallet                    |
+| `WIRE_CREDIT`             | wire-credit               |

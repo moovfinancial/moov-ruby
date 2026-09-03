@@ -15,7 +15,7 @@ module Moov
 
         field :sweep_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sweepID'), required: true } }
 
-        field :status, Models::Components::SweepStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SweepStatus, false) } }
+        field :status, Models::Components::SweepStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::SweepStatus, false) } }
         # The total net amount of wallet transactions accrued in the sweep.
         field :accrued_amount, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accruedAmount'), required: true } }
         # A 3-letter ISO 4217 currency code.

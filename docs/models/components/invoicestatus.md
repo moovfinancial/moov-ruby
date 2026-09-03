@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = InvoiceStatus::DRAFT
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = InvoiceStatus.deserialize("custom_value")
 ```
 
 

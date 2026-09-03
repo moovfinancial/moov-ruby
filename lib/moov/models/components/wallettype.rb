@@ -11,12 +11,14 @@ module Moov
       #   - `default`: The system-generated wallet automatically created when an account is granted the wallet capability.
       #   - `general`: An additional, user-defined wallet created via API or Dashboard.
       #   - `card-issuing`: The system-generated wallet automatically created when an account is granted the card-issuing capability.
-      class WalletType < T::Enum
+      class WalletType
+        include ::Crystalline::Enum
         enums do
           DEFAULT = new('default')
           GENERAL = new('general')
           CARD_ISSUING = new('card-issuing')
         end
+        open!
       end
     end
   end

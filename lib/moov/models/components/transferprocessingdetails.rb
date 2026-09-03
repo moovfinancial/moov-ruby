@@ -24,15 +24,18 @@ module Moov
         field :ach_credit, Crystalline::Nilable.new(Models::Components::ACHCreditTransferProcessingDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achCredit') } }
 
         field :instant_bank_credit, Crystalline::Nilable.new(Models::Components::InstantBankCreditTransferProcessingDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('instantBankCredit') } }
+        # Wire-specific processing details returned on a transfer.
+        field :wire, Crystalline::Nilable.new(Models::Components::WireTransferProcessingDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('wire') } }
 
-        sig { params(card_payment: T.nilable(Models::Components::CardPaymentTransferProcessingDetails), push_to_card: T.nilable(Models::Components::PushToCardTransferProcessingDetails), pull_from_card: T.nilable(Models::Components::PullFromCardTransferProcessingDetails), ach_debit: T.nilable(Models::Components::ACHDebitTransferProcessingDetails), ach_credit: T.nilable(Models::Components::ACHCreditTransferProcessingDetails), instant_bank_credit: T.nilable(Models::Components::InstantBankCreditTransferProcessingDetails)).void }
-        def initialize(card_payment: nil, push_to_card: nil, pull_from_card: nil, ach_debit: nil, ach_credit: nil, instant_bank_credit: nil)
+        sig { params(card_payment: T.nilable(Models::Components::CardPaymentTransferProcessingDetails), push_to_card: T.nilable(Models::Components::PushToCardTransferProcessingDetails), pull_from_card: T.nilable(Models::Components::PullFromCardTransferProcessingDetails), ach_debit: T.nilable(Models::Components::ACHDebitTransferProcessingDetails), ach_credit: T.nilable(Models::Components::ACHCreditTransferProcessingDetails), instant_bank_credit: T.nilable(Models::Components::InstantBankCreditTransferProcessingDetails), wire: T.nilable(Models::Components::WireTransferProcessingDetails)).void }
+        def initialize(card_payment: nil, push_to_card: nil, pull_from_card: nil, ach_debit: nil, ach_credit: nil, instant_bank_credit: nil, wire: nil)
           @card_payment = card_payment
           @push_to_card = push_to_card
           @pull_from_card = pull_from_card
           @ach_debit = ach_debit
           @ach_credit = ach_credit
           @instant_bank_credit = instant_bank_credit
+          @wire = wire
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -44,6 +47,7 @@ module Moov
           return false unless @ach_debit == other.ach_debit
           return false unless @ach_credit == other.ach_credit
           return false unless @instant_bank_credit == other.instant_bank_credit
+          return false unless @wire == other.wire
           true
         end
       end

@@ -10,7 +10,8 @@ module Moov
       # UnderwritingStatus
       #
       # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
-      class UnderwritingStatus < T::Enum
+      class UnderwritingStatus
+        include ::Crystalline::Enum
         enums do
           APPROVED = new('approved')
           REJECTED = new('rejected')
@@ -18,6 +19,7 @@ module Moov
           PENDING = new('pending')
           NOT_REQUESTED = new('notRequested')
         end
+        open!
       end
     end
   end

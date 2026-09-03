@@ -15,7 +15,7 @@ module Moov
 
         field :transfer_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID'), required: true } }
         # The rail and direction used to move funds for a transfer.
-        field :transfer_type, Models::Components::TransferType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferType, false) } }
+        field :transfer_type, Models::Components::TransferType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransferType, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
@@ -23,8 +23,11 @@ module Moov
 
         field :destination, Models::Components::TransferDestination, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destination'), required: true } }
         # Status of a transfer.
-        field :status, Models::Components::TransferStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferStatus, false) } }
-
+        field :status, Models::Components::TransferStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransferStatus, false) } }
+        # Amount associated with this transfer.
+        # In v2026.10 and later, an auth-capture `card-payment` transfer reports the approved authorization amount until a final capture is created.
+        # For these transfers, when a final capture is created, this is updated to the cumulative captured amount.
+        # For other transfer types, this is the transfer amount.
         field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 
         field :options, Models::Components::TransferRailOptions, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options'), required: true } }
@@ -33,7 +36,7 @@ module Moov
 
         field :completed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('completedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
         # Reason for a transfer's failure.
-        field :failure_reason, Crystalline::Nilable.new(Models::Components::TransferFailureReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureReason'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransferFailureReason, true) } }
+        field :failure_reason, Crystalline::Nilable.new(Models::Components::TransferFailureReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureReason'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransferFailureReason, true) } }
         # An optional description of the transfer that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
@@ -69,7 +72,8 @@ module Moov
         field :invoice_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceID') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::TransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
-
+        # Authorization amounts.
+        # This field is present only for an auth-capture `card-payment` transfer.
         field :authorization, Crystalline::Nilable.new(Models::Components::TransferAuthorization), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorization') } }
 
         sig { params(transfer_id: ::String, transfer_type: Models::Components::TransferType, created_on: ::DateTime, source: Models::Components::TransferSource, destination: Models::Components::TransferDestination, status: Models::Components::TransferStatus, amount: Models::Components::AmountDecimal, options: Models::Components::TransferRailOptions, processing_details: Models::Components::TransferProcessingDetails, completed_on: T.nilable(::DateTime), failure_reason: T.nilable(Models::Components::TransferFailureReason), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), facilitator_fee: T.nilable(Models::Components::FacilitatorFee), moov_fee: T.nilable(Models::Components::AmountDecimal), moov_fee_details: T.nilable(Models::Components::MoovFeeDetails), moov_fees: T.nilable(T::Array[Models::Components::MoovFee]), group_id: T.nilable(::String), refunded_amount: T.nilable(Models::Components::AmountDecimal), disputed_amount: T.nilable(Models::Components::AmountDecimal), sweep_id: T.nilable(::String), schedule_id: T.nilable(::String), occurrence_id: T.nilable(::String), payment_link_code: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), invoice_id: T.nilable(::String), amount_details: T.nilable(Models::Components::TransferAmountDetails), authorization: T.nilable(Models::Components::TransferAuthorization)).void }

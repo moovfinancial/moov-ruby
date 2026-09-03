@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # BusinessType - The type of entity represented by this business.
-      class BusinessType < T::Enum
+      class BusinessType
+        include ::Crystalline::Enum
         enums do
           SOLE_PROPRIETORSHIP = new('soleProprietorship')
           UNINCORPORATED_ASSOCIATION = new('unincorporatedAssociation')
@@ -21,6 +22,7 @@ module Moov
           INCORPORATED_NON_PROFIT = new('incorporatedNonProfit')
           GOVERNMENT_ENTITY = new('governmentEntity')
         end
+        open!
       end
     end
   end

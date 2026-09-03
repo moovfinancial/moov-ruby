@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = PendingLitigation::BANKRUPTCY_OR_INSOLVENCY
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = PendingLitigation.deserialize("custom_value")
 ```
 
 

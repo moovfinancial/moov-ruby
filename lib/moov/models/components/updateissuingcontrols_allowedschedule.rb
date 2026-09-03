@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-      # Replaces the allowed schedule. Set to `null` to remove all schedule restrictions.
+      # Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
       class UpdateIssuingControlsAllowedSchedule
         extend T::Sig
         include Crystalline::MetadataFields

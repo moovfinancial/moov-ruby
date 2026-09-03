@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # CollectionPaymentMethodType - Payment methods allowed for collecting a payment.
-      class CollectionPaymentMethodType < T::Enum
+      class CollectionPaymentMethodType
+        include ::Crystalline::Enum
         enums do
           APPLE_PAY = new('apple-pay')
           CARD_PAYMENT = new('card-payment')
           ACH_DEBIT_COLLECT = new('ach-debit-collect')
           GOOGLE_PAY = new('google-pay')
         end
+        open!
       end
     end
   end

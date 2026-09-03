@@ -23,7 +23,7 @@ module Moov
         # Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to choose the right capabilities for your integration.
         #
         # The `production-app`, `platform.production-app`, and / or `platform.wallet-transfers` capabilities might appear in the list for your Partner account. These are read-only capabilities that Moov requests. These capabilities remain active with your account and require no additional action.
-        field :capability_id, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilityID'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CapabilityID, false) } }
+        field :capability_id, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilityID'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CapabilityID, false) } }
 
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 

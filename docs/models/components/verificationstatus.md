@@ -10,6 +10,9 @@ Possible states an account verification can be in.
 require "moov_ruby"
 
 value = VerificationStatus::UNVERIFIED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = VerificationStatus.deserialize("custom_value")
 ```
 
 

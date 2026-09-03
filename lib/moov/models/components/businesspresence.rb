@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class BusinessPresence < T::Enum
+      class BusinessPresence
+        include ::Crystalline::Enum
         enums do
           COMMERCIAL_OFFICE = new('commercial-office')
           HOME_BASED = new('home-based')
@@ -17,6 +18,7 @@ module Moov
           ONLINE_ONLY = new('online-only')
           RETAIL_STOREFRONT = new('retail-storefront')
         end
+        open!
       end
     end
   end

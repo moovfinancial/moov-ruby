@@ -7,22 +7,22 @@
 module Moov
   module Models
     module Components
-
+      # Authorization and capture amounts for an auth-capture `card-payment` transfer.
       class TransferAuthorization
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # Identifier for the authorization.
         field :authorization_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizationID'), required: true } }
-
+        # Amount submitted for authorization.
         field :requested_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requestedAmount'), required: true } }
-
+        # Hold approved by the issuer.
         field :authorized_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizedAmount'), required: true } }
-
+        # Cumulative amount of captures that have not failed or been canceled.
         field :captured_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capturedAmount'), required: true } }
-
+        # Amount of the authorization still available after captures and authorization cancellations.
         field :capturable_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capturableAmount'), required: true } }
-
+        # Expiration time for the approved authorization, when available.
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(authorization_id: ::String, requested_amount: Models::Components::AmountDecimal, authorized_amount: Models::Components::AmountDecimal, captured_amount: Models::Components::AmountDecimal, capturable_amount: Models::Components::AmountDecimal, expires_on: T.nilable(::DateTime)).void }

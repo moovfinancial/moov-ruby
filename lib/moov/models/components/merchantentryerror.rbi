@@ -8,8 +8,8 @@ end
 
 
 class Moov::Models::Components::MerchantEntryError
-  def mid(); end
-  def mid=(str_); end
+  def network_id(); end
+  def network_id=(str_); end
   def descriptor_pattern(); end
   def descriptor_pattern=(str_); end
 end

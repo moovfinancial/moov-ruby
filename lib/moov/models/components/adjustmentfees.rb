@@ -7,31 +7,27 @@
 module Moov
   module Models
     module Components
-      # The total amount of adjustment fees. This field is deprecated and will be removed in a future release.
-      #
-      # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+      # A detailed breakdown of adjustment (correction) fees by fee name.
       class AdjustmentFees
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A 3-letter ISO 4217 currency code.
-        field :currency, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('currency'), required: true } }
-        # A decimal-formatted numerical string that represents up to 9 decimal place precision. 
-        #
-        # For example, $12.987654321 is '12.987654321'.
-        field :value_decimal, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('valueDecimal'), required: true } }
+        # Adjustment fees grouped by fee name.
+        field :items, Crystalline::Array.new(Models::Components::BillingAdjustment), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items'), required: true } }
+        # Total adjustment fees.
+        field :total, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('total'), required: true } }
 
-        sig { params(currency: ::String, value_decimal: ::String).void }
-        def initialize(currency:, value_decimal:)
-          @currency = currency
-          @value_decimal = value_decimal
+        sig { params(items: T::Array[Models::Components::BillingAdjustment], total: Models::Components::BillingCountAndAmount).void }
+        def initialize(items:, total:)
+          @items = items
+          @total = total
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @currency == other.currency
-          return false unless @value_decimal == other.value_decimal
+          return false unless @items == other.items
+          return false unless @total == other.total
           true
         end
       end

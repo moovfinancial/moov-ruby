@@ -1,13 +1,14 @@
 # FeePaidBy
 
-Indicates which party to a money movement bears an incurred fee.
-
 ## Example Usage
 
 ```ruby
 require "moov_ruby"
 
 value = FeePaidBy::SOURCE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = FeePaidBy.deserialize("custom_value")
 ```
 
 

@@ -17,7 +17,7 @@ module Moov
 
         field :dispute_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disputeID'), required: true } }
 
-        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::EvidenceType, false) } }
+        field :evidence_type, Models::Components::EvidenceType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('evidenceType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::EvidenceType, false) } }
 
         field :text, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('text'), required: true } }
 

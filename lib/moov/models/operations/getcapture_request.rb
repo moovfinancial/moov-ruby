@@ -12,9 +12,9 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The merchant's Moov account ID.
+        # Moov account ID of an authorized partner or the transfer's source or destination.
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
-        # Identifier for the transfer.
+        # Identifier for the auth-capture `card-payment` transfer.
         field :transfer_id, ::String, { 'path_param': { 'field_name': 'transferID', 'style': 'simple', 'explode': false } }
         # Identifier for the capture.
         field :capture_id, ::String, { 'path_param': { 'field_name': 'captureID', 'style': 'simple', 'explode': false } }

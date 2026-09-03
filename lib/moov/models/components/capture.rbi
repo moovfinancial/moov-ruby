@@ -32,4 +32,6 @@ class Moov::Models::Components::Capture
   def amount_details=(str_); end
   def facilitator_fee_amount(); end
   def facilitator_fee_amount=(str_); end
+  def failure_code(); end
+  def failure_code=(str_); end
 end

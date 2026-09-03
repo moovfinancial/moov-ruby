@@ -27,6 +27,8 @@ module Moov
 
         field :send_funds, Crystalline::Nilable.new(Models::Components::SendFundsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('sendFunds') } }
 
+        field :card_issuing, Crystalline::Nilable.new(Models::Components::CardIssuingError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardIssuing') } }
+
         field :average_monthly_transaction_volume, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('averageMonthlyTransactionVolume') } }
 
         field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
@@ -43,8 +45,8 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(geographic_reach: T.nilable(::String), business_presence: T.nilable(::String), pending_litigation: T.nilable(::String), volume_share_by_customer_type: T.nilable(Models::Components::VolumeShareByCustomerTypeError), collect_funds: T.nilable(Models::Components::CollectFundsError), money_transfer: T.nilable(Models::Components::MoneyTransferError), send_funds: T.nilable(Models::Components::SendFundsError), average_monthly_transaction_volume: T.nilable(::String), error: T.nilable(::String), average_transaction_size: T.nilable(::String), max_transaction_size: T.nilable(::String), volume_by_customer_type: T.nilable(Models::Components::VolumeByCustomerTypeError), card_volume_distribution: T.nilable(Models::Components::CardVolumeDistributionError), fulfillment: T.nilable(Models::Components::FulfillmentDetailsError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(geographic_reach: nil, business_presence: nil, pending_litigation: nil, volume_share_by_customer_type: nil, collect_funds: nil, money_transfer: nil, send_funds: nil, average_monthly_transaction_volume: nil, error: nil, average_transaction_size: nil, max_transaction_size: nil, volume_by_customer_type: nil, card_volume_distribution: nil, fulfillment: nil, raw_response: nil)
+        sig { params(geographic_reach: T.nilable(::String), business_presence: T.nilable(::String), pending_litigation: T.nilable(::String), volume_share_by_customer_type: T.nilable(Models::Components::VolumeShareByCustomerTypeError), collect_funds: T.nilable(Models::Components::CollectFundsError), money_transfer: T.nilable(Models::Components::MoneyTransferError), send_funds: T.nilable(Models::Components::SendFundsError), card_issuing: T.nilable(Models::Components::CardIssuingError), average_monthly_transaction_volume: T.nilable(::String), error: T.nilable(::String), average_transaction_size: T.nilable(::String), max_transaction_size: T.nilable(::String), volume_by_customer_type: T.nilable(Models::Components::VolumeByCustomerTypeError), card_volume_distribution: T.nilable(Models::Components::CardVolumeDistributionError), fulfillment: T.nilable(Models::Components::FulfillmentDetailsError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(geographic_reach: nil, business_presence: nil, pending_litigation: nil, volume_share_by_customer_type: nil, collect_funds: nil, money_transfer: nil, send_funds: nil, card_issuing: nil, average_monthly_transaction_volume: nil, error: nil, average_transaction_size: nil, max_transaction_size: nil, volume_by_customer_type: nil, card_volume_distribution: nil, fulfillment: nil, raw_response: nil)
           @geographic_reach = geographic_reach
           @business_presence = business_presence
           @pending_litigation = pending_litigation
@@ -52,6 +54,7 @@ module Moov
           @collect_funds = collect_funds
           @money_transfer = money_transfer
           @send_funds = send_funds
+          @card_issuing = card_issuing
           @average_monthly_transaction_volume = average_monthly_transaction_volume
           @error = error
           @average_transaction_size = average_transaction_size
@@ -72,6 +75,7 @@ module Moov
           return false unless @collect_funds == other.collect_funds
           return false unless @money_transfer == other.money_transfer
           return false unless @send_funds == other.send_funds
+          return false unless @card_issuing == other.card_issuing
           return false unless @average_monthly_transaction_volume == other.average_monthly_transaction_volume
           return false unless @error == other.error
           return false unless @average_transaction_size == other.average_transaction_size

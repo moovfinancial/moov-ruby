@@ -7,16 +7,18 @@
 module Moov
   module Models
     module Components
-      # Request to capture funds against an authorized transfer.
+      # Request to capture funds against an authorization.
       class CreateCapture
         extend T::Sig
         include Crystalline::MetadataFields
 
         # Payment method of the merchant account to capture funds into. For card-acquiring transfers, this must be a moov-wallet payment method.
         field :destination_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destinationPaymentMethodID'), required: true } }
-        # Amount to capture. If omitted, the remaining authorized amount is captured.
+        # Amount to capture.
+        # If omitted, the remaining capturable amount is captured.
         field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
-        # Indicates whether this is the final capture against the authorization. When `true`, any remaining authorized amount is voided.
+        # Indicates whether this is intended to be the final capture.
+        # When `true`, any remaining capturable amount is voided.
         field :is_final, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isFinal') } }
         # An optional description of the capture that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
@@ -29,7 +31,8 @@ module Moov
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateTransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::CreateTransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
-        # The facilitator fee amount applied to the capture.
+        # The facilitator fee applied to this capture.
+        # The transfer's facilitator fee is the sum of its capture fees.
         field :facilitator_fee_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFeeAmount') } }
 
         sig { params(destination_payment_method_id: ::String, amount: T.nilable(Models::Components::AmountDecimal), is_final: T.nilable(T::Boolean), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal)).void }
