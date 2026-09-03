@@ -8,6 +8,9 @@ The card brand.
 require "moov_ruby"
 
 value = CardBrand::AMERICAN_EXPRESS
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardBrand.deserialize("custom_value")
 ```
 
 

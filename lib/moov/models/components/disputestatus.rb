@@ -10,7 +10,8 @@ module Moov
       # DisputeStatus - The status of a particular dispute. 
       #
       # Read our [disputes guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/disputes/#dispute-statuses) to learn what each status means.
-      class DisputeStatus < T::Enum
+      class DisputeStatus
+        include ::Crystalline::Enum
         enums do
           RESPONSE_NEEDED = new('response-needed')
           RESOLVED = new('resolved')
@@ -21,6 +22,7 @@ module Moov
           WON = new('won')
           LOST = new('lost')
         end
+        open!
       end
     end
   end

@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
 
-      class RefundStatus < T::Enum
+      class RefundStatus
+        include ::Crystalline::Enum
         enums do
           CREATED = new('created')
           PENDING = new('pending')
           COMPLETED = new('completed')
           FAILED = new('failed')
         end
+        open!
       end
     end
   end

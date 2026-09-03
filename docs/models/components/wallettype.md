@@ -11,6 +11,9 @@ Type of a wallet.
 require "moov_ruby"
 
 value = WalletType::DEFAULT
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = WalletType.deserialize("custom_value")
 ```
 
 

@@ -18,7 +18,7 @@ module Moov
         field :wallet_id, ::String, { 'path_param': { 'field_name': 'walletID', 'style': 'simple', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # Optional parameter to filter by transaction type.
         field :transaction_type, Crystalline::Nilable.new(Models::Components::WalletTransactionType), { 'query_param': { 'field_name': 'transactionType', 'style': 'form', 'explode': false } }

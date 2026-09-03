@@ -8,6 +8,9 @@ The unique ID of what the requirement is asking to be filled out.
 require "moov_ruby"
 
 value = RequirementID::ACCOUNT_TOS_ACCEPTANCE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RequirementID.deserialize("custom_value")
 ```
 
 

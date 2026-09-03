@@ -15,7 +15,7 @@ module Moov
 
         field :document_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('documentID'), required: true } }
         # Types of documents that can be uploaded.
-        field :type, Models::Components::DocumentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('type'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DocumentType, false) } }
+        field :type, Models::Components::DocumentType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('type'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::DocumentType, false) } }
         # The document's MIME type.
         field :content_type, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('contentType'), required: true } }
 

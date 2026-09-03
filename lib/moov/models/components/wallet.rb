@@ -23,12 +23,12 @@ module Moov
         # Status of a wallet.
         #   - `active`: The wallet is available for use and has an enabled payment method.
         #   - `closed`: The wallet is no longer active and the corresponding payment method has been disabled.
-        field :status, Models::Components::WalletStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletStatus, false) } }
+        field :status, Models::Components::WalletStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::WalletStatus, false) } }
         # Type of a wallet.
         #   - `default`: The system-generated wallet automatically created when an account is granted the wallet capability.
         #   - `general`: An additional, user-defined wallet created via API or Dashboard.
         #   - `card-issuing`: The system-generated wallet automatically created when an account is granted the card-issuing capability.
-        field :wallet_type, Models::Components::WalletType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::WalletType, false) } }
+        field :wallet_type, Models::Components::WalletType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('walletType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::WalletType, false) } }
         # Description of the wallet
         field :description, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description'), required: true } }
 

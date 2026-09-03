@@ -16,7 +16,7 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # A comma-separated list of payment link types to filter results.
         field :types, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::PaymentLinkType)), { 'query_param': { 'field_name': 'types', 'style': 'form', 'explode': false } }

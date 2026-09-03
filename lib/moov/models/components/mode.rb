@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
       # Mode - The operating mode for an account.
-      class Mode < T::Enum
+      class Mode
+        include ::Crystalline::Enum
         enums do
           SANDBOX = new('sandbox')
           PRODUCTION = new('production')
         end
+        open!
       end
     end
   end

@@ -8,6 +8,9 @@ The reason the bank account status changed to the current value.
 require "moov_ruby"
 
 value = BankAccountStatusReason::BANK_ACCOUNT_CREATED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = BankAccountStatusReason.deserialize("custom_value")
 ```
 
 

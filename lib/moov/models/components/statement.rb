@@ -48,9 +48,11 @@ module Moov
         field :other_card_fees, Crystalline::Nilable.new(Models::Components::OtherCardFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('otherCardFees') } }
         # Monthly partner costs that are charged separately and not included in residual subtotal (e.g. platform fees, minimums).
         field :partner_fees, Crystalline::Nilable.new(Models::Components::PartnerFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerFees') } }
+        # A detailed breakdown of adjustment (correction) fees by fee name.
+        field :adjustments, Crystalline::Nilable.new(Models::Components::AdjustmentFees), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('adjustments') } }
 
-        sig { params(statement_id: ::String, statement_name: ::String, file_name: ::String, file_size: ::Integer, billing_period_start_date_time: ::DateTime, billing_period_end_date_time: ::DateTime, subscription_i_ds: T::Array[::String], summary: Models::Components::BillingSummary, created_on: ::DateTime, updated_on: ::DateTime, card_acquiring_fees: T.nilable(Models::Components::CardAcquiringFees), ach_fees: T.nilable(Models::Components::ACHFees), instant_payment_fees: T.nilable(Models::Components::InstantPaymentFees), platform_fees: T.nilable(Models::Components::PlatformFees), account_fees: T.nilable(Models::Components::AccountFees), other_card_fees: T.nilable(Models::Components::OtherCardFees), partner_fees: T.nilable(Models::Components::PartnerFees)).void }
-        def initialize(statement_id:, statement_name:, file_name:, file_size:, billing_period_start_date_time:, billing_period_end_date_time:, subscription_i_ds:, summary:, created_on:, updated_on:, card_acquiring_fees: nil, ach_fees: nil, instant_payment_fees: nil, platform_fees: nil, account_fees: nil, other_card_fees: nil, partner_fees: nil)
+        sig { params(statement_id: ::String, statement_name: ::String, file_name: ::String, file_size: ::Integer, billing_period_start_date_time: ::DateTime, billing_period_end_date_time: ::DateTime, subscription_i_ds: T::Array[::String], summary: Models::Components::BillingSummary, created_on: ::DateTime, updated_on: ::DateTime, card_acquiring_fees: T.nilable(Models::Components::CardAcquiringFees), ach_fees: T.nilable(Models::Components::ACHFees), instant_payment_fees: T.nilable(Models::Components::InstantPaymentFees), platform_fees: T.nilable(Models::Components::PlatformFees), account_fees: T.nilable(Models::Components::AccountFees), other_card_fees: T.nilable(Models::Components::OtherCardFees), partner_fees: T.nilable(Models::Components::PartnerFees), adjustments: T.nilable(Models::Components::AdjustmentFees)).void }
+        def initialize(statement_id:, statement_name:, file_name:, file_size:, billing_period_start_date_time:, billing_period_end_date_time:, subscription_i_ds:, summary:, created_on:, updated_on:, card_acquiring_fees: nil, ach_fees: nil, instant_payment_fees: nil, platform_fees: nil, account_fees: nil, other_card_fees: nil, partner_fees: nil, adjustments: nil)
           @statement_id = statement_id
           @statement_name = statement_name
           @file_name = file_name
@@ -68,6 +70,7 @@ module Moov
           @account_fees = account_fees
           @other_card_fees = other_card_fees
           @partner_fees = partner_fees
+          @adjustments = adjustments
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -90,6 +93,7 @@ module Moov
           return false unless @account_fees == other.account_fees
           return false unless @other_card_fees == other.other_card_fees
           return false unless @partner_fees == other.partner_fees
+          return false unless @adjustments == other.adjustments
           true
         end
       end

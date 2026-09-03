@@ -42,7 +42,7 @@ module Moov
         field :customer, Crystalline::Nilable.new(Models::Components::PaymentLinkCustomerOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customer') } }
         # Options for payment links used to collect payment.
         field :payment, Crystalline::Nilable.new(Models::Components::PaymentLinkPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
-
+        # Options for payout links used to send a payout.
         field :payout, Crystalline::Nilable.new(Models::Components::PaymentLinkPayoutDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payout') } }
         # An optional collection of line items for a payment link.
         # When line items are provided, their total plus tax must equal the payment link amount.

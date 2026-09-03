@@ -1004,6 +1004,9 @@ module Moov
     def create_cancellation(account_id:, transfer_id:, timeout_ms: nil, http_headers: nil)
       # create_cancellation -   Initiate a cancellation for a card, ACH, or queued transfer.
       #   
+      #   In v2026.10 and later, an auth-capture `card-payment` transfer can be canceled before any captures exist.
+      #   For these transfers, a successful cancellation reduces `capturableAmount` without changing `authorizedAmount`.
+      #   For these transfers, a partial cancellation leaves the remaining `capturableAmount` available for capture.
       #   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       #   to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CreateCancellationRequest.new(
@@ -1108,7 +1111,7 @@ module Moov
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
-      elsif Utils.match_status_code(http_response.status, ['400'])
+      elsif Utils.match_status_code(http_response.status, ['400', '409', '422'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
             hook_ctx: SDKHooks::AfterSuccessHookContext.new(
@@ -1141,7 +1144,7 @@ module Moov
     sig { params(account_id: ::String, transfer_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCancellationsResponse) }
     def list_cancellations(account_id:, transfer_id:, timeout_ms: nil, http_headers: nil)
       # list_cancellations -   Get a list of cancellations for a transfer.
-      #   
+      #
       #   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
       #   to specify the `/accounts/{accountID}/transfers.read` scope.
       request = Models::Operations::ListCancellationsRequest.new(
@@ -1246,7 +1249,7 @@ module Moov
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
-      elsif Utils.match_status_code(http_response.status, ['401', '403', '429'])
+      elsif Utils.match_status_code(http_response.status, ['401', '403', '404', '429'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
       elsif Utils.match_status_code(http_response.status, ['500', '504'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
@@ -1693,7 +1696,7 @@ module Moov
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
-      elsif Utils.match_status_code(http_response.status, ['401', '403', '429'])
+      elsif Utils.match_status_code(http_response.status, ['401', '403', '404', '429'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
       elsif Utils.match_status_code(http_response.status, ['500', '504'])
         raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
@@ -1834,7 +1837,10 @@ module Moov
 
     sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, create_reversal: T.nilable(Models::Components::CreateReversal), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateReversalResponse) }
     def create_reversal(x_idempotency_key:, account_id:, transfer_id:, create_reversal: nil, timeout_ms: nil, http_headers: nil)
-      # create_reversal - Reverses a card transfer by initiating a cancellation or refund depending on the transaction status. 
+      # create_reversal - Reverses a card transfer by initiating a cancellation or refund depending on the transaction status.
+      # In v2026.10 and later, reversing an auth-capture `card-payment` transfer with no captures cancels the entire `capturableAmount`.
+      # In those API versions, an auth-capture `card-payment` transfer with one final capture is canceled or refunded depending on its processing state.
+      # Auth-capture `card-payment` transfers with a non-final capture or multiple captures are not supported in those API versions.
       # Read our [reversals guide](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) 
       # to learn more.
       #

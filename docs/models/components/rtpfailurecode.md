@@ -8,6 +8,9 @@ Status codes for RTP failures.
 require "moov_ruby"
 
 value = RTPFailureCode::PROCESSING_ERROR
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RTPFailureCode.deserialize("custom_value")
 ```
 
 

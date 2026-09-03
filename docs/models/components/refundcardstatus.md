@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = RefundCardStatus::INITIATED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RefundCardStatus.deserialize("custom_value")
 ```
 
 

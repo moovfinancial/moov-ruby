@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # IssuingAuthorizationStatus - Status of a card issuing authorization.
-      class IssuingAuthorizationStatus < T::Enum
+      class IssuingAuthorizationStatus
+        include ::Crystalline::Enum
         enums do
           PENDING = new('pending')
           DECLINED = new('declined')
@@ -16,6 +17,7 @@ module Moov
           CLEARED = new('cleared')
           EXPIRED = new('expired')
         end
+        open!
       end
     end
   end

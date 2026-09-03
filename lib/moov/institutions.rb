@@ -168,7 +168,7 @@ module Moov
 
     sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), state: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInstitutionsResponse) }
     def search(name: nil, routing_number: nil, state: nil, limit: nil, timeout_ms: nil, http_headers: nil)
-      # search - This endpoint has been deprecated and will be removed in a future release. Use [/institutions](https://docs.moov.io/api/enrichment/form-shortening/institutions/get/).
+      # search - This endpoint has been deprecated and will be removed in a future release. Use [/institutions](https://docs.moov.io/api/enrichment/institutions/get/).
       #
       # Search for institutions by either their name or routing number.
       #

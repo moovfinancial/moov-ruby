@@ -8,6 +8,9 @@ The type of holder on a funding source.
 require "moov_ruby"
 
 value = BankAccountHolderType::INDIVIDUAL
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = BankAccountHolderType.deserialize("custom_value")
 ```
 
 

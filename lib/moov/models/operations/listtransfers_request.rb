@@ -34,13 +34,13 @@ module Moov
         field :disputed, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'query_param': { 'field_name': 'disputed', 'style': 'form', 'explode': false } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'foreignID', 'style': 'form', 'explode': false } }
-        # Optional comma-separated IDs to filter for transfers associated with specific card authorizations.
+        # Optional comma-separated authorization IDs.
         field :authorization_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'query_param': { 'field_name': 'authorizationIDs', 'style': 'form', 'explode': false } }
         # Optional comma-separated IDs to filter for transfers associated with specific card captures.
         field :capture_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'query_param': { 'field_name': 'captureIDs', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
         sig { params(account_id: ::String, account_i_ds: T.nilable(T::Array[::String]), status: T.nilable(Models::Components::TransferStatus), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), group_id: T.nilable(::String), schedule_id: T.nilable(::String), payment_link_code: T.nilable(::String), refunded: T.nilable(T::Boolean), disputed: T.nilable(T::Boolean), foreign_id: T.nilable(::String), authorization_i_ds: T.nilable(T::Array[::String]), capture_i_ds: T.nilable(T::Array[::String]), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }

@@ -8,6 +8,9 @@ Indicates which level of domestic push-to-card transfer is supported by the card
 require "moov_ruby"
 
 value = DomesticPushToCard::NOT_SUPPORTED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = DomesticPushToCard.deserialize("custom_value")
 ```
 
 

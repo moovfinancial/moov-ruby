@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
 
-      class ReturnPolicyType < T::Enum
+      class ReturnPolicyType
+        include ::Crystalline::Enum
         enums do
           NONE = new('none')
           EXCHANGE_ONLY = new('exchangeOnly')
           WITHIN_THIRTY_DAYS = new('withinThirtyDays')
           OTHER = new('other')
         end
+        open!
       end
     end
   end
