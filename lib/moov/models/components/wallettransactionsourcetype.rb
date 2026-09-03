@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class WalletTransactionSourceType < T::Enum
+      class WalletTransactionSourceType
+        include ::Crystalline::Enum
         enums do
           TRANSFER = new('transfer')
           DISPUTE = new('dispute')
@@ -19,6 +20,7 @@ module Moov
           FEE = new('fee')
           RESIDUAL = new('residual')
         end
+        open!
       end
     end
   end

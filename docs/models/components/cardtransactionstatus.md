@@ -8,6 +8,9 @@ Status of a transaction within the card payment lifecycle.
 require "moov_ruby"
 
 value = CardTransactionStatus::INITIATED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardTransactionStatus.deserialize("custom_value")
 ```
 
 

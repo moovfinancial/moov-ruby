@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class FeeCategory < T::Enum
+      class FeeCategory
+        include ::Crystalline::Enum
         enums do
           ACH = new('ach')
           CARD_ACQUIRING = new('card-acquiring')
@@ -21,6 +22,7 @@ module Moov
           OTHER = new('other')
           RTP = new('rtp')
         end
+        open!
       end
     end
   end

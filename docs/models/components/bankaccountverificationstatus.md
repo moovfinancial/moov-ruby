@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = BankAccountVerificationStatus::NEW
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = BankAccountVerificationStatus.deserialize("custom_value")
 ```
 
 

@@ -16,6 +16,8 @@ class Moov::Models::Operations::ListIssuedCardTransactionsRequest
   def count=(str_); end
   def issued_card_id(); end
   def issued_card_id=(str_); end
+  def merchant_name(); end
+  def merchant_name=(str_); end
   def start_date_time(); end
   def start_date_time=(str_); end
   def end_date_time(); end

@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = BusinessPresence::COMMERCIAL_OFFICE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = BusinessPresence.deserialize("custom_value")
 ```
 
 

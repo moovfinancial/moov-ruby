@@ -21,11 +21,11 @@ module Moov
         # Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to choose the right capabilities for your integration.
         #
         # The `production-app`, `platform.production-app`, and / or `platform.wallet-transfers` capabilities might appear in the list for your Partner account. These are read-only capabilities that Moov requests. These capabilities remain active with your account and require no additional action.
-        field :capability, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capability'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CapabilityID, false) } }
+        field :capability, Models::Components::CapabilityID, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capability'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CapabilityID, false) } }
 
         field :account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('accountID'), required: true } }
         # The status of the capability requested for an account.
-        field :status, Models::Components::CapabilityStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CapabilityStatus, false) } }
+        field :status, Models::Components::CapabilityStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CapabilityStatus, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 

@@ -8,6 +8,9 @@ The purpose of the file being uploaded.
 require "moov_ruby"
 
 value = FilePurpose::BUSINESS_VERIFICATION
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = FilePurpose.deserialize("custom_value")
 ```
 
 

@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
         # Status of a transaction within the card payment lifecycle.
-        field :status, Crystalline::Nilable.new(Models::Components::CardTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardTransactionStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::CardTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionStatus, true) } }
 
-        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
         # An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
         field :dynamic_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dynamicDescriptor') } }
         # The scheduled date and time for the transfer to be delivered. This field is only valid for push-to-card transfers. Must be between 24 and 48 hours in the future in production. In sandbox mode, any future time up to 48 hours is accepted so integrations can test deferred delivery using the sandbox test cards with relaxed wait times.
@@ -24,7 +24,7 @@ module Moov
         #
         # Crucial for recurring and merchant-initiated transactions as per card scheme rules. 
         # Omit for customer-initiated e-commerce transactions.
-        field :transaction_source, Crystalline::Nilable.new(Models::Components::TransactionSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionSource'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TransactionSource, true) } }
+        field :transaction_source, Crystalline::Nilable.new(Models::Components::TransactionSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionSource'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransactionSource, true) } }
 
         field :initiated_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('initiatedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 

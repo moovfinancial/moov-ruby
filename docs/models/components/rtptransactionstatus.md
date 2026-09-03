@@ -8,6 +8,9 @@ Status of a transaction within the RTP lifecycle.
 require "moov_ruby"
 
 value = RTPTransactionStatus::INITIATED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RTPTransactionStatus.deserialize("custom_value")
 ```
 
 

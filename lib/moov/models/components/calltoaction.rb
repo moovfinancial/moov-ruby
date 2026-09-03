@@ -11,7 +11,8 @@ module Moov
       #
       # If set to "auto" the UI will automatically select between 
       # "pay" and "confirm" for payments and payouts respectively.
-      class CallToAction < T::Enum
+      class CallToAction
+        include ::Crystalline::Enum
         enums do
           PAY = new('pay')
           BOOK = new('book')
@@ -20,6 +21,7 @@ module Moov
           CONFIRM = new('confirm')
           AUTO = new('auto')
         end
+        open!
       end
     end
   end

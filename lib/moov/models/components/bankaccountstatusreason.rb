@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # BankAccountStatusReason - The reason the bank account status changed to the current value.
-      class BankAccountStatusReason < T::Enum
+      class BankAccountStatusReason
+        include ::Crystalline::Enum
         enums do
           BANK_ACCOUNT_CREATED = new('bank-account-created')
           VERIFICATION_INITIATED = new('verification-initiated')
@@ -26,6 +27,7 @@ module Moov
           ADMIN_ACTION = new('admin-action')
           OTHER = new('other')
         end
+        open!
       end
     end
   end

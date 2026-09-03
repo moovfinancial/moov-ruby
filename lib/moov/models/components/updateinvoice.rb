@@ -22,7 +22,7 @@ module Moov
         #     Canceled invoices still appear in list results by default and remain part of the invoice history.
         #     To completely discard an invoice created by mistake, use the delete endpoint instead.
         #   - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
-        field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoiceStatus, true) } }
+        field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InvoiceStatus, true) } }
 
         field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimalUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
 

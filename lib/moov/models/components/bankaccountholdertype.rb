@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # BankAccountHolderType - The type of holder on a funding source.
-      class BankAccountHolderType < T::Enum
+      class BankAccountHolderType
+        include ::Crystalline::Enum
         enums do
           INDIVIDUAL = new('individual')
           BUSINESS = new('business')
           GUEST = new('guest')
         end
+        open!
       end
     end
   end

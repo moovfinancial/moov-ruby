@@ -18,7 +18,7 @@ module Moov
         field :title, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'title', 'style': 'form', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
         sig { params(account_id: ::String, title: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }

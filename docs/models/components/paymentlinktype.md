@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = PaymentLinkType::PAYMENT
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = PaymentLinkType.deserialize("custom_value")
 ```
 
 

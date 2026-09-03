@@ -30,4 +30,8 @@ class Moov::Models::Components::FeePlanAgreement
   def account_id=(str_); end
   def description(); end
   def description=(str_); end
+  def prior_agreement_id(); end
+  def prior_agreement_id=(str_); end
+  def prior_agreement_terminated_on(); end
+  def prior_agreement_terminated_on=(str_); end
 end

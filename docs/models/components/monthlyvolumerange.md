@@ -8,6 +8,9 @@ The low value in each range is included. The high value in each range is exclude
 require "moov_ruby"
 
 value = MonthlyVolumeRange::UNDER_10K
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = MonthlyVolumeRange.deserialize("custom_value")
 ```
 
 

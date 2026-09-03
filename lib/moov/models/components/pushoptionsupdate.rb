@@ -7,15 +7,16 @@
 module Moov
   module Models
     module Components
-      # Delivery options for push-to-card payouts.
+
       class PushOptionsUpdate
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Delivery speeds the recipient may choose from for `push-to-card`. Include `instant` to allow immediate
-        # delivery, `deferred` to allow delayed delivery, or both to let the recipient choose at checkout.
+        # Delivery speeds the recipient may choose from for `push-to-card` and `push-to-apple-pay`.
+        # Include `instant` to allow immediate delivery, `deferred` to allow delayed delivery, or both
+        # to let the recipient choose at checkout.
         field :allowed_speeds, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::PushDeliverySpeed)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowedSpeeds') } }
-        # Delay before delivering a deferred `push-to-card` payout. Required when `allowedSpeeds` includes `deferred`.
+        # Delay before delivering a deferred payout. Required when `allowedSpeeds` includes `deferred`.
         # Accepted values are `24h` or `48h`.
         field :deferred_by, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('deferredBy') } }
 

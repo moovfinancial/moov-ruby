@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # ResolutionLinkStatus - The status of a resolution link.
-      class ResolutionLinkStatus < T::Enum
+      class ResolutionLinkStatus
+        include ::Crystalline::Enum
         enums do
           ACTIVE = new('active')
           SUBMITTED = new('submitted')
@@ -16,6 +17,7 @@ module Moov
           DISABLED = new('disabled')
           EXPIRED = new('expired')
         end
+        open!
       end
     end
   end

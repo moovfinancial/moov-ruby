@@ -8,6 +8,9 @@ The status of a resolution link.
 require "moov_ruby"
 
 value = ResolutionLinkStatus::ACTIVE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = ResolutionLinkStatus.deserialize("custom_value")
 ```
 
 

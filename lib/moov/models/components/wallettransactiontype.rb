@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class WalletTransactionType < T::Enum
+      class WalletTransactionType
+        include ::Crystalline::Enum
         enums do
           ACCOUNT_FUNDING = new('account-funding')
           ACH_REVERSAL = new('ach-reversal')
@@ -39,6 +40,7 @@ module Moov
           RESIDUAL = new('residual')
           INSTANT_BANK_FAILURE = new('instant-bank-failure')
         end
+        open!
       end
     end
   end

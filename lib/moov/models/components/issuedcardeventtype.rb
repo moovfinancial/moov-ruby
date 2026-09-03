@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # IssuedCardEventType - The type of event that occurred on the card.
-      class IssuedCardEventType < T::Enum
+      class IssuedCardEventType
+        include ::Crystalline::Enum
         enums do
           AUTHORIZATION = new('authorization')
           REVERSAL = new('reversal')
@@ -17,6 +18,7 @@ module Moov
           AUTHORIZATION_INCREMENTAL = new('authorization-incremental')
           CLEARING = new('clearing')
         end
+        open!
       end
     end
   end

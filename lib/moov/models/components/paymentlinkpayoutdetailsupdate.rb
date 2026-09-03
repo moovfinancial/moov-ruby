@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-
+      # Options for payout links used to send a payout.
       class PaymentLinkPayoutDetailsUpdate
         extend T::Sig
         include Crystalline::MetadataFields
@@ -21,10 +21,7 @@ module Moov
         field :recipient, Crystalline::Nilable.new(Models::Components::PayoutRecipient), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient') } }
         # Optional free-form metadata for the transfer.
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
-        # Delivery options for push-to-card payouts. Only applies when `allowedMethods` includes `push-to-card`.
-        #
-        # The `deferred` speed and `deferredBy` apply to `push-to-card` only. Other push methods
-        # (`push-to-apple-pay`, `push-to-google-pay`) are always delivered instantly regardless of these options.
+        # Delivery options for `push-to-card` and `push-to-apple-pay` payouts.
         field :push_options, Crystalline::Nilable.new(Models::Components::PushOptionsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
 
         sig { params(allowed_methods: T.nilable(T::Array[Models::Components::DisbursementPaymentMethodType]), recipient: T.nilable(Models::Components::PayoutRecipient), metadata: T.nilable(T::Hash[Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptionsUpdate)).void }

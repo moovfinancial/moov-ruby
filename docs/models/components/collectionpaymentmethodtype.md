@@ -8,6 +8,9 @@ Payment methods allowed for collecting a payment.
 require "moov_ruby"
 
 value = CollectionPaymentMethodType::APPLE_PAY
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CollectionPaymentMethodType.deserialize("custom_value")
 ```
 
 

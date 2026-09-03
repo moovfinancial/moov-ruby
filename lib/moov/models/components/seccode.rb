@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # SECCode - Code used to identify the ACH authorization method.
-      class SECCode < T::Enum
+      class SECCode
+        include ::Crystalline::Enum
         enums do
           WEB = new('WEB')
           PPD = new('PPD')
           CCD = new('CCD')
           TEL = new('TEL')
         end
+        open!
       end
     end
   end

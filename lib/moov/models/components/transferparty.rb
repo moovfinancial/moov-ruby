@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
 
-      class TransferParty < T::Enum
+      class TransferParty
+        include ::Crystalline::Enum
         enums do
           SOURCE = new('source')
           DESTINATION = new('destination')
           PARTNER = new('partner')
         end
+        open!
       end
     end
   end

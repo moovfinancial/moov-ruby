@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
 
-      class PaymentLinkType < T::Enum
+      class PaymentLinkType
+        include ::Crystalline::Enum
         enums do
           PAYMENT = new('payment')
           PAYOUT = new('payout')
           INVOICE_PAYMENT = new('invoice-payment')
         end
+        open!
       end
     end
   end
