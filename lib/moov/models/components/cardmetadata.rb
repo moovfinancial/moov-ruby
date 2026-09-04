@@ -15,9 +15,9 @@ module Moov
         # The first six to eight digits of the card number, which identifies the financial institution that issued the card.
         field :bin, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bin'), required: true } }
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardBrand, false) } }
         # The type of the card.
-        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardType, false) } }
+        field :card_type, Models::Components::CardType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardType, false) } }
         # The category or level of the card defined by the issuer.
         # Examples include, but not limited to, "REWARDS", "TRADITIONAL REWARDS", "CLASSIC", and "CORPORATE PURCHASING".
         field :card_category, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardCategory') } }
@@ -36,9 +36,9 @@ module Moov
         # URL of the issuer.
         field :issuer_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuerURL') } }
         # Indicates if the card supports domestic pull-from-card transfer.
-        field :domestic_pull_from_card, Crystalline::Nilable.new(Models::Components::DomesticPullFromCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPullFromCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPullFromCard, true) } }
+        field :domestic_pull_from_card, Crystalline::Nilable.new(Models::Components::DomesticPullFromCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPullFromCard'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::DomesticPullFromCard, true) } }
         # Indicates which level of domestic push-to-card transfer is supported by the card, if any.
-        field :domestic_push_to_card, Crystalline::Nilable.new(Models::Components::DomesticPushToCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPushToCard'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::DomesticPushToCard, true) } }
+        field :domestic_push_to_card, Crystalline::Nilable.new(Models::Components::DomesticPushToCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('domesticPushToCard'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::DomesticPushToCard, true) } }
 
         sig { params(bin: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, card_category: T.nilable(::String), commercial: T.nilable(T::Boolean), regulated: T.nilable(T::Boolean), issuer: T.nilable(::String), issuer_country: T.nilable(::String), issuer_phone: T.nilable(::String), issuer_url: T.nilable(::String), domestic_pull_from_card: T.nilable(Models::Components::DomesticPullFromCard), domestic_push_to_card: T.nilable(Models::Components::DomesticPushToCard)).void }
         def initialize(bin:, brand:, card_type:, card_category: nil, commercial: nil, regulated: nil, issuer: nil, issuer_country: nil, issuer_phone: nil, issuer_url: nil, domestic_pull_from_card: nil, domestic_push_to_card: nil)

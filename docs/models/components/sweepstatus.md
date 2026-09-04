@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = SweepStatus::ACCRUING
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = SweepStatus.deserialize("custom_value")
 ```
 
 

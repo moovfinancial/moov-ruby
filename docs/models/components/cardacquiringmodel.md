@@ -8,6 +8,9 @@ Specifies the card processing pricing model
 require "moov_ruby"
 
 value = CardAcquiringModel::COST_PLUS
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardAcquiringModel.deserialize("custom_value")
 ```
 
 

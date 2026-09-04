@@ -15,7 +15,7 @@ module Moov
         # Defines which amount should be used when calculating the final payment total. This calculation applies for percentage tip values.
         # - `pre-tax`: Tip amounts are calculated using the subtotal amount before taxes
         # - `post-tax`: Tip amounts are calculated using the subtotal amount + taxes
-        field :calculation_basis, Crystalline::Nilable.new(Models::Components::TipCalculationBasis), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('calculationBasis'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::TipCalculationBasis, true) } }
+        field :calculation_basis, Crystalline::Nilable.new(Models::Components::TipCalculationBasis), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('calculationBasis'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TipCalculationBasis, true) } }
         # Defines the set of suggested tip preset values presented to customers. Percentages must be between 0 and 100 (exclusive) and must be unique. A maximum of 3 values are allowed.
         field :percentage_options, Crystalline::Nilable.new(Crystalline::Array.new(::Integer)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('percentageOptions') } }
         # Defines the set of suggested tip preset values presented to customers. Fixed amounts must be positive and unique. A maximum of 3 values are allowed.

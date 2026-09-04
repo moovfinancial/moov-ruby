@@ -16,6 +16,7 @@ module Moov
           FAILED = new('failed')
           REVERSED = new('reversed')
           QUEUED = new('queued')
+          AWAITING_CAPTURE = new('awaiting-capture')
           CANCELED = new('canceled')
           SOURCE_COMPLETED = new('source.completed')
           SOURCE_CORRECTED = new('source.corrected')

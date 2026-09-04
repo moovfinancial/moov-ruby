@@ -7,13 +7,13 @@
 module Moov
   module Models
     module Components
-      # Restricts card usage by merchant category.
+      # Restricts card usage by merchant category. When not set, all categories are allowed.
       class MerchantCategoryRestrictions
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Whether the listed categories are the only ones allowed, or the ones to block.
-        field :mode, Models::Components::IssuingControlsRestrictionMode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingControlsRestrictionMode, false) } }
+        # Whether the listed items should be allowed (`allow`) or blocked (`block`).
+        field :mode, Models::Components::IssuingControlsRestrictionMode, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingControlsRestrictionMode, false) } }
         # Predefined category groups to allow or block.
         field :categories, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::IssuingMerchantCategory)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('categories') } }
         # Individual merchant category codes (MCCs) to allow or block, for codes not covered by a predefined category.

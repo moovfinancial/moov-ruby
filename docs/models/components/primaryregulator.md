@@ -8,6 +8,9 @@ If the business is a financial institution, this field describes its primary reg
 require "moov_ruby"
 
 value = PrimaryRegulator::OCC
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = PrimaryRegulator.deserialize("custom_value")
 ```
 
 

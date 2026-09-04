@@ -12,18 +12,28 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
+        # A unique identifier for a fee plan: the pricing terms, such as flat-rate or cost-plus, that an account 
+        # is charged under its fee plan agreement. Use GET /accounts/{accountID}/fee-plans to list the fee plans 
+        # available to assign to a given account.
         field :plan_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('planID'), required: true } }
+        # The account's active fee plan agreement to supersede. When set, that agreement is terminated and
+        # the new one takes its place in a single operation, so the account is never without an active fee
+        # plan agreement. This new agreement always receives a newly issued agreementID.
+        #
+        # Omit it if the account doesn't already have an active fee plan agreement.
+        field :prior_agreement_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('priorAgreementID') } }
 
-        sig { params(plan_id: ::String).void }
-        def initialize(plan_id:)
+        sig { params(plan_id: ::String, prior_agreement_id: T.nilable(::String)).void }
+        def initialize(plan_id:, prior_agreement_id: nil)
           @plan_id = plan_id
+          @prior_agreement_id = prior_agreement_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @plan_id == other.plan_id
+          return false unless @prior_agreement_id == other.prior_agreement_id
           true
         end
       end

@@ -16,21 +16,24 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
 
         field :skip, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'skip', 'style': 'form', 'explode': false } }
-
+        # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # Optional ID of the issued card to filter results.
         field :issued_card_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'issuedCardID', 'style': 'form', 'explode': false } }
+        # Optional case-insensitive substring match on the merchant name to filter results.
+        field :merchant_name, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'merchantName', 'style': 'form', 'explode': false } }
         # Optional date-time which inclusively filters all card transactions created after this date-time.
         field :start_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'startDateTime', 'style': 'form', 'explode': false } }
         # Optional date-time which exclusively filters all card transactions created before this date-time.
         field :end_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'endDateTime', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), issued_card_id: T.nilable(::String), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime)).void }
-        def initialize(account_id:, skip: nil, count: nil, issued_card_id: nil, start_date_time: nil, end_date_time: nil)
+        sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), issued_card_id: T.nilable(::String), merchant_name: T.nilable(::String), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime)).void }
+        def initialize(account_id:, skip: nil, count: nil, issued_card_id: nil, merchant_name: nil, start_date_time: nil, end_date_time: nil)
           @account_id = account_id
           @skip = skip
           @count = count
           @issued_card_id = issued_card_id
+          @merchant_name = merchant_name
           @start_date_time = start_date_time
           @end_date_time = end_date_time
         end
@@ -42,6 +45,7 @@ module Moov
           return false unless @skip == other.skip
           return false unless @count == other.count
           return false unless @issued_card_id == other.issued_card_id
+          return false unless @merchant_name == other.merchant_name
           return false unless @start_date_time == other.start_date_time
           return false unless @end_date_time == other.end_date_time
           true

@@ -167,7 +167,7 @@ module Moov
     sig { params(image_upload_request_multi_part: Models::Components::ImageUploadRequestMultiPart, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadImageResponse) }
     def upload(image_upload_request_multi_part:, account_id:, timeout_ms: nil, http_headers: nil)
       # upload -   Upload a new PNG, JPEG, or WebP image with optional metadata. 
-      #   Duplicate images, and requests larger than 16MB will be rejected.
+      #   Duplicate images return the existing image's metadata with a 409 status. Requests larger than 16MB will be rejected.
       request = Models::Operations::UploadImageRequest.new(
         account_id: account_id,
         image_upload_request_multi_part: image_upload_request_multi_part
@@ -282,7 +282,7 @@ module Moov
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
-      elsif Utils.match_status_code(http_response.status, ['400', '409'])
+      elsif Utils.match_status_code(http_response.status, ['400'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
             hook_ctx: SDKHooks::AfterSuccessHookContext.new(
@@ -292,6 +292,21 @@ module Moov
           )
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['409'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ImageMetadataError)
           obj.raw_response = http_response
           raise obj
         else

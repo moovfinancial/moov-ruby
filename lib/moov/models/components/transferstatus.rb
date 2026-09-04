@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # TransferStatus - Status of a transfer.
-      class TransferStatus < T::Enum
+      class TransferStatus
+        include ::Crystalline::Enum
         enums do
           CREATED = new('created')
           PENDING = new('pending')
@@ -19,6 +20,7 @@ module Moov
           AWAITING_CAPTURE = new('awaiting-capture')
           CANCELED = new('canceled')
         end
+        open!
       end
     end
   end

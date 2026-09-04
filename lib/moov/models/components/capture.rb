@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-      # Details of a capture against an authorized transfer.
+      # Details of a capture against an authorization.
       class Capture
         extend T::Sig
         include Crystalline::MetadataFields
@@ -16,10 +16,10 @@ module Moov
         field :capture_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('captureID'), required: true } }
 
         field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
-        # Indicates whether this is the final capture against the authorization. When `true`, no further captures can be made.
+        # Indicates whether this is intended to be the final capture.
         field :is_final, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isFinal'), required: true } }
 
-        field :status, Models::Components::CaptureStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CaptureStatus, false) } }
+        field :status, Models::Components::CaptureStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CaptureStatus, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Payment method of the merchant account the funds were captured into. For card-acquiring transfers, this must be a moov-wallet payment method.
@@ -35,11 +35,14 @@ module Moov
         field :line_items, Crystalline::Nilable.new(Models::Components::TransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::TransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
-        # The facilitator fee amount applied to the capture.
+        # The facilitator fee applied to this capture.
+        # The transfer's facilitator fee is the sum of its capture fees.
         field :facilitator_fee_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFeeAmount') } }
 
-        sig { params(capture_id: ::String, amount: Models::Components::AmountDecimal, is_final: T::Boolean, status: Models::Components::CaptureStatus, created_on: ::DateTime, destination_payment_method_id: ::String, description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(capture_id:, amount:, is_final:, status:, created_on:, destination_payment_method_id:, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil)
+        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
+
+        sig { params(capture_id: ::String, amount: Models::Components::AmountDecimal, is_final: T::Boolean, status: Models::Components::CaptureStatus, created_on: ::DateTime, destination_payment_method_id: ::String, description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal), failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
+        def initialize(capture_id:, amount:, is_final:, status:, created_on:, destination_payment_method_id:, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil, failure_code: nil)
           @capture_id = capture_id
           @amount = amount
           @is_final = is_final
@@ -52,6 +55,7 @@ module Moov
           @line_items = line_items
           @amount_details = amount_details
           @facilitator_fee_amount = facilitator_fee_amount
+          @failure_code = failure_code
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -69,6 +73,7 @@ module Moov
           return false unless @line_items == other.line_items
           return false unless @amount_details == other.amount_details
           return false unless @facilitator_fee_amount == other.facilitator_fee_amount
+          return false unless @failure_code == other.failure_code
           true
         end
       end

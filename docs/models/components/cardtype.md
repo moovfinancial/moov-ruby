@@ -8,6 +8,9 @@ The type of the card.
 require "moov_ruby"
 
 value = CardType::DEBIT
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardType.deserialize("custom_value")
 ```
 
 

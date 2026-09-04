@@ -8,6 +8,9 @@ Specifies the time frame for a velocity limit. `per-transaction` applies to each
 require "moov_ruby"
 
 value = IssuingIntervalLimit::PER_TRANSACTION
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = IssuingIntervalLimit.deserialize("custom_value")
 ```
 
 

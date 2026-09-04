@@ -8,6 +8,9 @@ Indicates if the card supports domestic pull-from-card transfer.
 require "moov_ruby"
 
 value = DomesticPullFromCard::NOT_SUPPORTED
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = DomesticPullFromCard.deserialize("custom_value")
 ```
 
 

@@ -8,6 +8,9 @@ The unique ID of what the requirement is asking to be filled out.
 require "moov_ruby"
 
 value = RequirementID::ACCOUNT_TOS_ACCEPTANCE
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = RequirementID.deserialize("custom_value")
 ```
 
 
@@ -110,6 +113,20 @@ value = RequirementID::ACCOUNT_TOS_ACCEPTANCE
 | `UNDERWRITING_SEND_FUNDS_PUSH_TO_CARD_ESTIMATED_ACTIVITY_MONTHLY_VOLUME_RANGE`             | underwriting.sendFunds.pushToCard.estimatedActivity.monthlyVolumeRange                     |
 | `UNDERWRITING_SEND_FUNDS_PUSH_TO_CARD_FULFILLMENT`                                         | underwriting.sendFunds.pushToCard.fulfillment                                              |
 | `UNDERWRITING_SEND_FUNDS_PUSH_TO_CARD_REFUND_POLICY`                                       | underwriting.sendFunds.pushToCard.refundPolicy                                             |
+| `UNDERWRITING_SEND_FUNDS_INSTANT_BANK_CARD_ACCEPTANCE_METHODS`                             | underwriting.sendFunds.instantBank.cardAcceptanceMethods                                   |
+| `UNDERWRITING_SEND_FUNDS_INSTANT_BANK_CURRENTLY_ACCEPTS_CARDS`                             | underwriting.sendFunds.instantBank.currentlyAcceptsCards                                   |
+| `UNDERWRITING_SEND_FUNDS_INSTANT_BANK_ESTIMATED_ACTIVITY_AVERAGE_TRANSACTION_AMOUNT`       | underwriting.sendFunds.instantBank.estimatedActivity.averageTransactionAmount              |
+| `UNDERWRITING_SEND_FUNDS_INSTANT_BANK_ESTIMATED_ACTIVITY_MAXIMUM_TRANSACTION_AMOUNT`       | underwriting.sendFunds.instantBank.estimatedActivity.maximumTransactionAmount              |
+| `UNDERWRITING_SEND_FUNDS_INSTANT_BANK_ESTIMATED_ACTIVITY_MONTHLY_VOLUME_RANGE`             | underwriting.sendFunds.instantBank.estimatedActivity.monthlyVolumeRange                    |
+| `UNDERWRITING_SEND_FUNDS_INSTANT_BANK_FULFILLMENT`                                         | underwriting.sendFunds.instantBank.fulfillment                                             |
+| `UNDERWRITING_SEND_FUNDS_INSTANT_BANK_REFUND_POLICY`                                       | underwriting.sendFunds.instantBank.refundPolicy                                            |
+| `UNDERWRITING_SEND_FUNDS_WIRE_CARD_ACCEPTANCE_METHODS`                                     | underwriting.sendFunds.wire.cardAcceptanceMethods                                          |
+| `UNDERWRITING_SEND_FUNDS_WIRE_CURRENTLY_ACCEPTS_CARDS`                                     | underwriting.sendFunds.wire.currentlyAcceptsCards                                          |
+| `UNDERWRITING_SEND_FUNDS_WIRE_ESTIMATED_ACTIVITY_AVERAGE_TRANSACTION_AMOUNT`               | underwriting.sendFunds.wire.estimatedActivity.averageTransactionAmount                     |
+| `UNDERWRITING_SEND_FUNDS_WIRE_ESTIMATED_ACTIVITY_MAXIMUM_TRANSACTION_AMOUNT`               | underwriting.sendFunds.wire.estimatedActivity.maximumTransactionAmount                     |
+| `UNDERWRITING_SEND_FUNDS_WIRE_ESTIMATED_ACTIVITY_MONTHLY_VOLUME_RANGE`                     | underwriting.sendFunds.wire.estimatedActivity.monthlyVolumeRange                           |
+| `UNDERWRITING_SEND_FUNDS_WIRE_FULFILLMENT`                                                 | underwriting.sendFunds.wire.fulfillment                                                    |
+| `UNDERWRITING_SEND_FUNDS_WIRE_REFUND_POLICY`                                               | underwriting.sendFunds.wire.refundPolicy                                                   |
 | `UNDERWRITING_MONEY_TRANSFER_PULL_FROM_CARD_CARD_ACCEPTANCE_METHODS`                       | underwriting.moneyTransfer.pullFromCard.cardAcceptanceMethods                              |
 | `UNDERWRITING_MONEY_TRANSFER_PULL_FROM_CARD_CURRENTLY_ACCEPTS_CARDS`                       | underwriting.moneyTransfer.pullFromCard.currentlyAcceptsCards                              |
 | `UNDERWRITING_MONEY_TRANSFER_PULL_FROM_CARD_ESTIMATED_ACTIVITY_AVERAGE_TRANSACTION_AMOUNT` | underwriting.moneyTransfer.pullFromCard.estimatedActivity.averageTransactionAmount         |
@@ -124,3 +141,4 @@ value = RequirementID::ACCOUNT_TOS_ACCEPTANCE
 | `UNDERWRITING_MONEY_TRANSFER_PUSH_TO_CARD_ESTIMATED_ACTIVITY_MONTHLY_VOLUME_RANGE`         | underwriting.moneyTransfer.pushToCard.estimatedActivity.monthlyVolumeRange                 |
 | `UNDERWRITING_MONEY_TRANSFER_PUSH_TO_CARD_FULFILLMENT`                                     | underwriting.moneyTransfer.pushToCard.fulfillment                                          |
 | `UNDERWRITING_MONEY_TRANSFER_PUSH_TO_CARD_REFUND_POLICY`                                   | underwriting.moneyTransfer.pushToCard.refundPolicy                                         |
+| `UNDERWRITING_CARD_ISSUING_ESTIMATED_ACTIVITY_MONTHLY_VOLUME_RANGE`                        | underwriting.cardIssuing.estimatedActivity.monthlyVolumeRange                              |

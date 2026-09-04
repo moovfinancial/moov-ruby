@@ -8,6 +8,8 @@ end
 
 
 class Moov::Models::Components::PullFromCardTransferProcessingDetails
+  def status(); end
+  def status=(str_); end
   def authorization_code(); end
   def authorization_code=(str_); end
   def network_transaction_id(); end

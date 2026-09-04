@@ -7,20 +7,20 @@
 module Moov
   module Models
     module Components
-      # Mutable spend controls. Each field replaces the entire corresponding value.
+      # Each field replaces the entire corresponding value.
       class UpdateIssuingControls
         extend T::Sig
         include Crystalline::MetadataFields
 
         # Replaces the entire set of velocity limits. Send an empty array to clear all limits.
         field :velocity_limits, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::IssuingVelocityLimit)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('velocityLimits') } }
-        # Replaces the merchant category restrictions. Set to `null` to remove.
+        # Restricts card usage by merchant category. Set to `null` to remove all category restrictions.
         field :merchant_category_restrictions, Crystalline::Nilable.new(Models::Components::UpdateIssuingControlsMerchantCategoryRestrictions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantCategoryRestrictions') } }
-        # Replaces the merchant restrictions. Set to `null` to remove.
+        # Restricts card usage to specific merchants, independent of merchant category. Set to `null` to remove merchant restrictions.
         field :merchant_restrictions, Crystalline::Nilable.new(Models::Components::UpdateIssuingControlsMerchantRestrictions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantRestrictions') } }
-        # Replaces the allowed schedule. Set to `null` to remove all schedule restrictions.
+        # Limits card usage to specific days and times. Set to `null` to remove all schedule restrictions.
         field :allowed_schedule, Crystalline::Nilable.new(Models::Components::UpdateIssuingControlsAllowedSchedule), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowedSchedule') } }
-        # A spend cutoff date and time. Set to `null` to remove the cutoff.
+        # A spend cutoff date and time. Set to `null` to remove the spend cutoff.
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         sig { params(velocity_limits: T.nilable(T::Array[Models::Components::IssuingVelocityLimit]), merchant_category_restrictions: T.nilable(Models::Components::UpdateIssuingControlsMerchantCategoryRestrictions), merchant_restrictions: T.nilable(Models::Components::UpdateIssuingControlsMerchantRestrictions), allowed_schedule: T.nilable(Models::Components::UpdateIssuingControlsAllowedSchedule), expires_on: T.nilable(::DateTime)).void }

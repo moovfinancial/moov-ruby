@@ -25,7 +25,7 @@ module Moov
         # A unique identifier for a Moov resource. Supports UUID format (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) or typed format with base32-encoded UUID and type suffix (e.g., kuoaydiojf7uszaokc2ggnaaaa_xfer).
         field :partner_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('partnerAccountID'), required: true } }
 
-        field :status, Models::Components::InvoiceStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InvoiceStatus, false) } }
+        field :status, Models::Components::InvoiceStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InvoiceStatus, false) } }
         # A collection of line items for an invoice.
         field :line_items, Models::Components::InvoiceLineItems, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems'), required: true } }
 

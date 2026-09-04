@@ -12,30 +12,34 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # Status of a card payment transaction.
+        field :status, Crystalline::Nilable.new(Models::Components::CardPaymentTransactionStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardPaymentTransactionStatus, true) } }
 
         field :authorization_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authorizationCode') } }
 
         field :network_transaction_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkTransactionID') } }
 
-        field :network_response_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkResponseCode') } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
+        # The retrieval reference number assigned by the card network to the card payment.
+        field :retrieval_reference_number, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('retrievalReferenceNumber') } }
 
-        field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
-
-        sig { params(authorization_code: T.nilable(::String), network_transaction_id: T.nilable(::String), network_response_code: T.nilable(::String), failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
-        def initialize(authorization_code: nil, network_transaction_id: nil, network_response_code: nil, failure_code: nil)
+        sig { params(status: T.nilable(Models::Components::CardPaymentTransactionStatus), authorization_code: T.nilable(::String), network_transaction_id: T.nilable(::String), failure_code: T.nilable(Models::Components::CardTransactionFailureCode), retrieval_reference_number: T.nilable(::String)).void }
+        def initialize(status: nil, authorization_code: nil, network_transaction_id: nil, failure_code: nil, retrieval_reference_number: nil)
+          @status = status
           @authorization_code = authorization_code
           @network_transaction_id = network_transaction_id
-          @network_response_code = network_response_code
           @failure_code = failure_code
+          @retrieval_reference_number = retrieval_reference_number
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @status == other.status
           return false unless @authorization_code == other.authorization_code
           return false unless @network_transaction_id == other.network_transaction_id
-          return false unless @network_response_code == other.network_response_code
           return false unless @failure_code == other.failure_code
+          return false unless @retrieval_reference_number == other.retrieval_reference_number
           true
         end
       end

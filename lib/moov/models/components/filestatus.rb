@@ -8,12 +8,14 @@ module Moov
   module Models
     module Components
       # FileStatus - The file's status.
-      class FileStatus < T::Enum
+      class FileStatus
+        include ::Crystalline::Enum
         enums do
           PENDING = new('pending')
           APPROVED = new('approved')
           REJECTED = new('rejected')
         end
+        open!
       end
     end
   end

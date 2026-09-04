@@ -7,12 +7,14 @@
 module Moov
   module Models
     module Components
-      # IssuingControlsRestrictionMode - Whether the listed items are the only ones allowed (`allow`) or the ones to block (`block`).
-      class IssuingControlsRestrictionMode < T::Enum
+      # IssuingControlsRestrictionMode - Whether the listed items should be allowed (`allow`) or blocked (`block`).
+      class IssuingControlsRestrictionMode
+        include ::Crystalline::Enum
         enums do
           ALLOW = new('allow')
           BLOCK = new('block')
         end
+        open!
       end
     end
   end

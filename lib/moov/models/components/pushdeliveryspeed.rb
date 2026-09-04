@@ -8,11 +8,13 @@ module Moov
   module Models
     module Components
       # PushDeliverySpeed - Delivery speed options for push-to-card payouts.
-      class PushDeliverySpeed < T::Enum
+      class PushDeliverySpeed
+        include ::Crystalline::Enum
         enums do
           INSTANT = new('instant')
           DEFERRED = new('deferred')
         end
+        open!
       end
     end
   end

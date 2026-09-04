@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class SweepStatus < T::Enum
+      class SweepStatus
+        include ::Crystalline::Enum
         enums do
           ACCRUING = new('accruing')
           ACTION_REQUIRED = new('action-required')
@@ -17,6 +18,7 @@ module Moov
           FAILED = new('failed')
           PAID = new('paid')
         end
+        open!
       end
     end
   end

@@ -18,4 +18,6 @@ class Moov::Models::Components::TransferRailOptions
   def ach_debit=(str_); end
   def ach_credit(); end
   def ach_credit=(str_); end
+  def wire(); end
+  def wire=(str_); end
 end

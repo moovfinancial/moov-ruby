@@ -8,6 +8,9 @@ The result of a card verification check.
 require "moov_ruby"
 
 value = CardVerificationResult::NO_MATCH
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = CardVerificationResult.deserialize("custom_value")
 ```
 
 

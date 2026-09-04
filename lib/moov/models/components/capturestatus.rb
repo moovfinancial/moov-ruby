@@ -8,15 +8,15 @@ module Moov
   module Models
     module Components
 
-      class CaptureStatus < T::Enum
+      class CaptureStatus
+        include ::Crystalline::Enum
         enums do
           PENDING = new('pending')
-          SUBMITTED = new('submitted')
-          SETTLED = new('settled')
           COMPLETED = new('completed')
           FAILED = new('failed')
           CANCELED = new('canceled')
         end
+        open!
       end
     end
   end

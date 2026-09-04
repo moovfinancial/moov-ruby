@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = InvoicePaymentType::TRANSFER
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = InvoicePaymentType.deserialize("custom_value")
 ```
 
 

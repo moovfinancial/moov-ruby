@@ -12,17 +12,20 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # Status of a transaction within the instant-bank lifecycle.
+        field :status, Models::Components::InstantBankTransactionStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InstantBankTransactionStatus, false) } }
         # The network that the transaction was processed on.
-        field :network, Models::Components::InstantBankNetwork, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('network'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InstantBankNetwork, false) } }
+        field :network, Models::Components::InstantBankNetwork, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('network'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InstantBankNetwork, false) } }
 
         field :network_response_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkResponseCode') } }
         # Status codes for instant-bank failures.
-        field :failure_code, Crystalline::Nilable.new(Models::Components::InstantBankFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::InstantBankFailureCode, true) } }
+        field :failure_code, Crystalline::Nilable.new(Models::Components::InstantBankFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InstantBankFailureCode, true) } }
 
         field :end_to_end_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('endToEndID') } }
 
-        sig { params(network: Models::Components::InstantBankNetwork, network_response_code: T.nilable(::String), failure_code: T.nilable(Models::Components::InstantBankFailureCode), end_to_end_id: T.nilable(::String)).void }
-        def initialize(network:, network_response_code: nil, failure_code: nil, end_to_end_id: nil)
+        sig { params(status: Models::Components::InstantBankTransactionStatus, network: Models::Components::InstantBankNetwork, network_response_code: T.nilable(::String), failure_code: T.nilable(Models::Components::InstantBankFailureCode), end_to_end_id: T.nilable(::String)).void }
+        def initialize(status:, network:, network_response_code: nil, failure_code: nil, end_to_end_id: nil)
+          @status = status
           @network = network
           @network_response_code = network_response_code
           @failure_code = failure_code
@@ -32,6 +35,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @status == other.status
           return false unless @network == other.network
           return false unless @network_response_code == other.network_response_code
           return false unless @failure_code == other.failure_code

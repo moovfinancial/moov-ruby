@@ -14,4 +14,6 @@ class Moov::Models::Components::CreateTransferDestination
   def card_details=(str_); end
   def ach_details(); end
   def ach_details=(str_); end
+  def wire_details(); end
+  def wire_details=(str_); end
 end

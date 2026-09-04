@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class PendingLitigation < T::Enum
+      class PendingLitigation
+        include ::Crystalline::Enum
         enums do
           BANKRUPTCY_OR_INSOLVENCY = new('bankruptcy-or-insolvency')
           CONSUMER_PROTECTION_OR_CLASS_ACTION = new('consumer-protection-or-class-action')
@@ -21,6 +22,7 @@ module Moov
           OTHER = new('other')
           PERSONAL_INJURY_OR_MEDICAL = new('personal-injury-or-medical')
         end
+        open!
       end
     end
   end

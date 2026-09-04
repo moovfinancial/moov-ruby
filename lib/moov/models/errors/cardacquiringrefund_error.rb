@@ -19,12 +19,12 @@ module Moov
 
         field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
 
-        field :status, Models::Components::RefundStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::RefundStatus, false) } }
+        field :status, Models::Components::RefundStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::RefundStatus, false) } }
 
         field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
 
         field :processing_details, Models::Components::RefundProcessingDetails, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('processingDetails'), required: true } }
-        # ID of the capture this refund applies to, when applicable.
+        # ID of the capture refunded for an auth-capture `card-payment` transfer.
         field :capture_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('captureID') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::RefundAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }

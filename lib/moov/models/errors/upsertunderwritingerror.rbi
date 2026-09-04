@@ -22,6 +22,8 @@ class Moov::Models::Errors::UpsertUnderwritingError
   def money_transfer=(str_); end
   def send_funds(); end
   def send_funds=(str_); end
+  def card_issuing(); end
+  def card_issuing=(str_); end
   def average_monthly_transaction_volume(); end
   def average_monthly_transaction_volume=(str_); end
   def error(); end

@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
         # The predefined category group.
-        field :category, Models::Components::IssuingMerchantCategory, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('category'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuingMerchantCategory, false) } }
+        field :category, Models::Components::IssuingMerchantCategory, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('category'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingMerchantCategory, false) } }
         # The merchant category codes (MCCs) covered by this category. Each entry is either a single
         # 4-digit MCC, such as `4511`, or an inclusive range of MCCs, such as `3000-3299`.
         field :mccs, Crystalline::Array.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mccs'), required: true } }

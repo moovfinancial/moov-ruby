@@ -8,6 +8,9 @@ Status codes for instant-bank failures.
 require "moov_ruby"
 
 value = InstantBankFailureCode::PROCESSING_ERROR
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = InstantBankFailureCode.deserialize("custom_value")
 ```
 
 

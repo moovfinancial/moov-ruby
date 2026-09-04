@@ -15,7 +15,7 @@ module Moov
 
         field :issued_card_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuedCardID'), required: true } }
         # The card brand.
-        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::CardBrand, false) } }
+        field :brand, Models::Components::CardBrand, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('brand'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardBrand, false) } }
 
         field :last_four_card_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber'), required: true } }
         # The expiration date of the card or token.
@@ -25,8 +25,9 @@ module Moov
         # The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
         #
         # - `active`: The card is operational and can approve authorizations.
+        # - `frozen`: The card is temporarily suspended and cannot approve authorizations. A frozen card can be reactivated by setting its state back to `active`.
         # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
-        field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardState, false) } }
+        field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuedCardState, false) } }
         # Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
         field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }
 

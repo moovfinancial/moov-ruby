@@ -8,6 +8,8 @@ end
 
 
 class Moov::Models::Components::InstantBankCreditTransferProcessingDetails
+  def status(); end
+  def status=(str_); end
   def network(); end
   def network=(str_); end
   def network_response_code(); end

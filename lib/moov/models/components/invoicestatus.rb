@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class InvoiceStatus < T::Enum
+      class InvoiceStatus
+        include ::Crystalline::Enum
         enums do
           DRAFT = new('draft')
           UNPAID = new('unpaid')
@@ -17,6 +18,7 @@ module Moov
           OVERDUE = new('overdue')
           CANCELED = new('canceled')
         end
+        open!
       end
     end
   end

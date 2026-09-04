@@ -6,6 +6,9 @@
 require "moov_ruby"
 
 value = EvidenceType::RECEIPT
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = EvidenceType.deserialize("custom_value")
 ```
 
 

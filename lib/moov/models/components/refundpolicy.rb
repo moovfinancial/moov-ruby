@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
 
-      class RefundPolicy < T::Enum
+      class RefundPolicy
+        include ::Crystalline::Enum
         enums do
           CONDITIONAL_REFUND = new('conditional-refund')
           CUSTOM_POLICY = new('custom-policy')
@@ -20,6 +21,7 @@ module Moov
           PRORATED_REFUND = new('prorated-refund')
           STORE_CREDIT_ONLY = new('store-credit-only')
         end
+        open!
       end
     end
   end

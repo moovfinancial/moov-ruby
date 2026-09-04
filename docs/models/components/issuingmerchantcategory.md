@@ -8,6 +8,9 @@ Predefined merchant category groups.
 require "moov_ruby"
 
 value = IssuingMerchantCategory::ADVERTISING
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = IssuingMerchantCategory.deserialize("custom_value")
 ```
 
 

@@ -7,21 +7,21 @@
 module Moov
   module Models
     module Components
-      # Identifies a merchant by ID, descriptor pattern, or both. At least one of `mid` or `descriptorPattern` must be set.
+      # Identifies a merchant by ID, descriptor pattern, or both. At least one of `networkID` or `descriptorPattern` must be set.
       class MerchantEntry
         extend T::Sig
         include Crystalline::MetadataFields
 
         # The merchant's unique identifier (ISO 8583 DE42), matched exactly.
-        field :mid, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mid') } }
+        field :network_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkID') } }
         # A case-insensitive RE2 regular expression matched against the merchant descriptor (ISO 8583 DE43).
         field :descriptor_pattern, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('descriptorPattern') } }
         # An optional label for this entry.
         field :name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name') } }
 
-        sig { params(mid: T.nilable(::String), descriptor_pattern: T.nilable(::String), name: T.nilable(::String)).void }
-        def initialize(mid: nil, descriptor_pattern: nil, name: nil)
-          @mid = mid
+        sig { params(network_id: T.nilable(::String), descriptor_pattern: T.nilable(::String), name: T.nilable(::String)).void }
+        def initialize(network_id: nil, descriptor_pattern: nil, name: nil)
+          @network_id = network_id
           @descriptor_pattern = descriptor_pattern
           @name = name
         end
@@ -29,7 +29,7 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @mid == other.mid
+          return false unless @network_id == other.network_id
           return false unless @descriptor_pattern == other.descriptor_pattern
           return false unless @name == other.name
           true

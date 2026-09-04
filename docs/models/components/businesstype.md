@@ -8,6 +8,9 @@ The type of entity represented by this business.
 require "moov_ruby"
 
 value = BusinessType::SOLE_PROPRIETORSHIP
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = BusinessType.deserialize("custom_value")
 ```
 
 

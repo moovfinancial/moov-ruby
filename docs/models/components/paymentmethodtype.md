@@ -8,6 +8,9 @@ The payment method type that represents a payment rail and directionality
 require "moov_ruby"
 
 value = PaymentMethodType::MOOV_WALLET
+
+# Open enum: use .deserialize() to create instances from custom string values
+custom = PaymentMethodType.deserialize("custom_value")
 ```
 
 
@@ -32,3 +35,4 @@ value = PaymentMethodType::MOOV_WALLET
 | `GOOGLE_PAY`           | google-pay             |
 | `PUSH_TO_GOOGLE_PAY`   | push-to-google-pay     |
 | `PULL_FROM_GOOGLE_PAY` | pull-from-google-pay   |
+| `WIRE_CREDIT`          | wire-credit            |

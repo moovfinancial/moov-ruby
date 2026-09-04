@@ -10,7 +10,8 @@ module Moov
       # VerificationStatusDetail - Additional detail for a verification status.
       #
       # @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
-      class VerificationStatusDetail < T::Enum
+      class VerificationStatusDetail
+        include ::Crystalline::Enum
         enums do
           FAILED_AUTO_VERIFY = new('failedAutoVerify')
           DOC_DOB_MISMATCH = new('docDobMismatch')
@@ -23,6 +24,7 @@ module Moov
           POTENTIAL_REPRESENTATIVE_SANCTIONS_MATCH = new('potentialRepresentativeSanctionsMatch')
           FAILED_OTHER = new('failedOther')
         end
+        open!
       end
     end
   end

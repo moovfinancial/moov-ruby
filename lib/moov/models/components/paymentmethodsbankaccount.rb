@@ -19,15 +19,15 @@ module Moov
         # The fingerprint acts as a way to identify whether two linked bank accounts are the same.
         field :fingerprint, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fingerprint'), required: true } }
 
-        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountStatus, false) } }
+        field :status, Models::Components::BankAccountStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::BankAccountStatus, false) } }
 
         field :holder_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderName'), required: true } }
         # The type of holder on a funding source.
-        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountHolderType, false) } }
+        field :holder_type, Models::Components::BankAccountHolderType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('holderType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::BankAccountHolderType, false) } }
 
         field :bank_name, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankName'), required: true } }
         # The bank account type.
-        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::BankAccountType, false) } }
+        field :bank_account_type, Models::Components::BankAccountType, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountType'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::BankAccountType, false) } }
 
         field :routing_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('routingNumber'), required: true } }
 

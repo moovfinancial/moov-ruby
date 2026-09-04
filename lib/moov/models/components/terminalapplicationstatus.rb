@@ -8,13 +8,15 @@ module Moov
   module Models
     module Components
       # TerminalApplicationStatus - Status of the terminal application.
-      class TerminalApplicationStatus < T::Enum
+      class TerminalApplicationStatus
+        include ::Crystalline::Enum
         enums do
           UNDEFINED = new('undefined')
           PENDING = new('pending')
           ENABLED = new('enabled')
           DISABLED = new('disabled')
         end
+        open!
       end
     end
   end

@@ -8,7 +8,8 @@ module Moov
   module Models
     module Components
       # TransferType - The rail and direction used to move funds for a transfer.
-      class TransferType < T::Enum
+      class TransferType
+        include ::Crystalline::Enum
         enums do
           CARD_PAYMENT = new('card-payment')
           PUSH_TO_CARD = new('push-to-card')
@@ -18,7 +19,9 @@ module Moov
           ACH_DEBIT_TO_ACH_CREDIT = new('ach-debit-to-ach-credit')
           INSTANT_BANK_CREDIT = new('instant-bank-credit')
           WALLET = new('wallet')
+          WIRE_CREDIT = new('wire-credit')
         end
+        open!
       end
     end
   end
