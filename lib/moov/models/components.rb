@@ -533,6 +533,7 @@ module Moov
       autoload :WebhookDataCardAutoUpdated, 'moov/models/components/webhookdatacardautoupdated.rb'
       autoload :WebhookDataDisputeCreated, 'moov/models/components/webhookdatadisputecreated.rb'
       autoload :WebhookDataDisputeUpdated, 'moov/models/components/webhookdatadisputeupdated.rb'
+      autoload :WebhookDataEventTest, 'moov/models/components/webhookdataeventtest.rb'
       autoload :WebhookDataInvoiceCreated, 'moov/models/components/webhookdatainvoicecreated.rb'
       autoload :WebhookDataInvoiceUpdated, 'moov/models/components/webhookdatainvoiceupdated.rb'
       autoload :WebhookDataNetworkIDUpdated, 'moov/models/components/webhookdatanetworkidupdated.rb'
