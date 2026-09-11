@@ -58,3 +58,4 @@ custom = WebhookEventType.deserialize("custom_value")
 | `WALLET_TRANSACTION_UPDATED`   | walletTransaction.updated      |
 | `BILLING_STATEMENT_CREATED`    | billingStatement.created       |
 | `AUTHORIZATION_EXPIRING`       | authorization.expiring         |
+| `EVENT_TEST`                   | event.test                     |
