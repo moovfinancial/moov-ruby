@@ -28,11 +28,13 @@ module Moov
         field :merchant_data, Models::Components::IssuingMerchantData, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantData'), required: true } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
+        # Last four digits of the card number. Omitted for authorizations recorded before this was captured.
+        field :last_four_card_number, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber') } }
         # List of card transaction IDs associated with this authorization.
         field :card_transactions, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardTransactions') } }
 
-        sig { params(authorization_id: ::String, issued_card_id: ::String, funding_wallet_id: ::String, network: Models::Components::CardIssuingNetwork, authorized_amount: ::String, status: Models::Components::IssuingAuthorizationStatus, merchant_data: Models::Components::IssuingMerchantData, created_on: ::DateTime, card_transactions: T.nilable(T::Array[::String])).void }
-        def initialize(authorization_id:, issued_card_id:, funding_wallet_id:, network:, authorized_amount:, status:, merchant_data:, created_on:, card_transactions: nil)
+        sig { params(authorization_id: ::String, issued_card_id: ::String, funding_wallet_id: ::String, network: Models::Components::CardIssuingNetwork, authorized_amount: ::String, status: Models::Components::IssuingAuthorizationStatus, merchant_data: Models::Components::IssuingMerchantData, created_on: ::DateTime, last_four_card_number: T.nilable(::String), card_transactions: T.nilable(T::Array[::String])).void }
+        def initialize(authorization_id:, issued_card_id:, funding_wallet_id:, network:, authorized_amount:, status:, merchant_data:, created_on:, last_four_card_number: nil, card_transactions: nil)
           @authorization_id = authorization_id
           @issued_card_id = issued_card_id
           @funding_wallet_id = funding_wallet_id
@@ -41,6 +43,7 @@ module Moov
           @status = status
           @merchant_data = merchant_data
           @created_on = created_on
+          @last_four_card_number = last_four_card_number
           @card_transactions = card_transactions
         end
 
@@ -55,6 +58,7 @@ module Moov
           return false unless @status == other.status
           return false unless @merchant_data == other.merchant_data
           return false unless @created_on == other.created_on
+          return false unless @last_four_card_number == other.last_four_card_number
           return false unless @card_transactions == other.card_transactions
           true
         end
