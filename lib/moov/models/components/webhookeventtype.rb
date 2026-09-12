@@ -51,6 +51,7 @@ module Moov
           WALLET_TRANSACTION_UPDATED = new('walletTransaction.updated')
           BILLING_STATEMENT_CREATED = new('billingStatement.created')
           AUTHORIZATION_EXPIRING = new('authorization.expiring')
+          EVENT_TEST = new('event.test')
         end
         open!
       end
