@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: 6f5ccdb3520f592cc31c66dfc074850a
+  docChecksum: 9473cf94c9c56a3400f2c3c0e5f280bb
   docVersion: v2026.10.00
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 26.10.0-dev.4
-  configChecksum: f6e13251a9c51c5a0436bc037a076b44
+  releaseVersion: 26.10.0-dev.5
+  configChecksum: b304de50bff5779641e8388112187be3
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: c3e369e5-c3d3-4e7d-9081-d3584c3bef14
-  pristine_commit_hash: 2e43d0cac932ead99219e08695335b344faba443
-  pristine_tree_hash: c46a69f11b37c0a9f30f5d3134d5d0c8e4fed20c
+  generation_id: f2ca7e80-9a03-44d7-9d83-0b85aa41846c
+  pristine_commit_hash: 51802e2e8d2c4d5a9302f4762fdf4f25ed9ae9fb
+  pristine_tree_hash: 8d65b6232609f5cb4e5c81183f8066a7dd9855bf
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -49,8 +49,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:3e9fcc4776620f7564ee000d01327437e4223bcb
-    pristine_git_object: 3a36c0ad2831ad60ebe61c0bd3f9aa372769d62e
+    last_write_checksum: sha1:d55812525999767a525f488e2bc947e9fd9b0563
+    pristine_git_object: 3d64ca5f4938d50510b3af89cea471bfbee26b47
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -685,8 +685,8 @@ trackedFiles:
     pristine_git_object: 1ec5cb5875e5e36ccc31e62c82bacdfd1ee9a5ec
   docs/models/components/cardpaymenttransactionstatus.md:
     id: 2b0d85bf8eb7
-    last_write_checksum: sha1:18f9f5ca39694415fbca5400f446d0809ad5bd81
-    pristine_git_object: f22d35833c0f5bdd5aae8adccc97dee1e6ace13b
+    last_write_checksum: sha1:21d04fd862dee27612c8b9983593181e23895022
+    pristine_git_object: 1b4cab24e52e80d89460fc80cd54de2fd9229bba
   docs/models/components/cardpaymenttransferpaymentmethod.md:
     id: fe12b19a70d2
     last_write_checksum: sha1:190d875de3ca9aaf1f139683776f74633422140f
@@ -6577,8 +6577,8 @@ trackedFiles:
     pristine_git_object: ef7b33feef08fd921cf8372b6946ecab2fcb3c42
   lib/moov/models/components/cardpaymenttransactionstatus.rb:
     id: 92e4beeb853a
-    last_write_checksum: sha1:cb9440389f763d7654601586c4cb52fbdecd0322
-    pristine_git_object: 14064e7a41b3606aa507be988c833e73ecec9b25
+    last_write_checksum: sha1:eaed4877584f3c6ff43dc919c242f274e39291bd
+    pristine_git_object: 364156054b14278ebfa9f48a0acc9cee72330aa2
   lib/moov/models/components/cardpaymenttransactionstatus.rbi:
     id: befab84d0514
     last_write_checksum: sha1:1b88a98b8bce13e7c9ffb113f97b38109e848f99
@@ -15325,8 +15325,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:21f20ae6cb17d2988239bc64da5093af7ec9e5de
-    pristine_git_object: fda01c8c44b092ac53389893a07caeb436531094
+    last_write_checksum: sha1:a5af3ac4fdfa759269fc12fef8a2803870f5d7de
+    pristine_git_object: db42ae21fdbb6434f7e003dadf2e2224a8774241
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -15409,8 +15409,8 @@ trackedFiles:
     pristine_git_object: baba02e34dc7be67fa39fafbfcd08afcd0332d96
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:33c90306c14b69b3db7ae41466d54fd14353e68a
-    pristine_git_object: eba635c1157fdb2b5bca02043547089eb646ac43
+    last_write_checksum: sha1:82a08287d790dfc7d62ae4f482999bb1460a2220
+    pristine_git_object: 4093d5cef506eb3b7405c1f19143dde92d927e6e
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -18222,7 +18222,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.webhooks.list()`:  `response.[].event_types[].enum(event.test)` **Added**\n* `client.webhooks.create()`: \n  *  `request.event_types[].enum(event.test)` **Added**\n  *  `response.event_types[].enum(event.test)` **Added**\n* `client.webhooks.get()`:  `response.event_types[].enum(event.test)` **Added**\n* `client.webhooks.update()`: \n  *  `request.update_webhook.event_types[].enum(event.test)` **Added**\n  *  `response.event_types[].enum(event.test)` **Added**\n* `client.webhooks.ping()`:  `response.webhook.event_types[].enum(event.test)` **Added**\n* `client.issuing_transactions.list_authorizations()`:  `response.[].last_four_card_number` **Added**\n* `client.issuing_transactions.get_authorization()`:  `response.last_four_card_number` **Added**\n* `client.issuing_transactions.list()`:  `response.[].last_four_card_number` **Added**\n* `client.issuing_transactions.get()`:  `response.last_four_card_number` **Added**\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.transfers.create()`: \n  *  `response.processing_details.card_payment.status.enum(cleared_external)` **Added**\n  *  `error.processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.list()`:  `response.[].processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.batch_get_transfers()`:  `response.Map<Transfer>.processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.get()`:  `response.processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.update()`:  `response.processing_details.card_payment.status.enum(cleared_external)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
