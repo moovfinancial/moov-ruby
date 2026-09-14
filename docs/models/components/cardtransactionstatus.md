@@ -16,11 +16,12 @@ custom = CardTransactionStatus.deserialize("custom_value")
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `INITIATED` | initiated   |
-| `CONFIRMED` | confirmed   |
-| `CANCELED`  | canceled    |
-| `SETTLED`   | settled     |
-| `FAILED`    | failed      |
-| `COMPLETED` | completed   |
+| Name               | Value              |
+| ------------------ | ------------------ |
+| `INITIATED`        | initiated          |
+| `CONFIRMED`        | confirmed          |
+| `CANCELED`         | canceled           |
+| `SETTLED`          | settled            |
+| `FAILED`           | failed             |
+| `COMPLETED`        | completed          |
+| `CLEARED_EXTERNAL` | cleared-external   |
