@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: cde9325b74ba672866d62b9ea6bf79c3
+  docChecksum: 700a7695333e4ab522820752b5ed6b0a
   docVersion: v2025.01.00
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 25.2.15
-  configChecksum: 1034763203f1b86e48effb1c037bc13c
+  releaseVersion: 25.2.16
+  configChecksum: ad57a40148fbdb26d3a506691a07404b
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 51fc7135-dcf0-4d4e-a522-1665265cf2aa
-  pristine_commit_hash: 1b6a627cc3539d5dfb39d52db9ed73a1e68d1071
-  pristine_tree_hash: 4461c2bea64131581a20c4b6f398986559fe911e
+  generation_id: 328edb0c-f4d8-45a0-ac07-43366f68d15f
+  pristine_commit_hash: 786f20b1f5d718008fa1ecf1cc54b2f05c890951
+  pristine_tree_hash: 3594fbe6ebb04eec47d0e1d54ad30027e8463e37
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -47,8 +47,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:078a56b0ee0b9dc6ee99a5e04040af4f5036b71c
-    pristine_git_object: 6e12ff5632bc4366bb743ab670bf212a10c378c0
+    last_write_checksum: sha1:cc256c640356cdde729caa739a780b361a2e1309
+    pristine_git_object: e2fdfcf72c25c3bccf2a37101dd955d7bb9bd0aa
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -587,8 +587,8 @@ trackedFiles:
     pristine_git_object: 8cf24bdeba3b3a11be01a6be18c8351ea546041a
   docs/models/components/cardtransactionstatus.md:
     id: d2b3505b2c6f
-    last_write_checksum: sha1:0ca48d38ce8b97725a28963d93ed5fe8e9f21f65
-    pristine_git_object: f7746af4b199d5ee74ae6aef61b213898c1e6a0b
+    last_write_checksum: sha1:a8ea63f29faba7887f83d11fd796ee82868c74d0
+    pristine_git_object: a5774a79cc13289b173cc837a7d88b20dd54b896
   docs/models/components/cardtype.md:
     id: 860aefe792e5
     last_write_checksum: sha1:89921eb768c895122619e895d0dfd9018a88cd11
@@ -1635,8 +1635,8 @@ trackedFiles:
     pristine_git_object: 7b0a94a9fc99eb30b78547c78cd3a599017d20b3
   docs/models/components/refundcardstatus.md:
     id: 5cc6cea25dad
-    last_write_checksum: sha1:e10d839090d62614df080aab518c657acf087353
-    pristine_git_object: 3da5b9bb7fbf3cbbf5c7f35b38768aa01209e2e0
+    last_write_checksum: sha1:4b85c6b5a5782804cfafc8fbbc9801da2288793b
+    pristine_git_object: 816b79f34d5bb45ec33ce232cdbb6429ff6de092
   docs/models/components/refundstatus.md:
     id: ccd8379bb890
     last_write_checksum: sha1:e2f1042802c7e0ab5dabcebe457283a53c427e43
@@ -5115,8 +5115,8 @@ trackedFiles:
     pristine_git_object: 18f5ade43d9d12a284c7e403cddba92e4ade5905
   lib/moov/models/components/cardtransactionstatus.rb:
     id: 1757b2146428
-    last_write_checksum: sha1:502db61bf9d1ad72dfafd920a8a7d5fd978996c0
-    pristine_git_object: fde8c60b640f8ed04ea7b355a496fbdadb2396de
+    last_write_checksum: sha1:b3f009081df557b955f1f56a59d790c8ba12da85
+    pristine_git_object: 43aac3090310c57dd4a1f58371dcc8e38373cf3b
   lib/moov/models/components/cardtransactionstatus.rbi:
     id: d13f1ba0ebed
     last_write_checksum: sha1:5647d9eb8edf2a37ca1fd029925df308401de858
@@ -7211,8 +7211,8 @@ trackedFiles:
     pristine_git_object: cd7885fd499c6e0ed9f209828f29807aa1ad206c
   lib/moov/models/components/refundcardstatus.rb:
     id: baa459594765
-    last_write_checksum: sha1:7674d8b23f58c9506df05d8aea77f5417337718b
-    pristine_git_object: 0a43c0b0204bfba11358bdfa670f9aa24b506588
+    last_write_checksum: sha1:636e9e5849d428367bb994843e495fb017fbac08
+    pristine_git_object: 0867f0ef223ef0306cb3f6f31f03bc63ad62b78d
   lib/moov/models/components/refundcardstatus.rbi:
     id: 8f89a2342ea5
     last_write_checksum: sha1:683deb2391890570fa98d6af2d0982e0c01fbdb7
@@ -11579,8 +11579,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:7d8e4fe393b3a6c530a6c29298feeaafa6c9a1f8
-    pristine_git_object: 58356d2d199c14436d0c996633caf0fd36291d56
+    last_write_checksum: sha1:66e21d063be36487aa12376974646ef90f30d8b0
+    pristine_git_object: eeb9d9954c3ed749cbc1a7d04e2315d40feea43b
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -11655,8 +11655,8 @@ trackedFiles:
     pristine_git_object: 14c62564bc3e68a41ddffd5a2f33037f4d55049e
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:69919ebfd763b9e4044503f3fcf01403f6ef4687
-    pristine_git_object: ce08eb37cc9a94f3bf72d06794ce1918e5a910db
+    last_write_checksum: sha1:97d9befdd1b4032ceb32c3056c262867ca184e80
+    pristine_git_object: f8441fd017d6bb7b7c78f6581287d58c1a49b3dc
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -14203,7 +14203,7 @@ examples:
         "200":
           application/json: [{"cancellationID": "89ca7f54-13ba-4714-b9af-17163eae2057", "status": "completed", "createdOn": "2025-01-19T03:02:43.255309588Z"}]
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.webhooks.list()`:  `response.[].event_types[].enum(event.test)` **Added**\n* `client.webhooks.create()`: \n  *  `request.event_types[].enum(event.test)` **Added**\n  *  `response.event_types[].enum(event.test)` **Added**\n* `client.webhooks.get()`:  `response.event_types[].enum(event.test)` **Added**\n* `client.webhooks.update()`: \n  *  `request.update_webhook.event_types[].enum(event.test)` **Added**\n  *  `response.event_types[].enum(event.test)` **Added**\n* `client.webhooks.ping()`:  `response.webhook.event_types[].enum(event.test)` **Added**\n* `client.issuing_transactions.list_authorizations()`:  `response.[].last_four_card_number` **Added**\n* `client.issuing_transactions.get_authorization()`:  `response.last_four_card_number` **Added**\n* `client.issuing_transactions.list()`:  `response.[].last_four_card_number` **Added**\n* `client.issuing_transactions.get()`:  `response.last_four_card_number` **Added**\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.transfers.create()`: \n  *  `response` **Changed**\n  *  `error` **Changed**\n* `client.transfers.list()`:  `response.[]` **Changed**\n* `client.transfers.batch_get_transfers()`:  `response.Map<Transfer>` **Changed**\n* `client.transfers.get()`:  `response` **Changed**\n* `client.transfers.update()`:  `response` **Changed**\n* `client.transfers.initiate_refund()`: \n  *  `response` **Changed**\n  *  `error.card_details.status.enum(cleared_external)` **Added**\n* `client.transfers.list_refunds()`:  `response.[].card_details.status.enum(cleared_external)` **Added**\n* `client.transfers.get_refund()`:  `response.card_details.status.enum(cleared_external)` **Added**\n* `client.transfers.create_reversal()`:  `response.union(ReversedWithRefund).refund.card_details.status.enum(cleared_external)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
