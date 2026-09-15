@@ -17,7 +17,7 @@ module Moov
           SETTLED = new('settled')
           FAILED = new('failed')
           COMPLETED = new('completed')
-          CLEARED_EXTERNAL = new('cleared-external')
+          CLEARED_EXTERNALLY = new('cleared-externally')
         end
         open!
       end
