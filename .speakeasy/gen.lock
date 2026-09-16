@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: cba88f76d8af3952bab0bb93884e410c
+  docChecksum: 4ffff9bf603aa2b3dc9af88558992a00
   docVersion: dev
   speakeasyVersion: 1.797.0
   generationVersion: 2.937.18
-  releaseVersion: 0.0.0-dev.28
-  configChecksum: 944218b2d53ab7f4946c01ed2d654e46
+  releaseVersion: 0.0.0-dev.29
+  configChecksum: 3bedee6991313241bb67da08afe1c291
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 1a7f6c26-4dca-4290-b2f4-4fc6362a0c23
-  pristine_commit_hash: 519822e74769d0e388cb55658b8845596bbc2e8e
-  pristine_tree_hash: 3afaefa8cf90dff157e9662ff82da1702f8d7895
+  generation_id: 4579410a-0fa9-4386-b94e-0f5bcf167929
+  pristine_commit_hash: b247b2a8d9ce0b89bf0466b265b41a01b760b9ac
+  pristine_tree_hash: 35ce040954bf5ff8dbd1d171fdca151eb92ffaad
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -49,8 +49,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:46c56ffac0758a0dc1863d9f1e36ea56cd8d7399
-    pristine_git_object: f4526261c6920543c54c10687208e61ade03d2d8
+    last_write_checksum: sha1:eeb669bb584f22e60535694a08cf551182f47e3d
+    pristine_git_object: 997e28057e89e987013ebbe4759cf61f0382188e
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -685,8 +685,8 @@ trackedFiles:
     pristine_git_object: 1ec5cb5875e5e36ccc31e62c82bacdfd1ee9a5ec
   docs/models/components/cardpaymenttransactionstatus.md:
     id: 2b0d85bf8eb7
-    last_write_checksum: sha1:21d04fd862dee27612c8b9983593181e23895022
-    pristine_git_object: 1b4cab24e52e80d89460fc80cd54de2fd9229bba
+    last_write_checksum: sha1:9c262f075c61ae4f4a40165d9dcec8c278c05b86
+    pristine_git_object: b6dac57d53031e3057ef9397a1de612f4deb2e5f
   docs/models/components/cardpaymenttransferpaymentmethod.md:
     id: fe12b19a70d2
     last_write_checksum: sha1:190d875de3ca9aaf1f139683776f74633422140f
@@ -6577,8 +6577,8 @@ trackedFiles:
     pristine_git_object: ef7b33feef08fd921cf8372b6946ecab2fcb3c42
   lib/moov/models/components/cardpaymenttransactionstatus.rb:
     id: 92e4beeb853a
-    last_write_checksum: sha1:eaed4877584f3c6ff43dc919c242f274e39291bd
-    pristine_git_object: 364156054b14278ebfa9f48a0acc9cee72330aa2
+    last_write_checksum: sha1:814f874892c0f61875d913277c9dbaa49ca91aae
+    pristine_git_object: 9c32ed4765df3bd7cbba0e1fdf845121c8cefe73
   lib/moov/models/components/cardpaymenttransactionstatus.rbi:
     id: befab84d0514
     last_write_checksum: sha1:1b88a98b8bce13e7c9ffb113f97b38109e848f99
@@ -15325,8 +15325,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:bb530b4624281606e30f5da4607b0245dcc04b8c
-    pristine_git_object: 4ab91e9657e017adb15523e0e18c987f6473c58f
+    last_write_checksum: sha1:da9d24507b854bb11195208428fa2f6e2606bb52
+    pristine_git_object: 2dba961c957d46477428f75fb937800dc548479d
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -15409,8 +15409,8 @@ trackedFiles:
     pristine_git_object: baba02e34dc7be67fa39fafbfcd08afcd0332d96
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:f390c248275b442e498eaf6d897e7a396317728f
-    pristine_git_object: ca1eadb549940fa2a43704e18143ed01fcef816f
+    last_write_checksum: sha1:29a51b972df770f831f0c2092e897b247c983aa0
+    pristine_git_object: 1e1d4fce6850eec472e37ffdac3c4048ff6f74c1
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -18222,7 +18222,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.transfers.create()`: \n  *  `response.processing_details.card_payment.status.enum(cleared_external)` **Added**\n  *  `error.processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.list()`:  `response.[].processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.batch_get_transfers()`:  `response.Map<Transfer>.processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.get()`:  `response.processing_details.card_payment.status.enum(cleared_external)` **Added**\n* `client.transfers.update()`:  `response.processing_details.card_payment.status.enum(cleared_external)` **Added**\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.transfers.create()`: \n  *  `response.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n  *  `error.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.list()`:  `response.[].processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.batch_get_transfers()`:  `response.Map<Transfer>.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.get()`:  `response.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.update()`:  `response.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
