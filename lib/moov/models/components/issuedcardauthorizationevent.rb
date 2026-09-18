@@ -22,14 +22,18 @@ module Moov
         field :result, Models::Components::IssuedCardAuthorizationEventResult, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('result'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuedCardAuthorizationEventResult, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
+        # The reason an authorization or authorization event was declined. Only present if the
+        # authorization or event has been declined.
+        field :decline_reason, Crystalline::Nilable.new(Models::Components::IssuingDeclineReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('declineReason'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingDeclineReason, true) } }
 
-        sig { params(event_id: ::String, event_type: Models::Components::IssuedCardEventType, amount: ::String, result: Models::Components::IssuedCardAuthorizationEventResult, created_on: ::DateTime).void }
-        def initialize(event_id:, event_type:, amount:, result:, created_on:)
+        sig { params(event_id: ::String, event_type: Models::Components::IssuedCardEventType, amount: ::String, result: Models::Components::IssuedCardAuthorizationEventResult, created_on: ::DateTime, decline_reason: T.nilable(Models::Components::IssuingDeclineReason)).void }
+        def initialize(event_id:, event_type:, amount:, result:, created_on:, decline_reason: nil)
           @event_id = event_id
           @event_type = event_type
           @amount = amount
           @result = result
           @created_on = created_on
+          @decline_reason = decline_reason
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -40,6 +44,7 @@ module Moov
           return false unless @amount == other.amount
           return false unless @result == other.result
           return false unless @created_on == other.created_on
+          return false unless @decline_reason == other.decline_reason
           true
         end
       end

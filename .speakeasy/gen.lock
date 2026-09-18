@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: c765c40c-e809-4bd2-a2c4-fcc68594a88f
 management:
-  docChecksum: edd19981cb52f4512eb29763661026cd
+  docChecksum: 214fc0a8876d6417fb52539f0c3ec2dc
   docVersion: v2026.10.00
-  speakeasyVersion: 1.797.0
-  generationVersion: 2.937.18
-  releaseVersion: 26.10.0-dev.6
-  configChecksum: 22ed7119b73b957928eee4ce5d5f4343
+  speakeasyVersion: 1.798.0
+  generationVersion: 2.938.0
+  releaseVersion: 26.10.0-dev.7
+  configChecksum: dbf726093d2e3e00424ca60c5f75bdc8
   repoURL: https://github.com/moovfinancial/moov-ruby.git
   installationURL: https://github.com/moovfinancial/moov-ruby
   published: true
 persistentEdits:
-  generation_id: 8182b154-e9da-4a3f-a2ca-f11649c20ed4
-  pristine_commit_hash: 8d59dd832a81d834010dd0e1d8fdba4acdd7a619
-  pristine_tree_hash: 921014e08addb0f334dd10775b8a991d699828e0
+  generation_id: ae2cba80-88e3-4211-81e4-a14b8de51889
+  pristine_commit_hash: cdbfbc6c1e987a461e7981ce4decee879b2bd320
+  pristine_tree_hash: 2818d6970d16e51bf3d9738806633f3cadc99f52
 features:
   ruby:
     constsAndDefaults: 0.1.4
@@ -49,8 +49,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:4835dac13bbb0e508fd25f2bd249fa6f54f1b05e
-    pristine_git_object: b4bac16ded06dc83865ce29766b2835bbf2bae88
+    last_write_checksum: sha1:4bfa21010480b1123f1562a5e49fe5d241b2846d
+    pristine_git_object: f4d4d87c2ee744ff85598cb7c724451afd486488
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -357,8 +357,8 @@ trackedFiles:
     pristine_git_object: 4ef1596a83f319b1d8b4b63ea56bd185b0304623
   docs/models/components/authtokenrequest.md:
     id: 69a5575f3050
-    last_write_checksum: sha1:285ab0054843ad768a29c09211b2510b526e310e
-    pristine_git_object: ea9016034174654b92713b51320ee05627b5e5f9
+    last_write_checksum: sha1:b397f5f16ca5f5f024b7816c606807306180df30
+    pristine_git_object: 944f1d64be2df1d92a9cb664a54ae6c1a3e0a5cc
   docs/models/components/avataruploadrequest.md:
     id: 5b1e90303ee4
     last_write_checksum: sha1:da443c66b64aeb796a28eeb2bbc4963e37a34d2b
@@ -1581,12 +1581,12 @@ trackedFiles:
     pristine_git_object: 6e7710d0667477555749e034836bf283211628b3
   docs/models/components/issuedcardauthorization.md:
     id: d913c34f1f6a
-    last_write_checksum: sha1:77b137225e93e497028331eede8c491a2b030653
-    pristine_git_object: 21d8b2bc997e17a38cf7af1b3b0954ecaa2804c1
+    last_write_checksum: sha1:4fb94fa50966fc1807e3bde6e1a3ae4826a51fc2
+    pristine_git_object: 81c6978f686363e66afff0d6296a2567158d328f
   docs/models/components/issuedcardauthorizationevent.md:
     id: 952265d2029b
-    last_write_checksum: sha1:8bcf45c26588aea72276d664f912af3f73aa8804
-    pristine_git_object: 237167e641e02ab59f4fbfdb54c5e527eb75fc3e
+    last_write_checksum: sha1:cc616482b97944d1362a952c56d16b106f6279c2
+    pristine_git_object: d58c38f6fbb8f5c6cc391a41b1ef6a64aea0f09a
   docs/models/components/issuedcardauthorizationeventresult.md:
     id: 0f72e4f97e89
     last_write_checksum: sha1:2a9b1dc9b903d622cc4127d92ebe55fcfd46c59d
@@ -1639,6 +1639,10 @@ trackedFiles:
     id: b77272ad45aa
     last_write_checksum: sha1:4f35056bdb96c22dc36906b947117fc880aeb35f
     pristine_git_object: 4f1b142c36e0a4edb774088d169b0343fe408360
+  docs/models/components/issuingdeclinereason.md:
+    id: d04306c5160c
+    last_write_checksum: sha1:374913941eef2409c0ddc159362514ff2689f5ba
+    pristine_git_object: dc170736e9876ea5455e7197acf8199c19311136
   docs/models/components/issuingintervallimit.md:
     id: 66a82e5ba746
     last_write_checksum: sha1:89a6b8569504650d3ac8f66045f7befcdead61d1
@@ -1847,6 +1851,10 @@ trackedFiles:
     id: 4f5c6418c7ce
     last_write_checksum: sha1:db7f31e441817a90c770f5041fb778e10db69fd1
     pristine_git_object: 58a2d3478da9110477b9bfae2b03021d8591d398
+  docs/models/components/oauth2clienttype.md:
+    id: 1eedec128476
+    last_write_checksum: sha1:6d63a2e65833d3eff53b90819f9f85e28b09fe34
+    pristine_git_object: 27a8421ca5ca611f88c8a4e9bfb2e1601835bf8e
   docs/models/components/occurrence.md:
     id: 76f7eb558a8c
     last_write_checksum: sha1:14e9ae3731d08ebc6d11d6b8698fcbbef3a2c744
@@ -2081,8 +2089,8 @@ trackedFiles:
     pristine_git_object: a71f751c028ea9fa2fe90e7261c710a9c6443eaa
   docs/models/components/product.md:
     id: ba34ccd38ab6
-    last_write_checksum: sha1:0e1e0d38d856c03d5286055acf8ca4c1d3fe3919
-    pristine_git_object: 5733449213f06d9b8cae5e57a2849f6da3995a04
+    last_write_checksum: sha1:cba5e1027c152e0209cb233c6901ea29bacab460
+    pristine_git_object: 635f0be6b8f56cc03987532d83fb775ef750d00d
   docs/models/components/productcategories.md:
     id: a385c606bf5b
     last_write_checksum: sha1:73618adce283e4b4e8763a5ebb6f829171ac1720
@@ -2113,8 +2121,8 @@ trackedFiles:
     pristine_git_object: 0f4fc46d4933bb193f6394c7caac7f84f55bfe80
   docs/models/components/productrequest.md:
     id: e8ef107c2cb9
-    last_write_checksum: sha1:9138c067be16e245d8e8f92f580ef5f0f72af294
-    pristine_git_object: bc924f396d04f96bb19d98095bdc771c293fe29b
+    last_write_checksum: sha1:6b9433f503826cb669f9a2740bf435cbfa82819f
+    pristine_git_object: 8d312c936ab82ea574ddefa85d99644762509edb
   docs/models/components/profile.md:
     id: c2be0eb17b5e
     last_write_checksum: sha1:a5a28968440f3a2188f7a4ed75536fcd81d017c3
@@ -5325,8 +5333,8 @@ trackedFiles:
     pristine_git_object: 325a4138162c12b07cf2b176f43038967bc7be0c
   lib/moov/models/components.rb:
     id: c041e0f8eda8
-    last_write_checksum: sha1:63187fa46495031f36fb12f5cab4db27760a69e0
-    pristine_git_object: 5bc123e433341d10abe2d0a772e4a4ca9ebd3168
+    last_write_checksum: sha1:9bdb600012fe06425b62381f181a455a5b809a0e
+    pristine_git_object: 2eb431ed82236595dba10d909273498d9cb6b84b
   lib/moov/models/components/account.rb:
     id: d988ff02f3c9
     last_write_checksum: sha1:bcc26e2a03e1a5545913fc84ea9f9ca2d3e952fb
@@ -5921,12 +5929,12 @@ trackedFiles:
     pristine_git_object: 63064c1f34c45ebaef19d49c9d700f529b812371
   lib/moov/models/components/authtokenrequest.rb:
     id: b47c95c84879
-    last_write_checksum: sha1:86a68abb3753ce78fc90665195cfa1b6da29d559
-    pristine_git_object: d0e1e1deb350d25c1f056adfe3a8e48ae40a6ac2
+    last_write_checksum: sha1:6906a0c55aec8db6a9acd9c0ab8248b5df827ec0
+    pristine_git_object: d48095ab6afc6621014fc8a12aa2ff6e68098845
   lib/moov/models/components/authtokenrequest.rbi:
     id: fa8848c7d625
-    last_write_checksum: sha1:e0743a47da3774054b7d20cbd2e27213ccca993c
-    pristine_git_object: 4bac712117baa48be3ff742335ead665ad37607b
+    last_write_checksum: sha1:a8effaa4ad60640e9137a241fed4f15688dcb3d7
+    pristine_git_object: d24c76dd8f9ae880513d6592034016954411f38e
   lib/moov/models/components/avataruploadrequest.rb:
     id: 15092c747991
     last_write_checksum: sha1:fc5c793ba77046e78e34e006e2bd09332cacbc31
@@ -8369,20 +8377,20 @@ trackedFiles:
     pristine_git_object: cdb2bf1026410d02113d80656a3ff673a1c99d86
   lib/moov/models/components/issuedcardauthorization.rb:
     id: b0996d4d842a
-    last_write_checksum: sha1:323611d13f50248d8ea6caa119cf8ba22cc3537a
-    pristine_git_object: 245f9707bcd251eb7ab5960326cba44a54f1ad94
+    last_write_checksum: sha1:0d48580458336276947a7f2eef002cdd419f2326
+    pristine_git_object: 5f860337dc863708e37d1b15f7a1b0dfd16b8f22
   lib/moov/models/components/issuedcardauthorization.rbi:
     id: ca1c824f7df0
-    last_write_checksum: sha1:9afd8b2edf621da25af87198602323d294651800
-    pristine_git_object: 6d0033201572ce36145a45fd89d8edf6358ae88b
+    last_write_checksum: sha1:b7435f7ebe5e7a174e667e713fea336aff14bf82
+    pristine_git_object: 4caba2096718318bc701858de97fce9957684023
   lib/moov/models/components/issuedcardauthorizationevent.rb:
     id: cac4b20ad84e
-    last_write_checksum: sha1:4199d5cb42236e2b24c82d92e939bd9e924a22bc
-    pristine_git_object: da47105dc9579ac27ae90863cdab49318a270ac0
+    last_write_checksum: sha1:aff76735e41a63106b5a6b56c2ff21a32e7d85a5
+    pristine_git_object: c8722c2a7ad0749c31e79b2f66b5c7f3def2f64b
   lib/moov/models/components/issuedcardauthorizationevent.rbi:
     id: 3757c63ff2d7
-    last_write_checksum: sha1:1f97bd59f54e0f81321274bac67a483b2ed520d7
-    pristine_git_object: 1f19c45008498bdf8efe7614458c8171550668de
+    last_write_checksum: sha1:3ee71826c18f5272c6ddaca76eb5481975a528de
+    pristine_git_object: 1bcbac2ae020e98f1b8b7f9d856e2ee754bc8de6
   lib/moov/models/components/issuedcardauthorizationeventresult.rb:
     id: 23a74df82b50
     last_write_checksum: sha1:407e695b6c2a3461da162c7e378c7676962c96f9
@@ -8487,6 +8495,14 @@ trackedFiles:
     id: ebb5af65f9b5
     last_write_checksum: sha1:b43ca7140fe9afb2b481e07f282730884e582cb0
     pristine_git_object: 9c7d2d73df946851c8fb9b5d0fc7674cfdb551f1
+  lib/moov/models/components/issuingdeclinereason.rb:
+    id: 8cb315ecb79d
+    last_write_checksum: sha1:4bf727cd1398f1392031f7a1c0961d8e84c94315
+    pristine_git_object: 538afa4f0f57d675ec6273dbe195975b1bb7d160
+  lib/moov/models/components/issuingdeclinereason.rbi:
+    id: bcae1016c57c
+    last_write_checksum: sha1:e4728851ddc9e6cf359fa16c4d9e1519911429ba
+    pristine_git_object: 9d9281d86b9439a258bea89f4a6b33d8706bb2d8
   lib/moov/models/components/issuingintervallimit.rb:
     id: b95340b8df67
     last_write_checksum: sha1:0bddf8510fe56945bace71636d9c6d5ef45359b8
@@ -8903,6 +8919,14 @@ trackedFiles:
     id: 1f7fe2c7be2e
     last_write_checksum: sha1:8a910256a327ce8c3ad4c59fd275c15a9f983994
     pristine_git_object: d786eb2c9e288a06fcc28d669a9ed6b3cab4a72f
+  lib/moov/models/components/oauth2clienttype.rb:
+    id: 3fc4a8df196e
+    last_write_checksum: sha1:41acb60c20a0ac5052487121ee792fdc376613dd
+    pristine_git_object: 0f01d6ad5895136db93470d97dc32595aba6a254
+  lib/moov/models/components/oauth2clienttype.rbi:
+    id: 1bffa12d601e
+    last_write_checksum: sha1:2f06dac66a0b534f750f3c29997655bbfd1dbe92
+    pristine_git_object: 16aef9aa3028114fe9d4b18a5019b5f0b226605b
   lib/moov/models/components/occurrence.rb:
     id: 6a0535dd0054
     last_write_checksum: sha1:aac5023dd898dc8d6b98e7fdd95ade186ad1ba45
@@ -9369,12 +9393,12 @@ trackedFiles:
     pristine_git_object: 1ca5197eece98af1ca158f9ac9e4443d577714e9
   lib/moov/models/components/product.rb:
     id: 56099826dc9e
-    last_write_checksum: sha1:ba05c1a0d3c4a1572969288a4be8c531f74e51bf
-    pristine_git_object: 519426d7146b0df555868fd620919eb97b257c87
+    last_write_checksum: sha1:b1a4fb4af40c26ff04b1e81e69d843b6e4d7f3d8
+    pristine_git_object: 13044d00e00034d4412a737b670c3384ad572567
   lib/moov/models/components/product.rbi:
     id: 3aeb6161da16
-    last_write_checksum: sha1:95aa4a0910ee3457458b22832dcf717e6ed5ff88
-    pristine_git_object: 4afbc689996503912e95be616b05bff064a3f7e2
+    last_write_checksum: sha1:2d281ca2438e96b92e732de293aa3612517b8377
+    pristine_git_object: 104568503a329d20e6bbe0327c545d904a174b76
   lib/moov/models/components/productcategories.rb:
     id: c8c24e8ec2c0
     last_write_checksum: sha1:2bced06655d1ce724810ae5225ec1d4244533194
@@ -9433,12 +9457,12 @@ trackedFiles:
     pristine_git_object: 8b87d1b9ba782f6d44146c14499323c7d17b81dc
   lib/moov/models/components/productrequest.rb:
     id: a83321a73073
-    last_write_checksum: sha1:f00bf289d50820371079b6795688d21642609586
-    pristine_git_object: 7d7c6d83a82f9008970ceef38a1739da375e995d
+    last_write_checksum: sha1:cd285561fe4802a0d64c65eff10305d207bccb65
+    pristine_git_object: e15ff5df7e44f39a6d643b4f5f7135b6ac1cd775
   lib/moov/models/components/productrequest.rbi:
     id: e51c8ce4ca4b
-    last_write_checksum: sha1:4964109531a17510252dada3ae8888b65e54571c
-    pristine_git_object: 48194ff4094a2776094c1f34555ef9b6cb8cf30b
+    last_write_checksum: sha1:4426dee56a6e8fb2954f34a575de8844ac2ff919
+    pristine_git_object: ebdce11cdf4105387d8c6cb554c6595620cbdd7a
   lib/moov/models/components/profile.rb:
     id: a872266a72c8
     last_write_checksum: sha1:5924b60082f4e0f6b9f202f1a207ca652355c02f
@@ -15325,8 +15349,8 @@ trackedFiles:
     pristine_git_object: a5bc74d8f10576d45d4d6d85dff26e06e546dc8b
   lib/moov/sdkconfiguration.rb:
     id: c6059f45ee20
-    last_write_checksum: sha1:f36706aec56c4b383afd621c3b975e86cb143766
-    pristine_git_object: c67a7b2c926b5e8730c2486e376ac6499098a8ed
+    last_write_checksum: sha1:78b447fcc06482871fa59ad2f5491b067de9c951
+    pristine_git_object: fd8a36ded65f5a59cb9761639b2eb45aac0eaee7
   lib/moov/sdkconfiguration.rbi:
     id: 3c3547d78eff
     last_write_checksum: sha1:6b0cc82af124307a7cea1fabbd72d7abde0081a8
@@ -15409,8 +15433,8 @@ trackedFiles:
     pristine_git_object: baba02e34dc7be67fa39fafbfcd08afcd0332d96
   moov_ruby.gemspec:
     id: 3f3a3625c41a
-    last_write_checksum: sha1:38be5543f2dd95bb18b4042db3b674135623248f
-    pristine_git_object: efffe7814620c269c94ab837a63d826bb8b4a258
+    last_write_checksum: sha1:8906f36851467f465669b64eb26d39ffdfc68652
+    pristine_git_object: faea1caeb91256a2922a662194a45a830d6ab95d
   sorbet/config:
     id: 59392da43f94
     last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
@@ -17558,7 +17582,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: [{"productID": "1e229a22-6396-4efa-beac-d18ff5c58ab7", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 29985, "maxSelect": 247517, "options": [{"name": "<value>", "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}, "images": [{"imageID": "47269bb9-c8c6-4c76-8933-0d6ce87d2946", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "47269bb9-c8c6-4c76-8933-0d6ce87d2946", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "createdOn": "2023-01-22T10:49:40.225Z", "updatedOn": "2023-11-19T10:02:46.267Z"}]
+          application/json: [{"productID": "1e229a22-6396-4efa-beac-d18ff5c58ab7", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "isTaxable": false, "optionGroups": [{"name": "<value>", "minSelect": 29985, "maxSelect": 247517, "options": [{"name": "<value>", "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}, "images": [{"imageID": "47269bb9-c8c6-4c76-8933-0d6ce87d2946", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "47269bb9-c8c6-4c76-8933-0d6ce87d2946", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "createdOn": "2023-01-22T10:49:40.225Z", "updatedOn": "2023-11-19T10:02:46.267Z"}]
   createProduct:
     speakeasy-default-create-product:
       parameters:
@@ -17571,7 +17595,7 @@ examples:
         application/json: {"title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 798807, "maxSelect": 321505, "options": [{"name": "<value>", "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}}]}]}
       responses:
         "201":
-          application/json: {"productID": "c7657b6a-06b3-4972-805a-6c4111175af2", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 659263, "maxSelect": 854821, "options": [{"name": "<value>", "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}, "images": [{"imageID": "ee6b4549-0292-47f9-a2bc-ea0a521ac908", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "ee6b4549-0292-47f9-a2bc-ea0a521ac908", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "category": {"categoryID": "<id>", "name": "Beverages", "fullName": "Food, Beverages & Tobacco > Beverages", "level": 2}, "createdOn": "2023-01-19T08:35:48.193Z", "updatedOn": "2024-02-14T05:19:14.970Z"}
+          application/json: {"productID": "c7657b6a-06b3-4972-805a-6c4111175af2", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "isTaxable": false, "optionGroups": [{"name": "<value>", "minSelect": 659263, "maxSelect": 854821, "options": [{"name": "<value>", "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}, "images": [{"imageID": "ee6b4549-0292-47f9-a2bc-ea0a521ac908", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "ee6b4549-0292-47f9-a2bc-ea0a521ac908", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "category": {"categoryID": "<id>", "name": "Beverages", "fullName": "Food, Beverages & Tobacco > Beverages", "level": 2}, "createdOn": "2023-01-19T08:35:48.193Z", "updatedOn": "2024-02-14T05:19:14.970Z"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -17587,7 +17611,7 @@ examples:
           X-Moov-Version: "v2024.01.00"
       responses:
         "200":
-          application/json: {"productID": "3c2445e7-f0c4-45d5-bd2a-88bcdc056c20", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 197351, "maxSelect": 515143, "options": []}], "images": [{"imageID": "33c05564-9e61-48d6-b69e-269a48a62a9e", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "category": {"categoryID": "<id>", "name": "Beverages", "fullName": "Food, Beverages & Tobacco > Beverages", "level": 2}, "createdOn": "2024-11-12T09:31:50.113Z", "updatedOn": "2025-11-08T13:39:00.825Z"}
+          application/json: {"productID": "3c2445e7-f0c4-45d5-bd2a-88bcdc056c20", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "isTaxable": false, "optionGroups": [{"name": "<value>", "minSelect": 197351, "maxSelect": 515143, "options": []}], "images": [{"imageID": "33c05564-9e61-48d6-b69e-269a48a62a9e", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "category": {"categoryID": "<id>", "name": "Beverages", "fullName": "Food, Beverages & Tobacco > Beverages", "level": 2}, "createdOn": "2024-11-12T09:31:50.113Z", "updatedOn": "2025-11-08T13:39:00.825Z"}
   updateProduct:
     speakeasy-default-update-product:
       parameters:
@@ -17601,7 +17625,7 @@ examples:
         application/json: {"title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 328576, "maxSelect": 430951, "options": []}]}
       responses:
         "200":
-          application/json: {"productID": "c0c48b06-a2e8-4b60-8ff4-13050279bce9", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "optionGroups": [{"name": "<value>", "minSelect": 918880, "maxSelect": 680367, "options": [{"name": "<value>", "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}, "images": [{"imageID": "b76b32e6-bc87-46f5-bdcb-e1737416539d", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "b76b32e6-bc87-46f5-bdcb-e1737416539d", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "category": {"categoryID": "<id>", "name": "Beverages", "fullName": "Food, Beverages & Tobacco > Beverages", "level": 2}, "createdOn": "2025-06-13T16:49:57.138Z", "updatedOn": "2023-11-04T10:58:23.378Z"}
+          application/json: {"productID": "c0c48b06-a2e8-4b60-8ff4-13050279bce9", "title": "<value>", "basePrice": {"currency": "USD", "valueDecimal": "12.987654321"}, "isTaxable": true, "optionGroups": [{"name": "<value>", "minSelect": 918880, "maxSelect": 680367, "options": [{"name": "<value>", "priceModifier": {"currency": "USD", "valueDecimal": "12.987654321"}, "images": [{"imageID": "b76b32e6-bc87-46f5-bdcb-e1737416539d", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}]}]}], "images": [{"imageID": "b76b32e6-bc87-46f5-bdcb-e1737416539d", "link": "https://api.moov.io/images/q7lKWleAy9fUNhEGezQ1g", "publicID": "q7lKWleAy9fUNhEGezQ1g"}], "category": {"categoryID": "<id>", "name": "Beverages", "fullName": "Food, Beverages & Tobacco > Beverages", "level": 2}, "createdOn": "2025-06-13T16:49:57.138Z", "updatedOn": "2023-11-04T10:58:23.378Z"}
         "400":
           application/json: {"error": "<value>"}
         "422":
@@ -18222,7 +18246,7 @@ examples:
         "400":
           application/json: {"error": "<value>"}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.transfers.create()`: \n  *  `response.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n  *  `error.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.list()`:  `response.[].processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.batch_get_transfers()`:  `response.Map<Transfer>.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.get()`:  `response.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n* `client.transfers.update()`:  `response.processing_details.card_payment.status` **Changed** (Breaking ⚠️)\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.products.list()`:  `response.[].is_taxable` **Added**\n* `client.products.create()`: \n  *  `request.product_request.is_taxable` **Added**\n  *  `response.is_taxable` **Added**\n* `client.products.get()`:  `response.is_taxable` **Added**\n* `client.products.update()`: \n  *  `request.product_request.is_taxable` **Added**\n  *  `response.is_taxable` **Added**\n* `client.issuing_transactions.list_authorizations()`:  `response.[].decline_reason` **Added**\n* `client.issuing_transactions.get_authorization()`:  `response.decline_reason` **Added**\n* `client.issuing_transactions.list_authorization_events()`:  `response.[].decline_reason` **Added**\n* `client.authentication.create_access_token()`: \n  *  `request.client_type` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

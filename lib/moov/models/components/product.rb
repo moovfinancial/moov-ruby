@@ -18,6 +18,8 @@ module Moov
         field :title, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('title'), required: true } }
         # A product's starting price, before applying modifiers.
         field :base_price, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('basePrice'), required: true } }
+        # Whether applicable tax rules may be applied to this product. True does not guarantee tax is charged; false excludes the product from tax calculation. This setting does not determine jurisdiction-specific taxability.
+        field :is_taxable, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isTaxable'), required: true } }
         # The date and time when the product was added.
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # The date and time when the product was last updated.
@@ -37,11 +39,12 @@ module Moov
         # The date and time when the product was disabled.
         field :disabled_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disabledOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(product_id: ::String, title: ::String, base_price: Models::Components::AmountDecimal, created_on: ::DateTime, updated_on: ::DateTime, description: T.nilable(::String), option_groups: T.nilable(T::Array[Models::Components::ProductOptionGroup]), images: T.nilable(T::Array[Models::Components::ProductImageMetadata]), category: T.nilable(Models::Components::ProductCategory), disabled_on: T.nilable(::DateTime)).void }
-        def initialize(product_id:, title:, base_price:, created_on:, updated_on:, description: nil, option_groups: nil, images: nil, category: nil, disabled_on: nil)
+        sig { params(product_id: ::String, title: ::String, base_price: Models::Components::AmountDecimal, is_taxable: T::Boolean, created_on: ::DateTime, updated_on: ::DateTime, description: T.nilable(::String), option_groups: T.nilable(T::Array[Models::Components::ProductOptionGroup]), images: T.nilable(T::Array[Models::Components::ProductImageMetadata]), category: T.nilable(Models::Components::ProductCategory), disabled_on: T.nilable(::DateTime)).void }
+        def initialize(product_id:, title:, base_price:, is_taxable:, created_on:, updated_on:, description: nil, option_groups: nil, images: nil, category: nil, disabled_on: nil)
           @product_id = product_id
           @title = title
           @base_price = base_price
+          @is_taxable = is_taxable
           @created_on = created_on
           @updated_on = updated_on
           @description = description
@@ -57,6 +60,7 @@ module Moov
           return false unless @product_id == other.product_id
           return false unless @title == other.title
           return false unless @base_price == other.base_price
+          return false unless @is_taxable == other.is_taxable
           return false unless @created_on == other.created_on
           return false unless @updated_on == other.updated_on
           return false unless @description == other.description

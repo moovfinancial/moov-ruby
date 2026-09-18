@@ -14,6 +14,8 @@ class Moov::Models::Components::Product
   def title=(str_); end
   def base_price(); end
   def base_price=(str_); end
+  def is_taxable(); end
+  def is_taxable=(str_); end
   def created_on(); end
   def created_on=(str_); end
   def updated_on(); end

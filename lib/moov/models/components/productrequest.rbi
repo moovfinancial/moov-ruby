@@ -14,6 +14,8 @@ class Moov::Models::Components::ProductRequest
   def base_price=(str_); end
   def description(); end
   def description=(str_); end
+  def is_taxable(); end
+  def is_taxable=(str_); end
   def images(); end
   def images=(str_); end
   def option_groups(); end
