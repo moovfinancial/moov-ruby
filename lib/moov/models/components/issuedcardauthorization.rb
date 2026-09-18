@@ -32,9 +32,12 @@ module Moov
         field :last_four_card_number, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourCardNumber') } }
         # List of card transaction IDs associated with this authorization.
         field :card_transactions, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardTransactions') } }
+        # The reason an authorization or authorization event was declined. Only present if the
+        # authorization or event has been declined.
+        field :decline_reason, Crystalline::Nilable.new(Models::Components::IssuingDeclineReason), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('declineReason'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuingDeclineReason, true) } }
 
-        sig { params(authorization_id: ::String, issued_card_id: ::String, funding_wallet_id: ::String, network: Models::Components::CardIssuingNetwork, authorized_amount: ::String, status: Models::Components::IssuingAuthorizationStatus, merchant_data: Models::Components::IssuingMerchantData, created_on: ::DateTime, last_four_card_number: T.nilable(::String), card_transactions: T.nilable(T::Array[::String])).void }
-        def initialize(authorization_id:, issued_card_id:, funding_wallet_id:, network:, authorized_amount:, status:, merchant_data:, created_on:, last_four_card_number: nil, card_transactions: nil)
+        sig { params(authorization_id: ::String, issued_card_id: ::String, funding_wallet_id: ::String, network: Models::Components::CardIssuingNetwork, authorized_amount: ::String, status: Models::Components::IssuingAuthorizationStatus, merchant_data: Models::Components::IssuingMerchantData, created_on: ::DateTime, last_four_card_number: T.nilable(::String), card_transactions: T.nilable(T::Array[::String]), decline_reason: T.nilable(Models::Components::IssuingDeclineReason)).void }
+        def initialize(authorization_id:, issued_card_id:, funding_wallet_id:, network:, authorized_amount:, status:, merchant_data:, created_on:, last_four_card_number: nil, card_transactions: nil, decline_reason: nil)
           @authorization_id = authorization_id
           @issued_card_id = issued_card_id
           @funding_wallet_id = funding_wallet_id
@@ -45,6 +48,7 @@ module Moov
           @created_on = created_on
           @last_four_card_number = last_four_card_number
           @card_transactions = card_transactions
+          @decline_reason = decline_reason
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -60,6 +64,7 @@ module Moov
           return false unless @created_on == other.created_on
           return false unless @last_four_card_number == other.last_four_card_number
           return false unless @card_transactions == other.card_transactions
+          return false unless @decline_reason == other.decline_reason
           true
         end
       end

@@ -18,4 +18,6 @@ class Moov::Models::Components::AuthTokenRequest
   def scope=(str_); end
   def refresh_token(); end
   def refresh_token=(str_); end
+  def client_type(); end
+  def client_type=(str_); end
 end
