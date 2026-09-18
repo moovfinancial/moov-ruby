@@ -18,4 +18,6 @@ class Moov::Models::Components::IssuedCardAuthorizationEvent
   def result=(str_); end
   def created_on(); end
   def created_on=(str_); end
+  def decline_reason(); end
+  def decline_reason=(str_); end
 end
