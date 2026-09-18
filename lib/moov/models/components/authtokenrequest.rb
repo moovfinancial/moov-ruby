@@ -25,14 +25,17 @@ module Moov
         field :scope, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scope') }, 'form': { 'field_name': 'scope' } }
         # The refresh_token returned alongside the access token being refreshed. Required when `grant_type` is `refresh_token`.
         field :refresh_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('refresh_token') }, 'form': { 'field_name': 'refresh_token' } }
+        # The client type requesting a token. `device` and `service` clients do not require browser origin binding. Defaults to `web` when omitted. This field applies to the `client_credentials` grant; refreshed tokens keep the original client type.
+        field :client_type, Crystalline::Nilable.new(Models::Components::OAuth2ClientType), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('client_type'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::OAuth2ClientType, true) }, 'form': { 'field_name': 'client_type' } }
 
-        sig { params(grant_type: Models::Components::GrantType, client_id: T.nilable(::String), client_secret: T.nilable(::String), scope: T.nilable(::String), refresh_token: T.nilable(::String)).void }
-        def initialize(grant_type:, client_id: nil, client_secret: nil, scope: nil, refresh_token: nil)
+        sig { params(grant_type: Models::Components::GrantType, client_id: T.nilable(::String), client_secret: T.nilable(::String), scope: T.nilable(::String), refresh_token: T.nilable(::String), client_type: T.nilable(Models::Components::OAuth2ClientType)).void }
+        def initialize(grant_type:, client_id: nil, client_secret: nil, scope: nil, refresh_token: nil, client_type: nil)
           @grant_type = grant_type
           @client_id = client_id
           @client_secret = client_secret
           @scope = scope
           @refresh_token = refresh_token
+          @client_type = client_type
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -43,6 +46,7 @@ module Moov
           return false unless @client_secret == other.client_secret
           return false unless @scope == other.scope
           return false unless @refresh_token == other.refresh_token
+          return false unless @client_type == other.client_type
           true
         end
       end
