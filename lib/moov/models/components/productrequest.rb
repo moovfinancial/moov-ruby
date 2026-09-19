@@ -22,6 +22,8 @@ module Moov
         # - Supports Markdown for formatting
         # - HTML is not permitted and will be rejected
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
+        # Whether applicable tax rules may be applied to this product. True does not guarantee tax is charged; false excludes the product from tax calculation. Omitted values default to true on creation and preserve the existing setting on update.
+        field :is_taxable, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isTaxable') } }
         # Assign previously uploaded images to a product or option.
         field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AssignProductImage)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
         # Optional configuration options for a product, such as size or color.
@@ -29,11 +31,12 @@ module Moov
         # The ID of a product taxonomy category to associate with the product.
         field :category_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('categoryID') } }
 
-        sig { params(title: ::String, base_price: Models::Components::AmountDecimal, description: T.nilable(::String), images: T.nilable(T::Array[Models::Components::AssignProductImage]), option_groups: T.nilable(T::Array[Models::Components::CreateProductOptionGroup]), category_id: T.nilable(::String)).void }
-        def initialize(title:, base_price:, description: nil, images: nil, option_groups: nil, category_id: nil)
+        sig { params(title: ::String, base_price: Models::Components::AmountDecimal, description: T.nilable(::String), is_taxable: T.nilable(T::Boolean), images: T.nilable(T::Array[Models::Components::AssignProductImage]), option_groups: T.nilable(T::Array[Models::Components::CreateProductOptionGroup]), category_id: T.nilable(::String)).void }
+        def initialize(title:, base_price:, description: nil, is_taxable: nil, images: nil, option_groups: nil, category_id: nil)
           @title = title
           @base_price = base_price
           @description = description
+          @is_taxable = is_taxable
           @images = images
           @option_groups = option_groups
           @category_id = category_id
@@ -45,6 +48,7 @@ module Moov
           return false unless @title == other.title
           return false unless @base_price == other.base_price
           return false unless @description == other.description
+          return false unless @is_taxable == other.is_taxable
           return false unless @images == other.images
           return false unless @option_groups == other.option_groups
           return false unless @category_id == other.category_id

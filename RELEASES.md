@@ -1029,3 +1029,13 @@ Based on:
 - [ruby v0.0.0-dev.29] .
 ### Releases
 - [Ruby Gems v0.0.0-dev.29] https://rubygems.org/gems/moov_ruby/versions/0.0.0-dev.29 - .
+
+## 2026-09-19 00:22:53
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.798.0 (2.938.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v0.0.0-dev.30] .
+### Releases
+- [Ruby Gems v0.0.0-dev.30] https://rubygems.org/gems/moov_ruby/versions/0.0.0-dev.30 - .
