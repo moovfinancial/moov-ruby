@@ -68,7 +68,8 @@ module Moov
         # An optional collection of line items for a transfer.
         # When line items are provided, their total plus tax must equal the transfer amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::TransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
-
+        # The tip, tax, and surcharge portion of the transfer amount.
+        # For an auth-capture `card-payment` transfer, this is the aggregate of all captures' `amountDetails`.
         field :amount_details, Crystalline::Nilable.new(Models::Components::TransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
         # The card authorization and capture IDs associated with a transfer.
         field :capture, Crystalline::Nilable.new(Models::Components::TransferCapture), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capture') } }
