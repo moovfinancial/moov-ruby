@@ -26,6 +26,7 @@ module Moov
           SOURCE_SETTLED = new('source.settled')
           SOURCE_FAILED = new('source.failed')
           SOURCE_CANCELED = new('source.canceled')
+          SOURCE_CLEARED_EXTERNALLY = new('source.cleared-externally')
           DESTINATION_COMPLETED = new('destination.completed')
           DESTINATION_CORRECTED = new('destination.corrected')
           DESTINATION_INITIATED = new('destination.initiated')
