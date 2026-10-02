@@ -28,13 +28,15 @@ module Moov
         field :generated_by, Crystalline::Nilable.new(Models::Components::GeneratedBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('generatedBy') } }
         # Describes the source of the fee, such as a Moov-set processing fee, a network pass-through fee, or an interchange or discount fee.
         field :fee_group, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeGroup') } }
+        # The program assigned by the card network that determines the interchange rate for the fee. Present only for interchange or discount fees.
+        field :fee_program, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeProgram') } }
         # Unique identifier for this residual payment calculation.
         field :residual_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('residualID') } }
         # Indicates which party to the money movement bore this fee.
         field :fee_paid_by, Crystalline::Nilable.new(Models::Components::FeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::FeePaidBy, true) } }
 
-        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy), fee_group: T.nilable(::String), residual_id: T.nilable(::String), fee_paid_by: T.nilable(Models::Components::FeePaidBy)).void }
-        def initialize(fee_id: nil, account_id: nil, wallet_id: nil, created_on: nil, fee_name: nil, amount: nil, generated_by: nil, fee_group: nil, residual_id: nil, fee_paid_by: nil)
+        sig { params(fee_id: T.nilable(::String), account_id: T.nilable(::String), wallet_id: T.nilable(::String), created_on: T.nilable(::DateTime), fee_name: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimal), generated_by: T.nilable(Models::Components::GeneratedBy), fee_group: T.nilable(::String), fee_program: T.nilable(::String), residual_id: T.nilable(::String), fee_paid_by: T.nilable(Models::Components::FeePaidBy)).void }
+        def initialize(fee_id: nil, account_id: nil, wallet_id: nil, created_on: nil, fee_name: nil, amount: nil, generated_by: nil, fee_group: nil, fee_program: nil, residual_id: nil, fee_paid_by: nil)
           @fee_id = fee_id
           @account_id = account_id
           @wallet_id = wallet_id
@@ -43,6 +45,7 @@ module Moov
           @amount = amount
           @generated_by = generated_by
           @fee_group = fee_group
+          @fee_program = fee_program
           @residual_id = residual_id
           @fee_paid_by = fee_paid_by
         end
@@ -58,6 +61,7 @@ module Moov
           return false unless @amount == other.amount
           return false unless @generated_by == other.generated_by
           return false unless @fee_group == other.fee_group
+          return false unless @fee_program == other.fee_program
           return false unless @residual_id == other.residual_id
           return false unless @fee_paid_by == other.fee_paid_by
           true

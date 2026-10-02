@@ -19,7 +19,6 @@ module Moov
           ACH_DEBIT_TO_ACH_CREDIT = new('ach-debit-to-ach-credit')
           INSTANT_BANK_CREDIT = new('instant-bank-credit')
           WALLET = new('wallet')
-          WIRE_CREDIT = new('wire-credit')
         end
         open!
       end

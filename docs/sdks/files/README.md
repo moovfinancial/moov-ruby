@@ -19,6 +19,11 @@ you'll need to specify the `/accounts/{accountID}/files.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/files.read` scope.
+* [download](#download) - Download the contents of a file associated with a specific Moov account. Files reserved for
+internal Moov use are not available through this endpoint.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/files.download` scope.
 
 ## upload
 
@@ -158,6 +163,52 @@ end
 ### Response
 
 **[T.nilable(Models::Operations::GetFileDetailsResponse)](../../models/operations/getfiledetailsresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## download
+
+Download the contents of a file associated with a specific Moov account. Files reserved for
+internal Moov use are not available through this endpoint.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/files.download` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="downloadFile" method="get" path="/accounts/{accountID}/files/{fileID}/contents" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.files.download(account_id: '<id>', file_id: '<id>')
+
+unless res.two_hundred_application_pdf_bytes.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `account_id`       | *::String*         | :heavy_check_mark: | N/A                |
+| `file_id`          | *::String*         | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[T.nilable(Models::Operations::DownloadFileResponse)](../../models/operations/downloadfileresponse.md)**
 
 ### Errors
 

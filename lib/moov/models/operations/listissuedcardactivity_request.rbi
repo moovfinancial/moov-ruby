@@ -1,0 +1,27 @@
+# typed: true
+# frozen_string_literal: true
+
+
+class Moov::Models::Operations::ListIssuedCardActivityRequest
+  extend ::Crystalline::MetadataFields::ClassMethods
+end
+
+
+class Moov::Models::Operations::ListIssuedCardActivityRequest
+  def account_id(); end
+  def account_id=(str_); end
+  def skip(); end
+  def skip=(str_); end
+  def count(); end
+  def count=(str_); end
+  def issued_card_id(); end
+  def issued_card_id=(str_); end
+  def authorized_user_account_id(); end
+  def authorized_user_account_id=(str_); end
+  def statuses(); end
+  def statuses=(str_); end
+  def start_date_time(); end
+  def start_date_time=(str_); end
+  def end_date_time(); end
+  def end_date_time=(str_); end
+end

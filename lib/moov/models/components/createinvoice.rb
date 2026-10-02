@@ -16,6 +16,8 @@ module Moov
         field :customer_account_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerAccountID'), required: true } }
         # A collection of line items for an invoice.
         field :line_items, Models::Components::CreateInvoiceLineItems, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems'), required: true } }
+        # Email address to use for invoice checkout OTP verification instead of the customer account email.
+        field :customer_email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerEmail') } }
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
@@ -25,10 +27,11 @@ module Moov
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::AmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
-        sig { params(customer_account_id: ::String, line_items: Models::Components::CreateInvoiceLineItems, description: T.nilable(::String), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::AmountDetails)).void }
-        def initialize(customer_account_id:, line_items:, description: nil, invoice_date: nil, due_date: nil, amount_details: nil)
+        sig { params(customer_account_id: ::String, line_items: Models::Components::CreateInvoiceLineItems, customer_email: T.nilable(::String), description: T.nilable(::String), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), amount_details: T.nilable(Models::Components::AmountDetails)).void }
+        def initialize(customer_account_id:, line_items:, customer_email: nil, description: nil, invoice_date: nil, due_date: nil, amount_details: nil)
           @customer_account_id = customer_account_id
           @line_items = line_items
+          @customer_email = customer_email
           @description = description
           @invoice_date = invoice_date
           @due_date = due_date
@@ -40,6 +43,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @customer_account_id == other.customer_account_id
           return false unless @line_items == other.line_items
+          return false unless @customer_email == other.customer_email
           return false unless @description == other.description
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date

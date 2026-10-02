@@ -22,16 +22,22 @@ module Moov
         field :captured_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capturedAmount'), required: true } }
         # Amount of the authorization still available after captures and authorization cancellations.
         field :capturable_amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capturableAmount'), required: true } }
+        # The tip, tax, and surcharge authorized by the card network.
+        #
+        # These describe the authorized amount and are fixed.
+        # They can differ from the transfer's `amountDetails`, which is the aggregate of all captures' `amountDetails`.
+        field :amount_details, Crystalline::Nilable.new(Models::Components::TransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
         # Expiration time for the approved authorization, when available.
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(authorization_id: ::String, requested_amount: Models::Components::AmountDecimal, authorized_amount: Models::Components::AmountDecimal, captured_amount: Models::Components::AmountDecimal, capturable_amount: Models::Components::AmountDecimal, expires_on: T.nilable(::DateTime)).void }
-        def initialize(authorization_id:, requested_amount:, authorized_amount:, captured_amount:, capturable_amount:, expires_on: nil)
+        sig { params(authorization_id: ::String, requested_amount: Models::Components::AmountDecimal, authorized_amount: Models::Components::AmountDecimal, captured_amount: Models::Components::AmountDecimal, capturable_amount: Models::Components::AmountDecimal, amount_details: T.nilable(Models::Components::TransferAmountDetails), expires_on: T.nilable(::DateTime)).void }
+        def initialize(authorization_id:, requested_amount:, authorized_amount:, captured_amount:, capturable_amount:, amount_details: nil, expires_on: nil)
           @authorization_id = authorization_id
           @requested_amount = requested_amount
           @authorized_amount = authorized_amount
           @captured_amount = captured_amount
           @capturable_amount = capturable_amount
+          @amount_details = amount_details
           @expires_on = expires_on
         end
 
@@ -43,6 +49,7 @@ module Moov
           return false unless @authorized_amount == other.authorized_amount
           return false unless @captured_amount == other.captured_amount
           return false unless @capturable_amount == other.capturable_amount
+          return false unless @amount_details == other.amount_details
           return false unless @expires_on == other.expires_on
           true
         end

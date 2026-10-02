@@ -12,6 +12,8 @@ class Moov::Models::Components::CreateInvoice
   def customer_account_id=(str_); end
   def line_items(); end
   def line_items=(str_); end
+  def customer_email(); end
+  def customer_email=(str_); end
   def description(); end
   def description=(str_); end
   def invoice_date(); end

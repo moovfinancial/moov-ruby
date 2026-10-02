@@ -44,4 +44,3 @@ custom = WalletTransactionType.deserialize("custom_value")
 | `FEE_REVENUE`                    | fee-revenue                      |
 | `RESIDUAL`                       | residual                         |
 | `INSTANT_BANK_FAILURE`           | instant-bank-failure             |
-| `WIRE_FAILURE`                   | wire-failure                     |

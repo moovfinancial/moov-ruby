@@ -18,7 +18,7 @@ module Moov
         field :title, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('title'), required: true } }
         # A product's starting price, before applying modifiers.
         field :base_price, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('basePrice'), required: true } }
-        # Whether applicable tax rules may be applied to this product. True does not guarantee tax is charged; false excludes the product from tax calculation. This setting does not determine jurisdiction-specific taxability.
+        # Whether applicable tax rules may be applied to this product. The value can be used to determine how to populate the tax amount on a transfer (Moov does not compute or assess tax). true means a tax amount can be included; false means it should not. Omitted values default to true on creation and preserve the existing setting on update. This setting does not determine jurisdiction-specific taxability.
         field :is_taxable, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isTaxable'), required: true } }
         # The date and time when the product was added.
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }

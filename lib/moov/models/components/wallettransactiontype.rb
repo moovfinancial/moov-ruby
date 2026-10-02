@@ -39,7 +39,6 @@ module Moov
           FEE_REVENUE = new('fee-revenue')
           RESIDUAL = new('residual')
           INSTANT_BANK_FAILURE = new('instant-bank-failure')
-          WIRE_FAILURE = new('wire-failure')
         end
         open!
       end

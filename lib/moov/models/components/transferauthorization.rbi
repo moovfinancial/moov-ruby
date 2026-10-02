@@ -18,6 +18,8 @@ class Moov::Models::Components::TransferAuthorization
   def captured_amount=(str_); end
   def capturable_amount(); end
   def capturable_amount=(str_); end
+  def amount_details(); end
+  def amount_details=(str_); end
   def expires_on(); end
   def expires_on=(str_); end
 end

@@ -17,6 +17,7 @@ module Moov
           ACH_CREDIT_STANDARD = new('ach-credit-standard')
           PUSH_TO_APPLE_PAY = new('push-to-apple-pay')
           PUSH_TO_GOOGLE_PAY = new('push-to-google-pay')
+          INSTANT_BANK_CREDIT = new('instant-bank-credit')
         end
         open!
       end

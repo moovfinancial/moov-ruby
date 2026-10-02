@@ -28,7 +28,6 @@ module Moov
           GOOGLE_PAY = new('google-pay')
           PUSH_TO_GOOGLE_PAY = new('push-to-google-pay')
           PULL_FROM_GOOGLE_PAY = new('pull-from-google-pay')
-          WIRE_CREDIT = new('wire-credit')
         end
         open!
       end

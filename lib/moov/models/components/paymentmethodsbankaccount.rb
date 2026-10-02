@@ -34,9 +34,12 @@ module Moov
         field :last_four_account_number, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lastFourAccountNumber'), required: true } }
 
         field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
+        # The outcome of a requested risk-verification attempt. `notAttempted` when
+        # `requestRiskVerification` was not set, or the calling account was not allowlisted.
+        field :risk_verification_outcome, Crystalline::Nilable.new(Models::Components::RiskVerificationOutcome), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('riskVerificationOutcome'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::RiskVerificationOutcome, true) } }
 
-        sig { params(bank_account_id: ::String, fingerprint: ::String, status: Models::Components::BankAccountStatus, holder_name: ::String, holder_type: Models::Components::BankAccountHolderType, bank_name: ::String, bank_account_type: Models::Components::BankAccountType, routing_number: ::String, last_four_account_number: ::String, updated_on: ::DateTime).void }
-        def initialize(bank_account_id:, fingerprint:, status:, holder_name:, holder_type:, bank_name:, bank_account_type:, routing_number:, last_four_account_number:, updated_on:)
+        sig { params(bank_account_id: ::String, fingerprint: ::String, status: Models::Components::BankAccountStatus, holder_name: ::String, holder_type: Models::Components::BankAccountHolderType, bank_name: ::String, bank_account_type: Models::Components::BankAccountType, routing_number: ::String, last_four_account_number: ::String, updated_on: ::DateTime, risk_verification_outcome: T.nilable(Models::Components::RiskVerificationOutcome)).void }
+        def initialize(bank_account_id:, fingerprint:, status:, holder_name:, holder_type:, bank_name:, bank_account_type:, routing_number:, last_four_account_number:, updated_on:, risk_verification_outcome: nil)
           @bank_account_id = bank_account_id
           @fingerprint = fingerprint
           @status = status
@@ -47,6 +50,7 @@ module Moov
           @routing_number = routing_number
           @last_four_account_number = last_four_account_number
           @updated_on = updated_on
+          @risk_verification_outcome = risk_verification_outcome
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -62,6 +66,7 @@ module Moov
           return false unless @routing_number == other.routing_number
           return false unless @last_four_account_number == other.last_four_account_number
           return false unless @updated_on == other.updated_on
+          return false unless @risk_verification_outcome == other.risk_verification_outcome
           true
         end
       end

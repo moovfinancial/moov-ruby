@@ -36,6 +36,8 @@ module Moov
         field :foreign_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'foreignID', 'style': 'form', 'explode': false } }
         # Optional comma-separated authorization IDs.
         field :authorization_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'query_param': { 'field_name': 'authorizationIDs', 'style': 'form', 'explode': false } }
+        # Optional comma-separated invoice IDs.
+        field :invoice_i_ds, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'query_param': { 'field_name': 'invoiceIDs', 'style': 'form', 'explode': false } }
         # Optional, comma-separated transfer types by which the response is filtered.
         field :transfer_types, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TransferType)), { 'query_param': { 'field_name': 'transferTypes', 'style': 'form', 'explode': false } }
 
@@ -43,8 +45,8 @@ module Moov
         # Page size. When omitted, the server defaults to `200`.
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, account_i_ds: T.nilable(T::Array[::String]), status: T.nilable(Models::Components::TransferStatus), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), group_id: T.nilable(::String), schedule_id: T.nilable(::String), payment_link_code: T.nilable(::String), refunded: T.nilable(T::Boolean), disputed: T.nilable(T::Boolean), foreign_id: T.nilable(::String), authorization_i_ds: T.nilable(T::Array[::String]), transfer_types: T.nilable(T::Array[Models::Components::TransferType]), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
-        def initialize(account_id:, account_i_ds: nil, status: nil, start_date_time: nil, end_date_time: nil, group_id: nil, schedule_id: nil, payment_link_code: nil, refunded: nil, disputed: nil, foreign_id: nil, authorization_i_ds: nil, transfer_types: nil, skip: nil, count: nil)
+        sig { params(account_id: ::String, account_i_ds: T.nilable(T::Array[::String]), status: T.nilable(Models::Components::TransferStatus), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), group_id: T.nilable(::String), schedule_id: T.nilable(::String), payment_link_code: T.nilable(::String), refunded: T.nilable(T::Boolean), disputed: T.nilable(T::Boolean), foreign_id: T.nilable(::String), authorization_i_ds: T.nilable(T::Array[::String]), invoice_i_ds: T.nilable(T::Array[::String]), transfer_types: T.nilable(T::Array[Models::Components::TransferType]), skip: T.nilable(::Integer), count: T.nilable(::Integer)).void }
+        def initialize(account_id:, account_i_ds: nil, status: nil, start_date_time: nil, end_date_time: nil, group_id: nil, schedule_id: nil, payment_link_code: nil, refunded: nil, disputed: nil, foreign_id: nil, authorization_i_ds: nil, invoice_i_ds: nil, transfer_types: nil, skip: nil, count: nil)
           @account_id = account_id
           @account_i_ds = account_i_ds
           @status = status
@@ -57,6 +59,7 @@ module Moov
           @disputed = disputed
           @foreign_id = foreign_id
           @authorization_i_ds = authorization_i_ds
+          @invoice_i_ds = invoice_i_ds
           @transfer_types = transfer_types
           @skip = skip
           @count = count
@@ -77,6 +80,7 @@ module Moov
           return false unless @disputed == other.disputed
           return false unless @foreign_id == other.foreign_id
           return false unless @authorization_i_ds == other.authorization_i_ds
+          return false unless @invoice_i_ds == other.invoice_i_ds
           return false unless @transfer_types == other.transfer_types
           return false unless @skip == other.skip
           return false unless @count == other.count

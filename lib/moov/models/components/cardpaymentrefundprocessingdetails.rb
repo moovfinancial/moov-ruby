@@ -13,16 +13,20 @@ module Moov
         include Crystalline::MetadataFields
 
 
+        field :network_transaction_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkTransactionID') } }
+
         field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
 
-        sig { params(failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
-        def initialize(failure_code: nil)
+        sig { params(network_transaction_id: T.nilable(::String), failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
+        def initialize(network_transaction_id: nil, failure_code: nil)
+          @network_transaction_id = network_transaction_id
           @failure_code = failure_code
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @network_transaction_id == other.network_transaction_id
           return false unless @failure_code == other.failure_code
           true
         end

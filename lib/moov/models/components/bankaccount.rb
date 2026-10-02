@@ -43,9 +43,12 @@ module Moov
         #
         # **NOTE: This field is only populated for Create BankAccount requests made with the `X-Wait-For` header.**
         field :payment_methods, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::BasicPaymentMethod)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethods') } }
+        # The outcome of a requested risk-verification attempt. `notAttempted` when
+        # `requestRiskVerification` was not set, or the calling account was not allowlisted.
+        field :risk_verification_outcome, Crystalline::Nilable.new(Models::Components::RiskVerificationOutcome), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('riskVerificationOutcome'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::RiskVerificationOutcome, true) } }
 
-        sig { params(bank_account_id: ::String, fingerprint: ::String, status: Models::Components::BankAccountStatus, holder_name: ::String, holder_type: Models::Components::BankAccountHolderType, bank_name: ::String, bank_account_type: Models::Components::BankAccountType, routing_number: ::String, last_four_account_number: ::String, updated_on: ::DateTime, status_reason: T.nilable(Models::Components::BankAccountStatusReason), exception_details: T.nilable(Models::Components::BankAccountException), payment_methods: T.nilable(T::Array[Models::Components::BasicPaymentMethod])).void }
-        def initialize(bank_account_id:, fingerprint:, status:, holder_name:, holder_type:, bank_name:, bank_account_type:, routing_number:, last_four_account_number:, updated_on:, status_reason: nil, exception_details: nil, payment_methods: nil)
+        sig { params(bank_account_id: ::String, fingerprint: ::String, status: Models::Components::BankAccountStatus, holder_name: ::String, holder_type: Models::Components::BankAccountHolderType, bank_name: ::String, bank_account_type: Models::Components::BankAccountType, routing_number: ::String, last_four_account_number: ::String, updated_on: ::DateTime, status_reason: T.nilable(Models::Components::BankAccountStatusReason), exception_details: T.nilable(Models::Components::BankAccountException), payment_methods: T.nilable(T::Array[Models::Components::BasicPaymentMethod]), risk_verification_outcome: T.nilable(Models::Components::RiskVerificationOutcome)).void }
+        def initialize(bank_account_id:, fingerprint:, status:, holder_name:, holder_type:, bank_name:, bank_account_type:, routing_number:, last_four_account_number:, updated_on:, status_reason: nil, exception_details: nil, payment_methods: nil, risk_verification_outcome: nil)
           @bank_account_id = bank_account_id
           @fingerprint = fingerprint
           @status = status
@@ -59,6 +62,7 @@ module Moov
           @status_reason = status_reason
           @exception_details = exception_details
           @payment_methods = payment_methods
+          @risk_verification_outcome = risk_verification_outcome
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -77,6 +81,7 @@ module Moov
           return false unless @status_reason == other.status_reason
           return false unless @exception_details == other.exception_details
           return false unless @payment_methods == other.payment_methods
+          return false unless @risk_verification_outcome == other.risk_verification_outcome
           true
         end
       end
