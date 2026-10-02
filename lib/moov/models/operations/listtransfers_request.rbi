@@ -32,6 +32,8 @@ class Moov::Models::Operations::ListTransfersRequest
   def foreign_id=(str_); end
   def authorization_i_ds(); end
   def authorization_i_ds=(str_); end
+  def invoice_i_ds(); end
+  def invoice_i_ds=(str_); end
   def capture_i_ds(); end
   def capture_i_ds=(str_); end
   def skip(); end
