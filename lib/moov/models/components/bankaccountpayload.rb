@@ -14,16 +14,21 @@ module Moov
 
 
         field :account, Models::Components::BankAccountIntegration, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('account'), required: true } }
+        # Requests a synchronous risk-verification attempt on create or re-link. Only honored for
+        # allowlisted calling accounts; ignored otherwise.
+        field :request_risk_verification, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requestRiskVerification') } }
 
-        sig { params(account: Models::Components::BankAccountIntegration).void }
-        def initialize(account:)
+        sig { params(account: Models::Components::BankAccountIntegration, request_risk_verification: T.nilable(T::Boolean)).void }
+        def initialize(account:, request_risk_verification: nil)
           @account = account
+          @request_risk_verification = request_risk_verification
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @account == other.account
+          return false unless @request_risk_verification == other.request_risk_verification
           true
         end
       end

@@ -24,6 +24,8 @@ class Moov::Models::Components::IncurredFee
   def generated_by=(str_); end
   def fee_group(); end
   def fee_group=(str_); end
+  def fee_program(); end
+  def fee_program=(str_); end
   def residual_id(); end
   def residual_id=(str_); end
   def fee_paid_by(); end

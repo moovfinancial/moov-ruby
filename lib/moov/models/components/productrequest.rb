@@ -22,7 +22,7 @@ module Moov
         # - Supports Markdown for formatting
         # - HTML is not permitted and will be rejected
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
-        # Whether applicable tax rules may be applied to this product. True does not guarantee tax is charged; false excludes the product from tax calculation. Omitted values default to true on creation and preserve the existing setting on update.
+        # Whether applicable tax rules may be applied to this product. The value can be used to determine how to populate the tax amount on a transfer (Moov does not compute or assess tax). true means a tax amount can be included; false means it should not. Omitted values default to true on creation and preserve the existing setting on update. This setting does not determine jurisdiction-specific taxability.
         field :is_taxable, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isTaxable') } }
         # Assign previously uploaded images to a product or option.
         field :images, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AssignProductImage)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }

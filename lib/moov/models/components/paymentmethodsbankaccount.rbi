@@ -28,4 +28,6 @@ class Moov::Models::Components::PaymentMethodsBankAccount
   def last_four_account_number=(str_); end
   def updated_on(); end
   def updated_on=(str_); end
+  def risk_verification_outcome(); end
+  def risk_verification_outcome=(str_); end
 end

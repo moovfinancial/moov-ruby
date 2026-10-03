@@ -1,0 +1,9 @@
+# TransferEventCardPaymentDetails
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `status`                                                                                                       | [Models::Components::CardPaymentTransactionStatus](../../models/shared/cardpaymenttransactionstatus.md)        | :heavy_check_mark:                                                                                             | Status of a card payment transaction.                                                                          |
+| `failure_code`                                                                                                 | [T.nilable(Models::Components::CardTransactionFailureCode)](../../models/shared/cardtransactionfailurecode.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |

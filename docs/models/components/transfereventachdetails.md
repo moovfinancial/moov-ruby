@@ -1,0 +1,10 @@
+# TransferEventACHDetails
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `status`                                                                                | [Models::Components::ACHTransactionStatus](../../models/shared/achtransactionstatus.md) | :heavy_check_mark:                                                                      | Status of a transaction within the ACH lifecycle.                                       |
+| `return_`                                                                               | [T.nilable(Models::Components::ACHException)](../../models/shared/achexception.md)      | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| `correction`                                                                            | [T.nilable(Models::Components::ACHException)](../../models/shared/achexception.md)      | :heavy_minus_sign:                                                                      | N/A                                                                                     |

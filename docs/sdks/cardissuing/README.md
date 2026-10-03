@@ -10,6 +10,21 @@ the merchant category codes (MCCs) each group covers. Use these category names i
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/),
 you'll need to specify the `/issued-cards.read` scope.
+* [create_authorization](#create_authorization) - Create a simulated authorization for an issued card in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode)
+guide for more information.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
+* [create_clearing](#create_clearing) - Create a simulated clearing for an authorization on an issued card in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode)
+guide for more information.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
+* [create_reversal](#create_reversal) - Create a simulated reversal for an authorization on an issued card in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode)
+guide for more information.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
 * [request](#request) - Request a virtual card be issued.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -72,6 +87,164 @@ end
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## create_authorization
+
+Create a simulated authorization for an issued card in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode)
+guide for more information.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="createAuthorizationSimulation" method="post" path="/issuing/simulations/{accountID}/authorizations" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.card_issuing.create_authorization(account_id: '<id>', create_authorization_simulation: Models::Components::CreateAuthorizationSimulation.new(
+  issued_card_id: '<id>',
+  amount: '-14.89',
+  merchant_data: Models::Components::IssuingMerchantData.new(
+    network_id: '<id>',
+    name: 'Whole Body Fitness',
+    city: 'San Francisco',
+    country: 'US',
+    postal_code: '94107',
+    state: 'CA',
+    mcc: '7298'
+  )
+))
+
+unless res.issued_card_authorization.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                              | *::String*                                                                                                | :heavy_check_mark:                                                                                        | The Moov business account for which the card was issued.                                                  |
+| `create_authorization_simulation`                                                                         | [Models::Components::CreateAuthorizationSimulation](../../models/shared/createauthorizationsimulation.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
+
+### Response
+
+**[T.nilable(Models::Operations::CreateAuthorizationSimulationResponse)](../../models/operations/createauthorizationsimulationresponse.md)**
+
+### Errors
+
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| Models::Errors::GenericError                           | 400, 409                                               | application/json                                       |
+| Models::Errors::AuthorizationSimulationValidationError | 422                                                    | application/json                                       |
+| Errors::APIError                                       | 4XX, 5XX                                               | \*/\*                                                  |
+
+## create_clearing
+
+Create a simulated clearing for an authorization on an issued card in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode)
+guide for more information.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="createClearingSimulation" method="post" path="/issuing/simulations/{accountID}/authorizations/{authorizationID}/clearings" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.card_issuing.create_clearing(account_id: '<id>', authorization_id: '<id>', create_clearing_simulation: Models::Components::CreateClearingSimulation.new(
+  amount: '-14.89'
+))
+
+unless res.issued_card_authorization.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                    | *::String*                                                                                      | :heavy_check_mark:                                                                              | The Moov business account for which the card was issued.                                        |
+| `authorization_id`                                                                              | *::String*                                                                                      | :heavy_check_mark:                                                                              | The ID of the authorization to clear.                                                           |
+| `create_clearing_simulation`                                                                    | [Models::Components::CreateClearingSimulation](../../models/shared/createclearingsimulation.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+
+### Response
+
+**[T.nilable(Models::Operations::CreateClearingSimulationResponse)](../../models/operations/createclearingsimulationresponse.md)**
+
+### Errors
+
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| Models::Errors::GenericError                      | 400, 409                                          | application/json                                  |
+| Models::Errors::ClearingSimulationValidationError | 422                                               | application/json                                  |
+| Errors::APIError                                  | 4XX, 5XX                                          | \*/\*                                             |
+
+## create_reversal
+
+Create a simulated reversal for an authorization on an issued card in test mode. See our [test mode](https://docs.moov.io/guides/get-started/test-mode)
+guide for more information.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
+you'll need to specify the `/accounts/{accountID}/issued-cards.write` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="createReversalSimulation" method="post" path="/issuing/simulations/{accountID}/authorizations/{authorizationID}/reversals" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.card_issuing.create_reversal(account_id: '<id>', authorization_id: '<id>')
+
+unless res.issued_card_authorization.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `account_id`                                             | *::String*                                               | :heavy_check_mark:                                       | The Moov business account for which the card was issued. |
+| `authorization_id`                                       | *::String*                                               | :heavy_check_mark:                                       | The ID of the authorization to reverse.                  |
+
+### Response
+
+**[T.nilable(Models::Operations::CreateReversalSimulationResponse)](../../models/operations/createreversalsimulationresponse.md)**
+
+### Errors
+
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| Models::Errors::GenericError | 400, 409                     | application/json             |
+| Errors::APIError             | 4XX, 5XX                     | \*/\*                        |
 
 ## request
 

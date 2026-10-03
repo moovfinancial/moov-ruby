@@ -10,6 +10,8 @@ end
 class Moov::Models::Errors::CreateInvoiceError
   def customer_account_id(); end
   def customer_account_id=(str_); end
+  def customer_email(); end
+  def customer_email=(str_); end
   def description(); end
   def description=(str_); end
   def line_items(); end

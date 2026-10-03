@@ -79,6 +79,12 @@ you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+* [list_transfer_events](#list_transfer_events) - Retrieve the complete ordered event timeline for a Transfer.
+
+Events are returned oldest to newest by occurrence time, with deterministic ordering when multiple events have the same occurrence time. An existing Transfer with no stored events returns an empty list.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
 * [initiate_refund](#initiate_refund) - Initiate a refund for a card transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
@@ -835,6 +841,113 @@ end
 ### Response
 
 **[T.nilable(Models::Operations::GetCaptureResponse)](../../models/operations/getcaptureresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## list_transfer_events
+
+Retrieve the complete ordered event timeline for a Transfer.
+
+Events are returned oldest to newest by occurrence time, with deterministic ordering when multiple events have the same occurrence time. An existing Transfer with no stored events returns an empty list.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/transfers.read` scope.
+
+### Example Usage: Auth-capture card payment
+
+<!-- UsageSnippet language="ruby" operationID="listTransferEvents" method="get" path="/accounts/{accountID}/transfers/{transferID}/events" example="Auth-capture card payment" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.transfers.list_transfer_events(account_id: '<id>', transfer_id: '<id>')
+
+unless res.transfer_events.nil?
+  # handle response
+end
+
+```
+### Example Usage: Bank-to-bank transfer with source-wallet reversal
+
+<!-- UsageSnippet language="ruby" operationID="listTransferEvents" method="get" path="/accounts/{accountID}/transfers/{transferID}/events" example="Bank-to-bank transfer with source-wallet reversal" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.transfers.list_transfer_events(account_id: '<id>', transfer_id: '<id>')
+
+unless res.transfer_events.nil?
+  # handle response
+end
+
+```
+### Example Usage: Card-to-wallet transfer with refund
+
+<!-- UsageSnippet language="ruby" operationID="listTransferEvents" method="get" path="/accounts/{accountID}/transfers/{transferID}/events" example="Card-to-wallet transfer with refund" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.transfers.list_transfer_events(account_id: '<id>', transfer_id: '<id>')
+
+unless res.transfer_events.nil?
+  # handle response
+end
+
+```
+### Example Usage: Wallet-to-bank RTP transfer
+
+<!-- UsageSnippet language="ruby" operationID="listTransferEvents" method="get" path="/accounts/{accountID}/transfers/{transferID}/events" example="Wallet-to-bank RTP transfer" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.transfers.list_transfer_events(account_id: '<id>', transfer_id: '<id>')
+
+unless res.transfer_events.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `account_id`                                                            | *::String*                                                              | :heavy_check_mark:                                                      | Moov account ID of the partner or the Transfer's source or destination. |
+| `transfer_id`                                                           | *::String*                                                              | :heavy_check_mark:                                                      | Identifier for the Transfer.                                            |
+
+### Response
+
+**[T.nilable(Models::Operations::ListTransferEventsResponse)](../../models/operations/listtransfereventsresponse.md)**
 
 ### Errors
 

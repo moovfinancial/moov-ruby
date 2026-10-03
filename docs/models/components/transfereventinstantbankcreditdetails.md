@@ -1,0 +1,9 @@
+# TransferEventInstantBankCreditDetails
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `status`                                                                                                | [Models::Components::InstantBankTransactionStatus](../../models/shared/instantbanktransactionstatus.md) | :heavy_check_mark:                                                                                      | Status of a transaction within the instant-bank lifecycle.                                              |
+| `failure_code`                                                                                          | [T.nilable(Models::Components::InstantBankFailureCode)](../../models/shared/instantbankfailurecode.md)  | :heavy_minus_sign:                                                                                      | Status codes for instant-bank failures.                                                                 |

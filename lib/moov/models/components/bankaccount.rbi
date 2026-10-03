@@ -34,4 +34,6 @@ class Moov::Models::Components::BankAccount
   def exception_details=(str_); end
   def payment_methods(); end
   def payment_methods=(str_); end
+  def risk_verification_outcome(); end
+  def risk_verification_outcome=(str_); end
 end

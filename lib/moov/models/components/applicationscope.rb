@@ -27,6 +27,7 @@ module Moov
           DOCUMENTS_READ = new('documents.read')
           DOCUMENTS_WRITE = new('documents.write')
           FED_READ = new('fed.read')
+          FILES_DOWNLOAD = new('files.download')
           FILES_READ = new('files.read')
           FILES_WRITE = new('files.write')
           ISSUED_CARDS_READ = new('issued-cards.read')
