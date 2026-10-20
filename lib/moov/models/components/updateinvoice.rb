@@ -23,6 +23,8 @@ module Moov
         #     To completely discard an invoice created by mistake, use the delete endpoint instead.
         #   - `unpaid`: Can only be set if the current status is `draft`. Setting the status to `unpaid` finalizes the invoice and sends an email with a payment link to the customer.
         field :status, Crystalline::Nilable.new(Models::Components::InvoiceStatus), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::InvoiceStatus, true) } }
+        # Payment options to update on the invoice.
+        field :payment, Crystalline::Nilable.new(Models::Components::InvoicePaymentOptionsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :amount_details, Crystalline::Nilable.new(Models::Components::AmountDetailsUpdate), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
 
@@ -30,11 +32,12 @@ module Moov
 
         field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsUpdate), status: T.nilable(Models::Components::InvoiceStatus), amount_details: T.nilable(Models::Components::AmountDetailsUpdate), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime)).void }
-        def initialize(description: nil, line_items: nil, status: nil, amount_details: nil, invoice_date: nil, due_date: nil)
+        sig { params(description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsUpdate), status: T.nilable(Models::Components::InvoiceStatus), payment: T.nilable(Models::Components::InvoicePaymentOptionsUpdate), amount_details: T.nilable(Models::Components::AmountDetailsUpdate), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime)).void }
+        def initialize(description: nil, line_items: nil, status: nil, payment: nil, amount_details: nil, invoice_date: nil, due_date: nil)
           @description = description
           @line_items = line_items
           @status = status
+          @payment = payment
           @amount_details = amount_details
           @invoice_date = invoice_date
           @due_date = due_date
@@ -46,6 +49,7 @@ module Moov
           return false unless @description == other.description
           return false unless @line_items == other.line_items
           return false unless @status == other.status
+          return false unless @payment == other.payment
           return false unless @amount_details == other.amount_details
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date

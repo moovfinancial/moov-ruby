@@ -46,6 +46,8 @@ class Moov::Models::Components::Invoice
   def payment_link_code=(str_); end
   def payment_link_url(); end
   def payment_link_url=(str_); end
+  def payment(); end
+  def payment=(str_); end
   def invoice_payments(); end
   def invoice_payments=(str_); end
   def invoice_date(); end

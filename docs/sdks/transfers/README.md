@@ -67,6 +67,7 @@ you'll need to specify the `/accounts/{accountID}/transfers.write` scope.
   To access this endpoint using a [token](https://docs.moov.io/api/authentication/access-tokens/) you'll need 
   to specify the `/accounts/{accountID}/transfers.read` scope.
 * [initiate_refund](#initiate_refund) - Initiate a refund for a card transfer.
+The `accountID` must identify the partner account for the transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
 See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information. 
@@ -518,10 +519,11 @@ end
 
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `account_id`                   | *::String*                     | :heavy_check_mark:             | The partner's Moov account ID. |
-| `transfer_id`                  | *::String*                     | :heavy_check_mark:             | The transfer ID to cancel.     |
+| Parameter                                                                                                                                                                       | Type                                                                                                                                                                            | Required                                                                                                                                                                        | Description                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                                                                                                    | *::String*                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                              | The partner's Moov account ID.                                                                                                                                                  |
+| `transfer_id`                                                                                                                                                                   | *::String*                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                              | The transfer ID to cancel.                                                                                                                                                      |
+| `x_idempotency_key`                                                                                                                                                             | *T.nilable(::String)*                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                              | Prevents duplicate cancellations from being created.<br/>In v2026.10 and later, this header is required, and reusing a key returns a `409` response with the original cancellation. |
 
 ### Response
 
@@ -628,6 +630,7 @@ end
 ## initiate_refund
 
 Initiate a refund for a card transfer.
+The `accountID` must identify the partner account for the transfer.
 
 **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
 See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information. 

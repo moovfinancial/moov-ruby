@@ -1000,8 +1000,8 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateCancellationResponse) }
-    def create_cancellation(account_id:, transfer_id:, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, transfer_id: ::String, x_idempotency_key: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateCancellationResponse) }
+    def create_cancellation(account_id:, transfer_id:, x_idempotency_key: nil, timeout_ms: nil, http_headers: nil)
       # create_cancellation -   Initiate a cancellation for a card, ACH, or queued transfer.
       #   
       #   In v2026.10 and later, an auth-capture `card-payment` transfer can be canceled before any captures exist.
@@ -1011,7 +1011,8 @@ module Moov
       #   to specify the `/accounts/{accountID}/transfers.write` scope.
       request = Models::Operations::CreateCancellationRequest.new(
         account_id: account_id,
-        transfer_id: transfer_id
+        transfer_id: transfer_id,
+        x_idempotency_key: x_idempotency_key
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -1021,7 +1022,7 @@ module Moov
         '/accounts/{accountID}/transfers/{transferID}/cancellations',
         request
       )
-      headers = {}
+      headers = Utils.get_headers(request)
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1391,6 +1392,7 @@ module Moov
     sig { params(request: Models::Operations::InitiateRefundRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateRefundResponse) }
     def initiate_refund(request:, timeout_ms: nil, http_headers: nil)
       # initiate_refund - Initiate a refund for a card transfer.
+      # The `accountID` must identify the partner account for the transfer.
       #
       # **Use the [Cancel or refund a card transfer](https://docs.moov.io/api/money-movement/refunds/cancel/) endpoint for more comprehensive cancel and refund options.**    
       # See the [reversals](https://docs.moov.io/guides/money-movement/accept-payments/card-acceptance/reversals/) guide for more information. 
