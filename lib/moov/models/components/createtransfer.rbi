@@ -14,6 +14,8 @@ class Moov::Models::Components::CreateTransfer
   def destination=(str_); end
   def amount(); end
   def amount=(str_); end
+  def options(); end
+  def options=(str_); end
   def facilitator_fee(); end
   def facilitator_fee=(str_); end
   def description(); end

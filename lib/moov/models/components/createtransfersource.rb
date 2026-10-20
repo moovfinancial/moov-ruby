@@ -20,17 +20,11 @@ module Moov
 
         field :payment_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentToken') } }
 
-        field :card_details, Crystalline::Nilable.new(Models::Components::CreateTransferSourceCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardDetails') } }
-
-        field :ach_details, Crystalline::Nilable.new(Models::Components::CreateTransferSourceACH), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
-
-        sig { params(transfer_id: T.nilable(::String), payment_method_id: T.nilable(::String), payment_token: T.nilable(::String), card_details: T.nilable(Models::Components::CreateTransferSourceCard), ach_details: T.nilable(Models::Components::CreateTransferSourceACH)).void }
-        def initialize(transfer_id: nil, payment_method_id: nil, payment_token: nil, card_details: nil, ach_details: nil)
+        sig { params(transfer_id: T.nilable(::String), payment_method_id: T.nilable(::String), payment_token: T.nilable(::String)).void }
+        def initialize(transfer_id: nil, payment_method_id: nil, payment_token: nil)
           @transfer_id = transfer_id
           @payment_method_id = payment_method_id
           @payment_token = payment_token
-          @card_details = card_details
-          @ach_details = ach_details
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -39,8 +33,6 @@ module Moov
           return false unless @transfer_id == other.transfer_id
           return false unless @payment_method_id == other.payment_method_id
           return false unless @payment_token == other.payment_token
-          return false unless @card_details == other.card_details
-          return false unless @ach_details == other.ach_details
           true
         end
       end

@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Operations::CreateCancellationResponse
+class Moov::Models::Operations::CreateReversalSimulationResponse
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Operations::CreateCancellationResponse
+class Moov::Models::Operations::CreateReversalSimulationResponse
   def content_type(); end
   def content_type=(str_); end
   def status_code(); end
@@ -16,6 +16,8 @@ class Moov::Models::Operations::CreateCancellationResponse
   def raw_response=(str_); end
   def headers(); end
   def headers=(str_); end
-  def cancellation(); end
-  def cancellation=(str_); end
+  def issued_card_authorization(); end
+  def issued_card_authorization=(str_); end
+  def authorization_simulation_async_response(); end
+  def authorization_simulation_async_response=(str_); end
 end

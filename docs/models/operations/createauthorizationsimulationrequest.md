@@ -1,0 +1,9 @@
+# CreateAuthorizationSimulationRequest
+
+
+## Fields
+
+| Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `account_id`                                                                                              | *::String*                                                                                                | :heavy_check_mark:                                                                                        | The Moov business account for which the card was issued.                                                  |
+| `create_authorization_simulation`                                                                         | [Models::Components::CreateAuthorizationSimulation](../../models/shared/createauthorizationsimulation.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |

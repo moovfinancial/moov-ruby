@@ -5,7 +5,7 @@
 ```ruby
 require "moov_ruby"
 
-value = CaptureStatus::PENDING
+value = CaptureStatus::CREATED
 
 # Open enum: use .deserialize() to create instances from custom string values
 custom = CaptureStatus.deserialize("custom_value")
@@ -16,6 +16,7 @@ custom = CaptureStatus.deserialize("custom_value")
 
 | Name        | Value       |
 | ----------- | ----------- |
+| `CREATED`   | created     |
 | `PENDING`   | pending     |
 | `COMPLETED` | completed   |
 | `FAILED`    | failed      |

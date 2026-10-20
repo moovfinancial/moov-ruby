@@ -7,17 +7,15 @@
 module Moov
   module Models
     module Components
-      # Cancellation request.
-      class CreateCancellation
+
+      class CreateClearingSimulation
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Amount to void. This field can only be set for an auth-capture `card-payment` transfer.
-        # This cannot exceed `capturableAmount`.
-        # Omit this field to void the entire `capturableAmount`.
-        field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
+        # A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
+        field :amount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountDecimal)).void }
+        sig { params(amount: T.nilable(::String)).void }
         def initialize(amount: nil)
           @amount = amount
         end

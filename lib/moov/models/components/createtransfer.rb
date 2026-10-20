@@ -18,6 +18,8 @@ module Moov
         field :destination, Models::Components::CreateTransferDestination, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destination'), required: true } }
 
         field :amount, Models::Components::AmountDecimal, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount'), required: true } }
+        # Rail-specific options for a new transfer. Set only the key that matches the transfer's rail.
+        field :options, Crystalline::Nilable.new(Models::Components::CreateTransferRailOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
         # Total or markup fee to apply when creating a transfer.
         field :facilitator_fee, Crystalline::Nilable.new(Models::Components::CreateTransferFacilitatorFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFee') } }
         # An optional description of the transfer that is used on receipts and for your own internal use.
@@ -34,11 +36,12 @@ module Moov
         # Indicates which party bears fees for a transfer, keyed by fee type.
         field :fee_paid_by, Crystalline::Nilable.new(Models::Components::TransferFeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
 
-        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::AmountDecimal, facilitator_fee: T.nilable(Models::Components::CreateTransferFacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), fee_paid_by: T.nilable(Models::Components::TransferFeePaidBy)).void }
-        def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, fee_paid_by: nil)
+        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::AmountDecimal, options: T.nilable(Models::Components::CreateTransferRailOptions), facilitator_fee: T.nilable(Models::Components::CreateTransferFacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), fee_paid_by: T.nilable(Models::Components::TransferFeePaidBy)).void }
+        def initialize(source:, destination:, amount:, options: nil, facilitator_fee: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, fee_paid_by: nil)
           @source = source
           @destination = destination
           @amount = amount
+          @options = options
           @facilitator_fee = facilitator_fee
           @description = description
           @metadata = metadata
@@ -54,6 +57,7 @@ module Moov
           return false unless @source == other.source
           return false unless @destination == other.destination
           return false unless @amount == other.amount
+          return false unless @options == other.options
           return false unless @facilitator_fee == other.facilitator_fee
           return false unless @description == other.description
           return false unless @metadata == other.metadata

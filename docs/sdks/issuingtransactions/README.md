@@ -10,6 +10,10 @@ Activity includes authorizations and settlements in a single list.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
 you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+* [get_activity](#get_activity) - Retrieve a single issued card activity associated with a Moov account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
 * [list_authorizations](#list_authorizations) - List issued card authorizations associated with a Moov account.
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
@@ -76,6 +80,51 @@ end
 ### Response
 
 **[T.nilable(Models::Operations::ListIssuedCardActivityResponse)](../../models/operations/listissuedcardactivityresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## get_activity
+
+Retrieve a single issued card activity associated with a Moov account.
+
+To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
+you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="getIssuedCardActivity" method="get" path="/issuing/{accountID}/activity/{id}" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+res = s.issuing_transactions.get_activity(account_id: '<id>', id: '<id>')
+
+unless res.issued_card_activity.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `account_id`                                                                       | *::String*                                                                         | :heavy_check_mark:                                                                 | The Moov business account for which cards have been issued.                        |
+| `id`                                                                               | *::String*                                                                         | :heavy_check_mark:                                                                 | The identifier for the activity item, either authorizationID or cardTransactionID. |
+
+### Response
+
+**[T.nilable(Models::Operations::GetIssuedCardActivityResponse)](../../models/operations/getissuedcardactivityresponse.md)**
 
 ### Errors
 

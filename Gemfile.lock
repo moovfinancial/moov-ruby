@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    moov_ruby (26.10.0.pre.dev.8)
+    moov_ruby (26.10.0.pre.dev.9)
       base64 (>= 0.2.0, < 1.0)
       faraday (>= 2.14.3)
       faraday-multipart (~> 1.2.0)
@@ -19,13 +19,13 @@ GEM
     date (3.5.1)
     erb (6.0.1)
     erubi (1.13.1)
-    faraday (2.14.4)
-      faraday-net_http (>= 2.0, < 3.5)
+    faraday (2.15.0)
+      faraday-net_http (>= 2.0, < 3.6)
       json
       logger
     faraday-multipart (1.2.0)
       multipart-post (~> 2.0)
-    faraday-net_http (3.4.4)
+    faraday-net_http (3.5.0)
       net-http (~> 0.5)
     faraday-retry (2.4.0)
       faraday (~> 2.0)
@@ -48,8 +48,11 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multipart-post (2.4.1)
-    net-http (0.9.1)
+    net-http (0.10.0)
+      net-protocol (>= 0.3.0)
       uri (>= 0.11.1)
+    net-protocol (0.4.0)
+      timeout
     netrc (0.11.0)
     parallel (1.26.3)
     parser (3.3.7.1)
@@ -128,11 +131,12 @@ GEM
       thor (>= 1.2.0)
       yard-sorbet
     thor (1.4.0)
+    timeout (0.6.1)
     tsort (0.2.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
-    uri (1.1.1)
+    uri (1.1.2)
     yard (0.9.42)
     yard-sorbet (0.9.0)
       sorbet-runtime

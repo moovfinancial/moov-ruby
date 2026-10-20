@@ -11,6 +11,7 @@ module Moov
       class CaptureStatus
         include ::Crystalline::Enum
         enums do
+          CREATED = new('created')
           PENDING = new('pending')
           COMPLETED = new('completed')
           FAILED = new('failed')
