@@ -12,4 +12,6 @@ class Moov::Models::Operations::CreateCancellationRequest
   def account_id=(str_); end
   def transfer_id(); end
   def transfer_id=(str_); end
+  def x_idempotency_key(); end
+  def x_idempotency_key=(str_); end
 end

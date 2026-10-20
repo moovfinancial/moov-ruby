@@ -18,23 +18,29 @@ module Moov
         field :line_items, Models::Components::CreateInvoiceLineItems, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems'), required: true } }
         # Email address to use for invoice checkout OTP verification instead of the customer account email.
         field :customer_email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerEmail') } }
+        # Optional merchant-defined invoice number, up to 64 characters. Must be unique for the account. If omitted, empty, or whitespace-only, the next number in the INV-<n> sequence is assigned automatically.
+        field :invoice_number, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceNumber') } }
 
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
         field :invoice_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
         field :due_date, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
+        # Payment options for the invoice.
+        field :payment, Crystalline::Nilable.new(Models::Components::InvoicePaymentOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
 
         field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
 
-        sig { params(customer_account_id: ::String, line_items: Models::Components::CreateInvoiceLineItems, customer_email: T.nilable(::String), description: T.nilable(::String), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), tax_amount: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(customer_account_id:, line_items:, customer_email: nil, description: nil, invoice_date: nil, due_date: nil, tax_amount: nil)
+        sig { params(customer_account_id: ::String, line_items: Models::Components::CreateInvoiceLineItems, customer_email: T.nilable(::String), invoice_number: T.nilable(::String), description: T.nilable(::String), invoice_date: T.nilable(::DateTime), due_date: T.nilable(::DateTime), payment: T.nilable(Models::Components::InvoicePaymentOptions), tax_amount: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(customer_account_id:, line_items:, customer_email: nil, invoice_number: nil, description: nil, invoice_date: nil, due_date: nil, payment: nil, tax_amount: nil)
           @customer_account_id = customer_account_id
           @line_items = line_items
           @customer_email = customer_email
+          @invoice_number = invoice_number
           @description = description
           @invoice_date = invoice_date
           @due_date = due_date
+          @payment = payment
           @tax_amount = tax_amount
         end
 
@@ -44,9 +50,11 @@ module Moov
           return false unless @customer_account_id == other.customer_account_id
           return false unless @line_items == other.line_items
           return false unless @customer_email == other.customer_email
+          return false unless @invoice_number == other.invoice_number
           return false unless @description == other.description
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date
+          return false unless @payment == other.payment
           return false unless @tax_amount == other.tax_amount
           true
         end

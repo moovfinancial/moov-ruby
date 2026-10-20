@@ -30,6 +30,8 @@ module Moov
       autoload :CreateCancellationResponse, 'moov/models/operations/createcancellation_response.rb'
       autoload :CreateFeePlanAgreementsRequest, 'moov/models/operations/createfeeplanagreements_request.rb'
       autoload :CreateFeePlanAgreementsResponse, 'moov/models/operations/createfeeplanagreements_response.rb'
+      autoload :CreateInvoiceNotificationRequest, 'moov/models/operations/createinvoicenotification_request.rb'
+      autoload :CreateInvoiceNotificationResponse, 'moov/models/operations/createinvoicenotification_response.rb'
       autoload :CreateInvoicePaymentRequest, 'moov/models/operations/createinvoicepayment_request.rb'
       autoload :CreateInvoicePaymentResponse, 'moov/models/operations/createinvoicepayment_response.rb'
       autoload :CreateInvoiceRequest, 'moov/models/operations/createinvoice_request.rb'

@@ -17,6 +17,8 @@ module Moov
 
         field :customer_email, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerEmail') } }
 
+        field :invoice_number, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('invoiceNumber') } }
+
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
 
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateInvoiceLineItemsValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
@@ -25,18 +27,22 @@ module Moov
 
         field :due_date, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dueDate') } }
 
+        field :payment, Crystalline::Nilable.new(Models::Components::InvoicePaymentOptionsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('payment') } }
+
         field :tax_amount, Crystalline::Nilable.new(Models::Components::AmountDecimalValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('taxAmount') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(customer_account_id: T.nilable(::String), customer_email: T.nilable(::String), description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsValidationError), invoice_date: T.nilable(::String), due_date: T.nilable(::String), tax_amount: T.nilable(Models::Components::AmountDecimalValidationError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(customer_account_id: nil, customer_email: nil, description: nil, line_items: nil, invoice_date: nil, due_date: nil, tax_amount: nil, raw_response: nil)
+        sig { params(customer_account_id: T.nilable(::String), customer_email: T.nilable(::String), invoice_number: T.nilable(::String), description: T.nilable(::String), line_items: T.nilable(Models::Components::CreateInvoiceLineItemsValidationError), invoice_date: T.nilable(::String), due_date: T.nilable(::String), payment: T.nilable(Models::Components::InvoicePaymentOptionsError), tax_amount: T.nilable(Models::Components::AmountDecimalValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(customer_account_id: nil, customer_email: nil, invoice_number: nil, description: nil, line_items: nil, invoice_date: nil, due_date: nil, payment: nil, tax_amount: nil, raw_response: nil)
           @customer_account_id = customer_account_id
           @customer_email = customer_email
+          @invoice_number = invoice_number
           @description = description
           @line_items = line_items
           @invoice_date = invoice_date
           @due_date = due_date
+          @payment = payment
           @tax_amount = tax_amount
           @raw_response = raw_response
         end
@@ -46,10 +52,12 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @customer_account_id == other.customer_account_id
           return false unless @customer_email == other.customer_email
+          return false unless @invoice_number == other.invoice_number
           return false unless @description == other.description
           return false unless @line_items == other.line_items
           return false unless @invoice_date == other.invoice_date
           return false unless @due_date == other.due_date
+          return false unless @payment == other.payment
           return false unless @tax_amount == other.tax_amount
           return false unless @raw_response == other.raw_response
           true

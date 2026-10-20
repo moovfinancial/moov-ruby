@@ -14,12 +14,16 @@ class Moov::Models::Components::CreateInvoice
   def line_items=(str_); end
   def customer_email(); end
   def customer_email=(str_); end
+  def invoice_number(); end
+  def invoice_number=(str_); end
   def description(); end
   def description=(str_); end
   def invoice_date(); end
   def invoice_date=(str_); end
   def due_date(); end
   def due_date=(str_); end
+  def payment(); end
+  def payment=(str_); end
   def tax_amount(); end
   def tax_amount=(str_); end
 end

@@ -31,6 +31,8 @@ module Moov
       autoload :GenericError, 'moov/models/errors/genericerror.rb'
       autoload :ImageMetadataValidationError, 'moov/models/errors/imagemetadatavalidationerror.rb'
       autoload :ImageRequestValidationError, 'moov/models/errors/imagerequestvalidationerror.rb'
+      autoload :InvoiceNotificationError, 'moov/models/errors/invoicenotificationerror.rb'
+      autoload :InvoiceNotificationRateLimitedError, 'moov/models/errors/invoicenotificationratelimitederror.rb'
       autoload :LinkApplePayError, 'moov/models/errors/linkapplepayerror.rb'
       autoload :LinkCardError, 'moov/models/errors/linkcarderror.rb'
       autoload :LinkGooglePayError, 'moov/models/errors/linkgooglepayerror.rb'

@@ -14,6 +14,8 @@ class Moov::Models::Components::UpdateInvoice
   def line_items=(str_); end
   def status(); end
   def status=(str_); end
+  def payment(); end
+  def payment=(str_); end
   def tax_amount(); end
   def tax_amount=(str_); end
   def invoice_date(); end

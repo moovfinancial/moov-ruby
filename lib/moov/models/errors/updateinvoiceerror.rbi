@@ -18,6 +18,8 @@ class Moov::Models::Errors::UpdateInvoiceError
   def due_date=(str_); end
   def status(); end
   def status=(str_); end
+  def payment(); end
+  def payment=(str_); end
   def tax_amount(); end
   def tax_amount=(str_); end
   def raw_response(); end
