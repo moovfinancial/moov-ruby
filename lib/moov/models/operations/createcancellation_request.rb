@@ -16,11 +16,15 @@ module Moov
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
         # The transfer ID to cancel.
         field :transfer_id, ::String, { 'path_param': { 'field_name': 'transferID', 'style': 'simple', 'explode': false } }
+        # Prevents duplicate cancellations from being created.
+        # In v2026.10 and later, this header is required, and reusing a key returns a `409` response with the original cancellation.
+        field :x_idempotency_key, Crystalline::Nilable.new(::String), { 'header': { 'field_name': 'x-idempotency-key', 'style': 'simple', 'explode': false } }
 
-        sig { params(account_id: ::String, transfer_id: ::String).void }
-        def initialize(account_id:, transfer_id:)
+        sig { params(account_id: ::String, transfer_id: ::String, x_idempotency_key: T.nilable(::String)).void }
+        def initialize(account_id:, transfer_id:, x_idempotency_key: nil)
           @account_id = account_id
           @transfer_id = transfer_id
+          @x_idempotency_key = x_idempotency_key
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -28,6 +32,7 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @account_id == other.account_id
           return false unless @transfer_id == other.transfer_id
+          return false unless @x_idempotency_key == other.x_idempotency_key
           true
         end
       end
