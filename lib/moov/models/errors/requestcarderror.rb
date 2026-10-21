@@ -21,19 +21,16 @@ module Moov
 
         field :billing_address, Crystalline::Nilable.new(Models::Components::AddressError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
 
-        field :expiration, Crystalline::Nilable.new(Models::Components::CardExpirationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration') } }
-
         field :controls, Crystalline::Nilable.new(Models::Components::IssuingControlsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(::String), billing_address: T.nilable(Models::Components::AddressError), expiration: T.nilable(Models::Components::CardExpirationError), controls: T.nilable(Models::Components::IssuingControlsError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, expiration: nil, controls: nil, raw_response: nil)
+        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(::String), billing_address: T.nilable(Models::Components::AddressError), controls: T.nilable(Models::Components::IssuingControlsError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, controls: nil, raw_response: nil)
           @authorized_user_account_id = authorized_user_account_id
           @nickname = nickname
           @metadata = metadata
           @billing_address = billing_address
-          @expiration = expiration
           @controls = controls
           @raw_response = raw_response
         end
@@ -45,7 +42,6 @@ module Moov
           return false unless @nickname == other.nickname
           return false unless @metadata == other.metadata
           return false unless @billing_address == other.billing_address
-          return false unless @expiration == other.expiration
           return false unless @controls == other.controls
           return false unless @raw_response == other.raw_response
           true

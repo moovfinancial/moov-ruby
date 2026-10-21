@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 
-class Moov::Models::Components::IssuingMerchantDataValidationError
+class Moov::Models::Components::SimulationIssuingMerchantData
   extend ::Crystalline::MetadataFields::ClassMethods
 end
 
 
-class Moov::Models::Components::IssuingMerchantDataValidationError
+class Moov::Models::Components::SimulationIssuingMerchantData
   def network_id(); end
   def network_id=(str_); end
   def name(); end

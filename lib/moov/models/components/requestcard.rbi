@@ -16,8 +16,6 @@ class Moov::Models::Components::RequestCard
   def metadata=(str_); end
   def billing_address(); end
   def billing_address=(str_); end
-  def expiration(); end
-  def expiration=(str_); end
   def controls(); end
   def controls=(str_); end
 end

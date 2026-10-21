@@ -20,18 +20,15 @@ module Moov
         field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         field :billing_address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
-        # The expiration date of the card or token.
-        field :expiration, Crystalline::Nilable.new(Models::Components::CardExpiration), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration') } }
         # Mutable spend controls for the card.
         field :controls, Crystalline::Nilable.new(Models::Components::IssuingControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
-        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), expiration: T.nilable(Models::Components::CardExpiration), controls: T.nilable(Models::Components::IssuingControls)).void }
-        def initialize(authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, expiration: nil, controls: nil)
+        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), controls: T.nilable(Models::Components::IssuingControls)).void }
+        def initialize(authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, controls: nil)
           @authorized_user_account_id = authorized_user_account_id
           @nickname = nickname
           @metadata = metadata
           @billing_address = billing_address
-          @expiration = expiration
           @controls = controls
         end
 
@@ -42,7 +39,6 @@ module Moov
           return false unless @nickname == other.nickname
           return false unless @metadata == other.metadata
           return false unless @billing_address == other.billing_address
-          return false unless @expiration == other.expiration
           return false unless @controls == other.controls
           true
         end

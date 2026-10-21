@@ -12,6 +12,8 @@ class Moov::Models::Errors::CreateInvoiceError
   def customer_account_id=(str_); end
   def customer_email(); end
   def customer_email=(str_); end
+  def invoice_number(); end
+  def invoice_number=(str_); end
   def description(); end
   def description=(str_); end
   def line_items(); end
@@ -20,6 +22,8 @@ class Moov::Models::Errors::CreateInvoiceError
   def invoice_date=(str_); end
   def due_date(); end
   def due_date=(str_); end
+  def payment(); end
+  def payment=(str_); end
   def amount_details(); end
   def amount_details=(str_); end
   def raw_response(); end

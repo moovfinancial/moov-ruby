@@ -112,7 +112,7 @@ s = ::Moov::Client.new(
 res = s.card_issuing.create_authorization(account_id: '<id>', create_authorization_simulation: Models::Components::CreateAuthorizationSimulation.new(
   issued_card_id: '<id>',
   amount: '-14.89',
-  merchant_data: Models::Components::IssuingMerchantData.new(
+  merchant_data: Models::Components::SimulationIssuingMerchantData.new(
     network_id: '<id>',
     name: 'Whole Body Fitness',
     city: 'San Francisco',
@@ -277,10 +277,6 @@ res = s.card_issuing.request(account_id: '4d9ac71a-efcc-4bdf-bcfe-d710ca654e3e',
     state_or_province: 'CO',
     postal_code: '80301',
     country: 'US'
-  ),
-  expiration: Models::Components::CardExpiration.new(
-    month: '01',
-    year: '21'
   ),
   controls: Models::Components::IssuingControls.new(
     velocity_limits: [

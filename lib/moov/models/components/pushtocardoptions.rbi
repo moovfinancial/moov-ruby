@@ -10,4 +10,6 @@ end
 class Moov::Models::Components::PushToCardOptions
   def dynamic_descriptor(); end
   def dynamic_descriptor=(str_); end
+  def scheduled_delivery_on(); end
+  def scheduled_delivery_on=(str_); end
 end

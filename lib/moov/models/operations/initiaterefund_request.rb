@@ -14,7 +14,7 @@ module Moov
 
         # Prevents duplicate refunds from being created.
         field :x_idempotency_key, ::String, { 'header': { 'field_name': 'x-idempotency-key', 'style': 'simple', 'explode': false } }
-        # The merchant's Moov account ID.
+        # Moov account ID of the partner for the transfer.
         field :account_id, ::String, { 'path_param': { 'field_name': 'accountID', 'style': 'simple', 'explode': false } }
         # Identifier for the transfer.
         field :transfer_id, ::String, { 'path_param': { 'field_name': 'transferID', 'style': 'simple', 'explode': false } }

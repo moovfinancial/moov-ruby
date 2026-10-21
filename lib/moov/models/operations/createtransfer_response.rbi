@@ -16,8 +16,8 @@ class Moov::Models::Operations::CreateTransferResponse
   def raw_response=(str_); end
   def headers(); end
   def headers=(str_); end
-  def created_transfer(); end
-  def created_transfer=(str_); end
+  def create_transfer_response(); end
+  def create_transfer_response=(str_); end
   def async_transfer(); end
   def async_transfer=(str_); end
   def transfer(); end

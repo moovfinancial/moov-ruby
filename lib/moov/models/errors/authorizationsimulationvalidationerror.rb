@@ -14,14 +14,14 @@ module Moov
 
 
         field :issued_card_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuedCardID') } }
-        # A decimal-formatted numerical string that represents up to 2 decimal place precision. In USD for example, 12.34 is $12.34 and 0.99 is $0.99.
+
         field :amount, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
-        field :merchant_data, Crystalline::Nilable.new(Models::Components::IssuingMerchantDataValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantData') } }
+        field :merchant_data, Crystalline::Nilable.new(Models::Components::SimulationIssuingMerchantDataValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantData') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(issued_card_id: T.nilable(::String), amount: T.nilable(::String), merchant_data: T.nilable(Models::Components::IssuingMerchantDataValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(issued_card_id: T.nilable(::String), amount: T.nilable(::String), merchant_data: T.nilable(Models::Components::SimulationIssuingMerchantDataValidationError), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(issued_card_id: nil, amount: nil, merchant_data: nil, raw_response: nil)
           @issued_card_id = issued_card_id
           @amount = amount

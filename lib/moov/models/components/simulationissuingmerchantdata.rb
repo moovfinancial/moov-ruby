@@ -8,23 +8,23 @@ module Moov
   module Models
     module Components
 
-      class IssuingMerchantDataValidationError
+      class SimulationIssuingMerchantData
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # External identifier used to identify the merchant with the card brand.
         field :network_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('networkID') } }
-
+        # Name of the merchant.
         field :name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('name') } }
-
+        # The merchant's location.
         field :city, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('city') } }
-
+        # Two-letter country code.
         field :country, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('country') } }
-
+        # The merchant's five-digit postal code.
         field :postal_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('postalCode') } }
-
+        # The merchant's two-letter state abbreviation.
         field :state, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state') } }
-
+        # The Merchant Category Code.
         field :mcc, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mcc') } }
 
         sig { params(network_id: T.nilable(::String), name: T.nilable(::String), city: T.nilable(::String), country: T.nilable(::String), postal_code: T.nilable(::String), state: T.nilable(::String), mcc: T.nilable(::String)).void }

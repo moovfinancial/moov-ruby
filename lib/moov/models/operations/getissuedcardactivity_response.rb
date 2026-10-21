@@ -8,7 +8,7 @@ module Moov
   module Models
     module Operations
 
-      class CreateCancellationResponse
+      class GetIssuedCardActivityResponse
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -21,15 +21,15 @@ module Moov
 
         field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
         # The request completed successfully.
-        field :cancellation, Crystalline::Nilable.new(Models::Components::Cancellation)
+        field :issued_card_activity, Crystalline::Nilable.new(Models::Components::IssuedCardActivity)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], cancellation: T.nilable(Models::Components::Cancellation)).void }
-        def initialize(content_type:, status_code:, raw_response:, headers:, cancellation: nil)
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], issued_card_activity: T.nilable(Models::Components::IssuedCardActivity)).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:, issued_card_activity: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
           @headers = headers
-          @cancellation = cancellation
+          @issued_card_activity = issued_card_activity
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -39,7 +39,7 @@ module Moov
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
           return false unless @headers == other.headers
-          return false unless @cancellation == other.cancellation
+          return false unless @issued_card_activity == other.issued_card_activity
           true
         end
       end

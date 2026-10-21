@@ -21,19 +21,19 @@ module Moov
 
         field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
         # The request completed successfully.
-        field :created_transfer, Crystalline::Nilable.new(Models::Components::CreatedTransfer)
+        field :create_transfer_response, Crystalline::Nilable.new(Crystalline::Union.new(Models::Components::CreatedTransfer, Models::Components::AsyncTransfer))
         # A transfer was successfully created but an error occurred while generating the synchronous response. The asynchronous response object will be returned.
         field :async_transfer, Crystalline::Nilable.new(Models::Components::AsyncTransfer)
         # The transfer was created, but rail-specific details may not be available within the 15 second timeout window.
         field :transfer, Crystalline::Nilable.new(Models::Components::Transfer)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], created_transfer: T.nilable(Models::Components::CreatedTransfer), async_transfer: T.nilable(Models::Components::AsyncTransfer), transfer: T.nilable(Models::Components::Transfer)).void }
-        def initialize(content_type:, status_code:, raw_response:, headers:, created_transfer: nil, async_transfer: nil, transfer: nil)
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], create_transfer_response: T.nilable(T.any(Models::Components::CreatedTransfer, Models::Components::AsyncTransfer)), async_transfer: T.nilable(Models::Components::AsyncTransfer), transfer: T.nilable(Models::Components::Transfer)).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:, create_transfer_response: nil, async_transfer: nil, transfer: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
           @headers = headers
-          @created_transfer = created_transfer
+          @create_transfer_response = create_transfer_response
           @async_transfer = async_transfer
           @transfer = transfer
         end
@@ -45,7 +45,7 @@ module Moov
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
           return false unless @headers == other.headers
-          return false unless @created_transfer == other.created_transfer
+          return false unless @create_transfer_response == other.create_transfer_response
           return false unless @async_transfer == other.async_transfer
           return false unless @transfer == other.transfer
           true

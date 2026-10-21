@@ -14,16 +14,20 @@ module Moov
 
         # An optional override of the default card statement descriptor for a transfer. Accounts must be enabled by Moov to set this field.
         field :dynamic_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('dynamicDescriptor') } }
+        # The scheduled date and time for the push-to-card transfer to be delivered, as set when the transfer was created.
+        field :scheduled_delivery_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scheduledDeliveryOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(dynamic_descriptor: T.nilable(::String)).void }
-        def initialize(dynamic_descriptor: nil)
+        sig { params(dynamic_descriptor: T.nilable(::String), scheduled_delivery_on: T.nilable(::DateTime)).void }
+        def initialize(dynamic_descriptor: nil, scheduled_delivery_on: nil)
           @dynamic_descriptor = dynamic_descriptor
+          @scheduled_delivery_on = scheduled_delivery_on
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @dynamic_descriptor == other.dynamic_descriptor
+          return false unless @scheduled_delivery_on == other.scheduled_delivery_on
           true
         end
       end
