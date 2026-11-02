@@ -14,7 +14,7 @@ module Moov
 
         # IANA timezone string used to evaluate window boundaries against the authorization time.
         field :timezone, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('timezone'), required: true } }
-        # Time windows during which the card may authorize. Any matching window allows the transaction.
+        # Time windows during which authorizations on the card can be approved. Any matching window allows the transaction.
         field :windows, Crystalline::Array.new(Models::Components::ScheduleWindow), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('windows'), required: true } }
 
         sig { params(timezone: ::String, windows: T::Array[Models::Components::ScheduleWindow]).void }

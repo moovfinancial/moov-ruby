@@ -24,17 +24,20 @@ module Moov
         field :statement_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statementDescriptor') } }
 
         field :minimum_balance, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumBalance') } }
+
+        field :schedule, Crystalline::Nilable.new(Models::Components::SweepConfigScheduleError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('schedule') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(wallet_id: T.nilable(::String), status: T.nilable(::String), push_payment_method_id: T.nilable(::String), pull_payment_method_id: T.nilable(::String), statement_descriptor: T.nilable(::String), minimum_balance: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(wallet_id: nil, status: nil, push_payment_method_id: nil, pull_payment_method_id: nil, statement_descriptor: nil, minimum_balance: nil, raw_response: nil)
+        sig { params(wallet_id: T.nilable(::String), status: T.nilable(::String), push_payment_method_id: T.nilable(::String), pull_payment_method_id: T.nilable(::String), statement_descriptor: T.nilable(::String), minimum_balance: T.nilable(::String), schedule: T.nilable(Models::Components::SweepConfigScheduleError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(wallet_id: nil, status: nil, push_payment_method_id: nil, pull_payment_method_id: nil, statement_descriptor: nil, minimum_balance: nil, schedule: nil, raw_response: nil)
           @wallet_id = wallet_id
           @status = status
           @push_payment_method_id = push_payment_method_id
           @pull_payment_method_id = pull_payment_method_id
           @statement_descriptor = statement_descriptor
           @minimum_balance = minimum_balance
+          @schedule = schedule
           @raw_response = raw_response
         end
 
@@ -47,6 +50,7 @@ module Moov
           return false unless @pull_payment_method_id == other.pull_payment_method_id
           return false unless @statement_descriptor == other.statement_descriptor
           return false unless @minimum_balance == other.minimum_balance
+          return false unless @schedule == other.schedule
           return false unless @raw_response == other.raw_response
           true
         end

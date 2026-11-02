@@ -322,18 +322,12 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), states: T.nilable(T::Array[Models::Components::IssuedCardState]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardsResponse) }
-    def list(account_id:, skip: nil, count: nil, states: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request: Models::Operations::ListIssuedCardsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardsResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List Moov issued cards existing for the account.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
       # you'll need to specify the `/accounts/{accountID}/issued-cards.read` scope.
-      request = Models::Operations::ListIssuedCardsRequest.new(
-        account_id: account_id,
-        skip: skip,
-        count: count,
-        states: states
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
