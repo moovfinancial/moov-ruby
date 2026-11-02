@@ -20,6 +20,8 @@ class Moov::Models::Errors::ListTransfersValidationError
   def skip=(str_); end
   def count(); end
   def count=(str_); end
+  def cursor(); end
+  def cursor=(str_); end
   def group_id(); end
   def group_id=(str_); end
   def foreign_id(); end

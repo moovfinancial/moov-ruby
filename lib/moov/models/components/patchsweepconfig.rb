@@ -22,14 +22,17 @@ module Moov
         field :statement_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statementDescriptor') } }
 
         field :minimum_balance, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumBalance') } }
+        # Overrides the time of day this wallet's sweep runs. Sweeps only run on US banking days.
+        field :schedule, Crystalline::Nilable.new(Models::Components::Schedule), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('schedule') } }
 
-        sig { params(status: T.nilable(Models::Components::Status), push_payment_method_id: T.nilable(::String), pull_payment_method_id: T.nilable(::String), statement_descriptor: T.nilable(::String), minimum_balance: T.nilable(::String)).void }
-        def initialize(status: nil, push_payment_method_id: nil, pull_payment_method_id: nil, statement_descriptor: nil, minimum_balance: nil)
+        sig { params(status: T.nilable(Models::Components::Status), push_payment_method_id: T.nilable(::String), pull_payment_method_id: T.nilable(::String), statement_descriptor: T.nilable(::String), minimum_balance: T.nilable(::String), schedule: T.nilable(Models::Components::Schedule)).void }
+        def initialize(status: nil, push_payment_method_id: nil, pull_payment_method_id: nil, statement_descriptor: nil, minimum_balance: nil, schedule: nil)
           @status = status
           @push_payment_method_id = push_payment_method_id
           @pull_payment_method_id = pull_payment_method_id
           @statement_descriptor = statement_descriptor
           @minimum_balance = minimum_balance
+          @schedule = schedule
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -40,6 +43,7 @@ module Moov
           return false unless @pull_payment_method_id == other.pull_payment_method_id
           return false unless @statement_descriptor == other.statement_descriptor
           return false unless @minimum_balance == other.minimum_balance
+          return false unless @schedule == other.schedule
           true
         end
       end

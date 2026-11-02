@@ -20,13 +20,16 @@ module Moov
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # Optional, comma-separated states to filter the Moov list issued cards response. For example `active,closed`
         field :states, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::IssuedCardState)), { 'query_param': { 'field_name': 'states', 'style': 'form', 'explode': false } }
+        # Optional identifier for the account of the card's authorized user.
+        field :authorized_user_account_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'authorizedUserAccountID', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), states: T.nilable(T::Array[Models::Components::IssuedCardState])).void }
-        def initialize(account_id:, skip: nil, count: nil, states: nil)
+        sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), states: T.nilable(T::Array[Models::Components::IssuedCardState]), authorized_user_account_id: T.nilable(::String)).void }
+        def initialize(account_id:, skip: nil, count: nil, states: nil, authorized_user_account_id: nil)
           @account_id = account_id
           @skip = skip
           @count = count
           @states = states
+          @authorized_user_account_id = authorized_user_account_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -36,6 +39,7 @@ module Moov
           return false unless @skip == other.skip
           return false unless @count == other.count
           return false unless @states == other.states
+          return false unless @authorized_user_account_id == other.authorized_user_account_id
           true
         end
       end
