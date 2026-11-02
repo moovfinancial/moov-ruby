@@ -25,6 +25,8 @@ module Moov
 
         field :count, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('count') } }
 
+        field :cursor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cursor') } }
+
         field :group_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('groupID') } }
 
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
@@ -39,14 +41,15 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(account_i_ds: T.nilable(::String), status: T.nilable(::String), start_date_time: T.nilable(::String), end_date_time: T.nilable(::String), skip: T.nilable(::String), count: T.nilable(::String), group_id: T.nilable(::String), foreign_id: T.nilable(::String), schedule_id: T.nilable(::String), payment_link_code: T.nilable(::String), refunded: T.nilable(::String), disputed: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(account_i_ds: nil, status: nil, start_date_time: nil, end_date_time: nil, skip: nil, count: nil, group_id: nil, foreign_id: nil, schedule_id: nil, payment_link_code: nil, refunded: nil, disputed: nil, raw_response: nil)
+        sig { params(account_i_ds: T.nilable(::String), status: T.nilable(::String), start_date_time: T.nilable(::String), end_date_time: T.nilable(::String), skip: T.nilable(::String), count: T.nilable(::String), cursor: T.nilable(::String), group_id: T.nilable(::String), foreign_id: T.nilable(::String), schedule_id: T.nilable(::String), payment_link_code: T.nilable(::String), refunded: T.nilable(::String), disputed: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(account_i_ds: nil, status: nil, start_date_time: nil, end_date_time: nil, skip: nil, count: nil, cursor: nil, group_id: nil, foreign_id: nil, schedule_id: nil, payment_link_code: nil, refunded: nil, disputed: nil, raw_response: nil)
           @account_i_ds = account_i_ds
           @status = status
           @start_date_time = start_date_time
           @end_date_time = end_date_time
           @skip = skip
           @count = count
+          @cursor = cursor
           @group_id = group_id
           @foreign_id = foreign_id
           @schedule_id = schedule_id
@@ -65,6 +68,7 @@ module Moov
           return false unless @end_date_time == other.end_date_time
           return false unless @skip == other.skip
           return false unless @count == other.count
+          return false unless @cursor == other.cursor
           return false unless @group_id == other.group_id
           return false unless @foreign_id == other.foreign_id
           return false unless @schedule_id == other.schedule_id

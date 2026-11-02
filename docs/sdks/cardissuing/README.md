@@ -118,7 +118,13 @@ s = ::Moov::Client.new(
     password: ''
   )
 )
-res = s.card_issuing.list(account_id: '17c958e0-3abe-46e5-8afb-98742f1fb8ac', skip: 60, count: 20)
+
+req = Models::Operations::ListIssuedCardsRequest.new(
+  account_id: '17c958e0-3abe-46e5-8afb-98742f1fb8ac',
+  skip: 60,
+  count: 20
+)
+res = s.card_issuing.list(request: req)
 
 unless res.issued_cards.nil?
   # handle response
@@ -128,12 +134,9 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 | Example                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `account_id`                                                                                                | *::String*                                                                                                  | :heavy_check_mark:                                                                                          | The Moov business account for which the cards have been issued.                                             |                                                                                                             |
-| `skip`                                                                                                      | *T.nilable(::Integer)*                                                                                      | :heavy_minus_sign:                                                                                          | N/A                                                                                                         | 60                                                                                                          |
-| `count`                                                                                                     | *T.nilable(::Integer)*                                                                                      | :heavy_minus_sign:                                                                                          | Page size. When omitted, the server defaults to `200`.                                                      | 20                                                                                                          |
-| `states`                                                                                                    | T::Array<[Models::Components::IssuedCardState](../../models/shared/issuedcardstate.md)>                     | :heavy_minus_sign:                                                                                          | Optional, comma-separated states to filter the Moov list issued cards response. For example `active,closed` |                                                                                                             |
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [Models::Operations::ListIssuedCardsRequest](../../models/operations/listissuedcardsrequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
 
 ### Response
 

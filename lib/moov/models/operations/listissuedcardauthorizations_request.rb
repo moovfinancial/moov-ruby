@@ -20,6 +20,8 @@ module Moov
         field :count, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'count', 'style': 'form', 'explode': false } }
         # Optional ID of the issued card to filter results.
         field :issued_card_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'issuedCardID', 'style': 'form', 'explode': false } }
+        # Optional identifier for the account of the card's authorized user.
+        field :authorized_user_account_id, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'authorizedUserAccountID', 'style': 'form', 'explode': false } }
         # Optional date-time which inclusively filters all authorizations created after this date-time.
         field :start_date_time, Crystalline::Nilable.new(::DateTime), { 'query_param': { 'field_name': 'startDateTime', 'style': 'form', 'explode': false } }
         # Optional date-time which exclusively filters all authorizations created before this date-time.
@@ -27,12 +29,13 @@ module Moov
         # Optional, comma-separated statuses of the authorization to filter results.
         field :statuses, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::IssuingAuthorizationStatus)), { 'query_param': { 'field_name': 'statuses', 'style': 'form', 'explode': false } }
 
-        sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), issued_card_id: T.nilable(::String), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), statuses: T.nilable(T::Array[Models::Components::IssuingAuthorizationStatus])).void }
-        def initialize(account_id:, skip: nil, count: nil, issued_card_id: nil, start_date_time: nil, end_date_time: nil, statuses: nil)
+        sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), issued_card_id: T.nilable(::String), authorized_user_account_id: T.nilable(::String), start_date_time: T.nilable(::DateTime), end_date_time: T.nilable(::DateTime), statuses: T.nilable(T::Array[Models::Components::IssuingAuthorizationStatus])).void }
+        def initialize(account_id:, skip: nil, count: nil, issued_card_id: nil, authorized_user_account_id: nil, start_date_time: nil, end_date_time: nil, statuses: nil)
           @account_id = account_id
           @skip = skip
           @count = count
           @issued_card_id = issued_card_id
+          @authorized_user_account_id = authorized_user_account_id
           @start_date_time = start_date_time
           @end_date_time = end_date_time
           @statuses = statuses
@@ -45,6 +48,7 @@ module Moov
           return false unless @skip == other.skip
           return false unless @count == other.count
           return false unless @issued_card_id == other.issued_card_id
+          return false unless @authorized_user_account_id == other.authorized_user_account_id
           return false unless @start_date_time == other.start_date_time
           return false unless @end_date_time == other.end_date_time
           return false unless @statuses == other.statuses

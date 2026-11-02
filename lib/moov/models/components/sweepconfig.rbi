@@ -26,6 +26,8 @@ class Moov::Models::Components::SweepConfig
   def minimum_balance=(str_); end
   def statement_descriptor(); end
   def statement_descriptor=(str_); end
+  def schedule(); end
+  def schedule=(str_); end
   def locked_fields(); end
   def locked_fields=(str_); end
 end
