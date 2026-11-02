@@ -18,6 +18,8 @@ class Moov::Models::Errors::PatchSweepConfigError
   def statement_descriptor=(str_); end
   def minimum_balance(); end
   def minimum_balance=(str_); end
+  def schedule(); end
+  def schedule=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
 end

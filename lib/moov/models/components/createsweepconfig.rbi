@@ -20,4 +20,6 @@ class Moov::Models::Components::CreateSweepConfig
   def statement_descriptor=(str_); end
   def minimum_balance(); end
   def minimum_balance=(str_); end
+  def schedule(); end
+  def schedule=(str_); end
 end
