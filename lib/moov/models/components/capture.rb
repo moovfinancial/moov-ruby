@@ -22,8 +22,6 @@ module Moov
         field :status, Models::Components::CaptureStatus, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('status'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CaptureStatus, false) } }
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
-        # Payment method of the merchant account the funds were captured into. For card-acquiring transfers, this must be a moov-wallet payment method.
-        field :destination_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destinationPaymentMethodID'), required: true } }
         # An optional description of the capture that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
@@ -41,14 +39,13 @@ module Moov
 
         field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
 
-        sig { params(capture_id: ::String, amount: Models::Components::AmountDecimal, is_final: T::Boolean, status: Models::Components::CaptureStatus, created_on: ::DateTime, destination_payment_method_id: ::String, description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal), failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
-        def initialize(capture_id:, amount:, is_final:, status:, created_on:, destination_payment_method_id:, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil, failure_code: nil)
+        sig { params(capture_id: ::String, amount: Models::Components::AmountDecimal, is_final: T::Boolean, status: Models::Components::CaptureStatus, created_on: ::DateTime, description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal), failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
+        def initialize(capture_id:, amount:, is_final:, status:, created_on:, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil, failure_code: nil)
           @capture_id = capture_id
           @amount = amount
           @is_final = is_final
           @status = status
           @created_on = created_on
-          @destination_payment_method_id = destination_payment_method_id
           @description = description
           @metadata = metadata
           @foreign_id = foreign_id
@@ -66,7 +63,6 @@ module Moov
           return false unless @is_final == other.is_final
           return false unless @status == other.status
           return false unless @created_on == other.created_on
-          return false unless @destination_payment_method_id == other.destination_payment_method_id
           return false unless @description == other.description
           return false unless @metadata == other.metadata
           return false unless @foreign_id == other.foreign_id

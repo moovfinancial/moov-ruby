@@ -12,8 +12,6 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Payment method of the merchant account to capture funds into. For card-acquiring transfers, this must be a moov-wallet payment method.
-        field :destination_payment_method_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destinationPaymentMethodID'), required: true } }
         # Amount to capture.
         # If omitted, the remaining capturable amount is captured.
         field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
@@ -35,9 +33,8 @@ module Moov
         # The transfer's facilitator fee is the sum of its capture fees.
         field :facilitator_fee_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFeeAmount') } }
 
-        sig { params(destination_payment_method_id: ::String, amount: T.nilable(Models::Components::AmountDecimal), is_final: T.nilable(T::Boolean), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal)).void }
-        def initialize(destination_payment_method_id:, amount: nil, is_final: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil)
-          @destination_payment_method_id = destination_payment_method_id
+        sig { params(amount: T.nilable(Models::Components::AmountDecimal), is_final: T.nilable(T::Boolean), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal)).void }
+        def initialize(amount: nil, is_final: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil)
           @amount = amount
           @is_final = is_final
           @description = description
@@ -51,7 +48,6 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @destination_payment_method_id == other.destination_payment_method_id
           return false unless @amount == other.amount
           return false unless @is_final == other.is_final
           return false unless @description == other.description

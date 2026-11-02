@@ -13,8 +13,6 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :destination_payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destinationPaymentMethodID') } }
-
         field :amount, Crystalline::Nilable.new(Models::Components::AmountDecimalValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amount') } }
 
         field :is_final, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isFinal') } }
@@ -33,9 +31,8 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(destination_payment_method_id: T.nilable(::String), amount: T.nilable(Models::Components::AmountDecimalValidationError), is_final: T.nilable(::String), description: T.nilable(::String), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimalValidationError), metadata: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItemsValidationError), amount_details: T.nilable(Models::Components::CreateTransferAmountDetailsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
-        def initialize(destination_payment_method_id: nil, amount: nil, is_final: nil, description: nil, facilitator_fee_amount: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, raw_response: nil)
-          @destination_payment_method_id = destination_payment_method_id
+        sig { params(amount: T.nilable(Models::Components::AmountDecimalValidationError), is_final: T.nilable(::String), description: T.nilable(::String), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimalValidationError), metadata: T.nilable(::String), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItemsValidationError), amount_details: T.nilable(Models::Components::CreateTransferAmountDetailsValidationError), raw_response: T.nilable(::Faraday::Response)).void }
+        def initialize(amount: nil, is_final: nil, description: nil, facilitator_fee_amount: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, raw_response: nil)
           @amount = amount
           @is_final = is_final
           @description = description
@@ -50,7 +47,6 @@ module Moov
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @destination_payment_method_id == other.destination_payment_method_id
           return false unless @amount == other.amount
           return false unless @is_final == other.is_final
           return false unless @description == other.description

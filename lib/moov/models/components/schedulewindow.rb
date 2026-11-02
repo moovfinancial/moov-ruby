@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-      # A window of time during which the card may authorize.
+      # A window of time during which authorizations on the card can be approved.
       class ScheduleWindow
         extend T::Sig
         include Crystalline::MetadataFields

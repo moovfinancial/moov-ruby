@@ -30,7 +30,7 @@ module Moov
         #
         # Issued cards are funded from the account's card-issuing wallet before they can be spent, so estimated activity is the only data collected.
         field :card_issuing, Crystalline::Nilable.new(Models::Components::CardIssuing), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardIssuing') } }
-
+        # For most use cases, you can omit `submissionIntent`. Set it to `wait` to pause the account's underwriting approval process until you send a subsequent request with `submissionIntent` set to `submit`.
         field :submission_intent, Crystalline::Nilable.new(Models::Components::SubmissionIntent), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('submissionIntent'), 'decoder': ::Moov::Utils.enum_from_string(Models::Components::SubmissionIntent, true) } }
 
         sig { params(geographic_reach: T.nilable(Models::Components::GeographicReach), business_presence: T.nilable(Models::Components::BusinessPresence), pending_litigation: T.nilable(Models::Components::PendingLitigation), volume_share_by_customer_type: T.nilable(Models::Components::VolumeShareByCustomerType), collect_funds: T.nilable(Models::Components::CollectFunds), money_transfer: T.nilable(Models::Components::MoneyTransfer), send_funds: T.nilable(Models::Components::SendFunds), card_issuing: T.nilable(Models::Components::CardIssuing), submission_intent: T.nilable(Models::Components::SubmissionIntent)).void }

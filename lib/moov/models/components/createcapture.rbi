@@ -8,8 +8,6 @@ end
 
 
 class Moov::Models::Components::CreateCapture
-  def destination_payment_method_id(); end
-  def destination_payment_method_id=(str_); end
   def amount(); end
   def amount=(str_); end
   def is_final(); end

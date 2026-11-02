@@ -16,6 +16,8 @@ module Moov
       # Read our [capabilities reference](https://docs.moov.io/guides/accounts/capabilities/reference/) to choose the right capabilities for your integration.
       #
       # The `production-app`, `platform.production-app`, and / or `platform.wallet-transfers` capabilities might appear in the list for your Partner account. These are read-only capabilities that Moov requests. These capabilities remain active with your account and require no additional action.
+      #
+      # Starting in v2026.10.00, the `platform.moov-money` capability might appear in the list for accounts enrolled in Moov Money. This is a read-only capability that Moov requests. It requires no additional action.
       class CapabilityID
         include ::Crystalline::Enum
         enums do
@@ -38,6 +40,7 @@ module Moov
           PRODUCTION_APP = new('production-app')
           PLATFORM_PRODUCTION_APP = new('platform.production-app')
           PLATFORM_WALLET_TRANSFERS = new('platform.wallet-transfers')
+          PLATFORM_MOOV_MONEY = new('platform.moov-money')
         end
         open!
       end
