@@ -40,4 +40,6 @@ class Moov::Models::Operations::ListTransfersRequest
   def skip=(str_); end
   def count(); end
   def count=(str_); end
+  def cursor(); end
+  def cursor=(str_); end
 end
