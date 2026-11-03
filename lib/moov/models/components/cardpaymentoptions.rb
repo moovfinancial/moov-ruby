@@ -19,11 +19,20 @@ module Moov
         # Crucial for recurring and merchant-initiated transactions as per card scheme rules. 
         # Omit for customer-initiated e-commerce transactions.
         field :transaction_source, Crystalline::Nilable.new(Models::Components::TransactionSource), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transactionSource'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::TransactionSource, true) } }
+        # When funds for a `card-payment` transfer are captured.
+        field :capture_method, Crystalline::Nilable.new(Models::Components::CaptureMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('captureMethod'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CaptureMethod, true) } }
+        # Whether an extended authorization hold was requested.
+        field :is_extended_authorization_requested, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isExtendedAuthorizationRequested') } }
+        # Whether the authorization was flagged as an estimate.
+        field :is_estimated_authorization, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isEstimatedAuthorization') } }
 
-        sig { params(dynamic_descriptor: T.nilable(::String), transaction_source: T.nilable(Models::Components::TransactionSource)).void }
-        def initialize(dynamic_descriptor: nil, transaction_source: nil)
+        sig { params(dynamic_descriptor: T.nilable(::String), transaction_source: T.nilable(Models::Components::TransactionSource), capture_method: T.nilable(Models::Components::CaptureMethod), is_extended_authorization_requested: T.nilable(T::Boolean), is_estimated_authorization: T.nilable(T::Boolean)).void }
+        def initialize(dynamic_descriptor: nil, transaction_source: nil, capture_method: nil, is_extended_authorization_requested: nil, is_estimated_authorization: nil)
           @dynamic_descriptor = dynamic_descriptor
           @transaction_source = transaction_source
+          @capture_method = capture_method
+          @is_extended_authorization_requested = is_extended_authorization_requested
+          @is_estimated_authorization = is_estimated_authorization
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -31,6 +40,9 @@ module Moov
           return false unless other.is_a? self.class
           return false unless @dynamic_descriptor == other.dynamic_descriptor
           return false unless @transaction_source == other.transaction_source
+          return false unless @capture_method == other.capture_method
+          return false unless @is_extended_authorization_requested == other.is_extended_authorization_requested
+          return false unless @is_estimated_authorization == other.is_estimated_authorization
           true
         end
       end

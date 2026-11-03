@@ -32,11 +32,13 @@ module Moov
         field :minimum_balance, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('minimumBalance') } }
         # The text that appears on the banking statement. The default descriptor is a 10 character ID if an override is not set in the sweep configs statementDescriptor.
         field :statement_descriptor, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('statementDescriptor') } }
+        # A configured wallet-level override of the time of day the sweep runs.
+        field :schedule, Crystalline::Nilable.new(Models::Components::SweepConfigSchedule), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('schedule') } }
         # An array of fields that are locked. To request updates, please contact Moov support.
         field :locked_fields, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lockedFields') } }
 
-        sig { params(sweep_config_id: ::String, wallet_id: ::String, status: Models::Components::SweepConfigStatus, push_payment_method: Models::Components::SweepConfigPaymentMethod, pull_payment_method: Models::Components::SweepConfigPaymentMethod, created_on: ::DateTime, updated_on: ::DateTime, minimum_balance: T.nilable(::String), statement_descriptor: T.nilable(::String), locked_fields: T.nilable(T::Array[::String])).void }
-        def initialize(sweep_config_id:, wallet_id:, status:, push_payment_method:, pull_payment_method:, created_on:, updated_on:, minimum_balance: nil, statement_descriptor: nil, locked_fields: nil)
+        sig { params(sweep_config_id: ::String, wallet_id: ::String, status: Models::Components::SweepConfigStatus, push_payment_method: Models::Components::SweepConfigPaymentMethod, pull_payment_method: Models::Components::SweepConfigPaymentMethod, created_on: ::DateTime, updated_on: ::DateTime, minimum_balance: T.nilable(::String), statement_descriptor: T.nilable(::String), schedule: T.nilable(Models::Components::SweepConfigSchedule), locked_fields: T.nilable(T::Array[::String])).void }
+        def initialize(sweep_config_id:, wallet_id:, status:, push_payment_method:, pull_payment_method:, created_on:, updated_on:, minimum_balance: nil, statement_descriptor: nil, schedule: nil, locked_fields: nil)
           @sweep_config_id = sweep_config_id
           @wallet_id = wallet_id
           @status = status
@@ -46,6 +48,7 @@ module Moov
           @updated_on = updated_on
           @minimum_balance = minimum_balance
           @statement_descriptor = statement_descriptor
+          @schedule = schedule
           @locked_fields = locked_fields
         end
 
@@ -61,6 +64,7 @@ module Moov
           return false unless @updated_on == other.updated_on
           return false unless @minimum_balance == other.minimum_balance
           return false unless @statement_descriptor == other.statement_descriptor
+          return false unless @schedule == other.schedule
           return false unless @locked_fields == other.locked_fields
           true
         end

@@ -18,8 +18,6 @@ class Moov::Models::Components::Capture
   def status=(str_); end
   def created_on(); end
   def created_on=(str_); end
-  def destination_payment_method_id(); end
-  def destination_payment_method_id=(str_); end
   def description(); end
   def description=(str_); end
   def metadata(); end

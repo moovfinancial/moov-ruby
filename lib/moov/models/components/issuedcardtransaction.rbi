@@ -24,6 +24,8 @@ class Moov::Models::Components::IssuedCardTransaction
   def created_on=(str_); end
   def last_four_card_number(); end
   def last_four_card_number=(str_); end
+  def authorized_user_account_id(); end
+  def authorized_user_account_id=(str_); end
   def authorization_id(); end
   def authorization_id=(str_); end
 end

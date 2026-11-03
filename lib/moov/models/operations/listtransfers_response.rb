@@ -20,7 +20,7 @@ module Moov
         field :raw_response, ::Faraday::Response
 
         field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
-        # The request completed successfully.
+        # Transfers were successfully listed matching the provided filter parameters and returned
         field :transfers, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Transfer))
 
         sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], transfers: T.nilable(T::Array[Models::Components::Transfer])).void }

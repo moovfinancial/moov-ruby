@@ -22,11 +22,13 @@ module Moov
         field :expiration, Models::Components::CardExpiration, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiration'), required: true } }
         # Unique identifier for the wallet funding the card.
         field :funding_wallet_id, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('fundingWalletID'), required: true } }
-        # The `state` represents the operational status of an issued card. A card can only approve incoming authorizations if it is in an active state.
+        # The `state` represents the operational status of an issued card.
         #
-        # - `active`: The card is operational and can approve authorizations.
-        # - `frozen`: The card is temporarily suspended and cannot approve authorizations. A frozen card can be reactivated by setting its state back to `active`.
-        # - `closed`: The card is permanently deactivated and cannot approve authorizations. A card can be closed by request or when it expires.
+        # Authorizations can only be approved while the card is `active`:
+        #
+        # - `active`: The card is operational and authorizations can be approved.
+        # - `frozen`: The card is temporarily suspended and authorizations cannot be approved. Set the state back to `active` to reactivate it. A card can move between `frozen` and `active` as often as needed.
+        # - `closed`: The card is permanently deactivated. A card is closed by request or when it expires, and cannot be reopened.
         field :state, Models::Components::IssuedCardState, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('state'), required: true, 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::IssuedCardState, false) } }
         # Specifies the type of spend card to be issued. Presently supports virtual only, providing a digital number without a physical card.
         field :form_factor, Models::Components::IssuedCardFormFactor, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('formFactor'), required: true, 'decoder': ::Moov::Utils.enum_from_string(Models::Components::IssuedCardFormFactor, false) } }

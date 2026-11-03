@@ -16,4 +16,6 @@ class Moov::Models::Operations::ListIssuedCardsRequest
   def count=(str_); end
   def states(); end
   def states=(str_); end
+  def authorized_user_account_id(); end
+  def authorized_user_account_id=(str_); end
 end
