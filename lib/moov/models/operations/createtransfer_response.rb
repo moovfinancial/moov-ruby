@@ -19,7 +19,7 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # The request completed successfully.
         field :created_transfer, Crystalline::Nilable.new(Models::Components::CreatedTransfer)
         # A transfer was successfully created but an error occurred while generating the synchronous response. The asynchronous response object will be returned.
@@ -27,7 +27,7 @@ module Moov
         # The transfer was created, but rail-specific details may not be available within the 15 second timeout window.
         field :transfer, Crystalline::Nilable.new(Models::Components::Transfer)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], created_transfer: T.nilable(Models::Components::CreatedTransfer), async_transfer: T.nilable(Models::Components::AsyncTransfer), transfer: T.nilable(Models::Components::Transfer)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], created_transfer: T.nilable(Models::Components::CreatedTransfer), async_transfer: T.nilable(Models::Components::AsyncTransfer), transfer: T.nilable(Models::Components::Transfer)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, created_transfer: nil, async_transfer: nil, transfer: nil)
           @content_type = content_type
           @status_code = status_code

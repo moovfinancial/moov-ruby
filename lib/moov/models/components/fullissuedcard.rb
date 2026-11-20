@@ -45,13 +45,13 @@ module Moov
         # An optional descriptive name for the card.
         field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Billing address associated with the card.
         field :billing_address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
         # Spend controls applied to an issued card, including velocity runtime state.
         field :controls, Crystalline::Nilable.new(Models::Components::IssuedControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
-        sig { params(issued_card_id: ::String, brand: Models::Components::CardBrand, last_four_card_number: ::String, expiration: Models::Components::CardExpiration, funding_wallet_id: ::String, state: Models::Components::IssuedCardState, form_factor: Models::Components::IssuedCardFormFactor, created_on: ::DateTime, updated_on: ::DateTime, pan: ::String, cvv: ::String, authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), controls: T.nilable(Models::Components::IssuedControls)).void }
+        sig { params(issued_card_id: ::String, brand: Models::Components::CardBrand, last_four_card_number: ::String, expiration: Models::Components::CardExpiration, funding_wallet_id: ::String, state: Models::Components::IssuedCardState, form_factor: Models::Components::IssuedCardFormFactor, created_on: ::DateTime, updated_on: ::DateTime, pan: ::String, cvv: ::String, authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), controls: T.nilable(Models::Components::IssuedControls)).void }
         def initialize(issued_card_id:, brand:, last_four_card_number:, expiration:, funding_wallet_id:, state:, form_factor:, created_on:, updated_on:, pan:, cvv:, authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, controls: nil)
           @issued_card_id = issued_card_id
           @brand = brand

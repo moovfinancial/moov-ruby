@@ -15,28 +15,28 @@ module Moov
     class Credentials
       extend T::Sig
 
-      sig { returns(String) }
+      sig { returns(::String) }
       attr_reader :client_id
 
-      sig { returns(String) }
+      sig { returns(::String) }
       attr_reader :client_secret
 
-      sig { returns(String) }
+      sig { returns(::String) }
       attr_reader :token_url
 
-      sig { returns(T.nilable(T::Array[String])) }
+      sig { returns(T.nilable(T::Array[::String])) }
       attr_reader :scopes
 
-      sig { returns(T::Hash[String, String]) }
+      sig { returns(T::Hash[::String, ::String]) }
       attr_reader :additional_properties
 
       sig do
         params(
-          client_id: String,
-          client_secret: String,
-          token_url: String,
-          scopes: T.nilable(T::Array[String]),
-          additional_properties: T::Hash[String, String]
+          client_id: ::String,
+          client_secret: ::String,
+          token_url: ::String,
+          scopes: T.nilable(T::Array[::String]),
+          additional_properties: T::Hash[::String, ::String]
         ).void
       end
       def initialize(client_id:, client_secret:, token_url:, scopes: nil, additional_properties: {})
@@ -54,21 +54,21 @@ module Moov
       sig { returns(Credentials) }
       attr_reader :credentials
 
-      sig { returns(String) }
+      sig { returns(::String) }
       attr_reader :token
 
-      sig { returns(T::Array[String]) }
+      sig { returns(T::Array[::String]) }
       attr_reader :scopes
 
-      sig { returns(T.nilable(Integer)) }
+      sig { returns(T.nilable(::Integer)) }
       attr_reader :expires_at
 
       sig do
         params(
           credentials: Credentials,
-          token: String,
-          scopes: T::Array[String],
-          expires_at: T.nilable(Integer)
+          token: ::String,
+          scopes: T::Array[::String],
+          expires_at: T.nilable(::Integer)
         ).void
       end
       def initialize(credentials:, token:, scopes:, expires_at: nil)
@@ -83,7 +83,7 @@ module Moov
 
       extend T::Sig
 
-      @global_lock = Mutex.new
+      @global_lock = ::Mutex.new
       @client_locks = {}
       @sessions = {}
 
@@ -128,7 +128,7 @@ module Moov
 
       sig do
         override.params(
-          error: T.nilable(StandardError),
+          error: T.nilable(::StandardError),
           hook_ctx: AfterErrorHookContext,
           response: T.nilable(Faraday::Response)
         ).returns(T.nilable(Faraday::Response))
@@ -233,16 +233,16 @@ module Moov
       end
 
 
-      sig { params(base_url: String, token_url: String).returns(String) }
+      sig { params(base_url: ::String, token_url: ::String).returns(::String) }
       def resolve_token_endpoint(base_url, token_url)
-        parsed = URI.parse(token_url)
+        parsed = ::URI.parse(token_url)
         return token_url if parsed.host
 
         base = base_url.chomp('/')
-        URI.join("#{base}/", token_url).to_s
+        ::URI.join("#{base}/", token_url).to_s
       end
 
-      sig { params(token_url: String, credentials: Credentials, scopes: T::Array[String]).returns(Session) }
+      sig { params(token_url: ::String, credentials: Credentials, scopes: T::Array[::String]).returns(Session) }
       def do_token_request(token_url, credentials, scopes)
         payload = {
           'grant_type' => 'client_credentials',
@@ -258,18 +258,18 @@ module Moov
         end
         response = @client.post(token_url) do |req|
           req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-          req.body = URI.encode_www_form(payload)
+          req.body = ::URI.encode_www_form(payload)
         end
 
         raise "Unexpected status code #{response.status} from token endpoint" unless response.status >= 200 && response.status < 300
 
-        response_data = JSON.parse(response.body)
+        response_data = ::JSON.parse(response.body)
 
         raise 'Unexpected token type from token endpoint' unless response_data.fetch('token_type', '').downcase == 'bearer'
 
         expires_at = nil
         if response_data.key?('expires_in')
-          expires_at = Time.now.to_i + response_data['expires_in'].to_i
+          expires_at = ::Time.now.to_i + response_data['expires_in'].to_i
         end
 
         Session.new(
@@ -280,26 +280,26 @@ module Moov
         )
       end
 
-      sig { params(client_id: String, client_secret: String).returns(String) }
+      sig { params(client_id: ::String, client_secret: ::String).returns(::String) }
       def get_session_key(client_id, client_secret)
-        Digest::MD5.hexdigest("#{client_id}:#{client_secret}")
+        ::Digest::MD5.hexdigest("#{client_id}:#{client_secret}")
       end
 
-      sig { params(credentials: Credentials, hook_ctx: HookContext).returns(T::Array[String]) }
+      sig { params(credentials: Credentials, hook_ctx: HookContext).returns(T::Array[::String]) }
       def get_required_scopes(credentials, hook_ctx)
         return T.must(credentials.scopes) unless credentials.scopes.nil?
 
         hook_ctx.oauth2_scopes || []
       end
 
-      sig { params(scopes: T::Array[String]).returns(String) }
+      sig { params(scopes: T::Array[::String]).returns(::String) }
       def get_scope_key(scopes)
         return '' if scopes.empty?
 
         scopes.sort.join('&')
       end
 
-      sig { params(client_key: String, scopes: T::Array[String], session: Session).void }
+      sig { params(client_key: ::String, scopes: T::Array[::String], session: Session).void }
       def store_session(client_key, scopes, session)
         scope_key = get_scope_key(scopes)
         lock = get_client_lock(client_key)
@@ -309,7 +309,7 @@ module Moov
         end
       end
 
-      sig { params(client_key: String, scope_key: String).void }
+      sig { params(client_key: ::String, scope_key: ::String).void }
       def remove_session(client_key, scope_key)
         lock = get_client_lock(client_key)
         lock.synchronize do
@@ -320,7 +320,7 @@ module Moov
         end
       end
 
-      sig { params(client_key: String, required_scopes: T::Array[String]).returns(T.nilable(Session)) }
+      sig { params(client_key: ::String, required_scopes: T::Array[::String]).returns(T.nilable(Session)) }
       def get_existing_session(client_key, required_scopes)
         scope_key = get_scope_key(required_scopes)
         expired_keys = []
@@ -365,20 +365,20 @@ module Moov
         result
       end
 
-      sig { params(scopes: T::Array[String], required_scopes: T::Array[String]).returns(T::Boolean) }
+      sig { params(scopes: T::Array[::String], required_scopes: T::Array[::String]).returns(T::Boolean) }
       def required_scopes?(scopes, required_scopes)
         required_scopes.all? { |scope| scopes.include?(scope) }
       end
 
-      sig { params(expires_at: T.nilable(Integer)).returns(T::Boolean) }
+      sig { params(expires_at: T.nilable(::Integer)).returns(T::Boolean) }
       def token_expired?(expires_at)
-        !expires_at.nil? && Time.now.to_i + 60 >= expires_at
+        !expires_at.nil? && ::Time.now.to_i + 60 >= expires_at
       end
 
-      sig { params(client_key: String).returns(Mutex) }
+      sig { params(client_key: ::String).returns(::Mutex) }
       def get_client_lock(client_key)
         self.class.global_lock.synchronize do
-          self.class.client_locks[client_key] ||= Mutex.new
+          self.class.client_locks[client_key] ||= ::Mutex.new
         end
       end
     end

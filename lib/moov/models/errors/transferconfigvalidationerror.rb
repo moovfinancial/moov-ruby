@@ -8,20 +8,20 @@ module Moov
   module Models
     module Errors
 
-      class TransferConfigValidationError < StandardError
+      class TransferConfigValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
 
         field :tip_presets_calculation_basis, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('TipPresets.CalculationBasis') } }
 
-        field :tip_presets_percentage_options, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('TipPresets.PercentageOptions') } }
+        field :tip_presets_percentage_options, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('TipPresets.PercentageOptions') } }
 
-        field :tip_presets_fixed_amount_options, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::AmountDecimalValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('TipPresets.FixedAmountOptions') } }
+        field :tip_presets_fixed_amount_options, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::AmountDecimalValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('TipPresets.FixedAmountOptions') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(tip_presets_calculation_basis: T.nilable(::String), tip_presets_percentage_options: T.nilable(T::Hash[Symbol, ::String]), tip_presets_fixed_amount_options: T.nilable(T::Hash[Symbol, Models::Components::AmountDecimalValidationError]), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(tip_presets_calculation_basis: T.nilable(::String), tip_presets_percentage_options: T.nilable(T::Hash[::Symbol, ::String]), tip_presets_fixed_amount_options: T.nilable(T::Hash[::Symbol, Models::Components::AmountDecimalValidationError]), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(tip_presets_calculation_basis: nil, tip_presets_percentage_options: nil, tip_presets_fixed_amount_options: nil, raw_response: nil)
           @tip_presets_calculation_basis = tip_presets_calculation_basis
           @tip_presets_percentage_options = tip_presets_percentage_options

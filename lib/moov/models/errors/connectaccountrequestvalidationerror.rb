@@ -8,18 +8,18 @@ module Moov
   module Models
     module Errors
 
-      class ConnectAccountRequestValidationError < StandardError
+      class ConnectAccountRequestValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
 
         field :principal_account_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('principalAccountID') } }
 
-        field :allow_scopes, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowScopes') } }
+        field :allow_scopes, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('allowScopes') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(principal_account_id: T.nilable(::String), allow_scopes: T.nilable(T::Hash[Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(principal_account_id: T.nilable(::String), allow_scopes: T.nilable(T::Hash[::Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(principal_account_id: nil, allow_scopes: nil, raw_response: nil)
           @principal_account_id = principal_account_id
           @allow_scopes = allow_scopes

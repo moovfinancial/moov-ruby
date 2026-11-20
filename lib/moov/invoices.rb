@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(create_invoice: Models::Components::CreateInvoice, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoiceResponse) }
+    sig { params(create_invoice: Models::Components::CreateInvoice, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateInvoiceResponse) }
     def create_invoice(create_invoice:, account_id:, timeout_ms: nil, http_headers: nil)
       # create_invoice - Create an invoice for a Moov account.
       #
@@ -60,15 +60,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_invoice, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -91,7 +91,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -112,7 +112,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -148,7 +148,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Invoice)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Invoice)
           response = Models::Operations::CreateInvoiceResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -170,7 +170,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -185,7 +185,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::CreateInvoiceError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::CreateInvoiceError)
           obj.raw_response = http_response
           raise obj
         else
@@ -206,7 +206,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListInvoicesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInvoicesResponse) }
+    sig { params(request: Models::Operations::ListInvoicesRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListInvoicesResponse) }
     def list_invoices(request:, timeout_ms: nil, http_headers: nil)
       # list_invoices - List all the invoices created under a Moov account.
       #
@@ -221,7 +221,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListInvoicesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -242,7 +242,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -263,7 +263,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -299,7 +299,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::Invoice))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::Invoice))
           response = Models::Operations::ListInvoicesResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -321,7 +321,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ListInvoicesValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ListInvoicesValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -342,9 +342,11 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetInvoiceResponse) }
-    def get_invoice(account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
+    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(::Integer), accept_header_override: T.nilable(::String), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetInvoiceResponse) }
+    def get_invoice(account_id:, invoice_id:, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get_invoice - Retrieve an invoice by ID.
+      #
+      # Use the `Accept` header to specify the format of the response. Supported formats are `application/json` and `application/pdf`. The PDF does not include the payment link or QR code.
       #
       # To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/)
       # you'll need to specify the `/accounts/{accountID}/invoices.read` scope.
@@ -361,8 +363,8 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
-      headers['Accept'] = 'application/json'
+      headers = T.cast(headers, T::Hash[::String, ::String])
+      headers['Accept'] = accept_header_override || 'application/json;q=1, application/pdf;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 
       security = @sdk_configuration.security_source&.call
@@ -381,7 +383,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -401,7 +403,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -437,7 +439,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Invoice)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Invoice)
           response = Models::Operations::GetInvoiceResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -447,6 +449,22 @@ module Moov
           )
 
           return response
+        elsif Utils.match_content_type(content_type, 'application/pdf')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          obj = http_response.env.body.force_encoding('UTF-8')
+
+          return Models::Operations::GetInvoiceResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            headers: http_response.headers,
+            bytes: T.unsafe(obj)
+          )
         else
           raise ::Moov::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -465,7 +483,7 @@ module Moov
     end
 
 
-    sig { params(update_invoice: Models::Components::UpdateInvoice, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateInvoiceResponse) }
+    sig { params(update_invoice: Models::Components::UpdateInvoice, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UpdateInvoiceResponse) }
     def update_invoice(update_invoice:, account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # update_invoice - Updates an invoice.
       #
@@ -485,15 +503,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_invoice, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -516,7 +534,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -537,7 +555,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -573,7 +591,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Invoice)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Invoice)
           response = Models::Operations::UpdateInvoiceResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -595,7 +613,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -610,7 +628,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::UpdateInvoiceError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::UpdateInvoiceError)
           obj.raw_response = http_response
           raise obj
         else
@@ -631,7 +649,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteInvoiceResponse) }
+    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::DeleteInvoiceResponse) }
     def delete(account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # delete - Delete an invoice. Only invoices in `draft` status can be deleted.
       #
@@ -656,7 +674,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -676,7 +694,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -696,7 +714,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -745,7 +763,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -766,7 +784,7 @@ module Moov
     end
 
 
-    sig { params(create_invoice_notification: Models::Components::CreateInvoiceNotification, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoiceNotificationResponse) }
+    sig { params(create_invoice_notification: Models::Components::CreateInvoiceNotification, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateInvoiceNotificationResponse) }
     def create_invoice_notification(create_invoice_notification:, account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # create_invoice_notification - Create a notification for an invoice, which resends the invoice email to the customer. The required
       # `channels` body lists the channels to notify on; today only `email` is supported. Returns a 409
@@ -794,15 +812,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_invoice_notification, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -825,7 +843,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -846,7 +864,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -897,7 +915,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -912,7 +930,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::InvoiceNotificationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::InvoiceNotificationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -927,7 +945,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::InvoiceNotificationRateLimitedError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::InvoiceNotificationRateLimitedError)
           obj.raw_response = http_response
           raise obj
         else
@@ -946,7 +964,7 @@ module Moov
     end
 
 
-    sig { params(create_invoice_payment: Models::Components::CreateInvoicePayment, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateInvoicePaymentResponse) }
+    sig { params(create_invoice_payment: Models::Components::CreateInvoicePayment, account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateInvoicePaymentResponse) }
     def create_invoice_payment(create_invoice_payment:, account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # create_invoice_payment - Creates a payment resource to represent that an invoice was paid outside of the Moov platform.
       # If a payment link was created for the invoice, the corresponding payment link is canceled, but a receipt is still sent.
@@ -967,15 +985,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_invoice_payment, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -998,7 +1016,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1019,7 +1037,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1055,7 +1073,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::InvoicePayment)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::InvoicePayment)
           response = Models::Operations::CreateInvoicePaymentResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1077,7 +1095,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1092,7 +1110,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::CreateInvoicePaymentError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::CreateInvoicePaymentError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1113,7 +1131,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInvoicePaymentsResponse) }
+    sig { params(account_id: ::String, invoice_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListInvoicePaymentsResponse) }
     def list_invoice_payments(account_id:, invoice_id:, timeout_ms: nil, http_headers: nil)
       # list_invoice_payments - List all the payments made towards an invoice.
       #
@@ -1132,7 +1150,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1152,7 +1170,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1172,7 +1190,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1208,7 +1226,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::InvoicePayment))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::InvoicePayment))
           response = Models::Operations::ListInvoicePaymentsResponse.new(
             status_code: http_response.status,
             content_type: content_type,

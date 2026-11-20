@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(link_bank_account: T.any(Models::Components::BankAccountPayload, Models::Components::PlaidPayload, Models::Components::PlaidLinkPayload, Models::Components::MxPayload), account_id: ::String, x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::LinkBankAccountResponse) }
+    sig { params(link_bank_account: T.any(Models::Components::BankAccountPayload, Models::Components::PlaidPayload, Models::Components::PlaidLinkPayload, Models::Components::MxPayload), account_id: ::String, x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::LinkBankAccountResponse) }
     def link(link_bank_account:, account_id:, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
       # link - Link a bank account to an existing Moov account. Read our [bank accounts guide](https://docs.moov.io/guides/sources/bank-accounts/) to learn more.
       #
@@ -66,15 +66,15 @@ module Moov
         request
       )
       headers = Utils.get_headers(request)
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :link_bank_account, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -97,7 +97,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -118,7 +118,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -154,7 +154,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BankAccount)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BankAccount)
           response = Models::Operations::LinkBankAccountResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -176,7 +176,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -191,7 +191,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::BankAccountValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::BankAccountValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -212,7 +212,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListBankAccountsResponse) }
+    sig { params(account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListBankAccountsResponse) }
     def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - List all the bank accounts associated with a particular Moov account. 
       #
@@ -232,7 +232,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -252,7 +252,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -272,7 +272,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -308,7 +308,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::BankAccount))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::BankAccount))
           response = Models::Operations::ListBankAccountsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -336,7 +336,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBankAccountResponse) }
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetBankAccountResponse) }
     def get(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve bank account details (i.e. routing number or account type) associated with a specific Moov account. 
       #
@@ -357,7 +357,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -377,7 +377,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -397,7 +397,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -433,7 +433,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BankAccount)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BankAccount)
           response = Models::Operations::GetBankAccountResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -461,7 +461,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableBankAccountResponse) }
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::DisableBankAccountResponse) }
     def disable(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # disable - Discontinue using a specified bank account linked to a Moov account. 
       #
@@ -480,7 +480,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -500,7 +500,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -520,7 +520,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -569,7 +569,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -590,7 +590,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateMicroDepositsResponse) }
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::InitiateMicroDepositsResponse) }
     def initiate_micro_deposits(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # initiate_micro_deposits - Micro-deposits help confirm bank account ownership, helping reduce fraud and the risk of unauthorized activity. 
       # Use this method to initiate the micro-deposit verification, sending two small credit transfers to the bank account 
@@ -620,7 +620,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -640,7 +640,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -660,7 +660,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -709,7 +709,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -730,7 +730,7 @@ module Moov
     end
 
 
-    sig { params(complete_micro_deposits: Models::Components::CompleteMicroDeposits, account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CompleteMicroDepositsResponse) }
+    sig { params(complete_micro_deposits: Models::Components::CompleteMicroDeposits, account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CompleteMicroDepositsResponse) }
     def complete_micro_deposits(complete_micro_deposits:, account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # complete_micro_deposits - Complete the micro-deposit validation process by passing the amounts of the two transfers within three tries.
       #
@@ -750,15 +750,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :complete_micro_deposits, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -781,7 +781,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -802,7 +802,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -838,7 +838,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::CompletedMicroDeposits)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::CompletedMicroDeposits)
           response = Models::Operations::CompleteMicroDepositsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -860,7 +860,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -875,7 +875,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::MicroDepositValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::MicroDepositValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -896,7 +896,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetBankAccountVerificationResponse) }
+    sig { params(account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetBankAccountVerificationResponse) }
     def get_verification(account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # get_verification - Retrieve the current status and details of an instant verification, including whether the verification method was instant (RTP or FedNow) or same-day
       # ACH. This helps track the verification process in real-time and provides details in case of exceptions.
@@ -924,7 +924,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -944,7 +944,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -964,7 +964,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1000,7 +1000,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BankAccountVerification)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BankAccountVerification)
           response = Models::Operations::GetBankAccountVerificationResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1028,7 +1028,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, bank_account_id: ::String, x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateBankAccountVerificationResponse) }
+    sig { params(account_id: ::String, bank_account_id: ::String, x_wait_for: T.nilable(Models::Components::BankAccountWaitFor), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::InitiateBankAccountVerificationResponse) }
     def initiate_verification(account_id:, bank_account_id:, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
       # initiate_verification - Instant micro-deposit verification offers a quick and efficient way to verify bank account ownership. 
       #
@@ -1063,7 +1063,7 @@ module Moov
         request
       )
       headers = Utils.get_headers(request)
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1083,7 +1083,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1103,7 +1103,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1139,7 +1139,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BankAccountVerificationCreated)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BankAccountVerificationCreated)
           response = Models::Operations::InitiateBankAccountVerificationResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1161,7 +1161,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1182,7 +1182,7 @@ module Moov
     end
 
 
-    sig { params(complete_bank_account_verification: Models::Components::CompleteBankAccountVerification, account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CompleteBankAccountVerificationResponse) }
+    sig { params(complete_bank_account_verification: Models::Components::CompleteBankAccountVerification, account_id: ::String, bank_account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CompleteBankAccountVerificationResponse) }
     def complete_verification(complete_bank_account_verification:, account_id:, bank_account_id:, timeout_ms: nil, http_headers: nil)
       # complete_verification - Finalize the instant micro-deposit verification by submitting the verification code displayed in the user's bank account. 
       #
@@ -1209,15 +1209,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :complete_bank_account_verification, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -1240,7 +1240,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1261,7 +1261,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1297,7 +1297,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BankAccountVerification)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BankAccountVerification)
           response = Models::Operations::CompleteBankAccountVerificationResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1319,7 +1319,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else

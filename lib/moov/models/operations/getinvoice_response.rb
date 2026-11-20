@@ -19,17 +19,20 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
-        # The request completed successfully.
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
+        # The request has succeeded.
         field :invoice, Crystalline::Nilable.new(Models::Components::Invoice)
+        # The request has succeeded.
+        field :bytes, Crystalline::Nilable.new(::String)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], invoice: T.nilable(Models::Components::Invoice)).void }
-        def initialize(content_type:, status_code:, raw_response:, headers:, invoice: nil)
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], invoice: T.nilable(Models::Components::Invoice), bytes: T.nilable(::String)).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:, invoice: nil, bytes: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
           @headers = headers
           @invoice = invoice
+          @bytes = bytes
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -40,6 +43,7 @@ module Moov
           return false unless @raw_response == other.raw_response
           return false unless @headers == other.headers
           return false unless @invoice == other.invoice
+          return false unless @bytes == other.bytes
           true
         end
       end

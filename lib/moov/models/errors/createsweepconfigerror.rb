@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class CreateSweepConfigError < StandardError
+      class CreateSweepConfigError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

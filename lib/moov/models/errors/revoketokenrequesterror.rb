@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class RevokeTokenRequestError < StandardError
+      class RevokeTokenRequestError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
