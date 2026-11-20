@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class RepresentativeValidationError < StandardError
+      class RepresentativeValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

@@ -19,7 +19,7 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # The request has succeeded.
         field :two_hundred_application_pdf_bytes, Crystalline::Nilable.new(::String)
         # The request has succeeded.
@@ -27,7 +27,7 @@ module Moov
         # The request has succeeded.
         field :two_hundred_image_tiff_bytes, Crystalline::Nilable.new(::String)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], two_hundred_application_pdf_bytes: T.nilable(::String), two_hundred_image_jpeg_bytes: T.nilable(::String), two_hundred_image_tiff_bytes: T.nilable(::String)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], two_hundred_application_pdf_bytes: T.nilable(::String), two_hundred_image_jpeg_bytes: T.nilable(::String), two_hundred_image_tiff_bytes: T.nilable(::String)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, two_hundred_application_pdf_bytes: nil, two_hundred_image_jpeg_bytes: nil, two_hundred_image_tiff_bytes: nil)
           @content_type = content_type
           @status_code = status_code

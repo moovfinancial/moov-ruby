@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SearchInstitutionsResponse) }
+    sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::SearchInstitutionsResponse) }
     def search_institutions(name: nil, routing_number: nil, limit: nil, timeout_ms: nil, http_headers: nil)
       # search_institutions - Search for financial institutions by name or routing number.
       #
@@ -60,7 +60,7 @@ module Moov
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/institutions"
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::SearchInstitutionsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -81,7 +81,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -102,7 +102,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -138,7 +138,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::InstitutionsSearchResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::InstitutionsSearchResponse)
           response = Models::Operations::SearchInstitutionsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -166,7 +166,7 @@ module Moov
     end
 
 
-    sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), state: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListInstitutionsResponse) }
+    sig { params(name: T.nilable(::String), routing_number: T.nilable(::String), state: T.nilable(::String), limit: T.nilable(::Integer), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListInstitutionsResponse) }
     def search(name: nil, routing_number: nil, state: nil, limit: nil, timeout_ms: nil, http_headers: nil)
       # search - This endpoint has been deprecated and will be removed in a future release. Use [/institutions](https://docs.moov.io/api/enrichment/institutions/get/).
       #
@@ -186,7 +186,7 @@ module Moov
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/institutions/ach/search"
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListInstitutionsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -207,7 +207,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -228,7 +228,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -264,7 +264,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::FinancialInstitutions)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::FinancialInstitutions)
           response = Models::Operations::ListInstitutionsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -286,7 +286,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
