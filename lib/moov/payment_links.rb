@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(create_payment_link: Models::Components::CreatePaymentLink, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreatePaymentLinkResponse) }
+    sig { params(create_payment_link: Models::Components::CreatePaymentLink, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreatePaymentLinkResponse) }
     def create(create_payment_link:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Create a payment link that allows an end user to make a payment on Moov's hosted payment link page.
       #
@@ -60,15 +60,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_payment_link, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -91,7 +91,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -112,7 +112,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -148,7 +148,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::PaymentLink)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::PaymentLink)
           response = Models::Operations::CreatePaymentLinkResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -170,7 +170,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -185,7 +185,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::CreatePaymentLinkError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::CreatePaymentLinkError)
           obj.raw_response = http_response
           raise obj
         else
@@ -206,7 +206,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), types: T.nilable(T::Array[Models::Components::PaymentLinkType]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentLinksResponse) }
+    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), types: T.nilable(T::Array[Models::Components::PaymentLinkType]), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListPaymentLinksResponse) }
     def list(account_id:, skip: nil, count: nil, types: nil, timeout_ms: nil, http_headers: nil)
       # list - List all the payment links created under a Moov account.
       #
@@ -227,7 +227,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListPaymentLinksRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -248,7 +248,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -269,7 +269,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -305,7 +305,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::PaymentLink))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::PaymentLink))
           response = Models::Operations::ListPaymentLinksResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -333,7 +333,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkResponse) }
+    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetPaymentLinkResponse) }
     def get(account_id:, payment_link_code:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a payment link by code.
       #
@@ -352,7 +352,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -372,7 +372,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -392,7 +392,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -428,7 +428,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::PaymentLink)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::PaymentLink)
           response = Models::Operations::GetPaymentLinkResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -456,7 +456,7 @@ module Moov
     end
 
 
-    sig { params(update_payment_link: Models::Components::UpdatePaymentLink, account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdatePaymentLinkResponse) }
+    sig { params(update_payment_link: Models::Components::UpdatePaymentLink, account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UpdatePaymentLinkResponse) }
     def update(update_payment_link:, account_id:, payment_link_code:, timeout_ms: nil, http_headers: nil)
       # update - Update a payment link.
       #
@@ -476,15 +476,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_payment_link, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -507,7 +507,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -528,7 +528,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -564,7 +564,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::PaymentLink)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::PaymentLink)
           response = Models::Operations::UpdatePaymentLinkResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -586,7 +586,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -601,7 +601,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::UpdatePaymentLinkError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::UpdatePaymentLinkError)
           obj.raw_response = http_response
           raise obj
         else
@@ -622,7 +622,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisablePaymentLinkResponse) }
+    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::DisablePaymentLinkResponse) }
     def disable(account_id:, payment_link_code:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a payment link.
       #
@@ -641,7 +641,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = '*/*'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -661,7 +661,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -681,7 +681,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -736,7 +736,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentLinkQRCodeResponse) }
+    sig { params(account_id: ::String, payment_link_code: ::String, timeout_ms: T.nilable(::Integer), accept_header_override: T.nilable(::String), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetPaymentLinkQRCodeResponse) }
     def get_qr_code(account_id:, payment_link_code:, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get_qr_code - Retrieve the payment link encoded in a QR code. 
       #
@@ -757,7 +757,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = accept_header_override || 'application/json;q=1, image/png;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -777,7 +777,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -797,7 +797,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -833,7 +833,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::QRCode)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::QRCode)
           response = Models::Operations::GetPaymentLinkQRCodeResponse.new(
             status_code: http_response.status,
             content_type: content_type,

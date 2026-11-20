@@ -34,11 +34,11 @@ module Moov
 
         field :created_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('createdOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         field :closed_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('closedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(wallet_id: ::String, available_balance: Models::Components::WalletAvailableBalance, partner_account_id: ::String, name: ::String, status: Models::Components::WalletStatus, wallet_type: Models::Components::WalletType, description: ::String, created_on: ::DateTime, metadata: T.nilable(T::Hash[Symbol, ::String]), closed_on: T.nilable(::DateTime)).void }
+        sig { params(wallet_id: ::String, available_balance: Models::Components::WalletAvailableBalance, partner_account_id: ::String, name: ::String, status: Models::Components::WalletStatus, wallet_type: Models::Components::WalletType, description: ::String, created_on: ::DateTime, metadata: T.nilable(T::Hash[::Symbol, ::String]), closed_on: T.nilable(::DateTime)).void }
         def initialize(wallet_id:, available_balance:, partner_account_id:, name:, status:, wallet_type:, description:, created_on:, metadata: nil, closed_on: nil)
           @wallet_id = wallet_id
           @available_balance = available_balance

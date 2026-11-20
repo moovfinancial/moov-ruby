@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :velocity_limits, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::IssuingVelocityLimitError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('velocityLimits') } }
+        field :velocity_limits, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::IssuingVelocityLimitError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('velocityLimits') } }
 
-        sig { params(velocity_limits: T.nilable(T::Hash[Symbol, Models::Components::IssuingVelocityLimitError])).void }
+        sig { params(velocity_limits: T.nilable(T::Hash[::Symbol, Models::Components::IssuingVelocityLimitError])).void }
         def initialize(velocity_limits: nil)
           @velocity_limits = velocity_limits
         end

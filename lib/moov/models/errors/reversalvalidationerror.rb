@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class ReversalValidationError < StandardError
+      class ReversalValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

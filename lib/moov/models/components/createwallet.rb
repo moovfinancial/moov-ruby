@@ -17,9 +17,9 @@ module Moov
         # Description of the wallet.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        sig { params(name: ::String, description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
+        sig { params(name: ::String, description: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String])).void }
         def initialize(name:, description: nil, metadata: nil)
           @name = name
           @description = description

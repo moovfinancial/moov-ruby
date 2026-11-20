@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class DuplicateCardError < StandardError
+      class DuplicateCardError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

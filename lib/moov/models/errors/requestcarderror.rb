@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class RequestCardError < StandardError
+      class RequestCardError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

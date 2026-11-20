@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
       # Details of a Transfer.
-      class TransferError < StandardError
+      class TransferError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -34,7 +34,7 @@ module Moov
         # An optional description of the transfer that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Total or markup fee.
         field :facilitator_fee, Crystalline::Nilable.new(Models::Components::FacilitatorFee), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFee') } }
         # Fees charged to your platform account for transfers.
@@ -77,7 +77,7 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(transfer_id: ::String, created_on: ::DateTime, source: Models::Components::TransferSource, destination: Models::Components::TransferDestination, status: Models::Components::TransferStatus, amount: Models::Components::Amount, completed_on: T.nilable(::DateTime), failure_reason: T.nilable(Models::Components::TransferFailureReason), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), facilitator_fee: T.nilable(Models::Components::FacilitatorFee), moov_fee: T.nilable(::Integer), moov_fee_decimal: T.nilable(::String), moov_fee_details: T.nilable(Models::Components::MoovFeeDetails), moov_fees: T.nilable(T::Array[Models::Components::MoovFee]), group_id: T.nilable(::String), cancellations: T.nilable(T::Array[Models::Components::Cancellation]), refunded_amount: T.nilable(Models::Components::Amount), refunds: T.nilable(T::Array[Models::Components::CardAcquiringRefund]), disputed_amount: T.nilable(Models::Components::Amount), disputes: T.nilable(T::Array[Models::Components::CardAcquiringDispute]), sweep_id: T.nilable(::String), schedule_id: T.nilable(::String), occurrence_id: T.nilable(::String), payment_link_code: T.nilable(::String), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), capture: T.nilable(Models::Components::TransferCapture), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(transfer_id: ::String, created_on: ::DateTime, source: Models::Components::TransferSource, destination: Models::Components::TransferDestination, status: Models::Components::TransferStatus, amount: Models::Components::Amount, completed_on: T.nilable(::DateTime), failure_reason: T.nilable(Models::Components::TransferFailureReason), description: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), facilitator_fee: T.nilable(Models::Components::FacilitatorFee), moov_fee: T.nilable(::Integer), moov_fee_decimal: T.nilable(::String), moov_fee_details: T.nilable(Models::Components::MoovFeeDetails), moov_fees: T.nilable(T::Array[Models::Components::MoovFee]), group_id: T.nilable(::String), cancellations: T.nilable(T::Array[Models::Components::Cancellation]), refunded_amount: T.nilable(Models::Components::Amount), refunds: T.nilable(T::Array[Models::Components::CardAcquiringRefund]), disputed_amount: T.nilable(Models::Components::Amount), disputes: T.nilable(T::Array[Models::Components::CardAcquiringDispute]), sweep_id: T.nilable(::String), schedule_id: T.nilable(::String), occurrence_id: T.nilable(::String), payment_link_code: T.nilable(::String), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), capture: T.nilable(Models::Components::TransferCapture), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(transfer_id:, created_on:, source:, destination:, status:, amount:, completed_on: nil, failure_reason: nil, description: nil, metadata: nil, facilitator_fee: nil, moov_fee: nil, moov_fee_decimal: nil, moov_fee_details: nil, moov_fees: nil, group_id: nil, cancellations: nil, refunded_amount: nil, refunds: nil, disputed_amount: nil, disputes: nil, sweep_id: nil, schedule_id: nil, occurrence_id: nil, payment_link_code: nil, sales_tax_amount: nil, foreign_id: nil, line_items: nil, capture: nil, raw_response: nil)
           @transfer_id = transfer_id
           @created_on = created_on

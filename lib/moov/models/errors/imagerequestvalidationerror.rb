@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class ImageRequestValidationError < StandardError
+      class ImageRequestValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

@@ -12,7 +12,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The raw ACH addenda record. Must only contain valid NACHA characters
+        # The raw ACH addenda record. Must only contain valid NACHA characters. JSON is UTF-8. Moov originates each character as one byte in the Nacha file.
         field :record, ::String, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('record'), required: true } }
 
         sig { params(record: ::String).void }

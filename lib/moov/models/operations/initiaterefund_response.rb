@@ -19,13 +19,13 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # The request completed successfully.
         field :create_refund_response, Crystalline::Nilable.new(Crystalline::Union.new(Models::Components::CardAcquiringRefund, Models::Components::AsyncCreatedRefund))
         # A refund was successfully created but an error occurred while waiting for a synchronous response.
         field :card_acquiring_refund, Crystalline::Nilable.new(Models::Components::CardAcquiringRefund)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], create_refund_response: T.nilable(T.any(Models::Components::CardAcquiringRefund, Models::Components::AsyncCreatedRefund)), card_acquiring_refund: T.nilable(Models::Components::CardAcquiringRefund)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], create_refund_response: T.nilable(T.any(Models::Components::CardAcquiringRefund, Models::Components::AsyncCreatedRefund)), card_acquiring_refund: T.nilable(Models::Components::CardAcquiringRefund)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, create_refund_response: nil, card_acquiring_refund: nil)
           @content_type = content_type
           @status_code = status_code
