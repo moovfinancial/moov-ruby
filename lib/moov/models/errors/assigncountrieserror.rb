@@ -8,16 +8,16 @@ module Moov
   module Models
     module Errors
 
-      class AssignCountriesError < StandardError
+      class AssignCountriesError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
 
-        field :countries, Crystalline::Hash.new(Symbol, ::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('countries'), required: true } }
+        field :countries, Crystalline::Hash.new(::Symbol, ::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('countries'), required: true } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(countries: T::Hash[Symbol, ::String], raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(countries: T::Hash[::Symbol, ::String], raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(countries:, raw_response: nil)
           @countries = countries
           @raw_response = raw_response

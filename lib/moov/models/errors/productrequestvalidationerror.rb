@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class ProductRequestValidationError < StandardError
+      class ProductRequestValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -19,13 +19,13 @@ module Moov
 
         field :base_price, Crystalline::Nilable.new(Models::Components::AmountDecimalValidationError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('basePrice') } }
 
-        field :images, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::AssignProductImageValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
+        field :images, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::AssignProductImageValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('images') } }
 
-        field :option_groups, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::ProductOptionGroupValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('optionGroups') } }
+        field :option_groups, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::ProductOptionGroupValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('optionGroups') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(title: T.nilable(::String), description: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), images: T.nilable(T::Hash[Symbol, Models::Components::AssignProductImageValidationError]), option_groups: T.nilable(T::Hash[Symbol, Models::Components::ProductOptionGroupValidationError]), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(title: T.nilable(::String), description: T.nilable(::String), base_price: T.nilable(Models::Components::AmountDecimalValidationError), images: T.nilable(T::Hash[::Symbol, Models::Components::AssignProductImageValidationError]), option_groups: T.nilable(T::Hash[::Symbol, Models::Components::ProductOptionGroupValidationError]), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(title: nil, description: nil, base_price: nil, images: nil, option_groups: nil, raw_response: nil)
           @title = title
           @description = description

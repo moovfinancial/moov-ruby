@@ -19,9 +19,9 @@ module Moov
         # Options for payment links used to collect an ACH payment.
         field :ach_details, Crystalline::Nilable.new(Models::Components::ACHPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
         # Optional free-form metadata for the transfer.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::CollectionPaymentMethodType]), card_details: T.nilable(Models::Components::CardPaymentDetails), ach_details: T.nilable(Models::Components::ACHPaymentDetails), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
+        sig { params(allowed_methods: T.nilable(T::Array[Models::Components::CollectionPaymentMethodType]), card_details: T.nilable(Models::Components::CardPaymentDetails), ach_details: T.nilable(Models::Components::ACHPaymentDetails), metadata: T.nilable(T::Hash[::Symbol, ::String])).void }
         def initialize(allowed_methods: nil, card_details: nil, ach_details: nil, metadata: nil)
           @allowed_methods = allowed_methods
           @card_details = card_details

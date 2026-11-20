@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class UpdateTicketError < StandardError
+      class UpdateTicketError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

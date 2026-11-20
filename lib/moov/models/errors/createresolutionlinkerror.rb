@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
       # Describes validation errors for the create resolution link request.
-      class CreateResolutionLinkError < StandardError
+      class CreateResolutionLinkError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

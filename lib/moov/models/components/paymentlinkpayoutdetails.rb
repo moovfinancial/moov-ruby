@@ -20,11 +20,11 @@ module Moov
         # This information will be used to authenticate the end user when they follow the payment link.
         field :recipient, Models::Components::PayoutRecipient, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient'), required: true } }
         # Optional free-form metadata for the transfer.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Delivery options for `push-to-card` and `push-to-apple-pay` payouts.
         field :push_options, Crystalline::Nilable.new(Models::Components::PushOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
 
-        sig { params(allowed_methods: T::Array[Models::Components::DisbursementPaymentMethodType], recipient: Models::Components::PayoutRecipient, metadata: T.nilable(T::Hash[Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptions)).void }
+        sig { params(allowed_methods: T::Array[Models::Components::DisbursementPaymentMethodType], recipient: Models::Components::PayoutRecipient, metadata: T.nilable(T::Hash[::Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptions)).void }
         def initialize(allowed_methods:, recipient:, metadata: nil, push_options: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient

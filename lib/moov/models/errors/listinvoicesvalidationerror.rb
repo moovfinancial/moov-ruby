@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class ListInvoicesValidationError < StandardError
+      class ListInvoicesValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

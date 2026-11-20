@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(account_id: ::String, title: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListProductsResponse) }
+    sig { params(account_id: ::String, title: T.nilable(::String), skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListProductsResponse) }
     def list(account_id:, title: nil, skip: nil, count: nil, timeout_ms: nil, http_headers: nil)
       # list - List active (non-disabled) products for an account.
       request = Models::Operations::ListProductsRequest.new(
@@ -59,7 +59,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListProductsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -80,7 +80,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -101,7 +101,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -137,7 +137,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::Product))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::Product))
           response = Models::Operations::ListProductsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -165,7 +165,7 @@ module Moov
     end
 
 
-    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateProductResponse) }
+    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateProductResponse) }
     def create(product_request:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Creates a new product for the specified account.
       request = Models::Operations::CreateProductRequest.new(
@@ -181,15 +181,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :product_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -212,7 +212,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -233,7 +233,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -269,7 +269,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Product)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Product)
           response = Models::Operations::CreateProductResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -291,7 +291,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -306,7 +306,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ProductRequestValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ProductRequestValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -327,7 +327,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, product_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetProductResponse) }
+    sig { params(account_id: ::String, product_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetProductResponse) }
     def get(account_id:, product_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve a product by ID.
       request = Models::Operations::GetProductRequest.new(
@@ -343,7 +343,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -363,7 +363,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -383,7 +383,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -419,7 +419,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Product)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Product)
           response = Models::Operations::GetProductResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -447,7 +447,7 @@ module Moov
     end
 
 
-    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, product_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateProductResponse) }
+    sig { params(product_request: Models::Components::ProductRequest, account_id: ::String, product_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UpdateProductResponse) }
     def update(product_request:, account_id:, product_id:, timeout_ms: nil, http_headers: nil)
       # update - Update a product and its options.
       request = Models::Operations::UpdateProductRequest.new(
@@ -464,15 +464,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :product_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -495,7 +495,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -516,7 +516,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -552,7 +552,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Product)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Product)
           response = Models::Operations::UpdateProductResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -574,7 +574,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -589,7 +589,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ProductRequestValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ProductRequestValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -610,7 +610,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, product_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableProductResponse) }
+    sig { params(account_id: ::String, product_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::DisableProductResponse) }
     def disable(account_id:, product_id:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a product by ID.
       #
@@ -628,7 +628,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -648,7 +648,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -668,7 +668,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -717,7 +717,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else

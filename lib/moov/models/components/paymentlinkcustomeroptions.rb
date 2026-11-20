@@ -19,9 +19,9 @@ module Moov
         # If true, tipping is enabled on the payment form. Defaults to false.
         field :tipping_enabled, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('tippingEnabled') } }
         # Optional free-form metadata for the Moov account that will represent this customer.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
-        sig { params(require_address: T.nilable(T::Boolean), require_phone: T.nilable(T::Boolean), tipping_enabled: T.nilable(T::Boolean), metadata: T.nilable(T::Hash[Symbol, ::String])).void }
+        sig { params(require_address: T.nilable(T::Boolean), require_phone: T.nilable(T::Boolean), tipping_enabled: T.nilable(T::Boolean), metadata: T.nilable(T::Hash[::Symbol, ::String])).void }
         def initialize(require_address: nil, require_phone: nil, tipping_enabled: nil, metadata: nil)
           @require_address = require_address
           @require_phone = require_phone
