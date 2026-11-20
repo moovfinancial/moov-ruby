@@ -15,11 +15,11 @@ module Moov
         # The webhook that was pinged.
         field :webhook, Models::Components::Webhook, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('webhook'), required: true } }
         # The request body sent to the target URL. It will contain an event type of `event.test` and an empty (null) data payload.
-        field :request_body_sent, Crystalline::Hash.new(Symbol, ::Object), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requestBodySent'), required: true } }
+        field :request_body_sent, Crystalline::Hash.new(::Symbol, ::Object), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('requestBodySent'), required: true } }
         # The response status code after sending a ping event to the URL.
         field :response_status_code, ::Integer, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('responseStatusCode'), required: true } }
 
-        sig { params(webhook: Models::Components::Webhook, request_body_sent: T::Hash[Symbol, ::Object], response_status_code: ::Integer).void }
+        sig { params(webhook: Models::Components::Webhook, request_body_sent: T::Hash[::Symbol, ::Object], response_status_code: ::Integer).void }
         def initialize(webhook:, request_body_sent:, response_status_code:)
           @webhook = webhook
           @request_body_sent = request_body_sent

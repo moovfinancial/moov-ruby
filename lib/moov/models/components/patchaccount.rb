@@ -22,11 +22,11 @@ module Moov
 
         field :settings, Crystalline::Nilable.new(Models::Components::CreateAccountSettings), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('settings') } }
 
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         field :customer_support, Crystalline::Nilable.new(Models::Components::PatchAccountCustomerSupport), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customerSupport') } }
 
-        sig { params(profile: T.nilable(Models::Components::PatchProfile), terms_of_service: T.nilable(Models::Components::TermsOfServicePayloadUpdate), foreign_id: T.nilable(::String), settings: T.nilable(Models::Components::CreateAccountSettings), metadata: T.nilable(T::Hash[Symbol, ::String]), customer_support: T.nilable(Models::Components::PatchAccountCustomerSupport)).void }
+        sig { params(profile: T.nilable(Models::Components::PatchProfile), terms_of_service: T.nilable(Models::Components::TermsOfServicePayloadUpdate), foreign_id: T.nilable(::String), settings: T.nilable(Models::Components::CreateAccountSettings), metadata: T.nilable(T::Hash[::Symbol, ::String]), customer_support: T.nilable(Models::Components::PatchAccountCustomerSupport)).void }
         def initialize(profile: nil, terms_of_service: nil, foreign_id: nil, settings: nil, metadata: nil, customer_support: nil)
           @profile = profile
           @terms_of_service = terms_of_service
