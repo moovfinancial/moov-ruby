@@ -15,9 +15,9 @@ module Moov
 
         field :mode, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode') } }
 
-        field :merchants, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::MerchantEntryError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchants') } }
+        field :merchants, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::MerchantEntryError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchants') } }
 
-        sig { params(mode: T.nilable(::String), merchants: T.nilable(T::Hash[Symbol, Models::Components::MerchantEntryError])).void }
+        sig { params(mode: T.nilable(::String), merchants: T.nilable(T::Hash[::Symbol, Models::Components::MerchantEntryError])).void }
         def initialize(mode: nil, merchants: nil)
           @mode = mode
           @merchants = merchants

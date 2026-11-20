@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
       # Descriptions of any field validations that failed on a capture request.
-      class CaptureValidationError < StandardError
+      class CaptureValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

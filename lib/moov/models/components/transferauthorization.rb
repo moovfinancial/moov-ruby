@@ -29,9 +29,11 @@ module Moov
         field :amount_details, Crystalline::Nilable.new(Models::Components::TransferAmountDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('amountDetails') } }
         # Expiration time for the approved authorization, when available.
         field :expires_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
+        # Whether the card network granted the extended authorization hold. Returned only when `options.cardPayment.isExtendedAuthorizationRequested` is `true`.
+        field :is_extended_authorization_granted, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('isExtendedAuthorizationGranted') } }
 
-        sig { params(authorization_id: ::String, requested_amount: Models::Components::AmountDecimal, authorized_amount: Models::Components::AmountDecimal, captured_amount: Models::Components::AmountDecimal, capturable_amount: Models::Components::AmountDecimal, amount_details: T.nilable(Models::Components::TransferAmountDetails), expires_on: T.nilable(::DateTime)).void }
-        def initialize(authorization_id:, requested_amount:, authorized_amount:, captured_amount:, capturable_amount:, amount_details: nil, expires_on: nil)
+        sig { params(authorization_id: ::String, requested_amount: Models::Components::AmountDecimal, authorized_amount: Models::Components::AmountDecimal, captured_amount: Models::Components::AmountDecimal, capturable_amount: Models::Components::AmountDecimal, amount_details: T.nilable(Models::Components::TransferAmountDetails), expires_on: T.nilable(::DateTime), is_extended_authorization_granted: T.nilable(T::Boolean)).void }
+        def initialize(authorization_id:, requested_amount:, authorized_amount:, captured_amount:, capturable_amount:, amount_details: nil, expires_on: nil, is_extended_authorization_granted: nil)
           @authorization_id = authorization_id
           @requested_amount = requested_amount
           @authorized_amount = authorized_amount
@@ -39,6 +41,7 @@ module Moov
           @capturable_amount = capturable_amount
           @amount_details = amount_details
           @expires_on = expires_on
+          @is_extended_authorization_granted = is_extended_authorization_granted
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -51,6 +54,7 @@ module Moov
           return false unless @capturable_amount == other.capturable_amount
           return false unless @amount_details == other.amount_details
           return false unless @expires_on == other.expires_on
+          return false unless @is_extended_authorization_granted == other.is_extended_authorization_granted
           true
         end
       end

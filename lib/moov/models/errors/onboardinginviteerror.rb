@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class OnboardingInviteError < StandardError
+      class OnboardingInviteError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -17,15 +17,15 @@ module Moov
 
         field :terms_of_service_url, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfServiceURL') } }
 
-        field :scopes, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scopes') } }
+        field :scopes, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('scopes') } }
 
-        field :capabilities, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
+        field :capabilities, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
 
-        field :fee_plan_codes, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePlanCodes') } }
+        field :fee_plan_codes, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePlanCodes') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(return_url: T.nilable(::String), terms_of_service_url: T.nilable(::String), scopes: T.nilable(T::Hash[Symbol, ::String]), capabilities: T.nilable(T::Hash[Symbol, ::String]), fee_plan_codes: T.nilable(T::Hash[Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(return_url: T.nilable(::String), terms_of_service_url: T.nilable(::String), scopes: T.nilable(T::Hash[::Symbol, ::String]), capabilities: T.nilable(T::Hash[::Symbol, ::String]), fee_plan_codes: T.nilable(T::Hash[::Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(return_url: nil, terms_of_service_url: nil, scopes: nil, capabilities: nil, fee_plan_codes: nil, raw_response: nil)
           @return_url = return_url
           @terms_of_service_url = terms_of_service_url

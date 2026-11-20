@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class LinkGooglePayError < StandardError
+      class LinkGooglePayError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

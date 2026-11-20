@@ -20,16 +20,16 @@ module Moov
         # This information will be used to authenticate the end user when they follow the payment link.
         field :recipient, Models::Components::PayoutRecipient, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recipient'), required: true } }
         # Optional free-form metadata for the transfer.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Delivery options for `push-to-card` and `push-to-apple-pay` payouts.
         field :push_options, Crystalline::Nilable.new(Models::Components::PushOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushOptions') } }
         # Indicates which party pays the fee, keyed by `PayoutFeePaidByKey`. If keys are not set,
         # the default is `source`.
         #
         # Possible `PayoutFeePaidByKey` keys: `instant-push-to-card`, `deferred-push-to-card`, `instant-push-to-apple-pay`, `deferred-push-to-apple-pay`, `instant-bank-credit` (API v2026.01.00 and later), `rtp-credit`, `ach-credit-same-day`, `ach-credit-standard`, `push-to-google-pay`
-        field :fee_paid_by, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::FeePaidBy)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
+        field :fee_paid_by, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::FeePaidBy)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
 
-        sig { params(allowed_methods: T::Array[Models::Components::DisbursementPaymentMethodType], recipient: Models::Components::PayoutRecipient, metadata: T.nilable(T::Hash[Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptions), fee_paid_by: T.nilable(T::Hash[Symbol, Models::Components::FeePaidBy])).void }
+        sig { params(allowed_methods: T::Array[Models::Components::DisbursementPaymentMethodType], recipient: Models::Components::PayoutRecipient, metadata: T.nilable(T::Hash[::Symbol, ::String]), push_options: T.nilable(Models::Components::PushOptions), fee_paid_by: T.nilable(T::Hash[::Symbol, Models::Components::FeePaidBy])).void }
         def initialize(allowed_methods:, recipient:, metadata: nil, push_options: nil, fee_paid_by: nil)
           @allowed_methods = allowed_methods
           @recipient = recipient

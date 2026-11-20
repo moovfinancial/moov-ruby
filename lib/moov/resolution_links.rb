@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(create_resolution_link: Models::Components::CreateResolutionLink, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateResolutionLinkResponse) }
+    sig { params(create_resolution_link: Models::Components::CreateResolutionLink, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateResolutionLinkResponse) }
     def create(create_resolution_link:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Create a resolution link for the specified account. Resolution links are temporary, secure links
       # sent to merchants to resolve account requirements such as KYC verification or document uploads.  Only one active resolution link
@@ -62,15 +62,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_resolution_link, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -93,7 +93,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -114,7 +114,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -150,7 +150,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ResolutionLink)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ResolutionLink)
           response = Models::Operations::CreateResolutionLinkResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -172,7 +172,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -187,7 +187,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::CreateResolutionLinkError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::CreateResolutionLinkError)
           obj.raw_response = http_response
           raise obj
         else
@@ -208,7 +208,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListResolutionLinksResponse) }
+    sig { params(account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListResolutionLinksResponse) }
     def list(account_id:, timeout_ms: nil, http_headers: nil)
       # list - List resolution links for the specified account.
       #
@@ -226,7 +226,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -246,7 +246,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -266,7 +266,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -302,7 +302,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::ResolutionLink))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::ResolutionLink))
           response = Models::Operations::ListResolutionLinksResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -330,7 +330,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, resolution_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetResolutionLinkResponse) }
+    sig { params(account_id: ::String, resolution_link_code: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetResolutionLinkResponse) }
     def get(account_id:, resolution_link_code:, timeout_ms: nil, http_headers: nil)
       # get - Get a resolution link by code.
       #
@@ -349,7 +349,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -369,7 +369,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -389,7 +389,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -425,7 +425,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ResolutionLink)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ResolutionLink)
           response = Models::Operations::GetResolutionLinkResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -453,7 +453,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, resolution_link_code: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DisableResolutionLinkResponse) }
+    sig { params(account_id: ::String, resolution_link_code: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::DisableResolutionLinkResponse) }
     def disable(account_id:, resolution_link_code:, timeout_ms: nil, http_headers: nil)
       # disable - Disable a resolution link. Disabled resolution links can no longer be used by merchants.
       #
@@ -472,7 +472,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -492,7 +492,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -512,7 +512,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -561,7 +561,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else

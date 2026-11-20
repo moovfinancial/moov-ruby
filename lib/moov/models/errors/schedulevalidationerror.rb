@@ -8,12 +8,12 @@ module Moov
   module Models
     module Errors
 
-      class ScheduleValidationError < StandardError
+      class ScheduleValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
 
-        field :occurrences, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('occurrences') } }
+        field :occurrences, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('occurrences') } }
 
         field :recur, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('recur') } }
 
@@ -21,7 +21,7 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(occurrences: T.nilable(T::Hash[Symbol, ::String]), recur: T.nilable(::String), description: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(occurrences: T.nilable(T::Hash[::Symbol, ::String]), recur: T.nilable(::String), description: T.nilable(::String), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(occurrences: nil, recur: nil, description: nil, raw_response: nil)
           @occurrences = occurrences
           @recur = recur

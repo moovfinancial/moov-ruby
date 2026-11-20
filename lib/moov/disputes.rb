@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(request: Models::Operations::ListDisputesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListDisputesResponse) }
+    sig { params(request: Models::Operations::ListDisputesRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListDisputesResponse) }
     def list(request:, timeout_ms: nil, http_headers: nil)
       # list - Returns the list of disputes. 
       #
@@ -58,7 +58,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListDisputesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -79,7 +79,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -100,7 +100,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -136,7 +136,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::Dispute))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::Dispute))
           response = Models::Operations::ListDisputesResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -158,7 +158,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -179,7 +179,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetDisputeResponse) }
+    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetDisputeResponse) }
     def get(account_id:, dispute_id:, timeout_ms: nil, http_headers: nil)
       # get - Get a dispute by ID. 
       #
@@ -200,7 +200,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -220,7 +220,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -240,7 +240,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -276,7 +276,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Dispute)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Dispute)
           response = Models::Operations::GetDisputeResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -304,7 +304,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AcceptDisputeResponse) }
+    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::AcceptDisputeResponse) }
     def accept(account_id:, dispute_id:, timeout_ms: nil, http_headers: nil)
       # accept - Accepts liability for a dispute. 
       #
@@ -325,7 +325,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -345,7 +345,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -365,7 +365,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -401,7 +401,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Dispute)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Dispute)
           response = Models::Operations::AcceptDisputeResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -423,7 +423,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -444,7 +444,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListDisputeEvidenceResponse) }
+    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListDisputeEvidenceResponse) }
     def list_evidence(account_id:, dispute_id:, timeout_ms: nil, http_headers: nil)
       # list_evidence - Returns a dispute's public evidence by its ID. 
       #
@@ -465,7 +465,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -485,7 +485,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -505,7 +505,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -541,7 +541,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::DisputeEvidenceResponse))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::DisputeEvidenceResponse))
           response = Models::Operations::ListDisputeEvidenceResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -569,7 +569,7 @@ module Moov
     end
 
 
-    sig { params(create_evidence_file_multi_part: Models::Components::CreateEvidenceFileMultiPart, account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadDisputeEvidenceFileResponse) }
+    sig { params(create_evidence_file_multi_part: Models::Components::CreateEvidenceFileMultiPart, account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UploadDisputeEvidenceFileResponse) }
     def upload_evidence_file(create_evidence_file_multi_part:, account_id:, dispute_id:, timeout_ms: nil, http_headers: nil)
       # upload_evidence_file - Uploads a file as evidence for a dispute. 
       #
@@ -591,15 +591,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_evidence_file_multi_part, :multipart)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -622,7 +622,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -643,7 +643,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -679,7 +679,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::EvidenceUploadResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::EvidenceUploadResponse)
           response = Models::Operations::UploadDisputeEvidenceFileResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -701,7 +701,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -716,7 +716,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::FileUploadValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::FileUploadValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -737,7 +737,7 @@ module Moov
     end
 
 
-    sig { params(create_evidence_text: Models::Components::CreateEvidenceText, account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UploadDisputeEvidenceTextResponse) }
+    sig { params(create_evidence_text: Models::Components::CreateEvidenceText, account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UploadDisputeEvidenceTextResponse) }
     def upload_evidence_text(create_evidence_text:, account_id:, dispute_id:, timeout_ms: nil, http_headers: nil)
       # upload_evidence_text - Uploads text as evidence for a dispute.
       #
@@ -759,15 +759,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_evidence_text, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -790,7 +790,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -811,7 +811,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -847,7 +847,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::EvidenceTextResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::EvidenceTextResponse)
           response = Models::Operations::UploadDisputeEvidenceTextResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -869,7 +869,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -890,7 +890,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::SubmitDisputeEvidenceResponse) }
+    sig { params(account_id: ::String, dispute_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::SubmitDisputeEvidenceResponse) }
     def submit_evidence(account_id:, dispute_id:, timeout_ms: nil, http_headers: nil)
       # submit_evidence - Submit the evidence associated with a dispute.
       #
@@ -914,7 +914,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -934,7 +934,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -954,7 +954,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -990,7 +990,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Dispute)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Dispute)
           response = Models::Operations::SubmitDisputeEvidenceResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1012,7 +1012,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1033,7 +1033,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetDisputeEvidenceResponse) }
+    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetDisputeEvidenceResponse) }
     def get_evidence(account_id:, dispute_id:, evidence_id:, timeout_ms: nil, http_headers: nil)
       # get_evidence - Get dispute evidence by ID.
       #
@@ -1055,7 +1055,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1075,7 +1075,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1095,7 +1095,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1131,7 +1131,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::DisputeEvidenceResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::DisputeEvidenceResponse)
           response = Models::Operations::GetDisputeEvidenceResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1159,7 +1159,7 @@ module Moov
     end
 
 
-    sig { params(update_evidence: Models::Components::UpdateEvidence, account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateDisputeEvidenceResponse) }
+    sig { params(update_evidence: Models::Components::UpdateEvidence, account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UpdateDisputeEvidenceResponse) }
     def update_evidence(update_evidence:, account_id:, dispute_id:, evidence_id:, timeout_ms: nil, http_headers: nil)
       # update_evidence - Updates dispute evidence by ID.
       #
@@ -1182,15 +1182,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :update_evidence, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -1213,7 +1213,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1234,7 +1234,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1270,7 +1270,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::DisputeEvidenceResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::DisputeEvidenceResponse)
           response = Models::Operations::UpdateDisputeEvidenceResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1292,7 +1292,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1313,7 +1313,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::DeleteDisputeEvidenceFileResponse) }
+    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::DeleteDisputeEvidenceFileResponse) }
     def delete_evidence(account_id:, dispute_id:, evidence_id:, timeout_ms: nil, http_headers: nil)
       # delete_evidence - Deletes dispute evidence by ID. 
       #
@@ -1335,7 +1335,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1355,7 +1355,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1375,7 +1375,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1424,7 +1424,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1445,7 +1445,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(Integer), accept_header_override: T.nilable(String), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetDisputeEvidenceDataResponse) }
+    sig { params(account_id: ::String, dispute_id: ::String, evidence_id: ::String, timeout_ms: T.nilable(::Integer), accept_header_override: T.nilable(::String), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetDisputeEvidenceDataResponse) }
     def get_evidence_data(account_id:, dispute_id:, evidence_id:, timeout_ms: nil, accept_header_override: nil, http_headers: nil)
       # get_evidence_data - Downloads dispute evidence data by ID.
       #
@@ -1467,7 +1467,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = accept_header_override || 'application/pdf;q=1, image/jpeg;q=0.7, image/tiff;q=0'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1487,7 +1487,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1507,7 +1507,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)

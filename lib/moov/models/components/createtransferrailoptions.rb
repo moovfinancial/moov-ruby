@@ -12,8 +12,8 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-
-        field :card_payment, Crystalline::Nilable.new(Models::Components::CreateTransferSourceCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardPayment') } }
+        # Options for a new `card-payment` transfer.
+        field :card_payment, Crystalline::Nilable.new(Models::Components::CreateCardPaymentOptions), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('cardPayment') } }
 
         field :push_to_card, Crystalline::Nilable.new(Models::Components::CreateTransferDestinationCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('pushToCard') } }
 
@@ -23,7 +23,7 @@ module Moov
 
         field :ach_credit, Crystalline::Nilable.new(Models::Components::CreateTransferDestinationACH), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achCredit') } }
 
-        sig { params(card_payment: T.nilable(Models::Components::CreateTransferSourceCard), push_to_card: T.nilable(Models::Components::CreateTransferDestinationCard), pull_from_card: T.nilable(Models::Components::CreateTransferSourceCard), ach_debit: T.nilable(Models::Components::CreateTransferSourceACH), ach_credit: T.nilable(Models::Components::CreateTransferDestinationACH)).void }
+        sig { params(card_payment: T.nilable(Models::Components::CreateCardPaymentOptions), push_to_card: T.nilable(Models::Components::CreateTransferDestinationCard), pull_from_card: T.nilable(Models::Components::CreateTransferSourceCard), ach_debit: T.nilable(Models::Components::CreateTransferSourceACH), ach_credit: T.nilable(Models::Components::CreateTransferDestinationACH)).void }
         def initialize(card_payment: nil, push_to_card: nil, pull_from_card: nil, ach_debit: nil, ach_credit: nil)
           @card_payment = card_payment
           @push_to_card = push_to_card

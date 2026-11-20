@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
       # Metadata about an uploaded image.
-      class ImageMetadataError < StandardError
+      class ImageMetadataError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

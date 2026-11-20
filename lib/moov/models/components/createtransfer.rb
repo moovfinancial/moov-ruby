@@ -12,7 +12,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Where funds for a transfer originate. For the source, you must include either a `paymentMethodID` or a `transferID`.
+        # Where funds for a transfer originate. For the source, you must include exactly one of `paymentMethodID`, `paymentToken`, or `transferID`.
         field :source, Models::Components::CreateTransferSource, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('source'), required: true } }
         # The final stage of a transfer and the ultimate recipient of the funds.
         field :destination, Models::Components::CreateTransferDestination, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destination'), required: true } }
@@ -25,7 +25,7 @@ module Moov
         # An optional description of the transfer that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # An optional collection of line items for a transfer.
@@ -36,7 +36,7 @@ module Moov
         # Indicates which party bears fees for a transfer, keyed by fee type.
         field :fee_paid_by, Crystalline::Nilable.new(Models::Components::TransferFeePaidBy), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feePaidBy') } }
 
-        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::AmountDecimal, options: T.nilable(Models::Components::CreateTransferRailOptions), facilitator_fee: T.nilable(Models::Components::CreateTransferFacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), fee_paid_by: T.nilable(Models::Components::TransferFeePaidBy)).void }
+        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::AmountDecimal, options: T.nilable(Models::Components::CreateTransferRailOptions), facilitator_fee: T.nilable(Models::Components::CreateTransferFacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), fee_paid_by: T.nilable(Models::Components::TransferFeePaidBy)).void }
         def initialize(source:, destination:, amount:, options: nil, facilitator_fee: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, fee_paid_by: nil)
           @source = source
           @destination = destination

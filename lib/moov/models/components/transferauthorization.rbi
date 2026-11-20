@@ -22,4 +22,6 @@ class Moov::Models::Components::TransferAuthorization
   def amount_details=(str_); end
   def expires_on(); end
   def expires_on=(str_); end
+  def is_extended_authorization_granted(); end
+  def is_extended_authorization_granted=(str_); end
 end

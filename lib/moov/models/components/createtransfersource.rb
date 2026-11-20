@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-      # Where funds for a transfer originate. For the source, you must include either a `paymentMethodID` or a `transferID`.
+      # Where funds for a transfer originate. For the source, you must include exactly one of `paymentMethodID`, `paymentToken`, or `transferID`.
       class CreateTransferSource
         extend T::Sig
         include Crystalline::MetadataFields

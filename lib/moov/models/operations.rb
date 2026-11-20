@@ -327,6 +327,8 @@ module Moov
       autoload :ListTicketsResponseBody, 'moov/models/operations/listtickets_responsebody.rb'
       autoload :ListTicketsRequest, 'moov/models/operations/listtickets_request.rb'
       autoload :ListTicketsResponse, 'moov/models/operations/listtickets_response.rb'
+      autoload :ListTransferEventsRequest, 'moov/models/operations/listtransferevents_request.rb'
+      autoload :ListTransferEventsResponse, 'moov/models/operations/listtransferevents_response.rb'
       autoload :ListTransfersRequest, 'moov/models/operations/listtransfers_request.rb'
       autoload :ListTransfersResponse, 'moov/models/operations/listtransfers_response.rb'
       autoload :ListWalletTransactionsRequest, 'moov/models/operations/listwallettransactions_request.rb'

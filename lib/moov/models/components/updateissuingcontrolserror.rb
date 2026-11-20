@@ -13,7 +13,7 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :velocity_limits, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::IssuingVelocityLimitError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('velocityLimits') } }
+        field :velocity_limits, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::IssuingVelocityLimitError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('velocityLimits') } }
 
         field :merchant_category_restrictions, Crystalline::Nilable.new(Models::Components::MerchantCategoryRestrictionsError), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('merchantCategoryRestrictions') } }
 
@@ -23,7 +23,7 @@ module Moov
 
         field :expires_on, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('expiresOn') } }
 
-        sig { params(velocity_limits: T.nilable(T::Hash[Symbol, Models::Components::IssuingVelocityLimitError]), merchant_category_restrictions: T.nilable(Models::Components::MerchantCategoryRestrictionsError), merchant_restrictions: T.nilable(Models::Components::MerchantRestrictionsError), allowed_schedule: T.nilable(Models::Components::AllowedScheduleError), expires_on: T.nilable(::String)).void }
+        sig { params(velocity_limits: T.nilable(T::Hash[::Symbol, Models::Components::IssuingVelocityLimitError]), merchant_category_restrictions: T.nilable(Models::Components::MerchantCategoryRestrictionsError), merchant_restrictions: T.nilable(Models::Components::MerchantRestrictionsError), allowed_schedule: T.nilable(Models::Components::AllowedScheduleError), expires_on: T.nilable(::String)).void }
         def initialize(velocity_limits: nil, merchant_category_restrictions: nil, merchant_restrictions: nil, allowed_schedule: nil, expires_on: nil)
           @velocity_limits = velocity_limits
           @merchant_category_restrictions = merchant_category_restrictions

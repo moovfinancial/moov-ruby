@@ -21,7 +21,7 @@ module Moov
         # An optional description of the capture that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # An optional collection of line items for a transfer.
@@ -33,7 +33,7 @@ module Moov
         # The transfer's facilitator fee is the sum of its capture fees.
         field :facilitator_fee_amount, Crystalline::Nilable.new(Models::Components::AmountDecimal), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('facilitatorFeeAmount') } }
 
-        sig { params(amount: T.nilable(Models::Components::AmountDecimal), is_final: T.nilable(T::Boolean), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal)).void }
+        sig { params(amount: T.nilable(Models::Components::AmountDecimal), is_final: T.nilable(T::Boolean), description: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems), amount_details: T.nilable(Models::Components::CreateTransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal)).void }
         def initialize(amount: nil, is_final: nil, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil)
           @amount = amount
           @is_final = is_final

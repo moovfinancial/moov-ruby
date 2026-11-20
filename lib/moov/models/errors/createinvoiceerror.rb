@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class CreateInvoiceError < StandardError
+      class CreateInvoiceError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
