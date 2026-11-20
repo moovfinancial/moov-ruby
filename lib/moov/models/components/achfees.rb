@@ -28,9 +28,11 @@ module Moov
         field :bank_account_verification, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountVerification'), required: true } }
         # Total ACH fees.
         field :total, Models::Components::BillingCountAndAmount, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('total'), required: true } }
+        # Fees for bank account risk verifications.
+        field :bank_account_risk_verification, Crystalline::Nilable.new(Models::Components::BillingCountAndAmount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('bankAccountRiskVerification') } }
 
-        sig { params(standard_credit: Models::Components::BillingCountAndAmount, same_day_credit: Models::Components::BillingCountAndAmount, debits: Models::Components::BillingCountAndAmount, return_: Models::Components::BillingCountAndAmount, unauthorized_return: Models::Components::BillingCountAndAmount, notice_of_change: Models::Components::BillingCountAndAmount, bank_account_verification: Models::Components::BillingCountAndAmount, total: Models::Components::BillingCountAndAmount).void }
-        def initialize(standard_credit:, same_day_credit:, debits:, return_:, unauthorized_return:, notice_of_change:, bank_account_verification:, total:)
+        sig { params(standard_credit: Models::Components::BillingCountAndAmount, same_day_credit: Models::Components::BillingCountAndAmount, debits: Models::Components::BillingCountAndAmount, return_: Models::Components::BillingCountAndAmount, unauthorized_return: Models::Components::BillingCountAndAmount, notice_of_change: Models::Components::BillingCountAndAmount, bank_account_verification: Models::Components::BillingCountAndAmount, total: Models::Components::BillingCountAndAmount, bank_account_risk_verification: T.nilable(Models::Components::BillingCountAndAmount)).void }
+        def initialize(standard_credit:, same_day_credit:, debits:, return_:, unauthorized_return:, notice_of_change:, bank_account_verification:, total:, bank_account_risk_verification: nil)
           @standard_credit = standard_credit
           @same_day_credit = same_day_credit
           @debits = debits
@@ -39,6 +41,7 @@ module Moov
           @notice_of_change = notice_of_change
           @bank_account_verification = bank_account_verification
           @total = total
+          @bank_account_risk_verification = bank_account_risk_verification
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -52,6 +55,7 @@ module Moov
           return false unless @notice_of_change == other.notice_of_change
           return false unless @bank_account_verification == other.bank_account_verification
           return false unless @total == other.total
+          return false unless @bank_account_risk_verification == other.bank_account_risk_verification
           true
         end
       end

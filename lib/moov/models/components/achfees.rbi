@@ -24,4 +24,6 @@ class Moov::Models::Components::ACHFees
   def bank_account_verification=(str_); end
   def total(); end
   def total=(str_); end
+  def bank_account_risk_verification(); end
+  def bank_account_risk_verification=(str_); end
 end

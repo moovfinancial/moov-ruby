@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(account_id: ::String, source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPaymentMethodsResponse) }
+    sig { params(account_id: ::String, source_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::PaymentMethodType), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListPaymentMethodsResponse) }
     def list(account_id:, source_id: nil, payment_method_type: nil, timeout_ms: nil, http_headers: nil)
       # list - Retrieve a list of payment methods associated with a Moov account. Read our [payment methods 
       # guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
@@ -62,7 +62,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListPaymentMethodsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -83,7 +83,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -104,7 +104,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -140,7 +140,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod, Models::Components::InstantBankCreditPaymentMethod)))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod, Models::Components::InstantBankCreditPaymentMethod)))
           response = Models::Operations::ListPaymentMethodsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -168,7 +168,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, payment_method_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetPaymentMethodResponse) }
+    sig { params(account_id: ::String, payment_method_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetPaymentMethodResponse) }
     def get(account_id:, payment_method_id:, timeout_ms: nil, http_headers: nil)
       # get - Get the specified payment method associated with a Moov account. Read our [payment methods guide](https://docs.moov.io/guides/money-movement/payment-methods/) to learn more.
       #
@@ -187,7 +187,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -207,7 +207,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -227,7 +227,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -263,7 +263,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod, Models::Components::InstantBankCreditPaymentMethod))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Union.new(Models::Components::MoovWalletPaymentMethod, Models::Components::AchDebitFundPaymentMethod, Models::Components::AchDebitCollectPaymentMethod, Models::Components::AchCreditStandardPaymentMethod, Models::Components::AchCreditSameDayPaymentMethod, Models::Components::RtpCreditPaymentMethod, Models::Components::CardPaymentPaymentMethod, Models::Components::PushToCardPaymentMethod, Models::Components::PullFromCardPaymentMethod, Models::Components::ApplePayPaymentMethod, Models::Components::CardPresentPaymentPaymentMethod, Models::Components::InstantBankCreditPaymentMethod))
           response = Models::Operations::GetPaymentMethodResponse.new(
             status_code: http_response.status,
             content_type: content_type,

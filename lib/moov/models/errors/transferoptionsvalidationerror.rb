@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class TransferOptionsValidationError < StandardError
+      class TransferOptionsValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

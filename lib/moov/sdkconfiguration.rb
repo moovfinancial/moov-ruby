@@ -15,7 +15,7 @@ module Moov
 
   SERVERS = T.let([
     'https://api.moov.io', # 1 - Production API host
-  ].freeze, T::Array[String])
+  ].freeze, T::Array[::String])
   # Contains the list of servers available to the SDK
 
   class SDKConfiguration
@@ -30,7 +30,7 @@ module Moov
     sig { returns(T.nilable(::Moov::Utils::RetryConfig)) }
     attr_accessor :retry_config
 
-    sig { returns(T.nilable(Float)) }
+    sig { returns(T.nilable(::Float)) }
     attr_accessor :timeout
 
     
@@ -38,27 +38,27 @@ module Moov
     attr_accessor :security_source
 
     
-    sig { returns(T.nilable(String)) }
+    sig { returns(T.nilable(::String)) }
     attr_accessor :server_url
 
     
-    sig { returns(T.nilable(Integer)) }
+    sig { returns(T.nilable(::Integer)) }
     attr_accessor :server_idx
 
     
-    sig { returns(String) }
+    sig { returns(::String) }
     attr_accessor :language
 
-    sig { returns(String) }
+    sig { returns(::String) }
     attr_accessor :openapi_doc_version
 
-    sig { returns(String) }
+    sig { returns(::String) }
     attr_accessor :sdk_version
 
-    sig { returns(String) }
+    sig { returns(::String) }
     attr_accessor :gen_version
 
-    sig { returns(String) }
+    sig { returns(::String) }
     attr_accessor :user_agent
 
     sig do
@@ -66,11 +66,11 @@ module Moov
         client: T.nilable(Faraday::Connection),
         hooks: ::Moov::SDKHooks::Hooks,
         retry_config: T.nilable(::Moov::Utils::RetryConfig),
-        timeout_ms: T.nilable(Integer),
+        timeout_ms: T.nilable(::Integer),
         security: T.nilable(Models::Components::Security),
         security_source: T.nilable(T.proc.returns(Models::Components::Security)),
-        server_url: T.nilable(String),
-        server_idx: T.nilable(Integer)
+        server_url: T.nilable(::String),
+        server_idx: T.nilable(::Integer)
       ).void
     end
     def initialize(client, hooks, retry_config, timeout_ms, security, security_source, server_url, server_idx)
@@ -80,7 +80,7 @@ module Moov
       @server_url = server_url
       @timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
       @server_idx = server_idx.nil? ? 0 : server_idx
-      raise StandardError, "Invalid server index #{server_idx}" if @server_idx.negative? || @server_idx >= SERVERS.length
+      raise ::StandardError, "Invalid server index #{server_idx}" if @server_idx.negative? || @server_idx >= SERVERS.length
       if !security_source.nil?
         @security_source = security_source
       elsif !security.nil?
@@ -88,12 +88,12 @@ module Moov
       end
       @language = 'ruby'
       @openapi_doc_version = 'v2026.01.00'
-      @sdk_version = '26.2.21'
-      @gen_version = '2.954.8'
-      @user_agent = 'speakeasy-sdk/ruby 26.2.21 2.954.8 v2026.01.00 moov_ruby'
+      @sdk_version = '26.2.22'
+      @gen_version = '2.968.1'
+      @user_agent = 'speakeasy-sdk/ruby 26.2.22 2.968.1 v2026.01.00 moov_ruby'
     end
 
-    sig { returns([String, T::Hash[Symbol, String]]) }
+    sig { returns([::String, T::Hash[::Symbol, ::String]]) }
     def get_server_details
       return [@server_url.delete_suffix('/'), {}] if !@server_url.nil?
       @server_idx = T.must(@server_idx)

@@ -13,9 +13,9 @@ module Moov
         include Crystalline::MetadataFields
 
 
-        field :items, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::CreatePaymentLinkLineItemValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items') } }
+        field :items, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::CreatePaymentLinkLineItemValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('items') } }
 
-        sig { params(items: T.nilable(T::Hash[Symbol, Models::Components::CreatePaymentLinkLineItemValidationError])).void }
+        sig { params(items: T.nilable(T::Hash[::Symbol, Models::Components::CreatePaymentLinkLineItemValidationError])).void }
         def initialize(items: nil)
           @items = items
         end
