@@ -29,7 +29,7 @@ module Moov
 
         field :updated_on, ::DateTime, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('updatedOn'), required: true, 'decoder': ::Moov::Utils.datetime_from_iso_format(false) } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Describes the acceptance of the Terms of Service.
         field :terms_of_service, Crystalline::Nilable.new(Models::Components::TermsOfService), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('termsOfService') } }
 
@@ -44,7 +44,7 @@ module Moov
 
         field :disconnected_on, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('disconnectedOn'), 'decoder': ::Moov::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(account_id: ::String, mode: Models::Components::Mode, account_type: Models::Components::AccountType, display_name: ::String, profile: Models::Components::Profile, verification: Models::Components::Verification, created_on: ::DateTime, updated_on: ::DateTime, metadata: T.nilable(T::Hash[Symbol, ::String]), terms_of_service: T.nilable(Models::Components::TermsOfService), capabilities: T.nilable(T::Array[Models::Components::AccountCapability]), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupport), settings: T.nilable(Models::Components::Settings), disconnected_on: T.nilable(::DateTime)).void }
+        sig { params(account_id: ::String, mode: Models::Components::Mode, account_type: Models::Components::AccountType, display_name: ::String, profile: Models::Components::Profile, verification: Models::Components::Verification, created_on: ::DateTime, updated_on: ::DateTime, metadata: T.nilable(T::Hash[::Symbol, ::String]), terms_of_service: T.nilable(Models::Components::TermsOfService), capabilities: T.nilable(T::Array[Models::Components::AccountCapability]), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupport), settings: T.nilable(Models::Components::Settings), disconnected_on: T.nilable(::DateTime)).void }
         def initialize(account_id:, mode:, account_type:, display_name:, profile:, verification:, created_on:, updated_on:, metadata: nil, terms_of_service: nil, capabilities: nil, foreign_id: nil, customer_support: nil, settings: nil, disconnected_on: nil)
           @account_id = account_id
           @mode = mode

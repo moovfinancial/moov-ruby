@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class PatchWalletValidationError < StandardError
+      class PatchWalletValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

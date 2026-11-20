@@ -20,11 +20,11 @@ module Moov
 
         field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
 
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         field :billing_address, Crystalline::Nilable.new(Models::Components::BillingAddress), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
 
-        sig { params(state: T.nilable(Models::Components::UpdateIssuedCardState), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::BillingAddress)).void }
+        sig { params(state: T.nilable(Models::Components::UpdateIssuedCardState), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), billing_address: T.nilable(Models::Components::BillingAddress)).void }
         def initialize(state: nil, nickname: nil, metadata: nil, billing_address: nil)
           @state = state
           @nickname = nickname

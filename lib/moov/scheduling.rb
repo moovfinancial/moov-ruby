@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateScheduleResponse) }
+    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateScheduleResponse) }
     def create(upsert_schedule:, account_id:, timeout_ms: nil, http_headers: nil)
       # create - Describes the schedule to create or modify.
       #
@@ -60,15 +60,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :upsert_schedule, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -91,7 +91,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -112,7 +112,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -148,7 +148,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ScheduleResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ScheduleResponse)
           response = Models::Operations::CreateScheduleResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -170,7 +170,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -185,7 +185,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ScheduleValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ScheduleValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -206,7 +206,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), hydrate: T.nilable(Models::Operations::Hydrate), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListSchedulesResponse) }
+    sig { params(account_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), hydrate: T.nilable(Models::Operations::Hydrate), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListSchedulesResponse) }
     def list(account_id:, skip: nil, count: nil, hydrate: nil, timeout_ms: nil, http_headers: nil)
       # list - Describes a list of schedules associated with an account. Append the `hydrate=accounts` query parameter to include partial account details in the response.
       #
@@ -227,7 +227,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListSchedulesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -248,7 +248,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -269,7 +269,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -305,7 +305,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::ScheduleListResponse))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::ScheduleListResponse))
           response = Models::Operations::ListSchedulesResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -333,7 +333,7 @@ module Moov
     end
 
 
-    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateScheduleResponse) }
+    sig { params(upsert_schedule: Models::Components::UpsertSchedule, account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UpdateScheduleResponse) }
     def update(upsert_schedule:, account_id:, schedule_id:, timeout_ms: nil, http_headers: nil)
       # update - Describes the schedule to modify.
       #
@@ -353,15 +353,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :upsert_schedule, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -384,7 +384,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -405,7 +405,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -441,7 +441,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ScheduleResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ScheduleResponse)
           response = Models::Operations::UpdateScheduleResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -463,7 +463,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -478,7 +478,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ScheduleValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ScheduleValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -499,7 +499,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetSchedulesResponse) }
+    sig { params(account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetSchedulesResponse) }
     def get(account_id:, schedule_id:, timeout_ms: nil, http_headers: nil)
       # get - Describes a schedule associated with an account. Requires at least 1 occurrence or recurTransfer to be specified.
       #
@@ -518,7 +518,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -538,7 +538,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -558,7 +558,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -594,7 +594,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ScheduleResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ScheduleResponse)
           response = Models::Operations::GetSchedulesResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -622,7 +622,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CancelScheduleResponse) }
+    sig { params(account_id: ::String, schedule_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CancelScheduleResponse) }
     def cancel(account_id:, schedule_id:, timeout_ms: nil, http_headers: nil)
       # cancel - Describes the schedule to cancel.
       #
@@ -641,7 +641,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -661,7 +661,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -681,7 +681,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -730,7 +730,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -751,7 +751,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetScheduledOccurrenceResponse) }
+    sig { params(account_id: ::String, schedule_id: ::String, occurrence_filter: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetScheduledOccurrenceResponse) }
     def get_occurrance(account_id:, schedule_id:, occurrence_filter:, timeout_ms: nil, http_headers: nil)
       # get_occurrance - Gets a specific occurrence.
       #
@@ -771,7 +771,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -791,7 +791,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -811,7 +811,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -847,7 +847,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::OccurrencesResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::OccurrencesResponse)
           response = Models::Operations::GetScheduledOccurrenceResponse.new(
             status_code: http_response.status,
             content_type: content_type,

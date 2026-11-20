@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(create_transfer_options: Models::Components::CreateTransferOptions, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTransferOptionsResponse) }
+    sig { params(create_transfer_options: Models::Components::CreateTransferOptions, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateTransferOptionsResponse) }
     def generate_options(create_transfer_options:, account_id:, timeout_ms: nil, http_headers: nil)
       # generate_options - Generate available payment method options for one or multiple transfer participants depending on the accountID or paymentMethodID you 
       # supply in the request body.
@@ -65,15 +65,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_transfer_options, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -96,7 +96,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -117,7 +117,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -153,7 +153,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::TransferOptions)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::TransferOptions)
           response = Models::Operations::CreateTransferOptionsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -175,7 +175,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -190,7 +190,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::TransferOptionsValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::TransferOptionsValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -211,7 +211,7 @@ module Moov
     end
 
 
-    sig { params(create_transfer: Models::Components::CreateTransfer, x_idempotency_key: ::String, account_id: ::String, x_wait_for: T.nilable(Models::Components::TransferWaitFor), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateTransferResponse) }
+    sig { params(create_transfer: Models::Components::CreateTransfer, x_idempotency_key: ::String, account_id: ::String, x_wait_for: T.nilable(Models::Components::TransferWaitFor), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateTransferResponse) }
     def create(create_transfer:, x_idempotency_key:, account_id:, x_wait_for: nil, timeout_ms: nil, http_headers: nil)
       # create - Move money by providing the source, destination, and amount in the request body.
       #
@@ -234,15 +234,15 @@ module Moov
         request
       )
       headers = Utils.get_headers(request)
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_transfer, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -265,7 +265,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -286,7 +286,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -322,7 +322,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::CreatedTransfer)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::CreatedTransfer)
           response = Models::Operations::CreateTransferResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -344,7 +344,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::AsyncTransfer)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::AsyncTransfer)
           response = Models::Operations::CreateTransferResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -366,7 +366,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Transfer)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Transfer)
           response = Models::Operations::CreateTransferResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -388,7 +388,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -403,7 +403,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::TransferError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::TransferError)
           obj.raw_response = http_response
           raise obj
         else
@@ -418,7 +418,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::TransferValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::TransferValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -439,7 +439,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListTransfersRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListTransfersResponse) }
+    sig { params(request: Models::Operations::ListTransfersRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListTransfersResponse) }
     def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List all the transfers associated with a particular Moov account. 
       #
@@ -466,7 +466,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListTransfersRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -487,7 +487,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -508,7 +508,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -544,7 +544,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::Transfer))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::Transfer))
           response = Models::Operations::ListTransfersResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -566,7 +566,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ListTransfersValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ListTransfersValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -587,7 +587,7 @@ module Moov
     end
 
 
-    sig { params(batch_get_transfers_request: Models::Components::BatchGetTransfersRequest, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::BatchGetTransfersResponse) }
+    sig { params(batch_get_transfers_request: Models::Components::BatchGetTransfersRequest, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::BatchGetTransfersResponse) }
     def batch_get_transfers(batch_get_transfers_request:, account_id:, timeout_ms: nil, http_headers: nil)
       # batch_get_transfers - Retrieve transfer details for multiple transfers in one request. The response is a map from each
       # requested transfer ID to its full transfer details when available; IDs that are not found or not
@@ -610,15 +610,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :batch_get_transfers_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -641,7 +641,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -662,7 +662,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -698,7 +698,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Hash.new(Symbol, Models::Components::Transfer))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Hash.new(::Symbol, Models::Components::Transfer))
           response = Models::Operations::BatchGetTransfersResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -726,7 +726,7 @@ module Moov
     end
 
 
-    sig { params(transfer_id: ::String, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetTransferResponse) }
+    sig { params(transfer_id: ::String, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetTransferResponse) }
     def get(transfer_id:, account_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieve full transfer details for an individual transfer of a particular Moov account. 
       #
@@ -748,7 +748,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -768,7 +768,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -788,7 +788,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -824,7 +824,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Transfer)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Transfer)
           response = Models::Operations::GetTransferResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -852,7 +852,7 @@ module Moov
     end
 
 
-    sig { params(patch_transfer: Models::Components::PatchTransfer, transfer_id: ::String, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateTransferResponse) }
+    sig { params(patch_transfer: Models::Components::PatchTransfer, transfer_id: ::String, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::UpdateTransferResponse) }
     def update(patch_transfer:, transfer_id:, account_id:, timeout_ms: nil, http_headers: nil)
       # update - Update the metadata contained on a transfer.
       #
@@ -874,15 +874,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :patch_transfer, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -905,7 +905,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -926,7 +926,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -962,7 +962,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Transfer)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Transfer)
           response = Models::Operations::UpdateTransferResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -984,7 +984,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::PatchTransferValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::PatchTransferValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1005,7 +1005,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, x_idempotency_key: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateCancellationResponse) }
+    sig { params(account_id: ::String, transfer_id: ::String, x_idempotency_key: T.nilable(::String), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateCancellationResponse) }
     def create_cancellation(account_id:, transfer_id:, x_idempotency_key: nil, timeout_ms: nil, http_headers: nil)
       # create_cancellation -   Initiate a cancellation for a card, ACH, or queued transfer.
       #   
@@ -1028,7 +1028,7 @@ module Moov
         request
       )
       headers = Utils.get_headers(request)
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1048,7 +1048,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1068,7 +1068,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1104,7 +1104,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Cancellation)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Cancellation)
           response = Models::Operations::CreateCancellationResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1126,7 +1126,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1147,7 +1147,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListCancellationsResponse) }
+    sig { params(account_id: ::String, transfer_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListCancellationsResponse) }
     def list_cancellations(account_id:, transfer_id:, timeout_ms: nil, http_headers: nil)
       # list_cancellations -   Get a list of cancellations for a transfer.
       #
@@ -1166,7 +1166,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1186,7 +1186,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1206,7 +1206,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1242,7 +1242,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::Cancellation))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::Cancellation))
           response = Models::Operations::ListCancellationsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1270,7 +1270,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, cancellation_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetCancellationResponse) }
+    sig { params(account_id: ::String, transfer_id: ::String, cancellation_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetCancellationResponse) }
     def get_cancellation(account_id:, transfer_id:, cancellation_id:, timeout_ms: nil, http_headers: nil)
       # get_cancellation -   Get details of a cancellation for a transfer.
       #   
@@ -1290,7 +1290,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1310,7 +1310,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1330,7 +1330,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1366,7 +1366,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Cancellation)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Cancellation)
           response = Models::Operations::GetCancellationResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1394,7 +1394,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::InitiateRefundRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::InitiateRefundResponse) }
+    sig { params(request: Models::Operations::InitiateRefundRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::InitiateRefundResponse) }
     def initiate_refund(request:, timeout_ms: nil, http_headers: nil)
       # initiate_refund - Initiate a refund for a card transfer.
       # The `accountID` must identify the partner account for the transfer.
@@ -1413,14 +1413,14 @@ module Moov
         request
       )
       headers = Utils.get_headers(request)
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_refund, :json)
       headers['content-type'] = req_content_type
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -1443,7 +1443,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1464,7 +1464,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1500,7 +1500,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Union.new(Models::Components::CardAcquiringRefund, Models::Components::AsyncCreatedRefund))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Union.new(Models::Components::CardAcquiringRefund, Models::Components::AsyncCreatedRefund))
           response = Models::Operations::InitiateRefundResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1522,7 +1522,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::CardAcquiringRefund)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::CardAcquiringRefund)
           response = Models::Operations::InitiateRefundResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1544,7 +1544,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1559,7 +1559,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::CardAcquiringRefundError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::CardAcquiringRefundError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1574,7 +1574,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::RefundValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::RefundValidationError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1595,7 +1595,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, transfer_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListRefundsResponse) }
+    sig { params(account_id: ::String, transfer_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListRefundsResponse) }
     def list_refunds(account_id:, transfer_id:, timeout_ms: nil, http_headers: nil)
       # list_refunds - Get a list of refunds for a card transfer.
       #
@@ -1614,7 +1614,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1634,7 +1634,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1654,7 +1654,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1690,7 +1690,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::CardAcquiringRefund))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::CardAcquiringRefund))
           response = Models::Operations::ListRefundsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1718,7 +1718,7 @@ module Moov
     end
 
 
-    sig { params(transfer_id: ::String, account_id: ::String, refund_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetRefundResponse) }
+    sig { params(transfer_id: ::String, account_id: ::String, refund_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetRefundResponse) }
     def get_refund(transfer_id:, account_id:, refund_id:, timeout_ms: nil, http_headers: nil)
       # get_refund - Get details of a refund for a card transfer.
       #
@@ -1738,7 +1738,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1758,7 +1758,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1778,7 +1778,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1814,7 +1814,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::CardAcquiringRefund)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::CardAcquiringRefund)
           response = Models::Operations::GetRefundResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1842,7 +1842,7 @@ module Moov
     end
 
 
-    sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, create_reversal: T.nilable(Models::Components::CreateReversal), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateReversalResponse) }
+    sig { params(x_idempotency_key: ::String, account_id: ::String, transfer_id: ::String, create_reversal: T.nilable(Models::Components::CreateReversal), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateReversalResponse) }
     def create_reversal(x_idempotency_key:, account_id:, transfer_id:, create_reversal: nil, timeout_ms: nil, http_headers: nil)
       # create_reversal - Reverses a card transfer by initiating a cancellation or refund depending on the transaction status.
       # In v2026.10 and later, reversing an auth-capture `card-payment` transfer with no captures cancels the entire `capturableAmount`.
@@ -1868,14 +1868,14 @@ module Moov
         request
       )
       headers = Utils.get_headers(request)
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_reversal, :json)
       headers['content-type'] = req_content_type
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -1898,7 +1898,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1919,7 +1919,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1955,7 +1955,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Union.new(Models::Components::ReversedWithCancellation, Models::Components::ReversedWithRefund))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Union.new(Models::Components::ReversedWithCancellation, Models::Components::ReversedWithRefund))
           response = Models::Operations::CreateReversalResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1977,7 +1977,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1992,7 +1992,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ReversalValidationError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ReversalValidationError)
           obj.raw_response = http_response
           raise obj
         else

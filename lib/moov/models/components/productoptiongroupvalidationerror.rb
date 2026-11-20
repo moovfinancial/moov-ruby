@@ -21,9 +21,9 @@ module Moov
 
         field :max_select, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('maxSelect') } }
 
-        field :options, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::ProductOptionValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
+        field :options, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::ProductOptionValidationError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('options') } }
 
-        sig { params(name: T.nilable(::String), description: T.nilable(::String), min_select: T.nilable(::String), max_select: T.nilable(::String), options: T.nilable(T::Hash[Symbol, Models::Components::ProductOptionValidationError])).void }
+        sig { params(name: T.nilable(::String), description: T.nilable(::String), min_select: T.nilable(::String), max_select: T.nilable(::String), options: T.nilable(T::Hash[::Symbol, Models::Components::ProductOptionValidationError])).void }
         def initialize(name: nil, description: nil, min_select: nil, max_select: nil, options: nil)
           @name = name
           @description = description

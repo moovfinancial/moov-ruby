@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(request: Models::Operations::ListFeePlanAgreementsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeePlanAgreementsResponse) }
+    sig { params(request: Models::Operations::ListFeePlanAgreementsRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListFeePlanAgreementsResponse) }
     def list_fee_plan_agreements(request:, timeout_ms: nil, http_headers: nil)
       # list_fee_plan_agreements - List all fee plan agreements associated with an account.
       #
@@ -56,7 +56,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListFeePlanAgreementsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -77,7 +77,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -98,7 +98,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -134,7 +134,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::FeePlanAgreement))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::FeePlanAgreement))
           response = Models::Operations::ListFeePlanAgreementsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -162,7 +162,7 @@ module Moov
     end
 
 
-    sig { params(create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement, account_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::CreateFeePlanAgreementsResponse) }
+    sig { params(create_fee_plan_agreement: Models::Components::CreateFeePlanAgreement, account_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::CreateFeePlanAgreementsResponse) }
     def create_fee_plan_agreements(create_fee_plan_agreement:, account_id:, timeout_ms: nil, http_headers: nil)
       # create_fee_plan_agreements - Creates the subscription of a fee plan to a merchant account. Merchants are required to accept the fee plan terms prior to activation.
       #
@@ -181,15 +181,15 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :create_fee_plan_agreement, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -212,7 +212,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -233,7 +233,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -269,7 +269,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::FeePlanAgreement)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::FeePlanAgreement)
           response = Models::Operations::CreateFeePlanAgreementsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -291,7 +291,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::GenericError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::GenericError)
           obj.raw_response = http_response
           raise obj
         else
@@ -306,7 +306,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::FeePlanAgreementError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::FeePlanAgreementError)
           obj.raw_response = http_response
           raise obj
         else
@@ -327,7 +327,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, plan_i_ds: T.nilable(T::Array[::String]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeePlansResponse) }
+    sig { params(account_id: ::String, plan_i_ds: T.nilable(T::Array[::String]), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListFeePlansResponse) }
     def list_fee_plans(account_id:, plan_i_ds: nil, timeout_ms: nil, http_headers: nil)
       # list_fee_plans - List all fee plans available for use by an account. This is intended to be used by an account when 
       # selecting a fee plan to apply to a connected account.
@@ -347,7 +347,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListFeePlansRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -368,7 +368,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -389,7 +389,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -425,7 +425,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::FeePlan))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::FeePlan))
           response = Models::Operations::ListFeePlansResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -453,7 +453,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListFeeRevenueRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeeRevenueResponse) }
+    sig { params(request: Models::Operations::ListFeeRevenueRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListFeeRevenueResponse) }
     def list_fee_revenue(request:, timeout_ms: nil, http_headers: nil)
       # list_fee_revenue - Used by a partner. Retrieve revenue generated from merchant fees.
       #
@@ -468,7 +468,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListFeeRevenueRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -489,7 +489,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -510,7 +510,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -546,7 +546,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
           response = Models::Operations::ListFeeRevenueResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -574,7 +574,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::RetrieveFeesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::RetrieveFeesResponse) }
+    sig { params(request: Models::Operations::RetrieveFeesRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::RetrieveFeesResponse) }
     def retrieve_fees(request:, timeout_ms: nil, http_headers: nil)
       # retrieve_fees - Retrieve fees assessed to an account.
       #
@@ -589,7 +589,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::RetrieveFeesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -610,7 +610,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -631,7 +631,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -667,7 +667,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
           response = Models::Operations::RetrieveFeesResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -695,7 +695,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListFeesFetchResponse) }
+    sig { params(account_id: ::String, list_fees_fetch_request: T.nilable(Models::Components::ListFeesFetchRequest), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListFeesFetchResponse) }
     def list_fees_fetch(account_id:, list_fees_fetch_request: nil, timeout_ms: nil, http_headers: nil)
       # list_fees_fetch - List fees associated with an account.
       #
@@ -714,14 +714,14 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :list_fees_fetch_request, :json)
       headers['content-type'] = req_content_type
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -744,7 +744,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -765,7 +765,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -801,7 +801,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
           response = Models::Operations::ListFeesFetchResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -829,7 +829,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListPartnerPricingAgreementsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListPartnerPricingAgreementsResponse) }
+    sig { params(request: Models::Operations::ListPartnerPricingAgreementsRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListPartnerPricingAgreementsResponse) }
     def list_partner_pricing_agreements(request:, timeout_ms: nil, http_headers: nil)
       # list_partner_pricing_agreements - List all partner pricing agreements associated with an account.
       #
@@ -844,7 +844,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListPartnerPricingAgreementsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -865,7 +865,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -886,7 +886,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -922,7 +922,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::PartnerPricingAgreement))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::PartnerPricingAgreement))
           response = Models::Operations::ListPartnerPricingAgreementsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -950,7 +950,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListResidualsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListResidualsResponse) }
+    sig { params(request: Models::Operations::ListResidualsRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListResidualsResponse) }
     def list_residuals(request:, timeout_ms: nil, http_headers: nil)
       # list_residuals - List all residuals associated with an account.
       #
@@ -965,7 +965,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListResidualsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -986,7 +986,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1007,7 +1007,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1043,7 +1043,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::Residual))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::Residual))
           response = Models::Operations::ListResidualsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1071,7 +1071,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, residual_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetResidualResponse) }
+    sig { params(account_id: ::String, residual_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetResidualResponse) }
     def get_residual(account_id:, residual_id:, timeout_ms: nil, http_headers: nil)
       # get_residual - Get a residual associated with an account.
       #
@@ -1090,7 +1090,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -1110,7 +1110,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1130,7 +1130,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1166,7 +1166,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Residual)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::Residual)
           response = Models::Operations::GetResidualResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1194,7 +1194,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListResidualFeesRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListResidualFeesResponse) }
+    sig { params(request: Models::Operations::ListResidualFeesRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListResidualFeesResponse) }
     def list_residual_fees(request:, timeout_ms: nil, http_headers: nil)
       # list_residual_fees - List all fees associated with a residual.
       #
@@ -1209,7 +1209,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListResidualFeesRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1230,7 +1230,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1251,7 +1251,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1287,7 +1287,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IncurredFee))
           response = Models::Operations::ListResidualFeesResponse.new(
             status_code: http_response.status,
             content_type: content_type,

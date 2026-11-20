@@ -19,11 +19,11 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # Successfully initiated a reversal.
         field :reversal, Crystalline::Nilable.new(Crystalline::Union.new(Models::Components::ReversedWithCancellation, Models::Components::ReversedWithRefund))
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], reversal: T.nilable(T.any(Models::Components::ReversedWithCancellation, Models::Components::ReversedWithRefund))).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], reversal: T.nilable(T.any(Models::Components::ReversedWithCancellation, Models::Components::ReversedWithRefund))).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, reversal: nil)
           @content_type = content_type
           @status_code = status_code
