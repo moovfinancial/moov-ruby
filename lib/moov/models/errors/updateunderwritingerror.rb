@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class UpdateUnderwritingError < StandardError
+      class UpdateUnderwritingError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

@@ -8,18 +8,18 @@ module Moov
   module Models
     module Errors
 
-      class AddCapabilitiesError < StandardError
+      class AddCapabilitiesError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
 
         field :error, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('error') } }
 
-        field :capabilities, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
+        field :capabilities, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(error: T.nilable(::String), capabilities: T.nilable(T::Hash[Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(error: T.nilable(::String), capabilities: T.nilable(T::Hash[::Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(error: nil, capabilities: nil, raw_response: nil)
           @error = error
           @capabilities = capabilities

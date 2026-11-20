@@ -12,7 +12,7 @@ module Moov
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Where funds for a transfer originate. For the source, you must include either a `paymentMethodID` or a `transferID`.
+        # Where funds for a transfer originate. For the source, you must include exactly one of `paymentMethodID`, `paymentToken`, or `transferID`.
         field :source, Models::Components::CreateTransferSource, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('source'), required: true } }
         # The final stage of a transfer and the ultimate recipient of the funds.
         field :destination, Models::Components::CreateTransferDestination, { 'format_json': { 'letter_case': ::Moov::Utils.field_name('destination'), required: true } }
@@ -23,7 +23,7 @@ module Moov
         # An optional description of the transfer that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         field :sales_tax_amount, Crystalline::Nilable.new(Models::Components::Amount), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('salesTaxAmount') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
@@ -32,7 +32,7 @@ module Moov
         # When line items are provided, their total plus tax must equal the transfer amount.
         field :line_items, Crystalline::Nilable.new(Models::Components::CreateTransferLineItems), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('lineItems') } }
 
-        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems)).void }
+        sig { params(source: Models::Components::CreateTransferSource, destination: Models::Components::CreateTransferDestination, amount: Models::Components::Amount, facilitator_fee: T.nilable(Models::Components::FacilitatorFee), description: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), sales_tax_amount: T.nilable(Models::Components::Amount), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::CreateTransferLineItems)).void }
         def initialize(source:, destination:, amount:, facilitator_fee: nil, description: nil, metadata: nil, sales_tax_amount: nil, foreign_id: nil, line_items: nil)
           @source = source
           @destination = destination

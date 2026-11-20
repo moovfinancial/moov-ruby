@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class UpdatePaymentLinkError < StandardError
+      class UpdatePaymentLinkError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

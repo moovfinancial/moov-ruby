@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class GenericError < StandardError
+      class GenericError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

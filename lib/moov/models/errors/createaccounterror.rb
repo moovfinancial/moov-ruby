@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class CreateAccountError < StandardError
+      class CreateAccountError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -27,11 +27,11 @@ module Moov
 
         field :settings, Crystalline::Nilable.new(Models::Components::CreateAccountSettings), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('settings') } }
 
-        field :capabilities, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
+        field :capabilities, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('capabilities') } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('-') } }
 
-        sig { params(account_type: T.nilable(::String), profile: T.nilable(Models::Components::CreateProfileError), metadata: T.nilable(::String), terms_of_service: T.nilable(Models::Components::TermsOfServiceError), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupportError), settings: T.nilable(Models::Components::CreateAccountSettings), capabilities: T.nilable(T::Hash[Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(account_type: T.nilable(::String), profile: T.nilable(Models::Components::CreateProfileError), metadata: T.nilable(::String), terms_of_service: T.nilable(Models::Components::TermsOfServiceError), foreign_id: T.nilable(::String), customer_support: T.nilable(Models::Components::CustomerSupportError), settings: T.nilable(Models::Components::CreateAccountSettings), capabilities: T.nilable(T::Hash[::Symbol, ::String]), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(account_type: nil, profile: nil, metadata: nil, terms_of_service: nil, foreign_id: nil, customer_support: nil, settings: nil, capabilities: nil, raw_response: nil)
           @account_type = account_type
           @profile = profile
