@@ -17,13 +17,13 @@ module Moov
 
         field :nickname, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('nickname') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
 
         field :billing_address, Crystalline::Nilable.new(Models::Components::Address), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('billingAddress') } }
         # Mutable spend controls for the card.
         field :controls, Crystalline::Nilable.new(Models::Components::IssuingControls), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('controls') } }
 
-        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), controls: T.nilable(Models::Components::IssuingControls)).void }
+        sig { params(authorized_user_account_id: T.nilable(::String), nickname: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), billing_address: T.nilable(Models::Components::Address), controls: T.nilable(Models::Components::IssuingControls)).void }
         def initialize(authorized_user_account_id: nil, nickname: nil, metadata: nil, billing_address: nil, controls: nil)
           @authorized_user_account_id = authorized_user_account_id
           @nickname = nickname

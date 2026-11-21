@@ -15,13 +15,13 @@ module Moov
 
         field :mode, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('mode') } }
 
-        field :categories, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('categories') } }
+        field :categories, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('categories') } }
 
-        field :custom_mc_cs, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customMCCs') } }
+        field :custom_mc_cs, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('customMCCs') } }
 
-        field :exempt_merchants, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::MerchantEntryError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('exemptMerchants') } }
+        field :exempt_merchants, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::MerchantEntryError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('exemptMerchants') } }
 
-        sig { params(mode: T.nilable(::String), categories: T.nilable(T::Hash[Symbol, ::String]), custom_mc_cs: T.nilable(T::Hash[Symbol, ::String]), exempt_merchants: T.nilable(T::Hash[Symbol, Models::Components::MerchantEntryError])).void }
+        sig { params(mode: T.nilable(::String), categories: T.nilable(T::Hash[::Symbol, ::String]), custom_mc_cs: T.nilable(T::Hash[::Symbol, ::String]), exempt_merchants: T.nilable(T::Hash[::Symbol, Models::Components::MerchantEntryError])).void }
         def initialize(mode: nil, categories: nil, custom_mc_cs: nil, exempt_merchants: nil)
           @mode = mode
           @categories = categories

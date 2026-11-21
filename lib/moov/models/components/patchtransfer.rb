@@ -13,11 +13,11 @@ module Moov
         include Crystalline::MetadataFields
 
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
 
-        sig { params(metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String)).void }
+        sig { params(metadata: T.nilable(T::Hash[::Symbol, ::String]), foreign_id: T.nilable(::String)).void }
         def initialize(metadata: nil, foreign_id: nil)
           @metadata = metadata
           @foreign_id = foreign_id

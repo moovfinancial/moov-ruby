@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class AuthorizationSimulationValidationError < StandardError
+      class AuthorizationSimulationValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

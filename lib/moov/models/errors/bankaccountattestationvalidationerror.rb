@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
       # Describes which fields of a bank account attestation request failed validation.
-      class BankAccountAttestationValidationError < StandardError
+      class BankAccountAttestationValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

@@ -18,4 +18,6 @@ class Moov::Models::Operations::GetInvoiceResponse
   def headers=(str_); end
   def invoice(); end
   def invoice=(str_); end
+  def bytes(); end
+  def bytes=(str_); end
 end

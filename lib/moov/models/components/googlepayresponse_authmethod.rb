@@ -7,8 +7,8 @@
 module Moov
   module Models
     module Components
-      # AuthMethod - The authentication method used for the Google Pay token.
-      class AuthMethod
+      # GooglePayResponseAuthMethod - The authentication method used for the Google Pay token.
+      class GooglePayResponseAuthMethod
         include ::Crystalline::Enum
         enums do
           PAN_ONLY = new('PAN_ONLY')

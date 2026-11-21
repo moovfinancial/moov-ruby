@@ -1,4 +1,4 @@
-# AuthMethod
+# GooglePayResponseAuthMethod
 
 The authentication method used for the Google Pay token.
 
@@ -7,10 +7,10 @@ The authentication method used for the Google Pay token.
 ```ruby
 require "moov_ruby"
 
-value = AuthMethod::PAN_ONLY
+value = GooglePayResponseAuthMethod::PAN_ONLY
 
 # Open enum: use .deserialize() to create instances from custom string values
-custom = AuthMethod.deserialize("custom_value")
+custom = GooglePayResponseAuthMethod.deserialize("custom_value")
 ```
 
 

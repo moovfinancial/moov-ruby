@@ -25,9 +25,9 @@ module Moov
         # Defines the specific parameters used for fee calculation.
         field :fee_properties, Crystalline::Nilable.new(Models::Components::FeeProperties), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeProperties') } }
         # Defines the specific conditions that must be met for the fee to be applied.
-        field :fee_conditions, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::Object)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeConditions') } }
+        field :fee_conditions, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::Object)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('feeConditions') } }
 
-        sig { params(fee_model: Models::Components::FeeModel, fee_category: Models::Components::FeeCategory, billable_fee_id: T.nilable(::String), billable_event: T.nilable(::String), fee_name: T.nilable(::String), fee_properties: T.nilable(Models::Components::FeeProperties), fee_conditions: T.nilable(T::Hash[Symbol, ::Object])).void }
+        sig { params(fee_model: Models::Components::FeeModel, fee_category: Models::Components::FeeCategory, billable_fee_id: T.nilable(::String), billable_event: T.nilable(::String), fee_name: T.nilable(::String), fee_properties: T.nilable(Models::Components::FeeProperties), fee_conditions: T.nilable(T::Hash[::Symbol, ::Object])).void }
         def initialize(fee_model:, fee_category:, billable_fee_id: nil, billable_event: nil, fee_name: nil, fee_properties: nil, fee_conditions: nil)
           @fee_model = fee_model
           @fee_category = fee_category

@@ -19,7 +19,7 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # Response body for returning the raw contents of a file.
         field :two_hundred_application_pdf_bytes, Crystalline::Nilable.new(::String)
         # Response body for returning the raw contents of a file.
@@ -31,7 +31,7 @@ module Moov
         # Response body for returning the raw contents of a file.
         field :two_hundred_application_octet_stream_bytes, Crystalline::Nilable.new(::String)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], two_hundred_application_pdf_bytes: T.nilable(::String), two_hundred_image_png_bytes: T.nilable(::String), two_hundred_image_jpeg_bytes: T.nilable(::String), two_hundred_text_plain_bytes: T.nilable(::String), two_hundred_application_octet_stream_bytes: T.nilable(::String)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], two_hundred_application_pdf_bytes: T.nilable(::String), two_hundred_image_png_bytes: T.nilable(::String), two_hundred_image_jpeg_bytes: T.nilable(::String), two_hundred_text_plain_bytes: T.nilable(::String), two_hundred_application_octet_stream_bytes: T.nilable(::String)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, two_hundred_application_pdf_bytes: nil, two_hundred_image_png_bytes: nil, two_hundred_image_jpeg_bytes: nil, two_hundred_text_plain_bytes: nil, two_hundred_application_octet_stream_bytes: nil)
           @content_type = content_type
           @status_code = status_code

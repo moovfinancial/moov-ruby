@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class ClearingSimulationValidationError < StandardError
+      class ClearingSimulationValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

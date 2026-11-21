@@ -20,7 +20,7 @@ module Moov
         # Options for payment links used to collect an ACH payment.
         field :ach_details, Crystalline::Nilable.new(Models::Components::ACHPaymentDetails), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('achDetails') } }
         # Optional free-form metadata for the transfer.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # The minimum and maximum amounts the payor can specify.
         #
         # When omitted, the payor may enter any amount. Both bounds must use USD.
@@ -30,7 +30,7 @@ module Moov
         # Each suggested amount must use USD and, when an `amountRange` is set, fall within it.
         field :suggested_amounts, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AmountDecimal)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('suggestedAmounts') } }
 
-        sig { params(allowed_methods: T::Array[Models::Components::CollectionPaymentMethodType], card_details: T.nilable(Models::Components::CardPaymentDetails), ach_details: T.nilable(Models::Components::ACHPaymentDetails), metadata: T.nilable(T::Hash[Symbol, ::String]), amount_range: T.nilable(Models::Components::AmountDecimalRange), suggested_amounts: T.nilable(T::Array[Models::Components::AmountDecimal])).void }
+        sig { params(allowed_methods: T::Array[Models::Components::CollectionPaymentMethodType], card_details: T.nilable(Models::Components::CardPaymentDetails), ach_details: T.nilable(Models::Components::ACHPaymentDetails), metadata: T.nilable(T::Hash[::Symbol, ::String]), amount_range: T.nilable(Models::Components::AmountDecimalRange), suggested_amounts: T.nilable(T::Array[Models::Components::AmountDecimal])).void }
         def initialize(allowed_methods:, card_details: nil, ach_details: nil, metadata: nil, amount_range: nil, suggested_amounts: nil)
           @allowed_methods = allowed_methods
           @card_details = card_details

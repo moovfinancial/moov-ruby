@@ -23,7 +23,7 @@ module Moov
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Moov
 
 
 
-    sig { params(request: Models::Operations::ListIssuedCardActivityRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardActivityResponse) }
+    sig { params(request: Models::Operations::ListIssuedCardActivityRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListIssuedCardActivityResponse) }
     def list_activity(request:, timeout_ms: nil, http_headers: nil)
       # list_activity - List issued card activity associated with a Moov account.
       #
@@ -58,7 +58,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListIssuedCardActivityRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -79,7 +79,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -100,7 +100,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -136,7 +136,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardActivity))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardActivity))
           response = Models::Operations::ListIssuedCardActivityResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -164,7 +164,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardActivityResponse) }
+    sig { params(account_id: ::String, id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetIssuedCardActivityResponse) }
     def get_activity(account_id:, id:, timeout_ms: nil, http_headers: nil)
       # get_activity - Retrieve a single issued card activity associated with a Moov account.
       #
@@ -183,7 +183,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -203,7 +203,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -223,7 +223,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -259,7 +259,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::IssuedCardActivity)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::IssuedCardActivity)
           response = Models::Operations::GetIssuedCardActivityResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -287,7 +287,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListIssuedCardAuthorizationsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardAuthorizationsResponse) }
+    sig { params(request: Models::Operations::ListIssuedCardAuthorizationsRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListIssuedCardAuthorizationsResponse) }
     def list_authorizations(request:, timeout_ms: nil, http_headers: nil)
       # list_authorizations - List issued card authorizations associated with a Moov account.
       #
@@ -302,7 +302,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListIssuedCardAuthorizationsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -323,7 +323,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -344,7 +344,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -380,7 +380,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardAuthorization))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardAuthorization))
           response = Models::Operations::ListIssuedCardAuthorizationsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -408,7 +408,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, authorization_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardAuthorizationResponse) }
+    sig { params(account_id: ::String, authorization_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetIssuedCardAuthorizationResponse) }
     def get_authorization(account_id:, authorization_id:, timeout_ms: nil, http_headers: nil)
       # get_authorization - Retrieves details of an authorization associated with a specific Moov account.
       #
@@ -427,7 +427,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -447,7 +447,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -467,7 +467,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -503,7 +503,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::IssuedCardAuthorization)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::IssuedCardAuthorization)
           response = Models::Operations::GetIssuedCardAuthorizationResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -531,7 +531,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, authorization_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardAuthorizationEventsResponse) }
+    sig { params(account_id: ::String, authorization_id: ::String, skip: T.nilable(::Integer), count: T.nilable(::Integer), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListIssuedCardAuthorizationEventsResponse) }
     def list_authorization_events(account_id:, authorization_id:, skip: nil, count: nil, timeout_ms: nil, http_headers: nil)
       # list_authorization_events - List card network and Moov platform events that affect the authorization and its hold on a wallet balance.
       #
@@ -552,7 +552,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListIssuedCardAuthorizationEventsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -573,7 +573,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -594,7 +594,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -630,7 +630,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardAuthorizationEvent))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardAuthorizationEvent))
           response = Models::Operations::ListIssuedCardAuthorizationEventsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -658,7 +658,7 @@ module Moov
     end
 
 
-    sig { params(request: Models::Operations::ListIssuedCardTransactionsRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ListIssuedCardTransactionsResponse) }
+    sig { params(request: Models::Operations::ListIssuedCardTransactionsRequest, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ListIssuedCardTransactionsResponse) }
     def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List issued card transactions associated with a Moov account.
       #
@@ -673,7 +673,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ListIssuedCardTransactionsRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -694,7 +694,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -715,7 +715,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -751,7 +751,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardTransaction))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(Models::Components::IssuedCardTransaction))
           response = Models::Operations::ListIssuedCardTransactionsResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -779,7 +779,7 @@ module Moov
     end
 
 
-    sig { params(account_id: ::String, card_transaction_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetIssuedCardTransactionResponse) }
+    sig { params(account_id: ::String, card_transaction_id: ::String, timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetIssuedCardTransactionResponse) }
     def get(account_id:, card_transaction_id:, timeout_ms: nil, http_headers: nil)
       # get - Retrieves details of an issued card transaction associated with a specific Moov account.
       #
@@ -798,7 +798,7 @@ module Moov
         request
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -818,7 +818,7 @@ module Moov
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -838,7 +838,7 @@ module Moov
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -874,7 +874,7 @@ module Moov
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::IssuedCardTransaction)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::IssuedCardTransaction)
           response = Models::Operations::GetIssuedCardTransactionResponse.new(
             status_code: http_response.status,
             content_type: content_type,

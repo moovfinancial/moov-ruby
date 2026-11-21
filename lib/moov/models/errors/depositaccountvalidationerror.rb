@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
       # Descriptions of any field validations that failed while parsing the deposit account payload.
-      class DepositAccountValidationError < StandardError
+      class DepositAccountValidationError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

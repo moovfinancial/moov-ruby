@@ -25,7 +25,7 @@ module Moov
         # An optional description of the capture that is used on receipts and for your own internal use.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('description') } }
         # Free-form key-value pair list. Useful for storing information that is not captured elsewhere.
-        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
+        field :metadata, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::String)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('metadata') } }
         # Optional alias from a foreign/external system which can be used to reference this resource.
         field :foreign_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('foreignID') } }
         # An optional collection of line items for a transfer.
@@ -39,7 +39,7 @@ module Moov
 
         field :failure_code, Crystalline::Nilable.new(Models::Components::CardTransactionFailureCode), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('failureCode'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::CardTransactionFailureCode, true) } }
 
-        sig { params(capture_id: ::String, amount: Models::Components::AmountDecimal, is_final: T::Boolean, status: Models::Components::CaptureStatus, created_on: ::DateTime, description: T.nilable(::String), metadata: T.nilable(T::Hash[Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal), failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
+        sig { params(capture_id: ::String, amount: Models::Components::AmountDecimal, is_final: T::Boolean, status: Models::Components::CaptureStatus, created_on: ::DateTime, description: T.nilable(::String), metadata: T.nilable(T::Hash[::Symbol, ::String]), foreign_id: T.nilable(::String), line_items: T.nilable(Models::Components::TransferLineItems), amount_details: T.nilable(Models::Components::TransferAmountDetails), facilitator_fee_amount: T.nilable(Models::Components::AmountDecimal), failure_code: T.nilable(Models::Components::CardTransactionFailureCode)).void }
         def initialize(capture_id:, amount:, is_final:, status:, created_on:, description: nil, metadata: nil, foreign_id: nil, line_items: nil, amount_details: nil, facilitator_fee_amount: nil, failure_code: nil)
           @capture_id = capture_id
           @amount = amount

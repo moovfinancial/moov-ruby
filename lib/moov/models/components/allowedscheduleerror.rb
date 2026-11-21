@@ -15,9 +15,9 @@ module Moov
 
         field :timezone, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('timezone') } }
 
-        field :windows, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, Models::Components::ScheduleWindowError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('windows') } }
+        field :windows, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, Models::Components::ScheduleWindowError)), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('windows') } }
 
-        sig { params(timezone: T.nilable(::String), windows: T.nilable(T::Hash[Symbol, Models::Components::ScheduleWindowError])).void }
+        sig { params(timezone: T.nilable(::String), windows: T.nilable(T::Hash[::Symbol, Models::Components::ScheduleWindowError])).void }
         def initialize(timezone: nil, windows: nil)
           @timezone = timezone
           @windows = windows

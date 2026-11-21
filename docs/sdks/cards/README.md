@@ -57,6 +57,13 @@ Only use this endpoint if you have provided Moov with a copy of your PCI attesta
 
 To access this endpoint using an [access token](https://docs.moov.io/api/authentication/access-tokens/) 
 you'll need to specify the `/card-metadata.read` scope.
+* [tokenize](#tokenize) - Exchange card data for a single-use payment token. Use the token as `source.paymentToken.token` when
+[creating a transfer](https://docs.moov.io/api/money-movement/transfers/create/).
+
+Tokenizing does not link the card to an account, verify the card, or contact the card networks.
+The card is authorized when the transfer is created.
+
+Call this endpoint directly from the browser using Moov's card Drop, so card data never reaches your servers.
 
 ## link
 
@@ -381,3 +388,72 @@ end
 | Models::Errors::GenericError             | 400, 409                                 | application/json                         |
 | Models::Errors::CardMetadataRequestError | 422                                      | application/json                         |
 | Errors::APIError                         | 4XX, 5XX                                 | \*/\*                                    |
+
+## tokenize
+
+Exchange card data for a single-use payment token. Use the token as `source.paymentToken.token` when
+[creating a transfer](https://docs.moov.io/api/money-movement/transfers/create/).
+
+Tokenizing does not link the card to an account, verify the card, or contact the card networks.
+The card is authorized when the transfer is created.
+
+Call this endpoint directly from the browser using Moov's card Drop, so card data never reaches your servers.
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="createPaymentToken" method="post" path="/tokenize" -->
+```ruby
+require 'moov_ruby'
+
+Models = ::Moov::Models
+s = ::Moov::Client.new(
+  security: Models::Components::Security.new(
+    username: '',
+    password: ''
+  )
+)
+
+req = Models::Components::CreatePaymentToken.new(
+  card: Models::Components::CreatePaymentTokenCard.new(
+    card_number: '4111111111111111',
+    card_cvv: '123',
+    expiration: Models::Components::CardExpiration.new(
+      month: '01',
+      year: '21'
+    ),
+    holder_name: 'Jules Jackson',
+    billing_address: Models::Components::CardAddress.new(
+      address_line1: '123 Main Street',
+      address_line2: 'Apt 302',
+      city: 'Boulder',
+      state_or_province: 'CO',
+      postal_code: '80301',
+      country: 'US'
+    )
+  )
+)
+res = s.cards.tokenize(request: req)
+
+unless res.payment_token.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [Models::Components::CreatePaymentToken](../../models/shared/createpaymenttoken.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+
+### Response
+
+**[T.nilable(Models::Operations::CreatePaymentTokenResponse)](../../models/operations/createpaymenttokenresponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| Models::Errors::GenericError            | 400, 409                                | application/json                        |
+| Models::Errors::CreatePaymentTokenError | 422                                     | application/json                        |
+| Errors::APIError                        | 4XX, 5XX                                | \*/\*                                   |

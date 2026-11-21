@@ -26,14 +26,14 @@ module Moov
         field :wallet, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodsWallet), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('wallet') } }
         # A card as contained within a payment method.
         field :card, Crystalline::Nilable.new(Models::Components::TransferPaymentMethodsCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('card') } }
-        # Describes an Apple Pay token on a Moov account.
-        field :apple_pay, Crystalline::Nilable.new(Models::Components::ApplePayResponse), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('applePay') } }
-        # Describes a Google Pay token on a Moov account.
-        field :google_pay, Crystalline::Nilable.new(Models::Components::GooglePayResponse), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('googlePay') } }
+        # Describes the Apple Pay token used as a transfer's source.
+        field :apple_pay, Crystalline::Nilable.new(Models::Components::TransferApplePay), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('applePay') } }
+        # Describes the Google Pay token used as a transfer's source.
+        field :google_pay, Crystalline::Nilable.new(Models::Components::TransferGooglePay), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('googlePay') } }
         # Describes payment card details captured with tap or in-person payment.
         field :terminal_card, Crystalline::Nilable.new(Models::Components::TransferTerminalCard), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('terminalCard') } }
 
-        sig { params(transfer_id: T.nilable(::String), payment_method_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::TransferPaymentMethodType), account: T.nilable(Models::Components::TransferAccount), bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), apple_pay: T.nilable(Models::Components::ApplePayResponse), google_pay: T.nilable(Models::Components::GooglePayResponse), terminal_card: T.nilable(Models::Components::TransferTerminalCard)).void }
+        sig { params(transfer_id: T.nilable(::String), payment_method_id: T.nilable(::String), payment_method_type: T.nilable(Models::Components::TransferPaymentMethodType), account: T.nilable(Models::Components::TransferAccount), bank_account: T.nilable(Models::Components::TransferPaymentMethodsBankAccount), wallet: T.nilable(Models::Components::TransferPaymentMethodsWallet), card: T.nilable(Models::Components::TransferPaymentMethodsCard), apple_pay: T.nilable(Models::Components::TransferApplePay), google_pay: T.nilable(Models::Components::TransferGooglePay), terminal_card: T.nilable(Models::Components::TransferTerminalCard)).void }
         def initialize(transfer_id: nil, payment_method_id: nil, payment_method_type: nil, account: nil, bank_account: nil, wallet: nil, card: nil, apple_pay: nil, google_pay: nil, terminal_card: nil)
           @transfer_id = transfer_id
           @payment_method_id = payment_method_id

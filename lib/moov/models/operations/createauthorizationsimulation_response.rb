@@ -19,13 +19,13 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # The request completed successfully.
         field :issued_card_authorization, Crystalline::Nilable.new(Models::Components::IssuedCardAuthorization)
         # The resource was successfully accepted.
         field :authorization_simulation_async_response, Crystalline::Nilable.new(Models::Components::AuthorizationSimulationAsyncResponse)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], issued_card_authorization: T.nilable(Models::Components::IssuedCardAuthorization), authorization_simulation_async_response: T.nilable(Models::Components::AuthorizationSimulationAsyncResponse)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], issued_card_authorization: T.nilable(Models::Components::IssuedCardAuthorization), authorization_simulation_async_response: T.nilable(Models::Components::AuthorizationSimulationAsyncResponse)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, issued_card_authorization: nil, authorization_simulation_async_response: nil)
           @content_type = content_type
           @status_code = status_code

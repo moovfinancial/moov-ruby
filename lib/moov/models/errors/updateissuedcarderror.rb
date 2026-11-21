@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class UpdateIssuedCardError < StandardError
+      class UpdateIssuedCardError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

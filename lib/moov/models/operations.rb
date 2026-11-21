@@ -47,6 +47,7 @@ module Moov
       autoload :CreateOnboardingInviteResponse, 'moov/models/operations/createonboardinginvite_response.rb'
       autoload :CreatePaymentLinkRequest, 'moov/models/operations/createpaymentlink_request.rb'
       autoload :CreatePaymentLinkResponse, 'moov/models/operations/createpaymentlink_response.rb'
+      autoload :CreatePaymentTokenResponse, 'moov/models/operations/createpaymenttoken_response.rb'
       autoload :CreateProductRequest, 'moov/models/operations/createproduct_request.rb'
       autoload :CreateProductResponse, 'moov/models/operations/createproduct_response.rb'
       autoload :CreateReceiptsResponse, 'moov/models/operations/createreceipts_response.rb'

@@ -34,9 +34,9 @@ module Moov
         # Country where the underlying card was issued.
         field :issuer_country, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('issuerCountry') } }
         # The authentication method used for the Google Pay token.
-        field :auth_method, Crystalline::Nilable.new(Models::Components::AuthMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authMethod'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::AuthMethod, true) } }
+        field :auth_method, Crystalline::Nilable.new(Models::Components::GooglePayResponseAuthMethod), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('authMethod'), 'decoder': ::Moov::Utils.open_enum_from_string(Models::Components::GooglePayResponseAuthMethod, true) } }
 
-        sig { params(token_id: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, card_display_name: ::String, fingerprint: ::String, expiration: Models::Components::CardExpiration, dynamic_last_four: ::String, issuer_country: T.nilable(::String), auth_method: T.nilable(Models::Components::AuthMethod)).void }
+        sig { params(token_id: ::String, brand: Models::Components::CardBrand, card_type: Models::Components::CardType, card_display_name: ::String, fingerprint: ::String, expiration: Models::Components::CardExpiration, dynamic_last_four: ::String, issuer_country: T.nilable(::String), auth_method: T.nilable(Models::Components::GooglePayResponseAuthMethod)).void }
         def initialize(token_id:, brand:, card_type:, card_display_name:, fingerprint:, expiration:, dynamic_last_four:, issuer_country: nil, auth_method: nil)
           @token_id = token_id
           @brand = brand

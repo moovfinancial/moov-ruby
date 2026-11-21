@@ -8,7 +8,7 @@ module Moov
   module Models
     module Errors
 
-      class InvoiceNotificationRateLimitedError < StandardError
+      class InvoiceNotificationRateLimitedError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 

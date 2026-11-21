@@ -7,7 +7,7 @@
 module Moov
   module Models
     module Components
-      # Where funds for a transfer originate. For the source, you must include either a `paymentMethodID` or a `transferID`.
+      # Where funds for a transfer originate. For the source, you must include exactly one of `paymentMethodID`, `paymentToken`, or `transferID`.
       class CreateTransferSource
         extend T::Sig
         include Crystalline::MetadataFields
@@ -17,10 +17,12 @@ module Moov
         field :transfer_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('transferID') } }
 
         field :payment_method_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentMethodID') } }
+        # A single-use payment token to use as the transfer's source.
+        #
+        # The payment is authorized when the transfer is created.
+        field :payment_token, Crystalline::Nilable.new(Models::Components::CreateTransferPaymentToken), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentToken') } }
 
-        field :payment_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Moov::Utils.field_name('paymentToken') } }
-
-        sig { params(transfer_id: T.nilable(::String), payment_method_id: T.nilable(::String), payment_token: T.nilable(::String)).void }
+        sig { params(transfer_id: T.nilable(::String), payment_method_id: T.nilable(::String), payment_token: T.nilable(Models::Components::CreateTransferPaymentToken)).void }
         def initialize(transfer_id: nil, payment_method_id: nil, payment_token: nil)
           @transfer_id = transfer_id
           @payment_method_id = payment_method_id

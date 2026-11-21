@@ -19,11 +19,11 @@ module Moov
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # The request completed successfully.
         field :resolution_link, Crystalline::Nilable.new(Models::Components::ResolutionLink)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], resolution_link: T.nilable(Models::Components::ResolutionLink)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], resolution_link: T.nilable(Models::Components::ResolutionLink)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, resolution_link: nil)
           @content_type = content_type
           @status_code = status_code
